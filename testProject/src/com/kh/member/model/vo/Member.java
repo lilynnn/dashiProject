@@ -9,7 +9,7 @@ public class Member {
 			
 		
 		System.out.println("깃허브 다들 성공!!!");
-		
+		System.out.println("ㅋㅋㅋㅋㅋㅋ");
 		
 	}
 }
