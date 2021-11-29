@@ -7,5 +7,9 @@ public class Member {
 	 */
 	public void test1() {
 			
+		
+		System.out.println("깃허브 다들 성공!!!");
+		
+		
 	}
 }
