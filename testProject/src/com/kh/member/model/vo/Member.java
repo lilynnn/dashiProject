@@ -14,5 +14,7 @@ public class Member {
 		
 		System.out.println("잘 되나용");
 		
+		// 은서
+		
 	}
 }
