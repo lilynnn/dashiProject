@@ -22,5 +22,7 @@ public class Member {
 		
 		System.out.println("수정이되나요?");
 		
+		// 지희
+		System.out.println("테스트명 변경 전");
 	}
 }
