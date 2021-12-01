@@ -7,18 +7,20 @@
 <title>Insert title here</title>
 <style>
     #footer{
-        background: rgb(245, 203, 19);
+        background: rgb(40,112,37);
         height: 150px;
-        width: 100%;
+        width: 1200px;
+        margin: auto;
     }
     #footer table{
         height: 150px;
         width: 100%;
+        color: white;
     }
 </style>
 </head>
 <body>
-
+	<!-- 
 	<div id="footer">
     <table>
 
@@ -28,7 +30,7 @@
         </td>
 
         <td style="width: 30%;">
-            <!-- 공백란 -->
+            
         </td>
 
         <td style="width: 30%; font-size: 9.7px; text-align: right;">
@@ -45,7 +47,8 @@
         
 	    </table>
 	</div>
-	<br>
+	 -->
+	 
 	<div id="footer">
 	    <table>
 	
@@ -66,7 +69,7 @@
 	        </td>
 	        
 	        <td style="width: 30%; text-align: right;">
-	            <b>다시, 사랑받개!&nbsp;&nbsp;&nbsp;&nbsp;</b> <br>
+	            <b style="font-size: 18px;">다시, 사랑받개!&nbsp;&nbsp;&nbsp;</b> <br>
 	            <p style="font-size: smaller;">copyright(C) 2021. 다시, 사랑받개!&nbsp;&nbsp;&nbsp;&nbsp;</p>
 	        </td>
 	
