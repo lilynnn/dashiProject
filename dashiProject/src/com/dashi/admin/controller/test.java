@@ -16,6 +16,8 @@ public class test extends HttpServlet {
     
 	// 오늘 공지사항 수업 너무 힘들었어요!!!!! -누리-
 	
+	// ㄴ동의합니당.. -은서-
+	
 	
 	
 
