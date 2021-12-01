@@ -18,30 +18,28 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<style>
-    /*영역 구분하기 위해 설정, 나중에 지우기!!!*/
-    .logo-area,.login-area,.menu-area{border: 1px solid black;}
-    
+<style>    
     /* 로고 영역 */
     .logo-area{
-        height: 80px; 
+        margin-top: 100px;
     }
     .logo-area img{
         width: 245px;
         height: 75px;
     }
     /* 로그인 영역 */
-    .login-area{height: 20px;}
+    .login-area{ width: 1200px; margin: auto; }
 
     /* 메뉴바 영역 */
     .menu-area{
     	background: rgb(40,112,37);
     	width: 1200px;
-    	margin: auto;	
+    	margin: auto;
+        margin-top: 10px;	
     }
     .menu{
         display: table-cell;
-        width: 239px;
+        width: 250px;
     }
     .menu a{
         text-decoration: none;
@@ -80,8 +78,14 @@
     </div>
     
     <!-- 로그인 영역 -->
-    <div class="login-area">
-        
+    <div class="login-area" align="right">
+        <table>
+            <tr>
+                <td>로그인</td>
+                <td style="width: 20px;"><!--공백란--></td>
+                <td>회원가입</td>
+            </tr>
+        </table>
     </div>
     
     <!-- 네비게이션바 영역 -->

@@ -6,16 +6,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    /* 영역 구분하려고 작성! 수정할 거 없으면지우기!!! */
-    .image-area,.adopt-area,.review-area,.title{border: 1px solid black;}
-
+    div{box-sizing: border-box;}
+    
+    /* 사진 넣고 나서 테두리 지우기~! */
+    .image-area, .photo-area{
+        border: 1px solid gray;
+    }
     /* 메인페이지 전체 감싸는 div */
     .outer{
         margin: auto;
         margin-top: 50px;
         width: 1200px;
-        padding-bottom: 60px;
-        border: 1px solid red;
+        padding-bottom: 80px;
     }
 
     /* 메인 이미지 영역 스타일 */
@@ -31,6 +33,16 @@
     .adopt-area{
         width: 1100px;
         margin: auto;
+        height: 220px;
+    }
+    .area-box{
+        width: 210px; 
+        height: 220px;
+        float: left;
+        margin-left: 9px;
+    }
+    .photo-area{
+        width: 195px; 
         height: 200px;
     }
 
@@ -43,9 +55,10 @@
 
     /* 입양공고,입양후기 타이틀 영역 스타일 */
     .title{ 
-       margin-top: 30px;
+       margin-top: 50px;
+       padding-left: 20px;
     }
-    .title a{
+    .title{
         margin-left: 50px;
         text-decoration: none;
         color: rgb(42, 43, 42);
@@ -69,19 +82,63 @@
             세경님네 귀여운 댕댕이 사진
         </div>
         
-        <!-- 하단 a태그 눌렀을 때 입양공고 메인페이지로 이동 -->
-        <div class="title"><a href="">입양 공고</a></div>
+        <!-- 하단 타이틀 눌렀을 때 입양공고 메인페이지로 이동 -->
+        <div class="title">입양 공고</div>
         <hr style="width: 1100px; margin-top: 10px;">
         
         <!-- 입양 공고 게시글 띄우는 영역 -->
-        <div class="adopt-area"></div>
+        <div class="adopt-area">
+            <div class="area-box" align="center">
+                <div class="photo-area"></div>
+                <div>입양공고제목1</div>
+            </div>
+            <div class="area-box" align="center">
+                <div class="photo-area"></div>
+                <div>입양공고제목1</div>
+            </div>
+            <div class="area-box" align="center">
+                <div class="photo-area"></div>
+                <div>입양공고제목1</div>
+            </div>
+            <div class="area-box" align="center">
+                <div class="photo-area"></div>
+                <div>입양공고제목1</div>
+            </div>
+            <div class="area-box" align="center">
+                <div class="photo-area"></div>
+                <div>입양공고제목1</div>
+            </div>
+        </div>
         
-        <!-- 하단 a태그 눌렀을 때 입양후기 메인페이지로 이동 -->
-        <div class="title"><a href="">입양 후기</a></div>
+        <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
+        <div class="title">입양 후기</div>
         <hr style="width: 1100px; margin-top: 10px;">
         
         <!-- 입양 후기 게시글 띄우는 영역 -->
-        <div class="review-area"></div>
+        <div class="review-area">
+            <div class="adopt-area">
+                <div class="area-box" align="center">
+                    <div class="photo-area"></div>
+                    <div>입양후기제목1</div>
+                </div>
+                <div class="area-box" align="center">
+                    <div class="photo-area"></div>
+                    <div>입양후기제목1</div>
+                </div>
+                <div class="area-box" align="center">
+                    <div class="photo-area"></div>
+                    <div>입양후기제목1</div>
+                </div>
+                <div class="area-box" align="center">
+                    <div class="photo-area"></div>
+                    <div>입양후기제목1</div>
+                </div>
+                <div class="area-box" align="center">
+                    <div class="photo-area"></div>
+                    <div>입양후기제목1</div>
+                </div>
+            </div>
+        </div>
     
     </div>
 
