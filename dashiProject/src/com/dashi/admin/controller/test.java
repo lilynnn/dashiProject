@@ -22,5 +22,7 @@ public class test extends HttpServlet {
 	
 	// 수업 넘나리 힘든것,,,,~ -세경-
 	
+	// 화이팅... -희승-
+	
 
 }
