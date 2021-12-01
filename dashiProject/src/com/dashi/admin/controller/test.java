@@ -18,6 +18,8 @@ public class test extends HttpServlet {
 	
 	// ㄴ동의합니당.. -은서-
 	
+	// 과제 하는데 에러메세지가 자꾸 null로 떠요ㅠㅜㅜ
+	
 	
 	
 
