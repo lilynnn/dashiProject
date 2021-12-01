@@ -41,23 +41,38 @@
     }
     .menu{
         display: table-cell;
-        width: 240px;
-        height: 50%;
+        width: 239px;
     }
     .menu a{
         text-decoration: none;
         color: white;
-        font-size: 16px;
-        font-weight: bold;
         display: block;
         width: 100%;
         height: 100%;
+    }
+    .menu>a{
+        font-size: 16px;
+        font-weight: bold;
         line-height: 300%;
     }
     .menu a:hover{
-        background: white;
-        color: gray;
+        color: rgb(252, 186, 3);
     }
+
+    .menu>ul{
+        list-style-type: none;
+        padding: 0px;
+        line-height: 200%;
+    }
+
+    .menu>ul a{
+        color: white;
+        font-size: 13px;
+    }
+
+    .menu>ul{display: none; padding: 0px;}
+    .menu>a:hover+ul{display: block;}
+    .menu>ul:hover{display: block;}
 </style>
 </head>
 <body>
@@ -74,12 +89,53 @@
     
     <!-- 네비게이션바 영역 -->
     <div class="menu-area" align="center">
-        <div class="menu"><a href="">보호소소개</a></div>
-        <div class="menu"><a href="">입소</a></div>
-        <div class="menu"><a href="">입양</a></div>
-        <div class="menu"><a href="">실종/보호/목격</a></div>
-        <div class="menu"><a href="">고객센터</a></div>
+
+            <!-- 보호소소개 탭 -->
+	        <div class="menu">
+                <a href="">보호소소개</a>
+                    <ul class="menu-tag">
+                        <li><a href="">다시,사랑받개!소개</a></li>
+                    </ul>
+            </div>
+
+            <!-- 입소탭 -->
+            <div class="menu">
+                <a href="">입소</a>
+                    <ul class="menu-tag">
+                        <li><a href="">입소안내</a></li>
+                        <li><a href="">입소신청</a></li>
+                    </ul>
+            </div>
+
+            <!-- 입양탭 -->
+	        <div class="menu">
+                <a href="">입양</a>
+                    <ul class="menu-tag">
+                        <li><a href="">입양절차안내</a></li>
+                        <li><a href="">입양신청</a></li>
+                        <li><a href="">입양후기</a></li>
+                    </ul>
+            </div>
+
+            <!-- 실종/보호/목격탭 -->
+	        <div class="menu">
+                <a href="">실종/보호/목격</a>
+                    <ul class="menu-tag">
+                        <li><a href="">신고글 작성하기</a></li>
+                    </ul>
+            </div>
+
+            <!-- 고객센터탭 -->
+	        <div class="menu">
+                <a href="">고객센터</a>
+                    <ul class="menu-tag">
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">FAQ</a></li>
+                    </ul>
+            </div>
+        </ul>
     </div>
+
 
 </body>
 </html>
