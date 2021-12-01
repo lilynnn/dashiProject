@@ -20,7 +20,7 @@ public class test extends HttpServlet {
 	
 	// 과제 하는데 에러메세지가 자꾸 null로 떠요ㅠㅜㅜ
 	
-	
+	// 수업 넘나리 힘든것,,,,~ -세경-
 	
 
 }
