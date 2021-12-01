@@ -58,18 +58,15 @@
     .menu a:hover{
         color: rgb(252, 186, 3);
     }
-
     .menu>ul{
         list-style-type: none;
         padding: 0px;
         line-height: 200%;
     }
-
     .menu>ul a{
         color: white;
         font-size: 13px;
     }
-
     .menu>ul{display: none; padding: 0px;}
     .menu>a:hover+ul{display: block;}
     .menu>ul:hover{display: block;}
