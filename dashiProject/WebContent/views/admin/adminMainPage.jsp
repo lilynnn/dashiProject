@@ -94,10 +94,10 @@
         <div id="menu">
             <div id="message">
                 <div style="width: 30%; height: 70px; font-size: 24px; font-weight: 900;">
-                    관리자 메인페이지
+                    	관리자 메인페이지
                 </div>
                 <div style="text-align: left; width: 70%; height: 70px; font-size: 10px; color: lightslategrey;">
-                    관리자님, 오늘도 좋은 하루 보내세요!
+                    	관리자님, 오늘도 좋은 하루 보내세요!
                 </div>
             </div>
 
