@@ -36,6 +36,7 @@
     	width: 1200px;
     	margin: auto;
         margin-top: 10px;	
+        border-radius:20px
     }
     .menu{
         display: table-cell;
@@ -68,6 +69,31 @@
     .menu>ul{display: none; padding: 0px;}
     .menu>a:hover+ul{display: block;}
     .menu>ul:hover{display: block;}
+    #adminMenu>div{
+        float: left;
+    }
+    /*왼쪽 메뉴바 작업*/
+    #adminMenu{margin-left:300px}
+    #aMenubar{
+        width: 150px; 
+        height: 90%; 
+        margin-top: 65px;
+        margin-left: 40px;
+    }
+    #aMenubar>div{
+        width: 100%;
+        height: 30px;
+        text-align: right;
+        line-height: 30px;
+    }
+    #member, #apply, #list, #report, #payment, #animal{
+        background: lightgray;
+    }
+    #fighting{
+       width:150px;
+       height:100px;
+       border:1px solid black;
+    }
 </style>
 </head>
 <body>
@@ -130,13 +156,48 @@
 	        <div class="menu">
                 <a href="">고객센터</a>
                     <ul class="menu-tag">
-                        <li><a href="<%=contextPath%>/main.ad">공지사항</a></li>
+                        <li><a href="">공지사항</a></li>
                         <li><a href="">FAQ</a></li>
                     </ul>
             </div>
         </ul>
     </div>
 
+    <!-- 관리자 메뉴바입니다/누리작업-->
+    <div id="adminMenu">
+        
+        <!--왼쪽메뉴바-->
+        <div id="aMenubar">
+        		
+        		<div style="width:150px; height:85px; text-align:center; line-height:80px; font-weight:bold; color:orangered">1조 화이팅♡</div>
+        
+                <div id="member">회원관리</div>
+                <div>전체회원조회</div>
+                <div>블랙리스트조회</div>
+                
+                <div id="apply">신청내역관리</div>
+                <div>입양신청</div>
+                <div>입소신청</div>
+                
+                <div id="list">게시글관리</div>
+                <div>공지사항</div>
+                <div>입양공고</div>
+                <div>입양후기</div>
+                <div>실종/보호</div>
+                <div>1:1문의</div>
+                <div>FAQ</div>
+                
+                <div id="report">신고내역관리</div>
+                <div>전체신고내역</div>
+                
+                <div id="payment">결제내역관리</div>
+                <div>전체결제내역</div>
+                
+                <div id="animal">동물관리</div>
+                <div>전체동물조회</div>
+            </div>
+   
+    </div>
 
 </body>
 </html>
