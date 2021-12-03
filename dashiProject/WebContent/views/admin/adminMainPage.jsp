@@ -16,14 +16,15 @@
         float: left;
         box-sizing: border-box;
     }
-    #menu{width: 830px; height: 100%; margin-left: 20px;}
+    #munubar{width:150px}
+    #menu{width: 850px; height: 100%; margin-left: 20px;}
     #message>div{float: left; box-sizing: border-box;}
     #boxset>div{float: left;}
     .box{
         width: 200px;
         height: 220px;
         margin-top: 10px;
-        margin-left: 5px;
+        margin-left: 10px;
         margin-bottom: 10px;
     }
     .box>div{
@@ -45,10 +46,14 @@
 </head>
 <body>
     
-    <%@ include file="adminMenubar.jsp" %>
+    <%@ include file="../common/menubar.jsp" %>
     
     <!--전체를 감싸는 큰 div-->
     <div class="outer">
+    
+    	<div id="menubar">
+    		<%@ include file="adminMenubar.jsp" %>
+    	</div>
 
         <!--관리자메인페이지 안내와 메세지입니다-->
         <div id="menu">
@@ -191,6 +196,8 @@
         </div>
     </div>
 
+	<!-- footerbar영역 -->
+	<%@ include file="../common/footerbar.jsp" %>
 
 </body>
 </html>
