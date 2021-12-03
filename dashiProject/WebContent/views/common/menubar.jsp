@@ -36,6 +36,7 @@
     	width: 1200px;
     	margin: auto;
         margin-top: 10px;	
+        border-radius:20px
     }
     .menu{
         display: table-cell;
@@ -110,7 +111,7 @@
 
             <!-- 입양탭 -->
 	        <div class="menu">
-                <a href="">입양</a>
+                <a href="<%=contextPath %>/adoptlist">입양</a>
                     <ul class="menu-tag">
                         <li><a href="">입양절차안내</a></li>
                         <li><a href="">입양신청</a></li>
