@@ -160,25 +160,33 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="width: 80%;">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">다시 사랑받개!를 <br>방문해주셔서 감사합니다.</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                
+                <div class="outer" aligg="center"> <!-- 전체를 감싸는 div -->
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">다시 사랑받개!를 <br>방문해주셔서 감사합니다.</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="" method="post">
+                            <table>
+                                <tr>
+                                    <td><input type="text" class="userId" name="userId" placeholder="아이디" size = 40 required></td>
+                                </tr>
+                                <tr>
+                                    <td><br><input type="password" class="userPwd" name="userPWd" placeholder="비밀번호" size = 40 required></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div>
+                        
+                    </div>
+
                 </div>
-            
-                <!-- Modal body -->
-                <div class="modal-body">
-                    <form action="">
-                        <table>
-                            <tr>
-                                <td><input type="text" class="userId" name="userId" placeholder="아이디" size = 40 required></td>
-                            </tr>
-                            <tr>
-                                <td><br><input type="password" class="userPwd" name="userPWd" placeholder="비밀번호" size = 40 required></td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
+                
             </div>
         </div>
     
