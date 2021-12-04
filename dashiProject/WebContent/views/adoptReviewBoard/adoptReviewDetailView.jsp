@@ -12,6 +12,7 @@
         margin: auto;
     }
 
+    /*상단 입양후기 백그라운드이미지 영역*/
     #fix-image{
         width: 700px;
         height: 300px;
@@ -20,6 +21,7 @@
         border: 1px solid black;
     }
 
+    /*사용자 첨부 이미지 영역*/
     .image-area{
         width: 600px;
         height: 300px;
@@ -28,11 +30,13 @@
         border: 1px solid black;
     }
 
+    /*사용자 작성 글내용 영역*/
     .content-area{
         width: 1200px;
         margin: auto;
     }
-    
+
+    /*버튼 영역*/
     .btn{
         border: none;
         background: rgb(221, 221, 221);
@@ -56,10 +60,10 @@
             </div>
         </div>
             <br><br><br><br><br><br>
-                    <!-- 입양공고 상세내용 영역 -->
+                    <!-- 입양후기 상세내용 영역 -->
                     <div class="content-area" align="center">
 
-                        <!-- 입양공고 제목, 작성일, 조회수 -->
+                        <!-- 입양후기 제목, 작성일, 조회수 -->
                         <table align="left" style="margin-left: 150px;">
                             <tr>
                                 <td colspan="5">
@@ -79,7 +83,7 @@
                         <hr width="900" color="gray">
                         <br>
 
-                        <!-- 관리자가 입력한 내용 출력되는 영역 -->
+                        <!-- 사용자 작성 글내용 -->
                         <div class="text-area" align="center" style="width: 600px; height: 500px;">
                             무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
                             소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
@@ -89,6 +93,7 @@
                             청춘의 것이 우리의 무엇을 눈이 그것을 이상이 간에 것이다.       
                         </div>   
 
+                        <!-- 사용자 첨부 이미지 -->
                         <div class="image-area">
                             강쥐
                         </div>
@@ -149,14 +154,7 @@
 
                         <br><br><br><br>
                     </div>
-
-
-
     </div>
-
-
-
-
 
     <%@include file="../common/footerbar.jsp" %>
 </body>
