@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-    div{border:solid 1px red;}
-
     .outer{
         margin-top: 50px;
         width: 1200px;
@@ -58,7 +55,7 @@
                 <h2 style="margin-top: 100px;">입양후기 <hr></h2>
             </div>
         </div>
-
+            <br><br><br><br><br><br>
                     <!-- 입양공고 상세내용 영역 -->
                     <div class="content-area" align="center">
 
