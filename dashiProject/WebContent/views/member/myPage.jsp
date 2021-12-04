@@ -97,6 +97,9 @@
 
 </head>
 <body>
+
+<%@ include file="../common/menubar.jsp" %>
+
 <div class="outer">
     <div class="wrap">
         <!--마이페이지(타이틀)-->
@@ -192,6 +195,8 @@
         </div>
     </div>
 </div>
-</body>
+
+<%@include file="../common/footerbar.jsp" %>
+
 </body>
 </html>
