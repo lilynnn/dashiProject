@@ -10,6 +10,7 @@
         width: 1100px;
         margin: auto;
         margin-top: 50px;
+        height:800px
     }
     .outer>div{
         float: left; 
