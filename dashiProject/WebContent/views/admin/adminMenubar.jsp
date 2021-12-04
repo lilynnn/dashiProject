@@ -29,6 +29,7 @@
         height: 30px;
         text-align: right;
         line-height: 30px;
+        cursor: pointer;
     }
     #member, #apply, #list, #report, #payment, #animal{
         background: lightgray;
@@ -38,7 +39,30 @@
        height:100px;
        border:1px solid black;
     }
+    #aMenubar>ul>li{
+        list-style-type: none;
+        text-align: right;
+        line-height: 30px;
+    }
+    #aMenubar>ul a{
+        text-decoration: none;
+        color: black;
+    }
+    #aMenubar>ul{display: none;}
+    #aMenubar>ul a:hover{color: orange;}
 </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 
@@ -53,34 +77,69 @@
         			1조 화이팅♡
         		</div>
         
-                <div id="member">회원관리</div>
-                <div>전체회원조회</div>
-                <div>블랙리스트조회</div>
+                <div class="menu" id="member">회원관리</div>
+                <ul>
+                    <li><a href="">전체회원조회</a></li>
+                    <li><a href="">블랙리스트조회</a></li>
+                </ul>
                 
-                <div id="apply">신청내역관리</div>
-                <div>입양신청</div>
-                <div>입소신청</div>
+                <div class="menu" id="apply">신청내역관리</div>
+                <ul>
+                    <li><a href="">입양신청</a></li>
+                    <li><a href="">입소신청</a></li>
+                </ul>
                 
-                <div id="list">게시글관리</div>
-                <div>공지사항</div>
-                <div>입양공고</div>
-                <div>입양후기</div>
-                <div>실종/보호</div>
-                <div>1:1문의</div>
-                <div>FAQ</div>
-                
-                <div id="report">신고내역관리</div>
-                <div>전체신고내역</div>
-                
-                <div id="payment">결제내역관리</div>
-                <div>전체결제내역</div>
-                
-                <div id="animal">동물관리</div>
-                <div>전체동물조회</div>
+                <div class="menu" id="list">게시글관리</div>
+                <ul>
+                    <li><a href="">공지사항</a></li>
+                    <li><a href="">입양공고</a></li>
+                    <li><a href="">입양후기</a></li>
+                    <li><a href="">실종/보호</a></li>
+                    <li><a href="">1:1문의</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
+
+                <div class="menu" id="report">신고내역관리</div>
+                <ul>
+                    <li><a href="">전체신고내역</a></li>
+                </ul>
+
+                <div class="menu" id="payment">결제내역관리</div>
+                <ul>
+                    <li><a href="">전체결제내역</a></li>
+                </ul>
+
+                <div class="menu" id="animal">동물관리</div>
+                <ul>
+                    <li><a href="">전체동물조회</a></li>
+                </ul>
          </div>
    
     </div>
     
+    <script>
+        $(function(){
+            $(".menu").click(function(){
+
+                const $ul = $(this).next();
+
+                if($ul.css("display") == "none"){
+
+                    $(this).siblings("ul").slideUp();
+
+                    // 보여지게끔
+                    $ul.slideDown();
+
+                }else{
+                    // 사라지게끔
+                    $ul.slideUp();
+
+                }
+
+            })
+        })
+    </script>
+
 
 
 </body>
