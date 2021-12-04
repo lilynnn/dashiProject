@@ -27,6 +27,8 @@
 </head>
 <body>
 	
+    <!--누리 작업-->
+
 	<%@ include file="../common/menubar.jsp" %>
 
 	 <!--전체 div-->
@@ -37,6 +39,8 @@
             회원정보수정
             <hr>
         </div>
+
+        <!--회원정보 메뉴바-->
 
     </div>
 </body>
