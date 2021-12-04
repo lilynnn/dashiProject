@@ -132,7 +132,7 @@
                 <a href="">고객센터</a>
                     <ul class="menu-tag">
                         <li><a href="<%=contextPath%>/list.no">공지사항</a></li>
-                        <li><a href="">FAQ</a></li>
+                        <li><a href="<%=contextPath%>/list.qu">FAQ</a></li>
                     </ul>
             </div>
         </ul>
