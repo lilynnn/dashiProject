@@ -23,14 +23,15 @@
 	}
 	.title-area h4{color: white; font-weight: bold; line-height: 190%;}
 
-	table{
+	table td{
 		border-collapse: separate;
-		border-spacing: 0 15px;
+		line-height: 200%;
 	}
 	.inputText-area{
 		width: 830px; 
-		height: 50px; 
+		height: 100px; 
 		margin-left: 20px;
+		resize: none;
 	}
 </style>
 </head>
@@ -67,21 +68,21 @@
 				<tr>
 					<td width=220>1. 신청인 성명  </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px">
+						<input type="text" name="" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 연령 -->
 					<td width=220>2. 연 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 령 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px">
+						<input type="text" name="" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 성별 -->
 					<td width=220>3. 성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별 </td>
 					<td width=780>
-						<input type="radio" name="gender" value="M"> 남성
+						<input type="radio" name="gender" value="M" required> 남성
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="gender" value="F"> 여성
 					</td>
@@ -90,45 +91,44 @@
 					<!-- 전화번호 -->
 					<td width=220>4. 전&nbsp;화&nbsp;&nbsp;&nbsp;번&nbsp;호 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px">
+						<input type="text" name="phone" style="width: 690px" placeholder=" - 포함해서 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 이메일 -->
 					<td width=220>5. 이&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;일 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 333px">
+						<input type="text" name="" style="width: 333px" required>
 						@
-						<input type="text" name="" style="width: 333px">
+						<input type="text" name="" style="width: 333px" required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 주소 -->
 					<td width=220>6. 주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 소 </td>
 					<td>
-						<input type="text" name="" style="width: 343px">
-						
-						<input type="text" name="" style="width: 343px">
+						<input type="text" name="" style="width: 690px" placeholder=" 상세주소까지 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 기혼여부 -->
 					<td width=220>7. 기&nbsp;혼&nbsp;&nbsp;&nbsp;여&nbsp;부 </td>
 					<td width=780>
-						<input type="radio" name="marry" value=""> 기혼
+						<input type="radio" name="marriage" value="" required> 기혼
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="marry" value=""> 미혼
+						<input type="radio" name="marriage" value=""> 미혼
 					</td>
 				</tr>
 				<tr>
 					<!-- 직업 -->
 					<td width=220>8. 직 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 업 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px">
+						<input type="text" name="" style="width: 690px" required>
 					</td>
 				</tr>
 			</table>
 			<br>
+
 			<table style="width: 900px;">
 				<!-- 기초 조사 설문지 -->
 				<tr>
@@ -139,7 +139,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input class="inputText-area" type="text">
+						<textarea class="inputText-area" required></textarea>
 					</td>
 				</tr>
 				
@@ -148,7 +148,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" style="width: 830px; margin-left: 20px;">
+						<input type="text" style="width: 830px; margin-left: 20px;" required>
 					</td>
 				</tr>
 				
@@ -157,7 +157,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;"> 예
+						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" name="" value="N"> 아니오
 					</td>
@@ -165,12 +165,21 @@
 				<!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->
 				<tr>
 					<td>
-						<p style="display: inline; margin-left: 30px;">종류</p>&nbsp;
-						<input type="text" name="">
-						<p style="display: inline; margin-left: 30px;">나이</p>&nbsp;
-						<input type="text" name="">
-						<p style="display: inline; margin-left: 30px;">성별</p>&nbsp;
-						<input type="text" name="">
+						<p style="display: inline; margin-left: 20px;">종류</p>&nbsp;
+						<input style="width: 150px;" type="text" name="">
+						
+						<p style="display: inline; margin-left: 20px;">나이</p>&nbsp;
+						<input style="width: 100px;" type="text" name="">
+						
+						<p style="display: inline; margin-left: 20px;">성별</p>&nbsp;&nbsp;
+						<input type="radio" name="petGender" value="M"> 남
+						&nbsp;&nbsp;
+						<input type="radio" name="petGender" value="F"> 여
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<p style="display: inline; margin-left: 20px;">중성화여부</p>&nbsp;&nbsp;
+						<input type="radio" name="neutral" value="Y"> 예
+						&nbsp;&nbsp;
+						<input type="radio" name="neutral" value="N"> 아니오
 					</td>
 				</tr>
 
@@ -183,11 +192,11 @@
 				<tr>
 					<td>
 						<p style="display: inline; margin-left: 30px;">성인</p>&nbsp;
-						<input type="text" name="" placeholder="명">
+						<input type="text" name="" placeholder="명" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="" placeholder="명">
+						<input type="text" name="" placeholder="명" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="" placeholder="세">
+						<input type="text" name="" placeholder="세" required>
 					</td>
 				</tr>
 
@@ -196,18 +205,18 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 모두찬성
+						<input type="radio" name="" value="" style="margin-left: 30px;" required> 모두찬성
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 부분찬성
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 본인 제외 모두 반대
 					</td>
 				</tr>
 
 				<tr>
-					<td>6. 결혼, 출산, 이사 등 환경변화가 있을 경우에도 반려동물을 책임질 수 있으신가요?</td>
+					<td>6. 1년 이내에 결혼, 출산, 이사 등 환경변화 계획이 있으신가요? </td>
 				</tr>
 				<tr>
 					<td>
-						<input class="inputText-area" type="text">
+						<textarea class="inputText-area" required></textarea>
 					</td>
 				</tr>
 
@@ -216,7 +225,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 1시간 미만
+						<input type="radio" name="" value="" style="margin-left: 30px;" required> 1시간 미만
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 1 ~ 3 시간
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 4 ~ 8 시간
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 8시간 이상
@@ -228,7 +237,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 아파트
+						<input type="radio" name="" value="" style="margin-left: 30px;" required> 아파트
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 단독주택
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 다세대주택
 						<input type="radio" name="" value="" style="margin-left: 30px;"> 원룸
@@ -241,7 +250,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;"> 예
+						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
 						<input type="radio" name="" value="N" style="margin-left: 30px;"> 아니오
 					</td>
 				</tr>
@@ -251,7 +260,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;"> 예
+						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
 						<input type="radio" name="" value="N" style="margin-left: 30px;"> 아니오
 					</td>
 				</tr>
@@ -261,7 +270,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" style="width: 830px; margin-left: 20px;">
+						<input type="text" style="width: 830px; margin-left: 20px;" placeholder=" 만원 단위로 입력해주세요." required>
 					</td>
 				</tr>
 
