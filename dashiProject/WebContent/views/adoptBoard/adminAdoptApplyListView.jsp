@@ -11,17 +11,16 @@
         width: 1100px;
         height: 800px;
         margin: auto;
-        margin-top: 50px;
+        margin-top: 30px;
     }
     .outer>div{
         float: left;
         box-sizing: border-box;
     }
     /*왼쪽메뉴바*/
-    #munubar{width:150px}
+    #menubar{width:150px margin-right:20px}
 
     .content-area{
-         margin-left: 30px;
          width: 850px;
          float: left;
     }
