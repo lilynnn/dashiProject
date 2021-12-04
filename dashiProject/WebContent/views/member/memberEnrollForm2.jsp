@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,25 +25,13 @@
         border-bottom-right-radius: 5px;
 
     }
-    .checkId{
-        position: relative;
-        right: 80px;
-        top:1px;
-        background: rgb(102,184,94);
-        color: white;
-        border: none;
-        height: 30px;
-
-    }
 
     .signUp{
-        position: relative;
         background: rgb(102,184,94);
         color: white;
         font-size: 18px;
         font-weight: bold;
         width: 150px;
-        right: 20px;
     }
     #address{
         width: 250px;
@@ -80,7 +68,9 @@
                 <tr>
                     <td>
                         <input type="text" name = "userId" minlength="6" maxlength="12" placeholder="&nbsp;&nbsp;아아디를 입력해주세요" required>
-                        <button class ="checkId" type="button">중복확인</button>
+                    </td>
+                    <td>
+                       <button id="doubleCheck">중복확인</button>
                     </td>
                 </tr>
                 <tr>
@@ -127,12 +117,15 @@
                         <br><br>
                     </td>
                 </tr>
+
             </table>
-
-            <input type="submit" value="가입완료" class="signUp">
-
         </form>
+         
+        <input type="submit" value="가입완료" class="signUp">
+
     </div>
+    
+
     
 </body>
 </html>
