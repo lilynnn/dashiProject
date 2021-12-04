@@ -16,12 +16,15 @@
         float: left;
         box-sizing: border-box;
     }
+    /*왼쪽메뉴바*/
     #munubar{width:150px}
+    /*공지사항시작*/
  	#adminNoticeList{
          margin-left: 30px;
          width: 850px;
     }
     #adminNoticeList div{float: left;}
+    /*검색창*/
     #search{width: 200px;}
     #btn{
         width: 650px;
@@ -32,6 +35,7 @@
         width: 60px;
         font-size: 13px;
     }
+    /*공지사항 목록테이블 정리*/
     thead, tbody{
         text-align: center;
     }
@@ -40,6 +44,7 @@
         border-bottom: 1px solid;    
     }
     thead{background: rgb(224, 223, 223);}
+    /*타이틀 정리*/
     #title{
         width: 100%; 
         font-size: 24px; 
@@ -65,7 +70,7 @@
         	<form action="">
 
                 <div id="title">
-                    공지사항
+                    	공지사항
                 <hr>
                 </div>
                 <div id="search">
