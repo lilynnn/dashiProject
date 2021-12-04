@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
-    div{border: 1px solid blue;}
 	/* 전체 감싸는 div */
     .outer{
         width: 1200px;
@@ -55,8 +55,15 @@
         font-size: 13px;
         text-align: center;
     }
-
+    #app-form table{border-collapse: separate;}
+    #app-form th{background: lightgray;}
     .active{background:rgb(40,112,37);}
+
+    /* 입양신청 설문지 div */
+    /*#app-form{display: none;}*/
+    /* 서약서 div */
+    /*#con-form{display: none;}*/
+
 </style>
 </head>
 <body>
@@ -86,7 +93,7 @@
 
             <!-- 신청 기본 정보 table -->
             <div class="content-area">
-                <table id="writerInfo" border="1">
+                <table id="writerInfo">
                     <tr>
                         <th width=250>작성자</th>
                         <td width=300>testuser01</td>
@@ -110,19 +117,22 @@
                     </tr>
                 </table>
                 <br>
+
                 <!-- 신청서/서약서 내용 보여지는 div -->
-                <div class="btn-group" style="margin-left: 20px;">
-                    <button class="btn">신청서</button>
-                    <button class="btn">서약서</button>
-                </div>
+                <button class="btn1 btn" style="background: rgb(89, 133, 88); margin-left: 20px;">신청서</button>
+                <button class="btn2 btn" style="background: rgb(139, 172, 138);">서약서</button>
 
                 <!-- 신청서div (기본값 display:none) -->
-                <div style="margin-left: 20px;">
+                <div id="app-form" style="margin-left: 20px;">
 
-                    <table border="1" style="width: 900px; font-size: 14px; margin: 10px 0px;">
+                    <table style="width: 900px; font-size: 14px; margin: 10px 0px;">
                         <tr>
-                            <th colspan="" style="text-align: center;">입양공고문 제목</th>
-                            <td colspan=""><input style="width: 100%;" value="[동물품종][이름]의 가족을 기다려요."></td>                            </tr>
+                            <td style="text-align: center; width: 200px;"><b>입양공고문 제목</b></td>
+                            <td colspan="">
+                                <!-- input요소에서 disable 사용하면 값 전달 안됨, but readonly는 값 전달 -->
+                                <input style="width: 99%; font-size: 15px;" value="[동물품종][이름]의 가족을 기다려요." readonly>
+                            </td>                            
+                        </tr>
                         <tr> <!-- 공백란 -->
                             <td>&nbsp;</td>
                         </tr>
@@ -132,7 +142,7 @@
                     </table>
                         
                     <!-- 신청자 상세정보 -->
-                    <table border="1" style="text-align: center; width: 900px; font-size: 13px; margin: 10px 0px;">
+                    <table style="text-align: center; width: 900px; font-size: 13px; margin: 10px 0px;">
                         <tr>
                             <th width=200>이름</th>
                             <td width=200>XXX</td>
@@ -146,34 +156,219 @@
                             <td>M or F</td>
                         </tr>
                         <tr>
-                            <th>나이</th>
+                            <th>직업</th>
                             <td>--</td>
-                            <th>성별</th>
-                            <td>M or F</td>
+                            <th>결혼여부</th>
+                            <td>Y or N</td>
+                        </tr>
+                        <tr>
+                            <th>전화번호</th>
+                            <td>010-2345-6789</td>
+                            <th>이메일</th>
+                            <td>test01@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>주소</th>
+                            <td colspan="3"></td>
+                        </tr>
+                    </table>
+                    <br>
+
+                    <table style="width: 900px; line-height: 200%;">
+                        <!-- 기초 조사 설문지 -->
+
+                        <tr>
+                            <td>1. 유기동물 입양을 결심하게 된 계기를 입력해주세요.(상세히 써주세요)</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 100px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>2. 반려동물을 키워본 경험이 있으십니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 50px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>3. 현재 반려동물을 키우고 계십니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 20px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+                        <!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->
+                        <tr>
+                            <td>
+                                <table style="width: 99%; text-align: center;">
+                                    <tr>
+                                        <th width=250>종류</th>
+                                        <th width=200>나이</th>
+                                        <th width=150>성별</th>
+                                        <th width=200>중성화여부</th>
+                                    </tr>
+                                    <tr>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>4. 귀하의 가족은 모두 몇 명입니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table style="width: 99%; text-align: center;">
+                                    <tr>
+                                        <th width=250>성인</th>
+                                        <th width=200>아동</th>
+                                        <th width=250>나이</th>
+                                    </tr>
+                                    <tr>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>5. 귀하의 동거인은 입양에 찬성하시나요?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>6. 1년 이내에 결혼, 출산, 이사 등 환경변화 계획이 있으신가요? </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 100px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>7. 하루에 몇 시간 이상 집을 비우시나요?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>8. 거주하고 계신 주택 형태에 표시해주세요</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>9. 거주하고 계신 주택은 본인(혹은 가족)의 소유입니까?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>10. 입양에 대해 이웃의 동의를 구하셨나요?</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <td>11. 한 달 기준 고정적으로 예상되는 예방접종 및 양육비용을 기입하세요.</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
+                            </td>
+                        </tr>
+        
+                        <tr>
+                            <!-- 공백란 -->
+                            <td>&nbsp;</td>
                         </tr>
                     </table>
 
 
 
-
-
-                    </table>
+                    
                 </div>
 
                 <!-- 서약서div (기본값 display:none) -->
+                <div id="con-form" style="margin-left: 20px; height: 300px;">
+                    
+                    <table>
+                        <tr>
+                            <th>첨부파일</th>
+                            <td>&nbsp;</td>
+                            <td>입양동의서약서.pdf</td>
+                        </tr>
+                    </table>
+                
+                
+                
+                
+                </div>
 
             </div>
         </form>
-        
-        <script>
-            $(function(){
-
-
-
-            })
-        </script>
-	
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	</div>
+	<!-- 
+    <script>
+        $(function(){
+
+            $(".btn1").click(function(){
+                $("button").css("background","lightgray")
+                $(this).css("background", "rgb(62, 138, 59)");
+
+                const $div = $("#app-form");
+                if($div.css("display")=="none"){           
+                    $(this).siblings("div").slideUp();
+                    $div.slideDown();
+                } else {
+                    $div.slideUp();
+                }
+            });
+                
+            $(".btn2").click(function(){
+                $("button").css("background","lightgray")
+                $(this).css("background", "rgb(62, 138, 59)");
+
+                const $div = $("#con-form");
+                if($div.css("display")=="none"){
+                    $(this).siblings("div").slideUp();
+                    $div.slideDown();
+                } else {
+                    $div.slideUp();
+                }
+            });
+        })
+    </script>
+	 -->
 
 </body>
 </html>
