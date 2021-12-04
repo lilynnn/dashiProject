@@ -120,11 +120,11 @@
 
                 </div>  
 
-                <br><br><br><br>
+                <br><br>
                 <!-- 고정으로 가져갈 주의사항 멘트 -->
-                <h5><b>평생 책임질 수 있는 소중한 마음으로 다가와 주세요.</b></h5>
-                <h5><b>다시,사랑받개는 무분별한 재입양을 하지 않습니다.</b></h5><br>
-                <div align="left" style="color:red; font-weight: bold; width:550px; margin-left: 50px; font-size:14px;">
+                <img src="<%=contextPath%>/resources/images/adoptnotice.png" width="600">
+                <br><br>
+                <div align="left" style="color:red; font-weight: bold; width:550px; margin-left: 50px; font-size:12px;">
                     * 동물 입양은 반드시 가족 구성원 전원의 동의를 얻어야 합니다. <br>
                     * 미성년자가 입양을 신청한 경우 본인 및 가족 구성원 중 알레르기가 있거나 <br>
                     &nbsp;&nbsp;동물에 위해가 될 수 있는 정신 질환을 가진 경우 입양자 선정에서 제외됩니다. <br>

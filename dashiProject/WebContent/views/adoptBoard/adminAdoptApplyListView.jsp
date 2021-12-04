@@ -8,7 +8,7 @@
 <style>
 
     .outer{
-        width: 1100px;
+        width: 1200px;
         height: 800px;
         margin: auto;
         margin-top: 30px;
@@ -17,12 +17,16 @@
         float: left;
         box-sizing: border-box;
     }
-    /*왼쪽메뉴바*/
-    #menubar{width:150px margin-right:20px}
-
+    
     .content-area{
          width: 850px;
          float: left;
+         margin-left: 20px;
+    }
+    .title-area{
+        font-size: 24px; 
+        font-weight: 700;
+        margin-top: 20px;
     }
 </style>
 </head>
@@ -33,23 +37,21 @@
     <div class="outer">
             <!-- 관리자 메뉴바 영역-->
 
-        <div id="menubar">
+        <div id="menubar" style="margin-right: 20px;">
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
-
-
+        
         <form action="">
 
              <!-- 신청서리스트 보여줄 div -->
             <div class="content-area">
-
+                
                 <!-- 전체 제목 div -->
-                <div class="title-area" style="margin-left: 30px;">   
-                    <br>
-                    <h2>입양신청 전체조회</h2>
+                <div class="title-area">   
+                    입양신청 전체조회
                 </div>
                 
-                <hr style="width: 960px; margin-left: 20px;">
+                <hr style="width: 900px;">
                 
                 <!-- 검색버튼 -->
                 <div style="margin-left: 650px; width:300px;">
@@ -58,7 +60,7 @@
                     <button class="btn-sm btn-secondary">검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px; margin-left: 20px;">
+                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px;">
                     <thead class="thead-light">
                         <tr>
                             <th width="100">글번호</th>

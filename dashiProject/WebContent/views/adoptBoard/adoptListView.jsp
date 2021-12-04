@@ -67,110 +67,110 @@
                 <tr style="height:250px">
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[고양이]</span>
+                        <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[기타]</span>
+                        <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 	<td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 </tr>
                 <tr style="height:250px">
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[고양이]</span>
+                        <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[기타]</span>
+                        <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 	<td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 </tr>
                 <tr style="height:250px">
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[고양이]</span>
+                        <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[기타]</span>
+                        <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 	<td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 </tr>
                 <tr style="height:250px">
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[고양이]</span>
+                        <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[기타]</span>
+                        <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 	<td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 </tr>
                 <tr style="height:250px">
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[고양이]</span>
+                        <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                     <td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[기타]</span>
+                        <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 	<td align="center">
                         <div class="adt-image"></div>
-                        <span class="category">[강아지]</span>
+                        <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                         <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
                     </td>
                 </tr>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>다시,사랑받개!</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     div{box-sizing: border-box;}
     
@@ -24,10 +25,13 @@
     /* 어떤 사진 들어갈지 몰라서 임의대로 작성 
        사진크기에 맞춰 수정하기 */
     .image-area{
-        width: 800px;
-        height: 400px;
+        width: 700px;
         margin: auto;
     }
+    .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
 
     /* 입양 공고 영역 스타일 */
     .adopt-area{
@@ -76,12 +80,35 @@
 	<%@ include file="views/common/menubar.jsp" %>
 
     <div class="outer">
+        <div id="demo" class="carousel slide" data-ride="carousel">
 
-        <!-- 메인이미지(강아지 사진 등) 영역 -->
-        <div class="image-area">
-            세경님네 귀여운 댕댕이 사진
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            
+            <div class="carousel-inner" align="center">
+                <div class="carousel-item active">
+                    <img src="resources/images/testimg.jpg" alt="" style="width: 900px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="resources/images/testimg2.jpg" alt="" style="width: 900px;">
+                </div>
+                <div class="carousel-item">
+                    <img src="resources/images/testimg.jpg" alt="" style="width: 900px;">
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
-        
+
         <!-- 하단 타이틀 눌렀을 때 입양공고 메인페이지로 이동 -->
         <div class="title">입양 공고</div>
         <hr style="width: 1100px; margin-top: 10px;">
