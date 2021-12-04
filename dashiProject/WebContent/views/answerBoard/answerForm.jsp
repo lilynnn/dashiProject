@@ -52,7 +52,7 @@
 </head>
 
 <body>
-	<%@ include file="/common/menubar.jsp" %>
+	<%@ include file="/views/common/menubar.jsp" %>
     <form action="" method="">
 	<div class="outer" align="center" enctype="multipart/form-data">
 
