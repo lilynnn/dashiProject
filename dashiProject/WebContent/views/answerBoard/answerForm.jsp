@@ -13,10 +13,12 @@
         align: left;
     }
 	
-	table{
+	.table1{
+		border-collapse: separate;
         font-size: large;
-		border-spacing: 40px;
+		border-spacing: 10px 40px;
 	}
+	
     table th{
         color : rgb(47, 41, 41);
         text-align: left;
@@ -30,21 +32,21 @@
 
 
     button {
-  background: rgb(102,184,94);
-  font-size: 15px;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  display: block;
-  font-size: 15px;
-  font-weight: bold;
-  margin: 1em auto;
-  padding: 1em 2em;
-  position: relative;
-  text-transform: uppercase;
-}
+	  background: rgb(102,184,94);
+	  font-size: 15px;
+	  border: none;
+	  border-radius: 5px;
+	  color: #fff;
+	  display: block;
+	  font-size: 15px;
+	  font-weight: bold;
+	  margin: 1em auto;
+	  padding: 1em 2em;
+	  position: relative;
+ 	 text-transform: uppercase;
+	 }
 
-.ButtonBox-right{float: right;}
+	.ButtonBox-right{float: right;}
 
 
 
@@ -60,16 +62,16 @@
     <h3 align= "left" style="margin:30px;">1:1 문의글 작성</h3>
     <hr>
 
-    <table class="table">
+    <table class="table1">
         <tr> <!-- 이름 -->
-            <th width=220 colspan="2">성함 <b>*</b></th> 
-            <td width=780><input type="text" style="width: 690px" name="" value="" placeholder="성함을 입력해주세요." required></td>
+            <th  width=220 colspan="2">성함 <b>*</b></th> 
+            <td  width=780><input type="text" style="width: 690px" name="" value="" placeholder="성함을 입력해주세요." required></td>
         </tr>
         <tr> <!-- 연락처 -->
             <th width=220 colspan="2">연락처 <b>*</b></th>
             <td width=780><input type="text" style="width: 690px" name="" value="" placeholder="연락처를 입력해주세요." required></td>
         </tr>
-        <tr> <!-- 문의내용 -->
+        <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
             <td width=780><input type="text" style="width: 690px; height:350px;" name="" value="" placeholder="내용을 입력해주세요" style="height:200px";></td>
         </tr>
@@ -77,7 +79,6 @@
             <td style="font-size: 13px;" colspan="2"><input type="checkbox">개인정보 수집 및 이용에 동의합니다.<b>*</b>
                 <!-- 개인정보 동의 세부내용 link -->
                 <br>  &nbsp; &nbsp;<a href="" style="font-size: 3px; color: rgb(47, 41, 41);">내용보기</a></td>
-
         </tr>
     </table>
    
