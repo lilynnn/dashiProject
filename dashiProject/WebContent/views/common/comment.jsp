@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    div{border: solid 1px red;}
+
     .outer{
         margin-top: 50px;
         width: 1200px;
@@ -18,6 +20,10 @@
         margin: auto;
     }
 
+    .comment-icon>div{
+        float: left;
+        height: 30px;
+    }
     /*댓글쓰기 버튼 스타일*/
     .write-btn{
         border: none;
@@ -71,6 +77,12 @@
 
     <div class="outer">
         <div class="comment-area">
+            <div class="comment-icon">
+                <!-- 댓글 아이콘 이미지 넣기!!!-->
+                <div style="width: 3%;">사진</div>      
+                <!--댓글 수 카운트-->          
+                <div style="width: 3%;" align="center">3</div>
+            </div>
             <div class="comment">
                 <table style="margin-top: 20px;">
                     <tr>
@@ -94,9 +106,7 @@
                         <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
                         <td><button class="font btn">답글</button></td>
                     </tr>                    
-                </table>
-
-                
+                </table>            
             </div>
             <div class="recomment">
                 <table style="margin-top: 23px;">
@@ -122,8 +132,7 @@
                         <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
                         <td><button class="font btn">답글</button></td>
                     </tr>                         
-                    </table>
-                                    
+                    </table>                     
             </div>
             <!--댓글 입력란-->
             <div align="center">
