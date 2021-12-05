@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    div{border: solid 1px red;}
     .outer{
         width: 1200px;
         margin: auto;
