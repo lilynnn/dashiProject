@@ -17,7 +17,7 @@
         box-sizing: border-box;
     }
     /*왼쪽메뉴바*/
-    #munubar{width:150px}
+    #munubar{width:200px}
     /*공지사항시작*/
  	#adminNoticeList{
          margin-left: 30px;
