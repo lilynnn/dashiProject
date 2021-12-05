@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-    .outer{
+     .outer{
         width: 1200px;
         height: 800px;
         margin: auto;
@@ -17,27 +16,38 @@
         float: left;
         box-sizing: border-box;
     }
+    .title-area{
+        font-size: 24px; 
+        font-weight: 700;
+        margin-top: 20px;
+        width: 950px;
+    }
     
     .content-area{
-         width: 850px;
+         width: 950px;
          float: left;
          margin-left: 20px;
     }
-
     .table{
         text-align: center; 
         margin-top: 20px;
     }
+    #search-btn{
+        border-radius: 5px;
+        border: none;
+        height: 32px;
+    }
+    #search-btn:hover{
+        background: rgb(126, 126, 126);
+    }
 </style>
 </head>
 <body>
-
+    
 	<!-- 지희 수정중  -->
 	<!-- 관리자 입양신청리스트페이지  -->
 	
 	<%@ include file="../common/menubar.jsp" %>
-
-    <!-- 전체 영역 감싸는 div -->
     <div class="outer">
 
         <!-- 관리자 메뉴바 영역-->
@@ -47,32 +57,38 @@
         
         <form action="">
 
-             <!-- 신청서리스트 보여줄 div -->
+            <!-- 신청서리스트 보여줄 div -->
             <div class="content-area">
-                
-                <!-- 전체 제목 div -->
-                <div class="title-area">   
-                    입양신청 전체조회
+
+                <div class="title-area">
+                    입양신청서 전체조회
                 </div>
-                
-                <hr style="width: 900px;">
-                
+                <hr style="width: 950px;">
+
                 <!-- 검색버튼 -->
-                <div style="margin-left: 650px; width:300px;">
+                <div class="search-area" style="margin: 20px 0px; float: right;">
+                    <select name="search-category" style="height: 30px;">
+                        <option value="">카테고리</option>
+                        <option value="">동물품종</option>
+                        <option value="">글번호</option>
+                        <option value="">신청인아이디</option>
+                    </select>
+
                     <input type="text" placeholder="검색어를 입력하세요.">
-                                
-                    <button class="btn-sm btn-secondary">검색하기</button>
+                    
+                    <button id="search-btn">검색하기</button>
                 </div>
-                
-                <table align="center" class="table" style="width: 900px;">
+
+                <table align="center" class="table" style="width: 950px;">
+                    
                     <thead class="thead-light">
                         <tr>
-                            <th width="100">글번호</th>
+                            <th width="130">글번호</th>
                             <th width="100">카테고리</th>
                             <th width="300">공고제목</th>
-                            <th width="140">신청인명</th>
+                            <th width="120">신청인</th>
                             <th width="150">신청일</th>
-                            <th width="100">처리상태</th>
+                            <th width="120">처리상태</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +98,9 @@
                             <td>포메라니안 여름이의 가족을 기다려요</td>
                             <td>OOO</td>
                             <td>2021-11-01</td>
-                            <td>입양완료</td>
+                            <td>
+                                <span class="badge badge-secondary" style=" width:60px; font-weight: 700;">승인대기</span>
+                            </td>   
                         </tr>
                         <tr>
                             <td>AN-001</td>
@@ -90,7 +108,9 @@
                             <td>포메라니안 여름이의 가족을 기다려요</td>
                             <td>OOO</td>
                             <td>2021-11-01</td>
-                            <td>입양완료</td>
+                            <td>
+                                <span class="badge badge-warning" style=" width:60px; font-weight: 700;">결제대기</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>AN-001</td>
@@ -98,7 +118,9 @@
                             <td>포메라니안 여름이의 가족을 기다려요</td>
                             <td>OOO</td>
                             <td>2021-11-01</td>
-                            <td>입양완료</td>
+                            <td>
+                                <span class="badge badge-danger" style=" width:60px; font-weight: 700;">결제완료</span> 
+                            </td>
                         </tr>
                         <tr>
                             <td>AN-001</td>
@@ -106,7 +128,9 @@
                             <td>포메라니안 여름이의 가족을 기다려요</td>
                             <td>OOO</td>
                             <td>2021-11-01</td>
-                            <td>입양완료</td>
+                            <td>
+                                <span class="badge badge-success" style=" width:60px; font-weight: 700;">입양완료</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>AN-001</td>
@@ -114,7 +138,9 @@
                             <td>포메라니안 여름이의 가족을 기다려요</td>
                             <td>OOO</td>
                             <td>2021-11-01</td>
-                            <td>입양완료</td>
+                            <td>
+                                <span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>AN-029</td>
@@ -156,22 +182,29 @@
                             <td>2021-11-01</td>
                             <td>입양완료</td>
                         </tr>
-                        </tbody>
-                    </table>
-                            
-                    <!-- 페이징버튼 영역 -->
-                    <div align="center">
-                        <button class="btn btn-light">1</button>
-                        <button class="btn btn-light">2</button>
-                        <button class="btn btn-light">3</button>
-                        <button class="btn btn-light">4</button>
-                        <button class="btn btn-light">5</button>
-                    </div>
-                </div>
-            </form>
+                    </tbody>  
+                </table>
 
+                <!-- 공지사항 등록하기 -->
+                <button class="btn btn-success" style="float: right;">등록하기</button>
+                
+                <br>
+
+                <!-- 페이징버튼 영역 -->
+                <div align="center">
+                    <button class="btn btn-light">1</button>
+                    <button class="btn btn-light">2</button>
+                    <button class="btn btn-light">3</button>
+                    <button class="btn btn-light">4</button>
+                    <button class="btn btn-light">5</button>
+                </div>
+
+                <br><br>
+
+
+            </div>
+        </form>
     </div>
-    <br><br><br><br>
-	<%@ include file="../common/footerbar.jsp" %>
+
 </body>
 </html>
