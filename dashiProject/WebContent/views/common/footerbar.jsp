@@ -20,35 +20,9 @@
 </style>
 </head>
 <body>
-	<!-- 
-	<div id="footer">
-    <table>
-
-        <td style="width: 30%;">
-            <b> &nbsp;&nbsp;다시, 사랑받개!</b> <br>
-            <p style="font-size: smaller;">&nbsp;&nbsp;copyright(C) 2021. 다시, 사랑받개!</p>
-        </td>
-
-        <td style="width: 30%;">
-            
-        </td>
-
-        <td style="width: 30%; font-size: 9.7px; text-align: right;">
-            <div>
-                <span><b>(주) 하이파이브&nbsp;&nbsp;</b></span><br><br>
-                <span>대표자 : 하이파이브&nbsp;&nbsp;</span><br>
-                <span>사업자번호 : 012-345-1234&nbsp;&nbsp;</span><br>
-                <span>주소 : 서울특별시 강남구 테헤란로 14길 6&nbsp;&nbsp;</span><br>
-                <span>TEL : 02 - 1234 - 5678&nbsp;&nbsp;</span><br>
-                <span>EMAIL : hifiveteam1@iei.or.kr&nbsp;&nbsp;</span><br>  
-                
-            </div>      
-        </td>
-        
-	    </table>
-	</div>
-	 -->
-	 
+	<!-- 각페이지에 별도로 연결하기 -->
+	<!-- 작업 완 -->
+	<!-- 푸터바  -->	 
 	<div id="footer">
 	    <table>
 	

@@ -31,10 +31,24 @@
     /* 입양공고 제목 영역 */
     .adt-title{box-sizing: border-box; }
 
+    .list-area>table{
+        width: 1000px;
+        height: 1300px; 
+        margin-top: 30px;
+    }
+
+    /* 입양공고이미지+제목 클릭시 효과 */
+    .list-area>table td:hover{
+        cursor: pointer;
+    }
+
 </style>
 </head>
 <body>
-
+	
+	<!-- 지희 수정중  -->
+	<!-- 사용자 입양공고리스트 조회페이지 -->
+	
 	<%@ include file="../common/menubar.jsp" %>
 
     <!-- 나중에 서블릿연결해서 form 추가하기!!  -->
@@ -49,7 +63,6 @@
         
         <form action="">
             <div class="search-area" style="margin-top: 40px; width: 1100px;" align="right">
-            
                 <select name="animal-category">
                     <option value="dog">강아지</option>
                     <option value="cat">고양이</option>
@@ -63,9 +76,9 @@
 
 
             <div class="list-area" align="center">
-                <table style="width: 1000px; height: 1300px; margin-top: 30px;">
+                <table border="1">
                     <tr style="height:250px">
-                        <td align="center">
+                        <td align="center" style="border: 3px solid red;">
                             <div class="adt-image"></div>
                             <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
                             <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
@@ -183,6 +196,17 @@
 	<br><br><br><br><br>
 	
     <%@include file="../common/footerbar.jsp" %>
+
+    <script>
+        // 나중에 수정하기!!!
+        $(function(){
+            $(".list-area>table td").click(function(){
+
+                location.href = '<%= contextPath%>/views/adoptBoard/adoptDetailView.jsp';
+            
+            })
+        })
+    </script>
 	
 </body>
 </html>

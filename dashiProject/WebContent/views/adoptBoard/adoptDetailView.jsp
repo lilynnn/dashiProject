@@ -41,6 +41,9 @@
 </head>
 <body>
 
+	<!-- 지희 수정중  -->
+	<!-- 사용자가 보게될 입양 공고문의 상세 페이지 -->
+	
 	<%@ include file="/views/common/menubar.jsp" %>
 	
 	<div class="outer">
@@ -173,10 +176,14 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn btn-success">입양신청하기</button>
-                <button class="btn btn-secondary">목록보기</button>
-                <!--onclick="location.href='<%=contextPath %>/adoptlist'" -->
+
+
+                <!-- 나중에 경로 수정하기!! -->
+                <a href="<%= contextPath%>/views/adoptBoard/adoptApplyView.jsp" class="btn btn-success">입양신청하기</a>
+                <a href="<%= contextPath%>/adoptlist.bo" class="btn btn-secondary">목록보기</a>
                 <br><br><br><br>
+
+                
             </div>
         </form>
     </div>

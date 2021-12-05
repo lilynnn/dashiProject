@@ -23,20 +23,24 @@
          float: left;
          margin-left: 20px;
     }
-    .title-area{
-        font-size: 24px; 
-        font-weight: 700;
+
+    .table{
+        text-align: center; 
         margin-top: 20px;
     }
 </style>
 </head>
 <body>
+
+	<!-- 지희 수정중  -->
+	<!-- 관리자 입양신청리스트페이지  -->
+	
 	<%@ include file="../common/menubar.jsp" %>
 
     <!-- 전체 영역 감싸는 div -->
     <div class="outer">
-            <!-- 관리자 메뉴바 영역-->
 
+        <!-- 관리자 메뉴바 영역-->
         <div id="menubar" style="margin-right: 20px;">
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
@@ -60,7 +64,7 @@
                     <button class="btn-sm btn-secondary">검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px;">
+                <table align="center" class="table" style="width: 900px;">
                     <thead class="thead-light">
                         <tr>
                             <th width="100">글번호</th>

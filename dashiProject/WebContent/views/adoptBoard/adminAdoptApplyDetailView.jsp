@@ -56,18 +56,22 @@
         text-align: center;
     }
     #app-form table{border-collapse: separate;}
-    #app-form th{background: lightgray;}
+    #app-form th{background: lightgray; line-height: 200%;}
+
     .active{background:rgb(40,112,37);}
 
     /* 입양신청 설문지 div */
-    /*#app-form{display: none;}*/
+    /* #app-form{display: none;} */
     /* 서약서 div */
-    /*#con-form{display: none;}*/
+    /* #con-form{display: none;} */
 
 </style>
 </head>
 <body>
 
+	<!-- 지희 수정중  -->
+	<!-- 관리자 입양신청서 상세조회 페이지  -->
+	
 	<%@ include file="../common/menubar.jsp" %>
 	<!-- 전체 영역 감싸는 div -->
     <div class="outer">
@@ -117,7 +121,7 @@
                     </tr>
                 </table>
                 <br>
-
+        </form>    
                 <!-- 신청서/서약서 내용 보여지는 div -->
                 <button class="btn1 btn" style="background: rgb(89, 133, 88); margin-left: 20px;">신청서</button>
                 <button class="btn2 btn" style="background: rgb(139, 172, 138);">서약서</button>
@@ -334,10 +338,9 @@
                 </div>
 
             </div>
-        </form>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+       
 	</div>
-	<!-- 
+
     <script>
         $(function(){
 
@@ -368,7 +371,7 @@
             });
         })
     </script>
-	 -->
+
 
 </body>
 </html>
