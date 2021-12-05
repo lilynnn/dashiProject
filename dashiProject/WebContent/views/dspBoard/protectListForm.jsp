@@ -55,10 +55,7 @@
         height: 35px;
         font-size: 15px;
         font-weight: bold;
-        border-top-left-radius: 3px;
-        border-top-right-radius: 3px;
-        border-bottom-left-radius: 3px;
-        border-bottom-right-radius: 3px;
+        border-radius: 3px;
     }
     .dspList-area{
         width: 1150px;
@@ -222,5 +219,7 @@
 
         </div>
     </div>
+
+    <%@ include file="../common/footerbar.jsp" %>
 </body>
 </html>

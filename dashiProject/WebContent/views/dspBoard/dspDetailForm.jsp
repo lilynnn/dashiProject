@@ -6,9 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    div{
-        border: 1px solid red;
-    }
 
     /*전체를 감싸는 틀*/
     .outer{
@@ -16,18 +13,35 @@
         margin: auto;
         margin-top: 50px;
         width: 1200px;
-        height: 3000px;
+        height: 2100px;
     }
 
     /*제목 및 작성일 */
-    .title{
-        margin-top: 20px;
-        margin-left: 30px;
-        margin-bottom: 20px;
+     #name{
+        width: 100%;
+        font-size: 20px;
+        font-weight: 900;
+    }
+    /*상세보기 제목*/
+    #title{
+        font-size: 24px;
+        font-weight: 900;
+        width: 100%;
+        margin-top: 10px;
+    }
+    /*등록일~조회수*/
+    .dateView{
+        font-size: 12px;
+        color: silver;
+        width: 40px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        float: left;
     }
 
     /*동물사진 및 작성자가 쓴글*/        
     .animal-image, .dspConent{
+        border: 1px solid black;
         width: 500px;
         height:300px;
     }
@@ -105,7 +119,14 @@
         border-bottom: solid 1px rgb(179, 177, 177);
         margin-bottom: 40px;
     }
-    
+
+    .befAft1>div, .befAft2>div{
+        display: inline-block;
+        text-align: center;
+        height: 30px;
+        font-size: 15px;
+    }
+
 
 
 </style>
@@ -115,17 +136,15 @@
 
     <div class="outer">
         <hr>
-        <table class="title" border="1px">
-            <tr style="font-size: 15px;">
-                <th style="text-align: right;">[실종]</th>
-                <th >귀요미를 찾습니다.</th>
-            </tr>
-            <tr>
-                <td>작성일 2021-11-13</td>
-                <td align="center">조회수 89</td>
-            </tr>
-        </table>
-        <hr>
+        <div style="margin-left: 100px; margin-top: 30px;">
+            <div id="title">[실종] 귀요미를 찾습니다.</div>
+            <div class="dateView">등록일</div>
+            <div class="dateView" style="width: 100px;">2021.12.24</div>
+            <div class="dateView">조회수</div>
+            <div class="dateView" style="width: 900px;">123</div>
+        </div>
+        
+        <br>><hr>
     
 
         <!--실종 보호 목격 정보글-->    
@@ -137,30 +156,37 @@
 
             <div>
                 <table class=animalInfo border="1">
+                    <!--실종동물 종류-->
                     <tr>
                         <th>묘종/견종</th>
                         <td>믹스견</td>
                     </tr>
+                    <!--실종동물 성별-->
                     <tr>
                         <th>성별</th>
                         <td>암컷</td>
                     </tr>
+                    <!--실종날짜-->
                     <tr>
                         <th>실종날짜</th>
                         <td>2021-11-14</td>
                     </tr>
+                    <!--실종지역-->
                     <tr>
                         <th>지역</th>
                         <td>서울시 강남구</td>
                     </tr>
+                    <!--사례금-->
                     <tr>
                         <th>사례금</th>
                         <td>5억</td>
                     </tr>
+                    <!--작성자 연락처-->
                     <tr>
                         <th>연락처</th>
                         <td>010-1111-2222</td>
                     </tr>
+                    <!--실종동물 특징-->
                     <tr>
                         <th>특징</th>
                         <td>코 옆 까만점,입주변 하연털</td>
@@ -213,9 +239,9 @@
                         <td><button class="font btn">삭제</button></td>
                     </tr>                    
                 </table>
-
-                
             </div>
+
+
             <div class="recomment">
                 <table style="margin-top: 23px;">
                     <tr class="font">
@@ -227,8 +253,8 @@
                         <!--답글 작성시간-->
                         <td width="100px">HH-MM</td>
                     </tr> 
-                    </table> 
-                    <table style="margin-bottom: 23px;">
+                </table> 
+                <table style="margin-bottom: 23px;">
                     <tr>
                         <td width="80"></td>
                         <!--사용자가 입력한 답글 내용-->
@@ -240,34 +266,39 @@
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">삭제</button></td>
                     </tr>                         
-                    </table>
-                                    
+                </table>
             </div>
+
             <!--댓글 입력란-->
             <div align="center">
                 <textarea class="write-area" cols="140" rows="8" placeholder="댓글을 작성해주세요"></textarea>
             </div>
             <div align="right">
-            <br>
-            <!--클릭 시 댓글 작성 실패|성공 alert창-->
-            <button class="write-btn">댓글쓰기</button>
+                <br>
+                <!--클릭 시 댓글 작성 실패|성공 alert창-->
+                <button class="write-btn">댓글쓰기</button>
             </div>
         </div>
+
+        <div class="befAft" align="center">
+            <div class="befAft1">
+                <div style="width: 30px;">△</div>
+                <div style="width: 70px;">이전글</div>
+                <div style="width: 800px; text-align: left;">이전글 제목</div>
+            </div>
+            <div class="befAft2">
+                <div style="width: 30px;">▽</div>
+                <div style="width: 70px;">다음글</div>
+                <div style="width: 800px; text-align: left;">다음글 제목</div>
+            </div>
             
-            
-           
-
-
-
-
-
-
+            <button>목록으로</button>
+            <button>신고하기</button>
+            <button>공유하기</button>
         </div>
+
+        <%@ include file="../common/footerbar.jsp" %>
+        
     </div>
-
-
-
-
-
 </body>
 </html>
