@@ -57,7 +57,7 @@
 	<div class="outer" align="center" enctype="multipart/form-data">
 
         <!-- 1:1 문의글 제목 -->
-    <h3 align= "left">1:1 문의글 작성</h3>
+    <h3 align= "left" style="margin:30px;">1:1 문의글 작성</h3>
     <hr>
 
     <table class="table">
