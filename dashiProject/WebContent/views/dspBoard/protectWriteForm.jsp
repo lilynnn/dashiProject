@@ -10,6 +10,7 @@
 		width: 1100px;
 		height: 1700px;
 		margin: auto;
+		margin-top: 50px;
 	}
 
 
