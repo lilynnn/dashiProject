@@ -87,12 +87,12 @@
                     <tr class="content">
                         <!--사용자가 입력한 댓글 내용-->
                         <td colspan="4" width="855" style="font-weight: 900;">댕댕아 이제는 행복해~</td>
-                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">수정</button></td>
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">삭제</button></td>
+                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
+                        <td><button class="font btn">답글</button></td>
                     </tr>                    
                 </table>
 
@@ -115,12 +115,12 @@
                         <td width="80"></td>
                         <!--사용자가 입력한 답글 내용-->
                         <td colspan="4" class="content" width="770" style="font-weight: 900;">감사합니다. 행복하게 살게요.</td>
-                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">수정</button></td>
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">삭제</button></td>
+                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
+                        <td><button class="font btn">답글</button></td>
                     </tr>                         
                     </table>
                                     
