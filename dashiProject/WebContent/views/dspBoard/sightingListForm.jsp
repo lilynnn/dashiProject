@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 
 <style>
-
-    div{
-        border:1px solid red;
-    }
     .outer{
-        border: 1px solid;
+ 
         margin: auto;
         margin-top: 50px;
         width: 1200px;
@@ -85,7 +81,6 @@
         margin: auto;
     }
     .dpsInfo{
-        border: 1px solid rgb(31, 202, 136);
         width: 90%;
         height: 40%;
         margin: auto;
@@ -134,7 +129,7 @@
 
         <div class="write"><button class="writeBt">글쓰기</button></div>
 
-        <div class="dspList-area" style="border: 2px solid saddlebrown;" >
+        <div class="dspList-area">
             
             <div class="list">
                 <div class="animal-image">동물사진</div>

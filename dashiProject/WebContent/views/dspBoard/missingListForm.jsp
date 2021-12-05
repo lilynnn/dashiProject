@@ -8,11 +8,7 @@
 
 <style>
 
-    div{
-        border:1px solid red;
-    }
     .outer{
-        border: 1px solid;
         margin: auto;
         margin-top: 50px;
         width: 1200px;
@@ -85,7 +81,7 @@
         margin: auto;
     }
     .dpsInfo{
-        border: 1px solid rgb(31, 202, 136);
+
         width: 90%;
         height: 40%;
         margin: auto;
@@ -111,8 +107,8 @@
         </div>
         
         <div class="dsp-nav" align="center" style="margin-top:30px;">
-            <div class="dsp"><a href="">실종</a></div>
-            <div class="dsp"><a style="color:rgb(102,184,94);" href="">보호</a></div>
+            <div class="dsp"><a style="color:rgb(102,184,94);" href="">실종</a></div>
+            <div class="dsp"><a href="">보호</a></div>
             <div class="dsp"><a href="">목격</a></div>
         </div>
 
@@ -134,12 +130,12 @@
 
         <div class="write"><button class="writeBt">글쓰기</button></div>
 
-        <div class="dspList-area" style="border: 2px solid saddlebrown;" >
+        <div class="dspList-area" >
             
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -147,16 +143,7 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
-
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -165,7 +152,7 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -174,7 +161,7 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -183,7 +170,7 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -192,7 +179,7 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
@@ -201,7 +188,16 @@
             <div class="list">
                 <div class="animal-image">동물사진</div>
                 <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
+                    <div class="location">경기도 용인시</div>
+                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
+                </div>
+
+            </div>
+            <div class="list">
+                <div class="animal-image">동물사진</div>
+                <div class="dpsInfo">
+                    <div class=title>[실종] 귀요미를 찾습니다.</div>
                     <div class="location">경기도 용인시</div>
                     <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
                 </div>
