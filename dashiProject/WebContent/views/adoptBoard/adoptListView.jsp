@@ -76,7 +76,7 @@
 
 
             <div class="list-area" align="center">
-                <table border="1">
+                <table>
                     <tr style="height:250px">
                         <td align="center" style="border: 3px solid red;">
                             <div class="adt-image"></div>
