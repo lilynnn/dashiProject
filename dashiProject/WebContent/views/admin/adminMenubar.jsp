@@ -30,6 +30,7 @@
         text-align: right;
         line-height: 30px;
         cursor: pointer;
+        box-sizing:border-box;
     }
     #member, #apply, #list, #report, #payment, #animal{
         background: lightgray;
@@ -48,9 +49,11 @@
         text-decoration: none;
         color: black;
     }
-    #aMenubar>ul{display: none;}
+    #aMenubar>ul{
+        display: none;
+    }
     #aMenubar>ul a:hover{color: orange;}
-
+    .aMenu{box-sizing: border-box;}
 
     /* 입양신청 스타일 영역 */
     #adoptApply a{
@@ -77,19 +80,19 @@
         			1조 화이팅♡
         		</div>
         
-                <div class="menu" id="member">회원관리</div>
+                <div class="aMenu" id="member">회원관리</div>
                 <ul>
                     <li><a href="">전체회원조회</a></li>
                     <li><a href="">블랙리스트조회</a></li>
                 </ul>
                 
-                <div class="menu" id="apply">신청내역관리</div>
+                <div class="aMenu" id="apply">신청내역관리</div>
                 <ul>
                     <li id="adoptApply"><a href="<%= request.getContextPath()%>/adadoptlist.bo">입양신청</a></li>
                     <li><a href="">입소신청</a></li>
                 </ul>
                 
-                <div class="menu" id="list">게시글관리</div>
+                <div class="aMenu" id="list">게시글관리</div>
                 <ul>
                     <li><a href="">공지사항</a></li>
                     <li><a href="">입양공고</a></li>
@@ -99,17 +102,17 @@
                     <li><a href="">FAQ</a></li>
                 </ul>
 
-                <div class="menu" id="report">신고내역관리</div>
+                <div class="aMenu" id="report">신고내역관리</div>
                 <ul>
                     <li><a href="">전체신고내역</a></li>
                 </ul>
 
-                <div class="menu" id="payment">결제내역관리</div>
+                <div class="aMenu" id="payment">결제내역관리</div>
                 <ul>
                     <li><a href="">전체결제내역</a></li>
                 </ul>
 
-                <div class="menu" id="animal">동물관리</div>
+                <div class="aMenu" id="animal">동물관리</div>
                 <ul>
                     <li><a href="">전체동물조회</a></li>
                 </ul>
@@ -119,7 +122,7 @@
     
     <script>
         $(function(){
-            $(".menu").click(function(){
+            $(".aMenu").click(function(){
 
                 const $ul = $(this).next();
 
