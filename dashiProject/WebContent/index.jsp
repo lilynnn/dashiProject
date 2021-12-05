@@ -22,8 +22,6 @@
     }
 
     /* 메인 이미지 영역 스타일 */
-    /* 어떤 사진 들어갈지 몰라서 임의대로 작성 
-       사진크기에 맞춰 수정하기 */
     .image-area{
         width: 700px;
         margin: auto;
@@ -62,15 +60,15 @@
        margin-top: 50px;
        padding-left: 20px;
     }
-    .title{
+    .title>a{
         margin-left: 50px;
         text-decoration: none;
-        color: rgb(42, 43, 42);
+        color: black;
         font-size: 25px;
     }
-    .title a:hover{
+    .title>a:hover{
         text-decoration: none;
-        color: rgb(42, 43, 42);
+        color: black
     }
 
 </style>
@@ -110,7 +108,9 @@
         </div>
 
         <!-- 하단 타이틀 눌렀을 때 입양공고 메인페이지로 이동 -->
-        <div class="title">입양 공고</div>
+        <div class="title">
+   		<a href="<%=contextPath %>/adoptlist.bo"><b>입양 공고</b></a>
+   		</div>
         <hr style="width: 1100px; margin-top: 10px;">
         
         <!-- 입양 공고 게시글 띄우는 영역 -->
@@ -138,7 +138,7 @@
         </div>
         
         <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
-        <div class="title">입양 후기</div>
+        <div class="title"><a href=""><b>입양 후기</b></a></div>
         <hr style="width: 1100px; margin-top: 10px;">
         
         <!-- 입양 후기 게시글 띄우는 영역 -->

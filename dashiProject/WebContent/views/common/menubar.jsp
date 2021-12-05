@@ -65,8 +65,9 @@
     .menu>ul a{
         color: white;
         font-size: 13px;
+        text-decoration: none;
     }
-    .menu>ul{display: none; padding: 0px;}
+    .menu>ul{display: none; padding: 0px; text-decoration: none;}
     .menu>a:hover+ul{display: block;}
     .menu>ul:hover{display: block;}
 </style>
@@ -111,7 +112,7 @@
 
             <!-- 입양탭 -->
 	        <div class="menu">
-                <a href="<%=contextPath %>/adoptlist">입양</a>
+                <a href="<%=contextPath %>/adoptlist.bo">입양</a>
                     <ul class="menu-tag">
                         <li><a href="">입양절차안내</a></li>
                         <li><a href="">입양신청</a></li>

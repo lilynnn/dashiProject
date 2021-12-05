@@ -200,7 +200,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div style="height: 20px; border: 1px solid gray;"></div>
+                                <div style="height: 30px; border: 1px solid gray;"></div>
                             </td>
                         </tr>
                         <!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->

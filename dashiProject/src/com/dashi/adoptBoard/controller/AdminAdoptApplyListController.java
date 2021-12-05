@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdoptListController
+ * Servlet implementation class AdminAdoptApplyListController
  */
-@WebServlet("/adoptlist.bo")
-public class AdoptListController extends HttpServlet {
+@WebServlet("/adadoptlist.bo")
+public class AdminAdoptApplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptListController() {
+    public AdminAdoptApplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class AdoptListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/adoptBoard/adoptListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptApplyListView.jsp").forward(request, response);
 		
 	}
 
