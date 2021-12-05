@@ -174,7 +174,7 @@
                     </tbody>
                 </table>
                 <button class="btn btn-success">입양신청하기</button>
-                <button class="btn btn-secondary"></button></button>>목록보기</button>
+                <button class="btn btn-secondary">목록보기</button>
                 <!--onclick="location.href='<%=contextPath %>/adoptlist'" -->
                 <br><br><br><br>
             </div>
