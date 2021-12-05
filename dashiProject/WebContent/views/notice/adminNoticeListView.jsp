@@ -26,9 +26,6 @@
     #adminNoticeList div{float: left;}
     /*검색창*/
     #search{width: 200px;}
-    #btn{
-        width: 650px;
-    }
     #btn>button{
         border-radius: 5px;
         border: white;
@@ -51,7 +48,23 @@
         font-weight: 700;
         margin-top: 20px;
     }
+    .btn{
+        width: 80px;
+        height: 30px;
+    }
 </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
     
@@ -76,11 +89,14 @@
                 <div id="search">
                     <input type="text" placeholder="제목 키워드 검색">
                 </div>
-                <div id="btn" align="right">
-                    <button style="background: #d88686;">공지</button>
-                    <button style="background:yellow;">글쓰기</button>
-                    <button>수정</button>
-                    <button>삭제</button>
+                <div style="width: 650px;" align="right">
+                    <button type="button" class="btn btn-sm" style="background: tomato;">
+                        공지
+                    </button>
+                    
+                    <a href="" class="btn btn-sm" style="background: yellow;">
+                        글작성
+                    </a>
                 </div>
 
                 <div style="margin-top: 10px;">
@@ -96,13 +112,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <!--공지사항 없을때-->
+                            <tr>
+                                <td colspan="5">존재하는 공지사항이 없습니다.</td>
+                            </tr>
+
+                            <!--공지사항 있을때-->
                             <tr>
                                 <td><input type="checkbox"></td>
-                                <th>1</th>
-                                <th>제목</th>
-                                <th>관리자1</th>
-                                <th>2021-12-24</th>
-                                <th>100</th>
+                                <td>1</td>
+                                <td>제목</td>
+                                <td>관리자1</td>
+                                <td>2021-12-24</td>
+                                <td>100</td>
                             </tr>
                         </tbody>
                     </table>
