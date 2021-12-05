@@ -43,7 +43,7 @@
         
         <form action="">
 
-             <!-- 신청서리스트 보여줄 div -->
+             <!-- 입양후기리스트 보여줄 div -->
             <div class="content-area">
                 
                 <!-- 전체 제목 div -->
