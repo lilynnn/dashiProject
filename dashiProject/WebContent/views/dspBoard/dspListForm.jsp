@@ -203,7 +203,6 @@
         </div>
         <div class="paging-area" align="center" style="margin-top: 30px;">
 
-			아직 페이징바는 미완성 상태!
             <button>&lt;</button>
             <button>1</button>
             <button>2</button>
