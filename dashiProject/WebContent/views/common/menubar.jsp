@@ -6,6 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <style>    
     /* 로고 영역 */
     .logo-area{
@@ -104,8 +109,8 @@
 	        <div class="menu">
                 <a href="<%=contextPath %>/adoptlist.bo">입양</a>
                     <ul class="menu-tag">
-                        <li><a href="">입양절차안내</a></li>
-                        <li><a href="">입양신청</a></li>
+                        <li><a href="<%=contextPath%>/adoptguide.bo">입양절차안내</a></li>
+                        <li><a href="<%=contextPath %>/adoptlist.bo">입양신청</a></li>
                         <li><a href="">입양후기</a></li>
                     </ul>
             </div>

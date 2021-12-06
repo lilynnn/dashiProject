@@ -13,6 +13,7 @@
         margin: auto;
     }
 	.title-area{margin-top: 80px;}
+    .title-area 
 
     .content-area{width: 1170px; margin: auto; border: 1px solid;}
     .content-area>img{margin: auto;}
@@ -27,7 +28,7 @@
     <!-- 전체 감싸는 div -->
     <div class="outer">
         <div class="title-area" align="center">
-            <h4><b>입양 절차 안내</b></h4>
+            <h3><b>입양 절차 안내</b></h3>
 
             <br>
             <hr style="width: 900px;">
