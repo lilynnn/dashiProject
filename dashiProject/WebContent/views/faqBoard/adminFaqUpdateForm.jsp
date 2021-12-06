@@ -40,15 +40,29 @@
         width: 260px;      
     }
     #aFadList{width: 100%;}
+    .question:hover{
+        cursor: pointer;
+    }
     .faqAnswer a{
         color: black;
         font-size: 12px;
         font-weight: 600;
     }
-    .question:hover{
-        cursor: pointer;
+    .faqAnswer textarea{
+        border: none;
+        background: lightgray;
+    }
+    #updatebtn{
+        padding: 0; 
+        padding-top: 20px; 
+        padding-left: 10px;
     }
     .faqAnswer{display: none;}
+    .faqAnswer input{
+        width: 100%;
+        border: none;
+        background: lightgray;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -82,11 +96,12 @@
 
             <div id="faqLine2">
                 <div>
-                    <select name="faqList" id="">
-                        <option value="adopt">입양</option>
-                        <option value="ent">입소</option>
-                        <option value="pay">결제</option>
-                        <option value="dsp">실종/보호</option>
+                    <select name="category" id="">
+                        <option value="1">입양</option>
+                        <option value="2">입소</option>
+                        <option value="3">결제</option>
+                        <option value="4">실종/보호</option>
+                        <option value="5">기타</option>
                         <option selected>전체</option>
                     </select>
                 </div>
@@ -103,6 +118,9 @@
 
             
             <div id="aFadList">
+
+                <form action="">
+
                 <table class="table table-hover">
                     <thead>
                         <tr align="center">
@@ -125,9 +143,9 @@
                             <td>입소</td>
                             <td>너무힘든데 대신 해주실분?</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning">
-                                    수정
-                                </a>
+                                <button type="button" class="btn btn-sm btn-light" onclick="history.back();">
+                                    취소
+                                </button>
                             </td>
                             <td>
                                 <a href="" class="btn btn-sm btn-danger">
@@ -138,18 +156,32 @@
 
                         <!--답변 있을경우-->
                         <tr class="faqAnswer" style="background: lightgray;">
-                            <td>카테고리명 들어올자리</td>   
-                            <td colspan="3">
-                                제목자리
+                            <td>
+                                <select name="category" id="">
+                                    <option value="1">입양</option>
+                                    <option value="2">입소</option>
+                                    <option value="3">결제</option>
+                                    <option value="4">실종/보호</option>
+                                    <option value="5">기타</option>
+                                </select>
+                            </td>   
+                            <td colspan="2">
+                                <input type="text" name="title" required value="제목입니다">
                                 <hr>
-                                내용자리
+                                <textarea name="content" cols="70" rows="6" style="resize: none;">내용입니다</textarea>
+                            </td>
+                            <td id="updatebtn">
+                                <button type="submit" class="btn btn-sm btn-warning">확인</button>
                             </td>
                         </tr>
 
                     </tbody>
                 </table>
 
+                </form>
             </div>
+
+        
         </div>
 
     </div>
@@ -158,7 +190,7 @@
         $(function(){
             $(".question").click(function(){
                 
-                const $answer = $(this).next();  
+                const $answer = $(this).next(); 
 
                 if($answer.css("display") == "none"){
 

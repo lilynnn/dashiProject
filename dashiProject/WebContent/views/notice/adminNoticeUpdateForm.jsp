@@ -21,8 +21,8 @@
     /*상세페이지*/
     #adminNoDetail{
         width: 850px;
-        height: 400px;
-        margin-left: 20px ;
+        height: 600px;
+        margin-left: 20px;
     }
     #adminNoDetail>div{float: left;}
     #noTitle{
@@ -31,14 +31,15 @@
         font-size: 24px;
         font-weight: 900;
         line-height: 100px;
+        margin-bottom: 30px;
     }
-    #noTitleEct>div{
+    #noTitleEtc>div{
         float: left;
         height: 100px;
         border: 1px solid gray;
         background: #d8f3f0;
     }
-    .noEct{
+    .noEtc{
         height: 49px;
         width: 100px;
         text-align: center;
@@ -56,6 +57,11 @@
         font-size: 20px;
         font-weight: 600;
     }
+    #noName>input{
+        width: 100%;
+        border: none;
+        background: #d8f3f0;
+    }
     #noDate{
         width: 100px;
         height: 100%;
@@ -64,7 +70,6 @@
     }
     /*버튼*/
     #noBtn{
-        margin-top: 30px;
         width: 100%;
     }
     #noBtn>a{
@@ -100,60 +105,65 @@
         <!--관리자 공지사항 상세페이지-->
         <div id="adminNoDetail">
 
-                <div id="noTitle">
-                    	공지사항
-                </div>
+            <div id="noTitle">
+                    공지사항
+            </div>
 
-                <div id="noTitleEct">
-                    <hr>
+            <form action="">
+
+                <div id="noTitleEtc">
+
                     <div id="noName">
-                        제목
+                        <input type="text" name="title" value="여기에코드불러오기" required>
                     </div>
                     
                     <div id="noDate">
-                        2021-12-04
+                        여기에코드불러오기
                     </div>
                     
                     <div>
-                        <div class="noEct" style="border-bottom: 1px solid gray;">
+                        <div class="noEtc" style="border-bottom: 1px solid gray;">
                             작성자
                         </div>
-                        <div class="noEct">
-                            관리자1
+                        <div class="noEtc">
+                            여기에코드불러오기
                         </div>
                     </div>
                     
                     <div>
-                        <div class="noEct" style="border-bottom: 1px solid gray;">
+                        <div class="noEtc" style="border-bottom: 1px solid gray;">
                             조회수
                         </div>
-                        <div class="noEct">
-                            123
+                        <div class="noEtc">
+                            여기에코드불러오기
                         </div>
                     </div>
                 
                     <div id="aNoticeContent" style="height: 400px; background: white;">
-                        내용
+                        <textarea name="content" cols="105" rows="15" style="resize: none; border: none;" required>여기에코드불러오기</textarea>
                     </div>
                     
                 </div>
 
 
-                <div id="noBtn" align="right">
-                    <a href="" class="btn btn-sm" style="background: rgb(143,153,142);">
-                        목록으로
-                    </a>
+                <div id="noBtn" align="right" style="line-height: 110px;">
+                    <button type="button" onclick="history.back();" class="btn btn-sm" style="background: rgb(143,153,142);">
+                        	뒤로가기
+                    </button>
                     <a href="" class="btn btn-sm" style="background: rgb(102,184,94)">
-                        수정
+                        	수정완료
                     </a>
-                    <a href="" class="btn btn-sm btn-danger">
-                        삭제
+                    <a href="" class="btn btn-sm btn-warning">
+                        	초기화
                     </a>
                 </div>    
-
+            </form>
 
 		</div>
     </div>
+
+
+
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
 	

@@ -37,8 +37,7 @@
     }
     #call{
         width: 200px;
-        height: 150px;
-        border: 1px solid;
+        height: 100px;
         position: absolute;
         margin-left: 880px;
     }
@@ -63,10 +62,12 @@
     }
     thead>tr{height: 30px;}
     /*답변작업*/
-    #qSubject:hover{
+    .question:hover{
         cursor: pointer;
     }
-
+	.faqAnswer{
+		display:none;
+	}
     /*pagingbar*/
     .paging-area{
         width: 100%;
@@ -107,7 +108,7 @@
 
         <!--상담전화카드-->
         <div id="call">
-            <img src="" alt="">
+            <img src="<%=contextPath%>/resources/images/FAQphonecard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
         </div>
 
         <!--키워드 검색-->
@@ -131,6 +132,7 @@
                         <th width="120px">조회수</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <!--FAQ 없을 때-->
                     <tr>
@@ -138,25 +140,25 @@
                     </tr>
         
                     <!--FAQ 있을 때-->
-                    <tr>
+                    <tr class="question">
                         <td>1</td>
                         <td></td>
-                        <td id="qSubject">제목</td>
+                        <td>제목</td>
                         <td>2021-12-04</td>
                         <td>123</td>
                     </tr>
 
                     <!--FAQ 답변창-->
-                    <tr>
-                        <td id="answer" colspan="5" style="background: #ecfafa;">
+                    <tr class="faqAnswer">
+                        <td colspan="5" style="background: #ecfafa;">
                             <div align="left">
                                 <p>
-                                    커피는 역시 아이스카페라떼
-                                    <hr>
+                                   	커피는 역시 아이스카페라떼
+                                <hr>
                                 </p>
                                 <p style="font-weight: 600;">
-                                    네 저도 동의합니다.<br>
-                                    시럽을 넣지 않아야 진정한 커피라고 할 수 있습니다.
+                                   	 네 저도 동의합니다.<br>
+                                     시럽을 넣지 않아야 진정한 커피라고 할 수 있습니다.
                                 </p>
                             </div>
                         </td>
@@ -187,19 +189,19 @@
 
     <script>
         $(function(){
-            $("#qSubject").click(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next(); 
 
-                if($("#answer").css("display") == "none"){
+                if($answer.css("display") == "none"){
 
-                    $(this).siblings("#answer").slideUp();
+                    $(this).siblings(".faqAnswer").slideUp();
 
-                    // 보여지게끔
-                    $("#answer").slideDown();
+                    $answer.slideDown(1000);
 
                 }else{
-                    // 사라지게끔
-                    $("#answer").slideUp();
 
+                    $answer.slideUp();
                 }
             })
         })
