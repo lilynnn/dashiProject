@@ -8,7 +8,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 500px;
+        height: 1000px;
         margin-top: 50px;
         margin: auto;
     }
@@ -40,10 +40,28 @@
         width: 260px;      
     }
     #aFadList{width: 100%;}
-    #faqAnswer a{
+    .question:hover{
+        cursor: pointer;
+    }
+    .faqAnswer a{
         color: black;
         font-size: 12px;
         font-weight: 600;
+    }
+    .faqAnswer textarea{
+        border: none;
+        background: lightgray;
+    }
+    #updatebtn{
+        padding: 0; 
+        padding-top: 20px; 
+        padding-left: 10px;
+    }
+    .faqAnswer{display: none;}
+    .faqAnswer input{
+        width: 100%;
+        border: none;
+        background: lightgray;
     }
 </style>
 <!-- Latest compiled and minified CSS -->
@@ -78,11 +96,12 @@
 
             <div id="faqLine2">
                 <div>
-                    <select name="faqList" id="">
-                        <option value="adopt">입양</option>
-                        <option value="ent">입소</option>
-                        <option value="pay">결제</option>
-                        <option value="dsp">실종/보호</option>
+                    <select name="category" id="">
+                        <option value="1">입양</option>
+                        <option value="2">입소</option>
+                        <option value="3">결제</option>
+                        <option value="4">실종/보호</option>
+                        <option value="5">기타</option>
                         <option selected>전체</option>
                     </select>
                 </div>
@@ -99,6 +118,9 @@
 
             
             <div id="aFadList">
+
+                <form action="">
+
                 <table class="table table-hover">
                     <thead>
                         <tr align="center">
@@ -117,13 +139,13 @@
                         </tr>
 
                         <!--게시글 있을경우-->
-                        <tr align="center">
+                        <tr align="center" class="question">
                             <td>입소</td>
                             <td>너무힘든데 대신 해주실분?</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning">
-                                    수정
-                                </a>
+                                <button type="button" class="btn btn-sm btn-light" onclick="history.back();">
+                                    취소
+                                </button>
                             </td>
                             <td>
                                 <a href="" class="btn btn-sm btn-danger">
@@ -132,23 +154,65 @@
                             </td>
                         </tr>
 
-                        <!--답변창-->
-                        <tr id="faqAnswer">      
-                            <td colspan="3">
-                               
-                            </td>
+                        <!--답변 있을경우-->
+                        <tr class="faqAnswer" style="background: lightgray;">
                             <td>
-                                <a href="">수정완료</a>
+                                <select name="category" id="">
+                                    <option value="1">입양</option>
+                                    <option value="2">입소</option>
+                                    <option value="3">결제</option>
+                                    <option value="4">실종/보호</option>
+                                    <option value="5">기타</option>
+                                </select>
+                            </td>   
+                            <td colspan="2">
+                                <input type="text" name="title" required value="제목입니다">
+                                <hr>
+                                <textarea name="content" cols="70" rows="6" style="resize: none;">내용입니다</textarea>
                             </td>
+                            <td id="updatebtn">
+                                <button type="submit" class="btn btn-sm btn-warning">확인</button>
+                            </td>
+                        </tr>
+
+                        <tr align="center">
+                            <td colspan="4">답변이 작성되지 않았습니다.</td>
                         </tr>
 
                     </tbody>
                 </table>
 
+                </form>
             </div>
+
+        
         </div>
 
     </div>
+
+    <script>
+        $(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next();  // jQuery방식으로 선택된 요소를 담아둘때 변수명 앞에 $붙임
+
+                if($answer.css("display") == "none"){
+
+                    $(this).siblings(".faqAnswer").slideUp();
+
+                    $answer.slideDown(1000);
+
+                }else{
+
+                    $answer.slideUp();
+
+                }
+
+            })
+        })
+    </script>
+
+
 
 
 	<%@ include file="../common/footerbar.jsp" %>
