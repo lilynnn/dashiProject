@@ -93,6 +93,20 @@
         font-size: 12px;
     }
 
+    /*입양신청 현황 스타일*/
+    .adopt-status{
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 23px;
+        text-align: center;
+        font-size: large;
+        font-weight: 550;
+        padding-top: 35px;
+        background: lightgray;
+        color: rgb(54, 53, 53);
+    }
+
 </style>
 
 </head>
@@ -130,8 +144,12 @@
                         <p>현재 회원님의 등급은</p> <br>
                         <!--회원등급조회-->
                         <span><strong><span style="font-size: 20px;">XXX</span></strong>입니다</span> <br><br>
-                        <!--등급별권한안내-->
-                        <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>  
+                        <!--(입양신청내역 없을 시)등급별권한안내-->
+                        <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
+                        <!--(입양승인 시)결제하기버튼--> 
+                        <button style="width:150px; height:30px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;">
+                            책임비 결제하기
+                        </button> 
                     </div>
 
                 </div>
@@ -146,9 +164,24 @@
                 align-items: center;">
                 <h4>입양신청현황</h4>
                 </div>
-                <div style="width: 98%; height: 80%;">
-                    <h3 align="center" style="margin: auto; margin-top: 80px;">신청 내역이 없습니다.</h3>
+                
+                <div style="width: 98%; height: 80%; margin-top: 25px;">
+                    <!--입양신청 없을 시??????-->
+                    <!--<h3 align="center" style="margin: auto; margin-top: 80px;">신청 내역이 없습니다.</h3>-->
+                    <!--입양신청 처리상태 1(승인대기)일 시-->
+                    <div style="height: 60%; ">
+                        <div class="adopt-status" style="background: rgb(102,184,94);">입양신청</div>
+                        <div class="adopt-status">입양승인</div>
+                        <div class="adopt-status">결제하기</div>
+                        <div class="adopt-status">결제완료</div>
+                        <div class="adopt-status">입양완료</div>
+                    </div>
+                    <!--입양신청 처리상태 2(결제대기)일 시-->
+                    <!--입양신청 처리상태 3(결제완료)일 시-->
+                    <!--입양신청 처리상태 4(입양완료)일 시-->
+                    <!--입양신청 처리상태 5(반려))일 시-->
                 </div>
+
             </div>
         </div>    
         <!--하단부-->
