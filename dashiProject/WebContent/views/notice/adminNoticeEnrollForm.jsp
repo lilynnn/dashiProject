@@ -68,6 +68,9 @@
 </head>
 <body>
 	
+	<%@ include file="../common/menubar.jsp" %>
+	
+	
 	<div class="outer">
     
     	<div id="menubar">
