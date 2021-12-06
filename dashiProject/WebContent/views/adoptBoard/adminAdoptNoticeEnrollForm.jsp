@@ -50,7 +50,7 @@
 	<!-- 전체 영역 감싸는 div -->
 	<div class="outer">
 
-		<div id="menubar" style="margin-right: 20px;">
+		<div id="menubar" style="margin-right: 20px;" >
 			<%@ include file="../admin/adminMenubar.jsp" %>
 		</div>
 

@@ -39,8 +39,8 @@
         float: left;
     }
 
-    /*동물사진 및 작성자가 쓴글*/        
-    .animal-image, .dspConent{
+    /*동물사진*/        
+    .animal-image{
         border: 1px solid black;
         width: 500px;
         height:300px;
@@ -200,11 +200,11 @@
         </div>  
         
         
-
+        <!-- 밑에 동물사진 2개 및 설명-->
         <div class="Info_outer2">
             <div class= "animal-image">동물사진</div>
             <div class= "animal-image">동물사진</div>
-            <div class= "dspConent" style="text-align: center; font-size: 17px;"> 
+            <div class= "dspConent" style="text-align: center; font-size: 17px; width: 500px; height:300px;"> 
                 무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
                 소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
                 이상의 타오르고 대중을 귀는 밥을 찬미를 사막이다. 품고 같은 대중을 우리 이상은 관현악이며, 커다란 것이다. <br>
