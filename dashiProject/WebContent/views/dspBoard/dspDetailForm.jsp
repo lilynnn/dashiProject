@@ -9,7 +9,6 @@
 
     /*전체를 감싸는 틀*/
     .outer{
-        border: 1px solid black;
         margin: auto;
         margin-top: 50px;
         width: 1200px;
@@ -64,6 +63,11 @@
     .Info_outer2 > div{
         margin: auto;
         margin-top: 40px;
+    }
+
+    table{
+        border-collapse: collapse;
+
     }
 /*댓글창 스타일ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ*/
 
