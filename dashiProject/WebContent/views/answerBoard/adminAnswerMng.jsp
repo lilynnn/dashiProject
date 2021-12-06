@@ -88,8 +88,14 @@
                         <th>문의 내용 </th>
                         <td height="150px" ></td>
                     </tr>
-
-
+                    <table>
+                    
+				<th>
+				<input type="button" style="float:right; margin-top: 10px; margin-bottom: 50px;" value="목록으로">
+                </div>
+                </th>
+                </table>
+                
                 </table>
                 
 				<!-- 답변창  -->
