@@ -21,11 +21,6 @@
          float: left;
          margin-left: 20px;
     }
-	.content-area{
-         width: 850px;
-         float: left;
-         margin-left: 20px;
-    }
 	.title-area{
         font-size: 24px; 
         font-weight: 700;

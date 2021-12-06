@@ -41,6 +41,8 @@
 </style>
 </head>
 <body>
+
+    <!-- 동물목록 전체 조회하는 페이지 -->
     <%@ include file="../common/menubar.jsp" %>
 
     <!-- 전체영역 감싸는 div -->
