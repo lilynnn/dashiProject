@@ -36,15 +36,15 @@
         <!-- 내용만 감싸는 div -->
         <div align="center" class="content-area">
             <br><br><br>
-            <img src="<%= contextPath%>/resources/images/adopt/adoptProcedureGuide.png" style="width: 900px;">
-            <br><br>
-            <img src="<%= contextPath%>/resources/images/adopt/adoptExpenseNotice.png" style="width: 850px;">
-            <br><br><br><br>
-            <img src="<%= contextPath%>/resources/images/adopt/adoptnotice.png" style="width: 600px;">
-
+            <img src="<%=contextPath%>/resources/images/adopt/adoptProcedure1.png" style="width: 800px;">
+            <img src="<%=contextPath%>/resources/images/adopt/adoptProcedure2.png" style="width: 800px;">
+            <img src="<%=contextPath%>/resources/images/adopt/adoptProcedure3.png" style="width: 800px;">
+            <img src="<%=contextPath%>/resources/images/adopt/adoptProcedure4.png" style="width: 800px;">
         </div>
-
+        <br><br><br>
     </div>
+
+    <%@ include file="/views/common/footerbar.jsp" %>
 
 </body>
 </html>
