@@ -11,12 +11,12 @@
         width: 1100px;
         height: 30px;
     }
-    #navi{
+    #mem-navi{
         margin: 0;
         padding: 0;
         height: 100%;
     }
-    #navi>li{
+    #mem-navi>li{
         float: left;
         width: 260px;
         height: 30px;
@@ -26,7 +26,7 @@
         border-radius: 3px;
         background:rgb(220, 238, 206);
     }
-    #navi ul>li{
+    #mem-navi ul>li{
         width: 260px;
         height: 30px;
         list-style: none;
@@ -40,36 +40,34 @@
         display: block;
         line-height: 30px;
     }
-    #navi>li>ul{
+    #mem-navi>li>ul{
         padding: 0;
         margin: 0;
         display: none;
     }
-    #navi>li>a:hover+ul{
+    #mem-navi>li>a:hover+ul{
         display: block; 
     }
-    #navi>li>ul:hover{display: block;}  
-    
+    #mem-navi>li>ul:hover{display: block;} 
 </style>
 </head>
 <body>
 
-    <!--누리 작업-->
 
     <div id="updateMenu">
 
-        <ul id="navi">
-            <li><a href="">회원정보수정</a></li>
-            <li><a href="">찜목록확인</a></li>
+        <ul id="mem-navi">
+            <li><a href="" id="mem-update">회원정보수정</a></li>
+            <li><a href="" id="mem-likelist">찜목록확인</a></li>
             
-            <li><a href="">글쓴내역확인</a>
+            <li><a href="" id="mem-boardlist">글쓴내역확인</a>
                 <ul>
-                    <li><a href="">게시글목록</a></li>
-                    <li><a href="">댓글목록</a></li>
+                    <li><a href="" id="boardlist-list">게시글목록</a></li>
+                    <li><a href="" id="boardlist-comm">댓글목록</a></li>
                 </ul>
             </li>
             
-            <li><a href="">1:1문의내역</a></li>
+            <li><a href="" id="mem-question">1:1문의내역</a></li>
         </ul>
     </div>
 

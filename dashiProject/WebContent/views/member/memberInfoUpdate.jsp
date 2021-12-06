@@ -34,13 +34,15 @@
         height: 200px;
         margin-left: 120px;
         border: 1px solid lightgray;
+        padding-top: 20px;
     }
     #checkInfo div{
         float: left;
     }
     #checkInfo div>p{
-        width: 500px;
+        width: 550px;
         height: 80px;
+        margin: 0;
     }
     /*비밀번호 재확인*/
     #checkPwd{
@@ -51,6 +53,7 @@
     #checkPwd>*{
         margin-right: 10px;
         margin-left: 10px;
+        box-sizing: border-box;
     }
     input{
         height: 30px;
@@ -63,6 +66,10 @@
         color: white;
         border: 1px solid red;
         font-weight: 600;
+    }
+    #mem-update{
+        background: rgb(32, 68, 28);
+        color: white;
     }
 </style>
 </head>
@@ -95,11 +102,12 @@
                 <div style="width: 50px; line-height: 200px;" align="center">
                     <img src="<%= contextPath %>/resources/images/heightline.JPG" alt="">
                 </div>
-                <div>
+                
+                <div id="checkmsg">
                     <p style="font-size: 20px; font-weight: 600; line-height: 150px;">
                         비밀번호 재확인
                     </p>
-                    <p> 
+                    <p style="line-height: 70px;"> 
                         회원님의 정보를 안전하게 보호하기위해 비밀번호를 다시 확인합니다.
                     </p>
                 </div>
