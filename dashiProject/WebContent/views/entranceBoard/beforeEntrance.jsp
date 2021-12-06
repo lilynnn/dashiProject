@@ -27,7 +27,7 @@
     }
 
 
-    button {
+    .btn-1{
 	  background: rgb(102,184,94);
 	  font-size: 15px;
 	  border: none;
@@ -76,7 +76,8 @@
             <!-- 입소 전 안내사항 -->
             <div class="agreeForm">
         <pre>     
-    무료 입소 가능 조건
+        
+    <b>무료 입소 가능 조건</b>
 
 
     1. 소형견 기준 (품종견&묘)

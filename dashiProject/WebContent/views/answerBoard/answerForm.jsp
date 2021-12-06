@@ -73,7 +73,7 @@
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
-            <td width=780><input type="text" style="width: 690px; height:350px;" name="" value="" placeholder="내용을 입력해주세요" style="height:200px";></td>
+            <td width=780><textarea name="content" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" ></textarea></td>
         </tr>
         <tr>    <!-- 개인정보 수집 동의 체크박스 -->
             <td style="font-size: 13px;" colspan="2"><input type="checkbox">개인정보 수집 및 이용에 동의합니다.<b>*</b>
