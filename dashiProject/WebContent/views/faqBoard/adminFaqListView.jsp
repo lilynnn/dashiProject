@@ -8,7 +8,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 500px;
+        height: 1000px;
         margin-top: 50px;
         margin: auto;
     }
@@ -40,11 +40,15 @@
         width: 260px;      
     }
     #aFadList{width: 100%;}
-    #faqAnswer a{
+    .faqAnswer a{
         color: black;
         font-size: 12px;
         font-weight: 600;
     }
+    .question:hover{
+        cursor: pointer;
+    }
+    .faqAnswer{display: none;}
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -117,7 +121,7 @@
                         </tr>
 
                         <!--게시글 있을경우-->
-                        <tr align="center">
+                        <tr align="center" class="question">
                             <td>입소</td>
                             <td>너무힘든데 대신 해주실분?</td>
                             <td>
@@ -132,13 +136,13 @@
                             </td>
                         </tr>
 
-                        <!--답변창-->
-                        <tr id="faqAnswer">      
+                        <!--답변 있을경우-->
+                        <tr class="faqAnswer" style="background: lightgray;">
+                            <td>카테고리명 들어올자리</td>   
                             <td colspan="3">
-                               
-                            </td>
-                            <td>
-                                <a href="">수정완료</a>
+                                제목자리
+                                <hr>
+                                내용자리
                             </td>
                         </tr>
 
@@ -149,6 +153,30 @@
         </div>
 
     </div>
+
+    <script>
+        $(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next();  
+
+                if($answer.css("display") == "none"){
+
+                    $(this).siblings(".faqAnswer").slideUp();
+
+                    $answer.slideDown(1000);
+
+                }else{
+
+                    $answer.slideUp();
+
+                }
+
+            })
+        })
+    </script>
+
+
 
 
 	<%@ include file="../common/footerbar.jsp" %>

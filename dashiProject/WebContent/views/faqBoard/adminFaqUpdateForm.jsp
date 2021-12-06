@@ -175,10 +175,6 @@
                             </td>
                         </tr>
 
-                        <tr align="center">
-                            <td colspan="4">답변이 작성되지 않았습니다.</td>
-                        </tr>
-
                     </tbody>
                 </table>
 
@@ -194,7 +190,7 @@
         $(function(){
             $(".question").click(function(){
                 
-                const $answer = $(this).next();  // jQuery방식으로 선택된 요소를 담아둘때 변수명 앞에 $붙임
+                const $answer = $(this).next(); 
 
                 if($answer.css("display") == "none"){
 

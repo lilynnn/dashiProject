@@ -62,10 +62,10 @@
     }
     thead>tr{height: 30px;}
     /*답변작업*/
-    #question:hover{
+    .question:hover{
         cursor: pointer;
     }
-	#answer{
+	.faqAnswer{
 		display:none;
 	}
     /*pagingbar*/
@@ -132,6 +132,7 @@
                         <th width="120px">조회수</th>
                     </tr>
                 </thead>
+                
                 <tbody>
                     <!--FAQ 없을 때-->
                     <tr>
@@ -139,7 +140,7 @@
                     </tr>
         
                     <!--FAQ 있을 때-->
-                    <tr id="question">
+                    <tr class="question">
                         <td>1</td>
                         <td></td>
                         <td>제목</td>
@@ -148,7 +149,7 @@
                     </tr>
 
                     <!--FAQ 답변창-->
-                    <tr id="answer">
+                    <tr class="faqAnswer">
                         <td colspan="5" style="background: #ecfafa;">
                             <div align="left">
                                 <p>
@@ -157,7 +158,7 @@
                                 </p>
                                 <p style="font-weight: 600;">
                                    	 네 저도 동의합니다.<br>
-                                                                         시럽을 넣지 않아야 진정한 커피라고 할 수 있습니다.
+                                     시럽을 넣지 않아야 진정한 커피라고 할 수 있습니다.
                                 </p>
                             </div>
                         </td>
@@ -188,19 +189,19 @@
 
     <script>
         $(function(){
-            $("#question").click(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next(); 
 
-                if($("#answer").css("display") == "none"){
+                if($answer.css("display") == "none"){
 
-                    $(this).siblings("#answer").slideUp();
+                    $(this).siblings(".faqAnswer").slideUp();
 
-                    // 보여지게끔
-                    $("#answer").slideDown(800);
+                    $answer.slideDown(1000);
 
                 }else{
-                    // 사라지게끔
-                    $("#answer").slideUp(800);
 
+                    $answer.slideUp();
                 }
             })
         })
