@@ -40,6 +40,9 @@
     #search-btn:hover{
         background: rgb(126, 126, 126);
     }
+    .table>tbody>tr:hover{
+        cursor:pointer;
+    }
 </style>
 </head>
 <body>
