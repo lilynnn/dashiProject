@@ -77,13 +77,58 @@
         height: 45px;
 
     }
+    /*//////////////////////////////////////////////////*/
     .modal-content{
-        border-top-right-radius: 30px;
-        border-top-left-radius: 30px;
-        border-bottom-right-radius: 30px;
-        border-bottom-left-radius: 30px;
-        width: 80%;
+        border-radius: 30px
+        
     }
+
+    .login-area input, .loginBtn, .enrollBtn{
+        width: 350px;
+        height: 50px;
+        border-radius: 4px;
+    }
+    .login-area input{
+        border-color: rgba(202, 202, 202, 0.459);
+        margin-bottom: 15px;
+    }
+
+    .find{
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: 60%;
+        color: rgb(78, 77, 77);
+        
+    
+    }
+
+    .loginBtn{
+        background-color: rgb(102,184,94);
+        color: white;
+        font-weight: bold;
+        border: none;
+    }
+
+    .enrollBtn{
+        background-color: white;;
+        color: rgb(102,184,94);
+        font-weight: bold;
+         
+        border-color: rgb(102,184,94);
+        margin-bottom: 30px;
+        margin-top: 50px;
+
+    }
+
+    .find{
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: 60%;
+        color: rgb(78, 77, 77);
+    }
+
+
+
 
 
 </style>
@@ -154,35 +199,45 @@
             </div>
         </ul>
     </div>
-
+ <!--회원가입@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
     <!-- The Modal -->
     <div class="modal fade" id="login_myModal">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="width: 80%;">
+            <div class="modal-content" style="width: 80%; margin: auto;" >
 
                 
-                <div class="outer" aligg="center"> <!-- 전체를 감싸는 div -->
+                <div class="outer" > <!-- 전체를 감싸는 div -->
                     <!-- Modal Header -->
                     <div class="modal-header">
                         <h4 class="modal-title">다시 사랑받개!를 <br>방문해주셔서 감사합니다.</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
-                
+                    <br>
                     <!-- Modal body -->
-                    <div class="modal-body">
+                    <div class="login-area" style="width: 370px;">
                         <form action="" method="post">
                             <table>
                                 <tr>
-                                    <td><input type="text" class="userId" name="userId" placeholder="아이디" size = 40 required></td>
+                                    <td><input type="text" name="userId" placeholder="아이디" required></td>
                                 </tr>
                                 <tr>
-                                    <td><br><input type="password" class="userPwd" name="userPWd" placeholder="비밀번호" size = 40 required></td>
+                                    <td><input type="password" name="userPwd" placeholder="비밀번호" required></td>
                                 </tr>
                             </table>
+
+                            <a class="find" href="">아이디/비밀번호찾기</a>
+                            <br><br>
+
+
+                            <button class="loginBtn" type="submit">로그인</button>
+                            <br>
+
+
+                            <button class="enrollBtn"type="button" onclick="">회원가입</button>
+
+
+                            <p style="font-size: 14px; position: relative; bottom:105px;">다시, 사랑받개가 처음이신가요?</p>
                         </form>
-                    </div>
-                    <div>
-                        
                     </div>
 
                 </div>
@@ -199,8 +254,6 @@
             })
         });
     </script>
-
-    <!-- 회원가입버튼 눌렀을시 -->
 
 </body>
 </html>

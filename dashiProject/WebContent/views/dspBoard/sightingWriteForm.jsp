@@ -168,7 +168,7 @@
 					<!--추가 내용입력란-->
 					<tr>
 						<th style="height: 400px;" class="content">추가내용</th>
-						<td><textarea name="content" id="content" cols="80" rows="23" placeholder="내용을 입력해주세요."></textarea></td>
+						<td><textarea  name="content" id="content" cols="80" rows="23" placeholder="내용을 입력해주세요." style="resize: none;" ></textarea></td>
 					</tr>
 				</table>
 				<br><br><hr><br><br>

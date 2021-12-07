@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 <style>
     .outer{
-
         width: 1200px;
-        height: 1600px;
+        height: 1100px;
     }
     .outer>div{
         float:left;
