@@ -42,8 +42,19 @@
         color: white;
         font-size: 13px;
         font-weight: bold;
-
     }
+
+    #doubleCheck{
+        position: relative;
+        right: 80px;
+        top:1px;
+        background: rgba(102, 184, 94, 0.507);
+        color: white;
+        border: none;
+        height: 30px;
+    }
+
+    
 </style>
 </head>
 <body>
