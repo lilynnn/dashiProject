@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    div{border: solid 1px red;}
+    div{box-sizing: border-box;}
 
     .outer{
         margin-top: 50px;
@@ -46,7 +46,7 @@
 
     /*폰트*/
     .font{
-        color: rgb(87, 87, 85); 
+        color: rgb(94, 94, 92); 
         font-size: 12px;
     }
 
@@ -71,6 +71,8 @@
         border-bottom: solid 1px rgb(179, 177, 177);
         margin-bottom: 40px;
     }
+
+    button:hover{color: black;}
 </style>
 </head>
 <body>
@@ -100,7 +102,7 @@
                 <table>
                     <tr class="content">
                         <!--사용자가 입력한 댓글 내용-->
-                        <td colspan="4" width="855" style="font-weight: 900;">댕댕아 이제는 행복해~</td>
+                        <td colspan="4" width="800" style="font-weight: 900;">댕댕아 이제는 행복해~</td>
                         <!--답글 작성자에게만 노출-->
                         <td><button class="font btn">수정</button></td>
                         <!--답글 작성자에게만 노출-->

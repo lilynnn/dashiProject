@@ -200,6 +200,11 @@
 
                         </tbody>
                     </table>
+                    <!--수정하기 버튼-->
+                    <div align="right">
+                        <!--클릭 시 alert창 발생-->
+                        <button>수정</button>
+                    </div>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">

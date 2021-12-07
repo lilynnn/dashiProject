@@ -13,15 +13,15 @@
     }
     
     /* 썸네일 이미지 영역스타일 */
-    .rv-image{width: 230px; height: 230px; border: 1px solid black;}
+    .rv-image{width: 220px; height: 220px; border: 1px solid black;}
 
     /*입양후기 제목 스타일*/
     .review-title{
         width: 150px; 
         float: left; 
-        font-weight: 700;
-        margin-left: 7px;
-        margin-top: 3px;
+        font-weight: 900;
+        margin-bottom: 10px;
+        padding: 10px;
     }
 
     /* 댓글버튼 스타일*/
@@ -31,7 +31,7 @@
         border: none; 
         font-size: 12px; 
         border-radius: 3px;
-        margin-top: 3px;
+        margin-top: 10px;
     }
 
     /* 글쓰기버튼 스타일*/
