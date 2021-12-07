@@ -130,6 +130,7 @@
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
                         <div id="updateimage">  
+                            <img src="resources/images/pencil.png">
                         </div>
                         <p align="center">회원정보수정</p>
                     </div>
@@ -193,6 +194,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
                         <div class="bottomimage">
+                            <img src="resources/images/heart.png">
                         </div>
                         <p align="center">찜 목록확인</p>
                     </div>
@@ -206,6 +208,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 글쓴내역 아이콘 이미지 들어갈 공간 -->
                         <div class="bottomimage">
+                            <img src="resources/images/post.png">
                         </div>
                         <p align="center">글쓴내역확인</p>
                     </div>
@@ -219,6 +222,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
                         <div class="bottomimage">
+                            <img src="resources/images/answer.png">
                         </div>
                         <p align="center">1:1문의내역</p>
                     </div>

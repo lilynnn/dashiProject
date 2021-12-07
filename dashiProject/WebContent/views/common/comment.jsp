@@ -79,7 +79,9 @@
         <div class="comment-area">
             <div class="comment-icon">
                 <!-- 댓글 아이콘 이미지 넣기!!!-->
-                <div style="width: 3%;">사진</div>      
+                <div style="width: 3%;">
+                    <img src="resources/images/comment.png">
+                </div>      
                 <!--댓글 수 카운트-->          
                 <div style="width: 3%;" align="center">3</div>
             </div>
