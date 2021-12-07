@@ -53,6 +53,7 @@
         margin-bottom: 100px;
         margin-top: 100px;
     }
+
 </style>
 </head>
 <body>
@@ -116,41 +117,26 @@
                 <br><br>
                 <br><br><br><br>
         
-                <table style="margin: auto;"> 
-                    <tr>
-                        <td width="900"><!-- 공백란으로 사용 --></td>
-                        <td width="100" style="padding-left: 10px;">
-                            <!-- 나중에 이미지 찾아서 넣기-->
-                            신고하기
-                        </td>
-                    </tr>
-                </table>
+                <button class="btn" style="float: right; margin-right: 80px;">신고하기</button>
         
-                <br>
+                <br><br><br>
         
                 <!-- 이전글/다음글 넘기는 영역 -->
-                <table class="table"style="width: 1100px;">
+                <table class="table"style="width: 1100px; border-collapse: collapse;">
                         
                     <!-- 한 줄 영역으로 클릭 효과 주기 -->
                     <tbody>
-                        <tr>
+                        <tr style="border-top: solid 1px gray; height: 50px; font-weight: 600;">
                             <td width="100">이전글</td>
                             <td width="700">기요미 입양후기</td>
                             <td width="150">YYYY-MM-DD</td>
                             <td width="100">조회수</td>
                         </tr>
-                        <tr>
+                        <tr style="border-top: solid 1px gray; border-bottom: solid 1px gray; height: 50px; font-weight: 600;">
                             <td width="100">다음글</td>
                             <td width="700">멍멍이 입양후기</td>
                             <td width="150">YYYY-MM-DD</td>
                             <td width="100">조회수</td>
-                        </tr>
-                        <tr>
-                            <!-- 구분선용 공백란 -->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                         </tr>
                     </tbody>
                 </table>
