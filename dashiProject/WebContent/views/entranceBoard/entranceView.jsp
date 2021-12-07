@@ -86,9 +86,9 @@
            <div style="text-align:center";>
            
            <!-- 버튼 -->
-           <button class="entrance" name="" value="">입소신청</button>
+           <button type="button" class="entrance" name="" value="">입소신청</button>
             
-           <button class="answer" name="" value="">1:1 문의</button>
+           <button type="button" class="answer" name="" value="">1:1 문의</button>
            </div>
 
         <!-- 이미지2 -->

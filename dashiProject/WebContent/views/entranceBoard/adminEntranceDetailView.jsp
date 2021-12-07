@@ -57,7 +57,7 @@
 	
 	<div class="outer">
 
-        <form action="">
+       
 
            
             <div>
@@ -186,7 +186,7 @@
 
 
             </div>
-        </form>
+        
     </div>
 
     <%@ include file="/views/common/footerbar.jsp" %>

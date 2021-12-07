@@ -76,7 +76,7 @@
     <br>
 
     <div>
-    <button class="back">이전으로</button> 
+    <button type="button" class="back">이전으로</button> 
     <button class="btn-1">작성하기</button>
     </div>
     
