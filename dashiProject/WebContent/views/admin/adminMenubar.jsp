@@ -65,8 +65,8 @@
         <!--왼쪽메뉴바-->
         <div id="aMenubar">
         		
-        		<div style="width:200px; height:80px; margin-bottom:5px; background-color:rgb(234, 218, 248); text-align:center; line-height:80px; font-weight:bold;">
-        			1조 화이팅♡
+        		<div style="width:200px; height:80px; margin-bottom:5px;">
+        			<!-- <img alt="<%=contextPath%>/resources/images/FAQphonecard.JPG" src=""> -->
         		</div>
         
                 <div class="aMenu" id="member">회원관리</div>
