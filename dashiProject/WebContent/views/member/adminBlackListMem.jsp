@@ -15,6 +15,7 @@
     .outer>div{
         float: left;
         box-sizing: border-box;
+       
     }
    
     #munubar{width:150px}
@@ -72,11 +73,12 @@
         	
         	<form action="">
 
-                <div id="title">
-                 블랙리스트 관리 
-                <hr>
+                <div id="title" style="margin-left:20px;">
+                	 블랙리스트 관리 
+                <hr style="margin-left:20px;">
+                
                 </div>
-                <div id="search">
+                <div id="search" style="margin-left:20px;">
                     <input type="text" placeholder="ID / 이름 검색" style="margin-right: 10px;"> <input type="button" value="검색">
                 </div>
                 
@@ -84,11 +86,11 @@
                     <button>복구</button>
                 </div>
 
-                <div style="margin-top: 10px;">
-                    <table width="960px">
+                <div style="margin-top: 10px; " >
+                    <table width="860px" style="margin-left:20px;">
                         <thead>
                             <tr>
-                                <td></td>a
+                                <td></td>
                                 <th>No.</th>
                                 <th>아이디</th>
                                 <th>이름</th>
