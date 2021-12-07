@@ -126,13 +126,13 @@
                         
                     <!-- 한 줄 영역으로 클릭 효과 주기 -->
                     <tbody>
-                        <tr style="border-top: solid 1px gray; height: 50px; font-weight: 600;">
+                        <tr style="border-top: solid 2px rgb(175, 173, 173); height: 50px; font-weight: 600;">
                             <td width="100">이전글</td>
                             <td width="700">기요미 입양후기</td>
                             <td width="150">YYYY-MM-DD</td>
                             <td width="100">조회수</td>
                         </tr>
-                        <tr style="border-top: solid 1px gray; border-bottom: solid 1px gray; height: 50px; font-weight: 600;">
+                        <tr style="border-top: solid 1px gray; border-bottom: solid 2px rgb(175, 173, 173); height: 50px; font-weight: 600;">
                             <td width="100">다음글</td>
                             <td width="700">멍멍이 입양후기</td>
                             <td width="150">YYYY-MM-DD</td>

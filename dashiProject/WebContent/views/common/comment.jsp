@@ -85,7 +85,7 @@
                     <img src="resources/images/comment.png">
                 </div>      
                 <!--댓글 수 카운트-->          
-                <div style="width: 3%;" align="center">3</div>
+                <div style="width: 3%;">3</div>
             </div>
             <div class="comment">
                 <table style="margin-top: 20px;">

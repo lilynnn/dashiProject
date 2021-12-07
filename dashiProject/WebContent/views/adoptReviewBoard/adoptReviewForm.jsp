@@ -44,6 +44,7 @@
         <!--입력폼-->
         <form action="">
             <div class="input-area">
+                <!--사용자 선택 말머리 영역-->
                 말머리를 선택해주세요
                 <select name="animal">
                     <option value="dog">강아지</option>
@@ -52,12 +53,13 @@
                 </select>
             </div>
             <div class="input-area">
+                <!--사용자 입력 제목 영역-->
                 <div style="width: 100px; float: left;">
                 제목                    
                 </div>
                 <input type="text" style="width: 850px; height: 30px;" placeholder="제목을 입력해주세요.">
             </div>
-            <div class="input-area">
+            <div class="input-area" style="height: 400px;">
                 <div style="width: 100px; float: left;">
                  내용   
                 </div>
@@ -65,7 +67,7 @@
                     <textarea id="summernote"></textarea>
                 </div>
             </div>
-            <div class="input-area">
+            <div class="input-area" style="height:80px;">
                 <button style="width: 120px; float:left;">
                     첨부파일                
                 </button>
