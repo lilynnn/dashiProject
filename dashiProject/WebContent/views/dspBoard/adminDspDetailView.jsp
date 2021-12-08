@@ -79,6 +79,9 @@
         border:none;
         margin-left:46%;
     }
+    div{
+        border: 1px solid;
+    }
 
 
 </style>
@@ -108,6 +111,16 @@
                 <!--사진-->
                 <div id="animal-image">
                    강아진 사진입니다. 
+                </div>
+
+                <div>
+                    <form action="">
+                        <select name="" id="" style="width: 100px;height: 40px; font-size: 23px; margin-left: 558px; ">
+                            <option value="miss">실종</option>
+                            <option value="protect">보호</option>
+                            <option value="sight">목격</option>
+                        </select>
+                    </form>
                 </div>
 
                 <!--동물, 기본정보 정보-->
