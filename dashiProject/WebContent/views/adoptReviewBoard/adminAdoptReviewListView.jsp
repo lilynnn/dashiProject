@@ -28,6 +28,29 @@
         font-weight: 700;
         margin-top: 20px;
     }
+    .tbody>tr{
+        border-bottom: solid 1px gray;
+    }
+    .btn{
+        border: none;
+        background: rgb(102,184,94);
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 33px;
+        width: 100px;
+        border-radius: 9px;
+    }
+    .page{
+        border: none;
+        background: lightgray;
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 30px;
+        width: 30px;
+        border-radius: 9px;
+    }
 </style>
 </head>
 <body>
@@ -52,9 +75,10 @@
                 </div>
                 
                 <hr style="width: 900px;">
+                <br><br><br>
                 
                 <!-- 검색버튼 -->
-                <div style="margin-left: 650px; width:300px;">
+                <div style="margin-left: 550px; width:400px;">
                     <select name="animal">
                         <option value="dog">강아지</option>
                         <option value="cat">고양이</option>
@@ -63,11 +87,11 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
-                    <button class="btn-sm btn-secondary">검색하기</button>
+                    <button  style="border: none; width: 70px; height: 30px; border-radius: 8px;">검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px;" border="1">
-                    <thead class="thead-light">
+                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                    <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="25"></th>
                             <th width="25">no</th>
@@ -79,7 +103,7 @@
                             <th width="110">등록일</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tbody">
                         <tr>
                             <!--체크박스 수정 필요!!!!!!!!!!!!-->
                             <td><input type="checkbox" id="check" name="post" value="check"></td>
@@ -137,20 +161,21 @@
                         </tr>
                         </tbody>
                     </table>
+                    <br><br><br>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
-                        <button class="btn btn-light">&lt;</button>
-                        <button class="btn btn-light">1</button>
-                        <button class="btn btn-light">2</button>
-                        <button class="btn btn-light">3</button>
-                        <button class="btn btn-light">4</button>
-                        <button class="btn btn-light">&gt;</button>
+                        <button class="page">&lt;</button>
+                        <button class="page">1</button>
+                        <button class="page">2</button>
+                        <button class="page">3</button>
+                        <button class="page">4</button>
+                        <button class="page">&gt;</button>
                     </div>
                 </div>
                 <!--삭제하기 버튼-->
                 <div align="right">
-                    <button>삭제</button>
+                    <button class="btn">삭제</button>
                 </div>
             </form>
 

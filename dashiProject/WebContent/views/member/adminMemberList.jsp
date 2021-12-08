@@ -28,6 +28,29 @@
         font-weight: 700;
         margin-top: 20px;
     }
+    .tbody>tr{
+        border-bottom: solid 1px gray;
+    }
+    .btn{
+        border: none;
+        background: rgb(102,184,94);
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 33px;
+        width: 100px;
+        border-radius: 9px;
+    }
+    .page{
+        border: none;
+        background: lightgray;
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 30px;
+        width: 30px;
+        border-radius: 9px;
+    }
 </style>
 </head>
 <body>
@@ -52,9 +75,9 @@
                 </div>
                 
                 <hr style="width: 900px;">
-                
+                <br><br><br>
                 <!-- 검색버튼 -->
-                <div style="margin-left: 650px; width:300px;">
+                <div style="margin-left: 550px; width:400px;">
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -65,11 +88,11 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
-                    <button class="btn-sm btn-secondary">검색하기</button>
+                    <button style="border: none; width: 70px; height: 30px; border-radius: 8px;">검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px;" border="1">
-                    <thead class="thead-light">
+                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                    <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="25">no</th>
                             <th width="80">이름</th>
@@ -82,7 +105,7 @@
                             <th width="50">회원등급</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tbody">
                         <tr>
                             <td>5</td>
                             <td>XXX</td>
@@ -200,20 +223,21 @@
 
                         </tbody>
                     </table>
+                    <br><br><br>
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
-                        <button>수정</button>
+                        <button class="btn">수정</button>
                     </div>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
-                        <button class="btn btn-light">&lt;</button>
-                        <button class="btn btn-light">1</button>
-                        <button class="btn btn-light">2</button>
-                        <button class="btn btn-light">3</button>
-                        <button class="btn btn-light">4</button>
-                        <button class="btn btn-light">&gt;</button>
+                        <button class="page">&lt;</button>
+                        <button class="page">1</button>
+                        <button class="page">2</button>
+                        <button class="page">3</button>
+                        <button class="page">4</button>
+                        <button class="page">&gt;</button>
                     </div>
                 </div>
             </form>
