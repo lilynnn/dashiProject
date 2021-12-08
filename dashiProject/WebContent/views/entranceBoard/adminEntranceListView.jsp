@@ -74,19 +74,20 @@
     <%@ include file="../common/menubar.jsp" %>
     
     <!--전체를 감싸는 큰 div-->
-    <div class="outer">
+    <div class="outer" width="880">
     
     	<div id="menubar">
     		<%@ include file="../admin/adminMenubar.jsp" %>
     	</div>
+      
             <!-- 1:1 목록-->
         <div id="answerlist">
         	
-        	<form action="">
+        	<form action="" method="post">
 
-                <div id="title">
+                <div id="title" width="880" style="margin-top: 10px; margin-left:20px">
                     	입소신청 관리
-                <hr>
+                <hr width="880" style="margin-top: 10px; margin-left:20px">
                 </div>
 
                 <!-- 카테고리 및 검색창-->
@@ -103,22 +104,19 @@
                     <button id="searchbtn" style="margin: 5px; padding-left: 10px;padding-right: 10px;">검색</button>
                 </div>
                 
-                <div id="btn" align="right"; style="display: inline-block;" >
-                   
-                    <button>삭제</button>
-                </div>
+               
 
-                <div style="margin-top: 10px;">
-                    <table>
+                <div>
+                    <table style="margin-top: 10px; margin-left:10px">
                         <thead>
                             <tr>
                                 <td></td>
                                 <th>No.</th>
                                 <th>카테고리</th>
-                                <th width="600">제목</th>
+                                <th>제목</th>
                                 <th>작성자</th>
-                                <th width="100">작성일</th>
-                                <th width="70"> 상태 </th>
+                                <th>작성일</th>
+                                <th> 상태 </th>
                               
 
 
@@ -172,7 +170,7 @@
                         <button class="btn btn-light">&gt;</button>
                     </div>
 
-                </div>
+                	</div>
 
 
 

@@ -15,23 +15,20 @@
     }
 
     .image-area{
-        width: 700px;
+        width: 600px;
         height: 300px;
         margin: auto;
         margin-top: 30px;
         border: 1px solid black;
     }
 
-    .table{
-        border-spacing: 20px;
-    }
-
-    .table td{
-        background-color: lightgrey;
-    }
-
+   .entrancetb *{
+   	border:1px solid black;
+   	border-spacing:20px;
+   }
+    
     .content-area{
-        width: 1200px;
+        
         margin: auto;
     }
     
@@ -49,18 +46,17 @@
 </style>
 </head>
 <body>
-
-	<!-- 지희 수정중  -->
-	<!-- 사용자가 보게될 입양 공고문의 상세 페이지 -->
 	
 	<%@ include file="/views/common/menubar.jsp" %>
 	
 	<div class="outer">
+   		
+   		<!-- 관리자 메뉴바 영역-->
 
-       
-
-           
-            <div>
+        <div id="menubar" style="margin-right: 20px;">
+            <%@ include file="../admin/adminMenubar.jsp" %>
+        </div>
+            <div width="800px">
                 <h3>입소신청</h3>
             </div>
            <hr>
@@ -85,7 +81,7 @@
                 </table>
 
                 <br><br>
-                <hr width="900" color="gray">
+                <hr width="880" color="gray">
                 <br>
 
                 <div>
@@ -94,7 +90,7 @@
                 <br><br>
 
                 <!-- 동물 상세정보 -->
-                <table class="animal-info" width="800px">
+                <table class="animal-info" width="600px">
                     <tr>
                         <th>작성자</th>
                         <td>~~~~</td>
@@ -114,8 +110,8 @@
                     </td>
                     </tr>
                 </table>
-                <div class="image-area">
-                    작성시 업로드한 동물 사진
+                <div class="image-area" width="500px">
+                    	작성시 업로드한 동물 사진
                 </div>
                 <br>
                 <!-- 내역 -->
@@ -124,55 +120,52 @@
                 </div>
                <br><br>
 
-                <table class="table" style="text-align: left;">
+                <table class="entrancetb" style="text-align: left;" width="500px">
                     <tr>
                         <th>1. 신청 보호소명  </th>
-                        <th></th>
                         <td> 다시 사랑하개 ! </td>
                     </tr>
                     <tr>
                         <th>2. 품종</th>
-                        <th></th>
+                        
                         <td> 강아지</td>
                     </tr>
                     <tr>
                         <th>3. 성별 </th>
-                        <th></th>
+                        
                         <td>여</td>
                     </tr>
                     <tr>
                         <th>4. 나이 </th>
-                        <th></th>
+                        
                         <td> XX세 </td>
                     </tr>
                     <tr>
                         <th>5. 접종여부 </th>
-                        <th></th>
+                       
                         <td>Y </td>
                     </tr>
                     <tr>
                         <th>6. 중성화 유무</th>
-                        <th></th>
                         <td>Y </td>
                     </tr>
                     <tr>
                         <th>7. 질병 유무 </th>
-                        <th></th>
+                        
                         <td> 질병 상세 기입 </td>
                     </tr>
                     <tr>
                         <th>8. 특이사항</th>
-                        <th></th>
+                       
                         <td>특이사항 상세기입 </td>
                     </tr>
                     <tr>
                         <th>9. 입소 희망 일시 </th>
-                        <th></th>
+                     
                         <td>2021년 12월 31일 19시 </td>
                     </tr>
                     <tr>
                         <th>10. 사진 </th>
-                        <th></th>
                         <!-- 사용자가 첨부한 이미지 파일 -->
                         <td> 첨부파일1 , 첨부파일2 </td> 
 
