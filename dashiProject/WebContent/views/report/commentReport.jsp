@@ -9,5 +9,7 @@
 <body>
     <!-- 지희 작업 중 -->
     <!-- 댓글 신고하기 -->
+    <div class="outer">
+    </div>
 </body>
 </html>

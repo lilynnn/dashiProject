@@ -66,14 +66,26 @@
                     </tr>
                     <tr>
                         <!-- 버튼 아이디 및 라벨 연결 임의 설정 !! 나중에 내용에 맞게 수정하기 -->
+                        <!-- 스타일도 나중에 헤더로 옮기기 -->
                         <th>&nbsp;</th>
                         <td>
-                            <input name="report-category" class="radio" value="1" type="radio"><label for="radio1" style="font-size: 13px;">욕설 또는 음란성 내용</label> <br>
-                            <input name="report-category" class="radio" value="2" type="radio"><label for="radio2" style="font-size: 13px;">부적절한 홍보게시글</label> <br>
-                            <input name="report-category" class="radio" value="3" type="radio"><label for="radio3" style="font-size: 13px;">사생활 침해 및 불법 촬영물</label> <br>
-                            <input name="report-category" class="radio" value="4" type="radio"><label for="radio4" style="font-size: 13px;">명예훼손 및 저작권침해</label> <br>
-                            <input name="report-category" class="radio" value="etc" type="radio"><label for="radio5" style="font-size: 13px;">기타</label><br>
-                            <textarea name="" id="reportContent" cols="60" rows=""></textarea>
+                            <input name="radio" id="radio1" value="1" type="radio">
+                            <label for="radio1" style="font-size: 13px;">욕설 또는 음란성 내용</label> <br>
+                            
+                            <input name="radio" id="radio2" value="2" type="radio">
+                            <label for="radio2" style="font-size: 13px;">부적절한 홍보게시글</label> <br>
+                            
+                            <input name="radio" id="radio3" value="3" type="radio">
+                            <label for="radio3" style="font-size: 13px;">사생활 침해 및 불법 촬영물</label> <br>
+                            
+                            <input name="radio" id="radio4" value="4" type="radio">
+                            <label for="radio4" style="font-size: 13px;">명예훼손 및 저작권침해</label> <br>
+                            
+                            <input name="radio" id="radio5" value="5" type="radio">
+                            <label for="radio5" style="font-size: 13px;">기타</label><br>
+                            
+                            <textarea name="" cols="60" rows="" id="input-area" disabled></textarea>
+                            
                         </td>
                     </tr>
                 </table>
@@ -81,22 +93,21 @@
                     <button class="btn btn-secondary">신고하기</button>
                 </div>
                 <br>
-                <!--
+
                 <script>
                     $(function(){
-                        $(".radio").click(function(){
-                            var valueCheck = $('.radio-value:checked').val(); 
+                        $("input:radio[name=radio]").click(function(){
 
-                            if(valueCheck == "etc"){
-                                $(this).next().attr('disaled',false);
+                            if($("input[name=radio]:checked").val() == "5"){
+                                $("#input-area").attr("disabled",false);
+                            } else{
+                                $("#input-area").attr("disabled",true);
                             }
-
-
 
                         })
                     })
                 </script>
-                 -->
+
             </div>
         </form>
     </div>
