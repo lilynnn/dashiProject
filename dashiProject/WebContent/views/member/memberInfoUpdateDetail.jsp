@@ -85,7 +85,6 @@
 </head>
 <body>
 
-	<!-- 누리 작업 -->
 
     <%@ include file="../common/menubar.jsp" %>
 
