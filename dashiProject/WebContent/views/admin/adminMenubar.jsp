@@ -59,14 +59,14 @@
 <body>
 
 	
-    <!-- 관리자 메뉴바입니다/누리작업-->
+    <!-- 관리자 메뉴바입니다-->
     <div id="adminMenu">
         
         <!--왼쪽메뉴바-->
         <div id="aMenubar">
         		
         		<div style="width:200px; height:80px; margin-bottom:5px;">
-        			<!-- <img alt="<%=contextPath%>/resources/images/FAQphonecard.JPG" src=""> -->
+        			<img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
         		</div>
         
                 <div class="aMenu" id="member">회원관리</div>
@@ -119,11 +119,10 @@
 
                     $(this).siblings("ul").slideUp();
 
-                    // 보여지게끔
                     $ul.slideDown();
 
                 }else{
-                    // 사라지게끔
+
                     $ul.slideUp();
 
                 }
