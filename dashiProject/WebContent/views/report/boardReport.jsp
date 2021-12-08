@@ -48,7 +48,7 @@
                 <table style="margin: 10px; width: 580px; font-size: 14px;">
                     <tr>
                         <th width="100">제 &nbsp; 목 </th>
-                        <td><input type="text" value="신고글의 제목 보여지게" style="width: 100%;"></td>
+                        <td><input type="text" value="신고글의 제목 보여지게" style="width: 100%;" disabled></td>
                     </tr>
                     <tr>
                         <th>작 성 자 </th>
@@ -94,10 +94,11 @@
                 </div>
                 <br>
 
+                <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
                 <script>
                     $(function(){
                         $("input:radio[name=radio]").click(function(){
-
+                            // value값이 5인 라디오버튼 체크시에만 text-area 활성화
                             if($("input[name=radio]:checked").val() == "5"){
                                 $("#input-area").attr("disabled",false);
                             } else{
