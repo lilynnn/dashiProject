@@ -49,6 +49,11 @@
         background-color: rgb(235, 234, 234);
     }
 
+    select{
+        width: 90px;
+        height: 30px;
+    }
+
 
 
 
@@ -127,7 +132,7 @@
                             <td>12.15 15:35</td>
                             <td>50,000</td>
                             <td>
-                                <select name="" id="">
+                                <select name="" id="" >
                                     <option value="payWait">결제대기</option>
                                     <option value="payOk">결제완료</option>
                                 </select>

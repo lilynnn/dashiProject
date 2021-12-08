@@ -86,29 +86,29 @@
         </div>
         
         <!-- Modal body -->
-        <div class="modal-body" style="border-color: blue;">
+        <div class="modal-body">
           <div class="contentOuter">
             <div class="title">
                 결제수단을 선택해주세요
             </div>
-
+            
             <form action="">
                 <!-- 결제 방식란-->
                 <div class="payMethod-area">
-                    <input type="radio" name="payMethod" value="card">&nbsp;신용카드 
+                    <input type="radio" name="payMethod" value="card" checked="checked" >&nbsp;신용카드 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="radio" name="payMethod" value="bank">&nbsp;무통장입금
                 </div>
 
 
-                <!-- 결제 방식란--> 
+                <!-- 카드번호 입력란--> 
                 <div class="cardNum-area">
                     <p style="height: 9px;">신용/직불카드 번호</p>
                     <input type="number" class="cardNum" name="cardNum" placeholder="카드 번호 입력(-제외)" required>
 
                 </div>
 
-                <!-- 결제 방식란--> 
+                <!-- 카드유효기간 입력란--> 
 
                 <table style="margin-bottom: 40px;">
                     <tr>
@@ -119,7 +119,7 @@
                         <td>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>
-
+                <!-- CVC번호 입력란--> 
                         <td>
                             <p style="height: 9px;float: left;" >CVC(카드 뒷면 세자리</p>
                             <input type="number" id="CVCNum" name="cardAbleTerm" placeholder="CVC" required>
