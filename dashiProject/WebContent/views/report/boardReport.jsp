@@ -52,7 +52,7 @@
                     </tr>
                     <tr>
                         <th>작 성 자 </th>
-                        <td><input type="text" value="신고글의 작성자 보여지게" style="width: 100%;"></td>
+                        <td><input type="text" value="신고글의 작성자 보여지게" style="width: 100%;" disabled></td>
                     </tr>
                 </table>
                 <hr>
