@@ -11,9 +11,6 @@
         height: 1600px;
     }
 
-    div{
-        border: 1px solid red;
-    }
     .outer>div{
         float:left;
         box-sizing: border-box;
