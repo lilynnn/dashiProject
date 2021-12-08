@@ -177,10 +177,39 @@
                         <div class="adopt-status">결제완료</div>
                         <div class="adopt-status">입양완료</div>
                     </div>
+                    
                     <!--입양신청 처리상태 2(결제대기)일 시-->
+                    <!--
+                    <div style="height: 60%; ">
+                        <div class="adopt-status">입양신청</div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">입양승인</div>
+                        <div class="adopt-status">결제하기</div>
+                        <div class="adopt-status">결제완료</div>
+                        <div class="adopt-status">입양완료</div>
+                    </div>
+                    -->
                     <!--입양신청 처리상태 3(결제완료)일 시-->
-                    <!--입양신청 처리상태 4(입양완료)일 시-->
+                    <!--                    
+                    <div style="height: 60%; ">
+                        <div class="adopt-status">입양신청</div>
+                        <div class="adopt-status">입양승인</div>
+                        <div class="adopt-status" >결제하기</div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">결제완료</div>
+                        <div class="adopt-status">입양완료</div>
+                    </div>
+                    -->
+                    <!--입양신청 처리상태 4(입양완료)일 시-->  
+                    <!--                  
+                    <div style="height: 60%; ">
+                        <div class="adopt-status" >입양신청</div>
+                        <div class="adopt-status">입양승인</div>
+                        <div class="adopt-status">결제하기</div>
+                        <div class="adopt-status">결제완료</div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">입양완료</div>
+                    </div>
+                    -->
                     <!--입양신청 처리상태 5(반려))일 시-->
+                    <!--<h3 align="center" style="margin: auto; margin-top: 80px;">입양 신청이 반려되었습니다.</h3>-->
                 </div>
 
             </div>
