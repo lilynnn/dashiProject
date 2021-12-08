@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <!-- 화면에 연결할 때 삭제하기 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -21,6 +22,27 @@
     .content-area button:hover{cursor: pointer;}
     
     .report-area{border: 1px solid black;}
+
+    /* modal관련 스타일 */
+    .modal{
+        /* margin으로 modal위치 조정 */
+        margin: 100px 400px; 
+        width: 600px; 
+        height: 450px; 
+        background: white; 
+        padding: 5px;
+    }
+    .modal #report-title{
+        background: lightgray; 
+        padding:10px; 
+        margin: 0px 12px ;
+    }
+    .modal #report-ara{ padding:10px;}
+    .modal table{
+        margin: 12px; 
+        width: 565px; 
+        font-size: 14px;
+    }
 </style>
 </head>
 <body>
@@ -30,36 +52,38 @@
     <div class="outer">
         <div class="content-area" align="right">
             
-            <button onclick="" data-toggle="modal" data-target="#updatePwdModal">신고하기</button>
+            <button onclick="" data-toggle="modal" data-target="#reportModal">신고하기</button>
 
         </div>
     </div>
 
     <!-- 신고하기 버튼 클릭시 보여질 내용 -->
-    <div class="report-area" style="margin-top: 50px; width: 600px;"> 
+    <div class="modal" id="reportModal"> 
         <form action="">
-            <div id="report-title" style="background: lightgray; padding: 10px; margin: 5px 10px;">
+            <button type="button" class="close" data-dismiss="modal">&times;</button><br>
+            <div id="report-title">
                 <b>신고하기</b>
             </div>
+
             <div id="report-content">
 
                 <!-- 신고게시글 정보 담아 전달하는 table -->
                 <!-- 신고한 사용자 아이디, 신고 당한 게시글 번호, 제목, 작성자 담아서 전달 -->
-                <table style="margin: 10px; width: 580px; font-size: 14px;">
+                <table>
                     <tr>
-                        <th width="100">제 &nbsp; 목 </th>
-                        <td><input type="text" value="신고글의 제목 보여지게" style="width: 100%;" disabled></td>
+                        <th width="75">제 &nbsp; 목 </th>
+                        <td>신고글제목보여지게</td>
                     </tr>
                     <tr>
                         <th>작 성 자 </th>
-                        <td><input type="text" value="신고글의 작성자 보여지게" style="width: 100%;" disabled></td>
+                        <td>신고글작성자보여지게</td>
                     </tr>
                 </table>
                 <hr>
                <!-- 신고 타입 및 내용 작성하는 table -->
-                <table style="margin: 10px; width: 580px; font-size: 14px;">
+                <table>
                     <tr>
-                        <th width="100"> 사유선택 </th>
+                        <th width="75"> 사유선택 </th>
                         <td style="font-size:12px; color: gray;">
                             여러사유에 해당하는 경우 대표적인 사유 1개를 선택해주세요.
                         </td>
@@ -92,7 +116,7 @@
                 <div align="center">
                     <button class="btn btn-secondary">신고하기</button>
                 </div>
-                <br>
+
 
                 <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
                 <script>
@@ -112,5 +136,6 @@
             </div>
         </form>
     </div>
+
 </body>
 </html>
