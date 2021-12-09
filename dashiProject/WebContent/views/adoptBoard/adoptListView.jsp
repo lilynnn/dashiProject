@@ -11,6 +11,7 @@
         margin-top: 50px;
         width: 1200px;
         margin: auto;
+        
     }
 
     /* 이미지 추가시 스타일 변경하기 */
@@ -21,24 +22,41 @@
         margin-top: 30px;
         border: 1px solid black;
     }
-
     
-    /* 입양공고 이미지 띄우는 div */
-    .adt-image{width: 230px; height: 230px; border: 1px solid black;}
-    
-    /* 동물 종류 표시할 영역 */
-    .category{width: 70px; float: left; margin-left: 5px; font-weight: 700;}
-    /* 입양공고 제목 영역 */
-    .adt-title{box-sizing: border-box; }
-
-    .list-area>table{
-        width: 1000px;
-        height: 1300px; 
-        margin-top: 30px;
+    /* 카테고리별 검색 영역 */
+    .search-area{
+        margin-top: 40px; 
+        width: 1100px;
     }
 
+    /* 입양공고 리스트  */
+    .content-area{
+        width: 1000px;
+        height: auto;
+        margin: auto;
+        border: 1px solid black;
+        margin-top: 10px;
+    }
+
+    /* 입양공고 하나 감싸는 div */
+    .adoptnotice{
+       border: 1px solid red; 
+       margin-top: 10px;
+       width: 245px; 
+       height: 250px; 
+       box-sizing: border-box;
+       display: inline-block;
+    }
+    .adoptnotice img{width: 230px; height: 200px;}
+    .adoptnotice #category{
+        margin-left: 5px; 
+        width: 50px; 
+        font-weight: 700;
+    }
+    .adoptnotice span{font-size: 13px;}
+
     /* 입양공고이미지+제목 클릭시 효과 */
-    .list-area>table td:hover{
+    .content-area>div:hover{
         cursor: pointer;
     }
 
@@ -62,7 +80,7 @@
         </div>
         
         <form action="">
-            <div class="search-area" style="margin-top: 40px; width: 1100px;" align="right">
+            <div class="search-area" align="right">
                 <select name="animal-category">
                     <option value="dog">강아지</option>
                     <option value="cat">고양이</option>
@@ -72,124 +90,140 @@
                 <input type="text" placeholder="검색어를 입력하세요.">
                 
                 <button>검색하기</button>
-            </div>
-
-
-            <div class="list-area" align="center">
-                <table>
-                    <tr style="height:250px">
-                        <td align="center" style="border: 3px solid red;">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                    </tr>
-                    <tr style="height:250px">
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                    </tr>
-                    <tr style="height:250px">
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                    </tr>
-                    <tr style="height:250px">
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                    </tr>
-                    <tr style="height:250px">
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-warning" style="margin-left: 5px; width: 55px; font-weight: 700;">[고양이]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-secondary" style="margin-left: 5px; width: 55px; font-weight: 700;">[기타]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                        <td align="center">
-                            <div class="adt-image"></div>
-                            <span class="badge badge-success" style="margin-left: 5px; width: 55px; font-weight: 700;">[강아지]</span>
-                            <span class="adt-title">[품종명][이름]의 가족을 기다려요</span>
-                        </td>
-                    </tr>
-                </table>
 
             </div>
+
+            <!-- 5행4열 배치 -->
+            <!-- 페이징바는 5개 -->
+            <!-- 입양공고 리스트가 보여질 영역-->
+            <div class="content-area" align="center">
+
+                <!-- 리스트 하나 감싸는 div -->
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <!-- if - elif문 사용해서 카테고리 구분해서 표시하기 -->
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-warning">고양이</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-secondary">기타</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+                
+                <div class="adoptnotice" align="center">
+                    <img src="입양공고의대표이미지url">
+                    <span id="category" class="badge badge-success">강아지</span>
+                    <span>[품종명][이름]의 가족을 기다려요</span>
+                </div>
+
+           </div>
+                 
         </form>
     </div>
 
@@ -198,7 +232,7 @@
     <%@include file="../common/footerbar.jsp" %>
 
     <script>
-        // 나중에 수정하기!!!
+        // 나중에 수정하기!! => 
         $(function(){
             $(".list-area>table td").click(function(){
 

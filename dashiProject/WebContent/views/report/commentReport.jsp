@@ -97,7 +97,7 @@
                             <label for="radio1">욕설 또는 음란성 내용</label> <br>
                             
                             <input name="radio" id="radio2" value="2" type="radio">
-                            <label for="radio2">부적절한 홍보게시글</label> <br>
+                            <label for="radio2">부적절한 홍보성 댓글</label> <br>
                             
                             <input name="radio" id="radio3" value="3" type="radio">
                             <label for="radio3">사생활 침해 및 불법 촬영물</label> <br>
