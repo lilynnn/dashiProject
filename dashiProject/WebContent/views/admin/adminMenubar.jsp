@@ -10,39 +10,45 @@
     /*왼쪽 메뉴바 작업*/
     #aMenubar{
         width: 200px; 
-        height: 90%; 
+        height: auto; 
         margin-top: 18px;
     }
-    #aMenubar>div{
+    #menu-list{
         width: 100%;
-        height: 30px;
-        text-align: right;
-        line-height: 30px;
-        cursor: pointer;
-        box-sizing:border-box;
+        border: 1px solid #a3b6a0;
+        background: white;
+    }
+    #menu-list>div, #menu-list li{
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        
+    }
+    #menu-list>ul{
+       margin: 0;
+       padding: 0;
+    }
+    #menu-list a{
+        width: 100%;
+        height: 100%;
+        display: block;
     }
     #member, #apply, #list, #report, #payment, #animal{
-        background: lightgray;
+        background: #b9c9b6;
+        border-bottom: 2px dashed #115206;
     }
     #fighting{
        width:150px;
        height:100px;
        border:1px solid black;
     }
-    #aMenubar>ul>li{
+    #menu-list>ul>li{
         list-style-type: none;
-        text-align: right;
-        line-height: 30px;
     }
-    #aMenubar>ul a{
+    #menu-list>ul>li>a{
         text-decoration: none;
         color: black;
     }
-    #aMenubar>ul{
-        display: none;
-    }
-    #aMenubar>ul a:hover{color: orange;}
-    .aMenu{box-sizing: border-box;}
 
     /* 입양신청 스타일 영역 */
     #adoptApply a{
@@ -65,9 +71,11 @@
         <!--왼쪽메뉴바-->
         <div id="aMenubar">
         		
-        		<div style="width:200px; height:80px; margin-bottom:5px;">
-        			<img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
-        		</div>
+            <div style="width:200px; height:80px; margin-bottom:5px;">
+                <img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
+            </div>
+
+            <div id="menu-list" style="height: 670px;">
         
                 <div class="aMenu" id="member">회원관리</div>
                 <ul>
@@ -105,31 +113,14 @@
                 <ul>
                     <li><a href="" id="sel-animal">전체동물조회</a></li>
                 </ul>
-         </div>
+         
+         
+            </div>
+         
+       </div>
    
     </div>
     
-    <script>
-        $(function(){
-            $(".aMenu").click(function(){
-
-                const $ul = $(this).next();
-
-                if($ul.css("display") == "none"){
-
-                    $(this).siblings("ul").slideUp();
-
-                    $ul.slideDown();
-
-                }else{
-
-                    $ul.slideUp();
-
-                }
-
-            })
-        })
-    </script>
 
 
 
