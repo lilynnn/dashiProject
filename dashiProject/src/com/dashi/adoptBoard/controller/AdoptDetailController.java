@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdoptProcedureNoticeController
+ * Servlet implementation class AdoptDetailController
  */
-@WebServlet("/adguide")
-public class AdoptGuideController extends HttpServlet {
+@WebServlet("/addetail")
+public class AdoptDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptGuideController() {
+    public AdoptDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,10 @@ public class AdoptGuideController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/adoptBoard/adoptGuideView.jsp").forward(request, response);
+		
+		
+		// 포워딩
+		request.getRequestDispatcher("views/adoptBoard/adoptDetailView.jsp").forward(request, response);
 	}
 
 	/**

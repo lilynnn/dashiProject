@@ -77,7 +77,7 @@
                 
                 <div class="aMenu" id="apply">신청내역관리</div>
                 <ul>
-                    <li id="adoptApply"><a href="<%= request.getContextPath()%>/adadoptlist.bo">입양신청</a></li>
+                    <li id="adoptApply"><a href="<%= request.getContextPath()%>/adapplylist.ad">입양신청</a></li>
                     <li><a href="" id="sel-apply">입소신청</a></li>
                 </ul>
                 

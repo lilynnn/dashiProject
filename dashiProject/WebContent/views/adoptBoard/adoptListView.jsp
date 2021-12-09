@@ -28,19 +28,25 @@
         margin-top: 40px; 
         width: 1100px;
     }
+    #search-btn{
+        border-radius: 5px;
+        border: none;
+        height: 32px;
+    }
+    #search-btn:hover{
+        background: rgb(126, 126, 126);
+    }
 
     /* 입양공고 리스트  */
     .content-area{
         width: 1000px;
         height: auto;
         margin: auto;
-        border: 1px solid black;
         margin-top: 10px;
     }
 
     /* 입양공고 하나 감싸는 div */
     .adoptnotice{
-       border: 1px solid red; 
        margin-top: 10px;
        width: 245px; 
        height: 250px; 
@@ -81,7 +87,7 @@
         
         <form action="">
             <div class="search-area" align="right">
-                <select name="animal-category">
+                <select name="animal-category" style="height: 30px;">
                     <option value="dog">강아지</option>
                     <option value="cat">고양이</option>
                     <option value="etc">기타</option>
@@ -89,7 +95,7 @@
 
                 <input type="text" placeholder="검색어를 입력하세요.">
                 
-                <button>검색하기</button>
+                <button id="search-btn">검색하기</button>
 
             </div>
 
@@ -225,19 +231,35 @@
            </div>
                  
         </form>
-    </div>
+    
+        <br>
+        <!--페이징바 영역-->
+        <div align="center">
+            <button class="btn btn-light">&lt;</button>
 
-	<br><br><br><br><br>
+            <button class="btn btn-light">1</button>
+            <button class="btn btn-light">2</button>
+            <button class="btn btn-light">3</button>
+            <button class="btn btn-light">4</button>
+            <button class="btn btn-light">5</button>
+
+            <button class="btn btn-light">&gt;</button>
+        </div>
+    </div>
+	<br>
+    <br><br><br><br>
 	
     <%@include file="../common/footerbar.jsp" %>
 
     <script>
-        // 나중에 수정하기!! => 
+        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
         $(function(){
-            $(".list-area>table td").click(function(){
+            $(".content-area>div").click(function(){
+                //const num = $(this).children().eq(0).text();
+                // 콘솔에 출력해서 확인해보기
 
-                location.href = '<%= contextPath%>/views/adoptBoard/adoptDetailView.jsp';
-            
+                // location.href = '<%= contextPath%>/addetail?adno='+num;
+                location.href = '<%= contextPath%>/addetail';
             })
         })
     </script>
