@@ -1,4 +1,4 @@
-package com.dashi.notice.controller;
+package com.dashi.faqBoard.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminNoticeList
+ * Servlet implementation class AdminFAQListController
  */
-@WebServlet("/noList.ad")
-public class AdminNoticeListController extends HttpServlet {
+@WebServlet("/faqList.ad")
+public class AdminFAQListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNoticeListController() {
+    public AdminFAQListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,9 +27,7 @@ public class AdminNoticeListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/notice/adminNoticeListView.jsp").forward(request, response);
-	
-	
+		request.getRequestDispatcher("views/faqBoard/adminFaqListView.jsp").forward(request, response);
 	
 	}
 

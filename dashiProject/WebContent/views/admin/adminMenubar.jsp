@@ -91,12 +91,12 @@
                 
                 <div class="aMenu" id="list">게시글관리</div>
                 <ul>
-                    <li><a href="" id="sel-notice">공지사항</a></li>
+                    <li><a href="<%=request.getContextPath()%>/noList.ad" id="sel-notice">공지사항</a></li>
                     <li><a href="" id="sel-adopt">입양공고</a></li>
                     <li><a href="" id="sel-review">입양후기</a></li>
                     <li><a href="" id="sel-dsp">실종/보호</a></li>
                     <li><a href="" id="sel-question">1:1문의</a></li>
-                    <li><a href="" id="sel-faq">FAQ</a></li>
+                    <li><a href="<%=request.getContextPath()%>/faqList.ad" id="sel-faq">FAQ</a></li>
                 </ul>
 
                 <div class="aMenu" id="report">신고내역관리</div>
