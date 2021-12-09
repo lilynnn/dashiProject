@@ -86,9 +86,10 @@
         
         <div class="dsp-nav" align="center" style="margin-top:30px;">
             <div class="dsp"><a href="">실종</a></div>
-            <div class="dsp"><a href="" style="color:rgb(102,184,94);">목격</a></div>
-            <div class="dsp"><a href="" >보호</a></div>
+            <div class="dsp"><a href="" style="color:rgb(102,184,94);">보호</a></div>
             <div class="dsp"><a href="">목격</a></div>
+            
+        
         </div>
 
 
