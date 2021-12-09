@@ -6,10 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-    .outer{
-        margin-top: 50px;
+    .outer{ 
         width: 1200px;
         margin: auto;
+        margin-top: 50px;
     }
     
     /* 썸네일 이미지 영역스타일 */

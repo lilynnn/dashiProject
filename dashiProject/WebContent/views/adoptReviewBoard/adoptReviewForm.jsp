@@ -68,16 +68,16 @@
                 </div>
             </div>
             <div class="input-area" style="height:80px;">
-                <button style="width: 120px; float:left;">
+                <div style="width: 120px; float:left;">
                     첨부파일                
-                </button>
+                </div>
                 <div style="width: 830px; float: left;">
-                    총 5개의 이미지를 최대 10mb까지 첨부할 수 있습니다.
+                    <input type="file" name="upfile">
                 </div>
             </div>
             <div class="input-area" align="center">
-                <button>이전으로</button>
-                <button>등록하기</button>
+                <button type="reset">이전으로</button>
+                <button type="submit">등록하기</button>
             </div>
         </form>
 

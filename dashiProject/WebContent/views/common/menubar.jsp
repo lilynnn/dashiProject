@@ -111,7 +111,7 @@
                     <ul class="menu-tag">
                         <li><a href="<%=contextPath%>/adguide">입양절차안내</a></li>
                         <li><a href="<%=contextPath %>/adlist">입양신청</a></li>
-                        <li><a href="">입양후기</a></li>
+                        <li><a href="<%=contextPath%>/reviewlist.bo">입양후기</a></li>
                     </ul>
             </div>
 
