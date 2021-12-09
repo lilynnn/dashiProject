@@ -13,7 +13,7 @@
         margin: auto;
         margin-top: 50px;
         width: 1200px;
-        height: 1300px;
+        height: auto;
     }
     .image-area{
         width: 1100px;
@@ -57,6 +57,7 @@
         font-weight: bold;
         border-radius: 3px;
     }
+
     .dspList-area{
         width: 1150px;
         margin: auto;
@@ -71,26 +72,6 @@
         margin-left: 25px;
         margin-bottom: 25px;
     }
-
-    .animal-image{
-        border: 1px solid rebeccapurple;
-        width: 90%;
-        height: 60%;
-        margin: auto;
-    }
-    .dpsInfo{
-        width: 90%;
-        height: 40%;
-        margin: auto;
-    }
-    .title{
-        margin-top: 10px;
-        margin-bottom: 20px;
-    }
-    
-
-
-
 
 
 </style>
@@ -128,78 +109,19 @@
         <div class="write"><button class="writeBt">글쓰기</button></div>
 
         <div class="dspList-area">
-            
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[실종] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
 
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[실종] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
 
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[목격] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
+            <!--for문 돌려서 썸네일 여러개 만들거임-->
 
-            </div>
             <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[목격] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
-
+                <img src="" width="250" height="260">
+                <p>
+                    [보호] 귀요미를 찾습니다<br><br>
+                    경기도 용인시 <br>
+                    내용은 대충 이러쿵 저러쿵
+                </p>
             </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
 
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[실종] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
-
-            </div>
-            <div class="list">
-                <div class="animal-image">동물사진</div>
-                <div class="dpsInfo">
-                    <div class=title>[보호] 귀요미를 찾습니다.</div>
-                    <div class="location">경기도 용인시</div>
-                    <div class="content">이러쿵쿵이러ㅇㄴㄹㄴㅇㄹㄴㄹㄴㅇㄹㄴㄴㅇㄹ쿵저러쿵이러쿵저러쿵</div>
-                </div>
-
-            </div>
         </div>
         <div class="paging-area" align="center" style="margin-top: 30px;">
 

@@ -125,7 +125,7 @@
                         </tr>
                         <tr>
                             <th>가상계좌번호</th>
-                            <td><input type="number"id="accountNum"></td>
+                            <td><input type="number"id="accountNum" required></td>
                         </tr>
                         <tr>
                             <th>입금기한</th>

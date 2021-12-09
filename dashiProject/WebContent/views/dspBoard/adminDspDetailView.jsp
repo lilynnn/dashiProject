@@ -79,9 +79,7 @@
         border:none;
         margin-left:46%;
     }
-    div{
-        border: 1px solid;
-    }
+
 
 
 </style>
