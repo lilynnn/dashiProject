@@ -17,9 +17,9 @@
         width: 850px;
         margin: auto;
     }
-    .content-area{width: 850px; margin: auto;}
-    .content-area button{border: none; background: white;}
-    .content-area button:hover{cursor: pointer;}
+    .report-area{width: 850px; margin: auto;}
+    .report-area button{border: none; background: white;}
+    .report-area button:hover{cursor: pointer;}
     
     .report-area{border: 1px solid black;}
 
@@ -27,7 +27,7 @@
     .modal{
         /* margin으로 modal위치 조정 */
         margin: 100px 400px; 
-        width: 600px; 
+        width: 500px; 
         height: 450px; 
         background: white; 
         padding: 5px;
@@ -51,7 +51,7 @@
     <!-- 지희 작업 중 -->
     <!-- 게시글 신고하기 -->
     <div class="outer">
-        <div class="content-area" align="right">
+        <div class="report-area" align="right">
             
             <button onclick="" data-toggle="modal" data-target="#reportModal">신고하기</button>
 
@@ -66,7 +66,7 @@
                 <b>신고하기</b>
             </div>
 
-            <div id="report-content">
+            <div id="report-content" align="center">
 
                 <!-- 신고게시글 정보 담아 전달하는 table -->
                 <!-- 신고한 사용자 아이디, 신고 당한 게시글 번호, 제목, 작성자 담아서 전달 -->

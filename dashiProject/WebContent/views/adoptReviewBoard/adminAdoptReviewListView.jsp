@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
     .outer{
         width: 1200px;
         height: 800px;

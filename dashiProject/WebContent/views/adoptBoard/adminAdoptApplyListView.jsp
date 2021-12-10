@@ -6,7 +6,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-     .outer{
+    /* 관리자메뉴바 스타일 */
+    #adoptApply a{
+        font-weight: 700;
+        /*background: rgb(32,68,28);*/
+    }
+
+    /* 전체 감싸는 div */
+     .outer{    
         width: 1200px;
         height: 800px;
         margin: auto;
