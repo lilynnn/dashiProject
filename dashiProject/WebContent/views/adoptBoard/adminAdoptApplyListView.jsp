@@ -189,17 +189,21 @@
                 </table>
 
                 <!-- 공지사항 등록하기 -->
-                <button class="btn btn-success" style="float: right;">등록하기</button>
+                <button class="btn btn-success" style="float: right; margin-right: 20px;">등록하기</button>
                 
                 <br>
 
                 <!-- 페이징버튼 영역 -->
                 <div align="center">
+                    <button class="btn btn-light">&lt;</button>
+
                     <button class="btn btn-light">1</button>
                     <button class="btn btn-light">2</button>
                     <button class="btn btn-light">3</button>
                     <button class="btn btn-light">4</button>
                     <button class="btn btn-light">5</button>
+                    
+                    <button class="btn btn-light">&gt;</button>
                 </div>
 
                 <br><br>
