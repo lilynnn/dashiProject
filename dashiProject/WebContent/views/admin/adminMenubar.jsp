@@ -85,7 +85,7 @@
                 
                 <div class="aMenu" id="apply">신청내역관리</div>
                 <ul>
-                    <li id="adoptApply"><a href="<%= request.getContextPath()%>/adapplylist.ad">입양신청</a></li>
+                	<li id="adoptApply"><a href="<%= request.getContextPath()%>/adapplylist.ad">입양신청</a></li>
                     <li><a href="" id="sel-apply">입소신청</a></li>
                 </ul>
                 
@@ -101,7 +101,7 @@
 
                 <div class="aMenu" id="report">신고내역관리</div>
                 <ul>
-                    <li><a href="<%=contextPath%>/reportList.ad" id="sel-report">전체신고내역</a></li>
+                    <li><a href="<%=request.getContextPath()%>/reportList.ad" id="sel-report">전체신고내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="payment">결제내역관리</div>

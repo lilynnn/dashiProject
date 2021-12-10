@@ -10,7 +10,6 @@
 	/* 전체 감싸는 div */
     .outer{
         width: 1200px;
-        height: 800px;
         margin: auto;
         margin-top: 30px;
     }
@@ -316,9 +315,6 @@
                         <td>&nbsp;</td>
                     </tr>
                 </table>
-
-
-
                     
             </div>
 
@@ -329,16 +325,15 @@
                     <tr>
                         <th>첨부파일</th>
                         <td>&nbsp;</td>
+                        <!-- 첨부파일은 다운로드 가능하게 -->
                         <td>입양동의서약서.pdf</td>
                     </tr>
                 </table>
             
-            
-            
-            
             </div>
-
+            <br><br><br>
         </div>    
+    <%@ include file="../common/footerbar.jsp" %>
     </div>
 
     <script>
@@ -378,8 +373,6 @@
             });
         })
     </script>
-    
-   <%@ include file="../common/footerbar.jsp" %>
 
 </body>
 </html>

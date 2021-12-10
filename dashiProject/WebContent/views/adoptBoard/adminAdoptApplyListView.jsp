@@ -16,6 +16,11 @@
         float: left;
         box-sizing: border-box;
     }
+
+    /* 관리자메뉴바 (입양신청) 효과 */
+
+
+    /* 입양신청서 전체조회 title */
     .title-area{
         font-size: 24px; 
         font-weight: 700;
@@ -23,11 +28,17 @@
         width: 950px;
     }
     
+    /* 타이틀, 검색버튼, table, paging bar 감싸는 div */
     .content-area{
          width: 950px;
          float: left;
          margin-left: 20px;
     }
+    .search-area{
+        margin: 20px 0px; 
+        float: right;
+    }
+
     .table{
         text-align: center; 
         margin-top: 20px;
@@ -69,7 +80,7 @@
                 <hr style="width: 950px;">
 
                 <!-- 검색버튼 -->
-                <div class="search-area" style="margin: 20px 0px; float: right;">
+                <div class="search-area">
                     <select name="search-category" style="height: 30px;">
                         <option value="">카테고리</option>
                         <option value="">동물품종</option>
@@ -82,7 +93,10 @@
                     <button id="search-btn">검색하기</button>
                 </div>
 
-                <table align="center" class="table" style="width: 950px;">
+                <!-- 처리상태에 따라 뱃지 바꿔서보여지게 -->
+                <!-- else if사용 -->
+                <!-- 신청내역 보여질 table -->
+                <table id="list-area" align="center" class="table" style="width: 950px;">
                     
                     <thead class="thead-light">
                         <tr>
@@ -188,8 +202,6 @@
                     </tbody>  
                 </table>
 
-                <!-- 공지사항 등록하기 -->
-                <button class="btn btn-success" style="float: right; margin-right: 20px;">등록하기</button>
                 
                 <br>
 
@@ -212,6 +224,12 @@
             </div>
         </form>
     </div>
-
+    <script>
+        $(function(){
+            $("#list-area>tbody>tr").click(function(){
+                location.href="<%=contextPath%>/adapplydetail.ad";
+            })
+        })
+    </script>
 </body>
 </html>

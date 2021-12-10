@@ -12,6 +12,7 @@
         margin-top: 50px;
         width: 1200px;
         margin: auto;
+        height: auto;
     }
 
     .image-area{
