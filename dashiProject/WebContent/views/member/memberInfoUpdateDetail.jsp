@@ -27,7 +27,7 @@
     /*회원정보수정폼*/
     #memberInfo{
         width: 1040px;
-        margin-top: 40px;
+        margin-top: 70px;
         padding: 20px;
         border: 1px solid black;
     }

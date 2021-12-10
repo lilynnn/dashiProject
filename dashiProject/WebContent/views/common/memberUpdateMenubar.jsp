@@ -40,6 +40,10 @@
         display: block;
         line-height: 30px;
     }
+    a:hover{
+    	text-decoration: none;
+        color: black;
+    }
     #mem-navi>li>ul{
         padding: 0;
         margin: 0;
