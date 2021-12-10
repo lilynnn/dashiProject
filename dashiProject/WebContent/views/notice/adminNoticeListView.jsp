@@ -25,7 +25,12 @@
     }
     #adminNoticeList div{float: left;}
     /*검색창*/
-    #search{width: 200px;}
+    #search{width: 250px;}
+    #search>button{
+    	border:none;
+    	height:30px;
+    	border-radius:3px;
+    }
     #btn>button{
         border-radius: 5px;
         border: white;
@@ -88,14 +93,16 @@
                 </div>
                 <div id="search">
                     <input type="text" placeholder="제목 키워드 검색">
+                    <button type="submit">검색</button>
                 </div>
-                <div style="width: 650px;" align="right">
+                
+                <div style="width: 600px;" align="right">
                     <button type="button" class="btn btn-sm" style="background: tomato;">
-                        공지
+                        	공지
                     </button>
                     
-                    <a href="" class="btn btn-sm" style="background: yellow;">
-                        글작성
+                    <a href="<%=contextPath%>/noEnrollForm.ad" class="btn btn-sm" style="background: yellow;">
+                        	글쓰기
                     </a>
                 </div>
 

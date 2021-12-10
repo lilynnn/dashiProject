@@ -24,11 +24,11 @@
 	/*신고내역*/
 	.re-content,#aReportList-find{
 		width: 850px;
-		margin-left: 30px;
+		margin-left: 15px;
 	}
 	#aReportList{
 		width: 850px;
-		margin-left: 30px;
+		margin-left: 15px;
 	}
 	#boardName{
 		font-size: 24px;
@@ -37,7 +37,7 @@
 	#re-search{margin-top: 25px;}
 	#re-search *{height: 35px;}
 	.list-name{
-		background: #daf5e6;
+		background: #fbffed;
 		border-bottom: 1px solid gray;
 	}
 	.list-find{border-bottom: 1px solid gray;}
@@ -54,6 +54,8 @@
 		background: rgb(102,184,94);
 		font-size: 15px;
 		font-weight: 900;
+		border:1px solid #59704c;
+		border-radius:3px;
 	}
 	#re-list *{height: 30px;}
 	#list-btn>a{
@@ -63,11 +65,11 @@
 	#re-list-name{
 		border-top: 1px solid gray;
 		border-bottom: 1px solid gray;
-		background: #daf5e6;
+		background: #fbffed;
 	}
 	.paging-area{
 		margin-top: 30px;
-		margin-left: 230px;	
+		margin-left:20px;
 	}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -112,7 +114,7 @@
 					<tr>
 						<td align="center" class="list-name">검색 기간</td>
 						<td class="list-find">
-							<input type="date">-<input type="date">
+							<input type="date"><p style="margin:0">-</p><input type="date">
 						</td>
 					</tr>
 					<tr>
@@ -174,18 +176,12 @@
 	
 			<div class="paging-area" align="center">
 
-				아직 페이징바는 미완성 상태!
 				<button>&lt;</button>
 				<button>1</button>
 				<button>2</button>
 				<button>3</button>
 				<button>4</button>
 				<button>5</button>
-				<button>6</button>
-				<button>7</button>
-				<button>8</button>
-				<button>9</button>
-				<button>10</button>
 				<button>&gt;</button>
 	
 			</div>

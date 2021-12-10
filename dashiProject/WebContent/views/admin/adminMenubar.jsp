@@ -101,7 +101,7 @@
 
                 <div class="aMenu" id="report">신고내역관리</div>
                 <ul>
-                    <li><a href="" id="sel-report">전체신고내역</a></li>
+                    <li><a href="<%=contextPath%>/reportList.ad" id="sel-report">전체신고내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="payment">결제내역관리</div>

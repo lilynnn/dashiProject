@@ -95,8 +95,8 @@
                     <button type="button">조회</button>
                 </div>
                 <div align="right">
-                    <a href="" class="btn btn-sm btn-success">
-                        등록하기
+                    <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
+                        	등록하기
                     </a>
                 </div>
             </div>
