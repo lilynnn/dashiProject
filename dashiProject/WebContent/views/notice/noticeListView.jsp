@@ -10,7 +10,7 @@
         width: 1100px;
         margin: auto;
         margin-top: 50px;
-        height:800px
+        height:1500px;
     }
     .outer>div{
         float: left; 
@@ -19,9 +19,8 @@
     /*대표이미지부분*/
     #image{
         width: 100%;
-        height: 300px;
+        height: 550px;
         margin-bottom: 20px;
-        border: 1px solid;
     }
     /*공지사항~확인해보세요div*/
     #name, #serve, #meno{margin-top: 10px; height: 50px;}
@@ -48,6 +47,10 @@
         width: 100%;
         margin-top: 30px;
     }
+    .paging-area>button{
+    	border-radius:3px;
+    	border:none;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -70,7 +73,7 @@
 
         <!--image부분-->
         <div id="image">
-            이미지 넣을 칸
+            <img alt="낮잠자는 고양이" src="<%=contextPath%>/resources/images/noticeMainPhoto.jpg" width="100%" height="100%">
         </div>
 
         <!--게시판 안내-->
@@ -125,18 +128,12 @@
 
         <div class="paging-area" align="center">
 
-			아직 페이징바는 미완성 상태!
             <button>&lt;</button>
             <button>1</button>
             <button>2</button>
             <button>3</button>
             <button>4</button>
             <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
             <button>&gt;</button>
 
         </div>
