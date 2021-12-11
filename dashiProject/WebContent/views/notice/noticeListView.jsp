@@ -9,7 +9,6 @@
     .outer{
         width: 1100px;
         margin: auto;
-        margin-top: 50px;
         height:1500px;
     }
     .outer>div{
@@ -67,6 +66,8 @@
 <body>
 	
     <%@ include file="../common/menubar.jsp" %>
+    
+    <%@ include file="../common/rightQuickMenu.jsp" %>
 
     <!--전체 div-->
 	<div class="outer">
