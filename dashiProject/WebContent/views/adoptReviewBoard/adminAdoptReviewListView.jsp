@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <style>
     .outer{
-        width: 1200px;
+        width: 1100px;
         height: 800px;
         margin: auto;
         margin-top: 30px;
@@ -30,16 +30,6 @@
     .tbody>tr{
         border-bottom: solid 1px gray;
     }
-    .btn{
-        border: none;
-        background: rgb(102,184,94);
-        color: rgb(80, 79, 79);
-        font-size: 14px;
-        font-weight: bold;
-        height: 33px;
-        width: 100px;
-        border-radius: 9px;
-    }
     .page{
         border: none;
         background: lightgray;
@@ -49,6 +39,9 @@
         height: 30px;
         width: 30px;
         border-radius: 9px;
+    }
+    .table{
+        font-size: 13px;
     }
     .table>tbody tr:hover{
         background: rgb(233, 231, 231);
@@ -82,7 +75,7 @@
                 <br><br><br>
                 
                 <!-- 검색버튼 -->
-                <div style="margin-left: 550px; width:400px;">
+                <div style="margin-left: 450px; width:500px;">
                     <select name="animal">
                         <option value="dog">강아지</option>
                         <option value="cat">고양이</option>
@@ -91,10 +84,10 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
-                    <button  style="border: none; width: 70px; height: 30px; border-radius: 8px;">검색하기</button>
+                    <button>검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                <table align="center" class="table" style="width: 800px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="25"></th>
@@ -103,7 +96,7 @@
                             <th width="100">닉네임</th>
                             <th width="100">분류</th>
                             <th width="300">제목</th>
-                            <th width="50">조회수</th>
+                            <th width="100">조회수</th>
                             <th width="110">등록일</th>
                         </tr>
                     </thead>
@@ -179,7 +172,7 @@
                 </div>
                 <!--삭제하기 버튼-->
                 <div align="right">
-                    <button class="btn">삭제</button>
+                    <button>삭제</button>
                 </div>
             </form>
 
