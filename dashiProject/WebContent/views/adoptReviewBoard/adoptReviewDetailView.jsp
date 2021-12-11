@@ -47,7 +47,10 @@
         width: 100px;
         border-radius: 9px;
     }
-
+    .btn:hover{
+        color:black;
+        cursor:pointer;
+    }
     .text-area{
         width: 600px;
         margin-bottom: 100px;
@@ -80,6 +83,10 @@
         font-size: 13px;
     }
     #reportModal table>label{font-size: 13px;}
+    .table>tbody tr:hover{
+        background: rgb(233, 230, 230);
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
@@ -90,7 +97,6 @@
         신고하기 버튼이 form영역 안에 있을때는 새로운 페이지로 넘어가더라구요ㅜㅜ
     -->
     <div class="outer">
-            <form action="">
 	        <div id="fix-image" align="center">
 	        <!-- 웃고있는 강쥐 사진 들어갈 영역!!! -->
 	            <div style="width:650px">        
@@ -228,13 +234,11 @@
                                     })
                                 })
                             </script>
-
                         </div>
-                    </form>
                 </div>
         
                 <!-- 이전글/다음글 넘기는 영역 -->
-                <table class="table"style="width: 1100px; border-collapse: collapse;">
+                <table class="table" style="width: 1100px; border-collapse: collapse;">
                         
                     <!-- 한 줄 영역으로 클릭 효과 주기 -->
                     <tbody>

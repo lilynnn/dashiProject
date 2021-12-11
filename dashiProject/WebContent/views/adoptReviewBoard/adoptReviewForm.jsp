@@ -28,6 +28,16 @@
         padding: 20px;
         margin: auto;
     }
+    .btn2{
+        border: none;
+        background: rgb(221, 221, 221);
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 33px;
+        width: 100px;
+        border-radius: 9px;
+    }
 
 </style>
 </head>
@@ -76,8 +86,8 @@
                 </div>
             </div>
             <div class="input-area" align="center">
-                <button type="reset">이전으로</button>
-                <button type="submit">등록하기</button>
+                <button class="btn2" type="reset">이전으로</button>
+                <button class="btn2" type="submit" style="background: rgb(102,184,94);">등록하기</button>
             </div>
         </form>
 

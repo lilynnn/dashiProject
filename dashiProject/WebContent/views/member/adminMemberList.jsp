@@ -51,6 +51,14 @@
         width: 30px;
         border-radius: 9px;
     }
+    .page:hover{
+        background: gray;
+        cursor: pointer;
+    }
+    .btn:hover{
+        color:black;
+        cursor:pointer;
+    }
 </style>
 </head>
 <body>
@@ -88,7 +96,7 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
-                    <button style="border: none; width: 70px; height: 30px; border-radius: 8px;">검색하기</button>
+                    <button class="btn" style="width: 70px; background: rgb(143,153,142);">검색</button>
                 </div>
                 
                 <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">

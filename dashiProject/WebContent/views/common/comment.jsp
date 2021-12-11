@@ -72,7 +72,10 @@
         margin-bottom: 40px;
     }
 
-    button:hover{color: black;}
+    button:hover{
+        color: black;
+        cursor:pointer;    
+    }
 </style>
 </head>
 <body>

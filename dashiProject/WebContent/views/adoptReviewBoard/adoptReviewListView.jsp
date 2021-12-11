@@ -47,6 +47,10 @@
         border-radius: 9px;
         margin-right: 30px;
     }
+    .list-area td:hover{
+        background: rgb(233, 230, 230);
+        cursor: pointer;
+    }
 
 </style>
 </head>
@@ -66,9 +70,9 @@
 
         <!--입양후기 리스트 영역-->
         <div align="center">
-            <table style="width: 1000px; height: 1300px; margin-top: 50px;">
+            <table class="list-area" style="width: 1000px; height: 1300px; margin-top: 50px;">
                 <tr style="height:250px">
-                    <td align="center">
+                    <td align="center" >
                         <!--썸네일 이미지 (사용자가 올리는 첫번째 사진)-->
                         <div class="rv-image"></div>
                         <!--입양후기 제목-->

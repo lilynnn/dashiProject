@@ -106,7 +106,12 @@
         background: lightgray;
         color: rgb(54, 53, 53);
     }
-
+   #toparea>div:hover{
+        cursor: pointer;
+    }
+    #bottomarea>div:hover{
+        cursor: pointer;
+    }
 </style>
 
 </head>
@@ -115,11 +120,12 @@
 <%@ include file="../common/menubar.jsp" %>
 
 <div class="outer">
-    <div class="wrap">
         <!--마이페이지(타이틀)-->
-        <div id="title" style="width: 20%; font-size: 26px; font-weight: 900;">
+        <div id="title" style="width: 20%; font-size: 26px; font-weight: 900; margin-left: 200px;">
             마이페이지
         </div>
+        <br>
+        <div class="wrap">
         <hr>
         <!--상단부-->
         <div id="toparea">

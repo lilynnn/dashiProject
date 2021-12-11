@@ -50,6 +50,11 @@
         width: 30px;
         border-radius: 9px;
     }
+    .table>tbody tr:hover{
+        background: rgb(233, 231, 231);
+        cursor: pointer;
+    }
+
 </style>
 </head>
 <body>
