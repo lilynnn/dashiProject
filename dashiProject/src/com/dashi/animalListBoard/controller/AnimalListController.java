@@ -1,4 +1,4 @@
-package com.dashi.adoptBoard.controller;
+package com.dashi.animalListBoard.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdoptProcedureNoticeController
+ * Servlet implementation class AnimalListController
  */
-@WebServlet("/adguide.no")
-public class AdoptGuideController extends HttpServlet {
+@WebServlet("/anlist.ad")
+public class AnimalListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptGuideController() {
+    public AnimalListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,8 @@ public class AdoptGuideController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/adoptBoard/adoptGuideView.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("views/animalListBoard/animalListView.jsp").forward(request, response);
 	}
 
 	/**

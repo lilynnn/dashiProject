@@ -133,7 +133,7 @@
                     <button class="btn btn-warning">공고등록하기</button>
                     <!--나머지는 기본으로 보여지게-->
                     &nbsp;
-                    <button class="btn btn-secondary">목록보기</button>
+                    <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
                     &nbsp;
 					<button class="btn btn-success">수정하기</button>
 					

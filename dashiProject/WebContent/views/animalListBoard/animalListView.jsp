@@ -188,5 +188,18 @@
 
     </div>
 
+    <script>
+        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
+        $(function(){
+            $(".table>tbody>tr").click(function(){
+                //const num = $(this).children().eq(0).text();
+                // 콘솔에 출력해서 확인해보기
+
+                // location.href = '<%= contextPath%>/addetail?adno='+num;
+                location.href = '<%= contextPath%>/andetail.ad';
+            })
+        })
+    </script>
+	
 </body>
 </html>
