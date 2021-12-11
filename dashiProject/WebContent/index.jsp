@@ -95,7 +95,7 @@
                     <img src="resources/images/testimg2.jpg" alt="" style="width: 900px;">
                 </div>
                 <div class="carousel-item">
-                    <img src="resources/images/testimg.jpg" alt="" style="width: 900px;">
+                    <img src="resources/images/testimg3.jpg" alt="" style="width: 900px;">
                 </div>
             </div>
 

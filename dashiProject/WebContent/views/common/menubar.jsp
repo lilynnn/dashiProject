@@ -145,7 +145,7 @@
 	
     <!-- 메인로고 영역 -->
     <div class="logo-area" align="center">
-        <a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/images/logo.PNG"></a>
+        <a href="<%= contextPath %>"><img src="<%= contextPath %>/resources/images/mainLogo.JPG"></a>
     </div>
     
     <!-- 로그인 영역 -->

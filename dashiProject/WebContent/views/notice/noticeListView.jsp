@@ -128,13 +128,13 @@
 
         <div class="paging-area" align="center">
 
-            <button>&lt;</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>&gt;</button>
+            <button class="btn btn-light">&lt;</button>
+            <button class="btn btn-light">1</button>
+            <button class="btn btn-light">2</button>
+            <button class="btn btn-light">3</button>
+            <button class="btn btn-light">4</button>
+            <button class="btn btn-light">5</button>
+            <button class="btn btn-light">&gt;</button>
 
         </div>
 
