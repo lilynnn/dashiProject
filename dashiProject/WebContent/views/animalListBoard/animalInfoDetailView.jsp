@@ -39,6 +39,7 @@
 
     }
     /* 동물정보 테이블 스타일 */
+    .content-area table thead{font-size: 15px;}
     #animalInfo{font-size: 13px; border-collapse: separate; line-height: 200%;}
     #animalInfo th{font-size: 13px; text-align: right; padding-right: 15px;}
     #animalInfo input,textarea{margin: 1px 0px; width: 100%; background: rgb(228, 228, 228); border: none;}
@@ -80,17 +81,17 @@
                            <th width="200">입소번호</th> 
                            <th width="200">입소일</th>
                            <th width="200">입양여부</th>
+                           <th width="200">입양날짜</th>
                         </tr>
                         <tr>
-                            <td>dfadf</td>
+                            <td>EN-001</td>
                             <td>2021-11-01</td>
-                            <td>
-                                <input type="text" value="Y/N" style="text-align: center; border: 1px solid lightgray">
-                            </td>
+                            <td>Y/N</td>
+                            <td> -- / 2021-12-11</td>
                         </tr>
                     </thead>
                 </table>
-                <br>
+                <br><br><br>
                 <!-- 동물 정보 보여질 테이블 -->
                 <table id="animalInfo" style="width: 700px;">
                     <tr>
@@ -128,10 +129,16 @@
 
                 <div style=" text-align: center;">
 					<br><br>
+                    <!--if 입양상태가 N일때 보여질 버튼-->
+                    <button class="btn btn-warning">공고등록하기</button>
+                    <!--나머지는 기본으로 보여지게-->
+                    &nbsp;
+                    <button class="btn btn-secondary">목록보기</button>
+                    &nbsp;
 					<button class="btn btn-success">수정하기</button>
-					&nbsp;
-					<button class="btn btn-secondary">목록보기</button>
+					
 				</div>
+
                 <br><br><br><br>
             </div>
 

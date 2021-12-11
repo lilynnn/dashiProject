@@ -91,11 +91,7 @@
 </head>
 <body>
 	<%@ include file="../common/menubar.jsp" %>
-    <!-- 
-        은서님 혹시 리뷰영역에서 따로 전달하는 거 없이 조회하는 값만 보여지는거면 
-        div.outer바로 아래 전체 감싸는 form은 삭제해도 될까요??
-        신고하기 버튼이 form영역 안에 있을때는 새로운 페이지로 넘어가더라구요ㅜㅜ
-    -->
+
     <div class="outer">
 	        <div id="fix-image" align="center">
 	        <!-- 웃고있는 강쥐 사진 들어갈 영역!!! -->
@@ -163,7 +159,7 @@
                     
                     <form action="">
                         <button type="button" class="close" data-dismiss="modal">&times;</button><br>
-                        <div id="report-title">
+                        <div id="report-title" align="left">
                             <b>신고하기</b>
                         </div>
 
@@ -216,7 +212,7 @@
                                 </tr>
                             </table>
                             <div align="center">
-                                <button class="btn btn-secondary">신고하기</button>
+                                <button class="btn btn-secondary" style="line-height: 100%;">신고하기</button>
                             </div>
 
 
@@ -235,6 +231,7 @@
                                 })
                             </script>
                         </div>
+                    </form>
                 </div>
         
                 <!-- 이전글/다음글 넘기는 영역 -->
@@ -265,7 +262,7 @@
             </div>
  
         
-        </form>
+
     </div>
 
 

@@ -172,11 +172,15 @@
 
             <!-- 페이징버튼 영역 -->
             <div align="center">
+                <button class="btn btn-light">&lt;</button>
+
                 <button class="btn btn-light">1</button>
                 <button class="btn btn-light">2</button>
                 <button class="btn btn-light">3</button>
                 <button class="btn btn-light">4</button>
                 <button class="btn btn-light">5</button>
+
+                <button class="btn btn-light">&gt;</button>
             </div>
 
             <br><br>
