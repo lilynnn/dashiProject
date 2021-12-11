@@ -130,7 +130,7 @@
                 <div style=" text-align: center;">
 					<br><br>
                     <!--if 입양상태가 N일때 보여질 버튼-->
-                    <button class="btn btn-warning">공고등록하기</button>
+                    <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
                     <!--나머지는 기본으로 보여지게-->
                     &nbsp;
                     <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>

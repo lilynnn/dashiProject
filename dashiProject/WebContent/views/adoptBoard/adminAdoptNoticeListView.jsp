@@ -205,8 +205,8 @@
             </table>
 
             <!-- 공지사항 등록하기 -->
-            <button class="btn btn-success" style="float: right;">등록하기</button>
-            
+            <a class="btn btn-success" href="<%= contextPath %>/adenroll.ad" style="float: right;">등록하기</a>
+             
             <br>
 
              <!-- 페이징버튼 영역 -->
