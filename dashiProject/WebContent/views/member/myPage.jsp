@@ -73,15 +73,11 @@
         height: 60%;
         margin:auto;  
     }
-
-    /*각 탭 아이콘 스타일 (아이콘 이미지 넣은 뒤 border 지우기)*/
     #updateimage{
-        border: 1px solid black;
-        width:70px;
-        height: 70px;;
+        width:65px;
+        height: 65px;
     }
     .bottomimage{
-        border: 1px solid black;
         width: 60px;
         height: 60px;;  
     }
@@ -135,8 +131,8 @@
                     <!--회원정보 수정 영역(클릭 시 이동)-->
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
-                        <div id="updateimage">  
-                            <img src="resources/images/pencil.png">
+                        <div>  
+                            <img id="updateimage" src="resources/images/pencil.png">
                         </div>
                         <p align="center">회원정보수정</p>
                     </div>
@@ -169,7 +165,7 @@
                 <!--입양신청현황 영역(클릭 시 이동)-->
                 <div style="width: 98%; height: 15%; background: lightgray; margin-top: 7px;    display: flex;
                 align-items: center;">
-                <h4>입양신청현황</h4>
+                <h5>입양신청현황</h5>
                 </div>
                 
                 <div style="width: 98%; height: 80%; margin-top: 25px;">
@@ -228,8 +224,8 @@
                     <!--찜목록 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/heart.png">
+                        <div>
+                            <img class="bottomimage" src="resources/images/heart.png">
                         </div>
                         <p align="center">찜 목록확인</p>
                     </div>
@@ -242,8 +238,8 @@
                     <!--글쓴내역 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 글쓴내역 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/post.png">
+                        <div>
+                            <img class="bottomimage" src="resources/images/post.png">
                         </div>
                         <p align="center">글쓴내역확인</p>
                     </div>
@@ -256,8 +252,8 @@
                     <!--1:1문의 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/answer.png">
+                        <div>
+                            <img class="bottomimage" src="resources/images/answer.png">
                         </div>
                         <p align="center">1:1문의내역</p>
                     </div>
