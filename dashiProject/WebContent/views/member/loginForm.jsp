@@ -127,7 +127,9 @@
         color: rgb(78, 77, 77);
     }
 
-
+    div{
+        border: 1px solid red;
+    }
 
 
 
@@ -199,9 +201,9 @@
             </div>
         </ul>
     </div>
- <!--회원가입@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+ <!--회원가입 modal-->
     <!-- The Modal -->
-    <div class="modal fade" id="login_myModal">
+    <div class="modal fade" id="login_myModal" style="width: 600px;">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content" style="width: 80%; margin: auto;" >
 
@@ -244,6 +246,7 @@
                 
             </div>
         </div>
+    </div>
     
 
     <!-- 로그인버튼 눌렀을시 -->

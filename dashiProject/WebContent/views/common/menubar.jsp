@@ -73,6 +73,70 @@
     .menu>ul{display: none; padding: 0px; text-decoration: none;}
     .menu>a:hover+ul{display: block;}
     .menu>ul:hover{display: block;}
+   /*//////////////////////////////////////////////////*/
+   
+   
+    .loginbt{
+       cursor:pointer;
+    }
+    .enrollbt{
+        color: rgb(26, 26, 26);
+    }
+    .enrollbt:hover{color: rgb(26, 26, 26); text-decoration: none;}
+
+    .userId, .userPwd{
+        height: 45px;
+
+    }
+    .modal-content{
+        border-radius: 30px
+        
+    }
+
+    .login-area1 input, .loginBtn, .enrollBtn{
+        width: 350px;
+        height: 50px;
+        border-radius: 4px;
+    }
+    .login-area1 input{
+        border-color: rgba(202, 202, 202, 0.459);
+        margin-bottom: 15px;
+    }
+
+    .find{
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: 60%;
+        color: rgb(78, 77, 77);
+        
+    
+    }
+
+    .loginBtn{
+        background-color: rgb(102,184,94);
+        color: white;
+        font-weight: bold;
+        border: none;
+    }
+
+    .enrollBtn{
+        background-color: white;;
+        color: rgb(102,184,94);
+        font-weight: bold;
+         
+        border-color: rgb(102,184,94);
+        margin-bottom: 30px;
+        margin-top: 50px;
+
+    }
+
+    .find{
+        font-size: 13px;
+        font-weight: bold;
+        margin-left: 60%;
+        color: rgb(78, 77, 77);
+    }
+
 </style>
 </head>
 <body>	
@@ -88,9 +152,9 @@
     <div class="login-area" align="right">
         <table>
             <tr>
-                <td>로그인</td>
+                <td class="loginbt" data-toggle="modal" data-target="#login_myModal">로그인</td>
                 <td style="width: 20px;"><!--공백란--></td>
-                <td>회원가입</td>
+                <td><a class="enrollbt" href="<%= contextPath %>/enroll1.me">회원가입</a></td>
             </tr>
         </table>
     </div>
@@ -143,6 +207,53 @@
             </div>
         </ul>
     </div>
+
+     <!--회원가입 Modal창-->
+    <!-- The Modal -->
+    <div class="modal fade" id="login_myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="width: 80%; height:550px; margin: auto;" >
+
+                
+                <div class="outer" > <!-- 전체를 감싸는 div -->
+                    <!-- Modal Header -->
+                    <div class="modal-header" style="padding-top: 1px;">
+                        <h4 class="modal-title">다시 사랑받개!를 <br>방문해주셔서 감사합니다.</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <br>
+                    <!-- Modal body -->
+                    <div class="login-area1" style="width: 370px; padding-left: 25px;">
+                        <form action="" method="post">
+                            <table>
+                                <tr>
+                                    <td><input type="text" name="userId" placeholder="아이디" required></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="password" name="userPwd" placeholder="비밀번호" required></td>
+                                </tr>
+                            </table>
+
+                            <a class="find" href="">아이디/비밀번호찾기</a>
+                            <br><br>
+
+
+                            <button class="loginBtn" type="submit">로그인</button>
+                            <br>
+
+
+                            <button class="enrollBtn"type="button" onclick="">회원가입</button>
+
+
+                            <p style="font-size: 14px; position: relative; bottom:105px;">다시, 사랑받개가 처음이신가요?</p>
+                        </form>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+  </div>
 
 
 </body>
