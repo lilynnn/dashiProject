@@ -8,22 +8,12 @@
 <style>
     div{box-sizing: border-box;}
 
-    .outer{
+    .comm-outer{
         margin-top: 50px;
-        width: 1200px;
+        width: 1000px;
         margin: auto;
     }
 
-    /*댓글영역 전체 스타일*/
-    .comment-area{
-        width:1000px;
-        margin: auto;
-    }
-
-    .comment-icon>div{
-        float: left;
-        height: 30px;
-    }
     /*댓글쓰기 버튼 스타일*/
     .write-btn{
         border: none;
@@ -47,111 +37,100 @@
     /*폰트*/
     .font{
         color: rgb(94, 94, 92); 
-        font-size: 12px;
-    }
-
-    /*답글|수정|삭제 스타일*/
-    .btn{
-        border: none;
-        background: none;
-        font-weight: 900;
-        float: right;
-    }
-
-    /*댓글 전체 스타일*/
-    .comment{
-        margin-top: 50px;
-        margin-bottom: 30px;
-    }
-
-    /*답글 전체 스타일*/
-    .recomment{
-        background:rgb(236, 244, 247); 
-        border-top: solid 1px rgb(179, 177, 177);
-        border-bottom: solid 1px rgb(179, 177, 177);
-        margin-bottom: 40px;
+        font-size: 14px;
     }
 
     button:hover{
         color: black;
         cursor:pointer;    
     }
+    .comm-btn{
+        background: none;
+        border: none;
+        width: 40px;
+    }
 </style>
 </head>
 <body>
 
-    <div class="outer">
-        <div class="comment-area">
-            <div class="comment-icon">
-                <!-- 댓글 아이콘 이미지 넣기!!!-->
-                <div style="width: 3%;">
-                    <img src="resources/images/comment.png">
-                </div>      
-                <!--댓글 수 카운트-->          
-                <div style="width: 3%;">3</div>
-            </div>
-            <div class="comment">
-                <table style="margin-top: 20px;">
-                    <tr>
-                        <tr class="font">
-                            <!--작성자 닉네임-->
-                            <td width="60px">작성자</td>
-                            <!--작성일-->
-                            <td width="100px">YYYY-MM-DD</td>
-                            <!--작성시간-->
-                            <td width="100px">HH-MM</td>
-                    </tr>
-                </table> 
-                <table>
-                    <tr class="content">
-                        <!--사용자가 입력한 댓글 내용-->
-                        <td colspan="4" width="800" style="font-weight: 900;">댕댕아 이제는 행복해~</td>
-                        <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">수정</button></td>
-                        <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">삭제</button></td>
-                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
-                    </tr>                    
-                </table>            
-            </div>
-            <div class="recomment">
-                <table style="margin-top: 23px;">
-                    <tr class="font">
-                        <td style="text-align: right;" width="80">➜</td>
-                        <!--답글 작성자 닉네임-->
-                        <td width="60px">작성자</td>
-                        <!--답글 작성일-->
-                        <td width="100px">YYYY-MM-DD</td>
-                        <!--답글 작성시간-->
-                        <td width="100px">HH-MM</td>
-                    </tr> 
-                    </table> 
-                    <table style="margin-bottom: 23px;">
-                    <tr>
-                        <td width="80"></td>
-                        <!--사용자가 입력한 답글 내용-->
-                        <td colspan="4" class="content" width="770" style="font-weight: 900;">감사합니다. 행복하게 살게요.</td>
-                        <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">수정</button></td>
-                        <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">삭제</button></td>
-                        <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
-                    </tr>                         
-                    </table>                     
-            </div>
+    <div class="comm-outer">
+        <!--댓글영역-->
+        <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
+            <tr>
+                <td><img src="resources/images/comment.png" style="width:20px; height: 20px;"></td>
+                <!--댓글 수 카운트-->  
+                <td>3</td>
+            </tr>
+            <tr>
+                <td style="height: 20px; width: 70px;"></td>
+            </tr>
+            <tr>
+                <!--작성자 닉네임-->
+                <td colspan="2">작성자</td>
+                <!--댓글 작성일-->
+                <td width="110px;">YYYY-MM-DD</td>
+                <!--댓글 작성시간-->
+                <td width="90px;">HH-MM</td>
+                <td width="610px;"></td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+            <tr>
+                <td colspan="5">댓글내용</td>
+                <!--답글 작성자에게만 노출-->
+                <td><button class="font comm-btn">수정</button></td>
+                <!--답글 작성자에게만 노출-->
+                <td><button class="font comm-btn">삭제</button></td>
+                <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
+                <td><button class="font comm-btn">답글</button></td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+        </table>
+        <!--대댓글영역-->
+        <table width="1025" align="center" class="font" style="background: rgb(236, 244, 247);border-bottom: solid 1px rgb(175, 173, 173);">
+            <tr>
+                <td style="height: 20px; "></td>
+                <td width= "70px;"></td>
+            </tr>
+            <tr>
+                <td width="70px;" style="text-align: center;">➜</td>
+                <td>작성자</td>
+                <td width="110px;">YYYY-MM-DD</td>
+                <td width="90px;">HH-MM</td>
+                <td width="560px;"></td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+            <tr>
+                <td width="70px;"></td>
+                <td colspan="5">댓글내용</td>
+                <td><button class="font comm-btn">수정</button></td>
+                <!--답글 작성자에게만 노출-->
+                <td><button class="font comm-btn">삭제</button></td>
+                <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
+                <td><button class="font comm-btn">답글</button></td>
+            </tr>
+            <tr>
+                <td style="height: 20px;"></td>
+            </tr>
+        </table>
+
+        <br><br><br>
             <!--댓글 입력란-->
             <div align="center">
-                <textarea class="write-area" cols="140" rows="8" placeholder="댓글을 작성해주세요"></textarea>
+                <textarea class="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요"></textarea>
             </div>
             <div align="right">
             <br>
             <!--클릭 시 댓글 작성 실패|성공 alert창-->
             <button class="write-btn">댓글쓰기</button>
             </div>
-        </div>
-    </div>
+            <br><br><br><br><br>
+    </div>  
 
 </body>
 </html>
