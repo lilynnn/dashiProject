@@ -101,10 +101,12 @@
 
                     <input type="text" placeholder="검색어를 입력하세요.">
                     
-                    <button id="searchbtn" style="margin: 5px; padding-left: 10px;padding-right: 10px;">검색</button>
+                    <button type="button" onclick="" id="searchbtn" style="margin: 5px; padding-left: 10px;padding-right: 10px;">검색</button>
                 </div>
                 
-               
+               	<script>
+               	function 
+               	</script>
 
                 <div>
                     <table style="margin-top: 10px; margin-left:10px">
@@ -167,6 +169,7 @@
                         <button class="btn btn-light">2</button>
                         <button class="btn btn-light">3</button>
                         <button class="btn btn-light">4</button>
+                        <button class="btn btn-light">5</button>
                         <button class="btn btn-light">&gt;</button>
                     </div>
 

@@ -52,8 +52,10 @@
 			<!-- 전체 div -->
     		<div class="outer">
 			
+			<!-- 소제목 : 이미지첨부 ? -->
 			<h2 align:left; style="margin-left:50px;">입소소개</h2>
 			<hr style="width:900px">
+			
         	<!-- 이미지1 -->
         	<div class="int-1" style="float:left;">
             <img  class="image1" src="<%=contextPath%>/resources/images/testimg2.jpg">
