@@ -100,7 +100,7 @@
                 </div>
                 
                 <div style="width: 600px;" align="right">
-                    <a href="" class="btn btn-sm" style="background: rgb(102,184,94);">
+                    <a href="<%=contextPath%>/empEnrollForm.ad" class="btn btn-sm" style="background: rgb(102,184,94);">
                         	사원등록
                     </a>
                 </div>
