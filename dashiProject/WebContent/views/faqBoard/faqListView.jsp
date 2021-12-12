@@ -93,6 +93,8 @@
 <body>
 	
     <%@ include file="../common/menubar.jsp" %>
+    
+    <%@ include file="../common/rightQuickMenu.jsp" %>
 
     <!--전체 div-->
 	<div class="outer">

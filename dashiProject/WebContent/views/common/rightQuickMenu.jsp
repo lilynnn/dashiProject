@@ -14,11 +14,12 @@
 		width: 40px;
 		height: 40px;
 		border-radius: 100%;
-		position: relative;
+		position: fixed;
 		cursor: pointer;
 		background: yellowgreen;
-		top: 650px;
-		left: 1500px;
+		right: 0;
+		top: clac(50% -25px);
+		top: 400px;
 		z-index: 4;
 	}
 	input[id="menuicon"] + label span{
@@ -46,45 +47,32 @@
 	input[id="menuicon"]:checked + label span:nth-child(2){
 		bottom:0%;
 		transform: translateY(1%) rotate(-45deg);
-	}
-	input[class="slidemenu"]{
-		display:none;
-	}
-	input[class="slidemenu"] + label{
-		display: block;
-		width: 40px;
-		height: 40px;
-		border-radius: 100%;
-		position: relative;
-		cursor: pointer;
-		background: yellowgreen;
-	}
-	input[class="slidemenu"] + label span{
-		display: block;
-		position: absolute;
-		width: 35px;
-		height: 100%;
-		color: black;
-		transition: all .35s;
-	}
-	input[class="slidemenu"] + label span:nth-child(1){
-		top:20%;
-		transform: translateX(30%);
-	}
-	input[id="home"] + label{
-		top: 400px;
-		left: 1500px;
-		z-index: 1;
-	}
-	input[id="quickanswer"] + label{
-		top: 410px;
-		left: 1500px;
+	}input[id="menuicon"]:checked + label{
 		z-index: 2;
+		right: 100px;
+		top: 400px;
 	}
-	input[id="up"] + label{
-		top: 420px;
-		left: 1500px;
-		z-index: 3;
+	div[class="sidebar"]{
+		width: 100px;
+		height: 100px;
+		background: #f6f6cd;
+		border-radius: 20px;
+		position: fixed;
+		top: 400px;
+		right: -100px;
+		z-index: 1;
+		transition: all 35.;
+	}
+	input[id="menuicon"]:checked + label + div{right: 0;}
+	.sidebar>div{
+		width: 80px;
+		height: 35px;
+		margin: auto;
+		margin-top: 8px;
+		text-align: center;
+	}
+	#top:hover{
+		cursor: pointer;
 	}
 </style>
 </head>
@@ -92,38 +80,27 @@
 
 	
 		<input type="checkbox" id="menuicon">
-		<label for="menuicon">
-			<span></span>
-			<span></span>
+			<label for="menuicon">
+				<span></span>
+				<span></span>
 		</label>
-
-		<input type="checkbox" class="slidemenu" id="home">
-		<label for="slidemenu">
-			<span>홈</span>
-		</label>
-
-		<input type="checkbox" class="slidemenu" id="quickanswer">
-		<label for="slidemenu">
-			<span>1:1</span>
-		</label>
-
-		<input type="checkbox" class="slidemenu" id="up">
-		<label for="slidemenu" id="upicon">
-			<span>▲</span>
-		</label>
-
-
+		
+		<div class="sidebar">
+			<div><a href="<%=request.getContextPath()%>">
+				<img src="<%=request.getContextPath()%>/resources/images/home.png" width="50%" height="100%">
+			</a></div>
+			
+			<div><img id="top" src="<%=request.getContextPath()%>/resources/images/up.png" width="50%" height="100%"></div>
+		</div>	
 
 		<script>
-			$(document).ready(function() {
-
-				$("#upicon").click(function() {
-					$('html, body').animate({scrollTop:0}, '300');
-				});
-			
+			$('#top').click(function(){
+				$('html, body').animate({scrollTop:0}, 400);
+				return false;
 			});
 		</script>
 
+		
 
 
 </body>
