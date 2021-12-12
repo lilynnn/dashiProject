@@ -76,66 +76,66 @@
    /*//////////////////////////////////////////////////*/
    
    
-    .loginbt{
+    .login{
        cursor:pointer;
     }
-    .enrollbt{
+    .enroll{
         color: rgb(26, 26, 26);
     }
-    .enrollbt:hover{color: rgb(26, 26, 26); text-decoration: none;}
+    .enroll:hover{color: rgb(26, 26, 26); text-decoration: none;}
 
-    .userId, .userPwd{
-        height: 45px;
 
-    }
-    .modal-content{
-        border-radius: 30px
-        
-    }
+   .login-area input{
+       width: 350px;
+       height: 45px;
+       border-radius: 4px;
+       margin-left: 20px;
+       
+   }
 
-    .login-area1 input, .loginBtn, .enrollBtn{
-        width: 350px;
-        height: 50px;
-        border-radius: 4px;
-    }
-    .login-area1 input{
-        border-color: rgba(202, 202, 202, 0.459);
-        margin-bottom: 15px;
-    }
+   .modal-body *{
+       font-size: 13px;
+   }
+   .find{
+    margin-left: 235px;
+    color: black;
+    text-decoration: underline;
+   }
 
-    .find{
-        font-size: 13px;
-        font-weight: bold;
-        margin-left: 60%;
-        color: rgb(78, 77, 77);
-        
-    
-    }
+   .loginBtn, .enrollBtn{
+    width: 350px;
+    height: 55px;
+    border-radius: 4px;
+    margin: auto;
+   }
 
-    .loginBtn{
-        background-color: rgb(102,184,94);
-        color: white;
-        font-weight: bold;
-        border: none;
-    }
+   .loginBtn{
+    background-color: rgb(102,184,94);
+    color: white;
+    font-size: 20px;
+    border:none;
+   }
 
-    .enrollBtn{
-        background-color: white;;
-        color: rgb(102,184,94);
-        font-weight: bold;
-         
-        border-color: rgb(102,184,94);
-        margin-bottom: 30px;
-        margin-top: 50px;
+   .enrollBtn{
+    background-color: white;
+    color: rgb(102,184,94);
+    font-size: 20px;
+    border-color: rgb(102,184,94);
+   }
 
-    }
+   .modal-dialog.modal-dialog-centered{
+    width: 420px;
+    margin: auto;
+   }
 
-    .find{
-        font-size: 13px;
-        font-weight: bold;
-        margin-left: 60%;
-        color: rgb(78, 77, 77);
-    }
+   .modal-content{
+       border-radius: 30px;
+
+   }
+
+
+
+
 
 </style>
 </head>
@@ -152,9 +152,9 @@
     <div class="login-area" align="right">
         <table>
             <tr>
-                <td class="loginbt" data-toggle="modal" data-target="#login_myModal">로그인</td>
+                <td class="login" data-toggle="modal" data-target="#login_myModal">로그인</td>
                 <td style="width: 20px;"><!--공백란--></td>
-                <td><a class="enrollbt" href="<%= contextPath %>/enroll1.me">회원가입</a></td>
+                <td><a class="enroll" href="<%= contextPath %>/enroll1.me">회원가입</a></td>
             </tr>
         </table>
     </div>
@@ -193,7 +193,7 @@
 	        <div class="menu">
                 <a href="">실종/보호/목격</a>
                     <ul class="menu-tag">
-                        <li><a href="">신고글 작성하기</a></li>
+                        <li><a href="<%=contextPath%>/list.dsp">신고글 작성하기</a></li>
                     </ul>
             </div>
 
@@ -209,51 +209,37 @@
     </div>
 
      <!--회원가입 Modal창-->
-    <!-- The Modal -->
-    <div class="modal fade" id="login_myModal">
+     <div class="modal fade" id="login_myModal">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="width: 80%; height:550px; margin: auto;" >
-
-                
-                <div class="outer" > <!-- 전체를 감싸는 div -->
-                    <!-- Modal Header -->
-                    <div class="modal-header" style="padding-top: 1px;">
-                        <h4 class="modal-title">다시 사랑받개!를 <br>방문해주셔서 감사합니다.</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <br>
-                    <!-- Modal body -->
-                    <div class="login-area1" style="width: 370px; padding-left: 25px;">
-                        <form action="" method="post">
-                            <table>
-                                <tr>
-                                    <td><input type="text" name="userId" placeholder="아이디" required></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="password" name="userPwd" placeholder="비밀번호" required></td>
-                                </tr>
-                            </table>
-
-                            <a class="find" href="">아이디/비밀번호찾기</a>
-                            <br><br>
-
-
-                            <button class="loginBtn" type="submit">로그인</button>
-                            <br>
-
-
-                            <button class="enrollBtn"type="button" onclick="">회원가입</button>
-
-
-                            <p style="font-size: 14px; position: relative; bottom:105px;">다시, 사랑받개가 처음이신가요?</p>
-                        </form>
-                    </div>
-
-                </div>
-                
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" style="margin-left: 20px; padding-top: 20px;">다시 사랑받개를!를<br>방문해주셔서 감사합니다.</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
+
+            <div class="modal-body">
+                <form action="">
+                    <!-- Modal body -->
+                    <div class="login-area">
+                        <input type="text" class="userId" name="userId" placeholder="아아디" required>
+                        <br><br>
+                        <input type="text" class="userPwd" name="userPwd" placeholder="비밀번호" required>
+                    </div>
+                    <div style="margin-top:20px; margin-bottom:15px;"><a href="" class="find">아아디/비밀번호찾기</a></div>
+                    </div>
+
+                    <button class="loginBtn">로그인</button><br>
+                </form>
+
+                <p style="font-size: 13px; margin-left: 40px;">다시,사랑받개!가 처음이신가요?</p>
+                <button class="enrollBtn">회원가입</button>
+                <hr>
+          </div>
         </div>
-  </div>
+      </div>
+    <!--회원가입 Modal창-->
 
 
 </body>

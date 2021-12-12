@@ -108,6 +108,42 @@
     #bottomarea>div:hover{
         cursor: pointer;
     }
+
+    /*-------------모달창-----------------*/
+
+    #payMent{
+          width: 140px;
+          height: 45px;
+          border: none;
+          background-color: rgb(207, 60, 60);
+          color: white;
+          font-size: 17px;
+          font-weight:bolder;
+          margin-top: 30px;
+          margin-left: 70%;
+          border-radius: 4px;
+      }
+      .pay-area{
+        font-size: 18px; 
+        text-align: center; 
+        background:rgb(212, 212, 212);
+        font-weight: bold;
+        height: 35px;
+        width: 370px;
+        margin: auto;
+        margin-bottom: 20px;
+        
+      }
+      #cardNum{
+        width: 342px;
+        height: 36px; 
+      } 
+      
+      #CVCNum, #cardAbleTerm{
+        width: 150px; 
+        height: 36px; 
+      }
+
 </style>
 
 </head>
@@ -132,7 +168,7 @@
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
                         <div>  
-                            <img id="updateimage" src="resources/images/pencil.png">
+                            <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
                         </div>
                         <p align="center">회원정보수정</p>
                     </div>
@@ -150,7 +186,7 @@
                         <!--(입양신청내역 없을 시)등급별권한안내-->
                         <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
                         <!--(입양승인 시)결제하기버튼--> 
-                        <button style="width:150px; height:30px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;">
+                        <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" class="btn btn-primary" data-toggle="modal" data-target="#payment">
                             책임비 결제하기
                         </button> 
                     </div>
@@ -225,7 +261,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
                         <div>
-                            <img class="bottomimage" src="resources/images/heart.png">
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/heart.png">
                         </div>
                         <p align="center">찜 목록확인</p>
                     </div>
@@ -239,7 +275,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 글쓴내역 아이콘 이미지 들어갈 공간 -->
                         <div>
-                            <img class="bottomimage" src="resources/images/post.png">
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/post.png">
                         </div>
                         <p align="center">글쓴내역확인</p>
                     </div>
@@ -253,7 +289,7 @@
                     <div class="txtarea2"  align="center">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
                         <div>
-                            <img class="bottomimage" src="resources/images/answer.png">
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/answer.png">
                         </div>
                         <p align="center">1:1문의내역</p>
                     </div>
@@ -265,6 +301,85 @@
 </div>
 
 <%@include file="../common/footerbar.jsp" %>
+
+
+<!-- 결제용 모달-->
+
+<!-- The Modal -->
+<div class="modal fade" id="payment">
+    <div class="modal-dialog modal-dialog-centered" style="width: 1000px;">
+      <div class="modal-content" style="border-radius: 2px;">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h3 class="modal-title" style="margin-left: 163px; padding: 10px;"><b>결제 정보</b></h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        
+        <!-- 입력란 --> <!--AJAX사용해서 클릭시 밑에 보이는게 달라지게 설정-->
+        <div class="modal-body">
+
+            <form action=""> <!--만약 Form으로 감싸면 여기서부터 @@@@@@@@@-->
+                <!-- 결제수단 고르기 -->
+
+                <div class="pay-area">
+                    <p style="padding-top: 7px;">결제수단을 선택해주세요</p>
+                </div>  
+
+                    <!-- 결제수단 고르기 -->
+                <div style="font-size: 16px; width: 370px; margin:auto; margin-bottom: 20px;">
+                    <input type="radio" name="payMethod" value="card" checked="checked" >&nbsp;신용카드 
+                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="payMethod" value="bank">&nbsp;무통장입금
+                </div>
+
+
+                    <!-- 신용/직불카드번호 입력란 -->
+                <div style="width: 370px; margin:auto; margin-bottom: 20px;">
+                    <p>신용/직불카드번호</p>
+                    <input type="number" id="cardNum" name="cardNum" placeholder="카드 번호 입력(-제외)" required style="padding-top: 0px;">
+                </div>
+
+
+                    <!-- 카드유효기간 입력란--> 
+                <div style="width: 370px; margin:auto;">
+                    <table>
+                        <tr>
+                            <td>
+                                <p style="height: 9px;">카드 유효기간</p>
+                                <input type="text" id="cardAbleTerm" name="cardAbleTerm" placeholder="mm/yy" required>
+                            </td>
+                            <td>
+                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <!-- CVC번호 입력란--> 
+                            <td>
+                                <p style="height:9px;float: left;" >CVC(카드 뒷면 세자리)</p>
+                                <input type="number" id="CVCNum" name="CVCNum" placeholder="CVC" required>
+                            </td>
+                        </tr>
+                    </table> 
+                </div>
+
+                <p style="font-size: 14px; text-align: center; margin-top: 28px; margin-bottom: 25px;" >이 결제를 진행함으로써 <b style="color: rgb(34, 125, 211);">개인정보 처리방침</b> 및 <b style="color: rgb(34, 125, 211);">이용약관</b>에 동의합니다.</p>
+
+                <hr>
+
+                <h1 style="text-align: right; font-size: 23px; font-weight: bold;">총 50,000원</h1>
+                    
+                <input type="submit" id="payMent" value="결제하기">
+
+            </form><!--여기까지 @@@@@@@@@-->
+
+        </div><!-- 여기까지가 모달 바디 영역-->
+        
+
+      </div>
+    </div>
+  </div>
+
+  
 
 </body>
 </html>

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class dspListController
+ * Servlet implementation class dspWriteController
  */
-@WebServlet("/list.dsp")
-public class dspListController extends HttpServlet {
+@WebServlet("/write.dsp")
+public class dspWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dspListController() {
+    public dspWriteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +26,8 @@ public class dspListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);
 
+		request.getRequestDispatcher("views/dspBoard/missingWirteForm.jsp").forward(request, response);
 	}
 
 	/**

@@ -190,15 +190,6 @@
 				<button>등록</button>
 			</form>
 		</div>
-
-
-
-
-
-
-
-		
-
 	</div>
 	
 	<%@ include file="../common/footerbar.jsp" %>

@@ -31,8 +31,8 @@
         padding: 20px;
         border: 1px solid black;
     }
-    table>tr{height: 100px;}
-    thead>tr>th{
+    .member-up>tr{height: 100px;}
+    .member-up thead>tr>th{
         width: 200px;
         height: 40px;
         padding-left: 30px;
@@ -44,7 +44,7 @@
         padding-right: 30px;
         border-bottom: 1px solid black;
     }
-    tbody>tr>td{
+    .member-up tbody>tr>td{
         padding: 10px;
         padding-right: 30px;
         padding-left: 30px;
@@ -53,7 +53,7 @@
         text-align: right;
         border-right: 1px solid black;
     }
-    td>input{
+    .member-up td>input{
         width: 300px;
     }
     .radio{width: 50px;}
@@ -106,7 +106,7 @@
         <div id="memberInfo">
             <form action="" method="post">
 
-                <table>
+                <table class="member-up">
                     <thead>
                         <tr>
                             <th class="info">회원정보</th>
@@ -205,7 +205,7 @@
                         </tr>
                         <tr>
                             <td colspan="3" align="center">
-                                <button type="button" class="btn btn-primary" style="background: rgb(143,153,142); border: none;">
+                                <button type="button" class="btn btn-primary" style="background: rgb(143,153,142); border: none;" onclick=history.back();>
                                     이전으로
                                 </button>
                                 <button type="submit" class="btn btn-primary" style="background: rgb(102,184,94); border: none;">

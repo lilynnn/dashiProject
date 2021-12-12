@@ -1,4 +1,4 @@
-package com.dashi.admin.controller;
+package com.dashi.report.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

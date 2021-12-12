@@ -1,4 +1,4 @@
-package com.dashi.dspBoard.controller;
+package com.dashi.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class dspListController
+ * Servlet implementation class AdminEnrollFormController
  */
-@WebServlet("/list.dsp")
-public class dspListController extends HttpServlet {
+@WebServlet("/empEnrollForm.ad")
+public class AdminEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dspListController() {
+    public AdminEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +26,10 @@ public class dspListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);
 
+		request.getRequestDispatcher("views/admin/adminEmployeeEnrollForm.jsp").forward(request, response);
+	
+	
 	}
 
 	/**

@@ -17,9 +17,10 @@
     }
     /*대표이미지부분*/
     #image{
-        width: 100%;
-        height: 550px;
+        width: 700px;
+        height: 350px;
         margin-bottom: 20px;
+        margin-top:50px;
     }
     /*공지사항~확인해보세요div*/
     #name, #serve, #meno{margin-top: 10px; height: 50px;}
@@ -66,14 +67,15 @@
 <body>
 	
     <%@ include file="../common/menubar.jsp" %>
-    
-    <%@ include file="../common/rightQuickMenu.jsp" %>
+
+	<%@ include file="../common/rightQuickMenu.jsp" %>
+
 
     <!--전체 div-->
 	<div class="outer">
 
         <!--image부분-->
-        <div id="image">
+        <div id="image" style="margin-left:200px; margin-right:100px">
             <img alt="낮잠자는 고양이" src="<%=contextPath%>/resources/images/noticeMainPhoto.jpg" width="100%" height="100%">
         </div>
 
