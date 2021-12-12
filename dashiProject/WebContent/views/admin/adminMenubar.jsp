@@ -82,7 +82,7 @@
         
                 <div class="aMenu" id="member">회원관리</div>
                 <ul>
-                    <li><a href="" id="sel-mem">전체회원조회</a></li>
+                    <li><a href="<%=request.getContextPath()%>/memberlist.ad" id="sel-mem">전체회원조회</a></li>
                     <li><a href="" id="sel-black">블랙리스트조회</a></li>
                 </ul>
                 

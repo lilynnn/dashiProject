@@ -8,7 +8,7 @@
 <style>
 
     .outer{
-        width: 1200px;
+        width: 1100px;
         height: 800px;
         margin: auto;
         margin-top: 30px;
@@ -31,16 +31,7 @@
     .tbody>tr{
         border-bottom: solid 1px gray;
     }
-    .btn{
-        border: none;
-        background: rgb(102,184,94);
-        color: rgb(80, 79, 79);
-        font-size: 14px;
-        font-weight: bold;
-        height: 33px;
-        width: 100px;
-        border-radius: 9px;
-    }
+
     .page{
         border: none;
         background: lightgray;
@@ -50,6 +41,9 @@
         height: 30px;
         width: 30px;
         border-radius: 9px;
+    }
+    .table{
+        font-size: 13px;
     }
     .page:hover{
         background: gray;
@@ -85,7 +79,7 @@
                 <hr style="width: 900px;">
                 <br><br><br>
                 <!-- 검색버튼 -->
-                <div style="margin-left: 550px; width:400px;">
+                <div style="margin-left: 530px; width:450px;">
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -96,21 +90,21 @@
                     </select>
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
-                    <button class="btn" style="width: 70px; background: rgb(143,153,142);">검색</button>
+                    <button>검색</button>
                 </div>
                 
                 <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
-                            <th width="25">no</th>
-                            <th width="80">이름</th>
-                            <th width="80">아이디</th>
+                            <th width="10">no</th>
+                            <th width="60">이름</th>
+                            <th width="70">아이디</th>
                             <th width="80">생년월일</th>
-                            <th width="200">주소</th>
-                            <th width="80">휴대폰</th>
-                            <th width="50">입양신청</th>
-                            <th width="50">결제여부</th>
-                            <th width="50">회원등급</th>
+                            <th width="150">주소</th>
+                            <th width="110">휴대폰</th>
+                            <th width="70">입양신청</th>
+                            <th width="70">결제여부</th>
+                            <th width="40">회원등급</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">
@@ -235,7 +229,7 @@
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
-                        <button class="btn">수정</button>
+                        <button>수정</button>
                     </div>
                             
                     <!-- 페이징버튼 영역 -->
