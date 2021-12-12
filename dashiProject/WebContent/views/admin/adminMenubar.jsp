@@ -72,7 +72,10 @@
         <div id="aMenubar">
         		
             <div style="width:200px; height:80px; margin-bottom:5px;">
-                <img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
+            	<!-- servlet생성 후 경로수정 -->
+                <a href="<%=request.getContextPath()%>/views/admin/adminMainPage.jsp">
+                	<img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
+                </a>
             </div>
 
             <div id="menu-list" style="height: 670px;">

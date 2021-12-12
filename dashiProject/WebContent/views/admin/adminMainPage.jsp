@@ -18,7 +18,16 @@
     }
     #munubar{width:150px}
     #menu{width: 850px; height: 100%; margin-left: 20px;}
-    #message>div{float: left; box-sizing: border-box;}
+    #message>div{
+        float: left; 
+        box-sizing: border-box;
+        height: 60px;
+    }
+    #message>div>a{
+        text-decoration:none;
+        color: brown;
+        font-weight: 900;
+    }
     #boxset>div{float: left;}
     .box{
         width: 200px;
@@ -33,6 +42,15 @@
         text-align: center;
         font-weight: 900;
     }
+    .countNum{
+        line-height: 150px; 
+        font-size: 26px;
+    }
+    .categoryDate{
+        width: 150px; 
+        text-align: right; 
+        color: gray;
+    }
     #adminlist1>div, #adminlist2>div{
         float: left;
         box-sizing: border-box;
@@ -41,7 +59,10 @@
         margin-left: 20px;
         margin-top: 20px;
     }
-    a{text-decoration: none; color: black;}
+    #adminlist1 a, #adminlist2 a{
+        text-decoration: none; 
+        color: black;
+    }
 </style>
 </head>
 <body>
@@ -59,11 +80,17 @@
         <div id="menu">
         	<hr>
             <div id="message">
-                <div style="width: 25%; height: 60px; font-size: 24px; font-weight: 900; line-height:50px">
-                    	관리자 메인페이지
+                <div style="width: 25%; font-size: 24px; font-weight: 900; line-height:50px">
+                    관리자 메인페이지
                 </div>
-                <div style="text-align: left; width: 75%; height: 60px; font-size: 15px; color: lightslategrey; line-height:55px">
-                    	관리자님, 오늘도 좋은 하루 보내세요!
+                <div style="text-align: left; width: 55%; font-size: 15px; color: lightslategrey; line-height:55px">
+                    관리자님, 오늘도 좋은 하루 보내세요!
+                </div>
+
+                <!--admin01로그인시에만 나타남-->
+                <div style="text-align: right; width: 15%; line-height: 60px;">
+                    <img src="<%=contextPath%>/resources/images/bulb.png" width="15%">
+                    <a href="<%=contextPath%>/empList.ad">사원관리</a>
                 </div>
             </div>
 				
@@ -72,25 +99,25 @@
             <div id="boxset">
 
                 <div class="box" style="background: #cce9d3;">
-                    <div style="line-height: 150px; font-size: 26px;">
+                    <div class="countNum">
                         	카운트숫자
                     </div>
                     <div>입양신청</div>
                 </div>
                 <div class="box" style="background: #abd1a4;">
-                    <div style="line-height: 150px; font-size: 26px;">
+                    <div class="countNum">
                        	 카운트숫자
                     </div>
                     <div>입소신청</div>
                 </div>
                 <div class="box" style="background: #91c5ab;">
-                    <div style="line-height: 150px; font-size: 26px;">
+                    <div class="countNum">
                        	 카운트숫자
                     </div>
                     <div>1:1문의</div>
                 </div>
                 <div class="box" style="background: #74947d;">
-                    <div style="line-height: 150px; font-size: 26px;">
+                    <div class="countNum">
                        	 카운트숫자
                     </div>
                     <div>공지사항</div>
@@ -105,12 +132,12 @@
                     <div>
                         <table>
                             <tr>
-                                <td style="width: 150px;"><a>전체회원조회</a></td>
-                                <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                                <td style="width: 150px;"><a href="">전체회원조회</a></td>
+                                <td class="categoryDate">날짜칸</td>
                             </tr>
                             <tr>
-                                <td style="width: 150px;"><a>블랙리스트조회</a></td>
-                                <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                                <td style="width: 150px;"><a href="">블랙리스트조회</a></td>
+                                <td class="categoryDate">날짜칸</td>
                             </tr>
                         </table>
                     </div>
@@ -120,12 +147,12 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a>입양신청</a></td>
-                                <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">입양신청</a></td>
+                                <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>입소신청</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">입소신청</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
                 </div>
@@ -134,28 +161,28 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a>공지사항</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/noList.ad">공지사항</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>입양공고</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">입양공고</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>입양후기</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">입양후기</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>실종/보호/목격</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">실종/보호/목격</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>1:1문의</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">1:1문의</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a>FAQ</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/faqList.ad">FAQ</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
                 </div>
@@ -167,8 +194,8 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a>전체신고내역</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad">전체신고내역</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
                 </div>
@@ -177,8 +204,8 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a>전체결제내역</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">전체결제내역</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
                 </div>
@@ -187,8 +214,8 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a>전체동물조회</a></td>
-                            <td style="width: 150px; text-align: right; color: gray;">날짜칸</td>
+                            <td style="width: 150px;"><a href="">전체동물조회</a></td>
+                            <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
                 </div>

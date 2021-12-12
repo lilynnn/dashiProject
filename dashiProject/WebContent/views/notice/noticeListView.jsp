@@ -20,6 +20,7 @@
         width: 100%;
         height: 550px;
         margin-bottom: 20px;
+        margin-top:50px;
     }
     /*공지사항~확인해보세요div*/
     #name, #serve, #meno{margin-top: 10px; height: 50px;}
@@ -66,8 +67,7 @@
 <body>
 	
     <%@ include file="../common/menubar.jsp" %>
-    
-    <%@ include file="../common/rightQuickMenu.jsp" %>
+
 
     <!--전체 div-->
 	<div class="outer">
