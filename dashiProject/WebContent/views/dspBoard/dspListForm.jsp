@@ -58,6 +58,15 @@
         border-radius: 3px;
     }
 
+    #searchBtn{
+        border-radius: 5px;
+        border: none;
+        height: 32px;
+    }
+    #searchBtn:hover{
+        background: rgb(126, 126, 126);
+    }
+
     .dspList-area{
         width: 1150px;
         margin: auto;
@@ -67,15 +76,35 @@
 
     .dspList-area>.list{
         width: 250px;
-        height: 400px;
+        height: auto;
         display:inline-block;
         margin-left: 25px;
         margin-bottom: 25px;
     }
 
+    /*정해진 구간에서 확대할수 있게*/
+
+    .img-wrap {
+    overflow: hidden;
+  }
+    
+    .list:hover img{
+        cursor: pointer;
+        transform: scale(1.05);
+        transition-duration: 0.3s;
+        /* 이게 크롬에서 실행 할수 있게
+        -webkit-transition-duration: 0.3s;*/
+    }    
+    .list:hover p{
+        cursor: pointer;
+        text-decoration: underline;
+ 
+    }
 
 </style>
 </head>
+
+<!-- AJAX활용해서 실중누르면 실종글만 보호누르면 보호글만 목격 누르면 목격글만하기-->
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
@@ -100,9 +129,9 @@
                     <option value="etc">기타</option>
                 </select>
 
-                <input type="text" placeholder="검색어를 입력하세요.">
+                <input type="search" placeholder="검색어를 입력하세요." style="border: 1px solid black;">
                 
-                <button>검색하기</button>
+                <button id="searchBtn">검색하기</button>
             </form>
         </div>
 
@@ -114,11 +143,14 @@
             <!--for문 돌려서 썸네일 여러개 만들거임-->
 
             <div class="list">
-                <img src="" width="250" height="260">
+                <div class="img-wrap">
+                   <img src="" width="250" height="260"> 
+                </div>
+                
                 <p>
-                    [보호] 귀요미를 찾습니다<br><br>
-                    경기도 용인시 <br>
-                    내용은 대충 이러쿵 저러쿵
+                    <span style="color: red; font-weight: bold;">[실종]</span> 귀요미를 찾습니다<br><br>
+                    <span style="color: red; font-weight: bold;">사례금 5억</span> / 경기도 용인시<br>
+                   내용은 대충 이러쿵 저러쿵
                 </p>
             </div>
 
@@ -139,9 +171,21 @@
             <button>&gt;</button>
 
         </div>
-    </div>
+    </div><br>
+    <br><br><br><br>
 
     <%@ include file="../common/footerbar.jsp" %>
 
+    <script>
+        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
+        $(function(){
+            $(".content-area>div").click(function(){
+                //const num = $(this).children().eq(0).text();
+
+                // location.href = '<%= contextPath%>/addetail?adno='+num;
+                location.href = '<%= contextPath%>/addetail';
+            })
+        })
+    </script>
 </body>
 </html>
