@@ -90,7 +90,7 @@
                 <!--admin01로그인시에만 나타남-->
                 <div style="text-align: right; width: 15%; line-height: 60px;">
                     <img src="<%=contextPath%>/resources/images/bulb.png" width="15%">
-                    <a href="">사원관리</a>
+                    <a href="<%=contextPath%>/empList.ad">사원관리</a>
                 </div>
             </div>
 				
@@ -161,7 +161,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="">공지사항</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/noList.ad">공지사항</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
@@ -181,7 +181,7 @@
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a href="">FAQ</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/faqList.ad">FAQ</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
@@ -194,7 +194,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="">전체신고내역</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad">전체신고내역</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
