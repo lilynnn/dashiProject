@@ -119,7 +119,7 @@
             <div id="checkPwd">
                	 회원 비밀번호 
                 <input type="text">
-                <button>확인</button>
+                <button type="submit"><a href="<%=contextPath%>/detailInfo.me">확인</a></button>
             </div>
         </form>
 

@@ -132,9 +132,10 @@
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
                         <div>  
+                        	<a href="<%=contextPath%>/updateInfo.me">
                             <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
+                        	<p align="center">회원정보수정</p></a>
                         </div>
-                        <p align="center">회원정보수정</p>
                     </div>
                     
                 </div>
