@@ -101,7 +101,7 @@
         
     
     }
-
+    
     .loginBtn{
         background-color: rgb(102,184,94);
         color: white;
@@ -130,7 +130,18 @@
     div{
         border: 1px solid red;
     }
-
+    
+ 	.login-area a{
+    text-decoration:none;
+    color:black;
+    }
+    
+    .login-area a:hover{
+    text-decoration:none;
+    color:rgb( 102,184,94);
+    }
+	
+	
 
 
 </style>
@@ -223,7 +234,7 @@
                             <table>
                            <!-- 아이디 비밀번호 찾기 
                             <tr align="center"> 
-                            <th style="padding-bottom: 20px; color: rgb(40,112,37);" onclick="">아이디 찾기</th>
+                            <th class="findId" style="padding-bottom: 20px; color: rgb(40,112,37);" onclick="">아이디 찾기</th>
           					<th style="padding-bottom: 20px;" onclick="">비밀번호 찾기</th>
           					</tr>
           					
@@ -279,8 +290,8 @@
                         <form action="" method="post">
                             <table>
                            <tr align="center">
-				          <th style="padding-bottom: 20px;" onclick="" >아이디 찾기</th>
-				          <th style="padding-bottom: 20px;  color: rgb(40,112,37); " onclick="">비밀번호 찾기</th>
+				          <th  style="padding-bottom: 20px;"><a href="">아이디 찾기</a></th>
+				          <th class="findPwd" style="padding-bottom: 20px;  color: rgb(40,112,37); "><a href="">비밀번호 찾기</a></th>
 				      </tr>
 				      <tr>
 				        <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요."></th>
