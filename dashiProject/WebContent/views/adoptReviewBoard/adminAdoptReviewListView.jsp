@@ -75,7 +75,7 @@
                 <br><br><br>
                 
                 <!-- 검색버튼 -->
-                <div style="margin-left: 450px; width:500px;">
+                <div style="margin-left: 530px; width:450px;">
                     <select name="animal">
                         <option value="dog">강아지</option>
                         <option value="cat">고양이</option>
@@ -87,7 +87,7 @@
                     <button>검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 800px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="25"></th>
@@ -177,6 +177,13 @@
             </form>
 
     </div>
+    <script>
+        $(function(){
+            $(".table>tbody>tr").click(function(){
+                location.href="<%=contextPath%>/reviewdetail.ad";
+            })
+        })
+    </script>
     <br><br><br><br>
 	<%@ include file="../common/footerbar.jsp" %>
 </body>

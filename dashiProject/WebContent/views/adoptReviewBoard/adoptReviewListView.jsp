@@ -233,10 +233,15 @@
                     </td>
                 </tr>
             </table>
-
         </div>
-
     </div>
+    <script>
+        $(function(){
+            $(".list-area td").click(function(){
+                location.href="<%=contextPath%>/reviewdetail.bo";
+            })
+        })
+    </script>
 
 	<br><br><br><br><br>
 	

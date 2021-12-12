@@ -102,11 +102,10 @@
             <br><br><br><br><br><br>
             <!-- 입양후기 상세내용 영역 -->
             <div class="content-area" align="center">
-
                 <!-- 입양후기 제목, 작성일, 조회수 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
-                        <td colspan="5">
+                        <td colspan="5" style="height: 80px;">
                             <h2><b>강아지 "댕댕이" 입양 후기</b></h2>
                         </td>
                     </tr>
@@ -119,7 +118,7 @@
                     </tr>
                 </table>
         
-                <br><br>
+                <br><br><br><br>
                 <hr width="900" color="gray">
                 <br>
 
