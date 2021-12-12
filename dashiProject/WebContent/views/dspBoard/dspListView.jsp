@@ -47,7 +47,7 @@
         width: 135px;
         margin-top: 30px;
     }
-    .writeBt{
+    .writeBtn{
         border: none;
         background: rgb(102,184,94);
         color: white;
@@ -135,7 +135,7 @@
             </form>
         </div>
 
-        <div class="write"><button class="writeBt">글쓰기</button></div>
+        <div class="write"><button class="writeBtn">글쓰기</button></div>
 
         <div class="dspList-area">
 
@@ -184,6 +184,15 @@
 
                 //location.href = '<%= contextPath%>/detail?dspno='+num;
                 location.href = '<%= contextPath%>/detail.dsp';
+            })
+        })
+    </script>
+    
+    <!-- 글작성 클릭시 스크립트 -->
+    <script>
+        $(function(){
+            $(".writeBtn").click(function(){
+                location.href = '<%= contextPath%>/write.dsp';
             })
         })
     </script>

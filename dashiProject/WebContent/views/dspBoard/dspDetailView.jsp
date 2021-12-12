@@ -423,13 +423,13 @@
                     <tbody>
                         <tr>
                             <td width="100">이전글</td>
-                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
+                            <td width="700">[실종]멍멍이 찾아요ㅠㅠ</td>
                             <td width="150">YYYY-MM-DD</td>
                             <td width="100">조회수</td>
                         </tr>
                         <tr>
                             <td width="100">다음글</td>
-                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
+                            <td width="700">[보호]야옹이를 보호하고있어요 !</td>
                             <td width="150">YYYY-MM-DD</td>
                             <td width="100">조회수</td>
                         </tr>

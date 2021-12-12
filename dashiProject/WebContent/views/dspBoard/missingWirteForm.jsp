@@ -8,7 +8,7 @@
 <style>
 	.outer{                                
 		width: 1100px;
-		height: 1700px;
+		height: auto;
 		margin: auto;
 		margin-top: 50px;
 	}
@@ -30,6 +30,7 @@
 	.outer th{
 		background: rgb(236, 236, 236);
 		font-size: 18px;
+		text-align: center;
 	}
 	
 	/*테이블 간격 없애기*/
@@ -77,7 +78,7 @@
 	}
 
 	/*등록버튼 스타일*/
-	button{
+	.enrollBtn1{
 		border:none;
 		background-color: rgba(87, 84, 84, 0.932);
 		color: white;
@@ -87,21 +88,11 @@
 		border-radius: 4px;
 		margin-left: 83%;
 	}
+
 	/*내용 추가내용 위로 붙이기*/
 	.info, .content{
 		vertical-align: top;
-		padding-top: 60px;
 	}
-
-	
-
-	
-	
-	
-
-
-	
-	
 
 
 </style>
@@ -115,9 +106,10 @@
 
 		<div id="writeContent">
 			<form action="" method="">
-				<table id="contentOuter" align="center">
+				<table id="contentOuter" align="center" >
 					
 					<!--제목 입력란-->
+					<!-- AJAX이용해서 실종 보호 각각 누르면 내용 안에 적는 표가 달라지도록 설정!!!!!-->
 					<tr>
 						<th style="width:230px; height: 130px;">말머리 *</th>
 						<td style="width: 780px;" >
@@ -131,7 +123,7 @@
 
 					<!--제목 입력란-->
 					<tr>
-						<th style="height: 130px;">제목 *</th>
+						<th style="height: 100px;">제목 *</th>
 						<td><input id="title" name="title" type="text" placeholder="제목을 입력해주세요." required></td>
 					</tr>
 
@@ -158,13 +150,14 @@
 								</tr>
 								<tr>
 									<th>사례금</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="money" required></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="money"></td>
 								</tr>
 								<tr>
 									<th>특징</th>
 									<td><input type="text" placeholder="내용을 입력해주세요." name="characteristic"></td>
 								</tr>
 							</table>
+							<br><br>
 						</td>
 					</tr>
 
@@ -191,19 +184,13 @@
 
 				<br><hr><br>
 
-				<button>등록</button>
+				<button class="enrollBtn1">등록</button>
+				
 			</form>
 		</div>
-
-
-
-
-
-
-
-		
-
 	</div>
+		
+	<br><br><br><br>
 	
 	<%@ include file="../common/footerbar.jsp" %>
 
