@@ -113,12 +113,13 @@
         background: none;
         font-weight: 900;
         float: right;
+        width: 100p;
     }
 
     /*댓글 전체 스타일*/
     .comment{
-        margin-top: 50px;
-        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     /*답글 전체 스타일*/
@@ -135,6 +136,12 @@
         height: 30px;
         font-size: 15px;
     }
+
+    .fontBtn{
+        width: 50px;
+        border: none;
+    }
+
 
      /*신고하기 관련 스타일*/
     /* 신고하기 영역 */
@@ -183,15 +190,13 @@
             <div class="dateView" style="width: 900px;">123</div>
         </div>
         
-        <br>><hr>
+        <br><hr>
     
 
         <!--실종 보호 목격 정보글-->    
         <div class="Info_outer1" align="center" style="margin-top: 30px;">
 
-            <div class="animal-image" >
-                동물사진입니다.
-            </div>
+            <img class="animal-image" src=""></img>
 
             <div>
                 <table class=animalInfo border="1">
@@ -237,12 +242,12 @@
 
 
         </div>  
-        
+        <br><br><br>
         
         <!-- 밑에 동물사진 2개 및 설명-->
-        <div class="Info_outer2">
-            <div class= "animal-image">동물사진</div>
-            <div class= "animal-image">동물사진</div>
+        <div class="Info_outer2" align="center">
+            <img class= "animal-image" src="" ></img><br><br><br><br>
+            <img class= "animal-image" src=""></img><br><br>
             <div class= "dspConent" style="text-align: center; font-size: 17px; width: 500px; height:300px;"> 
                 무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
                 소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
@@ -346,7 +351,7 @@
         
         <div class="comment-area">
             <div class="comment">
-                <table style="margin-top: 20px;">
+                <table>
                     <tr>
                         <tr class="font">
                             <!--작성자 닉네임-->
@@ -362,18 +367,18 @@
                         <!--사용자가 입력한 댓글 내용-->
                         <td colspan="4" width="855" style="font-weight: 900;">댕댕아 이제는 행복해~</td>
                         <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
+                        <td><button class="fontBtn">답글</button></td>
                         <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">수정</button></td>
+                        <td><button class="fontBtn">수정</button></td>
                         <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">삭제</button></td>
+                        <td><button class="fontBtn">삭제</button></td>
                     </tr>                    
                 </table>
             </div>
 
         
             <div class="recomment">
-                <table style="margin-top: 23px;">
+                <table style="margin-top: 10px;">
                     <tr class="font">
                         <td style="text-align: right;" width="80">➜</td>
                         <!--답글 작성자 닉네임-->
@@ -384,17 +389,15 @@
                         <td width="100px">HH-MM</td>
                     </tr> 
                 </table> 
-                <table style="margin-bottom: 23px;">
+                <table>
                     <tr>
                         <td width="80"></td>
                         <!--사용자가 입력한 답글 내용-->
                         <td colspan="4" class="content" width="770" style="font-weight: 900;">감사합니다. 행복하게 살게요.</td>
                         <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                        <td><button class="font btn">답글</button></td>
+                        <td><button class="fontBtn">답글</button></td>
                         <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">수정</button></td>
-                        <!--답글 작성자에게만 노출-->
-                        <td><button class="font btn">삭제</button></td>
+                        <td><button class="fontBtn">삭제</button></td>
                     </tr>                         
                 </table>
             </div>
@@ -408,27 +411,46 @@
                 <!--클릭 시 댓글 작성 실패|성공 alert창-->
                 <button class="write-btn">댓글쓰기</button>
             </div>
+            <br>
         </div>
 
         <div class="befAft" align="center">
-            <div class="befAft1">
-                <div style="width: 30px;">△</div>
-                <div style="width: 70px;">이전글</div>
-                <div style="width: 800px; text-align: left;">이전글 제목</div>
-            </div>
-            <div class="befAft2">
-                <div style="width: 30px;">▽</div>
-                <div style="width: 70px;">다음글</div>
-                <div style="width: 800px; text-align: left;">다음글 제목</div>
-            </div>
             
+            <div><!-- 이전글 다음글-->
+                <table class="table"style="width: 1100px;">
+                
+                    <!-- 한 줄 영역으로 클릭 효과 주기 -->
+                    <tbody>
+                        <tr>
+                            <td width="100">이전글</td>
+                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
+                            <td width="150">YYYY-MM-DD</td>
+                            <td width="100">조회수</td>
+                        </tr>
+                        <tr>
+                            <td width="100">다음글</td>
+                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
+                            <td width="150">YYYY-MM-DD</td>
+                            <td width="100">조회수</td>
+                        </tr>
+                        <tr>
+                            <!-- 구분선용 공백란 -->
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
             <button>목록으로</button>
-            <button>신고하기</button>
             <button>공유하기</button>
         </div>
-
+        <br><br><br><br><br>
         <%@ include file="../common/footerbar.jsp" %>
-        
     </div>
+
 </body>
 </html>

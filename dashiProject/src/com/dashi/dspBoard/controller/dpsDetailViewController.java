@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class dspListController
+ * Servlet implementation class dpsDetailViewController
  */
-@WebServlet("/list.dsp")
-public class dspListController extends HttpServlet {
+@WebServlet("/detail.dsp")
+public class dpsDetailViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public dspListController() {
+    public dpsDetailViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,10 +26,8 @@ public class dspListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);
 
+		request.getRequestDispatcher("views/dspBoard/dspDetailView.jsp").forward(request, response);
 	}
 
 	/**

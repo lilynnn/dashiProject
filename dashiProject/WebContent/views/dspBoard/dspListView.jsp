@@ -179,11 +179,11 @@
     <script>
         // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
         $(function(){
-            $(".content-area>div").click(function(){
+            $(".dspList-area>div").click(function(){
                 //const num = $(this).children().eq(0).text();
 
-                // location.href = '<%= contextPath%>/addetail?adno='+num;
-                location.href = '<%= contextPath%>/addetail';
+                //location.href = '<%= contextPath%>/detail?dspno='+num;
+                location.href = '<%= contextPath%>/detail.dsp';
             })
         })
     </script>
