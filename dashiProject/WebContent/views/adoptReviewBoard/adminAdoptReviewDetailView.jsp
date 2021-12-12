@@ -87,7 +87,7 @@
 	                <table align="left">
 	                    <tr>
 	                        <td colspan="5">
-	                            <h2><b>강아지 "댕댕이" 입양 후기</b></h2>
+	                            <h3><b>강아지 "댕댕이" 입양 후기</b></h3>
 	                        </td>
 	                    </tr>
 	                    <tr style="color: rgb(87, 87, 85); font-size: 14px;">
@@ -98,9 +98,8 @@
 	                        <td>NN</td>
 	                    </tr>
 	                </table>
-	        
-	                <br><br>
-	                <hr width="900" color="gray">
+                    <br><br><br><br>
+	                <hr width="900">
 	                <br>
 	
 	                <!-- 사용자 작성 글내용 -->
