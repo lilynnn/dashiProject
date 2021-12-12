@@ -1,4 +1,4 @@
-package com.dashi.report.controller;
+package com.dashi.member.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminReportListController
+ * Servlet implementation class MemberBoardListController
  */
-@WebServlet("/reportList.ad")
-public class AdminReportListController extends HttpServlet {
+@WebServlet("/boardList.me")
+public class MemberBoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminReportListController() {
+    public MemberBoardListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,8 @@ public class AdminReportListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/report/adminReportList.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/memberBoardListView.jsp").forward(request, response);
+	
 	
 	}
 

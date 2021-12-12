@@ -45,8 +45,13 @@
 	hr{margin: 0;}
 	.inputwidth{width: 325px;}
 	#checkYN>label{
-		width: 100px;
-		margin: 0;
+		width: 100px; margin: 0;}
+	#checkYN>label>*{float:left;}
+	#checkYN>label p{
+		margin:0;
+		height:100%;
+		line-height:35px;
+		margin-left:5px;
 	}
 	#search-btn{
 		width: 100%;
@@ -126,8 +131,8 @@
 					<tr>
 						<td align="center" class="list-name">게시물 상태</td>
 						<td id="checkYN" class="list-find">
-							<label><input type="radio" name="status">확인중</label>
-							<label><input type="radio" name="status">삭제완료</label>
+							<label><input type="radio" name="status"><p> 확인중</p></label>
+							<label><input type="radio" name="status"><p> 삭제완료</p></label>
 						</td>
 					</tr>
 				</table>
@@ -176,14 +181,14 @@
 	
 			<div class="paging-area" align="center">
 
-				<button>&lt;</button>
-				<button>1</button>
-				<button>2</button>
-				<button>3</button>
-				<button>4</button>
-				<button>5</button>
-				<button>&gt;</button>
-	
+				<button class="btn btn-light">&lt;</button>
+	            <button class="btn btn-light">1</button>
+	            <button class="btn btn-light">2</button>
+	            <button class="btn btn-light">3</button>
+	            <button class="btn btn-light">4</button>
+	            <button class="btn btn-light">5</button>
+	            <button class="btn btn-light">&gt;</button>
+	            
 			</div>
 	
 		</div>

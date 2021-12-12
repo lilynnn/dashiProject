@@ -38,14 +38,14 @@
         font-size: 13px;
     }
     /*공지사항 목록테이블 정리*/
-    thead, tbody{
+    .noticeList thead, tbody{
         text-align: center;
     }
-    table{ 
+    .noticeList{ 
         border-top:1px solid;
         border-bottom: 1px solid;    
     }
-    thead{background: rgb(224, 223, 223);}
+    .noticeList thead{background: rgb(224, 223, 223);}
     /*타이틀 정리*/
     #title{
         width: 100%; 
@@ -107,7 +107,7 @@
                 </div>
 
                 <div style="margin-top: 10px;">
-                    <table>
+                    <table class="noticeList">
                         <thead>
                             <tr>
                                 <td></td>
@@ -137,15 +137,22 @@
                     </table>
                 </div>
 
-
-
-
-
-
             </form>
         	
         </div>
     </div>
+
+	<script>
+		$(function(){
+			$(".noticeList>tbody>tr").click(function(){
+				const nno = $(this).children().eq(0).text();
+				//location.href = '<%=contextPath>/~~~~~?nno' + nno
+			});
+		});
+	</script>
+
+
+
 
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
