@@ -26,7 +26,11 @@
         width: 1140px;
         margin: auto;
         margin-top: 20px;
-        
+    }
+    #category{
+        margin-left: 5px; 
+        width: 50px; 
+        font-weight: 700;
     }
     /*각각의 리스트 스타일*/
     .likeList-area>.list{
@@ -35,31 +39,48 @@
         display:inline-block;
         margin-left: 17px;
     }
-    /*동물사진의 스타일*/
-    .animal-image{
-        border: 1px solid rebeccapurple;
-        width: 90%;
-        height: 80%;
-        margin: auto;
-    }
-    /*사진 밑에 동물종류 및 입양공고제목 정렬스타일*/
-    .likeInfo{
-        width: 90%;
-        height: 40%;
-        margin: auto;
-        margin-top: 10px;
-    }
 
-    .likeInfo>div{
+
+    /*사진 밑에 동물종류 및 입양공고제목 정렬스타일*/
+
+    .likeList-area .list{
         display: inline-block;
     }
+
+    .img-wrap {
+    overflow: hidden;
+  }
+    
+    .list:hover img{
+        cursor: pointer;
+        transform: scale(1.05);
+        transition-duration: 0.3s;
+        /* 이게 크롬에서 실행 할수 있게
+        -webkit-transition-duration: 0.3s;*/
+    }    
+    .list:hover p{
+        cursor: pointer;
+        text-decoration: underline;
+ 
+    }
+
+    /*pagingbar*/
+    .paging-area{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .paging-area>button{
+    	border-radius:3px;
+    	border:none;
+    }
+    
 
 
 
 </style>
 </head>
 <body> 
-    <%@ include file="../common/menubar.jsp" %>
+    <%@ include file="../common/menubar.jsp" %> 
    
 
     <div class="outer">
@@ -72,97 +93,43 @@
                 <!--회원정보 메뉴바-->
                 <div>
                     <%@ include file="../common/memberUpdateMenubar.jsp" %>
+                    <br><br>
                 </div>
 
                 <!--전체 찜목록-->
                 <div class="likeList-area">
                     
-                    <!--하나의 찜--><!--클릭시 그 동물의 입양정보 나오게 하기-->
+                    <!--for문 돌려서 여러개 만들거임--> 
+                    <!--클릭시 그 찜한 동물페이지 넘어가게끔-->
                     <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
+                        <div class="img-wrap">
+                            <img src="" width="250" height="260">
                         </div>
+                        <p>
+                            <span id="category" class="badge badge-success">강아지</span> 
+                            <span>[품종명][이름]의 가족을 기다려요</span>
+                        </p>
                     </div>
 
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-        
-                    </div>
-                    
-                    <div class="list">
-                        <div class="animal-image">동물사진</div>
-                        <div class="likeInfo">
-                            <div class="animal-type">강아지</div>
-                            <div class=title>입양공고제목</div>
-                        </div>
-                    </div>
 
-                    <div class="paging-area" align="center" style="margin-top: 30px;">
+                </div>   
 
-                        <button>&lt;</button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>5</button>
-                        <button>6</button>
-                        <button>7</button>
-                        <button>8</button>
-                        <button>9</button>
-                        <button>10</button>
-                        <button>&gt;</button>
-            
-                    </div>
-                    <br><br>
+                <div class="paging-area" align="center">
+
+                    <button class="btn btn-light">&lt;</button>
+                    <button class="btn btn-light">1</button>
+                    <button class="btn btn-light">2</button>
+                    <button class="btn btn-light">3</button>
+                    <button class="btn btn-light">4</button>
+                    <button class="btn btn-light">5</button>
+                    <button class="btn btn-light">&gt;</button>
+        
+                </div>
+
 
 
     </div>
+    <br><br><br><br>
 
 
 

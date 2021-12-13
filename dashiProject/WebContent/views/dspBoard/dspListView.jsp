@@ -101,6 +101,16 @@
  
     }
 
+    /*pagingbar*/
+    .paging-area{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .paging-area>button{
+    	border-radius:3px;
+    	border:none;
+    }
+
 </style>
 </head>
 
@@ -155,20 +165,15 @@
             </div>
 
         </div>
-        <div class="paging-area" align="center" style="margin-top: 30px;">
+        <div class="paging-area" align="center">
 
-            <button>&lt;</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
-            <button>&gt;</button>
+            <button class="btn btn-light">&lt;</button>
+            <button class="btn btn-light">1</button>
+            <button class="btn btn-light">2</button>
+            <button class="btn btn-light">3</button>
+            <button class="btn btn-light">4</button>
+            <button class="btn btn-light">5</button>
+            <button class="btn btn-light">&gt;</button>
 
         </div>
     </div><br>

@@ -290,6 +290,15 @@
 
                 </div>
             </div>
+            <!-- 찜목록 클릭시 페이지 이동 스크립트  -->
+		    <script>
+		        $(function(){
+		            $("#bottomarea").click(function(){
+		                location.href = '<%= contextPath%>/likepage.me';
+		            })
+		        })
+		    </script>
+            
             <div id="bottom2">
                 <div class="box box3">
 
