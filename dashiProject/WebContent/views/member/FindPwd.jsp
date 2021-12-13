@@ -128,7 +128,7 @@
     }
 
     div{
-        border: 1px solid red;
+        
     }
     
  	.login-area a{
@@ -212,63 +212,9 @@
             </div>
         </ul>
     </div>
- <!--아이디찾기 modal-->
-    <!-- The Modal 
-    <div class="modal fade" id="login_myModal" style="width: 600px;">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="width: 80%; margin: auto;" >
-
-                
-                <div class="outer" > <!-- 전체를 감싸는 div -->
-                    <!-- Modal Header 
-                    <div style="align-text:center;" class="modal-header">
-                    	<br>
-                        <h4 class="modal-title">다시 ,사랑받개!</h4> 
-                        <br>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <br>
-                    <!-- Modal body 
-                    <div class="login-area" style="width: 370px;">
-                        <form action="" method="post">
-                            <table>
-                           <!-- 아이디 비밀번호 찾기 
-                            <tr align="center"> 
-                            <th class="findId" style="padding-bottom: 20px; color: rgb(40,112,37);" onclick="">아이디 찾기</th>
-          					<th style="padding-bottom: 20px;" onclick="">비밀번호 찾기</th>
-          					</tr>
-          					
-				      <tr>
-				        <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." required></th>
-				      </tr>
-				      <tr>
-				          <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width:150px;"required> &nbsp; - 
-				            <input type="text" name="" style="width:50px;">&nbsp; *******</th>
-				      </tr>
-				      <tr>
-				          <th colspan="2"><input type="phone" placeholder="휴대폰 번호를 입력해주세요." style="width:250px" required >&nbsp;<input class="loginBtn" type="button" value="인증요청" style="width:90px"></th>
-				      </tr>
-				      <tr>
-				          <th colspan="2"><input type="text" value="" name="" placeholder="인증번호 6자리를 입력해주세요."style="width:250px"required>&nbsp;<input class="loginBtn" type="button" value="인증확인" style="width:90px"></th>
-				      </tr>
-				     
-                            </table>
-
-                         
-
-                            <button class="loginBtn" type="submit">아이디찾기</button>
-                            <br><br>
-
-                        </form>
-                    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    </div>-->
     
     
+ 
     <!--비밀번호 찾기 modal-->
     <!-- The Modal -->
     <div class="modal fade" id="login_myModal" style="width: 600px;">
@@ -276,7 +222,7 @@
             <div class="modal-content" style="width: 80%; margin: auto;" >
 
                 
-                <div class="outer" > <!-- 전체를 감싸는 div -->
+                <div class="outer"> <!-- 전체를 감싸는 div -->
                     <!-- Modal Header -->
                     <div style="align-text:center;" class="modal-header">
                     	<br>
@@ -323,7 +269,7 @@
                 
             </div>
         </div>
-    </div> -->
+    </div> 
 
     <!-- 로그인버튼 눌렀을시 -->
     <script>
