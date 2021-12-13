@@ -22,7 +22,8 @@
     .content-area button:hover{cursor: pointer;}
     
     .report-area{border: 1px solid black;}
-
+    #report-btn{border: none; background: white;}
+    #report-btn:hover{cursor: pointer;}
     /* modal관련 스타일 */
     .modal{
         /* margin으로 modal위치 조정 */
@@ -52,7 +53,7 @@
     <div class="outer">
         <div class="content-area" align="right">
             
-            <button onclick="" data-toggle="modal" data-target="#reportModal">신고하기</button>
+            <button id="report-btn" onclick="" data-toggle="modal" data-target="#reportModal">신고</button>
 
         </div>
     </div>

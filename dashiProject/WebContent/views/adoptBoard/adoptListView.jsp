@@ -14,18 +14,33 @@
         
     }
 
-    /* 이미지 추가시 스타일 변경하기 */
-    .image-area{
-        width: 700px;
-        height: 300px;
+    /* 대표이미지 스타일 */
+    .image-area img{
+        width: 750px;
+        height: 480px;
         margin: auto;
         margin-top: 30px;
-        border: 1px solid black;
     }
+
+    /* 게시판 안내*/
+    #name, #meno{margin-top: 10px; height: 50px; margin-left: 120px;}
+    #name{
+        width: 110px;
+        font-size: 24px;
+        line-height: 50px;
+        font-weight: 900;
+    }
+    #serve{
+        width: 900px;
+        color: darkgray;
+        line-height: 60px;
+    }
+    #meno{width: 100%;}
+
     
     /* 카테고리별 검색 영역 */
     .search-area{
-        margin-top: 40px; 
+        margin-top: 5px; 
         width: 1100px;
     }
     #search-btn{
@@ -80,9 +95,17 @@
     <div class="outer">
 
         <div class="image-area" align="center">
-            <!-- 백그라운드 이미지 넣기 -->
-            <h1 style="padding:120px">입양공고</h1>
 
+            <img src="<%=contextPath%>/resources/images/adopt/adoptmainImg.jpg">
+
+        </div>
+        <br><br>
+        <!--게시판 안내-->
+        <div id="name">
+            입양공고
+        </div>
+        <div id="meno">
+            다시, 사랑받개의 아이들이 가족을 기다려요!
         </div>
         
         <form action="">
