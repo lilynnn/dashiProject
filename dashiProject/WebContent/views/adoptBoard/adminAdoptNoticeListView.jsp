@@ -210,7 +210,7 @@
                 </tbody>  
             </table>
 
-            <!-- 공지사항 등록하기 -->
+            <!-- 입양공고 등록하기 -->
             <a class="btn btn-success" href="<%= contextPath %>/adenroll.ad" style="float: right;">등록하기</a>
              
             <br>
@@ -230,6 +230,17 @@
         </div>
 
     </div>
+    <script>
+        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
+        $(function(){
+            $(".content-area>table>tbody>tr").click(function(){
+                //const num = $(this).children().eq(0).text();
+                // 콘솔에 출력해서 확인해보기
 
+                // location.href = '<%= contextPath%>/addetail.adt?adno='+num;
+                location.href = '<%= contextPath%>/adnodetail.ad';
+            })
+        })
+    </script>
 </body>
 </html>

@@ -50,7 +50,7 @@
 <body>
 
 	<!-- 지희 수정중  -->
-	<!-- 관리자가 입양공고문을 작성하기 위한 페이지 -->
+	<!-- 관리자가 입양공고문을 수정하기 위한 페이지 -->
 	<%@ include file="../common/menubar.jsp" %>
 
 	<!-- 전체 영역 감싸는 div -->
@@ -73,68 +73,82 @@
 				<table align="center" id="animalInfo" style="width: 900px;">
 					<thead>
 						<tr>
-							<th style="font-size: 15px;">제목</th>
-							<td>
-								<input type="text" placeholder="동물품종 이름(이)의 가족을 기다려요">
+							<th style="font-size: 20px;">제목</th>
+							<td colspan="2">
+								가져온 board의 제목 get
 							</td>
 						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
+	
+						<!--동물 사진 보여질 table-->
+						<tr>
+							<th width="290">대표사진</th>
+							<th width="290">상세사진1</th>
+							<th width="290">상세사진2</th>
+						</tr>
+						<tr>
+							<td><img src="" width="290" height="250"></td>
+							<td><img src="" width="290" height="250"></td>
+							<td><img src="" width="290" height="250"></td>
+						</tr>
+	
+						<!-- 공백란 -->
+						<tr><td>&nbsp;</td></tr>
+	
 					</thead>
 					<tbody>
 						<tr>
-							<td colspan="2"><b style="font-size: 18px; padding-left: 5px;">동물 정보</b></td>
+							<td colspan="3"><b style="font-size: 18px; padding-left: 5px;">동물 정보</b></td>
 						</tr>
 						<!-- 동물 품종  -->
 						<tr>
 							<th>묘종 / 견종</th>
-							<td><input type="text"></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
-
+	
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td><input type="text"></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
-
+	
 						<!-- 동물 성별 -->
 						<tr>
 							<th>성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별</th>
-							<td><input type="text" placeholder="남 / 여"></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
-
+	
 						<!-- 접종 여부 -->
 						<tr>
 							<th>접종 &nbsp; 여부</th>
-							<td><input type="text" placeholder="O / X"></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
 						
 						<!-- 중성화 여부 -->
 						<tr>
 							<th>중성화여부</th>
-							<td><input type="text" placeholder="O / X"></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
 						
 						<!-- 특이사항 -->
 						<tr>
 							<th>특이 &nbsp; 사항</th>
-							<td><input type="text" ></td>
+							<td colspan="2">가져온 board의 동물정보 get</td>
 						</tr>
-
+	
 						<!-- 내용 -->
 						<tr>
 							<th>내 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 용</th>
-							<td>
-								<textarea name="" id="text-area" cols="30" rows="10" ></textarea>
+							<td colspan="2">
+								<textarea name="" id="text-area" cols="30" rows="10" >
+									가져온 board의 content내용
+								</textarea>
 							</td>
 						</tr>
-						
-						<!-- 첨부파일 -->
 						<tr>
-							<th>첨부 &nbsp; 파일</th>
-							<td>
-								<input type="file">
-							</td>
+							<th> 첨 부 파 일 </th>
+							<td><input type="file"></td>
 						</tr>
 					</tbody>
 				</table>
