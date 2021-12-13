@@ -168,9 +168,10 @@
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
                         <div>  
+                        	<a href="<%=contextPath%>/updateInfo.me">
                             <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
+                        	<p align="center">회원정보수정</p></a>
                         </div>
-                        <p align="center">회원정보수정</p>
                     </div>
                     
                 </div>
@@ -275,9 +276,10 @@
                     <div class="txtarea2"  align="center">
                         <!-- 글쓴내역 아이콘 이미지 들어갈 공간 -->
                         <div>
+                        	<a href="<%=contextPath%>/boardList.me">
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/post.png">
+	                        <p align="center">글쓴내역확인</p></a>
                         </div>
-                        <p align="center">글쓴내역확인</p>
                     </div>
 
                 </div>

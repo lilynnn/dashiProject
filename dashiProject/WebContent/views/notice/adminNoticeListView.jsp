@@ -16,6 +16,10 @@
         float: left;
         box-sizing: border-box;
     }
+    #sel-notice{
+    	font-weight:700px;
+    	color:rgb(252, 186, 3);
+    }
     /*왼쪽메뉴바*/
     #munubar{width:200px}
     /*공지사항시작*/
@@ -142,16 +146,7 @@
         </div>
     </div>
 
-	<script>
-		$(function(){
-			$(".noticeList>tbody>tr").click(function(){
-				const nno = $(this).children().eq(0).text();
-				//location.href = '<%=contextPath>/~~~~~?nno' + nno
-			});
-		});
-	</script>
-
-
+	
 
 
 	<!-- footerbar영역 -->

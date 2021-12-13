@@ -49,6 +49,10 @@
         cursor: pointer;
     }
     .faqAnswer{display: none;}
+    #sel-faq{
+    	font-weight:700px;
+    	color:rgb(252, 186, 3);
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
