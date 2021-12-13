@@ -17,7 +17,7 @@
         box-sizing: border-box;
     }
     #sel-notice{
-    	font-weight:700px;
+    	font-weight:900px;
     	color:rgb(252, 186, 3);
     }
     /*왼쪽메뉴바*/

@@ -47,7 +47,7 @@
     }
     #menu-list>ul>li>a{
         text-decoration: none;
-        color: black;
+		color:black;
     }
 </style>
 
@@ -73,39 +73,39 @@
         
                 <div class="aMenu" id="member">회원관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/memberlist.ad" id="sel-mem">전체회원조회</a></li>
-                    <li><a href="" id="sel-black">블랙리스트조회</a></li>
+                    <li><a href="<%=request.getContextPath()%>/memberlist.ad" class="Menu-detail">전체회원조회</a></li>
+                    <li><a href="" class="menu-detail">블랙리스트조회</a></li>
                 </ul>
                 
                 <div class="aMenu" id="apply">신청내역관리</div>
                 <ul>
-                	<li id="adoptApply"><a href="<%= request.getContextPath()%>/adapplylist.ad">입양신청</a></li>
-                    <li><a href="" id="sel-apply">입소신청</a></li>
+                	<li><a href="<%= request.getContextPath()%>/adapplylist.ad" class="menu-detail">입양신청</a></li>
+                    <li><a href="" class="menu-detail">입소신청</a></li>
                 </ul>
                 
                 <div class="aMenu" id="list">게시글관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/noList.ad" id="sel-notice">공지사항</a></li>
-                    <li><a href="<%=request.getContextPath()%>/adlist.ad" id="sel-adopt">입양공고</a></li>
-                    <li><a href="<%=request.getContextPath()%>/reviewlist.ad" id="sel-review">입양후기</a></li>
-                    <li><a href="" id="sel-dsp">실종/보호</a></li>
-                    <li><a href="" id="sel-question">1:1문의</a></li>
-                    <li><a href="<%=request.getContextPath()%>/faqList.ad" id="sel-faq">FAQ</a></li>
+                    <li><a href="<%=request.getContextPath()%>/noList.ad" class="menu-detail">공지사항</a></li>
+                    <li><a href="<%=request.getContextPath()%>/adlist.ad" class="menu-detail">입양공고</a></li>
+                    <li><a href="<%=request.getContextPath()%>/reviewlist.ad" class="menu-detail">입양후기</a></li>
+                    <li><a href="" class="menu-detail">실종/보호</a></li>
+                    <li><a href="" class="menu-detail">1:1문의</a></li>
+                    <li><a href="<%=request.getContextPath()%>/faqList.ad" class="menu-detail">FAQ</a></li>
                 </ul>
 
                 <div class="aMenu" id="report">신고내역관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/reportList.ad" id="sel-report">전체신고내역</a></li>
+                    <li><a href="<%=request.getContextPath()%>/reportList.ad" class="menu-detail">전체신고내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="payment">결제내역관리</div>
                 <ul>
-                    <li><a href="" id="sel-pay">전체결제내역</a></li>
+                    <li><a href="" class="menu-detail">전체결제내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="animal">동물관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath() %>/anlist.ad" id="sel-animal">전체동물조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/anlist.ad" class="menu-detail">전체동물조회</a></li>
                 </ul>
          
          
@@ -115,7 +115,18 @@
    
     </div>
     
+    <script>
 
+    	$(function(){
+
+            $(".menu-detail").on('click', function(){
+             
+                $(this).css("color", "rgb(252, 186, 3)");
+            
+            })
+
+        })
+    </script>
 
 
 </body>
