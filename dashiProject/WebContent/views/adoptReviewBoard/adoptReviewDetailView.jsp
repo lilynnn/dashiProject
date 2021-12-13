@@ -65,7 +65,7 @@
     /* modal관련 스타일 */
     #reportModal{
         /* margin으로 modal위치 조정 */
-        margin: 100px 400px; 
+        margin: 120px 530px;
         width: 500px; 
         height: 450px; 
         background: white; 

@@ -59,7 +59,7 @@
     </div>
 
     <!-- 신고하기 버튼 클릭시 보여질 내용 -->
-    <div class="modal" id="reportModal"> 
+    <div class="modal" id="cmtReport"> 
         <form action="">
             <button type="button" class="close" data-dismiss="modal">&times;</button><br>
             <div id="report-title">
