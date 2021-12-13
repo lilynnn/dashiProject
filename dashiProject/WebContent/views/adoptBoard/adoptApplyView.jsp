@@ -209,9 +209,9 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;" required> 모두찬성
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 부분찬성
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 본인 제외 모두 반대
+						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 모두찬성
+						<input type="radio" name="" value="P" style="margin-left: 30px;"> 부분찬성
+						<input type="radio" name="" value="N" style="margin-left: 30px;"> 본인 제외 모두 반대
 					</td>
 				</tr>
 
@@ -229,10 +229,10 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;" required> 1시간 미만
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 1 ~ 3 시간
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 4 ~ 8 시간
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 8시간 이상
+						<input type="radio" name="" value="1h" style="margin-left: 30px;" required> 1시간 미만
+						<input type="radio" name="" value="3h" style="margin-left: 30px;"> 1 ~ 3 시간
+						<input type="radio" name="" value="4h" style="margin-left: 30px;"> 4 ~ 8 시간
+						<input type="radio" name="" value="8h" style="margin-left: 30px;"> 8시간 이상
 					</td>
 				</tr>
 
