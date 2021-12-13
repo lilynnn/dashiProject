@@ -74,8 +74,8 @@
         margin:auto;  
     }
     #updateimage{
-        width:65px;
-        height: 65px;
+        width:60px;
+        height: 60px;
     }
     .bottomimage{
         width: 60px;
@@ -86,7 +86,7 @@
     p{
         color:rgb(54, 53, 53); 
         font-weight: 900;
-        font-size: 12px;
+        font-size: 14px;
     }
 
     /*입양신청 현황 스타일*/
@@ -94,7 +94,8 @@
         width: 100px;
         height: 100px;
         float: left;
-        margin: 23px;
+        margin-left: 23px;
+        margin-top: 20px;
         text-align: center;
         font-size: large;
         font-weight: 550;
@@ -102,6 +103,18 @@
         background: lightgray;
         color: rgb(54, 53, 53);
     }
+    .arrow{
+        width: 50px;
+        height: 100px;
+        float: left;
+        margin-left: 23px;
+        margin-top: 20px;
+        text-align: center;
+        font-size: large;
+        font-weight: 550;
+        padding-top: 25px;
+    }
+    #arrowimage{width: 50px; height: 50px;}
    #toparea>div:hover{
         cursor: pointer;
     }
@@ -170,7 +183,8 @@
                         <div>  
                         	<a href="<%=contextPath%>/updateInfo.me">
                             <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
-                        	<p align="center">회원정보수정</p></a>
+                        	<br><br>
+                            <p align="center">회원정보수정</p></a>
                         </div>
                     </div>
                     
@@ -202,50 +216,58 @@
                 <!--입양신청현황 영역(클릭 시 이동)-->
                 <div style="width: 98%; height: 15%; background: lightgray; margin-top: 7px;    display: flex;
                 align-items: center;">
-                <h5>입양신청현황</h5>
+                <p style="margin-top: 15px;">&nbsp;입양신청현황</p>
                 </div>
                 
-                <div style="width: 98%; height: 80%; margin-top: 25px;">
+                <div style="width: 98%; height: 80%; margin-top: 25px;" >
                     <!--입양신청 없을 시??????-->
                     <!--<h3 align="center" style="margin: auto; margin-top: 80px;">신청 내역이 없습니다.</h3>-->
                     <!--입양신청 처리상태 1(승인대기)일 시-->
-                    <div style="height: 60%; ">
+
                         <div class="adopt-status" style="background: rgb(102,184,94);">입양신청</div>
-                        <div class="adopt-status">입양승인</div>
-                        <div class="adopt-status">결제하기</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">입양완료</div>
-                    </div>
+
                     
                     <!--입양신청 처리상태 2(결제대기)일 시-->
                     <!--
-                    <div style="height: 60%; ">
+
                         <div class="adopt-status">입양신청</div>
-                        <div class="adopt-status" style="background: rgb(102,184,94);">입양승인</div>
-                        <div class="adopt-status">결제하기</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">입양완료</div>
-                    </div>
+
                     -->
                     <!--입양신청 처리상태 3(결제완료)일 시-->
                     <!--                    
-                    <div style="height: 60%; ">
+
                         <div class="adopt-status">입양신청</div>
-                        <div class="adopt-status">입양승인</div>
-                        <div class="adopt-status" >결제하기</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status" style="background: rgb(102,184,94);">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">입양완료</div>
-                    </div>
+
                     -->
                     <!--입양신청 처리상태 4(입양완료)일 시-->  
                     <!--                  
-                    <div style="height: 60%; ">
+
                         <div class="adopt-status" >입양신청</div>
-                        <div class="adopt-status">입양승인</div>
-                        <div class="adopt-status">결제하기</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status" style="background: rgb(102,184,94);">입양완료</div>
-                    </div>
+
                     -->
                     <!--입양신청 처리상태 5(반려))일 시-->
                     <!--<h3 align="center" style="margin: auto; margin-top: 80px;">입양 신청이 반려되었습니다.</h3>-->
@@ -261,9 +283,8 @@
                     <!--찜목록 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
-                        <div>
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/heart.png">
-                        </div>
+                        <br><br>
                         <p align="center">찜 목록확인</p>
                     </div>
 
@@ -278,7 +299,8 @@
                         <div>
                         	<a href="<%=contextPath%>/boardList.me">
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/post.png">
-	                        <p align="center">글쓴내역확인</p></a>
+	                        <br><br>
+                            <p align="center">글쓴내역확인</p></a>
                         </div>
                     </div>
 
@@ -290,9 +312,8 @@
                     <!--1:1문의 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
-                        <div>
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/answer.png">
-                        </div>
+                        <br><br>
                         <p align="center">1:1문의내역</p>
                     </div>
 
