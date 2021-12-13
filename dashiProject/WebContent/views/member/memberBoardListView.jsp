@@ -38,6 +38,11 @@
         background: #eafcef;
         border-bottom: 1px solid gray;
     }
+    /*메뉴바 색변경*/
+    #boardlist-list{
+    	font-weight:900px;
+    	color:rgb(252, 186, 3);
+    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

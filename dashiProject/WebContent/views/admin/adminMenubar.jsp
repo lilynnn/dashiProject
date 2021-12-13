@@ -49,15 +49,6 @@
         text-decoration: none;
         color: black;
     }
-
-    /* 입양신청 스타일 영역 */
-    #adoptApply a{
-        display: block;
-        width: 100%;
-        height: 100%;
-        text-decoration: none;          
-        color: black;
-    }
 </style>
 
 
