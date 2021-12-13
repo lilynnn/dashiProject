@@ -178,8 +178,8 @@
 
 
                 <!-- 나중에 경로 수정하기!! -->
-                <a href="<%= contextPath%>/adapply.bo" class="btn btn-success">입양신청하기</a>
-                <a href="<%= contextPath%>/adlist.bo" class="btn btn-secondary">목록보기</a>
+                <a href="<%= contextPath%>/adapply.adt" class="btn btn-success">입양신청하기</a>
+                <a href="<%= contextPath%>/adlist.adt" class="btn btn-secondary">목록보기</a>
                 <br><br><br><br>
 
                 

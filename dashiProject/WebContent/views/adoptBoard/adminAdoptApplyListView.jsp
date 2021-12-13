@@ -9,7 +9,7 @@
     /* 관리자메뉴바 스타일 */
     #adoptApply a{
         font-weight: 700;
-        /*background: rgb(32,68,28);*/
+        color: rgb(252, 186, 3);
     }
 
     /* 전체 감싸는 div */

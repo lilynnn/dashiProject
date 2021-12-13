@@ -109,7 +109,7 @@
 
         <!-- 하단 타이틀 눌렀을 때 입양공고 메인페이지로 이동 -->
         <div class="title">
-   		<a href="<%=contextPath %>/adlist.bo"><b>입양 공고</b></a>
+   		<a href="<%=contextPath %>/adlist.adt"><b>입양 공고</b></a>
    		</div>
         <hr style="width: 1100px; margin-top: 10px;">
         
