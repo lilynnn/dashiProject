@@ -82,37 +82,37 @@
 						<!-- 동물 품종  -->
 						<tr>
 							<th>묘종 / 견종</th>
-							<td><input type="text"></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보"></td>
 						</tr>
 
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td><input type="text"></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보"></td>
 						</tr>
 
 						<!-- 동물 성별 -->
 						<tr>
 							<th>성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별</th>
-							<td><input type="text" placeholder="남 / 여"></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보 ==> (남/여)"></td>
 						</tr>
 
 						<!-- 접종 여부 -->
 						<tr>
 							<th>접종 &nbsp; 여부</th>
-							<td><input type="text" placeholder="O / X"></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보 (Y / N)"></td>
 						</tr>
 						
 						<!-- 중성화 여부 -->
 						<tr>
 							<th>중성화여부</th>
-							<td><input type="text" placeholder="O / X"></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보 (Y / N)"></td>
 						</tr>
 						
 						<!-- 특이사항 -->
 						<tr>
 							<th>특이 &nbsp; 사항</th>
-							<td><input type="text" ></td>
+							<td><input type="text" value="전체동물조회에서전달된동물정보"></td>
 						</tr>
 
 						<!-- 내용 -->
@@ -127,7 +127,8 @@
 						<tr>
 							<th>첨부 &nbsp; 파일</th>
 							<td>
-								<input type="file">
+								<input type="file" value="전체동물조회에서전달된동물사진">
+								
 							</td>
 						</tr>
 					</tbody>

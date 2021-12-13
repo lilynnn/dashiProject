@@ -132,10 +132,10 @@
                     <!--if 입양상태가 N일때 보여질 버튼-->
                     <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
                     <!--나머지는 기본으로 보여지게-->
+                    <button class="btn btn-success">수정하기</button>
                     &nbsp;
                     <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
                     &nbsp;
-					<button class="btn btn-success">수정하기</button>
 					
 				</div>
 

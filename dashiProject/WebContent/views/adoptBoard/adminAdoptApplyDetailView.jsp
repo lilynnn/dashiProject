@@ -126,7 +126,10 @@
             <!-- 신청서div (기본값 display:none) -->
             <div id="app-form" style="margin-left: 20px;">
 
-                <table style="width: 900px; font-size: 14px; margin: 10px 0px;">
+                <table style="width: 900px; font-size: 17px; margin: 10px 0px;">
+                    <tr>&nbsp;
+                        <!-- 공백란 -->
+                    </tr>
                     <tr>
                         <td style="text-align: center; width: 200px;"><b>입양공고문 제목</b></td>
                         <td colspan="">
