@@ -39,10 +39,10 @@
     }
 
     /*버튼 영역*/
-    .btn{
+    .btnn{
         border: none;
-        background: rgb(221, 221, 221);
-        color: rgb(80, 79, 79);
+        background: rgb(102,184,94);
+        color: rgb(70, 69, 69);
         font-size: 14px;
         font-weight: bold;
         height: 33px;
@@ -67,8 +67,7 @@
         <div id="menubar" style="margin-right: 20px;">
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
-        
-        <form action="">
+
 
              <!-- 입양후기 관리 영역 -->
             <div class="content-area">
@@ -116,12 +115,7 @@
 	                    그들에게 설레는 보이는 얼마나 거친 날카로우나 하였으며, 그들은 것이다. 피어나기 힘차게 살았으며, 안고, <br>
 	                    가치를 생명을 이것을 대고, 것이다. 
 	                    청춘의 것이
-                        무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
-	                    소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
-	                    이상의 타오르고 대중을 귀는 밥을 찬미를 사막이다. 품고 같은 대중을 우리 이상은 관현악이며, 커다란 것이다. <br>
-	                    그들에게 설레는 보이는 얼마나 거친 날카로우나 하였으며, 그들은 것이다. 피어나기 힘차게 살았으며, 안고, <br>
-	                    가치를 생명을 이것을 대고, 것이다. 
-	                    청춘의 것이  
+  
 	                </div>   
 	
 	                <!-- 사용자 첨부 이미지 -->
@@ -141,14 +135,10 @@
 	                <br><br><br><br>
 
 	                <!--클릭 시 삭제 확인 alert창 발생-->
-	                <button class="btn">삭제하기</button>
-	
-	                <br><br><br><br>
+	                <button class="btnn" style="margin-bottom: 100px;">삭제하기</button>
 	            </div>
             </div>
-        </form>
+
     </div>
-    <br><br><br><br>
-	<%@ include file="../common/footerbar.jsp" %>
 </body>
 </html>
