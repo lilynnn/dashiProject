@@ -179,7 +179,7 @@
 
                 <!-- 나중에 경로 수정하기!! -->
                 <a href="<%= contextPath%>/views/adoptBoard/adoptApplyView.jsp" class="btn btn-success">입양신청하기</a>
-                <a href="<%= contextPath%>/adoptlist.bo" class="btn btn-secondary">목록보기</a>
+                <a href="<%= contextPath%>/adlist.bo" class="btn btn-secondary">목록보기</a>
                 <br><br><br><br>
 
                 

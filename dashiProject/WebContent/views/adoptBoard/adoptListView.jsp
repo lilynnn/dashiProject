@@ -258,8 +258,8 @@
                 //const num = $(this).children().eq(0).text();
                 // 콘솔에 출력해서 확인해보기
 
-                // location.href = '<%= contextPath%>/addetail?adno='+num;
-                location.href = '<%= contextPath%>/addetail';
+                // location.href = '<%= contextPath%>/addetail.bo?adno='+num;
+                location.href = '<%= contextPath%>/addetail.bo';
             })
         })
     </script>

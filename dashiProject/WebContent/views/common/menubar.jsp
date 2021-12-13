@@ -184,7 +184,7 @@
                 <a href="<%=contextPath %>/adoptlist">입양</a>
                     <ul class="menu-tag">
                         <li><a href="<%=contextPath%>/adguide.no">입양절차안내</a></li>
-                        <li><a href="<%=contextPath %>/adlist">입양신청</a></li>
+                        <li><a href="<%=contextPath %>/adlist.bo">입양신청</a></li>
                         <li><a href="<%=contextPath%>/reviewlist.bo">입양후기</a></li>
                     </ul>
             </div>
