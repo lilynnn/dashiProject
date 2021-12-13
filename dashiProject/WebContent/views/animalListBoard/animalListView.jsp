@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+    #sel-animal{
+        font-weight: 700;
+        color:rgb(252, 186, 3);
+    }
+
     .outer{
         width: 1200px;
         margin: auto;

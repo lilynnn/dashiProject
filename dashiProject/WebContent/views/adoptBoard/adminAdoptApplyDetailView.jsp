@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 
 <style>
+    /* 관리자메뉴바 글자 스타일*/
+    #adoptApply{
+        font-weight: 700;
+        color:rgb(252, 186, 3);
+    }
 	/* 전체 감싸는 div */
     .outer{
         width: 1200px;

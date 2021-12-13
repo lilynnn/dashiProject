@@ -6,7 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-     .outer{
+    /* 관리자메뉴바 (입양공고) 효과 */
+	#sel-adopt{
+		font-weight: 700;
+        color:rgb(252, 186, 3);
+	}
+
+    .outer{
         width: 1200px;
         height: 800px;
         margin: auto;

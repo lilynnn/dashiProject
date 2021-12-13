@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 <style>
 
+    /* 관리자 메뉴바 스타일 */
+    #sel-animal{
+        font-weight: 700;
+        color:rgb(252, 186, 3);
+    }
     /* 전체 div 스타일 */
     .outer{
         width: 1200px;
@@ -131,11 +136,11 @@
 					<br><br>
                     <!--if 입양상태가 N일때 보여질 버튼-->
                     <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
+                    &nbsp;
                     <!--나머지는 기본으로 보여지게-->
                     <button class="btn btn-success">수정하기</button>
                     &nbsp;
                     <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
-                    &nbsp;
 					
 				</div>
 

@@ -25,7 +25,10 @@
     }
 
     /* 관리자메뉴바 (입양신청) 효과 */
-
+    #adoptApply{
+        font-weight: 700;
+        color:rgb(252, 186, 3);
+    }
 
     /* 입양신청서 전체조회 title */
     .title-area{

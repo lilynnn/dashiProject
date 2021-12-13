@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminAdoptListController
+ * Servlet implementation class AdminAdoptNoticeDetailController
  */
-@WebServlet("/adlist.ad")
-public class AdminAdoptListController extends HttpServlet {
+@WebServlet("/adnodetail.ad")
+public class AdminAdoptNoticeDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAdoptListController() {
+    public AdminAdoptNoticeDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class AdminAdoptListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeDetailView.jsp").forward(request, response);
 	}
 
 	/**

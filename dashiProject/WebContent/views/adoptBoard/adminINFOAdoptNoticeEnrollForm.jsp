@@ -6,6 +6,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	/* 관리자메뉴바 (입양공고) 효과 */
+	#sel-adopt{
+		font-weight: 700;
+        color:rgb(252, 186, 3);
+	}
 	.outer{
         width: 1200px;
         height: 800px;
@@ -137,7 +142,7 @@
 					<br><br>
 					<button class="btn btn-success">등록하기</button>
 					&nbsp;
-					<button class="btn btn-secondary">목록보기</button>
+					<a class="btn btn-secondary" href="<%=contextPath%>">목록보기</a>
 				</div>
 			</div>
 		</form>
