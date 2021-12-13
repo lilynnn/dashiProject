@@ -167,6 +167,7 @@
                         <button class="page">2</button>
                         <button class="page">3</button>
                         <button class="page">4</button>
+                        <button class="page">5</button>
                         <button class="page">&gt;</button>
                     </div>
                 </div>

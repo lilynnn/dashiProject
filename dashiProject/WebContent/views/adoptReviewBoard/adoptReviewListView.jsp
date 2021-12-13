@@ -51,6 +51,16 @@
         background: rgb(233, 230, 230);
         cursor: pointer;
     }
+    .page{
+        border: none;
+        background: lightgray;
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 30px;
+        width: 30px;
+        border-radius: 9px;
+    }
 
 </style>
 </head>
@@ -233,6 +243,18 @@
                     </td>
                 </tr>
             </table>
+        </div>
+        <br><br><br>
+
+        <!-- 페이징버튼 영역 -->
+        <div align="center">
+            <button class="page">&lt;</button>
+            <button class="page">1</button>
+            <button class="page">2</button>
+            <button class="page">3</button>
+            <button class="page">4</button>
+            <button class="page">5</button>
+            <button class="page">&gt;</button>
         </div>
     </div>
     <script>
