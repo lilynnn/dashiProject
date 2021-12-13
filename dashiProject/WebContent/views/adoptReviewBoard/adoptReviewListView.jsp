@@ -74,7 +74,7 @@
         <div id="title" style="width: 100%; font-size: 26px; font-weight: 900;">
             입양 후기  
             <!--클릭 시 입양후기 작성 뷰로 이동-->
-            <button id="write">글쓰기</button>      
+            <button id="write" onclick="location.href='<%=contextPath %>/enroll.rv';">글쓰기</button>      
         </div>
         <hr>
 
