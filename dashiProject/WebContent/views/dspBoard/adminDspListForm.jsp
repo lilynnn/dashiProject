@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 <style>
     .outer{
-        width: 1200px;
-        height: 1600px;
+        width: 1100px;
+        height: 800px;
+        margin: auto;
+        margin-top: 50px;
     }
     .outer>div{
         float:left;
@@ -63,6 +65,8 @@
 </style>
 </head>
 <body>
+    <%@ include file="../common/menubar.jsp" %>
+    
     <div class="outer">
         
         <div id="menubar" style="margin-right: 20px;">

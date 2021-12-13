@@ -39,12 +39,12 @@
     }
 
     #animal-image{
-        border: 1px solid blue; /*나중에 지울것*/
         width:450px;
         height: 300px;
-        margin: auto;
+        margin-left: 100px;
         margin-top: 30px;
         margin-bottom: 30px;
+        
     }
 
 
@@ -107,9 +107,9 @@
                 </div>
 
                 <!--사진-->
-                <div id="animal-image">
-                   강아진 사진입니다. 
-                </div>
+               
+                <img src="" alt="" id="animal-image">
+             
 
                 <div>
                     <form action="">

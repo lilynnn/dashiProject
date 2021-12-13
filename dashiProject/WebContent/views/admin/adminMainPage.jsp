@@ -173,7 +173,7 @@
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a href="">실종/보호/목격</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/adlist.dsp">실종/보호/목격</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
