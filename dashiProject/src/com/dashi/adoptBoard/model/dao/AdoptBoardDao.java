@@ -96,5 +96,20 @@ public class AdoptBoardDao {
 	
 	public int increaseBoardNo(Connection conn, String boardNo) {
 		// controller에서 커밋하기
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 }
