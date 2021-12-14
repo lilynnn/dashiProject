@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	
+	<!-- 전체 게시글 불러오는 sql -->
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM ADOPT_NOTICE
+         WHERE POST_STATUS = 'Y'
+	</entry>
+	
+	<!-- 페이징바 영역에 맞춰서 게시글 리스트 불러오는 sql -->
+	<entry key="selectList">	
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                  SELECT 
+		                       ANLIST_NO
+		                     , AN_TITLE
+		                     , WRITE_DATE
+		                     , VIEW_COUNT
+		                     , ENT_NO
+		                     , ADT_STATUS
+                   			 , ANIMAL_TYPE
+		                  FROM ADOPT_NOTICE AN
+		                 WHERE AN.POST_STATUS = 'Y'
+		                 ORDER 
+		                    BY ANLIST_NO DESC
+		            ) A
+		  )
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<!-- 카테고리 컬럼 조회하는 sql -->
+	<entry key="selectCategoryList">
+		SELECT
+			   CATEGORY_NO
+			 , CATEGORY_NAME
+		  FROM CATEGORY
+	</entry>
+	
+	<!-- 게시글 작성하는 sql -->
+	<entry key="insertBoard">
+		INSERT 
+		  INTO BOARD
+		  (
+		    BOARD_NO
+		  , BOARD_TYPE
+		  , CATEGORY_NO
+		  , BOARD_TITLE
+		  , BOARD_CONTENT
+		  , BOARD_WRITER
+		  )
+		  VALUES
+		  (
+		    SEQ_BNO.NEXTVAL
+		  , 1
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<!-- 첨부파일 다운로드하는 sql -->
+	<entry key="insertAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    FILE_NO
+		  , REF_BNO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_FNO.NEXTVAL
+		  , SEQ_BNO.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<!-- 상세조회 요청시 sql / 조회수 증가용 -->
+	<entry key="increaseCount">
+		UPDATE
+		        BOARD
+		   SET COUNT = COUNT + 1
+		 WHERE BOARD_NO = ?
+		   AND STATUS = 'Y'
+	</entry>
+	
+	<!-- 게시글 정보 조회 sql -->
+	<entry key="selectBoard">
+		SELECT
+		       BOARD_NO
+		     , CATEGORY_NAME
+		     , BOARD_TITLE
+		     , BOARD_CONTENT
+		     , USER_ID
+		     , TO_CHAR(CREATE_DATE, 'YYYY/MM/DD') "CREATE_DATE"
+		  FROM BOARD
+		  LEFT JOIN CATEGORY USING(CATEGORY_NO)
+		  JOIN MEMBER ON (BOARD_WRITER = USER_NO)
+		 WHERE BOARD_NO = ?
+	</entry>
+	
+	<!-- 첨부파일조회 -->
+	<entry key="selectAttachment">
+		SELECT
+		        FILE_NO
+		      , ORIGIN_NAME
+		      , CHANGE_NAME
+		      , FILE_PATH
+		   FROM ATTACHMENT
+		  WHERE REF_BNO = ?
+	</entry>
+	
+	<!--첨부파일이 어떻든 간에 공동적으로 수행시켜야되는 sql문 -->
+	<entry key="updateBoard">
+		UPDATE
+		        BOARD
+		   SET CATEGORY_NO = ?
+		     , BOARD_TITLE = ?
+		     , BOARD_CONTENT = ?
+		 WHERE BOARD_NO = ?
+	</entry>
+	
+	<!-- 
+		 CASE 1. 기존의 첨부파일이 있음에도 불구하고 새로운 첨부파일이 넘어왔을 경우
+         UPDATE ATTACHMENT -->
+	<entry key="updateAttachment">
+		 UPDATE 
+		        ATTACHMENT
+		    SET ORIGIN_NAME = ?
+		      , CHANGE_NAME = ?
+		      , FILE_PATH = ?
+		 WHERE FILE_NO = ?
+	</entry>
+	
+	<!-- CASE 2. 기존의 첨부파일이 없었는데 새로운 첨부파일이 넘어왔을 경우
+	     INSERT ATTACHMENT -->
+	<entry key="insertNewAttachment">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    FILE_NO
+		  , REF_BNO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , FILE_PATH
+		  )
+		  VALUES
+		  (
+		    SEQ_FNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	
+	
+	<!-- 사진게시판 관련 sql -->
+	<!-- board table에 게시글 insert -->
+	<entry key="insertThBoard">
+		INSERT 
+		   INTO BOARD
+		   (
+		     BOARD_NO
+		   , BOARD_TYPE
+		   , BOARD_TITLE
+		   , BOARD_CONTENT
+		   , BOARD_WRITER
+		   )
+		   VALUES
+		   (
+		     SEQ_BNO.NEXTVAL
+		   , 2
+		   , ?
+		   , ?
+		   , ?
+		   )
+	</entry>
+	
+	<!-- insert attachment 반복적(넘어온 첨부파일 갯수만큼) -->
+	<entry key="insertAttachmentList">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    FILE_NO
+		  , REF_BNO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , FILE_PATH
+		  , FILE_LEVEL
+		  )
+		  VALUES
+		  (
+		    SEQ_FNO.NEXTVAL
+		  , SEQ_BNO.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	<!-- 사진게시글 목록 조회용 sql  -->
+	<entry key="selectThumbnailList">
+		SELECT 
+		       BOARD_NO
+		     , BOARD_TITLE
+		     , COUNT
+		     , FILE_PATH || CHANGE_NAME "TITLEIMG"
+		  FROM BOARD B
+		  JOIN ATTACHMENT A ON (BOARD_NO = REF_BNO)
+		 WHERE BOARD_TYPE = 2
+		   AND B.STATUS = 'Y'
+		   AND FILE_LEVEL = 1
+		 ORDER
+		    BY BOARD_NO DESC  
+	</entry>
+	
+	<!-- 댓글목록 조회용 sql -->
+	<entry key="selectReplyList">
+	SELECT 
+	        REPLY_NO
+	      , REPLY_CONTENT
+	      , USER_ID
+	      , TO_CHAR(CREATE_DATE, 'YY/MM/DD HH:MI') "CREATE_DATE"
+	  FROM REPLY R
+	  JOIN MEMBER ON (REPLY_WRITER = USER_NO)
+	 WHERE R.STATUS = 'Y'
+	   AND REF_BNO = ?
+	 ORDER 
+	    BY REPLY_NO DESC
+	</entry>
+	
+	<!-- 댓글 insert 하는 sql -->
+	<entry key="insertReply">
+		INSERT 
+		  INTO REPLY
+		  (
+		    REPLY_NO
+		  , REPLY_CONTENT
+		  , REF_BNO
+		  , REPLY_WRITER
+		  )
+		  VALUES
+		  (
+		    SEQ_RNO.NEXTVAL
+		  , ? <!-- 사용자가 입력한 댓글내용 -->
+		  , ? <!-- 댓글등록요청시현재사용자가 보고있는 게시글 번호 -->
+		  , ? <!-- 현재로그인한회원번호 -->
+		  )
+		
+	</entry>
+	
+</properties>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class AdoptListController
@@ -34,9 +35,39 @@ public class AdoptListController extends HttpServlet {
 		
 		// 사용자 입양공고글 보여질 화면
 		int listCount;
-		//ArrayList<AdoptNotice> list = new AdoptBoardService().selectList();
+		int currentPage;
+		int pageLimit;
+		int boardLimit;
 		
+		int maxPage;
+		int startPage;
+		int endPage;
 		
+		listCount = new AdoptBoardService().selectListCount();
+		
+		//!!!!!!!!!!!!!!!!!!!페이지명 맞추기
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+
+		pageLimit = 5;
+		
+		boardLimit = 20;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage>maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<AdoptNotice> list = new AdoptBoardService().selectList(pi);
+		
+		request.setAttribute("pi", pi);
+		request.setAttribute("adtList", list);
 		
 		request.getRequestDispatcher("views/adoptBoard/adoptListView.jsp").forward(request, response);
 		

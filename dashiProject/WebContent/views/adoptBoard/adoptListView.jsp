@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdoptNotice> adtlist = (ArrayList<AdoptNotice>)request.getAttribute("adtlist");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +101,6 @@
 	
 	<%@ include file="../common/menubar.jsp" %>
 
-    <!-- 나중에 서블릿연결해서 form 추가하기!!  -->
 
     <div class="outer">
 
@@ -126,131 +136,29 @@
             <!-- 페이징바는 5개 -->
             <!-- 입양공고 리스트가 보여질 영역-->
             <div class="content-area" align="center">
-
-                <!-- 리스트 하나 감싸는 div -->
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <!-- if - elif문 사용해서 카테고리 구분해서 표시하기 -->
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-warning">고양이</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-secondary">기타</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-                
-                <div class="adoptnotice" align="center">
-                    <img src="입양공고의대표이미지url">
-                    <span id="category" class="badge badge-success">강아지</span>
-                    <span>[품종명][이름]의 가족을 기다려요</span>
-                </div>
-
+            
+            	<!-- 게시글이 존재하지 않을 경우 -->
+            	<%if(adtlist.isEmpty()) {%>
+            		<p>조회된 게시글이 없습니다.</p>
+            	<%} else {%>
+	            	<%for(AdoptNotice ad : adtlist) { %>
+	                <!-- 리스트 하나 감싸는 div -->
+	                <div class="adoptnotice" align="center">
+	                    <img src="입양공고의대표이미지url">
+	                    <% if(ad.getAnimalType().equals('D')) {%>
+	                    	<span id="category" class="badge badge-success">강아지</span>
+	                    <%} else if(ad.getAnimalType().equals('C')) { %>
+	                    	<span id="category" class="badge badge-warning">고양이</span>
+	                    <%} else {%>
+	                    	<span id="category" class="badge badge-secondary">기타</span>
+	                    <%} %>
+	                    <span><%=ad.getAnTitle() %></span>
+	                </div>
+	                
+					<%} %>
+            	
+            	<%} %>
+               
            </div>
                  
         </form>
@@ -258,15 +166,25 @@
         <br>
         <!--페이징바 영역-->
         <div align="center">
-            <button class="btn btn-light">&lt;</button>
 
-            <button class="btn btn-light">1</button>
-            <button class="btn btn-light">2</button>
-            <button class="btn btn-light">3</button>
-            <button class="btn btn-light">4</button>
-            <button class="btn btn-light">5</button>
+       		<%if(currentPage != 1) {%>
+            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>adlist.adt?cpage=<%= currentPage-1 %>';">&lt</button>
+			<%} %>
+			
+			<% for(int p=startPage; p<=endPage; p++){ %>
+				
+				<%if(p == currentPage){ %>
+					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+					<button class="btn btn-light" disabled><%= p %></button>
+				<%} else { %>
+            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= p %>';"><%= p %></button>	
+            	<%} %>
+         	<%} %>	
 
-            <button class="btn btn-light">&gt;</button>
+			<%if(currentPage < maxPage) {%>
+         		<button onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+            <%} %>
+            
         </div>
     </div>
 	<br>
@@ -274,18 +192,7 @@
 	
     <%@include file="../common/footerbar.jsp" %>
 
-    <script>
-        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
-        $(function(){
-            $(".content-area>div").click(function(){
-                //const num = $(this).children().eq(0).text();
-                // 콘솔에 출력해서 확인해보기
 
-                // location.href = '<%= contextPath%>/addetail.adt?adno='+num;
-                location.href = '<%= contextPath%>/addetail.adt';
-            })
-        })
-    </script>
 	
 </body>
 </html>

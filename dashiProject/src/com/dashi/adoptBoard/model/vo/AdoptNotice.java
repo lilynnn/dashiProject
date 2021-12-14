@@ -10,9 +10,10 @@ public class AdoptNotice {
 	private String entNo;		// 입소번호(동물정보 가져올)
 	private int adtStatus;		// 입양상태 (1.입양대기 / 2. 입양완료)
 	private String postStatus;	// 게시글 상태(Y:활성화 / N:삭제된게시글)
-	
-	public AdoptNotice() {}
+	private String animalType; 	// D:강아지 / C:고양이 / E:기타
 
+	public AdoptNotice() {}
+	
 	public AdoptNotice(String anlistNo, String anTitle, String anContent, String writeDate, int viewCount, String entNo,
 			int adtStatus, String postStatus) {
 		super();
@@ -24,6 +25,27 @@ public class AdoptNotice {
 		this.entNo = entNo;
 		this.adtStatus = adtStatus;
 		this.postStatus = postStatus;
+	}
+	
+	
+	public AdoptNotice(String anlistNo, String anTitle, String writeDate, int viewCount, String entNo, int adtStatus,
+			String animalType) {
+		super();
+		this.anlistNo = anlistNo;
+		this.anTitle = anTitle;
+		this.writeDate = writeDate;
+		this.viewCount = viewCount;
+		this.entNo = entNo;
+		this.adtStatus = adtStatus;
+		this.animalType = animalType;
+	}
+
+	public String getAnimalType() {
+		return animalType;
+	}
+
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
 	}
 
 	public String getAnlistNo() {
@@ -96,7 +118,7 @@ public class AdoptNotice {
 				+ ", writeDate=" + writeDate + ", viewCount=" + viewCount + ", entNo=" + entNo + ", adtStatus="
 				+ adtStatus + ", postStatus=" + postStatus + "]";
 	}
-	
-	
 
+	
+	
 }
