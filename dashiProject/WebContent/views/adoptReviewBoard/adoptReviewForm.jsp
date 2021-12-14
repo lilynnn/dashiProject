@@ -46,7 +46,8 @@
         </div>
         <hr>        
         <!--입력폼-->
-        <form action="" id="enroll-form" method="post" enctype="multipart/form-data">
+        <form action="<%=contextPath%>/insert.ar" id="enroll-form" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
             <div class="input-area">
                 <!--사용자 선택 말머리 영역-->
                 말머리를 선택해주세요
@@ -76,7 +77,7 @@
                     대표이미지
                 </div>
                 <div style="width: 850px; float: left;">
-                    <img id="titleImg" width="150" height="150">
+                    <img id="titleImg" width="150" height="150" onclick="chooseFile(1);">
                 </div>
             </div>
             <div class="input-area" style="height: 220px;">
@@ -84,13 +85,13 @@
                     상세이미지
                 </div>
                 <div style="width: 850px; float: left;">
-                    <img id="contentImg1" width="100" height="100">
-                    <img id="contentImg2" width="100" height="100">
-                    <img id="contentImg3" width="100" height="100">
-                    <img id="contentImg4" width="100" height="100">
+                    <img id="contentImg1" width="100" height="100" onclick="chooseFile(2);">
+                    <img id="contentImg2" width="100" height="100" onclick="chooseFile(3);">
+                    <img id="contentImg3" width="100" height="100" onclick="chooseFile(4);">
+                    <img id="contentImg4" width="100" height="100" onclick="chooseFile(5);">
                 </div>
             </div>
-            <div class="input-area" style="height:80px; margin-top: 20px;">
+            <div class="input-area" style="height:80px; margin-top: 20px; display:none">
                 <div style="width: 120px; float:left;">
                     첨부파일                
                 </div>
@@ -108,6 +109,10 @@
             </div>
 
             <script>
+            	function chooseFile(num){
+            		$("#file" + num).click();	
+            	}
+            
                 function loadImg(inputFile, num){
                     // inputFile : 현재 변화가 생긴 input type="file" 요소객체
                     // num: 몇번째 input요소인지 확인 후 해당 그 영역에 미리보기하기 위해 전달받는 숫자
