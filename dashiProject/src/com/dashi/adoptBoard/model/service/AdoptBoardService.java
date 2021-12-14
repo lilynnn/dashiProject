@@ -26,4 +26,11 @@ public class AdoptBoardService {
 		return list;
 		
 	}
+	
+	public int increaseCount(String boardNo) {
+		
+		Connection conn = getConnection();
+		int result = new AdoptBoardDao().increaseCount(conn, boardNo);
+		
+	}
 }
