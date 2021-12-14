@@ -1,7 +1,7 @@
 package com.dashi.notice.model.service;
 
 import static com.dashi.common.JDBCTemplate.close;
-import static com.dashi.common.JDBCTemplate.getConnection;
+import static com.dashi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -26,4 +26,54 @@ public class NoticeService {
 		return list;
 	} // 게시글 수 만큼(10개)조회
 
+	public int increaseCount(int noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().increaseCount(conn, noticeNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+		
+	}// 게시판 조회수 증가
+	
+	public Notice selectNotice(int noticeNo) {
+		Connection conn = getConnection();
+		Notice n = new NoticeDao().selectNotice(conn, noticeNo);
+		close(conn);
+		return n;
+		
+	} // 게시글 상세조회
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

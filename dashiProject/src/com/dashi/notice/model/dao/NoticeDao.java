@@ -93,9 +93,59 @@ public class NoticeDao {
 		
 	}// 일반게시판 각 페이지마다 보여지는 목록
 	
+	public int increaseCount(Connection conn, int noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, noticeNo);
+			
+			result = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// 조회수 증가
 	
-	
-	
+	public Notice selectNotice(Connection conn, int noticeNo) {
+		Notice n = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, noticeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				n = new Notice(rset.getString("notice_no")
+							 , rset.getString("notice_title")
+							 , rset.getString("notice_content")
+							 , rset.getInt("view_count")
+							 , rset.getDate("write_date"));
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return n;
+		
+	} // 공지사항 상세조회
 	
 	
 	

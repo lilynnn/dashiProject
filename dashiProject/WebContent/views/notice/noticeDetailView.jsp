@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*"%>
+<%
+	Notice n = (Notice)request.getAttribute("n");
+
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,32 +87,32 @@
         </div>
 
         <!--제목, 등록일, 조회수-->
-        <div id="title">제목</div>
+        <div id="title"><%=n.getNoticeTitle()%></div>
         <div class="dateView">등록일</div>
-        <div class="dateView" style="width: 100px;">2021.12.24</div>
+        <div class="dateView" style="width: 100px;"><%=n.getWriteDate()%></div>
         <div class="dateView">조회수</div>
-        <div class="dateView" style="width: 900px;">123</div>
+        <div class="dateView" style="width: 900px;"><%=n.getViewCount()%></div>
         
         <!--본문-->
         <div id="noContent">
             <hr>
             <img src="<%=contextPath%>/resources/images/noticeMainNotice.png" width="700px" height="800px" style="margin-left:180px">
-            <p>본문자리</p>
+            <p><%=n.getNoticeContent() %></p>
         </div>
 
         <!--이전글 다음글-->
         <div id="befAft">
             <div style="width: 20px;">△</div>
             <div style="width: 100px;">이전글</div>
-            <div style="width: 980px; text-align: left;">이전글 제목</div>
+            <div style="width: 980px; text-align: left;"><a href="<%=contextPath%>/list.no?cpage=<%=currentPage-1%>">이전글 제목</a></div>
             <div style="width: 20px;">▽</div>
             <div style="width: 100px;">다음글</div>
-            <div style="width: 980px; text-align: left;">다음글 제목</div>
+            <div style="width: 980px; text-align: left;"><a href="<%=contextPath%>/list.no?cpage=<%=currentPage+1%>">다음글 제목</a></div>
         </div>
 
         <!--목록으로-->
         <div id="btn" align="center">
-            <button>목록으로</button>
+            <button onclick="location.href='<%=contextPath%>/list.no?cpage=1';">목록으로</button>
         </div>
 
     </div>
