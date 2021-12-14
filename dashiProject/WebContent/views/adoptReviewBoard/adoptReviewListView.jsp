@@ -61,6 +61,18 @@
         width: 30px;
         border-radius: 9px;
     }
+    /*테스트영역 스타일*/
+    .list-area2{
+        width:790px;
+        margin:auto;
+        /*width속성 넓히면 한 줄에 더 많이 들어갈듯.........!!!!!!!!!*/
+    }
+    .thumbnail{
+        border:1px solid red;
+        width:220px;
+        display: inline-block;
+        margin:14px;
+    }
 
 </style>
 </head>
@@ -73,10 +85,65 @@
         <!--입양후기(타이틀), 글쓰기버튼-->
         <div id="title" style="width: 100%; font-size: 26px; font-weight: 900;">
             입양 후기  
+            <!--로그인한 회원에게만 보여지도록-->
+			<% if(loginUser != null) { %>
             <!--클릭 시 입양후기 작성 뷰로 이동-->
-            <button id="write" onclick="location.href='<%=contextPath %>/enroll.rv';">글쓰기</button>      
+            <button id="write" onclick="location.href='<%=contextPath %>/enroll.ar';">글쓰기</button>   
+            <% } %>   
         </div>
         <hr>
+
+
+        <!--테스트영역-->
+        <div class="list-area" align=center>
+            <div class="thumbnail">
+                <img src="대표이미지경로" width="200" height="200">
+                <p>
+                    No.20 제목입니다. <br>
+                    조회수:30
+                </p>
+            </div>
+        </div>
+        <div class="list-area" align=center>
+            <div class="thumbnail">
+                <img src="대표이미지경로" width="200" height="200">
+                <p>
+                    No.20 제목입니다. <br>
+                    조회수:30
+                </p>
+            </div>
+        </div>
+        <div class="list-area" align=center>
+            <div class="thumbnail">
+                <img src="대표이미지경로" width="200" height="200">
+                <p>
+                    No.20 제목입니다. <br>
+                    조회수:30
+                </p>
+            </div>
+        </div>
+        <div class="list-area" align=center>
+            <div class="thumbnail">
+                <img src="대표이미지경로" width="200" height="200">
+                <p>
+                    No.20 제목입니다. <br>
+                    조회수:30
+                </p>
+            </div>
+        </div>
+        <div class="list-area" align=center>
+            <div class="thumbnail">
+                <img src="대표이미지경로" width="200" height="200">
+                <p>
+                    No.20 제목입니다. <br>
+                    조회수:30
+                </p>
+            </div>
+        </div>
+        <!--여기까지-->
+
+
+
 
         <!--입양후기 리스트 영역-->
         <div align="center">
