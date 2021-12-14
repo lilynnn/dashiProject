@@ -72,15 +72,15 @@
     }
 
     /* 입양공고 하나 감싸는 div */
-    .adoptnotice{
+    .adoptNotice{
        margin-top: 10px;
        width: 245px; 
        height: 250px; 
        box-sizing: border-box;
        display: inline-block;
     }
-    .adoptnotice img{width: 230px; height: 200px;}
-    .adoptnotice #category{
+    .adoptNotice img{width: 230px; height: 200px;}
+    .adoptNotice #category{
         margin-left: 5px; 
         width: 50px; 
         font-weight: 700;
@@ -103,6 +103,7 @@
 </head>
 <body>
 	
+    <!-- 나중에 AdoptListController에서 boarderlimit 20으로 수정하기-->
 	<!-- 지희 수정중  -->
 	<!-- 사용자 입양공고리스트 조회페이지 -->
 	
@@ -119,67 +120,77 @@
         <br><br>
         <!--게시판 안내-->
         <div id="name">
-            입양공고
+           	 입양공고
         </div>
         <div id="meno">
-            다시, 사랑받개의 아이들이 가족을 기다려요!
+       	     다시, 사랑받개의 아이들이 가족을 기다려요!
         </div>
         
 
-            <div class="search-area" align="right">
-                <select name="animal-category" style="height: 30px;">
-                    <option value="dog">강아지</option>
-                    <option value="cat">고양이</option>
-                    <option value="etc">기타</option>
-                </select>
+           <div class="search-area" align="right">
+               <select name="animal-category" style="height: 30px;">
+                   <option value="dog">강아지</option>
+                   <option value="cat">고양이</option>
+                   <option value="etc">기타</option>
+               </select>
 
-                <input type="text" placeholder="검색어를 입력하세요.">
-                
-                <button id="search-btn">검색하기</button>
-
-            </div>
-
-            <!-- 5행4열 배치 -->
-            <!-- 페이징바는 5개 -->
-            <!-- 입양공고 리스트가 보여질 영역-->
-            <div class="content-area" align="center">
-            
-            	<!-- 게시글이 존재하지 않을 경우 -->
-            	<%if(adtList.isEmpty()) {%>
-            		<p>조회된 게시글이 없습니다.</p>
-            	<%} else {%>
-	            	<%for(AdoptNotice ad : adtList) { %>
-	                <!-- 리스트 하나 감싸는 div -->
-	                <div class="adoptnotice" align="center">
-	                    <img src="입양공고의대표이미지url">
-
-                        <table>
-                            <tr>
-                                <!-- 동물 카테고리 보여질 span -->
-                                <td>
-                                    <% if(ad.getAnimalType().equals("D")) {%>
-                                        <span id="category" class="badge badge-success">강아지</span>
-                                    <%} else if(ad.getAnimalType().equals("C")) { %>
-                                        <span id="category" class="badge badge-warning">고양이</span>
-                                    <%} else {%>
-                                        <span id="category" class="badge badge-secondary">기타</span>
-                                    <%} %>
-                                </td>
-                                <!-- 입양 공고 제목 보여질 td -->
-                                <td width="80">
-                                    <div id="noticeTitle"><%=ad.getAnTitle() %></div>
-                                </td>
-                            </tr>
-                        </table>
-	                </div>
-	                
-					<%} %>
-            	
-            	<%} %>
+               <input type="text" placeholder="검색어를 입력하세요.">
                
+               <button id="search-btn">검색하기</button>
+
            </div>
-                 
-        
+
+           <!-- 5행4열 배치 -->
+           <!-- 페이징바는 5개 -->
+           <!-- 입양공고 리스트가 보여질 영역-->
+           <div class="content-area" align="center">
+           
+           	<!-- 게시글이 존재하지 않을 경우 -->
+           	<%if(adtList.isEmpty()) {%>
+           		<p>조회된 게시글이 없습니다.</p>
+           	<%} else {%>
+            	<%for(AdoptNotice ad : adtList) { %>
+                <!-- 리스트 하나 감싸는 div -->
+                <div class="adoptNotice" align="center">
+                    <input type="hidden" value=<%=ad.getAnlistNo() %>>
+                    <img src="입양공고의대표이미지url">
+                    
+                       <table>
+                           <tr>
+                               <!-- 동물 카테고리 보여질 span -->
+                               <td>
+                                   <% if(ad.getAnimalType().equals("D")) {%>
+                                       <span id="category" class="badge badge-success">강아지</span>
+                                   <%} else if(ad.getAnimalType().equals("C")) { %>
+                                       <span id="category" class="badge badge-warning">고양이</span>
+                                   <%} else {%>
+                                       <span id="category" class="badge badge-secondary">기타</span>
+                                   <%} %>
+                               </td>
+                               <!-- 입양 공고 제목 보여질 td -->
+                               <td width="80">
+                               		<div id="noticeTitle"><%=ad.getAnTitle() %></div>
+                               </td>
+                           </tr>
+                       </table>
+                </div>
+                
+				<%} %>
+           	<%} %>   
+            <script>
+            	$(function(){
+            		$(".adoptNotice").click(function(){
+            			console.log('<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val());
+
+            			location.href='<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val();
+            		})
+            		
+            	})
+            </script>
+            	
+            	
+            	
+           </div>
     
         <br>
         <!--페이징바 영역-->

@@ -93,4 +93,8 @@ public class AdoptBoardDao {
 		
 		return list;
 	}
+	
+	public int increaseBoardNo(Connection conn, String boardNo) {
+		// controller에서 커밋하기
+	}
 }
