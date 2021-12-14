@@ -247,7 +247,7 @@
                     <div class="login-area">
                         <input type="text" class="userId" name="userId" placeholder="아아디" required>
                         <br><br>
-                        <input type="text" class="userPwd" name="userPwd" placeholder="비밀번호" required>
+                        <input type="password" class="userPwd" name="userPwd" placeholder="비밀번호" required>
                     </div>
                     <div style="margin-top:20px; margin-bottom:15px;"><a href="" class="find">아아디/비밀번호찾기</a></div>
                     </div>
