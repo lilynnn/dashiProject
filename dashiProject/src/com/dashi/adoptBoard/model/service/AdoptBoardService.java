@@ -14,7 +14,6 @@ public class AdoptBoardService {
 	public int selectListCount() {
 		Connection conn = getConnection();
 		int listCount = new AdoptBoardDao().selectListCount(conn);
-		
 		close(conn);
 		return listCount;
 	}

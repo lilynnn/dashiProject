@@ -44,18 +44,12 @@ public class AdoptListController extends HttpServlet {
 		int endPage;
 		
 		listCount = new AdoptBoardService().selectListCount();
-		
-		//!!!!!!!!!!!!!!!!!!!페이지명 맞추기
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
 
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		pageLimit = 5;
-		
-		boardLimit = 20;
-		
+		boardLimit = 4;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
-		
 		endPage = startPage + pageLimit - 1;
 		
 		if(endPage>maxPage) {
@@ -67,6 +61,7 @@ public class AdoptListController extends HttpServlet {
 		ArrayList<AdoptNotice> list = new AdoptBoardService().selectList(pi);
 		
 		request.setAttribute("pi", pi);
+		
 		request.setAttribute("adtList", list);
 		
 		request.getRequestDispatcher("views/adoptBoard/adoptListView.jsp").forward(request, response);

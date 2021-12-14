@@ -23,8 +23,9 @@
 		                     , VIEW_COUNT
 		                     , ENT_NO
 		                     , ADT_STATUS
-                   			 , ANIMAL_TYPE
+		                     , ANIMAL_TYPE
 		                  FROM ADOPT_NOTICE AN
+		                  JOIN ENTRANCE E USING(ENT_NO)
 		                 WHERE AN.POST_STATUS = 'Y'
 		                 ORDER 
 		                    BY ANLIST_NO DESC

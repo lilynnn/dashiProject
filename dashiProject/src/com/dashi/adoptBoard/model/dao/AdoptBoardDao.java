@@ -56,12 +56,12 @@ public class AdoptBoardDao {
 	public ArrayList<AdoptNotice> selectList(Connection conn, PageInfo pi){
 		
 		// select -> ResultSet -> ArrayList<AdoptNotice>
+		
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("selectList");
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			

@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	ArrayList<AdoptNotice> adtlist = (ArrayList<AdoptNotice>)request.getAttribute("adtlist");
+	ArrayList<AdoptNotice> adtList = (ArrayList<AdoptNotice>)request.getAttribute("adtList");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -85,7 +85,14 @@
         width: 50px; 
         font-weight: 700;
     }
-    .adoptnotice span{font-size: 13px;}
+    #noticeTitle{
+        font-size: 13px; 
+        width:180px;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap;
+
+    }
 
     /* 입양공고이미지+제목 클릭시 효과 */
     .content-area>div:hover{
@@ -118,7 +125,7 @@
             다시, 사랑받개의 아이들이 가족을 기다려요!
         </div>
         
-        <form action="">
+
             <div class="search-area" align="right">
                 <select name="animal-category" style="height: 30px;">
                     <option value="dog">강아지</option>
@@ -138,21 +145,32 @@
             <div class="content-area" align="center">
             
             	<!-- 게시글이 존재하지 않을 경우 -->
-            	<%if(adtlist.isEmpty()) {%>
+            	<%if(adtList.isEmpty()) {%>
             		<p>조회된 게시글이 없습니다.</p>
             	<%} else {%>
-	            	<%for(AdoptNotice ad : adtlist) { %>
+	            	<%for(AdoptNotice ad : adtList) { %>
 	                <!-- 리스트 하나 감싸는 div -->
 	                <div class="adoptnotice" align="center">
 	                    <img src="입양공고의대표이미지url">
-	                    <% if(ad.getAnimalType().equals('D')) {%>
-	                    	<span id="category" class="badge badge-success">강아지</span>
-	                    <%} else if(ad.getAnimalType().equals('C')) { %>
-	                    	<span id="category" class="badge badge-warning">고양이</span>
-	                    <%} else {%>
-	                    	<span id="category" class="badge badge-secondary">기타</span>
-	                    <%} %>
-	                    <span><%=ad.getAnTitle() %></span>
+
+                        <table>
+                            <tr>
+                                <!-- 동물 카테고리 보여질 span -->
+                                <td>
+                                    <% if(ad.getAnimalType().equals("D")) {%>
+                                        <span id="category" class="badge badge-success">강아지</span>
+                                    <%} else if(ad.getAnimalType().equals("C")) { %>
+                                        <span id="category" class="badge badge-warning">고양이</span>
+                                    <%} else {%>
+                                        <span id="category" class="badge badge-secondary">기타</span>
+                                    <%} %>
+                                </td>
+                                <!-- 입양 공고 제목 보여질 td -->
+                                <td width="80">
+                                    <div id="noticeTitle"><%=ad.getAnTitle() %></div>
+                                </td>
+                            </tr>
+                        </table>
 	                </div>
 	                
 					<%} %>
@@ -161,12 +179,12 @@
                
            </div>
                  
-        </form>
+        
     
         <br>
         <!--페이징바 영역-->
         <div align="center">
-
+			
        		<%if(currentPage != 1) {%>
             	<button class="btn btn-light" onclick="location.href='<%= contextPath%>adlist.adt?cpage=<%= currentPage-1 %>';">&lt</button>
 			<%} %>
@@ -182,10 +200,11 @@
          	<%} %>	
 
 			<%if(currentPage < maxPage) {%>
-         		<button onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
             <%} %>
             
         </div>
+ 
     </div>
 	<br>
     <br><br><br><br>
