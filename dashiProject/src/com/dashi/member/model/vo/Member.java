@@ -30,6 +30,8 @@ public class Member {
 	
 	public Member() {}	
 	
+	
+	
 	public Member(int memNo, String memId, String memPwd, String memName, String nickname, Date birth, String memGender,
 			String email, String postNo, String address, String addressDetail, String phone, Date enrollDate,
 			String adoptYN, String enterYN, String payYN, String deleteYN, String delReason, Date delDate,

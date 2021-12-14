@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>
+    pageEncoding="UTF-8" import="com.dashi.member.model.vo.Member"%>
+<% 
+	String contextPath = request.getContextPath(); 
+	Member loginUser = (Member)session.getAttribute("loginUser");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -152,6 +155,10 @@
     
     <!-- 로그인 영역 -->
     <div class="login-area" align="right">
+        
+        
+        <!--case 1.로그인 전 -->
+        <%if(loginUser == null){ %>
         <table>
             <tr>
                 <td class="login" data-toggle="modal" data-target="#login_myModal">로그인</td>
@@ -159,6 +166,18 @@
                 <td><a class="enroll" href="<%= contextPath %>/enroll1.me">회원가입</a></td>
             </tr>
         </table>
+        <%}else{ %>
+
+        <!-- case 2. 로그인 후-->
+       
+        <div>
+            <b><%=loginUser.getMemName() %>님</b>반갑습니다! &nbsp;
+            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
+            <a href="<%= contextPath %>/mypage.me" style="color: black;">마이페이지</a>
+        </div>
+       <%} %>
+
+
     </div>
     
     <!-- 네비게이션바 영역 -->
@@ -174,10 +193,10 @@
 
             <!-- 입소탭 -->
             <div class="menu">
-                <a href="<%=contextPath %>/entMain.ent">입소</a>
+                <a href="">입소</a>
                     <ul class="menu-tag">
-                        <li><a href="<%=contextPath %>/entExplain.ent">입소안내</a></li>
-                        <li><a href="<%=contextPath %>/entWrite.ent">입소신청</a></li>
+                        <li><a href="">입소안내</a></li>
+                        <li><a href="">입소신청</a></li>
                     </ul>
             </div>
 
@@ -186,7 +205,7 @@
                 <a href="<%=contextPath %>/adlist.adt">입양</a>
                     <ul class="menu-tag">
                         <li><a href="<%=contextPath%>/adguide.adt">입양절차안내</a></li>
-                        <li><a href="<%=contextPath %>/adlist.adt?cpage=1">입양신청</a></li>
+                        <li><a href="<%=contextPath %>/adlist.adt">입양신청</a></li>
                         <li><a href="<%=contextPath%>/reviewlist.bo">입양후기</a></li>
                     </ul>
             </div>
@@ -222,7 +241,8 @@
             </div>
 
             <div class="modal-body">
-                <form action="">
+                <!-- 로그인 관련 영역!!!!!!-->
+                <form action="<%=contextPath%>/login.me" method="post">
                     <!-- Modal body -->
                     <div class="login-area">
                         <input type="text" class="userId" name="userId" placeholder="아아디" required>
