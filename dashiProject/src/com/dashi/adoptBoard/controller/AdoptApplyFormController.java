@@ -26,7 +26,9 @@ public class AdoptApplyFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String boardNo = request.getParameter("adtno");
 		
+		System.out.println(boardNo);
 		request.getRequestDispatcher("views/adoptBoard/adoptApplyForm.jsp").forward(request, response);
 		
 	}
