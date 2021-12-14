@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
+import com.dashi.adoptBoard.model.vo.AdoptNotice;
 
 /**
  * Servlet implementation class AdoptDetailController
@@ -31,11 +32,27 @@ public class AdoptDetailController extends HttpServlet {
 		
 		String boardNo = request.getParameter("adtno");
 		
-		System.out.println(boardNo);
 		
 		int result = new AdoptBoardService().increaseCount(boardNo);
-		// 포워딩
-		request.getRequestDispatcher("views/adoptBoard/adoptDetailView.jsp").forward(request, response);
+		
+		if(result>0) {	// 로드할 수 있는 게시글 -> 게시글, 첨부파일 조회
+			//일단 먼저 게시글 조회만 하기
+			AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
+			
+			// 첨부파일 조회
+			// Attachment at
+			
+			request.setAttribute("an", an);
+			
+			
+			request.getRequestDispatcher("views/adoptBoard/adoptDetailView.jsp").forward(request, response);
+		}
+		else {
+			
+			
+		}
+		
+	
 	}
 
 	/**

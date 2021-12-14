@@ -37,10 +37,31 @@
 	<!-- 상세조회 요청시 조회수 증가용 sql -->
 	<entry key="increaseCount">
 		UPDATE
-		        ADOTP_NOTICE
+		        ADOPT_NOTICE
 		   SET VIEW_COUNT = VIEW_COUNT + 1
 		 WHERE ANLIST_NO = ?
 		   AND POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAdoptNotice">
+		SELECT
+		       ANLIST_NO
+		     , AN_TITLE
+		     , AN_CONTENT
+          	 , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		     , VIEW_COUNT
+		     , ENT_NO
+		     , ANIMAL_VARIETY
+		     , ANIMAL_NAME
+		     , ANIMAL_GENDER
+		     , ANIMAL_AGE
+		     , ANIMAL_VACCINATED
+		     , ANIMAL_NEUTRALIZATION
+		     , ANIMAL_DISEASE
+		     , ANIMAL_ISSUE
+		  FROM ADOPT_NOTICE
+		  JOIN ENTRANCE USING(ENT_NO)
+		 WHERE ANLIST_NO = ?		
 	</entry>
 
 	

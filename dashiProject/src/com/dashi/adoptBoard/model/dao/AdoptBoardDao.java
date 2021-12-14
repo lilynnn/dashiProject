@@ -94,7 +94,7 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
-	public int increaseBoardNo(Connection conn, String boardNo) {
+	public int increaseCount(Connection conn, String boardNo) {
 		// controller에서 커밋하기
 		
 		int result = 0;
@@ -104,12 +104,63 @@ public class AdoptBoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt 
+			pstmt.setString(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
 		}
 		
 		return result;
 	}
+	
+	public AdoptNotice selectAdoptNotice(Connection conn, String boardNo) {
+		
+		AdoptNotice an = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdoptNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				an = new AdoptNotice(rset.getString("ANLIST_NO")
+						,rset.getString("AN_TITLE")
+						,rset.getString("AN_CONTENT")
+						,rset.getString("WRITE_DATE")
+						,rset.getInt("VIEW_COUNT")
+						,rset.getString("ENT_NO")
+						,rset.getString("ANIMAL_VARIETY")
+						,rset.getString("ANIMAL_NAME")
+						,rset.getString("ANIMAL_GENDER")
+						,rset.getInt("ANIMAL_AGE")
+						,rset.getString("ANIMAL_VACCINATED")	
+						,rset.getString("ANIMAL_NEUTRALIZATION")
+						,rset.getString("ANIMAL_DISEASE")
+						,rset.getString("ANIMAL_ISSUE")
+						);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return an;
+	}
+	
+	
+	
+	
 }

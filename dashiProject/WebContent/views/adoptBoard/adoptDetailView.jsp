@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<% 
+	AdoptNotice an = (AdoptNotice)request.getAttribute("an");
+	// 글번호, 제목, 내용, 작성일, 조회수, 입소번호
+	// 동물품종, 동물이름, 성별, 나이, 접종여부, 중성화여부, 질병유무, 특이사항
+	
+	// 첨부파일은 나중에
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,10 +25,9 @@
     }
 
     .image-area{
-        width: 700px;
+        width: 600px;
         height: 300px;
         margin: auto;
-        margin-top: 30px;
         border: 1px solid black;
     }
 
@@ -51,12 +59,7 @@
 
         <form action="">
 
-            <div class="image-area" align="center">
-                <!-- 백그라운드 이미지 넣기 -->
-                <h3 style="padding:120px">입양공고</h3>
-
-            </div>
-            <br><br>
+            <br><br><br><br>
             
             <!-- 입양공고 상세내용 영역 -->
             <div class="content-area" align="center">
@@ -65,15 +68,15 @@
                 <table align="left" style="margin-left: 150px;">
                     <tr>
                         <td colspan="5">
-                            <h6><b>[동물품종] [이름]의 가족을 기다려요.</b></h6>
+                            <h6><b><%= an.getAnTitle() %></b></h6>
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">
                         <td>작성일&nbsp;</td>
-                        <td>YYYY-MM-DD</td>
+                        <td><%= an.getWriteDate() %></td>
                         <td>&nbsp;<!--공백란--></td>
                         <td>조회수</td>
-                        <td>NN</td>
+                        <td><%=an.getViewCount() %></td>
                     </tr>
                 </table>
 
@@ -81,8 +84,9 @@
                 <hr width="900" color="gray">
                 <br>
 
+				<!-- 관리자가 업로드한 동물 대표 이미지 보여질 table -->
                 <div class="image-area">
-                    관리자가 작성시 업로드한 동물 사진
+           		         관리자가 작성시 업로드한 동물 사진
                 </div>
                 <br><br>
 
@@ -90,38 +94,38 @@
                 <table class="animal-info" width="800px">
                     <tr>
                         <th>품종</th>
-                        <td>~~~~</td>
+                        <td><%=an.getAnimalVariety() %></td>
                         <th>나이</th>
-                        <td>10개월령</td>
+                        <td><%=an.getAnimalAge() %> 살</td>
                     </tr>
                     <tr>
                         <th>성별</th>
-                        <td>남</td>
+                        <td><%=an.getAnimalGender() %></td>
                         <th>접종여부</th>
-                        <td>O</td>
+                        <td><%=an.getAnimalVaccin() %></td>
                     </tr>
                     <tr>
                         <th>중성화여부</th>
-                        <td>O</td>
+                        <td><%=an.getAnimalNeutral() %></td>
                         <th>특이사항</th>
-                        <td>~~~~~~~</td>
+                        <td><%=an.getAnimalIssue() %></td>
                     </tr>
                 </table>
-                <div class="image-area">
-                    관리자가 작성시 업로드한 동물 사진
-                </div>
-                <br>
+ 				<br><br><br>
+ 				
+   				<!-- 관리자가 업로드한 동물 상세 이미지 보여질 table -->
+				<table border="1" id="img-area" style="width:700px; height:250px">
+                	<tr>
+	                	<td><img ></td>
+	                	<td><img ></td>
+                	</tr>
+                </table>
+                <br><br><br>
+                
+                
                 <!-- 관리자가 입력한 내용 출력되는 영역 -->
                 <div class="text-area" align="center" style="width: 600px; height: 200px;">
-                    선한 눈매가 매력적인 푸딩이의 새 가족을 찾습니다. <br>
-                    푸딩이는 배변훈련이 잘 되어있어요! <br>
-                    순하고 사람을 좋아하는 아이입니다. <br>
-                    먹성도 좋은편이예요 <br>
-                    식탐이 있다고 해서 먹을때 건들면 공격성이 있는 아이들이 있는데 <br>
-                    이 친구는 세상 순한 아이입니다. <br>
-                    눈치가 엄청나게 빠른 친구예요<br>
-                    푸딩이와 가족이 되어주세요♥<br>
-
+					<%= an.getAnContent() %>
                 </div>  
 
                 <br><br>
@@ -178,8 +182,10 @@
 
 
                 <!-- 나중에 경로 수정하기!! -->
+                <%if(loginUser != null) {%>
                 <a href="<%= contextPath%>/adapply.adt" class="btn btn-success">입양신청하기</a>
-                <a href="<%= contextPath%>/adlist.adt" class="btn btn-secondary">목록보기</a>
+                <%} %>
+                <a href="<%= contextPath%>/adlist.adt?cpage=1" class="btn btn-secondary">목록보기</a>
                 <br><br><br><br>
 
                 

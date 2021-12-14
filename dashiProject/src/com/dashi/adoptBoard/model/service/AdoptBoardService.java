@@ -32,5 +32,20 @@ public class AdoptBoardService {
 		Connection conn = getConnection();
 		int result = new AdoptBoardDao().increaseCount(conn, boardNo);
 		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	public AdoptNotice selectAdoptNotice(String boardNo) {
+		Connection conn = getConnection();
+		AdoptNotice an = new AdoptBoardDao().selectAdoptNotice(conn, boardNo);
+		
+		close(conn);
+		return an;
 	}
 }
