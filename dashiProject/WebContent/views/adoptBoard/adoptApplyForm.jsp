@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<% %>
+<%@ page import="com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<%
+	AdoptNotice an = (AdoptNotice)request.getAttribute("an");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,18 +48,20 @@
 	
 	<div class="outer" align="center">
 	
-		<form action="" method="" enctype="multipart/form-data">
+		<form action="<%=contextPath %>/adpinsert.adt" method="post" enctype="multipart/form-data">
 
 			<div class="title-area">
 				<h4>입양신청서</h4>
 			</div>
-
+			<input type="hidden" name="memNo" value="<%=loginUser.getMemNo() %>">
+			<input type="hidden" value="<%=an.getAnlistNo() %>">
+			
 			<table style="width: 900px;">
 				<!-- 신청할 입양공고문 제목 -->
 				<tr>
 					<td width=220 style="font-size: 14px;">* 입양 공지문 제목 : </td>
 					<td width=780>
-						<input type="text" style="width: 690px" name="" value="" >
+						<input type="text" style="width: 690px" name="adpTitle" value=" <%=an.getAnTitle() %>" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -74,23 +78,23 @@
 				<tr>
 					<td width=220>1. 신청인 성명  </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px" required>
+						<input type="text" name="adpName" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 연령 -->
 					<td width=220>2. 연 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 령 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px" required>
+						<input type="text" name="adpAge" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 성별 -->
 					<td width=220>3. 성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별 </td>
 					<td width=780>
-						<input type="radio" name="gender" value="M" required> 남성
+						<input type="radio" name="adpGender" value="M" required> 남성
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="gender" value="F"> 여성
+						<input type="radio" name="adpGender" value="F"> 여성
 					</td>
 				</tr>
 				<tr>
@@ -104,7 +108,7 @@
 					<!-- 이메일 -->
 					<td width=220>5. 이&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;일 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 333px" required>
+						<input type="text" name="email" style="width: 333px" required>
 						@
 						<input type="text" name="" style="width: 333px" required>
 					</td>
@@ -113,23 +117,23 @@
 					<!-- 주소 -->
 					<td width=220>6. 주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 소 </td>
 					<td>
-						<input type="text" name="" style="width: 690px" placeholder=" 상세주소까지 입력해주세요." required>
+						<input type="text" name="address" style="width: 690px" placeholder=" 상세주소까지 입력해주세요." required>
 					</td>
 				</tr>
 				<tr>
 					<!-- 기혼여부 -->
 					<td width=220>7. 기&nbsp;혼&nbsp;&nbsp;&nbsp;여&nbsp;부 </td>
 					<td width=780>
-						<input type="radio" name="marriage" value="" required> 기혼
+						<input type="radio" name="marriage" value="Y" required> 기혼
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="marriage" value=""> 미혼
+						<input type="radio" name="marriage" value="N"> 미혼
 					</td>
 				</tr>
 				<tr>
 					<!-- 직업 -->
 					<td width=220>8. 직 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 업 </td>
 					<td width=780>
-						<input type="text" name="" style="width: 690px" required>
+						<input type="text" name="job" style="width: 690px" required>
 					</td>
 				</tr>
 			</table>
@@ -145,7 +149,7 @@
 				</tr>
 				<tr>
 					<td>
-						<textarea class="inputText-area" required></textarea>
+						<textarea class="inputText-area" name="adReason" required></textarea>
 					</td>
 				</tr>
 				
@@ -154,7 +158,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" style="width: 830px; margin-left: 20px;" required>
+						<input type="text" name="adExp" style="width: 830px; margin-left: 20px;" required>
 					</td>
 				</tr>
 				
@@ -163,32 +167,32 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
+						<input type="radio" name="havePet" value="Y" style="margin-left: 30px;" required> 예
 						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="" value="N"> 아니오
+						<input type="radio" name="havePet" value="N"> 아니오
 					</td>
 				</tr>
 				<!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->
-				<tr>
+				<tr id="havePet-area">
 					<td>
 						<p style="display: inline; margin-left: 20px;">종류</p>&nbsp;
-						<input style="width: 150px;" type="text" name="">
+						<input style="width: 150px;" type="text" name="petType">
 						
 						<p style="display: inline; margin-left: 20px;">나이</p>&nbsp;
-						<input style="width: 100px;" type="text" name="">
+						<input style="width: 100px;" type="text" name="petAge">
 						
 						<p style="display: inline; margin-left: 20px;">성별</p>&nbsp;&nbsp;
-						<input type="radio" name="petGender" value="M"> 남
+						<input type="radio" name="petGender" value="M" > 남
 						&nbsp;&nbsp;
 						<input type="radio" name="petGender" value="F"> 여
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<p style="display: inline; margin-left: 20px;">중성화여부</p>&nbsp;&nbsp;
-						<input type="radio" name="neutral" value="Y"> 예
+						<input type="radio" name="petNeutral" value="Y"> 예
 						&nbsp;&nbsp;
-						<input type="radio" name="neutral" value="N"> 아니오
+						<input type="radio" name="petNeutral" value="N"> 아니오
 					</td>
 				</tr>
-
+					
 				<tr>
 					<td>4. 귀하의 가족은 모두 몇 명입니까?</td>
 				</tr>
@@ -198,11 +202,11 @@
 				<tr>
 					<td>
 						<p style="display: inline; margin-left: 30px;">성인</p>&nbsp;
-						<input type="text" name="" placeholder="명" required>
+						<input type="text" name="aMate" placeholder="명" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="" placeholder="명" required>
+						<input type="text" name="cMate" placeholder="명" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="" placeholder="세" required>
+						<input type="text" name="childAge" placeholder="세" required>
 					</td>
 				</tr>
 
@@ -211,9 +215,9 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 모두찬성
-						<input type="radio" name="" value="P" style="margin-left: 30px;"> 부분찬성
-						<input type="radio" name="" value="N" style="margin-left: 30px;"> 본인 제외 모두 반대
+						<input type="radio" name="agreeYPN" value="Y" style="margin-left: 30px;" required> 모두찬성
+						<input type="radio" name="agreeYPN" value="P" style="margin-left: 30px;"> 부분찬성
+						<input type="radio" name="agreeYPN" value="N" style="margin-left: 30px;"> 본인 제외 모두 반대
 					</td>
 				</tr>
 
@@ -231,10 +235,10 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="1h" style="margin-left: 30px;" required> 1시간 미만
-						<input type="radio" name="" value="3h" style="margin-left: 30px;"> 1 ~ 3 시간
-						<input type="radio" name="" value="4h" style="margin-left: 30px;"> 4 ~ 8 시간
-						<input type="radio" name="" value="8h" style="margin-left: 30px;"> 8시간 이상
+						<input type="radio" name="" value="1h미만" style="margin-left: 30px;" required> 1시간 미만
+						<input type="radio" name="" value="4h미만" style="margin-left: 30px;"> 1 ~ 3 시간
+						<input type="radio" name="" value="8h미만" style="margin-left: 30px;"> 4 ~ 8 시간
+						<input type="radio" name="" value="8h이상" style="margin-left: 30px;"> 8시간 이상
 					</td>
 				</tr>
 
@@ -294,10 +298,11 @@
 					</td>
 				</tr>
 			</table>
-
+			
 			<br><br>
 			<button class="btn btn-lg btn-success">제출하기</button>
 			<br><br>
+
 		</form>
 
 	</div>

@@ -8,20 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.adoptBoard.model.service.AdoptBoardService;
-import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+
+import com.dashi.adoptBoard.model.vo.AdoptApply;
 
 /**
- * Servlet implementation class AdoptApplyFormController
+ * Servlet implementation class AdoptApplyInsertController
  */
-@WebServlet("/adapply.adt")
-public class AdoptApplyFormController extends HttpServlet {
+@WebServlet("/adpinsert.adt")
+public class AdoptApplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptApplyFormController() {
+    public AdoptApplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +31,21 @@ public class AdoptApplyFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String boardNo = request.getParameter("adtno");
 		
-		System.out.println(boardNo);
-		AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
+		request.setCharacterEncoding("UTF-8");
 		
-		request.setAttribute("an", an);
-		request.getRequestDispatcher("views/adoptBoard/adoptApplyForm.jsp").forward(request, response);
+		if(ServletFileUpload.isMultipartContent(request)) {
+			
+			int maxSize = 10*1024*1024;
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/adoptApply/");
+			
+			// renamePolicy만들기
+			// MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",  new MyFileRenamePolicy());		
+		
+			AdoptApply adp = new AdoptApply();
+			
+		}
+		
 		
 	}
 
