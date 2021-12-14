@@ -56,14 +56,14 @@
         <div id="menubar" style="margin-right: 20px;">
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
+        
             <div width="800px">
                 <h3>입소신청</h3>
             </div>
            <hr>
-            
           
-            <div class="content-area" align="center">
-
+            <div class="content-area" align="center">            
+                
                 <!-- 입양공고 제목, 작성일, 조회수 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
@@ -101,14 +101,16 @@
                         <th>작성일</th>
                         <td>YYYY-MM-DD</td>
                         <th>처리결과</th>
-                        <td> 
+                     
+                         <td> 
                             <select name="search-category">
-                            <option value="">승인대기</option>
-                            <option value="">승인</option>
-                            <option value="">반려</option>
+	                            <option value="">승인대기</option>
+	                            <option value="">승인</option>
+	                            <option value="">반려</option>
                             </select>
-                    </td>
+                   		 </td>
                     </tr>
+                    
                 </table>
                 <div class="image-area" width="500px">
                     	작성시 업로드한 동물 사진
