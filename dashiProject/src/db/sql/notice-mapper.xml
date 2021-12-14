@@ -35,7 +35,7 @@
 		UPDATE
 		       NOTICE
 		   SET VIEW_COUNT = VIEW_COUNT + 1
-		 WHERE BOARD_NO = ?
+		 WHERE NOTICE_NO = ?
 		   AND NO_STATUS = 'N'
 	</entry>
 

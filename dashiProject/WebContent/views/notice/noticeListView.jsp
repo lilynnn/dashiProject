@@ -60,6 +60,9 @@
     	border-radius:3px;
     	border:none;
     }
+    .table-hover>tbody>tr:hover{
+    	cursor:pointer;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -132,7 +135,7 @@
 	                    <% for(Notice n : list){ %>
 	                    <!--일반 공지글 있을 때-->
 	                    <tr>
-	                        <td><%=n.getNoticeNo().substring(2,5)%></td>
+	                        <td><%=n.getNoticeNo()%></td>
 	                        <td></td>
 	                        <td><%=n.getNoticeTitle()%></td>
 	                        <td><%=n.getWriteDate()%></td>
@@ -146,8 +149,13 @@
         
         <script>
         	$(function(){
-        		$(".thead-light>tbody>tr").click(function(){
-        			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
+        		$(".table-hover>tbody>tr").click(function(){
+        			const num1 = $(this).children().eq(0).text();
+        			const num2 = num1.substring(2,5);
+        			
+        			console.log(num2);
+        			
+        			location.href = '<%=contextPath%>/detail.no?nno=' + num2;
         		})
         	})
         </script>

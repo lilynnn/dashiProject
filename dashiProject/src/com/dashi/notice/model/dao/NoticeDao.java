@@ -93,14 +93,14 @@ public class NoticeDao {
 		
 	}// 일반게시판 각 페이지마다 보여지는 목록
 	
-	public int increaseCount(Connection conn, int noticeNo) {
+	public int increaseCount(Connection conn, String noticeNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("increaseCount");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, noticeNo);
+			pstmt.setString(1, noticeNo);
 			
 			result = pstmt.executeUpdate();			
 			
@@ -113,7 +113,7 @@ public class NoticeDao {
 		return result;
 	}// 조회수 증가
 	
-	public Notice selectNotice(Connection conn, int noticeNo) {
+	public Notice selectNotice(Connection conn, String noticeNo) {
 		Notice n = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -122,7 +122,7 @@ public class NoticeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, noticeNo);
+			pstmt.setString(1, noticeNo);
 			
 			rset = pstmt.executeQuery();
 			
