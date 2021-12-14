@@ -27,6 +27,9 @@ public class AdminAdoptListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
+		
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeListView.jsp").forward(request, response);
 	}
 
