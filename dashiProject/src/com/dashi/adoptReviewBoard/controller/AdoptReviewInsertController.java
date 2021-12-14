@@ -35,7 +35,7 @@ public class AdoptReviewInsertController extends HttpServlet {
 		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
-			// 1_1. 전송용량제한
+			// 1_1. 전송용량제한(10mb)
 			int maxSize = 10 * 1024 * 1024;
 			
 			// 1_2. 저장시킬 폴더의 물리적인 경로
