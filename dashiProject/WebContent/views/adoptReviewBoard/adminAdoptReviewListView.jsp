@@ -181,7 +181,7 @@
     <script>
         $(function(){
             $(".table>tbody>tr").click(function(){
-                location.href="<%=contextPath%>/detail.rv";
+                location.href="<%=contextPath%>/detail.ar";
             })
         })
     </script>
