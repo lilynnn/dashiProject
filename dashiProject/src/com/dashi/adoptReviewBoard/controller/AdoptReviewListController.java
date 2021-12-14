@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdoptReviewListController
  */
-@WebServlet("/reviewlist.bo")
+@WebServlet("/list.rv")
 public class AdoptReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
