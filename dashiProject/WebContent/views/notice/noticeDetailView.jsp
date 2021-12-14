@@ -8,7 +8,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 500px;
+        height: 1500px;
         margin: auto;
         margin-top: 50px;
     }
@@ -43,7 +43,7 @@
         height: auto;
     }
     /*글넘기기*/
-    #befAft{margin-top: 30px; margin-bottom: 20px;}
+    #befAft{margin-top: 50px; margin-bottom: 20px;}
     #befAft>div{
         float: left;
         box-sizing: border-box;
@@ -86,7 +86,8 @@
         <!--본문-->
         <div id="noContent">
             <hr>
-            본문내용
+            <img src="<%=contextPath%>/resources/images/noticeMainNotice.png" width="700px" height="800px" style="margin-left:180px">
+            <p>본문자리</p>
         </div>
 
         <!--이전글 다음글-->

@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*, java.util.ArrayList"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +18,7 @@
     .outer{
         width: 1100px;
         margin: auto;
-        height:1500px;
+        height:1600px;
     }
     .outer>div{
         float: left; 
@@ -99,47 +108,75 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!--공지글 없을 때-->
-                    <tr>
-                        <td colspan="5">게시된 공지사항이 없습니다.</td>
-                    </tr>
-                    <!--공지의 공지글 있을 때-->
+                	
+                	<% if(list.isEmpty()){ %>
+	                    <!--공지글 없을 때-->
+	                    <tr>
+	                        <td colspan="5">게시된 공지사항이 없습니다.</td>
+	                    </tr>
+                    <% }else{ %>
+                    
+                    <!--공지의 공지글 있을 때
                     <tr id="noticeInNotice">
                         <td>1</td>
                         <td>
                             <button class="btn-sm" style="background: #f57f7f; border: none; font-weight: bolder;">
-                                공지
+                                	공지
                             </button>
                         </td>
                         <td>제목</td>
                         <td>2021-12-04</td>
                         <td>123</td>
-                    </tr>
-                    <!--일반 공지글 있을 때-->
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td>제목</td>
-                        <td>2021-12-04</td>
-                        <td>123</td>
-                    </tr>
+                    </tr> -->
+                    
+	                    <% for(Notice n : list){ %>
+	                    <!--일반 공지글 있을 때-->
+	                    <tr>
+	                        <td><%=n.getNoticeNo().substring(2,5)%></td>
+	                        <td></td>
+	                        <td><%=n.getNoticeTitle()%></td>
+	                        <td><%=n.getWriteDate()%></td>
+	                        <td><%=n.getViewCount()%></td>
+	                    </tr>
+	                    <% } %>
+                    <% } %>
                 </tbody>
             </table>
         </div>
+        
+        <script>
+        	$(function(){
+        		$(".thead-light>tbody>tr").click(function(){
+        			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
+        		})
+        	})
+        </script>
+        
+        
+       
 
         <div class="paging-area" align="center">
-
-            <button class="btn btn-light">&lt;</button>
-            <button class="btn btn-light">1</button>
-            <button class="btn btn-light">2</button>
-            <button class="btn btn-light">3</button>
-            <button class="btn btn-light">4</button>
-            <button class="btn btn-light">5</button>
-            <button class="btn btn-light">&gt;</button>
-
+			
+			<% if(currentPage != 1){ %>
+            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.no?cpage=<%=currentPage-1%>';">&lt;</button>
+            <% } %>
+            
+            <% for(int p=startPage; p<endPage; p++){ %>
+            	<% if(p == currentPage){ %>
+            		<button class="btn btn-light" disabled><%=p%></button>
+            	<%}else{ %>
+            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.no?cpage=<%=p%>';"><%=p%></button>
+            	<% } %>
+           	<% } %>
+            
+            <% if(currentPage != maxPage){ %>
+           	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.no?cpage=<%=currentPage+1%>';">&gt;</button>
+			<% } %>
         </div>
 
     </div>
+
+
 
 	<%@ include file="../common/footerbar.jsp" %>
 

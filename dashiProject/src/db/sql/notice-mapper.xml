@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) "count"
+		  FROM NOTICE
+		 WHERE NO_STATUS = 'N'
+	</entry>
+
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                       NOTICE_NO
+		                     , NOTICE_TITLE
+		                     , NOTICE_CONTENT
+		                     , VIEW_COUNT
+		                     , WRITE_DATE
+		                     , NOTICE_YN
+		                     , MN_NO
+		                  FROM NOTICE
+		                  JOIN MANAGER_INFO USING (MN_NO)
+		                 WHERE NO_STATUS = 'N'
+		                 ORDER
+		                       BY NOTICE_NO DESC) A
+		                )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+
+
+
+
+
+
+
+</properties>
