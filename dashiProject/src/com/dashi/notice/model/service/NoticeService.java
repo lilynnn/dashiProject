@@ -74,12 +74,26 @@ public class NoticeService {
 	public int insertNotice(Notice n) {
 		Connection conn = getConnection();
 		int result = new NoticeDao().insertNotice(conn, n);
-		close(conn);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		return result;
 	
 	}// 공지사항 작성
 	
-	
+	public int deleteNotice(String noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().deleteNotice(conn, noticeNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}// 공지사항 삭제
 	
 	
 	

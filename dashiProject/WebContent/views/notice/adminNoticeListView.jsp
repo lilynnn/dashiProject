@@ -120,6 +120,7 @@
                 </div>
                 
                 <div style="width: 600px;" align="right">
+                	<% if(loginAdmin != null){ %>
                     <button type="button" class="btn btn-sm" style="background: tomato;">
                         	공지
                     </button>
@@ -127,6 +128,7 @@
                     <a href="<%=contextPath%>/noEnrollForm.ad" class="btn btn-sm" style="background: yellow;">
                         	글쓰기
                     </a>
+                    <% } %>
                 </div>
 
                 <div style="margin-top: 10px;">

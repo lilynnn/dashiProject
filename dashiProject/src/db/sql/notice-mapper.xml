@@ -92,7 +92,12 @@
 		  )
 	</entry>
 
-
+	<entry key="deleteNotice">
+		UPDATE
+			   NOTICE
+		   SET NO_STATUS = 'Y'
+		 WHERE NOTICE_NO = ?
+	</entry>
 
 
 

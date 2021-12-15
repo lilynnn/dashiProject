@@ -227,6 +227,26 @@ public class NoticeDao {
 		
 	}// 공지사항 등록
 	
+	public int deleteNotice(Connection conn, String noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	
+	} //공지사항 삭제
 	
 	
 	
