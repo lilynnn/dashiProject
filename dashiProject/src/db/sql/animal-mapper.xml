@@ -6,7 +6,7 @@
 	<entry key="selectListCount">
 		SELECT
 		       COUNT(*) count
-		  FROM ADOPT_ANIMAL;
+		  FROM ADOPT_ANIMAL
 	</entry>
 	
 	
@@ -30,5 +30,24 @@
 		            ) A
 		  )
 		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectAnimalInfo">
+		SELECT 
+		       ENT_NO
+		     , ADOPT_STATUS
+		     , ADOPT_DATE
+		     , TO_CHAR(ENT_DATE, 'YYYY/MM/DD') "ENT_DATE"
+		     , ANIMAL_VARIETY
+		     , ANIMAL_NAME
+		     , ANIMAL_GENDER
+		     , ANIMAL_AGE
+		     , ANIMAL_VACCINATED
+		     , ANIMAL_NEUTRALIZATION
+		     , ANIMAL_DISEASE
+		     , ANIMAL_ISSUE
+		  FROM ADOPT_ANIMAL
+		  JOIN ENTRANCE USING (ENT_NO)
+		 WHERE ENT_NO = ?
 	</entry>
 </properties>

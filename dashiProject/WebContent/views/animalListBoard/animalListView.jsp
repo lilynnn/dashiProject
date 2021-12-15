@@ -79,9 +79,9 @@
             <!-- 검색버튼 -->
             <div class="search-area" style="margin: 20px 0px; float: right;">
                 <select name="search-category" style="height: 30px;">
-                    <option value="">카테고리</option>
-                    <option value="">동물품종</option>
-                    <option value="">동물이름</option>
+                    <option value="">강아지</option>
+                    <option value="">고양이</option>
+                    <option value="">기타</option>
                 </select>
 
                 <input type="text" placeholder="검색어를 입력하세요.">
@@ -129,23 +129,27 @@
 
             <!-- 페이징버튼 영역 -->
             <div align="center">
-            	<%if(currentPage != 1) {%>
-                	<button class="btn btn-light">&lt;</button>
+				
+	       		<%if(currentPage != 1) {%>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/anlist.ad?cpage=<%= currentPage-1 %>';">&lt</button>
 				<%} %>
-				<%for (int p=startPage; p<=endPage; p++) {%>
-                	<%if(p==currentPage){ %>
-                		<button class="btn btn-light" disabled><%= p %></button>
-                	<%} else {%>
-                	<button class="btn btn-light" onclick="location.href='<%= contextPath %>/anlist.ad?cpage=<%= p %>';"><%= p %></button>	
-                	<%} %>
-				<%} %>
-
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					
+					<%if(p == currentPage){ %>
+						<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+						<button class="btn btn-light" disabled><%= p %></button>
+					<%} else { %>
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/anlist.ad?cpage=<%= p %>';"><%= p %></button>	
+	            	<%} %>
+	         	<%} %>	
+	
 				<%if(currentPage < maxPage) {%>
-	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/aanlist.ad?cpage=<%= currentPage+1%>';">&gt</button>
 	            <%} %>
-            </div>
-
+			</div>
             <br><br>
+        
         </div>
 
     </div>
@@ -156,9 +160,9 @@
             $(".table>tbody>tr").click(function(){
                 //const num = $(this).children().eq(0).text();
                 // 콘솔에 출력해서 확인해보기
-
+				console.log($(this).children().eq(0).text());
                 // location.href = '<%= contextPath%>/addetail?adno='+num;
-                location.href = '<%= contextPath%>/andetail.ad';
+               location.href = '<%= contextPath%>/andetail.ad?ano='+$(this).children().eq(0).text();
             })
         })
     </script>

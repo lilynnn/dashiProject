@@ -26,4 +26,11 @@ public class AnimalListService {
 		close(conn);
 		return list;
 	}
+	
+	public Animal selectAnimalInfo(String animalNo) {
+		Connection conn = getConnection();
+		Animal a = new AnimalListDao().selectAnimalInfo(conn, animalNo);
+		close(conn);
+		return a;
+	}
 }

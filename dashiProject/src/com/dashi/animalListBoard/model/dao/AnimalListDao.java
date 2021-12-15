@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.adoptBoard.model.dao.AdoptBoardDao;
-import com.dashi.adoptBoard.model.vo.AdoptNotice;
 import com.dashi.animalListBoard.model.vo.Animal;
 import com.dashi.common.model.vo.PageInfo;
 
@@ -34,6 +33,7 @@ public class AnimalListDao {
 	public int selectListCount(Connection conn) {
 		
 		int listCount = 0;
+		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -97,5 +97,47 @@ public class AnimalListDao {
 		}
 		
 		return list;
+	}
+	
+	public Animal selectAnimalInfo(Connection conn, String animalNo) {
+		
+		Animal a = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAnimalInfo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				a = new Animal(rset.getString("ENT_NO"),
+							   rset.getString("ADOPT_STATUS"),
+							   rset.getString("ADOPT_DATE"),
+							   rset.getString("ANIMAL_VARIETY"),
+							   rset.getString("ANIMAL_NAME"),
+							   rset.getString("ANIMAL_GENDER"),
+							   rset.getInt("ANIMAL_AGE"),
+							   rset.getString("ANIMAL_VACCINATED"),
+							   rset.getString("ANIMAL_NEUTRALIZATION"),
+							   rset.getString("ANIMAL_DISEASE"),
+							   rset.getString("ANIMAL_ISSUE"),
+							   rset.getString("ENT_DATE")
+							   );
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return a;
 	}
 }

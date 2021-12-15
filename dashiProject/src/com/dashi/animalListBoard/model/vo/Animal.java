@@ -53,6 +53,24 @@ public class Animal {
 		this.entDate = entDate;
 	}
 	
+	public Animal(String entNo, String adoptStatus, String adoptDate, String animalVariety, String animalName,
+			String animalGender, int animalAge, String animalVaccin, String animalNeutral, String animalDisease,
+			String animalIssue, String entDate) {
+		super();
+		this.entNo = entNo;
+		this.adoptStatus = adoptStatus;
+		this.adoptDate = adoptDate;
+		this.animalVariety = animalVariety;
+		this.animalName = animalName;
+		this.animalGender = animalGender;
+		this.animalAge = animalAge;
+		this.animalVaccin = animalVaccin;
+		this.animalNeutral = animalNeutral;
+		this.animalDisease = animalDisease;
+		this.animalIssue = animalIssue;
+		this.entDate = entDate;
+	}
+
 	public String getEntNo() {
 		return entNo;
 	}

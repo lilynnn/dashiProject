@@ -57,7 +57,6 @@ public class AnimalListController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
 		ArrayList<Animal> list = new AnimalListService().selectList(pi);
-		System.out.println(pi);
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);

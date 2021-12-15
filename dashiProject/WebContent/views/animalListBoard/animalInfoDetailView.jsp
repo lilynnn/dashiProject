@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import = "com.dashi.animalListBoard.model.vo.Animal" %>
+<%
+	Animal a = (Animal)request.getAttribute("aInfo");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,14 +39,7 @@
         margin-top: 20px;
         width: 950px;
     }
-    /* 동물이미지 영역 스타일 */
-    .image-area{
-        margin: auto;
-        border: 1px solid gray;
-        width: 600px;
-        height: 400px;
-
-    }
+    
     /* 동물정보 테이블 스타일 */
     .content-area table thead{font-size: 15px;}
     #animalInfo{font-size: 13px; border-collapse: separate; line-height: 200%;}
@@ -53,7 +50,7 @@
 </head>
 <body>
 
-    <!-- 동물정보 조회 및 수정하는 페이지 -->
+    <!-- 동물정보 조회하는 페이지 -->
     <%@ include file="../common/menubar.jsp" %>
 
     <!-- 전체 영역 감싸는 div -->
@@ -64,90 +61,89 @@
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
 
-        <form action="">
 
-            <div class="content-area">
-                <div class="title-area">
-					동물정보 수정하기
-				</div>
-                <hr style="width: 900px;">
-                <br>
+        <div class="content-area">
+            <div class="title-area">
+				동물정보 상세보기
+			</div>
+            <hr style="width: 900px;">
+            <br>
+            <br>
 
-                <!-- 동물사진 보여질 div  -->
-                <div class="image-area" align="center">
-                    보호소에서 등록한 동물 기본이미지 보여질 div
-                </div>
-                <br>
-
-                <!-- 입소번호, 입소일, 입양여부 보여질 table -->
-                <table align="center" style="width: 700px; text-align: center; font-size: 13px;">
-                    <thead>
-                        <tr>
-                           <th width="200">입소번호</th> 
-                           <th width="200">입소일</th>
-                           <th width="200">입양여부</th>
-                           <th width="200">입양날짜</th>
-                        </tr>
-                        <tr>
-                            <td>EN-001</td>
-                            <td>2021-11-01</td>
-                            <td>Y/N</td>
-                            <td> -- / 2021-12-11</td>
-                        </tr>
-                    </thead>
-                </table>
-                <br><br><br>
-                <!-- 동물 정보 보여질 테이블 -->
-                <table id="animalInfo" style="width: 700px;">
+            <!-- 입소번호, 입소일, 입양여부 보여질 table -->
+            <table align="center" style="width: 700px; text-align: center; font-size: 13px;">
+                <thead>
                     <tr>
-                        <th>동물품종</th>
-                        <td><input type="text"></td>
+                       <th width="200">입소번호</th> 
+                       <th width="200">입소일</th>
+                       <th width="200">입양여부</th>
+                       <th width="200">입양날짜</th>
                     </tr>
                     <tr>
-                        <th>동물이름</th>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>성별</th>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>나이</th>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>접종유무</th>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>질병유무</th>
-                        <td><input type="text"></td>
-                    </tr>
-                    <tr>
-                        <th>특이사항</th>
+                        <td><%=a.getEntNo() %></td>
+                        <td><%=a.getEntDate() %></td>
+                        <td><%=a.getAdoptStatus() %></td>
                         <td>
-                            <textarea name="" rows="10" ></textarea>
+                        <%if(a.getAdoptDate() != null) {%>
+                        	<%=a.getAdoptDate() %>
+                        <%} else { %>
+                        	--
+                        <%} %>
                         </td>
                     </tr>
+                </thead>
+            </table>
+            <br><br>
+            <!-- 동물 정보 보여질 테이블 -->
+            <table id="animalInfo" style="width: 700px;">
+                <tr>
+                    <th>동물품종</th>
+                    <td><input type="text" value="<%=a.getAnimalVariety() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>동물이름</th>
+                    <td><input type="text" value="<%=a.getAnimalName() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>성별</th>
+                    <td><input type="text" value="<%=a.getAnimalGender() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>나이</th>
+                    <td><input type="text" value="<%=a.getAnimalAge() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>접종유무</th>
+                    <td><input type="text" value="<%=a.getAnimalVaccin() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>질병유무</th>
+                    <td><input type="text" value="<%=a.getAnimalDisease() %>" readonly></td>
+                </tr>
+                <tr>
+                    <th>특이사항</th>
+                    <td>
+                        <input type="text" value="<%=a.getAnimalIssue() %>" readonly style="height:70px;" readonly>
+                    </td>
+                </tr>
 
-                </table>
+            </table>
 
-                <div style=" text-align: center;">
-					<br><br>
-                    <!--if 입양상태가 N일때 보여질 버튼-->
-                    <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
-                    &nbsp;
-                    <!--나머지는 기본으로 보여지게-->
-                    <button class="btn btn-success">수정하기</button>
-                    &nbsp;
-                    <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
-					
-				</div>
+            <div style=" text-align: center;">
+	<br><br>
+                <!--if 입양상태가 N일때 보여질 버튼-->
+                <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
+                &nbsp;
+                <!--나머지는 기본으로 보여지게-->
+                <button class="btn btn-success">수정하기</button>
+                &nbsp;
+                <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
+	
+</div>
 
-                <br><br><br><br>
-            </div>
+            <br><br><br><br>
+        </div>
 
-        </form>
 
     </div>
 </body>
