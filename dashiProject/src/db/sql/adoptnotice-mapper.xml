@@ -43,6 +43,7 @@
 		   AND POST_STATUS = 'Y'
 	</entry>
 	
+	<!-- 입양공고글 상세조회 sql -->
 	<entry key="selectAdoptNotice">
 		SELECT
 		       ANLIST_NO
@@ -64,5 +65,106 @@
 		 WHERE ANLIST_NO = ?		
 	</entry>
 
+	<!-- 입양신청글 insert sql -->
+	<entry key="insertAdoptApply">
+		INSERT 
+	       INTO ADOPT_APPLY
+	       (
+	         AALIST_NO
+	       , ANLIST_NO
+	       , MEM_NO
+	       , MEM_NAME
+	       , AA_TITLE
+	       , PAY_STATUS
+	       , ADT_STATUS
+	       , POST_STATUS
+	       , AA_NAME
+	       , AA_AGE
+	       , AA_GENDER
+	       , AA_PHONE
+	       , AA_EMAIL
+	       , AA_ADDRESS
+	       , MARRIAGE_YN
+	       , AA_JOB
+	       , ADOPT_REASON
+	       , PARENT_EXP
+	       , HAVE_PET_YN
+	       , PET_TYPE
+	       , PET_AGE
+	       , PET_GENDER
+	       , PET_NEUTRAL
+	       , A_MATE
+	       , C_MATE
+	       , CHILD_AGE
+	       , AGREE_YPN
+	       , EVENT_MNG_ANI
+	       , EMPTYHOUR
+	       , HOUSETYPE
+	       , HSELF_YN
+	       , AGREE_NEI_YN
+	       , EXP_COST
+	       , APPLY_DATE
+	       )
+	       VALUES
+	       (
+	         'AA-' || LPAD(SEQ_ADPNO.NEXTVAL,3,'0')
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , 'N' 
+	       , 1
+	       , 'Y' 
+	       , ?  
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ?  
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+		   , ?  
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ? 
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , ? 
+	       , ?
+	       , ?
+	       , ?
+	       , ?
+	       , SYSDATE
+	       )
+	</entry>
 	
+	<!-- 입양신청글 첨부파일 insert sql -->
+	<entry key="insertAdpAttachment">
+		INSERT
+			  INTO ATTACHMENT
+			  (
+			   , ATTACH_NO
+			   , REF_NO
+			   , PATH
+			   , ORIGIN_NAME
+			   , CHANGE_NAME
+			   , ATTACH_STATUS
+			  )
+			  VALUES
+			  (
+			    'AT-' || LPAD(SEQ_ATNO.NEXTVAL,3,'0')
+			  , SEQ_ADPNO.CURRVAL;
+			  , ?
+			  , ?
+			  , ?
+			  , 'Y'
+			  )
+		
+	</entry>
 </properties>

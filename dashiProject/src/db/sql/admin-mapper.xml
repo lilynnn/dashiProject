@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="loginAdmin">
+		SELECT 
+		       MN_NO
+		     , MN_ID
+		     , MN_PWD
+		     , MN_NICKNAME
+		     , MN_NAME
+		     , MN_EMAIL
+		     , MN_PHONE
+		     , MN_JOIN
+		     , MN_QUIT
+		     , ACTIVATION
+		  FROM MANAGER_INFO
+		 WHERE MN_ID = ?
+		   AND MN_PWD = ?
+		   AND ACTIVATION = 'N'
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+</properties>

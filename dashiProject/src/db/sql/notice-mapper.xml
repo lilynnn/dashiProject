@@ -23,7 +23,6 @@
 		                     , NOTICE_YN
 		                     , MN_NO
 		                  FROM NOTICE
-		                  JOIN MANAGER_INFO USING (MN_NO)
 		                 WHERE NO_STATUS = 'N'
 		                 ORDER
 		                       BY NOTICE_NO DESC) A
@@ -46,9 +45,28 @@
 		      , NOTICE_CONTENT
 		      , VIEW_COUNT
 		      , WRITE_DATE
+              , MN_ID
 		  FROM NOTICE
+          JOIN MANAGER_INFO USING (MN_NO)
 		 WHERE NOTICE_NO = ?
 	</entry>
+
+	<entry key="updateNotice">
+		UPDATE
+		       NOTICE
+		   SET NOTICE_TITLE = ?
+		     , NOTICE_CONTENT = ?
+		 WHERE NOTICE_NO = ?
+	</entry>
+
+
+
+
+
+
+
+
+
 
 
 

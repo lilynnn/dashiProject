@@ -1,27 +1,26 @@
-package com.dashi.adoptBoard.controller;
+package com.dashi.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.adoptBoard.model.service.AdoptBoardService;
-import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.notice.model.service.NoticeService;
+import com.dashi.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdoptApplyFormController
+ * Servlet implementation class AdminNoticeUpdateFormController
  */
-@WebServlet("/adapply.adt")
-public class AdoptApplyFormController extends HttpServlet {
+@WebServlet("/noUpdateForm.ad")
+public class AdminNoticeUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptApplyFormController() {
+    public AdminNoticeUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +29,15 @@ public class AdoptApplyFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String boardNo = request.getParameter("adtno");
+
+		String noticeNo = request.getParameter("nno");
 		
-		//System.out.println(boardNo);
-		AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
+		Notice n = new NoticeService().selectNotice(noticeNo);
 		
-		request.setAttribute("an", an);
-		request.getRequestDispatcher("views/adoptBoard/adoptApplyForm.jsp").forward(request, response);
+		request.setAttribute("n", n);
+		request.getRequestDispatcher("views/notice/adminNoticeUpdateForm.jsp").forward(request, response);
 		
+	
 	}
 
 	/**

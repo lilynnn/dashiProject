@@ -53,8 +53,10 @@
 			<div class="title-area">
 				<h4>입양신청서</h4>
 			</div>
+			
+			<input type="hidden" name="anNo" value="<%=an.getAnlistNo() %>">
 			<input type="hidden" name="memNo" value="<%=loginUser.getMemNo() %>">
-			<input type="hidden" value="<%=an.getAnlistNo() %>">
+			<input type="hidden" name="memName" value="<%=loginUser.getMemName() %>">
 			
 			<table style="width: 900px;">
 				<!-- 신청할 입양공고문 제목 -->
@@ -108,9 +110,7 @@
 					<!-- 이메일 -->
 					<td width=220>5. 이&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;일 </td>
 					<td width=780>
-						<input type="text" name="email" style="width: 333px" required>
-						@
-						<input type="text" name="" style="width: 333px" required>
+						<input type="text" name="email1" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
@@ -173,23 +173,23 @@
 					</td>
 				</tr>
 				<!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->
-				<tr id="havePet-area">
-					<td>
+				<tr>
+					<td id="havePet-area">
 						<p style="display: inline; margin-left: 20px;">종류</p>&nbsp;
-						<input style="width: 150px;" type="text" name="petType">
+						<input style="width: 150px;" type="text" name="petType" disabled>
 						
 						<p style="display: inline; margin-left: 20px;">나이</p>&nbsp;
-						<input style="width: 100px;" type="text" name="petAge">
+						<input style="width: 100px;" type="text" name="petAge" disabled>
 						
 						<p style="display: inline; margin-left: 20px;">성별</p>&nbsp;&nbsp;
-						<input type="radio" name="petGender" value="M" > 남
+						<input type="radio" name="petGender" value="M" disabled > 남
 						&nbsp;&nbsp;
-						<input type="radio" name="petGender" value="F"> 여
+						<input type="radio" name="petGender" value="F" disabled > 여
 						&nbsp;&nbsp;&nbsp;&nbsp;
 						<p style="display: inline; margin-left: 20px;">중성화여부</p>&nbsp;&nbsp;
-						<input type="radio" name="petNeutral" value="Y"> 예
+						<input type="radio" name="petNeutral" value="Y" disabled> 예
 						&nbsp;&nbsp;
-						<input type="radio" name="petNeutral" value="N"> 아니오
+						<input type="radio" name="petNeutral" value="N" disabled> 아니오
 					</td>
 				</tr>
 					
@@ -226,7 +226,7 @@
 				</tr>
 				<tr>
 					<td>
-						<textarea class="inputText-area" required></textarea>
+						<textarea name="eventAni" class="inputText-area" required></textarea>
 					</td>
 				</tr>
 
@@ -235,10 +235,10 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="1h미만" style="margin-left: 30px;" required> 1시간 미만
-						<input type="radio" name="" value="4h미만" style="margin-left: 30px;"> 1 ~ 3 시간
-						<input type="radio" name="" value="8h미만" style="margin-left: 30px;"> 4 ~ 8 시간
-						<input type="radio" name="" value="8h이상" style="margin-left: 30px;"> 8시간 이상
+						<input type="radio" name="emptyHouse" value="1h미만" style="margin-left: 30px;" required> 1시간 미만
+						<input type="radio" name="emptyHouse" value="1h-4h" style="margin-left: 30px;"> 1 ~ 4 시간
+						<input type="radio" name="emptyHouse" value="4h-8h" style="margin-left: 30px;"> 4 ~ 8 시간
+						<input type="radio" name="emptyHouse" value="8h이상" style="margin-left: 30px;"> 8시간 이상
 					</td>
 				</tr>
 
@@ -247,11 +247,11 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="" style="margin-left: 30px;" required> 아파트
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 단독주택
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 다세대주택
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 원룸
-						<input type="radio" name="" value="" style="margin-left: 30px;"> 기타
+						<input type="radio" name="houseType" value="아파트" style="margin-left: 30px;" required> 아파트
+						<input type="radio" name="houseType" value="단독주택" style="margin-left: 30px;"> 단독주택
+						<input type="radio" name="houseType" value="다세대주택" style="margin-left: 30px;"> 다세대주택
+						<input type="radio" name="houseType" value="원룸" style="margin-left: 30px;"> 원룸
+						<input type="radio" name="houseType" value="기타" style="margin-left: 30px;"> 기타
 					</td>
 				</tr>
 
@@ -260,8 +260,8 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
-						<input type="radio" name="" value="N" style="margin-left: 30px;"> 아니오
+						<input type="radio" name="hself" value="Y" style="margin-left: 30px;" required> 예
+						<input type="radio" name="hself" value="N" style="margin-left: 30px;"> 아니오
 					</td>
 				</tr>
 
@@ -270,8 +270,8 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="radio" name="" value="Y" style="margin-left: 30px;" required> 예
-						<input type="radio" name="" value="N" style="margin-left: 30px;"> 아니오
+						<input type="radio" name="neiYN" value="Y" style="margin-left: 30px;" required> 예
+						<input type="radio" name="neiYN" value="N" style="margin-left: 30px;"> 아니오
 					</td>
 				</tr>
 
@@ -280,7 +280,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" style="width: 830px; margin-left: 20px;" placeholder=" 만원 단위로 입력해주세요." required>
+						<input name="expCost" type="text" style="width: 830px; margin-left: 20px;" placeholder=" 만원 단위로 입력해주세요." required>
 					</td>
 				</tr>
 
@@ -294,7 +294,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="file">
+						<input name="upfile" type="file">
 					</td>
 				</tr>
 			</table>
@@ -305,6 +305,18 @@
 
 		</form>
 
+	<script>
+		$(function(){
+			$("input:radio[name=havePet]").click(function(){
+				if($("input[name=havePet]:checked").val() == 'Y'){
+					// 펫을 키우고있다면 활성화
+					$("#havePet-area input").attr("disabled",false);
+				} else{
+					$("#havePet-area input").attr("disabled",true);
+				}
+			})
+		})
+	</script>
 	</div>
 
 	<br><br><br><br>

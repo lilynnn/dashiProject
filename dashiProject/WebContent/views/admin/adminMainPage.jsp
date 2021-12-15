@@ -161,7 +161,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=contextPath%>/noList.ad">공지사항</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/noList.ad?cpage=1">공지사항</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>

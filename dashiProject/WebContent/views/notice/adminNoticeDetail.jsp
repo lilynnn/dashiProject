@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*"%>
+<%
+	Notice n = (Notice)request.getAttribute("n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +53,7 @@
         border-top: none;
     }
     #noName{
-        width: 546px;
+        width: 542px;
         padding: 20px;
         line-height: 50px;
         font-size: 20px;
@@ -107,47 +110,47 @@
                 <div id="noTitleEct">
                     <hr>
                     <div id="noName">
-                        제목
+                        <%=n.getNoticeTitle()%>
                     </div>
                     
                     <div id="noDate">
-                        2021-12-04
+                        <%=n.getWriteDate()%>
                     </div>
                     
                     <div>
                         <div class="noEct" style="border-bottom: 1px solid gray;">
-                            작성자
+                            	작성자
                         </div>
                         <div class="noEct">
-                            관리자1
+                           <%=n.getMnNo()%>
                         </div>
                     </div>
                     
                     <div>
                         <div class="noEct" style="border-bottom: 1px solid gray;">
-                            조회수
+                            	조회수
                         </div>
                         <div class="noEct">
-                            123
+                            <%=n.getViewCount()%>
                         </div>
                     </div>
                 
                     <div id="aNoticeContent" style="height: 400px; background: white;">
-                        내용
+                        	<%=n.getNoticeContent()%>
                     </div>
                     
                 </div>
 
 
                 <div id="noBtn" align="right">
-                    <a href="" class="btn btn-sm" style="background: rgb(143,153,142);">
-                        목록으로
+                    <a href="<%=contextPath%>/noList.ad?cpage=1" class="btn btn-sm" style="background: rgb(143,153,142);">
+                        	목록으로
                     </a>
-                    <a href="" class="btn btn-sm" style="background: rgb(102,184,94)">
-                        수정
+                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: rgb(102,184,94)">
+                        	수정
                     </a>
                     <a href="" class="btn btn-sm btn-danger">
-                        삭제
+                        	삭제
                     </a>
                 </div>    
 

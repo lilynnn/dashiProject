@@ -1,4 +1,4 @@
-package com.dashi.adoptBoard.controller;
+package com.dashi.admin.controller;
 
 import java.io.IOException;
 
@@ -7,21 +7,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.dashi.adoptBoard.model.service.AdoptBoardService;
-import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.admin.model.service.AdminService;
+import com.dashi.admin.model.vo.Manager;
 
 /**
- * Servlet implementation class AdoptApplyFormController
+ * Servlet implementation class AdminLoginController
  */
-@WebServlet("/adapply.adt")
-public class AdoptApplyFormController extends HttpServlet {
+@WebServlet("/login.ad")
+public class AdminLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdoptApplyFormController() {
+    public AdminLoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +31,21 @@ public class AdoptApplyFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String boardNo = request.getParameter("adtno");
+
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
 		
-		//System.out.println(boardNo);
-		AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
+		Manager loginAdmin = new AdminService().loginAdmin(userId, userPwd);
 		
-		request.setAttribute("an", an);
-		request.getRequestDispatcher("views/adoptBoard/adoptApplyForm.jsp").forward(request, response);
-		
+		if(loginAdmin == null) {
+			
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginAdmin", loginAdmin);
+			
+			response.sendRedirect(request.getContextPath());
+
+	
 	}
 
 	/**
