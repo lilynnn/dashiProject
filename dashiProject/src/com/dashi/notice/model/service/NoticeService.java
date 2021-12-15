@@ -63,9 +63,9 @@ public class NoticeService {
 		
 	} // 공지사항 수정
 	
-	public ArrayList<Notice> searchNotice(String keyword){
+	public ArrayList<Notice> searchNotice(String titleSearch){
 		Connection conn = getConnection();
-		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, keyword);
+		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, titleSearch);
 		close(conn);
 		return list;
 		
@@ -95,7 +95,17 @@ public class NoticeService {
 		return result;
 	}// 공지사항 삭제
 	
-	
+	public int noInNotice(String noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().noInNotice(conn, noticeNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	} //공지사항의 공지 등록
 	
 	
 	

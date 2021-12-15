@@ -99,7 +99,12 @@
 		 WHERE NOTICE_NO = ?
 	</entry>
 
-
+	<entry key="noInNotice">
+		UPDATE
+			   NOTICE
+		   SET NOTICE_YN = 'Y'
+		 WHERE NOTICE_NO = ?
+	</entry>
 
 
 

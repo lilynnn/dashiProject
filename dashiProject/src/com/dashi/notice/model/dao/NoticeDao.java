@@ -173,7 +173,7 @@ public class NoticeDao {
 		return result;		
 	} // 공지사항 수정
 	
-	public ArrayList<Notice> searchNotice(Connection conn, String keyword){
+	public ArrayList<Notice> searchNotice(Connection conn, String titleSearch){
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -181,7 +181,7 @@ public class NoticeDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setString(1, "%" + titleSearch + "%");
 			
 			rset = pstmt.executeQuery();
 			
@@ -248,7 +248,25 @@ public class NoticeDao {
 	
 	} //공지사항 삭제
 	
-	
+	public int noInNotice(Connection conn, String noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("noInNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	} // 공지사항의 공지등록
 	
 	
 	

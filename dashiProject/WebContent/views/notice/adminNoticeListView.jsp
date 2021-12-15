@@ -107,16 +107,16 @@
 
         <!--관리자 공지사항 목록-->
         <div id="adminNoticeList">
-        	
-        	<form action="">
 
                 <div id="title">
                     	공지사항
                 <hr>
                 </div>
                 <div id="search">
-                    <input type="text" name="keyword" placeholder="제목 키워드 검색">
-                    <button type="submit">검색</button>
+                	<form action="<%=contextPath%>/noKeyword.ad" method="get">
+	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
+	                    <button type="submit">검색</button>
+                    </form>
                 </div>
                 
                 <div style="width: 600px;" align="right">
@@ -177,8 +177,6 @@
                         </tbody>
                     </table>
                 </div>
-
-            </form>
         	
         </div>
     </div>

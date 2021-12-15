@@ -1,7 +1,6 @@
 package com.dashi.notice.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.notice.model.service.NoticeService;
-import com.dashi.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdminNoticeKeywordController
+ * Servlet implementation class AdminNoInNoUpdate
  */
-@WebServlet("/noKeyword.ad")
-public class AdminNoticeKeywordController extends HttpServlet {
+@WebServlet("/noInNoUpdate.ad")
+public class AdminNoInNoUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNoticeKeywordController() {
+    public AdminNoInNoUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,19 +30,15 @@ public class AdminNoticeKeywordController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.setCharacterEncoding("UTF-8");
+		String noticeNo = request.getParameter("nno");
 		
-		String titleSearch = request.getParameter("titleSearch");
-				
-		ArrayList<Notice> list = new NoticeService().searchNotice(titleSearch);
-				
-		if(list.isEmpty()) {
-			request.getRequestDispatcher("views/notice/adminNoticeListView.jsp").forward(request, response);
-		}else {
-			request.setAttribute("list", list);
+		int result = new NoticeService().noInNotice(noticeNo);
+		
+		if(result > 0) {
 			response.sendRedirect(request.getContextPath() + "/noList.ad?cpage=1");
+		}else {
+			// 실패시 메세지 포워딩
 		}
-	
 	
 	
 	
