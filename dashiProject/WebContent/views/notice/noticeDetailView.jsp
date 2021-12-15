@@ -2,13 +2,6 @@
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*"%>
 <%
 	Notice n = (Notice)request.getAttribute("n");
-
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -96,24 +89,15 @@
         <!--본문-->
         <div id="noContent">
             <hr>
-            <img src="<%=contextPath%>/resources/images/noticeMainNotice.png" width="700px" height="800px" style="margin-left:180px">
+            <!-- <img src="<%=contextPath%>/resources/images/noticeMainNotice.png" width="700px" height="800px" style="margin-left:180px">-->
             <p><%=n.getNoticeContent() %></p>
         </div>
+        
 
-        <!--이전글 다음글-->
-        <div id="befAft">
-            <div style="width: 20px;">△</div>
-            <div style="width: 100px;">이전글</div>
-            <div style="width: 980px; text-align: left;"><a href="<%=contextPath%>/list.no?cpage=<%=currentPage-1%>">이전글 제목</a></div>
-            <div style="width: 20px;">▽</div>
-            <div style="width: 100px;">다음글</div>
-            <div style="width: 980px; text-align: left;"><a href="<%=contextPath%>/list.no?cpage=<%=currentPage+1%>">다음글 제목</a></div>
-        </div>
-
-        <!--목록으로-->
         <div id="btn" align="center">
             <button onclick="location.href='<%=contextPath%>/list.no?cpage=1';">목록으로</button>
         </div>
+
 
     </div>
 

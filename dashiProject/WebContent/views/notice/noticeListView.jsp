@@ -153,9 +153,9 @@
         			const num1 = $(this).children().eq(0).text();
         			const num2 = num1.substring(2,5);
         			
-        			console.log(num2);
+        			console.log('<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text());
         			
-        			location.href = '<%=contextPath%>/detail.no?nno=' + num2;
+        			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
         		})
         	})
         </script>
