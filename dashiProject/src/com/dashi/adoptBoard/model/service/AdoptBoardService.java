@@ -68,17 +68,19 @@ public class AdoptBoardService {
 		System.out.println(result1);
 		
 		int result2 = 1;
-		System.out.println(result2);
 		
 		if(at != null) {
 			result2 = new AdoptBoardDao().insertAttachment(conn, at);
+			System.out.println("result2 " + result2);
 		}
+		
 		if(result1>0 && result2>0) {
 			commit(conn);
 		} else {
 			rollback(conn);
 		}
-		close(conn);	
+
+		close(conn);
 		
 		return result1 * result2;
 	}

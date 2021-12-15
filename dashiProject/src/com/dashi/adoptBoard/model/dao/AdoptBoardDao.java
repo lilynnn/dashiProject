@@ -207,8 +207,6 @@ public class AdoptBoardDao {
 			
 			result = pstmt.executeUpdate();	
 			
-			System.out.println(adp);
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -232,6 +230,7 @@ public class AdoptBoardDao {
 			pstmt.setString(3, at.getChangeName());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

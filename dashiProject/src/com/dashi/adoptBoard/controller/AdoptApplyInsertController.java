@@ -47,7 +47,6 @@ public class AdoptApplyInsertController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",  new MyFileRenamePolicy());		
 			
-			
 			AdoptApply adp = new AdoptApply(multiRequest.getParameter("anNo"),
 											Integer.parseInt(multiRequest.getParameter("memNo")),
 											multiRequest.getParameter("memName"),
@@ -105,7 +104,7 @@ public class AdoptApplyInsertController extends HttpServlet {
 				
 				request.getSession().setAttribute("alertMsg", "입양신청에 실패했습니다.");
 				//response.sendRedirect(request.getContextPath()+"/adlist.ad?cpage=1");
-				request.getRequestDispatcher(request.getContextPath()+"/adlist.adt?cpage=1").forward(request, response);
+				request.getRequestDispatcher("/adlist.adt?cpage=1").forward(request, response);
 			}
 			
 		}
