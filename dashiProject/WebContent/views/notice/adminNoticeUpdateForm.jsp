@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Notice" %>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice" %>
 <%
 	Notice n = (Notice)request.getAttribute("n");
 	// 글번호, 제목, 내용, 작성자아이디, 작성일
@@ -55,7 +55,7 @@
         border-top: none;
     }
     #noName{
-        width: 546px;
+        width: 545px;
         padding: 20px;
         line-height: 50px;
         font-size: 20px;
@@ -145,7 +145,7 @@
                     </div>
                 
                     <div id="aNoticeContent" style="height: 400px; background: white;">
-                        <textarea name="content" cols="105" rows="15" style="resize: none; border: none;" required><%=n.getNoticeContent()%></textarea>
+                        <textarea name="content" cols="100" rows="15" style="resize: none; border: none;" required><%=n.getNoticeContent()%></textarea>
                     </div>
                     
                 </div>

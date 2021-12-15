@@ -48,7 +48,20 @@ public class NoticeService {
 		
 	} // 게시글 상세조회
 	
-	
+	public int updateNotice(Notice n) {
+		Connection conn = getConnection();
+		
+		int result = new NoticeDao().updateNotice(conn, n);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+		
+	} // 공지사항 수정
 	
 	
 	
