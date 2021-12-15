@@ -81,17 +81,24 @@
         	<hr>
             <div id="message">
                 <div style="width: 25%; font-size: 24px; font-weight: 900; line-height:50px">
-                    관리자 메인페이지
+                    	관리자 메인페이지
                 </div>
                 <div style="text-align: left; width: 55%; font-size: 15px; color: lightslategrey; line-height:55px">
-                    관리자님, 오늘도 좋은 하루 보내세요!
+                    	관리자님, 오늘도 좋은 하루 보내세요!
                 </div>
 
                 <!--admin01로그인시에만 나타남-->
+                <% if(loginAdmin != null && loginAdmin.getMnId().equals("admin01")){ %>
                 <div style="text-align: right; width: 15%; line-height: 60px;">
                     <img src="<%=contextPath%>/resources/images/bulb.png" width="15%">
                     <a href="<%=contextPath%>/empList.ad">사원관리</a>
                 </div>
+                <% } %>
+                
+                <!-- 관리자 로그아웃 임시방편 -->
+                <% if(loginAdmin != null){ %>
+                <a href="<%= contextPath %>/logout.me">로그아웃</a>
+                <% } %>
             </div>
 				
 

@@ -1,7 +1,6 @@
 package com.dashi.admin.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,16 +12,16 @@ import com.dashi.admin.model.service.AdminService;
 import com.dashi.admin.model.vo.Manager;
 
 /**
- * Servlet implementation class AdminLoginController
+ * Servlet implementation class AdminMainPage
  */
-@WebServlet("/login.ad")
-public class AdminLoginController extends HttpServlet {
+@WebServlet("/loginMain.ad")
+public class AdminLoginMainPage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminLoginController() {
+    public AdminLoginMainPage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +31,22 @@ public class AdminLoginController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/admin/adminLoginPage.jsp").forward(request, response);
+		String mnId = request.getParameter("mnId");
+		String mnPwd = request.getParameter("mnPwd");
+		
+		Manager loginAdmin = new AdminService().loginAdmin(mnId, mnPwd);
+		
+		if(loginAdmin == null) {
+			
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("loginAdmin", loginAdmin);
+			
+			response.sendRedirect(request.getContextPath() + "/main.ad");
+		}
 	
 	}
+		
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

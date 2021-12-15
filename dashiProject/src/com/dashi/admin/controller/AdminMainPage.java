@@ -29,6 +29,7 @@ public class AdminMainPage extends HttpServlet {
 
 		request.getRequestDispatcher("views/admin/adminMainPage.jsp").forward(request, response);
 	
+	
 	}
 
 	/**

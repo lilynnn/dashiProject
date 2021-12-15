@@ -27,7 +27,7 @@ public class AdminDao {
 	
 		} //프로퍼티스 파일 연결 
 	
-		public Manager loginAdmin(Connection conn, String userId, String userPwd) {
+		public Manager loginAdmin(Connection conn, String mnId, String mnPwd) {
 			// select문 => ResultSet객체(한 행) => Member객체
 			Manager a = null;
 			
@@ -39,8 +39,8 @@ public class AdminDao {
 			try {
 				pstmt = conn.prepareStatement(sql);
 				
-				pstmt.setString(1, userId);
-				pstmt.setString(2, userPwd);
+				pstmt.setString(1, mnId);
+				pstmt.setString(2, mnPwd);
 				
 				rset = pstmt.executeQuery();
 				
@@ -67,7 +67,7 @@ public class AdminDao {
 			
 			return a;
 			
-		}
+		} // 관리자 로그인
 	
 	
 	
