@@ -60,6 +60,15 @@ public class Notice {
 		this.mnNo = mnNo;
 	}
 
+	public Notice(String noticeNo, String noticeTitle, int viewCount, Date writeDate, String mnNo) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.viewCount = viewCount;
+		this.writeDate = writeDate;
+		this.mnNo = mnNo;
+	}
+	
 	public String getNoticeNo() {
 		return noticeNo;
 	}

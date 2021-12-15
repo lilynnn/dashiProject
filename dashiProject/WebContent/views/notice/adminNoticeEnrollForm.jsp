@@ -77,26 +77,26 @@
         <div id="noDetailEnroll">
             <form action="" id="enroll-form" method="post">
                 <div style="width: 100%; padding: 20px; font-weight: 600;">
-                    공지 선택
+                    	공지 선택
                     <select name="noSelect">
-                        <option selected value="naver">선택안함</option>
-                        <option value="noInNo">공지</option>
+                        <option selected value="N">선택안함</option>
+                        <option value="Y">공지</option>
                     </select>
                 </div>
                 <br><br>
                 
                 <div style="width: 100%; padding: 20px; font-weight: 600;">
-                    제목 &nbsp;&nbsp;&nbsp;
-                    <input type="text" style="width: 90%;" required placeholder="제목을 입력해주세요.">
+                    	제목 &nbsp;&nbsp;&nbsp;
+                    <input type="text" name="title" style="width: 90%;" required placeholder="제목을 입력해주세요.">
                 </div>
                 <br><br>
 
                 <!--내용부분-->
                 <div style="padding:20px; font-weight: 600;">
-                    내용
+                    	내용
                 </div>
                 <div id="noContent" style="width: 90%;">
-                    <textarea id="summernote"></textarea>
+                    <textarea id="summernote" name="content"></textarea>
                 </div>
 
                 <div id="noFile">

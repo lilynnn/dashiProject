@@ -63,8 +63,21 @@ public class NoticeService {
 		
 	} // 공지사항 수정
 	
+	public ArrayList<Notice> searchNotice(String keyword){
+		Connection conn = getConnection();
+		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, keyword);
+		close(conn);
+		return list;
+		
+	}// 공지사항 키워드 검색 ---- 미완성
 	
+	public int insertNotice(Notice n) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().insertNotice(conn, n);
+		close(conn);
+		return result;
 	
+	}// 공지사항 작성
 	
 	
 	
