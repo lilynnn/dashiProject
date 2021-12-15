@@ -5,6 +5,10 @@
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	Manager loginAdmin = (Manager)session.getAttribute("loginAdmin");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+<<<<<<< Updated upstream
+=======
+	
+>>>>>>> Stashed changes
 %>
 <!DOCTYPE html>
 <html>
