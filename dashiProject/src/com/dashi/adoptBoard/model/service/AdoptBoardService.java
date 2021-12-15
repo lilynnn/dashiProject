@@ -65,7 +65,11 @@ public class AdoptBoardService {
 		
 		// 신청서 업로드 확인
 		int result1 = new AdoptBoardDao().insertAdoptApply(conn, adp);
+		System.out.println(result1);
+		
 		int result2 = 1;
+		System.out.println(result2);
+		
 		if(at != null) {
 			result2 = new AdoptBoardDao().insertAttachment(conn, at);
 		}

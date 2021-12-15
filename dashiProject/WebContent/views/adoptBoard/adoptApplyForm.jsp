@@ -179,7 +179,7 @@
 						<input style="width: 150px;" type="text" name="petType" disabled>
 						
 						<p style="display: inline; margin-left: 20px;">나이</p>&nbsp;
-						<input style="width: 100px;" type="text" name="petAge" disabled>
+						<input style="width: 100px;" type="text" name="petAge" value="0" disabled>
 						
 						<p style="display: inline; margin-left: 20px;">성별</p>&nbsp;&nbsp;
 						<input type="radio" name="petGender" value="M" disabled > 남

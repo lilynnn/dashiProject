@@ -191,7 +191,7 @@ public class AdoptBoardDao {
 			pstmt.setString(14, adp.getParentExp());
 			pstmt.setString(15, adp.getHavePetYN());
 			pstmt.setString(16, adp.getPetType());
-			pstmt.setInt(17, adp.getPetAge());
+			pstmt.setString(17, adp.getPetAge());
 			pstmt.setString(18, adp.getPetGender());
 			pstmt.setString(19, adp.getPetNeutral());
 			pstmt.setInt(20, adp.getaMate());

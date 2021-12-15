@@ -23,7 +23,7 @@ public class AdoptApply {
 	private String parentExp;	//반려동물키워본경험    PARENT_EXP
 	private String havePetYN;	//현재 키우는 동물여부  HAVE_PET_YN
 	private String petType;		//현재 키우는 동물종류	PET_TYPE
-	private int petAge;			//현재 키우는 동물나이	PET_AGE
+	private String petAge;			//현재 키우는 동물나이	PET_AGE
 	private String petGender;	//현재 키우는 동물성별  PET_GENDER
 	private String petNeutral;	//현재 키우는 동물 중성화  PET_NEUTRAL
 	private int aMate;			//동거중인 성인 수	 A_MATE
@@ -42,7 +42,7 @@ public class AdoptApply {
 	public AdoptApply(String aalistNo, String anlistNo, int memNo, String memName, String aaTitle, String payStatus,
 			int adtStatus, String postStatus, String aaName, int aaAge, String aaGender, String aaPhone, String aaEmail,
 			String aaAddress, String marriageYN, String aaJob, String adoptReason, String parentExp, String havePetYN,
-			String petType, int petAge, String petGender, String petNeutral, int aMate, int cMate, int childAge,
+			String petType, String petAge, String petGender, String petNeutral, int aMate, int cMate, int childAge,
 			String agreeYPN, String eventMngAni, String emptyHour, String houseType, String hselfYN, String agreeNeiYN,
 			int expCost) {
 		super();
@@ -83,7 +83,7 @@ public class AdoptApply {
 	
 	public AdoptApply(String anlistNo, int memNo, String memName, String aaTitle, String aaName, int aaAge,
 			String aaGender, String aaPhone, String aaEmail, String aaAddress, String marriageYN, String aaJob,
-			String adoptReason, String parentExp, String havePetYN, String petType, int petAge, String petGender,
+			String adoptReason, String parentExp, String havePetYN, String petType, String petAge, String petGender,
 			String petNeutral, int aMate, int cMate, int childAge, String agreeYPN, String eventMngAni,
 			String emptyHour, String houseType, String hselfYN, String agreeNeiYN, int expCost) {
 		super();
@@ -278,11 +278,11 @@ public class AdoptApply {
 		this.petType = petType;
 	}
 
-	public int getPetAge() {
+	public String getPetAge() {
 		return petAge;
 	}
 
-	public void setPetAge(int petAge) {
+	public void setPetAge(String petAge) {
 		this.petAge = petAge;
 	}
 
