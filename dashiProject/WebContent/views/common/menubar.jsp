@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.dashi.member.model.vo.Member"%>
+    pageEncoding="UTF-8" import="com.dashi.member.model.vo.Member, com.dashi.admin.model.vo.Manager"%>
 <% 
 	String contextPath = request.getContextPath(); 
 	Member loginUser = (Member)session.getAttribute("loginUser");
+	Manager loginAdmin = (Manager)session.getAttribute("loginAdmin");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -170,11 +172,12 @@
 
         <!-- case 2. 로그인 후-->
        
-        <div>
-            <b><%=loginUser.getMemName() %>님</b>반갑습니다! &nbsp;
-            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
-            <a href="<%= contextPath %>/mypage.me" style="color: black;">마이페이지</a>
-        </div>
+       		<div>
+	            <b><%=loginUser.getMemName() %>님</b>반갑습니다! &nbsp;
+	            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
+	            <a href="<%= contextPath %>/mypage.me" style="color: black;">마이페이지</a>
+	        </div>
+       
        <%} %>
 
 
@@ -260,7 +263,7 @@
                 <hr>
           </div>
         </div>
-      </div>
+      </div
     <!--회원가입 Modal창-->
 
 
