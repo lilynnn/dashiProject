@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertThAdoptReviewBoard">	
+		INSERT
+			  INTO ADOPT_REVIEW
+			  (
+			    ARLIST_NO
+			  , MEM_NO
+			  , NICKNAME
+			  , AR_TITLE
+			  , AR_CONTENT
+			  )
+			  VALUES
+			  (
+			    SEQ_ARNO.NEXTVAL
+			  , ?
+			  , ?
+			  , ?
+			  , ?
+			  )
+	</entry>
+	
+	<entry key="insertReviewAttachmentList">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , PATH
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		  VALUES
+		  (
+		    SEQ_ATNO.NEXTVAL
+		  , SEQ_ARNO.CURRVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+</properties>
