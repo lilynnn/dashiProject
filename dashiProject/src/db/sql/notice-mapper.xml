@@ -59,6 +59,17 @@
 		 WHERE NOTICE_NO = ?
 	</entry>
 
+	<entry key="searchNotice">
+		SELECT
+		       NOTICE_NO
+		     , NOTICE_TITLE
+		     , MN_NO
+		     , WRITE_DATE
+		     , VIEW_COUNT
+		  FROM NOTICE
+		 WHERE NOTICE_TITLE LIKE ?
+		   AND NO_STATUS = 'N'
+	</entry>
 
 
 

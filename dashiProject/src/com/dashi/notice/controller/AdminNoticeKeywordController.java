@@ -35,7 +35,8 @@ public class AdminNoticeKeywordController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String keyword = request.getParameter("keyword");
-		String noticeNo = request.getParameter("nno");
+		
+		System.out.println(keyword);
 		
 		ArrayList<Notice> list = new NoticeService().searchNotice(keyword);
 		

@@ -135,7 +135,7 @@
 	                    <% for(Notice n : list){ %>
 	                    <!--일반 공지글 있을 때-->
 	                    <tr>
-	                        <td><%=n.getNoticeNo()%></td>
+	                        <td><%=n.getNoticeNo().substring(2,5)%></td>
 	                        <td></td>
 	                        <td><%=n.getNoticeTitle()%></td>
 	                        <td><%=n.getWriteDate()%></td>
@@ -150,9 +150,8 @@
         <script>
         	$(function(){
         		$(".table-hover>tbody>tr").click(function(){
-        	
         			        			
-        			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
+        			location.href = '<%=contextPath%>/detail.no?nno=' + 'N-' + $(this).children().eq(0).text();
         		})
         	})
         </script>
@@ -166,7 +165,7 @@
             	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.no?cpage=<%=currentPage-1%>';">&lt;</button>
             <% } %>
             
-            <% for(int p=startPage; p<endPage; p++){ %>
+            <% for(int p=startPage; p<=endPage; p++){ %>
             	<% if(p == currentPage){ %>
             		<button class="btn btn-light" disabled><%=p%></button>
             	<%}else{ %>

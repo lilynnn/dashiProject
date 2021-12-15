@@ -200,7 +200,7 @@
             	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noList.ad?cpage=<%=currentPage-1%>';">&lt;</button>
             <% } %>
             
-            <% for(int p=startPage; p<endPage; p++){ %>
+            <% for(int p=startPage; p<=endPage; p++){ %>
             	<% if(p == currentPage){ %>
             		<button class="btn btn-light" disabled><%=p%></button>
             	<%}else{ %>

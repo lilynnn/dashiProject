@@ -172,7 +172,35 @@ public class NoticeDao {
 		return result;		
 	} // 공지사항 수정
 	
-	
+	public ArrayList<Notice> searchNotice(Connection conn, String keyword){
+		ArrayList<Notice> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			
+			list.add(new Notice(rset.getString("notice_no")
+							  , rset.getString("notice_title")
+							  , rset.getInt("view_count")
+							  , rset.getDate("write_date")
+							  , rset.getString("mn_no")));
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;		
+		
+	} // 공지사항 키워드 검색
 	
 	
 	
