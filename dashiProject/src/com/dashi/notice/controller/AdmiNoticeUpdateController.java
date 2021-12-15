@@ -51,8 +51,7 @@ public class AdmiNoticeUpdateController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/noDetail.ad?nno=" + noticeNo);
 			
 		}else { // 실패=>에러페이지
-			//request.setAttribute("alertMsg", "공지사항 글 수정에 실패했습니다.");
-			//request.getRequestDispatcher("views/common/errorPage.jsp");
+			request.getSession().setAttribute("alertMsg", "공지사항이 수정 실패");
 		}
 	
 	

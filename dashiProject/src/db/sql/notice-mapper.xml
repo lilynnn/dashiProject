@@ -105,6 +105,13 @@
 		   SET NOTICE_YN = 'Y'
 		 WHERE NOTICE_NO = ?
 	</entry>
+	
+	<entry key="cancleNotice">
+		UPDATE
+			   NOTICE
+		   SET NOTICE_YN = 'N'
+		 WHERE NOTICE_NO = ?
+	</entry>
 
 
 

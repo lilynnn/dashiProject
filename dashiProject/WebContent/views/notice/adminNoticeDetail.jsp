@@ -147,15 +147,22 @@
                         	목록으로
                     </a>
                     <% if(loginAdmin != null){ %>
-                    <a href="<%=contextPath%>/noInNoUpdate.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: tomato;">
-                        	공지
-                    </a>
-                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">
-                        	수정
-                    </a>
-                    <a href="<%=contextPath%>/noDelete.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-primary">
-                        	삭제
-                    </a>
+                    	
+                    	<% if(n.getNoticeYN().equals("N")){ %>
+		                    <a href="<%=contextPath%>/noInNoUpdate.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: tomato;">
+		                        	공지
+		                    </a>
+	                    <% }else{ %>
+		                    <a href="<%=contextPath%>/cancleNotice.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: tomato;">
+		                        	공지취소
+		                    </a>
+	                    <% } %>
+	                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">
+	                        	수정
+	                    </a>
+	                    <a href="<%=contextPath%>/noDelete.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-primary">
+	                        	삭제
+	                    </a>
                     <% } %>
                 </div>    
 

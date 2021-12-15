@@ -44,7 +44,7 @@ public class AdminNoticeDetailController extends HttpServlet {
 			request.getRequestDispatcher("views/notice/adminNoticeDetail.jsp").forward(request, response);
 			
 		}else {
-			//에러메세지 자리
+			request.getSession().setAttribute("alertMsg", "공지사항이 글 조회 실패");
 		}
 	
 	

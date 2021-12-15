@@ -98,6 +98,7 @@
     
     <%@ include file="../common/menubar.jsp" %>
     
+    
     <!--전체를 감싸는 큰 div-->
     <div class="outer">
     
@@ -132,9 +133,9 @@
                     <table class="noticeList">
                         <thead>
                             <tr>
-                                <td></td>
-                                <th width="100">No.</th>
-                                <th width="500">제목</th>
+                                <td width="60"></td>
+                                <th width="80">No.</th>
+                                <th width="470">제목</th>
                                 <th width="70">작성자</th>
                                 <th width="100">작성일</th>
                                 <th width="70">조회수</th>
@@ -148,23 +149,18 @@
 	                    </tr>
 	                    <% }else{ %>
 	                    
-	                    <!--공지의 공지글 있을 때
-	                    <tr id="noticeInNotice">
-	                        <td>1</td>
-	                        <td>
-	                            <button class="btn-sm" style="background: #f57f7f; border: none; font-weight: bolder;">
-	                                	공지
-	                            </button>
-	                        </td>
-	                        <td>제목</td>
-	                        <td>2021-12-04</td>
-	                        <td>123</td>
-	                    </tr> -->
-	                    
 		                    <% for(Notice n : list){ %>
 		                    <!--일반 공지글 있을 때-->
 		                    <tr>
-		                        <th></td>
+		                        <% if(n.getNoticeYN().equals("Y")){ %>
+		                        <td>
+		                        	<button class="btn-sm" style="background: #f57f7f; border: none; font-weight: bolder;">
+	                                	공지
+	                            	</button>
+		                        </td>
+		                        <% }else{ %>
+		                        	<td></td>
+		                        <% } %>
 		                        <td><%=n.getNoticeNo()%></td>
 		                        <td><%=n.getNoticeTitle()%></td>
 		                        <td><%=n.getMnNo() %></td>
@@ -181,13 +177,15 @@
         </div>
     </div>
     
-    <script>
+    	<script>
         	$(function(){
         		$(".noticeList>tbody>tr").click(function(){
         			        			
         			location.href = '<%=contextPath%>/noDetail.ad?nno=' + $(this).children().eq(1).text();
         		})
         	})
+        	
+        	
         </script>
     
 

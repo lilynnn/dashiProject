@@ -1,7 +1,6 @@
 package com.dashi.notice.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.dashi.notice.model.service.NoticeService;
 
 /**
- * Servlet implementation class AdminNoticeDelete
+ * Servlet implementation class AdminCancleNoticeController
  */
-@WebServlet("/noDelete.ad")
-public class AdminNoticeDelete extends HttpServlet {
+@WebServlet("/cancleNotice.ad")
+public class AdminCancleNoticeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminNoticeDelete() {
+    public AdminCancleNoticeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,20 +28,17 @@ public class AdminNoticeDelete extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		String noticeNo = request.getParameter("nno");
 		
-		int result = new NoticeService().deleteNotice(noticeNo);
+		int result = new NoticeService().cancleNotice(noticeNo);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "공지사항이 삭제 되었습니다.");
+			request.getSession().setAttribute("alertMsg", "공지 등록 취소.");
 			response.sendRedirect(request.getContextPath() + "/noList.ad?cpage=1");
 		}else {
-			request.getSession().setAttribute("alertMsg", "공지사항이 삭제 실패");
+			request.getSession().setAttribute("alertMsg", "일반게시글 전환 실패!");
 		}
-	
-	
-	
 	}
 
 	/**

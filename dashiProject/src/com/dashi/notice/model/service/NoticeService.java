@@ -107,6 +107,18 @@ public class NoticeService {
 		return result;
 	} //공지사항의 공지 등록
 	
+	public int cancleNotice(String noticeNo) {
+		Connection conn = getConnection();
+		int result = new NoticeDao().cancleNotice(conn, noticeNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	} //공지사항의 공지등록취소
+	
 	
 	
 	

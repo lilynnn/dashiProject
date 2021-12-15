@@ -268,7 +268,24 @@ public class NoticeDao {
 		return result;
 	} // 공지사항의 공지등록
 	
-	
+	public int cancleNotice(Connection conn, String noticeNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("cancleNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noticeNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	} // 공지사항의 공지등록취소
 	
 	
 	

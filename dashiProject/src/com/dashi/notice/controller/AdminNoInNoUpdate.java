@@ -35,9 +35,10 @@ public class AdminNoInNoUpdate extends HttpServlet {
 		int result = new NoticeService().noInNotice(noticeNo);
 		
 		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "공지로 지정되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/noList.ad?cpage=1");
 		}else {
-			// 실패시 메세지 포워딩
+			request.getSession().setAttribute("alertMsg", "공지 등록 실패");
 		}
 	
 	
