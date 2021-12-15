@@ -37,11 +37,11 @@ public class AdminLoginMainPage extends HttpServlet {
 		Manager loginAdmin = new AdminService().loginAdmin(mnId, mnPwd);
 		
 		if(loginAdmin == null) {
-			
+			request.setAttribute("alertMsg", "관리자 로그인 실패");
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginAdmin", loginAdmin);
-			
+						
 			response.sendRedirect(request.getContextPath() + "/main.ad");
 		}
 	

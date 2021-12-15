@@ -146,6 +146,13 @@
 </head>
 <body>	
 
+	<% if(alertMsg != null){ %>
+		<script>
+			alert("<%=alertMsg%>");
+		</script>
+		<% session.removeAttribute("alertMsg"); %>
+	<% } %>
+
 	<%@ include file="../common/rightQuickMenu.jsp" %>
 	
 	<!-- 메뉴바  -->

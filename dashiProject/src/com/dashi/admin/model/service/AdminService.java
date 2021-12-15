@@ -13,9 +13,7 @@ public class AdminService {
 		Connection conn = getConnection();
 		
 		Manager a = new AdminDao().loginAdmin(conn, mnId, mnPwd);
-		
-		System.out.println(a);
-		
+				
 		close(conn);
 		
 		return a;

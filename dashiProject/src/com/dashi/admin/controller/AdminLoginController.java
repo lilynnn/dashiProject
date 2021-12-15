@@ -31,7 +31,8 @@ public class AdminLoginController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		request.setAttribute("alertMsg", "로그아웃 되었습니다.");
 		request.getRequestDispatcher("views/admin/adminLoginPage.jsp").forward(request, response);
 	
 	}
