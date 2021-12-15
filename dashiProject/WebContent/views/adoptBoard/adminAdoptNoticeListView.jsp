@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdoptNotice> adtList = (ArrayList<AdoptNotice>)request.getAttribute("adtList");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,123 +102,39 @@
                         <th width="100">글번호</th>
                         <th width="90">카테고리</th>
                         <th width="300">공고제목</th>
-                        <th width="120">작성자</th>
-                        <th width="90">조회수</th>
+                        <th width="110">조회수</th>
                         <th width="120">등록일</th>
                         <th width="100">삭제하기</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>AN-001</td>
-                        <td>강아지</td>
-                        <td>러시안블루 코시의 가족을 기다려요</td>
-                        <td>admin01</td>
-                        <td>88</td>
-                        <td>2021-10-20</td>
-                        <td>
-                            <button class="btn btn-sm btn-light">삭제하기</button>
-                        </td>
-                    </tr>
+                    <!-- 게시글이 존재하지 않을 경우 -->
+                    <%if(adtList.isEmpty()){ %>
+                    	<p>등록된 게시글이 없습니다.</p>
+                    <%} else { %>
+                 	<!-- 게시글 보여질 tr -->
+	                 	<%for(AdoptNotice an : adtList) {%>
+		                    <tr>
+		                        <td><%= an.getAnlistNo() %></td>
+		                        <td>
+									<%if(an.getAnimalType().equals("D")) { %>
+										강아지
+									<%} else if(an.getAnimalType().equals("C")){ %>
+										고양이
+									<%} else {%>
+										기타
+									<%} %>
+									
+								</td>
+		                        <td><%= an.getAnTitle() %></td>
+		                        <td><%= an.getViewCount() %></td>
+		                        <td><%= an.getWriteDate() %></td>
+		                        <td>
+		                            <button class="btn btn-sm btn-light">삭제하기</button>
+		                        </td>
+		                    </tr>
+	                    <%} %>
+                   	<%} %>
                 </tbody>  
             </table>
 
@@ -215,15 +143,28 @@
              
             <br>
 
-             <!-- 페이징버튼 영역 -->
-            <div align="center">
-                <button class="btn btn-light">1</button>
-                <button class="btn btn-light">2</button>
-                <button class="btn btn-light">3</button>
-                <button class="btn btn-light">4</button>
-                <button class="btn btn-light">5</button>
-            </div>
+             <!--페이징바 영역-->
+        <div align="center">
+			
+       		<%if(currentPage != 1) {%>
+            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>adlist.adt?cpage=<%= currentPage-1 %>';">&lt</button>
+			<%} %>
+			
+			<% for(int p=startPage; p<=endPage; p++){ %>
+				
+				<%if(p == currentPage){ %>
+					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+					<button class="btn btn-light" disabled><%= p %></button>
+				<%} else { %>
+            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= p %>';"><%= p %></button>	
+            	<%} %>
+         	<%} %>	
 
+			<%if(currentPage < maxPage) {%>
+         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+            <%} %>
+            
+        </div>
             <br><br>
 
 
@@ -237,8 +178,9 @@
                 //const num = $(this).children().eq(0).text();
                 // 콘솔에 출력해서 확인해보기
 
-                // location.href = '<%= contextPath%>/addetail.adt?adno='+num;
-                location.href = '<%= contextPath%>/adnodetail.ad';
+            	console.log($(this).children().eq(0).text());
+                location.href = '<%= contextPath%>/adnodetail.ad?adno='+$(this).children().eq(0).text();
+               
             })
         })
     </script>

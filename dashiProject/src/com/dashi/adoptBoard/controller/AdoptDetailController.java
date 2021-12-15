@@ -32,9 +32,9 @@ public class AdoptDetailController extends HttpServlet {
 		
 		String boardNo = request.getParameter("adtno");
 		
-		
 		int result = new AdoptBoardService().increaseCount(boardNo);
-		
+
+				
 		if(result>0) {	// 로드할 수 있는 게시글 -> 게시글, 첨부파일 조회
 			//일단 먼저 게시글 조회만 하기
 			AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);

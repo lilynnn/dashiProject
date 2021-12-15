@@ -58,6 +58,13 @@ public class AdoptBoardService {
 		return an;
 	}
 	
+	// 첨부파일 불러오는 메소드 (입양공고 상세보기)
+	public ArrayList<Attachment> selectAttachment(String boardNo) {
+
+		Connection conn = getConnection();
+		
+	}
+	
 	// 입양신청서 업로드 메소드
 	public int insertAdoptApply(AdoptApply adp, Attachment at) {
 		
@@ -85,6 +92,5 @@ public class AdoptBoardService {
 		return result1 * result2;
 	}
 		
-	
 	
 }

@@ -19,7 +19,7 @@
 		                  SELECT 
 		                       ANLIST_NO
 		                     , AN_TITLE
-		                     , WRITE_DATE
+		                     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
 		                     , VIEW_COUNT
 		                     , ENT_NO
 		                     , ADT_STATUS

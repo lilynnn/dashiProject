@@ -217,6 +217,16 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	// 입양공고 상세보기시 불러올 첨부파일 사진리스트(동물사진)
+	public ArrayList<Attachment> selectAttachmentList(int boardNo){
+		
+		ArrayList<Attachment> list = new ArrayList<Attachment>();
+		
+		
+		return list;
+	}
+	
+	// 사용자 입양신청시 서약서 첨부하기
 	public int insertAttachment(Connection conn, Attachment at) {
 		int result = 0;
 		

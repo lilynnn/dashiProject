@@ -1,6 +1,7 @@
 package com.dashi.adoptBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
+import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class AdminAdoptListController
@@ -42,15 +45,22 @@ public class AdminAdoptListController extends HttpServlet {
 		listCount = new AdoptBoardService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		pageLimit = 5;
+		boardLimit = 10;
+		maxPage = (int)Math.ceil((double)listCount/boardLimit);
+		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
+		endPage = startPage + pageLimit - 1;
 		
+		if(endPage>maxPage) {
+			endPage = maxPage;
+		}
 		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
+		ArrayList<AdoptNotice> list = new AdoptBoardService().selectList(pi);
 		
-		
-		
-		
-		
-		
+		request.setAttribute("pi", pi);
+		request.setAttribute("adtList", list);
 		
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeListView.jsp").forward(request, response);
 	}
