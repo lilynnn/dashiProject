@@ -1,9 +1,6 @@
 package com.dashi.adoptBoard.model.service;
 
-import static com.dashi.common.JDBCTemplate.close;
-import static com.dashi.common.JDBCTemplate.commit;
-import static com.dashi.common.JDBCTemplate.getConnection;
-import static com.dashi.common.JDBCTemplate.rollback;
+import static com.dashi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -59,10 +56,12 @@ public class AdoptBoardService {
 	}
 	
 	// 첨부파일 불러오는 메소드 (입양공고 상세보기)
-	public ArrayList<Attachment> selectAttachment(String boardNo) {
+	public ArrayList<Attachment> selectAttachmentList(String boardNo) {
 
 		Connection conn = getConnection();
-		
+		ArrayList<Attachment> atlist = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
+		close(conn);
+		return atlist;
 	}
 	
 	// 입양신청서 업로드 메소드

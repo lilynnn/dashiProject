@@ -1,6 +1,6 @@
 package com.dashi.adoptBoard.model.dao;
 
-import static com.dashi.common.JDBCTemplate.close;
+import static com.dashi.common.JDBCTemplate.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -218,11 +218,34 @@ public class AdoptBoardDao {
 	}
 	
 	// 입양공고 상세보기시 불러올 첨부파일 사진리스트(동물사진)
-	public ArrayList<Attachment> selectAttachmentList(int boardNo){
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, String boardNo){
 		
 		ArrayList<Attachment> list = new ArrayList<Attachment>();
 		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
 		
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setPath(rset.getString("PATH"));
+				
+				list.add(at);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		return list;
 	}
 	

@@ -105,7 +105,7 @@
 
                 <div class="aMenu" id="animal">동물관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath() %>/anlist.ad" class="menu-detail">전체동물조회</a></li>
+                    <li><a href="<%=request.getContextPath() %>/anlist.ad?cpage=1" class="menu-detail">전체동물조회</a></li>
                 </ul>
          
          

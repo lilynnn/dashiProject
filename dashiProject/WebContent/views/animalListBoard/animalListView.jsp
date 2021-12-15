@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.animalListBoard.model.vo.Animal" %>  
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Animal> list = (ArrayList<Animal>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,86 +101,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
-                    <tr>
-                        <td>AM-001</td>
-                        <td>강아지</td>
-                        <td>포메라니안</td>
-                        <td>포포</td>
-                        <td>2020-10-01</td>
-                        <td>N</td>
-                    </tr>
+                
+                	<%for(Animal a : list) { %>
+	                    <tr>
+	                        <td><%=a.getEntNo() %></td>
+	                        <td>
+	                        <%if(a.getAnimalType().equals("D")) {%>
+	                        	강아지
+	                        <%}else if(a.getAnimalType().equals("C")){ %>
+	                        	고양이
+	                        <%} else { %>
+	                        	기타
+	                        <%} %>
+	                        </td>
+	                        <td><%=a.getAnimalVariety() %></td>
+	                        <td><%=a.getAnimalName() %></td>
+	                        <td><%=a.getEntDate() %></td>
+	                        <td><%=a.getAdoptStatus() %></td>
+	                    </tr>
+                    <%} %>
+                    
                 </tbody>
 
             </table>
@@ -177,15 +129,20 @@
 
             <!-- 페이징버튼 영역 -->
             <div align="center">
-                <button class="btn btn-light">&lt;</button>
+            	<%if(currentPage != 1) {%>
+                	<button class="btn btn-light">&lt;</button>
+				<%} %>
+				<%for (int p=startPage; p<=endPage; p++) {%>
+                	<%if(p==currentPage){ %>
+                		<button class="btn btn-light" disabled><%= p %></button>
+                	<%} else {%>
+                	<button class="btn btn-light" onclick="location.href='<%= contextPath %>/anlist.ad?cpage=<%= p %>';"><%= p %></button>	
+                	<%} %>
+				<%} %>
 
-                <button class="btn btn-light">1</button>
-                <button class="btn btn-light">2</button>
-                <button class="btn btn-light">3</button>
-                <button class="btn btn-light">4</button>
-                <button class="btn btn-light">5</button>
-
-                <button class="btn btn-light">&gt;</button>
+				<%if(currentPage < maxPage) {%>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+	            <%} %>
             </div>
 
             <br><br>

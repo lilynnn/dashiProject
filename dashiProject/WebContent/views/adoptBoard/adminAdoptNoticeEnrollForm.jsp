@@ -87,9 +87,9 @@
 							<th width="290">상세사진2</th>
 						</tr>
 						<tr>
-							<td><img src="" width="290" height="250"></td>
-							<td><img src="" width="290" height="250"></td>
-							<td><img src="" width="290" height="250"></td>
+							<td><img id="titleImg" width="290" height="250" onclick="chooseFile(1);"></td>
+							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
+							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						</tr>
 	
 						<!-- 공백란 -->
@@ -142,14 +142,15 @@
 								<textarea name="" id="text-area" cols="30" rows="10" ></textarea>
 							</td>
 						</tr>
-						
-						<!-- 첨부파일 -->
-						<tr>
-							<th>첨부 &nbsp; 파일</th>
-							<td>
-								<input type="file">
-							</td>
-						</tr>
+							<!-- 첨부파일 -->
+							<tr>
+								<th>첨부 &nbsp; 파일</th>
+								<td>
+									<input type="file" name="file1" onchange="loadImg(this, 1);" required> <br>
+									<input type="file" name="file2" onchange="loadImg(this, 2);"> <br>
+									<input type="file" name="file3" onchange="loadImg(this, 3);"> <br>
+								</td>
+							</tr>
 					</tbody>
 				</table>
 				<div style=" text-align: center;">
@@ -158,6 +159,42 @@
 					&nbsp;
 					<button class="btn btn-secondary">목록보기</button>
 				</div>
+				
+				<script>
+	                
+					function chooseFile(num){
+	                    $("#file"+num).click();
+	                }
+	                
+					function loadImg(inputFile, num){
+					
+						if(inputFile.files.length == 1){    // 파일이 선택된 경우=> 읽어들여서 미리보기
+	                        
+	                        // 파일을 읽어들일 fileReader객체 생성
+	                        const reader = new FileReader();
+
+	                        // 파일을 읽어들이는 메소드
+	                        reader.readAsDataURL(inputFile.files[0]);
+
+	                        reader.onload = function(e){
+	                            // e.target.result => 읽어들인 파일만의 고유한 url
+	                            switch(num){
+	                                case 1:$("#titleImg").attr("src",e.target.result); break;
+	                                case 2:$("#contentImg1").attr("src",e.target.result); break;
+	                                case 3:$("#contentImg2").attr("src",e.target.result); break;
+	                            }
+	                        }
+	                    } else{ //선택된 파일이 취소된 경우 =>  미리보기 된 것도 사라지게
+	                        switch(num){
+	                                case 1:$("#titleImg").attr("src",null); break;
+	                                case 2:$("#contentImg1").attr("src",null); break;
+	                                case 3:$("#contentImg2").attr("src",null); break;
+	                            }
+	                    }
+						
+						
+					}
+				</script>
 			</div>
 		</form>
 
