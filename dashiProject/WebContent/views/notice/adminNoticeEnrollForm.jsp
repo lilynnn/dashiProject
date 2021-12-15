@@ -75,7 +75,7 @@
 
         <!--관리자 공지사항 상세페이지-->
         <div id="noDetailEnroll">
-            <form action="" id="enroll-form" method="post">
+            <form action="<%=contextPath%>/noInsert.ad" id="enroll-form" method="post">
                 <div style="width: 100%; padding: 20px; font-weight: 600;">
                     	공지 선택
                     <select name="noSelect">

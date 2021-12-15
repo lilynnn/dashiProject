@@ -46,6 +46,7 @@
 		      , VIEW_COUNT
 		      , WRITE_DATE
               , MN_ID
+              , NOTICE_YN
 		  FROM NOTICE
           JOIN MANAGER_INFO USING (MN_NO)
 		 WHERE NOTICE_NO = ?
@@ -83,7 +84,7 @@
 		  )
 		  VALUES
 		  (
-		    'N-'||(SEQ_ADNO.NEXTVAL,3,0)
+		    'N-'||LPAD(SEQ_NNO.NEXTVAL,3,0)
 		  , ?
 		  , ?
 		  , ?

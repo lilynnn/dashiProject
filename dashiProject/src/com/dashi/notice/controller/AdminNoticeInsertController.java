@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dashi.admin.model.vo.Manager;
 import com.dashi.notice.model.service.NoticeService;
 import com.dashi.notice.model.vo.Notice;
 
@@ -40,20 +41,21 @@ public class AdminNoticeInsertController extends HttpServlet {
 		
 		// 로그인한 회원 정보 얻어내는방법 기술해야됨
 		HttpSession session = request.getSession();
-		String mnNo = ((Notice)session.getAttribute("loginAdmin")).getMnNo();
+		int mnNo = ((Manager)session.getAttribute("loginAdmin")).getMnNo();
 		
 		Notice n = new Notice();
 		n.setNoticeYN(noSelect);
 		n.setNoticeTitle(title);
 		n.setNoticeContent(content);
+		n.setMnNo(String.valueOf(mnNo));
 		
 		int result = new NoticeService().insertNotice(n);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "공지사항 글 등록이 되었습니다.");
+			//request.getSession().setAttribute("alertMsg", "공지사항 글 등록이 되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/noList.ad?cpage=1");
 		}else {
-			request.getSession().setAttribute("alertMsg", "공지사항 글 등록에 실패했습니다.");
+			//request.getSession().setAttribute("alertMsg", "공지사항 글 등록에 실패했습니다.");
 		}
 		
 
