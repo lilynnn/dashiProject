@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.adoptReviewBoard.model.vo.AdoptReview"%>
+<%
+	ArrayList<AdoptReview> list = (ArrayList<AdoptReview>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +51,8 @@
         margin-right: 30px;
     }
     .list-area td:hover{
-        background: rgb(233, 230, 230);
         cursor: pointer;
+        opacity: 0.7;
     }
     .page{
         border: none;
@@ -72,6 +75,11 @@
         width:220px;
         display: inline-block;
         margin:14px;
+        /*마진 크기 줄이기!!!!!*/
+    }
+    .thumbnail:hover{
+        cursor: pointer;
+        opacity: 0.7;
     }
 
 </style>
@@ -95,51 +103,30 @@
 
 
         <!--테스트영역-->
-        <div class="list-area" align=center>
-            <div class="thumbnail">
-                <img src="대표이미지경로" width="200" height="200">
-                <p>
-                    No.20 제목입니다. <br>
-                    조회수:30
-                </p>
-            </div>
-        </div>
-        <div class="list-area" align=center>
-            <div class="thumbnail">
-                <img src="대표이미지경로" width="200" height="200">
-                <p>
-                    No.20 제목입니다. <br>
-                    조회수:30
-                </p>
-            </div>
-        </div>
-        <div class="list-area" align=center>
-            <div class="thumbnail">
-                <img src="대표이미지경로" width="200" height="200">
-                <p>
-                    No.20 제목입니다. <br>
-                    조회수:30
-                </p>
-            </div>
-        </div>
-        <div class="list-area" align=center>
-            <div class="thumbnail">
-                <img src="대표이미지경로" width="200" height="200">
-                <p>
-                    No.20 제목입니다. <br>
-                    조회수:30
-                </p>
-            </div>
-        </div>
-        <div class="list-area" align=center>
-            <div class="thumbnail">
-                <img src="대표이미지경로" width="200" height="200">
-                <p>
-                    No.20 제목입니다. <br>
-                    조회수:30
-                </p>
-            </div>
-        </div>
+        
+        
+	    <div class="list-area" align=center>
+	        <% for(AdoptReview ar : list) { %>
+	            <div class="thumbnail" align=center>
+	            <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
+	                <img src="<%=contextPath%>/<%=ar.getTitleImg()%>" width="200" height="200">
+	                <p>
+	                    <%= ar.getArTitle() %> <br>
+	                   	조회수:<%= ar.getViewCount() %>
+	                </p>
+	            </div>
+	        <% } %>
+	    </div>
+	    
+	    <script>
+	    	$(function(){
+	            $(".thumbnail").click(function(){
+	                location.href="<%=contextPath%>/detail.ar?arno=" + $(this).children("input").val();
+	            })
+	    	})
+	    </script>
+        
+
         <!--여기까지-->
 
 
@@ -324,14 +311,15 @@
             <button class="page">&gt;</button>
         </div>
     </div>
+    <!--
     <script>
         $(function(){
             $(".list-area td").click(function(){
-                location.href="<%=contextPath%>/reviewdetail.bo";
+                location.href="<%=contextPath%>/detail.ar";
             })
         })
     </script>
-
+  	-->
 	<br><br><br><br><br>
 	
     <%@include file="../common/footerbar.jsp" %>

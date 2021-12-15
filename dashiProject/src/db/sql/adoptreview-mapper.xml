@@ -43,4 +43,60 @@
 		  , ?
 		  )
 	</entry>
+	
+	<entry key="selectReviewList">
+		SELECT
+		       ARLIST_NO
+		     , AR_TITLE
+		     , VIEW_COUNT
+		     , PATH || CHANGE_NAME "TITLEIMG"
+		  FROM ADOPT_REVIEW
+		  JOIN ATTACHMENT ON(ARLIST_NO = REF_NO)
+		 WHERE POST_STATUS = 'Y'
+		   AND ATTACH_LEVEL = 1
+		 ORDER
+		    BY ARLIST_NO DESC
+	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE 
+		       ADOPT_REVIEW
+		   SET VIEW_COUNT = VIEW_COUNT+1
+		 WHERE ARLIST_NO = ?
+		   AND POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectReview">
+		SELECT 
+		       ARLIST_NO
+		     , AR_TITLE
+		     , AR_CONTENT
+		     , M.NICKNAME
+		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		  FROM ADOPT_REVIEW A
+	 	  JOIN MEM_INFO M USING(MEM_NO)
+		 WHERE ARLIST_NO = ?
+	</entry>
+	
+	<entry key="selectAttachment">
+		SELECT 
+		       ATTACH_NO
+		     , ORIGIN_NAME
+		     , CHANGE_NAME
+		     , PATH
+		  FROM ATTACHMENT
+		 WHERE REF_NO = ?
+	</entry>
+	
+	
+	
 </properties>
+
+
+
+
+
+
+
+
+

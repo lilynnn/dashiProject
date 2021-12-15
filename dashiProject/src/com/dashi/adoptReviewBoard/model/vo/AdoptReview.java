@@ -14,6 +14,16 @@ public class AdoptReview {
 	private String writeDate;	// 작성일
 	private String postStatus;	// 게시글 상태 (유효Y/블라인드B /삭제D)
 	
+	private String titleImg; 	// 썸네일이미지
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
+	}
+
 	public AdoptReview() {}
 
 	public AdoptReview(String arlistNo, int memNo, String anlistNo, String nickname, String arTitle, String arContent,
@@ -29,7 +39,18 @@ public class AdoptReview {
 		this.writeDate = writeDate;
 		this.postStatus = postStatus;
 	}
+	
+	public AdoptReview(String arlistNo, String arTitle, String arContent, String nickname,
+			String writeDate) {
+		super();
+		this.arlistNo = arlistNo;
+		this.arTitle = arTitle;
+		this.arContent = arContent;
+		this.nickname = nickname;
+		this.writeDate = writeDate;
+	}
 
+	
 	public String getArlistNo() {
 		return arlistNo;
 	}

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="java.util.ArrayList, com.dashi.common.model.vo.*, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>
+    
+<%
+	AdoptReview ar = (AdoptReview)request.getAttribute("ar");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,6 +177,13 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
+    <!-- 테스트 영역 -->
+
+
+
+
+    <!-- 여기까지!!!!!! -->
+
     <div class="outer">
 	        <div id="fix-image" align="center">
 	        <!-- 웃고있는 강쥐 사진 들어갈 영역!!! -->
@@ -184,15 +198,17 @@
                 <table align="left" style="margin-left: 150px;">
                     <tr>
                         <td colspan="5" style="height: 80px;">
-                            <h2><b>강아지 "댕댕이" 입양 후기</b></h2>
+                            <h2><b><%= ar.getArTitle() %></b></h2>
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">
+                        <td>작성자</td>
+                        <td><%= ar.getNickname() %></td>
                         <td>작성일&nbsp;</td>
-                        <td>YYYY-MM-DD</td>
+                        <td><%= ar.getWriteDate() %></td>
                         <td>&nbsp;<!--공백란--></td>
                         <td>조회수</td>
-                        <td>NN</td>
+                        <td><%=ar.getViewCount() %></td>
                     </tr>
                 </table>
         
@@ -202,26 +218,20 @@
 
                 <!-- 사용자 작성 글내용 -->
                 <div class="text-area" align="center">
-                            무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
-                            소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
-                            이상의 타오르고 대중을 귀는 밥을 찬미를 사막이다. 품고 같은 대중을 우리 이상은 관현악이며, 커다란 것이다. <br>
-                            그들에게 설레는 보이는 얼마나 거친 날카로우나 하였으며, 그들은 것이다. 피어나기 힘차게 살았으며, 안고, <br>
-                            가치를 생명을 이것을 대고, 것이다. 
-                            청춘의 것이 우리의 무엇을 눈이 그것을 이상이 간에 것이다.       
+                    <%=ar.getArContent() %>     
                 </div>   
 
                 <!-- 사용자 첨부 이미지 -->
                 <div class="image-area">
-                    강쥐
+                    <img src="<%=contextPath %>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>">
                 </div>
                 <br><br>
                 <div class="image-area">
-                    강쥐
+                	<% for(int i=1; i<list.size(); i++){ %>
+                    <img src="<%=contextPath %>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>">
+                    <% } %>
                 </div>
-                <br><br>
-                <div class="image-area">
-                    강쥐
-                </div>
+
         
                 <br><br><br><br><br>
                 <!-- 신고하기 버튼 영역 -->
@@ -419,7 +429,7 @@
                 <br><br><br>
  
                 <!--클릭 시 입양후기 전체조회 페이지로 이동-->
-                <button class="btn">목록으로</button>
+                <a href="<%= contextPath %>/list.ar" class="btn" >목록으로</a>
 
                 <br><br><br><br>
                                 <!-- 댓글 신고하기 버튼 클릭시 보여질 내용 -->
