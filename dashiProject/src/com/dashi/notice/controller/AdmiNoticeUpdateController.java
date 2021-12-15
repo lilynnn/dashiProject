@@ -47,7 +47,7 @@ public class AdmiNoticeUpdateController extends HttpServlet {
 		
 		if(result > 0) { //성공 => /jsp/detail.no?num=현재글번호 =>상세페이지
 			
-			//request.getSession().setAttribute("alertMsg", "공지사항 수정 성공");
+			request.getSession().setAttribute("alertMsg", "공지사항 수정에 성공했습니다!");
 			response.sendRedirect(request.getContextPath() + "/noDetail.ad?nno=" + noticeNo);
 			
 		}else { // 실패=>에러페이지

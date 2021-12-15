@@ -115,7 +115,7 @@
                 <hr>
                 </div>
                 <div id="search">
-                    <input type="text" placeholder="제목 키워드 검색">
+                    <input type="text" name="keyword" placeholder="제목 키워드 검색">
                     <button type="submit">검색</button>
                 </div>
                 
