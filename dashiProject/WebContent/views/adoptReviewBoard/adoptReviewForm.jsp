@@ -48,6 +48,7 @@
         <!--입력폼-->
         <form action="<%=contextPath%>/insert.ar" id="enroll-form" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
+        	<input type="hidden" name="nickname" value="<%= loginUser.getNickname() %>">
             <div class="input-area">
                 <!--사용자 선택 말머리 영역-->
                 말머리를 선택해주세요
@@ -62,14 +63,14 @@
                 <div style="width: 100px; float: left;">
                 제목                    
                 </div>
-                <input type="text" style="width: 850px; height: 30px;" placeholder="제목을 입력해주세요." required>
+                <input type="text" style="width: 850px; height: 30px;" placeholder="제목을 입력해주세요." name="title" required>
             </div>
             <div class="input-area" style="height: 400px;">
                 <div style="width: 100px; float: left;">
                  내용   
                 </div>
                 <div style="width: 850px; float: left;">
-                    <textarea id="summernote" required></textarea>
+                    <textarea id="summernote" name="content" required></textarea>
                 </div>
             </div>
             <div class="input-area" style="height: 220px;">

@@ -136,7 +136,16 @@
 	                    <!--일반 공지글 있을 때-->
 	                    <tr>
 	                        <td><%=n.getNoticeNo().substring(2,5)%></td>
-	                        <td></td>
+	                        
+	                        <% if(n.getNoticeYN().equals("Y")){ %>
+		                        <td>
+		                        	<button class="btn-sm" style="background: #f57f7f; border: none; font-weight: bolder;">
+	                                	공지
+	                            	</button>
+		                        </td>
+	                        <% }else{ %>
+	                        	<td></td>
+	                        <% } %>
 	                        <td><%=n.getNoticeTitle()%></td>
 	                        <td><%=n.getWriteDate()%></td>
 	                        <td><%=n.getViewCount()%></td>

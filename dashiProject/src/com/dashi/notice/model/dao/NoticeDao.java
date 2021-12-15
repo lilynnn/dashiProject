@@ -132,7 +132,8 @@ public class NoticeDao {
 							 , rset.getString("notice_content")
 							 , rset.getInt("view_count")
 							 , rset.getDate("write_date")
-							 , rset.getString("mn_id"));
+							 , rset.getString("mn_id")
+							 , rset.getString("notice_yn"));
 			}
 			
 			
@@ -212,7 +213,7 @@ public class NoticeDao {
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeContent());
 			pstmt.setString(3, n.getNoticeYN());
-			pstmt.setString(4, n.getMnNo());
+			pstmt.setInt(4, Integer.parseInt(n.getMnNo()));
 			
 			result = pstmt.executeUpdate();
 			
