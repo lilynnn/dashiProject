@@ -180,7 +180,8 @@
             <script>
             	$(function(){
             		$(".adoptNotice").click(function(){
-            			console.log('<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val());
+            			console.log($(this).children().eq(0).val());
+            			//console.log('<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val());
 
             			location.href='<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val();
             		})

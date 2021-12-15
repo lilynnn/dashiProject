@@ -31,11 +31,11 @@ public class AdoptApply {
 	private int childAge;		//동거중인 아이 나이 	 CHILD_AGE
 	private String agreeYPN;	//동거인 동의여부		 AGREE_YPN
 	private String eventMngAni;	//환경변화시 반려견여부	 EVENT_MNG_ANI
-	private String enmptyHour;	//하루에 집 비우는시간     EMPTYHOUR
+	private String emptyHour;	//하루에 집 비우는시간     EMPTYHOUR
 	private String houseType;	//주거타입		     HOUSETYPE
 	private String hselfYN;		//자가여부			 HSELF_YN
 	private String agreeNeiYN;	//이웃 동의여부		 AGREE_NEI_YN
-	private Number expCost;		//한달 예상양육비용 	 EXP_COST
+	private int expCost;		//한달 예상양육비용 	 EXP_COST
 
 	public AdoptApply() {}
 
@@ -43,8 +43,8 @@ public class AdoptApply {
 			int adtStatus, String postStatus, String aaName, int aaAge, String aaGender, String aaPhone, String aaEmail,
 			String aaAddress, String marriageYN, String aaJob, String adoptReason, String parentExp, String havePetYN,
 			String petType, int petAge, String petGender, String petNeutral, int aMate, int cMate, int childAge,
-			String agreeYPN, String eventMngAni, String enmptyHour, String houseType, String hselfYN, String agreeNeiYN,
-			Number expCost) {
+			String agreeYPN, String eventMngAni, String emptyHour, String houseType, String hselfYN, String agreeNeiYN,
+			int expCost) {
 		super();
 		this.aalistNo = aalistNo;
 		this.anlistNo = anlistNo;
@@ -74,7 +74,44 @@ public class AdoptApply {
 		this.childAge = childAge;
 		this.agreeYPN = agreeYPN;
 		this.eventMngAni = eventMngAni;
-		this.enmptyHour = enmptyHour;
+		this.emptyHour = emptyHour;
+		this.houseType = houseType;
+		this.hselfYN = hselfYN;
+		this.agreeNeiYN = agreeNeiYN;
+		this.expCost = expCost;
+	}
+	
+	public AdoptApply(String anlistNo, int memNo, String memName, String aaTitle, String aaName, int aaAge,
+			String aaGender, String aaPhone, String aaEmail, String aaAddress, String marriageYN, String aaJob,
+			String adoptReason, String parentExp, String havePetYN, String petType, int petAge, String petGender,
+			String petNeutral, int aMate, int cMate, int childAge, String agreeYPN, String eventMngAni,
+			String emptyHour, String houseType, String hselfYN, String agreeNeiYN, int expCost) {
+		super();
+		this.anlistNo = anlistNo;
+		this.memNo = memNo;
+		this.memName = memName;
+		this.aaTitle = aaTitle;
+		this.aaName = aaName;
+		this.aaAge = aaAge;
+		this.aaGender = aaGender;
+		this.aaPhone = aaPhone;
+		this.aaEmail = aaEmail;
+		this.aaAddress = aaAddress;
+		this.marriageYN = marriageYN;
+		this.aaJob = aaJob;
+		this.adoptReason = adoptReason;
+		this.parentExp = parentExp;
+		this.havePetYN = havePetYN;
+		this.petType = petType;
+		this.petAge = petAge;
+		this.petGender = petGender;
+		this.petNeutral = petNeutral;
+		this.aMate = aMate;
+		this.cMate = cMate;
+		this.childAge = childAge;
+		this.agreeYPN = agreeYPN;
+		this.eventMngAni = eventMngAni;
+		this.emptyHour = emptyHour;
 		this.houseType = houseType;
 		this.hselfYN = hselfYN;
 		this.agreeNeiYN = agreeNeiYN;
@@ -305,12 +342,12 @@ public class AdoptApply {
 		this.eventMngAni = eventMngAni;
 	}
 
-	public String getEnmptyHour() {
-		return enmptyHour;
+	public String getEmptyHour() {
+		return emptyHour;
 	}
 
 	public void setEnmptyHour(String enmptyHour) {
-		this.enmptyHour = enmptyHour;
+		this.emptyHour = enmptyHour;
 	}
 
 	public String getHouseType() {
@@ -337,11 +374,11 @@ public class AdoptApply {
 		this.agreeNeiYN = agreeNeiYN;
 	}
 
-	public Number getExpCost() {
+	public int getExpCost() {
 		return expCost;
 	}
 
-	public void setExpCost(Number expCost) {
+	public void setExpCost(int expCost) {
 		this.expCost = expCost;
 	}
 
@@ -354,7 +391,7 @@ public class AdoptApply {
 				+ marriageYN + ", aaJob=" + aaJob + ", adoptReason=" + adoptReason + ", parentExp=" + parentExp
 				+ ", havePetYN=" + havePetYN + ", petType=" + petType + ", petAge=" + petAge + ", petGender="
 				+ petGender + ", petNeutral=" + petNeutral + ", aMate=" + aMate + ", cMate=" + cMate + ", childAge="
-				+ childAge + ", agreeYPN=" + agreeYPN + ", eventMngAni=" + eventMngAni + ", enmptyHour=" + enmptyHour
+				+ childAge + ", agreeYPN=" + agreeYPN + ", eventMngAni=" + eventMngAni + ", emptyHour=" + emptyHour
 				+ ", houseType=" + houseType + ", hselfYN=" + hselfYN + ", agreeNeiYN=" + agreeNeiYN + ", expCost="
 				+ expCost + "]";
 	}

@@ -1,6 +1,6 @@
 package com.dashi.adoptBoard.model.dao;
 
-import static com.dashi.common.JDBCTemplate.*;
+import static com.dashi.common.JDBCTemplate.close;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.dashi.adoptBoard.model.vo.AdoptApply;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 
 public class AdoptBoardDao {
@@ -27,6 +29,7 @@ public class AdoptBoardDao {
 		}
 	}
 
+	// 전체 입양공고글 수 알아오는 메소드
 	public int selectListCount(Connection conn) {
 		
 		int listCount = 0;
@@ -53,6 +56,7 @@ public class AdoptBoardDao {
 		return listCount;
 	}
 	
+	// 입양공고리스트 메소드
 	public ArrayList<AdoptNotice> selectList(Connection conn, PageInfo pi){
 		
 		// select -> ResultSet -> ArrayList<AdoptNotice>
@@ -94,6 +98,7 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	// 조회수 증가용 메소드
 	public int increaseCount(Connection conn, String boardNo) {
 		// controller에서 커밋하기
 		
@@ -118,6 +123,7 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	// 입양공고상세보기  메소드
 	public AdoptNotice selectAdoptNotice(Connection conn, String boardNo) {
 		
 		AdoptNotice an = null;
@@ -160,7 +166,79 @@ public class AdoptBoardDao {
 		return an;
 	}
 	
+	// 입양신청서 insert 메소드
+	public int insertAdoptApply(Connection conn, AdoptApply adp) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null; 
+		String sql = prop.getProperty("insertAdoptApply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adp.getAnlistNo());
+			pstmt.setInt(2, adp.getMemNo());
+			pstmt.setString(3, adp.getMemName());
+			pstmt.setString(4, adp.getAaTitle());
+			pstmt.setString(5, adp.getAaName());
+			pstmt.setInt(6, adp.getAaAge());
+			pstmt.setString(7, adp.getAaGender());
+			pstmt.setString(8, adp.getAaPhone());
+			pstmt.setString(9, adp.getAaEmail());
+			pstmt.setString(10, adp.getAaAddress());
+			pstmt.setString(11, adp.getMarriageYN());
+			pstmt.setString(12, adp.getAaJob());
+			pstmt.setString(13, adp.getAdoptReason());
+			pstmt.setString(14, adp.getParentExp());
+			pstmt.setString(15, adp.getHavePetYN());
+			pstmt.setString(16, adp.getPetType());
+			pstmt.setInt(17, adp.getPetAge());
+			pstmt.setString(18, adp.getPetGender());
+			pstmt.setString(19, adp.getPetNeutral());
+			pstmt.setInt(20, adp.getaMate());
+			pstmt.setInt(21, adp.getcMate());
+			pstmt.setInt(22, adp.getChildAge());
+			pstmt.setString(23, adp.getAgreeYPN());
+			pstmt.setString(24, adp.getEventMngAni());
+			pstmt.setString(25, adp.getEmptyHour());
+			pstmt.setString(26, adp.getHouseType());
+			pstmt.setString(27, adp.getHselfYN());
+			pstmt.setString(28, adp.getAgreeNeiYN());
+			pstmt.setInt(29, adp.getExpCost());
+			
+			result = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAdpAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getPath());
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangeName());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 }

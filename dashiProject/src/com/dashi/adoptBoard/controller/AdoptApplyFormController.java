@@ -32,7 +32,7 @@ public class AdoptApplyFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String boardNo = request.getParameter("adtno");
 		
-		System.out.println(boardNo);
+		//System.out.println(boardNo);
 		AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
 		
 		request.setAttribute("an", an);
