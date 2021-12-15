@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%  String contextPath = request.getContextPath(); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,8 +111,8 @@
 
 <body>
 	<%@ include file="/views/common/menubar.jsp" %>
-    <form action="" method="">
-	<div class="outer" align="center" enctype="multipart/form-data">
+    <form action="<%contextPath%>/insert.as" method="post">
+	<div class="outer" align="center">
 
         <!-- 1:1 문의글 제목 -->
     <h3 align= "left" style="margin:30px;">1:1 문의글 작성</h3>
