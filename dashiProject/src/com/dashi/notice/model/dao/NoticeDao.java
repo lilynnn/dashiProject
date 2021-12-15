@@ -79,7 +79,7 @@ public class NoticeDao {
 								  , rset.getInt("view_count")
 								  , rset.getDate("write_date")
 								  , rset.getString("notice_yn")
-								  , rset.getInt("mn_no")));
+								  , rset.getString("mn_no")));
 				
 			}
 			
@@ -131,7 +131,8 @@ public class NoticeDao {
 							 , rset.getString("notice_title")
 							 , rset.getString("notice_content")
 							 , rset.getInt("view_count")
-							 , rset.getDate("write_date"));
+							 , rset.getDate("write_date")
+							 , rset.getString("mn_id"));
 			}
 			
 			

@@ -168,7 +168,7 @@
 		                        <td></td>
 		                        <td><%=n.getNoticeNo()%></td>
 		                        <td><%=n.getNoticeTitle()%></td>
-		                        <td><%=n.getMnNo()%></td>
+		                        <td><%=n.getMnNo() %></td>
 		                        <td><%=n.getWriteDate()%></td>
 		                        <td><%=n.getViewCount()%></td>
 		                    </tr>

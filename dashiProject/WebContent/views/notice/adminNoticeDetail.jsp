@@ -122,7 +122,7 @@
                             	작성자
                         </div>
                         <div class="noEct">
-                           <%=n.getMnNo()%> <!-- 작성자 이색기 말 안들음... -->
+                           <%=n.getMnNo()%>
                         </div>
                     </div>
                     
@@ -146,7 +146,7 @@
                     <a href="<%=contextPath%>/noList.ad?cpage=1" class="btn btn-sm" style="background: rgb(143,153,142);">
                         	목록으로
                     </a>
-                    <a href="" class="btn btn-sm" style="background: rgb(102,184,94)">
+                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: rgb(102,184,94)">
                         	수정
                     </a>
                     <a href="" class="btn btn-sm btn-danger">

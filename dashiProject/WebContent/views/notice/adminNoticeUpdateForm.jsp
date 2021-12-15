@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.kh.notice.model.vo.Notice" %>
+<%
+	Notice n = (Notice)request.getAttribute("n");
+	// 글번호, 제목, 내용, 작성자아이디, 작성일
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -109,38 +113,39 @@
                     공지사항
             </div>
 
-            <form action="">
+            <form action="<%=contextPath %>/noUpdate.ad" id="update-form" method="post">
 
+				<input type="hidden" name="nno" value="<%=n.getNoticeNo()%>">
                 <div id="noTitleEtc">
 
                     <div id="noName">
-                        <input type="text" name="title" value="여기에코드불러오기" required>
+                        <input type="text" name="title" value="<%=n.getNoticeTitle()%>" required>
                     </div>
                     
                     <div id="noDate">
-                        여기에코드불러오기
+                        	<%=n.getWriteDate()%>
                     </div>
                     
                     <div>
                         <div class="noEtc" style="border-bottom: 1px solid gray;">
-                            작성자
+                            	작성자
                         </div>
                         <div class="noEtc">
-                            여기에코드불러오기
+                            <%=n.getMnNo()%>
                         </div>
                     </div>
                     
                     <div>
                         <div class="noEtc" style="border-bottom: 1px solid gray;">
-                            조회수
+                            	조회수
                         </div>
                         <div class="noEtc">
-                            여기에코드불러오기
+                            	<%=n.getViewCount()%>
                         </div>
                     </div>
                 
                     <div id="aNoticeContent" style="height: 400px; background: white;">
-                        <textarea name="content" cols="105" rows="15" style="resize: none; border: none;" required>여기에코드불러오기</textarea>
+                        <textarea name="content" cols="105" rows="15" style="resize: none; border: none;" required><%=n.getNoticeContent()%></textarea>
                     </div>
                     
                 </div>
@@ -150,12 +155,12 @@
                     <button type="button" onclick="history.back();" class="btn btn-sm" style="background: rgb(143,153,142);">
                         	뒤로가기
                     </button>
-                    <a href="" class="btn btn-sm" style="background: rgb(102,184,94)">
+                    <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94)">
                         	수정완료
-                    </a>
-                    <a href="" class="btn btn-sm btn-warning">
+                    </button>
+                    <button type="reset" class="btn btn-sm btn-warning">
                         	초기화
-                    </a>
+                    </button>
                 </div>    
             </form>
 

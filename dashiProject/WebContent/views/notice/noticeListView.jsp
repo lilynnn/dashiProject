@@ -150,11 +150,8 @@
         <script>
         	$(function(){
         		$(".table-hover>tbody>tr").click(function(){
-        			const num1 = $(this).children().eq(0).text();
-        			const num2 = num1.substring(2,5);
-        			
-        			console.log('<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text());
-        			
+        	
+        			        			
         			location.href = '<%=contextPath%>/detail.no?nno=' + $(this).children().eq(0).text();
         		})
         	})

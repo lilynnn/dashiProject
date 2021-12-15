@@ -10,13 +10,13 @@ public class Notice {
 	private int viewCount;
 	private Date writeDate;
 	private String noticeYN;
-	private int mnNo;
+	private String mnNo;
 	private String status;
 	
 	public Notice(){}
 
 	public Notice(String noticeNo, String noticeTitle, String noticeContent, int viewCount, Date writeDate,
-			String noticeYN, int mnNo, String status) {
+			String noticeYN, String mnNo, String status) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
@@ -29,7 +29,7 @@ public class Notice {
 	}
 
 	public Notice(String noticeNo, String noticeTitle, String noticeContent, int viewCount, Date writeDate,
-			String noticeYN, int mnNo) {
+			String noticeYN, String mnNo) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;
@@ -47,6 +47,17 @@ public class Notice {
 		this.noticeContent = noticeContent;
 		this.viewCount = viewCount;
 		this.writeDate = writeDate;
+	}
+
+	public Notice(String noticeNo, String noticeTitle, String noticeContent, int viewCount, Date writeDate,
+			String mnNo) {
+		super();
+		this.noticeNo = noticeNo;
+		this.noticeTitle = noticeTitle;
+		this.noticeContent = noticeContent;
+		this.viewCount = viewCount;
+		this.writeDate = writeDate;
+		this.mnNo = mnNo;
 	}
 
 	public String getNoticeNo() {
@@ -97,11 +108,11 @@ public class Notice {
 		this.noticeYN = noticeYN;
 	}
 
-	public int getMnNo() {
+	public String getMnNo() {
 		return mnNo;
 	}
 
-	public void setMnNo(int mnNo) {
+	public void setMnNo(String mnNo) {
 		this.mnNo = mnNo;
 	}
 
