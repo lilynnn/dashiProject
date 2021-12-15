@@ -5,10 +5,6 @@
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	Manager loginAdmin = (Manager)session.getAttribute("loginAdmin");
 	String alertMsg = (String)session.getAttribute("alertMsg");
-<<<<<<< Updated upstream
-=======
-	
->>>>>>> Stashed changes
 %>
 <!DOCTYPE html>
 <html>
@@ -267,7 +263,7 @@
                 <hr>
           </div>
         </div>
-      </div
+      </div>
     <!--회원가입 Modal창-->
 
 
