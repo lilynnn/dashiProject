@@ -39,7 +39,13 @@
         margin-top: 20px;
         width: 950px;
     }
-    
+     #img-area{
+    	margin:auto;
+    	width: 700px;
+    	height:450px;
+    	border: 1px solid black;
+    }
+    #img-area img{width:700px; height:450px}
     /* 동물정보 테이블 스타일 */
     .content-area table thead{font-size: 15px;}
     #animalInfo{font-size: 13px; border-collapse: separate; line-height: 200%;}
@@ -67,9 +73,12 @@
 				동물정보 상세보기
 			</div>
             <hr style="width: 900px;">
-            <br>
-            <br>
-
+            <br><br><br>
+            
+            
+			<div id="img-area"><img src=""></div>
+			
+			<br>
             <!-- 입소번호, 입소일, 입양여부 보여질 table -->
             <table align="center" style="width: 700px; text-align: center; font-size: 13px;">
                 <thead>
@@ -123,23 +132,24 @@
                 <tr>
                     <th>특이사항</th>
                     <td>
-                        <input type="text" value="<%=a.getAnimalIssue() %>" readonly style="height:70px;" readonly>
+                        <input type="text" value="<%=a.getAnimalIssue() %>" style="height:70px;" readonly>
                     </td>
                 </tr>
 
             </table>
 
             <div style=" text-align: center;">
-	<br><br>
-                <!--if 입양상태가 N일때 보여질 버튼-->
-                <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
+			<br><br>
+				<%if(a.getAdoptStatus().equals("N")) {%>
+	              <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
+                <%} %>
                 &nbsp;
                 <!--나머지는 기본으로 보여지게-->
-                <button class="btn btn-success">수정하기</button>
+                <a class="btn btn-success" href="<%=contextPath %>/anupdateForm.ad?ano=<%=a.getEntNo() %>" >수정하기</a>
                 &nbsp;
-                <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad">목록보기</a>
+                <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad?cpage=1">목록보기</a>
 	
-</div>
+			</div>
 
             <br><br><br><br>
         </div>

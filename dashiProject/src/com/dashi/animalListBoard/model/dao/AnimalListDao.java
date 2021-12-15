@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.dashi.adoptBoard.model.dao.AdoptBoardDao;
 import com.dashi.animalListBoard.model.vo.Animal;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 
 public class AnimalListDao {
@@ -139,5 +140,26 @@ public class AnimalListDao {
 		}
 		
 		return a;
+	}
+	
+	public Attachment selectAttachment(Connection conn, String animalNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalNo);
+			
+			rset = pstmt.executeQuery();
+			/////////////////////////////////////////////////////////////수정하기
+			//while()
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return at;
 	}
 }

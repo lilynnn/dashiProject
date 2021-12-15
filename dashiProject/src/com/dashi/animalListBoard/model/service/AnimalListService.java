@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.dashi.animalListBoard.model.dao.AnimalListDao;
 import com.dashi.animalListBoard.model.vo.Animal;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 
 public class AnimalListService {
@@ -32,5 +33,12 @@ public class AnimalListService {
 		Animal a = new AnimalListDao().selectAnimalInfo(conn, animalNo);
 		close(conn);
 		return a;
+	}
+	
+	public Attachment selectAttachment(String animalNo) {
+		Connection conn = getConnection();
+		Attachment at = new AnimalListDao().selectAttachment(conn, animalNo);
+		close(conn);
+		return at;
 	}
 }

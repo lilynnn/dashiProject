@@ -32,6 +32,7 @@
 		  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- 동물정보 조회 -->
 	<entry key="selectAnimalInfo">
 		SELECT 
 		       ENT_NO
@@ -49,5 +50,18 @@
 		  FROM ADOPT_ANIMAL
 		  JOIN ENTRANCE USING (ENT_NO)
 		 WHERE ENT_NO = ?
+	</entry>
+	
+	<!-- 첨부파일 불러오는 sql -->
+	<entry key="selectAttachment">
+	SELECT
+	       ATTACH_NO
+	     , REF_NO
+	     , ORIGIN_NAME
+	     , CHANGE_NAME
+	     , PATH
+	     , ATTACH_LEVEL
+	  FROM ATTACHMENT
+	 WHERE REF_NO = ?
 	</entry>
 </properties>
