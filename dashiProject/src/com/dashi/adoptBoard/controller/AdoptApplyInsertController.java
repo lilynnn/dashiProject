@@ -104,7 +104,7 @@ public class AdoptApplyInsertController extends HttpServlet {
 				
 				request.getSession().setAttribute("alertMsg", "입양신청에 실패했습니다.");
 				//response.sendRedirect(request.getContextPath()+"/adlist.ad?cpage=1");
-				response.sendRedirect(request.getContextPath() + "/addetail.adt?adtno=" + adp.getAnlistNo());
+				response.sendRedirect(request.getContextPath());
 			}
 			
 		}

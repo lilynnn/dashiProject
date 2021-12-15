@@ -172,7 +172,7 @@ public class AdoptBoardDao {
 		
 		PreparedStatement pstmt = null; 
 		String sql = prop.getProperty("insertAdoptApply");
-		
+		System.out.println(adp);
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, adp.getAnlistNo());
