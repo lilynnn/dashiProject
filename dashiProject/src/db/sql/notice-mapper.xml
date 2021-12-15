@@ -71,7 +71,25 @@
 		   AND NO_STATUS = 'N'
 	</entry>
 
-
+	<entry key="insertNotice">
+		INSERT
+		  INTO NOTICE
+		  (
+		    NOTICE_NO
+		  , NOTICE_TITLE
+		  , NOTICE_CONTENT
+		  , NOTICE_YN
+		  , MN_NO
+		  )
+		  VALUES
+		  (
+		    'N-'||(SEQ_ADNO.NEXTVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
 
 
 
