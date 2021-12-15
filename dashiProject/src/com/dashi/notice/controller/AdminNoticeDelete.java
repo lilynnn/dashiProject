@@ -31,10 +31,11 @@ public class AdminNoticeDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String noticeNo = request.getParameter("nno");
+		
 		int result = new NoticeService().deleteNotice(noticeNo);
 		
 		if(result > 0) {
-			response.sendRedirect(request.getContextPath() + "/noList.ad");
+			response.sendRedirect(request.getContextPath() + "/noList.ad?cpage=1");
 		}else {
 			//삭제 실패시 알람창
 		}

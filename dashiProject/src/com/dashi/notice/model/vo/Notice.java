@@ -29,7 +29,7 @@ public class Notice {
 	}
 
 	public Notice(String noticeNo, String noticeTitle, String noticeContent, int viewCount, Date writeDate,
-			String noticeYN, String mnNo) {
+			String mnNo, String noticeYN) {
 		super();
 		this.noticeNo = noticeNo;
 		this.noticeTitle = noticeTitle;

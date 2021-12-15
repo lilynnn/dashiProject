@@ -20,8 +20,8 @@
 		                     , NOTICE_CONTENT
 		                     , VIEW_COUNT
 		                     , WRITE_DATE
-		                     , NOTICE_YN
 		                     , MN_NO
+		                     , NOTICE_YN
 		                  FROM NOTICE
 		                 WHERE NO_STATUS = 'N'
 		                 ORDER

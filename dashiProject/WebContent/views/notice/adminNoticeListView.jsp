@@ -121,11 +121,8 @@
                 
                 <div style="width: 600px;" align="right">
                 	<% if(loginAdmin != null){ %>
-                    <button type="button" class="btn btn-sm" style="background: tomato;">
-                        	공지
-                    </button>
                     
-                    <a href="<%=contextPath%>/noEnrollForm.ad" class="btn btn-sm" style="background: yellow;">
+                    <a href="<%=contextPath%>/noEnrollForm.ad" class="btn btn-sm btn-dark">
                         	글쓰기
                     </a>
                     <% } %>
@@ -167,7 +164,7 @@
 		                    <% for(Notice n : list){ %>
 		                    <!--일반 공지글 있을 때-->
 		                    <tr>
-		                        <td></td>
+		                        <th></td>
 		                        <td><%=n.getNoticeNo()%></td>
 		                        <td><%=n.getNoticeTitle()%></td>
 		                        <td><%=n.getMnNo() %></td>

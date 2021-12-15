@@ -147,10 +147,13 @@
                         	목록으로
                     </a>
                     <% if(loginAdmin != null){ %>
-                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: rgb(102,184,94)">
+                    <a href="<%=contextPath%>/noInNoUpdate.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm" style="background: tomato;">
+                        	공지
+                    </a>
+                    <a href="<%= contextPath %>/noUpdateForm.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-warning">
                         	수정
                     </a>
-                    <a href="<%=contextPath%>/noDelete.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-danger">
+                    <a href="<%=contextPath%>/noDelete.ad?nno=<%=n.getNoticeNo()%>" class="btn btn-sm btn-primary">
                         	삭제
                     </a>
                     <% } %>
