@@ -172,7 +172,7 @@ public class AdoptBoardDao {
 		
 		PreparedStatement pstmt = null; 
 		String sql = prop.getProperty("insertAdoptApply");
-		System.out.println(adp);
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, adp.getAnlistNo());
@@ -205,7 +205,9 @@ public class AdoptBoardDao {
 			pstmt.setString(28, adp.getAgreeNeiYN());
 			pstmt.setInt(29, adp.getExpCost());
 			
-			result = pstmt.executeUpdate();			
+			result = pstmt.executeUpdate();	
+			
+			System.out.println(adp);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

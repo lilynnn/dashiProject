@@ -107,7 +107,7 @@
 	       )
 	       VALUES
 	       (
-	         'AA-' || LPAD(SEQ_ADPNO.NEXTVAL,3,0)
+	         'AA-'||LPAD(SEQ_ADPNO.NEXTVAL,3,0)
 	       , ?
 	       , ?
 	       , ?
@@ -158,8 +158,8 @@
 			  )
 			  VALUES
 			  (
-			    'AT-' || LPAD(SEQ_ATNO.NEXTVAL,3,'0')
-			  , SEQ_ADPNO.CURRVAL;
+			    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+			  , 'AA-'||LPAD(SEQ_ADPNO.CURRVAL,3,0)
 			  , ?
 			  , ?
 			  , ?

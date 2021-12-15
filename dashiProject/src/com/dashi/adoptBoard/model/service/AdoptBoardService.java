@@ -78,7 +78,8 @@ public class AdoptBoardService {
 		} else {
 			rollback(conn);
 		}
-		close(conn);		
+		close(conn);	
+		
 		return result1 * result2;
 	}
 		

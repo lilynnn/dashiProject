@@ -110,7 +110,7 @@
 					<!-- 이메일 -->
 					<td width=220>5. 이&nbsp;&nbsp;&nbsp;&nbsp;메&nbsp;&nbsp;&nbsp;&nbsp;일 </td>
 					<td width=780>
-						<input type="text" name="email1" style="width: 690px" required>
+						<input type="text" name="email" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>

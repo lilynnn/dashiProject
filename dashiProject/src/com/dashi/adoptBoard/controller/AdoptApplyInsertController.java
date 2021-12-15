@@ -47,7 +47,6 @@ public class AdoptApplyInsertController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8",  new MyFileRenamePolicy());		
 			
-			System.out.println(multiRequest.getParameter("petAge"));
 			
 			AdoptApply adp = new AdoptApply(multiRequest.getParameter("anNo"),
 											Integer.parseInt(multiRequest.getParameter("memNo")),
@@ -89,12 +88,14 @@ public class AdoptApplyInsertController extends HttpServlet {
 				 at.setPath("resources/upfiles/adoptApply/");
 			}
 			
+			System.out.println(at);
+			
 			int result = new AdoptBoardService().insertAdoptApply(adp, at);
 			
 			if(result == 1) {
 				// 입양신청서 업로드 성공 => alertMsg, 입양공고목록으로 돌아가기(adlist.ad?cpage=1)
 				request.getSession().setAttribute("alertMsg", "입양신청이 성공적으로 완료되었습니다.");
-				response.sendRedirect(request.getContextPath()+"/adlist.adt?cpage=1");
+				response.sendRedirect(request.getContextPath());
 			} else {
 				// 입양신청서 업로드 실패 => 현재 공고페이지로 돌아가기/입양공고목록으로 돌아기기
 				
@@ -104,7 +105,7 @@ public class AdoptApplyInsertController extends HttpServlet {
 				
 				request.getSession().setAttribute("alertMsg", "입양신청에 실패했습니다.");
 				//response.sendRedirect(request.getContextPath()+"/adlist.ad?cpage=1");
-				response.sendRedirect(request.getContextPath());
+				request.getRequestDispatcher(request.getContextPath()+"/adlist.adt?cpage=1").forward(request, response);
 			}
 			
 		}
