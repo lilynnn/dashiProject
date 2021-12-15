@@ -86,7 +86,7 @@
                 <div class="aMenu" id="list">게시글관리</div>
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/noList.ad?cpage=1" class="menu-detail">공지사항</a></li>
-                    <li><a href="<%=request.getContextPath()%>/adlist.ad" class="menu-detail">입양공고</a></li>
+                    <li><a href="<%=request.getContextPath()%>/adlist.ad?cpage=1" class="menu-detail">입양공고</a></li>
                     <li><a href="<%=request.getContextPath()%>/reviewlist.ad" class="menu-detail">입양후기</a></li>
                     <li><a href="<%=request.getContextPath()%>/adlist.dsp" class="menu-detail">실종/보호</a></li>
                     <li><a href="" class="menu-detail">1:1문의</a></li>
