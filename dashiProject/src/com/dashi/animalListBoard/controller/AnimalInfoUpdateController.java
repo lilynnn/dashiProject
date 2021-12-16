@@ -57,25 +57,35 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			a.setAnimalDisease(multiRequest.getParameter("animalDisease"));
 			a.setAnimalIssue(multiRequest.getParameter("animalIssue"));
 			
-			ArrayList<Attachment> list = new ArrayList<>();
+			Attachment at = null;
 			
-			for(int i=1; i<=3; i++) {
-				String key = "file" + i;
-				//첨부파일 name 속성을 file1, file2, .. 로 전달
-				if(multiRequest.getOriginalFileName(key) != null) {
-					Attachment at = new Attachment();
-					at.setOriginName(multiRequest.getOriginalFileName(key));
-					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setPath("resources/upfiles/adoptNotice/");
-					
-					if(i==1) {	//대표이미지 level 1로 세팅
-						at.setAttachLevel(1);
-					} else {	//상세이미지 level 2로 세팅
-						at.setAttachLevel(2);
-					}
+
+			if(multiRequest.getOriginalFileName("upfile") != null) {
+				at = new Attachment();
+				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
+				at.setChangeName(multiRequest.getFilesystemName("upfile"));
+				at.setPath("resources/upfiles/adoptNotice/");
+				at.setAttachLevel(1);
+				at.setRefNo(multiRequest.getParameter("entNo"));
+				if(multiRequest.getParameter("originFileNo") != null) {
+					// 기존 첨부파일 있을 경우
+					at.setAttachNo(multiRequest.getParameter("originFileNo"));
+				} else {
+					// 입소번호를 첨부파일 참조번호로
+					at.setRefNo(multiRequest.getParameter("entNo"));
 				}
-				
-				int result = new AnimalListService().updateAnimalInfo(a, list);
+
+			}
+			
+			System.out.println(a);
+			System.out.println(at);
+			
+			int result = new AnimalListService().updateAnimalInfo(a, at);
+			
+			if(result > 0) {	// 업데이트 성공
+				response.sendRedirect(request.getContextPath() + "/andetail.ad?ano="+a.getEntNo());
+			} else {	// 업데이트 실패
+				response.sendRedirect(request.getContextPath() + "/anlist.ad?cpage=1");
 			}
 		}
 	}

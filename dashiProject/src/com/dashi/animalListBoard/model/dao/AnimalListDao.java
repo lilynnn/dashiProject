@@ -181,6 +181,87 @@ public class AnimalListDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// entrance테이블에 동물정보 update
+	public int updateAnimalInfo2(Connection conn, Animal a) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAnimalInfo2");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, a.getAnimalAge());
+			pstmt.setString(2, a.getAnimalVaccin());
+			pstmt.setString(3, a.getAnimalNeutral());
+			pstmt.setString(4, a.getAnimalDisease());
+			pstmt.setString(5, a.getAnimalIssue());
+			pstmt.setString(6, a.getEntNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 첨부파일이 존재할 때 update하는 메소드
+	public int updateAttachment(Connection conn, Attachment at) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getPath());
+			pstmt.setInt(4, at.getAttachLevel());
+			pstmt.setString(5, at.getAttachNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	// 첨부파일이 존재하지 않을 때 insert하는 메소드
+	public int insertAttachment(Connection conn, Attachment at) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getRefNo());
+			pstmt.setString(2, at.getPath());
+			pstmt.setString(3, at.getOriginName());
+			pstmt.setString(4, at.getChangeName());
+			pstmt.setInt(5, at.getAttachLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
 		return result;
 	}

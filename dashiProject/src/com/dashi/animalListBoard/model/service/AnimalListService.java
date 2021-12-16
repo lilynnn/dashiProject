@@ -1,7 +1,6 @@
 package com.dashi.animalListBoard.model.service;
 
-import static com.dashi.common.JDBCTemplate.close;
-import static com.dashi.common.JDBCTemplate.getConnection;
+import static com.dashi.common.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -42,9 +41,29 @@ public class AnimalListService {
 		return at;
 	}
 	
-	public int updateAnimalInfo(Animal a, ArrayList<Attachment> list) {
+	public int updateAnimalInfo(Animal a, Attachment at) {
 		
 		Connection conn = getConnection();
 		int result1 = new AnimalListDao().updateAnimalInfo1(conn, a);
+		int result2 = new AnimalListDao().updateAnimalInfo2(conn, a);
+		
+		int result3 = 1;
+		if( at != null ) {	// 원래 첨부파일이 존재할 때
+			result3 = new AnimalListDao().updateAttachment(conn, at);
+		} else {
+			result3 = new AnimalListDao().insertAttachment(conn, at);
+		}
+		System.out.println("result1 : "+result1+"// result2 : "+result2 +" // result3 : "+result3 );
+		
+		if((result1*result2) > 0 && result3>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result1*result2*result3;
+	
 	}
 }
