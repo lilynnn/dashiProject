@@ -36,6 +36,15 @@ public class FAQ {
 		FAQCategory = fAQCategory;
 	}
 
+	public FAQ(String fAQNo, String fAQTitle, String fAQContent, Date fAQEnrollDate, int fAQCategory) {
+		super();
+		FAQNo = fAQNo;
+		FAQTitle = fAQTitle;
+		FAQContent = fAQContent;
+		FAQEnrollDate = fAQEnrollDate;
+		FAQCategory = fAQCategory;
+	}
+
 	public String getFAQNo() {
 		return FAQNo;
 	}

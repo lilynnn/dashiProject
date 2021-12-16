@@ -77,8 +77,16 @@ public class FAQService {
 		close(conn);
 		return list;	
 		
-	} // faq keyword조회
+	} // faq 제목 keyword조회
 	
+	public ArrayList<FAQ> keywordCategory(int keyword){
+		
+		Connection conn = getConnection();
+		ArrayList<FAQ> list = new FAQDao().keywordCategory(conn, keyword);
+		close(conn);
+		return list;	
+		
+	} // faq 카테고리 keyword조회
 	
 	
 	

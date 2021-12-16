@@ -121,12 +121,27 @@
 
         <!--키워드 검색-->
         <div id="kDiv">
-            <div class="keyword">입양</div>
-            <div class="keyword">입소</div>
-            <div class="keyword">결제</div>
-            <div class="keyword" style="width: 110px;">실종/보호</div>
-            <div class="keyword">기타</div>
+            <button class="keyword btn btn-sm" name="fkeyword" value="1">입양</button>
+            <button class="keyword btn btn-sm" name="fkeyword" value="2">입소</button>
+            <button class="keyword btn btn-sm" name="fkeyword" value="3">결제</button>
+            <button class="keyword btn btn-sm" name="fkeyword" value="4">실종/보호</button>
+            <button class="keyword btn btn-sm" name="fkeyword" value="5">기타</button>
         </div>
+        
+        <script>
+        	$(function(){
+        		
+        		$(".keyword").click(function(){
+        			
+        			location.href = '<%=contextPath%>/search.faq?fkeyword=' + $(this).val();
+        			
+        		})
+        		
+        	})
+        
+        </script>
+        
+        
 
         <!--FAQ 리스트-->
         <div id="list">

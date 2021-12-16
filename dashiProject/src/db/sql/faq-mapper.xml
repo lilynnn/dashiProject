@@ -72,6 +72,17 @@
 		  FROM FAQ
 		 WHERE FAQ_TITLE LIKE ?
 	</entry>
+	
+	<entry key="keywordCategory">
+		SELECT
+		       FAQ_NO
+		     , FAQ_TITLE
+		     , FAQ_CONTENT
+		     , FAQ_ENROLL_DATE
+		     , FAQ_CATEGORY
+		  FROM FAQ
+		 WHERE FAQ_CATEGORY LIKE ?
+	</entry>
 
 
 
