@@ -73,7 +73,7 @@
         
                 <div class="aMenu" id="member">회원관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/memberlist.ad" class="Menu-detail">전체회원조회</a></li>
+                    <li><a href="<%=request.getContextPath()%>/memberlist.ad?cpage=1" class="Menu-detail">전체회원조회</a></li>
                     <li><a href="" class="menu-detail">블랙리스트조회</a></li>
                 </ul>
                 
