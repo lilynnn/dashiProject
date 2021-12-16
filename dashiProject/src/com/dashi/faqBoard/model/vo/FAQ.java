@@ -27,6 +27,14 @@ public class FAQ {
 		this.mnNo = mnNo;
 		FAQCategory = fAQCategory;
 	}
+	
+	public FAQ(String fAQNo, String fAQTitle, String fAQContent, int fAQCategory) {
+		super();
+		FAQNo = fAQNo;
+		FAQTitle = fAQTitle;
+		FAQContent = fAQContent;
+		FAQCategory = fAQCategory;
+	}
 
 	public String getFAQNo() {
 		return FAQNo;

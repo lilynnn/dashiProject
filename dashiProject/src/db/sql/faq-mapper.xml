@@ -36,10 +36,32 @@
 		  )
 	</entry>
 
+	<entry key="deleteFAQ">
+		UPDATE
+		       FAQ
+		   SET FAQ_STATUS = 'Y'
+		 WHERE FAQ_NO = ?
+	</entry>
 
+	<entry key="selectFAQ">
+		SELECT
+		       FAQ_NO
+		     , FAQ_TITLE
+		     , FAQ_CONTENT
+		     , FAQ_CATEGORY
+		  FROM FAQ
+		 WHERE FAQ_NO = ?
+	</entry>
 
-
-
+	<entry key="updateFAQ">
+		UPDATE
+		       FAQ
+		   SET FAQ_TITLE = ?
+		     , FAQ_CONTENT = ?
+		     , FAQ_MODIFY_DATE = SYSDATE
+		     , FAQ_CATEGORY = ?
+		 WHERE FAQ_NO = ?
+	</entry>
 
 
 

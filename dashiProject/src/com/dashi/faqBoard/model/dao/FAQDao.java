@@ -85,19 +85,78 @@ public class FAQDao {
 		return result;
 	}// faq등록
 	
+	public int deleteFAQ(Connection conn, String faqNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteFAQ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, faqNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// faq 삭제
 	
+	public FAQ selectFAQ(Connection conn, String fNo){
+		
+		FAQ f = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectFAQ");
 	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, fNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				f = new FAQ(rset.getString("faq_no")
+						  , rset.getString("faq_title")
+						  , rset.getString("faq_content")
+						  , rset.getInt("faq_category"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return f;
+
+	} //faq하나 조회
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public int updateFAQ(Connection conn, FAQ f) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateFAQ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, f.getFAQTitle());
+			pstmt.setString(2, f.getFAQContent());
+			pstmt.setInt(3, f.getFAQCategory());
+			pstmt.setString(4, f.getFAQNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// faq 수정
 	
 	
 	

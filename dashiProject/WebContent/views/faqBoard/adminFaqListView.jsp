@@ -11,7 +11,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 1000px;
+        height: 1500px;
         margin-top: 50px;
         margin: auto;
     }
@@ -36,13 +36,14 @@
         width: 100%;
         height: 50px;
         box-sizing: border-box;
+        margin-left:30px;
     }
     #faqLine2>div{
         float: left;
         height: 100%;
         width: 260px;      
     }
-    #aFadList{width: 100%;}
+    #aFadList{width: 100%; margin-left:30px;}
     .faqAnswer a{
         color: black;
         font-size: 12px;
@@ -94,6 +95,7 @@
                         <option value="ent">입소</option>
                         <option value="pay">결제</option>
                         <option value="dsp">실종/보호</option>
+                        <option value="dsp">기타</option>
                         <option selected>전체</option>
                     </select>
                 </div>
@@ -119,6 +121,7 @@
                             <th width="550">제목</th>
                             <th width="80"></th>
                             <th width="80"></th>
+                            <th width="80"></th>
                         </tr>
                     </thead>
 
@@ -138,7 +141,7 @@
 			                    	case 1: category = "입양"; break;
 			                    	case 2: category = "입소"; break;
 			                    	case 3: category = "결제"; break;
-			                    	case 4: category = "실종/보호"; break;
+			                    	case 4: category = "실/목/보"; break;
 			                    	case 5: category = "기타"; break;
 									}
 								%>
@@ -146,22 +149,23 @@
 	                            <td><%=f.getFAQTitle()%></td>
 	                            <% if(loginAdmin != null){ %>
 	                            <td>
-	                                <a href="" class="btn btn-sm btn-warning">
+	                                <a href="<%=contextPath%>/faqUpdateForm.ad?fno=<%=f.getFAQNo()%>" class="btn btn-sm btn-warning">
 	                                   	 수정
 	                                </a>
 	                            </td>
 	                            <td>
-	                                <a href="<%=contextPath%>/faqDelete.ad" class="btn btn-sm btn-danger">
+	                                <a href="<%=contextPath%>/faqDelete.ad?fno=<%=f.getFAQNo()%>" class="btn btn-sm btn-danger">
 	                                    	삭제
 	                                </a>
 	                            </td>
+	                            <td id="faqNum"><%=f.getFAQNo()%></td>
 	                            <% } %>
 	                        </tr>
 	
 	                        <!--답변 있을경우-->
 	                        <tr class="faqAnswer" style="background: lightgray;">
 	                            <td><%=category%></td>   
-	                            <td colspan="3">
+	                            <td colspan="4" id="titleNcontent">
 	                                	<%=f.getFAQTitle()%>
 	                                <hr>
 	                                	<%=f.getFAQContent()%>
@@ -197,6 +201,8 @@
 
             })
         })
+        
+        
     </script>
 
 

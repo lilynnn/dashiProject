@@ -1,7 +1,6 @@
 package com.dashi.faqBoard.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,18 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.faqBoard.model.service.FAQService;
+import com.dashi.faqBoard.model.vo.FAQ;
 
 /**
- * Servlet implementation class AdminFAQDeleteController
+ * Servlet implementation class AdminFAQUpdateFormController
  */
-@WebServlet("/faqDelete.ad")
-public class AdminFAQDeleteController extends HttpServlet {
+@WebServlet("/faqUpdateForm.ad")
+public class AdminFAQUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFAQDeleteController() {
+    public AdminFAQUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,19 +30,15 @@ public class AdminFAQDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		request.setCharacterEncoding("UTF-8");
+		
 		String faqNo = request.getParameter("fno");
-		
-		int result = new FAQService().deleteFAQ(faqNo);
-		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "FAQ가 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/faqList.ad");
-		}else{
-			request.getSession().setAttribute("alertMsg", "FAQ삭제 실패!");
-			request.getRequestDispatcher("views/faqBoard/faqList.ad");
-		}
 	
-	
+		FAQ f = new FAQService().selectFAQ(faqNo);
+		
+		request.setAttribute("f", f);
+		
+		request.getRequestDispatcher("views/faqBoard/adminFaqUpdateForm.jsp").forward(request, response);
 	
 	
 	}

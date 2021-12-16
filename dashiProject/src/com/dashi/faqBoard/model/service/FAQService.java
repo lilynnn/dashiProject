@@ -33,11 +33,42 @@ public class FAQService {
 		
 	} // faq등록
 	
+	public int deleteFAQ(String faqNo) {
+		
+		Connection conn = getConnection();
+		int result = new FAQDao().deleteFAQ(conn, faqNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	} // faq 삭제
 	
+	public FAQ selectFAQ(String fNo){
+		
+		Connection conn = getConnection();
+		FAQ f = new FAQDao().selectFAQ(conn, fNo);
+		close(conn);
+		return f;	
+		
+	} // faq 하나 조회
 	
-	
-	
-	
+	public int updateFAQ(FAQ f) {
+		
+		Connection conn = getConnection();
+		int result = new FAQDao().updateFAQ(conn, f);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	} // faq 수정
 	
 	
 	

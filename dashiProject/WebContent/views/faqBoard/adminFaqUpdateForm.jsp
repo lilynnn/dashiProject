@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.faqBoard.model.vo.FAQ"%>
+<%
+	FAQ f = (FAQ)request.getAttribute("f");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,60 +11,33 @@
 <style>
     .outer{
         width: 1100px;
-        height: 1000px;
-        margin-top: 50px;
+        height: 800px;
         margin: auto;
+        margin-top: 50px;
     }
-    #menubar{width: 200px;}
-    .outer>div{float: left;}
-    /*faq목록*/
-    .faqLine{
+    .outer>div{
+        float: left;
+        box-sizing: border-box;
+    }
+    /*왼쪽메뉴바*/
+    #munubar{width:200px}
+    /*상세페이지*/
+    #enroll-form{
         width: 800px;
-        box-sizing: border-box;
-        margin: 20px;
+        height: 800px;
+        margin-top: 40px;
+        margin-left: 20px;
     }
-    .faqLine>div{
-        float: left;
-    }
-    #faqLine1{
+    #table{
         width: 100%;
+    }
+    #boardName>th{
         font-size: 24px;
-        font-weight: 900;
-        margin-top: 20px;
+        height: 60px;
     }
-    #faqLine2{
-        width: 100%;
-        height: 50px;
-        box-sizing: border-box;
-    }
-    #faqLine2>div{
-        float: left;
-        height: 100%;
-        width: 260px;      
-    }
-    #aFadList{width: 100%;}
-    .question:hover{
-        cursor: pointer;
-    }
-    .faqAnswer a{
-        color: black;
-        font-size: 12px;
-        font-weight: 600;
-    }
-    .faqAnswer textarea{
-        border: none;
-        background: lightgray;
-    }
-    #updatebtn{
-        padding: 0; 
-        padding-top: 20px; 
-        padding-left: 10px;
-    }
-    .faqAnswer{display: none;}
-    .faqAnswer input{
-        width: 100%;
-        border: none;
-        background: lightgray;
+    #tbody{
+        background: rgb(187, 195, 204);
+        border: 1px solid lightgrey;
     }
 </style>
 <!-- Latest compiled and minified CSS -->
@@ -80,138 +56,80 @@
 <body>
 	
 	<%@ include file="../common/menubar.jsp" %>
+	
+	
+	<div class="outer">
+    
+    	<div id="menubar">
+    		<%@ include file="../admin/adminMenubar.jsp" %>
+    	</div>
 
-    <div class="outer">
+        <div id="enroll-form">
+            <form action="<%=contextPath%>/faqUpdate.ad" method="post">
+				
+				<input type="hidden" name="fno" value=<%=f.getFAQNo()%>>
+                <table id="table">
 
-        <div id="menubar">
-            <%@ include file="../admin/adminMenubar.jsp"%>
-        </div>
-
-        <div class="faqLine">
-            
-            <div id="faqLine1">
-                FAQ관리
-                <hr>
-            </div>
-
-            <div id="faqLine2">
-                <div>
-                    <select name="category" id="">
-                        <option value="1">입양</option>
-                        <option value="2">입소</option>
-                        <option value="3">결제</option>
-                        <option value="4">실종/보호</option>
-                        <option value="5">기타</option>
-                        <option selected>전체</option>
-                    </select>
-                </div>
-                <div align="center">
-                    <input type="text">
-                    <button type="button">조회</button>
-                </div>
-                <div align="right">
-                    <a href="" class="btn btn-sm btn-success">
-                        등록하기
-                    </a>
-                </div>
-            </div>
-
-            
-            <div id="aFadList">
-
-                <form action="">
-
-                <table class="table table-hover">
                     <thead>
-                        <tr align="center">
-                            <th width="100">카테고리</th>
-                            <th width="550">제목</th>
-                            <th width="80"></th>
-                            <th width="80"></th>
+                        <tr id="boardName">
+                            <th colspan="2">FAQ</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="border:none; border-top: 1px solid gray; height: 30px;"></th>
                         </tr>
                     </thead>
 
-                    <tbody>
-                        
-                        <!--게시글 없을경우-->
-                        <tr align="center">
-                            <td colspan="4">조회된 게시글이 없습니다.</td>
-                        </tr>
-
-                        <!--게시글 있을경우-->
-                        <tr align="center" class="question">
-                            <td>입소</td>
-                            <td>너무힘든데 대신 해주실분?</td>
+                    <tbody id="tbody">      
+                        <tr>
+                            <td height="50px" align="center">카테고리</td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-light" onclick="history.back();">
-                                    취소
-                                </button>
-                            </td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-danger">
-                                    삭제
-                                </a>
-                            </td>
-                        </tr>
-
-                        <!--답변 있을경우-->
-                        <tr class="faqAnswer" style="background: lightgray;">
-                            <td>
-                                <select name="category" id="">
+                                <select name="category" id="category">
                                     <option value="1">입양</option>
                                     <option value="2">입소</option>
                                     <option value="3">결제</option>
                                     <option value="4">실종/보호</option>
                                     <option value="5">기타</option>
                                 </select>
-                            </td>   
-                            <td colspan="2">
-                                <input type="text" name="title" required value="제목입니다">
-                                <hr>
-                                <textarea name="content" cols="70" rows="6" style="resize: none;">내용입니다</textarea>
-                            </td>
-                            <td id="updatebtn">
-                                <button type="submit" class="btn btn-sm btn-warning">확인</button>
+                                <script>
+							    	$(function(){
+							    		$("#category option").each(function(){
+							    			if($(this).val() == "<%=f.getFAQCategory()%>"){
+							    				$(this).attr("selected", true);
+							    			}
+							    		})
+							    	})
+							    </script>
                             </td>
                         </tr>
-
+                        <tr>
+                            <td width="100px" align="center">질문</td>
+                            <td><input type="text" name="title" required style="width: 95%;" value="<%=f.getFAQTitle()%>"></td>
+                        </tr>
+                        <tr>
+                            <td width="100px" align="center">답변</td>
+                            <td height="300px"><textarea name="content" cols="87" rows="10" required style="resize: none;"><%=f.getFAQContent()%></textarea></td>
+                        </tr>        
                     </tbody>
+
                 </table>
 
-                </form>
-            </div>
+                <div align="center" style="margin-top: 20px;">
+                    <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94);">수정하기</button>
+                    <button type="reset" class="btn btn-sm" style="background: rgb(143,153,142);" onclick="history.back();">
+                    	취소하기
+                    </button>
+                </div>
 
-        
+            </form>
         </div>
 
     </div>
+    
+    
 
-    <script>
-        $(function(){
-            $(".question").click(function(){
-                
-                const $answer = $(this).next(); 
-
-                if($answer.css("display") == "none"){
-
-                    $(this).siblings(".faqAnswer").slideUp();
-
-                    $answer.slideDown(1000);
-
-                }else{
-
-                    $answer.slideUp();
-
-                }
-
-            })
-        })
-    </script>
-
-
-
-
+    <!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
+
 
 </body>
 </html>

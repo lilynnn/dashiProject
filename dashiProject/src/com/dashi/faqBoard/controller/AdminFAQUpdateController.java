@@ -9,18 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.faqBoard.model.service.FAQService;
+import com.dashi.faqBoard.model.vo.FAQ;
+import com.dashi.notice.model.service.NoticeService;
 
 /**
- * Servlet implementation class AdminFAQDeleteController
+ * Servlet implementation class AjaxFAQUpdateController
  */
-@WebServlet("/faqDelete.ad")
-public class AdminFAQDeleteController extends HttpServlet {
+@WebServlet("/faqUpdate.ad")
+public class AdminFAQUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFAQDeleteController() {
+    public AdminFAQUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,21 +32,32 @@ public class AdminFAQDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String faqNo = request.getParameter("fno");
+		request.setCharacterEncoding("UTF-8");
 		
-		int result = new FAQService().deleteFAQ(faqNo);
+		String fNo = request.getParameter("fno");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		int category = Integer.parseInt(request.getParameter("category"));
+	
+		FAQ f = new FAQ();
 		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "FAQ가 삭제되었습니다.");
+		f.setFAQNo(fNo);
+		f.setFAQTitle(title);
+		f.setFAQContent(content);
+		f.setFAQCategory(category);
+		
+		int result = new FAQService().updateFAQ(f);
+		
+		if(result > 0) { //성공 => /jsp/detail.no?num=현재글번호 =>상세페이지
+			
+			request.getSession().setAttribute("alertMsg", "FAQ가 수정되었습니다!");
 			response.sendRedirect(request.getContextPath() + "/faqList.ad");
-		}else{
-			request.getSession().setAttribute("alertMsg", "FAQ삭제 실패!");
-			request.getRequestDispatcher("views/faqBoard/faqList.ad");
+			
+		}else { // 실패=>에러페이지
+			request.setAttribute("alertMsg", "FAQ 수정 실패");
 		}
-	
-	
-	
-	
+		
+		
 	}
 
 	/**
