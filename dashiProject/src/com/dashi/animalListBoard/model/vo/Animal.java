@@ -41,7 +41,6 @@ public class Animal {
 	}
 
 	// 동물 목록 조회용 정보담을 객체
-	
 	public Animal(String entNo, String adoptStatus, String animalVariety, String animalName, String animalType,
 			String entDate) {
 		super();

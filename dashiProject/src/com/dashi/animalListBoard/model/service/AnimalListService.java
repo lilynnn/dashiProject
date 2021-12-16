@@ -57,7 +57,6 @@ public class AnimalListService {
 				result3 = new AnimalListDao().insertAttachment(conn, at);
 			}
 		}
-		System.out.println("result1 : "+result1+"// result2 : "+result2 +" // result3 : "+result3 );
 		
 		int animalResult = result1*result2;
 		

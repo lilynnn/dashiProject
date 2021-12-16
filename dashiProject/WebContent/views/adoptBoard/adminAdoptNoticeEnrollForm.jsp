@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import = "com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
+
+<%
+	Animal a = (Animal)request.getAttribute("aInfo");
+	Attachment at = (Attachment)request.getAttribute("at");
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +83,7 @@
 						<tr>
 							<th style="font-size: 15px;">제목</th>
 							<td colspan="2">
-								<input type="text" placeholder="동물품종 이름(이)의 가족을 기다려요">
+								<input name="title" type="text" value="<%=a.getAnimalVariety() %> <%=a.getAnimalName() %>(이)의 가족을 기다려요." readonly>
 							</td>
 						</tr>
 						<!-- 공백란 -->
@@ -87,7 +95,7 @@
 							<th width="290">상세사진2</th>
 						</tr>
 						<tr>
-							<td><img id="titleImg" width="290" height="250" onclick="chooseFile(1);"></td>
+							<td><img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);"></td>
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						</tr>
@@ -102,57 +110,67 @@
 						<!-- 동물 품종  -->
 						<tr>
 							<th>묘종 / 견종</th>
-							<td colspan="2"><input type="text"></td>
+							<td colspan="2"><input name="animalVariety" type="text" value="<%=a.getAnimalVariety() %>" readonly></td>
 						</tr>
 
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td colspan="2"><input type="text"></td>
+							<td colspan="2"><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>" readonly></td>
 						</tr>
 
 						<!-- 동물 성별 -->
 						<tr>
 							<th>성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별</th>
-							<td colspan="2"><input type="text" placeholder="남 / 여"></td>
+							<td colspan="2"><input name="animalGender" type="text" value="<%=a.getAnimalGender() %>" readonly></td>
 						</tr>
 
 						<!-- 접종 여부 -->
 						<tr>
 							<th>접종 &nbsp; 여부</th>
-							<td colspan="2"><input type="text" placeholder="O / X"></td>
+							<td colspan="2"><input name="animalVaccin" type="text" value="<%=a.getAnimalVaccin() %>"></td>
 						</tr>
 						
 						<!-- 중성화 여부 -->
 						<tr>
 							<th>중성화여부</th>
-							<td colspan="2"><input type="text" placeholder="O / X"></td>
+							<td colspan="2"><input name="animalNeutral" type="text" value="<%=a.getAnimalNeutral() %>"></td>
+						</tr>
+						
+						<!-- 질병 여부 -->
+						<tr>
+							<th>질병 &nbsp; 여부</th>
+							<td colspan="2"><input name="animalDisease" type="text" value="<%=a.getAnimalDisease() %>"></td>
 						</tr>
 						
 						<!-- 특이사항 -->
 						<tr>
 							<th>특이 &nbsp; 사항</th>
-							<td colspan="2"><input type="text" ></td>
+							<td colspan="2"><input name="animalIssue" type="text"  value="<%=a.getAnimalIssue() %>"></td>
 						</tr>
 
 						<!-- 내용 -->
 						<tr>
 							<th>내 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 용</th>
 							<td colspan="2">
-								<textarea name="" id="text-area" cols="30" rows="10" ></textarea>
+								<textarea name="content" id="text-area" cols="30" rows="10"></textarea>
 							</td>
 						</tr>
-							<!-- 첨부파일 -->
-							<tr>
-								<th>첨부 &nbsp; 파일</th>
-								<td>
-									<input type="file" name="file1" onchange="loadImg(this, 1);" required> <br>
-									<input type="file" name="file2" onchange="loadImg(this, 2);"> <br>
-									<input type="file" name="file3" onchange="loadImg(this, 3);"> <br>
-								</td>
-							</tr>
 					</tbody>
 				</table>
+				
+				<div>
+					<!-- 첨부파일 -->
+					<tr>
+						<th>첨부 &nbsp; 파일</th>
+						<td>
+							<input type="file" name="file1" onchange="loadImg(this, 1);" required> <br>
+							<input type="file" name="file2" onchange="loadImg(this, 2);"> <br>
+							<input type="file" name="file3" onchange="loadImg(this, 3);"> <br>
+						</td>
+					</tr>
+				</div>
+				
 				<div style=" text-align: center;">
 					<br><br>
 					<button class="btn btn-success">등록하기</button>
@@ -197,7 +215,6 @@
 				</script>
 			</div>
 		</form>
-
 
 
 	</div>

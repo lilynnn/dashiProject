@@ -78,9 +78,6 @@ public class AnimalInfoUpdateController extends HttpServlet {
 
 			}
 			
-			System.out.println(a);
-			System.out.println(at);
-			
 			int result = new AnimalListService().updateAnimalInfo(a, at);
 			
 			if(result > 0) {	// 업데이트 성공

@@ -1,6 +1,9 @@
 package com.dashi.adoptBoard.model.service;
 
-import static com.dashi.common.JDBCTemplate.*;
+import static com.dashi.common.JDBCTemplate.close;
+import static com.dashi.common.JDBCTemplate.commit;
+import static com.dashi.common.JDBCTemplate.getConnection;
+import static com.dashi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import com.dashi.adoptBoard.model.dao.AdoptBoardDao;
 import com.dashi.adoptBoard.model.vo.AdoptApply;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.animalListBoard.model.vo.Animal;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 
@@ -92,4 +96,12 @@ public class AdoptBoardService {
 	}
 		
 	
+///////////////////입양공고 관련 메소드/////////////////////
+	public Animal selectAnimalInfo(String animalNo) {
+		Connection conn = getConnection();
+		Animal a = new AdoptBoardDao().selectAnimalInfo(conn, animalNo);
+		System.out.println(a);
+		close(conn);
+		return a;
+	}
 }

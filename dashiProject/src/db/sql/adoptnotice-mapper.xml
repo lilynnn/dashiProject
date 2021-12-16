@@ -178,4 +178,24 @@
 	   FROM ATTACHMENT
 	  WHERE REF_NO = '?';
 	</entry>
+	
+	<entry key="selectAnimalInfo">
+		SELECT 
+		       ENT_NO       
+		     , ADOPT_STATUS 
+		     , TO_CHAR(ADOPT_DATE, 'YYYY/MM/DD') "ADOPT_DATE" 
+		     , ANIMAL_VARIETY   
+		     , ANIMAL_NAME      
+		     , ANIMAL_GENDER    
+		     , ANIMAL_AGE       
+		     , ANIMAL_VACCINATED
+		     , ANIMAL_NEUTRALIZATION
+		     , ANIMAL_DISEASE
+		     , ANIMAL_ISSUE    
+   		     , ANIMAL_TYPE 
+  		     , TO_CHAR(ENT_DATE, 'YYYY/MM/DD') "ENT_DATE" 
+		  FROM ADOPT_ANIMAL
+		  JOIN ENTRANCE USING (ENT_NO)
+		 WHERE ENT_NO = ?
+	</entry>
 </properties>

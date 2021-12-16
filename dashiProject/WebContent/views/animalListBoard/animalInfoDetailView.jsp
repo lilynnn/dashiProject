@@ -152,7 +152,7 @@
             <div style=" text-align: center;">
 			<br><br>
 				<%if(a.getAdoptStatus().equals("N")) {%>
-	              <a class="btn btn-warning" href="<%= contextPath %>/anadenroll.ad">공고등록하기</a>
+	              <a class="btn btn-warning" href="<%= contextPath %>/adtenrollForm.ad?ano=<%=a.getEntNo() %>">공고등록하기</a>
                 <%} %>
                 &nbsp;
                 <!--나머지는 기본으로 보여지게-->

@@ -27,7 +27,7 @@
         width: 1200px;
         margin: auto;
         margin-top: 30px;
-        height: 2200px;
+        height: auto
     }
     .outer>div{
         float: left;
