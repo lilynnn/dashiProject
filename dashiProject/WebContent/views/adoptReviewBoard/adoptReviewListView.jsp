@@ -68,14 +68,12 @@
     .list-area2{
         width:790px;
         margin:auto;
-        /*width속성 넓히면 한 줄에 더 많이 들어갈듯.........!!!!!!!!!*/
     }
     .thumbnail{
         border:1px solid red;
         width:220px;
         display: inline-block;
         margin:14px;
-        /*마진 크기 줄이기!!!!!*/
     }
     .thumbnail:hover{
         cursor: pointer;
@@ -105,15 +103,21 @@
         <!--테스트영역-->
         
         
-	    <div class="list-area" align=center>
+	    <div class="list-area" align="center">
 	        <% for(AdoptReview ar : list) { %>
-	            <div class="thumbnail" align=center>
+	            <div class="thumbnail">
 	            <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
 	                <img src="<%=contextPath%>/<%=ar.getTitleImg()%>" width="200" height="200">
 	                <p>
 	                    <%= ar.getArTitle() %> <br>
 	                   	조회수:<%= ar.getViewCount() %>
 	                </p>
+                    <!--댓글 버튼 클릭 시 입양후기 상세페이지 댓글영역으로 이동-->
+                    <button id="commenticon">
+                        댓글
+                    </button>
+                    <!--댓글 수-->
+                    <span class="comm-count">3</span>
 	            </div>
 	        <% } %>
 	    </div>
@@ -132,172 +136,7 @@
 
 
 
-        <!--입양후기 리스트 영역-->
-        <div align="center">
-            <table class="list-area" style="width: 1000px; height: 1300px; margin-top: 50px;">
-                <tr style="height:250px">
-                    <td align="center" >
-                        <!--썸네일 이미지 (사용자가 올리는 첫번째 사진)-->
-                        <div class="rv-image"></div>
-                        <!--입양후기 제목-->
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <!--댓글 버튼 클릭 시 입양후기 상세페이지 댓글영역으로 이동-->
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <!--댓글 수-->
-                        <span class="comm-count">3</span>
-                    </td>
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                </tr>
-                <tr style="height:250px">
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                </tr>                <tr style="height:250px">
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                </tr>                <tr style="height:250px">
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                </tr>                <tr style="height:250px">
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>                    <td align="center">
-                        <div class="rv-image"></div>
-                        <span class="review-title" align="left">입양후기 제목</span>
-                        <button id="commenticon">
-                            댓글
-                        </button>
-                        <span class="comm-count">3</span>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
         <br><br><br>
 
         <!-- 페이징버튼 영역 -->
@@ -311,15 +150,7 @@
             <button class="page">&gt;</button>
         </div>
     </div>
-    <!--
-    <script>
-        $(function(){
-            $(".list-area td").click(function(){
-                location.href="<%=contextPath%>/detail.ar";
-            })
-        })
-    </script>
-  	-->
+
 	<br><br><br><br><br>
 	
     <%@include file="../common/footerbar.jsp" %>
