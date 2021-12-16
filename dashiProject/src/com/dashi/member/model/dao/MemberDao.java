@@ -141,5 +141,49 @@ public class MemberDao {
 	}
 	
 
+	// 회원정보 조회
+	public ArrayList<Member> selectList(Connection conn, PageInfo pi){
+		ArrayList<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("mem_no"),
+								   rset.getString("MEM_NAME"),
+								   rset.getString("MEM_ID"),
+								   rset.getString("DOB"),
+								   rset.getString("ADDRESS"),
+								   rset.getString("ADDRESS_D"),
+								   rset.getString("PHONE"),
+								   rset.getString("ADOPT_YN"),
+								   rset.getString("PAY_YN"),
+								   rset.getInt("GRADE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	
+	
 
 }

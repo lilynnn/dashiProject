@@ -83,7 +83,30 @@
 		SELECT
 		       COUNT(*) count
 		  FROM MEM_INFO
-		 WHERE DELETE_YN = 'N'
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.* 
+		          FROM (
+		                SELECT
+		                       MEM_NO
+		                     , MEM_NAME
+		                     , MEM_ID
+		                     , TO_CHAR(DOB,'YYMMDD') DOB
+		                     , ADDRESS
+		                     , ADDRESS_D
+		                     , PHONE
+		                     , ADOPT_YN
+		                     , PAY_YN
+		                     , GRADE
+		                  FROM MEM_INFO
+		                 ORDER
+		                    BY MEM_NO DESC
+		                ) A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	

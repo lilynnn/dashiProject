@@ -44,6 +44,12 @@ public class MemberService {
 		return listCount;
 	}
 	
-
+	// 회원정보 조회
+	public ArrayList<Member> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MemberDao().selectList(conn, pi);
+		close(conn);
+		return list;
+	}
 
 }

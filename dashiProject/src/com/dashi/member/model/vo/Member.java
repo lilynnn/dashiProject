@@ -87,10 +87,31 @@ public class Member {
 
 	
 
+	
+	
 
 	public void setMemNo(int memNo) {
 		this.memNo = memNo;
 	}
+	
+	
+	// 관리자 회원정보조회용 매개변수 생성자
+	public Member(int memNo, String memName, String memId, String birth, String address, String addressDetail,
+			String phone, String adoptYN, String payYN, int grade) {
+		super();
+		this.memNo = memNo;
+		this.memName = memName;
+		this.memId = memId;
+		this.birth = birth;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.phone = phone;
+		this.adoptYN = adoptYN;
+		this.payYN = payYN;
+		this.grade = grade;
+	}
+
+
 
 	public String getMemId() {
 		return memId;

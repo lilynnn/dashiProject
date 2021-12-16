@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.member.model.vo.Member" %>
+    
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,16 +114,23 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
+                    <% if(list.isEmpty()) { %>
+                    	<tr>
+                    		<td colspan="9">조회된 게시글이 없습니다.</td>
+                    	</tr>
+                    <% }else{ %>
+                    	<% for(Member m : list){ %>
                         <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
+                            <td><%= m.getMemNo() %></td>
+                            <td><%= m.getMemName() %></td>
+                            <td><%= m.getMemId() %></td>
+                            <td><%= m.getBirth() %></td>
+                            <td><%= m.getAddress() %>&nbsp;<%= m.getAddressDetail() %></td>
+                            <td><%= m.getPhone() %></td>
+                            <td><%= m.getAdoptYN() %></td>
+                            <td><%= m.getPayYN() %></td>
                             <td>
+                            <!-- 
                                 <select name="grade">
                                     <option value="silver">실버</option>
                                     <option value="gold">골드</option>
@@ -125,105 +138,13 @@
                                     <option value="blacklist">블랙리스트</option>
                                     <option value="delete">탈퇴</option>
                                 </select>
+                            -->
+                            <%= m.getGrade() %>
                             </td>
                         </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
-                            <td>
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
-                            <td>
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
-                            <td>
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
-                            <td>
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>980929</td>
-                            <td>부산광역시</td>
-                            <td>010-1234-1234</td>
-                            <td>신청</td>
-                            <td>미납</td>
-                            <td>
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        </tbody>
+                        <% } %>	
+					<% } %>
+                    </tbody>
                     </table>
                     <br><br><br>
                     <!--수정하기 버튼-->
