@@ -65,6 +65,7 @@
 
         <div class="content-area">
         	<form action="<%=contextPath %>/anupdate.ad"  method="post" enctype="multipart/form-data">
+        		<input type="hidden" name="entNo" value="<%=a.getEntNo() %>">
         		<div class="title-area">
 					동물정보  수정하기
 				</div>
@@ -105,16 +106,21 @@
 	                        <td><%=a.getEntNo() %></td>
 	                        <td><%=a.getEntDate() %></td>
 	                        <td>
-		                        <select>
-		                        	<option align="center" value="Y">Y</option>
+		                        <select name="adoptStatus">
+		                        <%if(a.getAdoptStatus().equals("Y")){ %>
+		                        	<option align="center" value="Y" selected>Y</option>
 		                        	<option align="center" value="N">N</option>
+		                        <%} else { %>
+		                        	<option align="center" value="Y">Y</option>
+		                        	<option align="center" value="N" selected>N</option>
+		                        <%} %>
 		                        </select>
 	         				</td>
 	                        <td>
 	                        <%if(a.getAdoptDate() != null) {%>
-	                        	<input type="text" value="<%=a.getAdoptDate() %>" style="text-align:center;">
+	                        	<input name="adoptDate" type="text" value="<%=a.getAdoptDate() %>" style="text-align:center;">
 	                        <%} else { %>
-	                        	<input type="text" value="--" style="text-align:center;">
+	                        	<input name="adoptDate"  type="text" value="--" style="text-align:center;">
 	                        <%} %>
 	                        </td>
 	                    </tr>
@@ -125,32 +131,36 @@
 	            <table id="animalInfo" style="width: 700px;">
 	                <tr>
 	                    <th>동물품종</th>
-	                    <td><input type="text" value="<%=a.getAnimalVariety() %>" readonly></td>
+	                    <td><input name="animalVariety" type="text" value="<%=a.getAnimalVariety() %>" readonly></td>
 	                </tr>
 	                <tr>
 	                    <th>동물이름</th>
-	                    <td><input type="text" value="<%=a.getAnimalName() %>" readonly></td>
+	                    <td><input name="animalName" type="text" value="<%=a.getAnimalName() %>" readonly></td>
 	                </tr>
 	                <tr>
 	                    <th>성별</th>
-	                    <td><input type="text" value="<%=a.getAnimalGender() %>" readonly></td>
+	                    <td><input name="animalGender" type="text" value="<%=a.getAnimalGender() %>" readonly></td>
 	                </tr>
 	                <tr>
 	                    <th>나이</th>
-	                    <td><input type="text" value="<%=a.getAnimalAge() %>"></td>
+	                    <td><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>"></td>
 	                </tr>
 	                <tr>
 	                    <th>접종유무</th>
-	                    <td><input type="text" value="<%=a.getAnimalVaccin() %>"></td>
+	                    <td><input name="animalVaccin" type="text" value="<%=a.getAnimalVaccin() %>"></td>
+	                </tr>
+	                <tr>
+	                    <th>중성화유무</th>
+	                    <td><input name="animalNeutral" type="text" value="<%=a.getAnimalNeutral() %>"></td>
 	                </tr>
 	                <tr>
 	                    <th>질병유무</th>
-	                    <td><input type="text" value="<%=a.getAnimalDisease() %>"></td>
+	                    <td><input name="animalDisease" type="text" value="<%=a.getAnimalDisease() %>"></td>
 	                </tr>
 	                <tr>
 	                    <th>특이사항</th>
 	                    <td>
-	                        <input type="text" value="<%=a.getAnimalIssue() %>" style="height:70px;">
+	                        <input name="animalIssue" type="text" value="<%=a.getAnimalIssue() %>" style="height:70px;">
 	                    </td>
 	                </tr>
 	            </table>
@@ -158,7 +168,7 @@
 	            <div style=" text-align: center;">
 				<br><br>
 		
-	                <button class="btn btn-success" href="<%=contextPath%>">저장하기</button>
+	                <button class="btn btn-success" type="submit">저장하기</button>
 	                &nbsp;
 	                <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad?cpage=1">목록보기</a>
 		
@@ -194,6 +204,8 @@
 	                            }
 	                    }
 	                }
+	                
+	                
 	            </script>
         	</form>
 

@@ -41,4 +41,10 @@ public class AnimalListService {
 		close(conn);
 		return at;
 	}
+	
+	public int updateAnimalInfo(Animal a, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		int result1 = new AnimalListDao().updateAnimalInfo1(conn, a);
+	}
 }

@@ -142,6 +142,8 @@ public class AnimalListDao {
 		return a;
 	}
 	
+	/////////////////////////////////////////////////////////////////////////수정하기 수정수정!!!!!
+	// 동물정보 update하고 나서 나중에 동물정보조회했을 때 동물 사진 보여지게 하는 메소드
 	public Attachment selectAttachment(Connection conn, String animalNo) {
 		Attachment at = null;
 		PreparedStatement pstmt = null;
@@ -153,13 +155,33 @@ public class AnimalListDao {
 			pstmt.setString(1, animalNo);
 			
 			rset = pstmt.executeQuery();
-			/////////////////////////////////////////////////////////////수정하기
-			//while()
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		return at;
+	}
+	
+	// 동물정보 update할 메소드
+	public int updateAnimalInfo1(Connection conn, Animal a) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAnimalInfo1");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getAdoptStatus());
+			pstmt.setString(2, a.getAdoptDate());
+			pstmt.setString(3, a.getEntNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 }

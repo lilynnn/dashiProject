@@ -126,6 +126,10 @@
                     <td><input type="text" value="<%=a.getAnimalVaccin() %>" readonly></td>
                 </tr>
                 <tr>
+                    <th>중성화유무</th>
+                    <td><input name="animalNeutral" type="text" value="<%=a.getAnimalNeutral() %>" readonly></td>
+                </tr>
+                <tr>
                     <th>질병유무</th>
                     <td><input type="text" value="<%=a.getAnimalDisease() %>" readonly></td>
                 </tr>

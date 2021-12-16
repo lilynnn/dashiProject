@@ -52,7 +52,7 @@
 		 WHERE ENT_NO = ?
 	</entry>
 	
-	<!-- 첨부파일 불러오는 sql -->
+	<!-- 첨부파일 불러오는 sql 나중에 동물정보 update하고 나서 불러오는 sql -->
 	<entry key="selectAttachment">
 	SELECT
 	       ATTACH_NO
@@ -64,4 +64,27 @@
 	  FROM ATTACHMENT
 	 WHERE REF_NO = ?
 	</entry>
+	
+	<!-- 동물테이블에 정보 업데이트 -->
+	<entry key="updateAnimalInfo1">
+		UPDATE
+		        ADOPT_ANIMAL
+		   SET ADOPT_STATUS = ?
+		     , ADOPT_DATE = ?
+		 WHERE ENT_NO = ?
+	</entry>
+	
+	<!-- 입소테이블에 동물정보 업데이트 -->
+	<entry key="updateAnimalInfo2">
+		UPDATE 
+		       ENTRANCE
+		   SET
+		       ANIMAL_AGE = ?
+		     , ANIMAL_VACCINATED = ?
+		     , ANIMAL_NEUTRALIZATION = ?
+		     , ANIMAL_DISEASE = ?
+		     , ANIMAL_ISSUE = ?
+		 WHERE ENT_NO = ?
+	</entry>
+	
 </properties>

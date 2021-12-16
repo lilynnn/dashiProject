@@ -75,6 +75,9 @@ public class Animal {
 		return entNo;
 	}
 
+	public void setEntNo(String entNo) {
+		this.entNo = entNo;
+	}
 
 	public String getAdoptStatus() {
 		return adoptStatus;
