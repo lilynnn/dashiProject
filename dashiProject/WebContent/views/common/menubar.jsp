@@ -204,10 +204,10 @@
 
             <!-- 입소탭 -->
             <div class="menu">
-                <a href="">입소</a>
+                <a href="<%=contextPath%>/entMain.ent">입소</a>
                     <ul class="menu-tag">
-                        <li><a href="">입소안내</a></li>
-                        <li><a href="">입소신청</a></li>
+                        <li><a href="<%=contextPath%>/entExplain.ent">입소안내</a></li>
+                        <li><a href="<%=contextPath%>/entWrite.ent">입소신청</a></li>
                     </ul>
             </div>
 

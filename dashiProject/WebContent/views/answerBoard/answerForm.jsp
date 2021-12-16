@@ -111,7 +111,7 @@
 
 <body>
 	<%@ include file="/views/common/menubar.jsp" %>
-    <form action="<%contextPath%>/insert.as" method="post">
+    <form action="<% contextPath %>/insert.as" method="post">
 	<div class="outer" align="center">
 
         <!-- 1:1 문의글 제목 -->
@@ -119,20 +119,20 @@
     <hr>
 
     <table class="table1">
-        <tr> <!-- 이름 -->
-            <th  width=220 colspan="2">성함 <b>*</b></th> 
-            <td  width=780><input type="text" style="width: 690px" name="" value="" placeholder="성함을 입력해주세요." required></td>
+        <tr> <!-- 아이디 -->
+            <th  width=220 colspan="2">아이디 <b>*</b></th> 
+            <td  width=780><input type="text" style="width: 690px" name="memId" value="" placeholder="성함을 입력해주세요." required></td>
         </tr>
-        <tr> <!-- 연락처 -->
-            <th width=220 colspan="2">연락처 <b>*</b></th>
-            <td width=780><input type="text" style="width: 690px" name="" value="" placeholder="연락처를 입력해주세요." required></td>
+        <tr> <!-- 제목 -->
+            <th width=220 colspan="2">제목<b>*</b></th>
+            <td width=780><input type="text" style="width: 690px" name="qTitle" value="" placeholder="연락처를 입력해주세요." required></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
-            <td width=780><textarea name="content" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" ></textarea></td>
+            <td width=780><textarea name="qcontent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
         </tr>
         <tr>    <!-- 개인정보 수집 동의 체크박스 -->
-            <td style="font-size: 13px;" colspan="2"><input type="checkbox">개인정보 수집 및 이용에 동의합니다.<b>*</b>
+            <td style="font-size: 13px;" colspan="2"><input type="checkbox" required>개인정보 수집 및 이용에 동의합니다.<b>*</b>
                 <!-- 개인정보 동의 세부내용 link -->
                 <br>  &nbsp; &nbsp;<a href="#pop1">내용보기</a></td>
         </tr>
