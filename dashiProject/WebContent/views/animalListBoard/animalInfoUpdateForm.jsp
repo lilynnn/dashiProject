@@ -81,16 +81,10 @@
 	            		</td>
 	            	</tr>
 	            	<tr><td>&nbsp;</td></tr>
-	            	<tr>
-	            		<td><img id="contentImg1" onclick="chooseFile(2);"></td>
-	            		<td><img id="contentImg2" onclick="chooseFile(3);"></td>
-	            	</tr>
 	            </table>
 
 				<div style="display:none;">
-					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required>
-					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
-					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
+					<input type="file" name="file1" id="file" onchange="loadImg(this, 1);">
 				</div>
 				<br><br>
 	            <!-- 입소번호, 입소일, 입양여부 보여질 table -->
@@ -176,7 +170,7 @@
         	
 	        	<script>
 	                function chooseFile(num){
-	                    $("#file"+num).click();
+	                    $("#file").click();
 	                }
 	                function loadImg(inputFile, num){
 	
@@ -190,17 +184,11 @@
 	                            // e.target.result => 읽어들인 파일만의 고유한 url
 	                            switch(num){
 	                                case 1:$("#titleImg").attr("src",e.target.result); break;
-	                                case 2:$("#contentImg1").attr("src",e.target.result); break;
-	                                case 3:$("#contentImg2").attr("src",e.target.result); break;
-	                                case 4:$("#contentImg3").attr("src",e.target.result); break;
 	                            }
 	                        }
 	                    } else{ //선택된 파일이 취소된 경우 =>  미리보기 된 것도 사라지게
 	                        switch(num){
 	                                case 1:$("#titleImg").attr("src",null); break;
-	                                case 2:$("#contentImg1").attr("src",null); break;
-	                                case 3:$("#contentImg2").attr("src",null); break;
-	                                case 4:$("#contentImg3").attr("src",null); break;
 	                            }
 	                    }
 	                }

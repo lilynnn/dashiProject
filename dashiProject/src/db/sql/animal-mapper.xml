@@ -87,4 +87,38 @@
 		 WHERE ENT_NO = ?
 	</entry>
 	
+	<!-- 첨부파일 있을 때, 첨부파일 update하는 sql -->
+	<entry key="updateAttachment">
+		 UPDATE 
+		        ATTACHMENT
+		    SET ORIGIN_NAME = ?
+		      , CHANGE_NAME = ?
+		      , PATH = ?
+		      , ATTACH_LEVEL = ?
+		 WHERE ATTACHMENT_NO = ?
+	</entry>
+	
+	<!-- 첨부파일 없을때 insert하는 sql -->
+	<entry key="insertAttachment">
+		INSERT 
+			  INTO ATTACHMENT
+			  (
+			    FILE_NO
+			  , REF_BNO
+  			  , PATH
+			  , ORIGIN_NAME
+			  , CHANGE_NAME
+			  , ATTACH_LEVEL
+			  )
+			  VALUES
+			  (
+			    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+			  , ?  
+			  , ? 
+			  , ? 
+			  , ? 
+			  , ?
+			  )
+	</entry>
+	
 </properties>
