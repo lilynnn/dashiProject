@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.faqBoard.model.vo.FAQ"%>
+<%
+	ArrayList<FAQ> list = (ArrayList<FAQ>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,9 +102,11 @@
                     <button type="button">조회</button>
                 </div>
                 <div align="right">
+                	<% if(loginAdmin != null){ %>
                     <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
                         	등록하기
                     </a>
+                    <% } %>
                 </div>
             </div>
 
@@ -117,39 +122,53 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        
-                        <!--게시글 없을경우-->
-                        <tr align="center">
-                            <td colspan="4">조회된 게시글이 없습니다.</td>
-                        </tr>
-
-                        <!--게시글 있을경우-->
-                        <tr align="center" class="question">
-                            <td>입소</td>
-                            <td>너무힘든데 대신 해주실분?</td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-warning">
-                                    수정
-                                </a>
-                            </td>
-                            <td>
-                                <a href="" class="btn btn-sm btn-danger">
-                                    삭제
-                                </a>
-                            </td>
-                        </tr>
-
-                        <!--답변 있을경우-->
-                        <tr class="faqAnswer" style="background: lightgray;">
-                            <td>카테고리명 들어올자리</td>   
-                            <td colspan="3">
-                                제목자리
-                                <hr>
-                                내용자리
-                            </td>
-                        </tr>
-
+                    <tbody>                       
+                        <% if(list.isEmpty()){ %>
+	                   <!--FAQ 없을 때-->
+	                    <tr>
+	                        <td colspan="5">게시된 faq가 없습니다.</td>
+	                    </tr>
+	        			<% }else{ %>
+	                    <!--FAQ 있을 때-->
+                    	<% for(FAQ f : list){ %>
+	                        <tr align="center" class="question">
+	                        	<% 
+			                    	String category ="";
+			                    	switch(f.getFAQCategory()){
+			                    	case 1: category = "입양"; break;
+			                    	case 2: category = "입소"; break;
+			                    	case 3: category = "결제"; break;
+			                    	case 4: category = "실종/보호"; break;
+			                    	case 5: category = "기타"; break;
+									}
+								%>
+	                            <td><%=category%></td>
+	                            <td><%=f.getFAQTitle()%></td>
+	                            <% if(loginAdmin != null){ %>
+	                            <td>
+	                                <a href="" class="btn btn-sm btn-warning">
+	                                   	 수정
+	                                </a>
+	                            </td>
+	                            <td>
+	                                <a href="<%=contextPath%>/faqDelete.ad" class="btn btn-sm btn-danger">
+	                                    	삭제
+	                                </a>
+	                            </td>
+	                            <% } %>
+	                        </tr>
+	
+	                        <!--답변 있을경우-->
+	                        <tr class="faqAnswer" style="background: lightgray;">
+	                            <td><%=category%></td>   
+	                            <td colspan="3">
+	                                	<%=f.getFAQTitle()%>
+	                                <hr>
+	                                	<%=f.getFAQContent()%>
+	                            </td>
+	                        </tr>
+							<% } %>
+	                    <% } %>
                     </tbody>
                 </table>
 

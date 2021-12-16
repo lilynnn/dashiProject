@@ -16,7 +16,25 @@
 		 WHERE FAQ_STATUS = 'N'
 	</entry>
 
-
+	<entry key="insertFAQ">
+		INSERT
+		  INTO FAQ
+		  (
+		    FAQ_NO
+		  , FAQ_TITLE
+		  , FAQ_CONTENT
+		  , MN_NO
+		  , FAQ_CATEGORY
+		  )
+		  VALUES
+		  (
+		    'F-'||LPAD(SEQ_FNO.NEXTVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
 
 
 

@@ -1,28 +1,23 @@
 package com.dashi.faqBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.faqBoard.model.service.FAQService;
-import com.dashi.faqBoard.model.vo.FAQ;
-
 /**
- * Servlet implementation class AdminFAQListController
+ * Servlet implementation class AdminFAQDeleteController
  */
-@WebServlet("/faqList.ad")
-public class AdminFAQListController extends HttpServlet {
+@WebServlet("/faqDelte.ad")
+public class AdminFAQDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFAQListController() {
+    public AdminFAQDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +26,8 @@ public class AdminFAQListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		ArrayList<FAQ> list = new FAQService().selectFAQList();
-		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/faqBoard/adminFaqListView.jsp").forward(request, response);	
-	
-	
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

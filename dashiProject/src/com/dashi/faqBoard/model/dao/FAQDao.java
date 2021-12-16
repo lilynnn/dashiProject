@@ -62,7 +62,28 @@ public class FAQDao {
 		
 	} // faq조회
 	
-	
+	public int insertFAQ(Connection conn, FAQ f) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertFAQ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, f.getFAQTitle());
+			pstmt.setString(2, f.getFAQContent());
+			pstmt.setInt(3, f.getMnNo());
+			pstmt.setInt(4, f.getFAQCategory());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// faq등록
 	
 	
 	

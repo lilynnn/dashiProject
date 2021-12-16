@@ -1,28 +1,29 @@
 package com.dashi.faqBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.dashi.admin.model.vo.Manager;
 import com.dashi.faqBoard.model.service.FAQService;
 import com.dashi.faqBoard.model.vo.FAQ;
 
 /**
- * Servlet implementation class AdminFAQListController
+ * Servlet implementation class AdminFAQInsertController
  */
-@WebServlet("/faqList.ad")
-public class AdminFAQListController extends HttpServlet {
+@WebServlet("/faqInsert.ad")
+public class AdminFAQInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFAQListController() {
+    public AdminFAQInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +33,31 @@ public class AdminFAQListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<FAQ> list = new FAQService().selectFAQList();
+		request.setCharacterEncoding("UTF-8");		
 		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/faqBoard/adminFaqListView.jsp").forward(request, response);	
+		int category = Integer.parseInt(request.getParameter("category"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		HttpSession session = request.getSession();
+		int mnNo = ((Manager)session.getAttribute("loginAdmin")).getMnNo();	
+		
+		FAQ f = new FAQ();
+		f.setFAQCategory(category);
+		f.setFAQTitle(title);
+		f.setFAQContent(content);
+		f.setMnNo(mnNo);
+		
+		int result = new FAQService().insertFAQ(f);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "FAQ등록에 성공했습니다.");
+			response.sendRedirect(request.getContextPath() + "/faqList.ad");
+		}else {
+			request.getSession().setAttribute("alertMsg", "FAQ등록 실패");
+		}
+	
+	
 	
 	
 	}

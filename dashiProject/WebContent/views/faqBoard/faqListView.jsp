@@ -143,7 +143,7 @@
                 	<% if(list.isEmpty()){ %>
                     <!--FAQ 없을 때-->
 	                    <tr>
-	                        <td colspan="5">게시된 공지사항이 없습니다.</td>
+	                        <td colspan="5">게시된 faq가 없습니다.</td>
 	                    </tr>
         			<% }else{ %>
                     <!--FAQ 있을 때-->

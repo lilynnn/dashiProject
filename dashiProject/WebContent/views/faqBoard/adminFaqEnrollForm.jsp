@@ -62,7 +62,7 @@
     	</div>
 
         <div id="enroll-form">
-            <form action="">
+            <form action="<%=contextPath%>/faqInsert.ad" method="post">
 
                 <table id="table">
 
