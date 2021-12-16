@@ -158,7 +158,35 @@ public class FAQDao {
 		return result;
 	}// faq 수정
 	
-	
+	public ArrayList<FAQ> keywordFAQ(Connection conn, String keyword){
+		
+		ArrayList<FAQ> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("keywordFAQ");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new FAQ(rset.getString("faq_no")
+							   	  , rset.getString("faq_title")
+							      , rset.getString("faq_content")
+							      , rset.getInt("faq_category")));
+			}		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	} // faq keyword
 	
 	
 	

@@ -70,7 +70,14 @@ public class FAQService {
 		
 	} // faq 수정
 	
-	
+	public ArrayList<FAQ> keywordFAQ(String keyword){
+		
+		Connection conn = getConnection();
+		ArrayList<FAQ> list = new FAQDao().keywordFAQ(conn, keyword);
+		close(conn);
+		return list;	
+		
+	} // faq keyword조회
 	
 	
 	

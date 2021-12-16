@@ -40,8 +40,10 @@
     }
     #faqLine2>div{
         float: left;
-        height: 100%;
-        width: 260px;      
+        height: 100%;     
+    }
+    #faqLine2>div>*{
+        float: left;  
     }
     #aFadList{width: 100%; margin-left:30px;}
     .faqAnswer a{
@@ -56,6 +58,16 @@
     #sel-faq{
     	font-weight:700px;
     	color:rgb(252, 186, 3);
+    }
+    #faq-search{
+    	width:100%;
+    	height:50px;
+    }
+    #faq-search>div{float:left;}
+    #faq-search>div>*{float:left;}
+    #insertbtn{
+    	width:100px;
+    	height:30px;
     }
 </style>
 <!-- Latest compiled and minified CSS -->
@@ -89,27 +101,20 @@
             </div>
 
             <div id="faqLine2">
-                <div>
-                    <select name="faqList" id="">
-                        <option value="adopt">입양</option>
-                        <option value="ent">입소</option>
-                        <option value="pay">결제</option>
-                        <option value="dsp">실종/보호</option>
-                        <option value="dsp">기타</option>
-                        <option selected>전체</option>
-                    </select>
-                </div>
-                <div align="center">
-                    <input type="text">
-                    <button type="button">조회</button>
-                </div>
-                <div align="right">
+
+                <div id="insertbtn" style="width:100px; height:40px;">
                 	<% if(loginAdmin != null){ %>
                     <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
                         	등록하기
                     </a>
                     <% } %>
                 </div>
+                <form action="<%=contextPath%>/faqSearch.ad" method="get" id="faq-search">
+	                <div align="right" style="width:700px; padding-left:420px;">
+	                    <input type="text" name="fsearch" placeholder="제목을 키워드 입력">
+	                    <button type="submit">조회</button>
+                	</div>
+                </form>
             </div>
 
             
@@ -178,7 +183,12 @@
 
             </div>
         </div>
-
+		
+		<div style="width:100%" align="center">
+			<a href="<%=contextPath%>/faqList.ad" class="btn btn-sm btn-light">목록으로</a>
+		</div>
+		
+		
     </div>
 
     <script>

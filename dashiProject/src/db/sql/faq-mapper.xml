@@ -63,7 +63,15 @@
 		 WHERE FAQ_NO = ?
 	</entry>
 
-
+	<entry key="keywordFAQ">
+		SELECT
+		       FAQ_NO
+		     , FAQ_TITLE
+		     , FAQ_CONTENT
+		     , FAQ_CATEGORY
+		  FROM FAQ
+		 WHERE FAQ_TITLE LIKE ?
+	</entry>
 
 
 

@@ -13,16 +13,16 @@ import com.dashi.faqBoard.model.service.FAQService;
 import com.dashi.faqBoard.model.vo.FAQ;
 
 /**
- * Servlet implementation class AdminFAQListController
+ * Servlet implementation class AdminFAQSearchController
  */
-@WebServlet("/faqList.ad")
-public class AdminFAQListController extends HttpServlet {
+@WebServlet("/faqSearch.ad")
+public class AdminFAQSearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminFAQListController() {
+    public AdminFAQSearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +31,16 @@ public class AdminFAQListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8");
 		
-		ArrayList<FAQ> list = new FAQService().selectFAQList();
+		String keyword = request.getParameter("fsearch");
 		
+		ArrayList<FAQ> list = new FAQService().keywordFAQ(keyword);
+	
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/faqBoard/adminFaqListView.jsp").forward(request, response);	
+	
 	
 	
 	}
