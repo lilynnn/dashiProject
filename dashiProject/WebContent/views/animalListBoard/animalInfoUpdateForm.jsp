@@ -76,9 +76,12 @@
 	            
 	            <!-- 이미지 보여질 영역 -->
 	            <table id="img-area" style="width:650px; text-align:center;">
+	            
+	            	<!-- 기존에 첨부파일이 존재할 경우 -->
 	            	<%if(at != null) {%>   	
 			          	<tr>
 		            		<td colspan="2">
+		            			<input type="hidden" name="originFileNo" value="<%= at.getAttachNo() %>">
 		            			<img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" onclick="chooseFile(1);" style="width:600px; height:400px;">
 		            		</td>
 		            	</tr>
@@ -92,8 +95,8 @@
 	            	<tr><td>&nbsp;</td></tr>
 	            </table>
 
-				<div style="display:none;">
-					<input type="file" name="upfile" id="file" onchange="loadImg(this, 1);" required>
+				<div >
+						<input type="file" id="file" name="upfile" onchange="loadImg(this, 1);">
 				</div>
 				<br><br>
 	            <!-- 입소번호, 입소일, 입양여부 보여질 table -->

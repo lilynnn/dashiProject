@@ -59,7 +59,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			
 			Attachment at = null;
 			
-
+			System.out.println(multiRequest.getParameter("originFileNo"));
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
@@ -67,7 +67,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 				at.setPath("resources/upfiles/adoptNotice/");
 				at.setAttachLevel(1);
 				at.setRefNo(multiRequest.getParameter("entNo"));
-				
+
 				if(multiRequest.getParameter("originFileNo") != null) {
 					// 기존 첨부파일 있을 경우
 					at.setAttachNo(multiRequest.getParameter("originFileNo"));

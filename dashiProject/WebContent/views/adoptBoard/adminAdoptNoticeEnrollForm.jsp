@@ -99,7 +99,9 @@
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						</tr>
-	
+						<tr>
+							<td style="font-size:12px; color:gray;">대표이미지는 전체동물조회에서 수정이 가능합니다.</td>
+						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
 					</thead>
@@ -116,7 +118,7 @@
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td colspan="2"><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>" readonly></td>
+							<td colspan="2"><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>"></td>
 						</tr>
 
 						<!-- 동물 성별 -->
@@ -159,16 +161,13 @@
 					</tbody>
 				</table>
 				
-				<div>
+				<div style="display: none;">
 					<!-- 첨부파일 -->
-					<tr>
-						<th>첨부 &nbsp; 파일</th>
-						<td>
-							<input type="file" name="file1" onchange="loadImg(this, 1);" required> <br>
-							<input type="file" name="file2" onchange="loadImg(this, 2);"> <br>
-							<input type="file" name="file3" onchange="loadImg(this, 3);"> <br>
-						</td>
-					</tr>
+
+					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required> <br>
+					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
+					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"> <br>
+
 				</div>
 				
 				<div style=" text-align: center;">
