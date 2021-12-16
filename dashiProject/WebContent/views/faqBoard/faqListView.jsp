@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.faqBoard.model.vo.FAQ"%>
+<%
+	ArrayList<FAQ> list = (ArrayList<FAQ>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +13,7 @@
         width: 1100px;
         margin: auto;
         margin-top: 50px;
-        height:800px
+        height:1200px
     }
     .outer>div{
         float: left; 
@@ -130,63 +133,65 @@
             <table class="table table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th width="60px">번호</th>
-                        <th width="80px"></th>
-                        <th width="700px">제목</th>
+                        <th width="140px">카테고리</th>
+                        <th width="820px">제목</th>
                         <th width="120px">날짜</th>
-                        <th width="120px">조회수</th>
                     </tr>
                 </thead>
                 
                 <tbody>
+                	<% if(list.isEmpty()){ %>
                     <!--FAQ 없을 때-->
-                    <tr>
-                        <td colspan="5">게시된 공지사항이 없습니다.</td>
-                    </tr>
-        
+	                    <tr>
+	                        <td colspan="5">게시된 공지사항이 없습니다.</td>
+	                    </tr>
+        			<% }else{ %>
                     <!--FAQ 있을 때-->
-                    <tr class="question">
-                        <td>1</td>
-                        <td></td>
-                        <td>제목</td>
-                        <td>2021-12-04</td>
-                        <td>123</td>
-                    </tr>
-
-                    <!--FAQ 답변창-->
-                    <tr class="faqAnswer">
-                        <td colspan="5" style="background: #ecfafa;">
-                            <div align="left">
-                                <p>
-                                   	커피는 역시 아이스카페라떼
-                                <hr>
-                                </p>
-                                <p style="font-weight: 600;">
-                                   	 네 저도 동의합니다.<br>
-                                     시럽을 넣지 않아야 진정한 커피라고 할 수 있습니다.
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
+                    	<% for(FAQ f : list){ %>
+	                    <tr class="question">	
+	                    
+	                    	<% 
+		                    	String category ="";
+		                    	switch(f.getFAQCategory()){
+		                    	case 1: category = "입양"; break;
+		                    	case 2: category = "입소"; break;
+		                    	case 3: category = "결제"; break;
+		                    	case 4: category = "실종/보호"; break;
+		                    	case 5: category = "기타"; break;
+								}
+							%>
+	                                    
+	                        <td><%=category%></td>
+	                        <td><%=f.getFAQTitle()%></td>
+	                        <td><%=f.getFAQEnrollDate()%></td>
+	                    </tr>
+	
+	                    <!--FAQ 답변창-->
+	                    <tr class="faqAnswer">
+	                        <td colspan="5" style="background: #ecfafa;">
+	                            <div align="left">
+	                                <p>
+	                                   	<%=f.getFAQTitle()%>
+	                                <hr>
+	                                </p>
+	                                <p style="font-weight: 600;">
+	                                   	 <%=f.getFAQContent()%>
+	                                </p>
+	                            </div>
+	                        </td>
+	                    </tr>
+	                    <% } %>
+                    <% } %>
                 </tbody>
             </table>
         </div>
 
-        <div class="paging-area" align="center">
-
-            <button class="btn btn-light">&lt;</button>
-            <button class="btn btn-light">1</button>
-            <button class="btn btn-light">2</button>
-            <button class="btn btn-light">3</button>
-            <button class="btn btn-light">4</button>
-            <button class="btn btn-light">5</button>
-            <button class="btn btn-light">&gt;</button>
-
-        </div>
+       <!-- faq페이징바 작업 없음 -->
 
     </div>
 
     <script>
+        
         $(function(){
             $(".question").click(function(){
                 
@@ -204,6 +209,7 @@
                 }
             })
         })
+        
     </script>
 
 	<%@ include file="../common/footerbar.jsp" %>

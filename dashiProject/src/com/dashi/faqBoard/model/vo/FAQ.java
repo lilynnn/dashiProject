@@ -9,14 +9,14 @@ public class FAQ {
 	private String FAQContent;
 	private Date FAQEnrollDate;
 	private Date FAQModifyDate;
-	private int FAQStatus;
+	private String FAQStatus;
 	private int mnNo;
 	private int FAQCategory;
 	
 	public FAQ() {}
 
-	public FAQ(String fAQNo, String fAQTitle, String fAQContent, Date fAQEnrollDate, Date fAQModifyDate, int fAQStatus,
-			int mnNo, int fAQCategory) {
+	public FAQ(String fAQNo, String fAQTitle, String fAQContent, Date fAQEnrollDate, Date fAQModifyDate,
+			String fAQStatus, int mnNo, int fAQCategory) {
 		super();
 		FAQNo = fAQNo;
 		FAQTitle = fAQTitle;
@@ -68,11 +68,11 @@ public class FAQ {
 		FAQModifyDate = fAQModifyDate;
 	}
 
-	public int getFAQStatus() {
+	public String getFAQStatus() {
 		return FAQStatus;
 	}
 
-	public void setFAQStatus(int fAQStatus) {
+	public void setFAQStatus(String fAQStatus) {
 		FAQStatus = fAQStatus;
 	}
 
@@ -98,5 +98,6 @@ public class FAQ {
 				+ FAQEnrollDate + ", FAQModifyDate=" + FAQModifyDate + ", FAQStatus=" + FAQStatus + ", mnNo=" + mnNo
 				+ ", FAQCategory=" + FAQCategory + "]";
 	}
+
 	
 }

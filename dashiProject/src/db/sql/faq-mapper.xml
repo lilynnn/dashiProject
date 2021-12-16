@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="selectFAQList">
+		SELECT
+		       FAQ_NO
+		     , FAQ_TITLE
+		     , FAQ_CONTENT
+		     , FAQ_ENROLL_DATE
+		     , FAQ_MODIFY_DATE
+		     , FAQ_STATUS
+		     , MN_NO
+		     , FAQ_CATEGORY
+		  FROM FAQ
+		 WHERE FAQ_STATUS = 'N'
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</properties>
