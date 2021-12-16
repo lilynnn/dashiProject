@@ -85,6 +85,7 @@ public class Member {
 		this.phone = phone;
 	}
 
+	
 
 
 	public void setMemNo(int memNo) {

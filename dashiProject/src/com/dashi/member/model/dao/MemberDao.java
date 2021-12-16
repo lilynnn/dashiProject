@@ -1,15 +1,17 @@
 package com.dashi.member.model.dao;
 
+import static com.dashi.common.JDBCTemplate.close;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
-import static com.dashi.common.JDBCTemplate.*;
-
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.vo.Member;
 
 public class MemberDao {
@@ -108,5 +110,36 @@ public class MemberDao {
 		
 		return result;
 	}
+	
+	
+	// 페이징 처리
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+
 
 }

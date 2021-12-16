@@ -78,6 +78,15 @@
 		
 		
 	</entry>
+	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM MEM_INFO
+		 WHERE DELETE_YN = 'N'
+	</entry>
+	
+	
 
 
 </properties>

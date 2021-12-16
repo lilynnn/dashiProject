@@ -1,10 +1,16 @@
 package com.dashi.member.model.service;
 
-import java.sql.Connection;
+import static com.dashi.common.JDBCTemplate.close;
+import static com.dashi.common.JDBCTemplate.commit;
+import static com.dashi.common.JDBCTemplate.getConnection;
+import static com.dashi.common.JDBCTemplate.rollback;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.dao.MemberDao;
 import com.dashi.member.model.vo.Member;
-import static com.dashi.common.JDBCTemplate.*;
 
 public class MemberService {
 
@@ -29,5 +35,15 @@ public class MemberService {
 		
 		return result;
 	}
+	
+	// 페이징 처리
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new MemberDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+
 
 }
