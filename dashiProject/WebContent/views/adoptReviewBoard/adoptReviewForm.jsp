@@ -73,6 +73,7 @@
                     <textarea id="summernote" name="content" required></textarea>
                 </div>
             </div>
+            <br><br>
             <div class="input-area" style="height: 220px;">
                 <div style="width: 100px; float: left;">
                     대표이미지
