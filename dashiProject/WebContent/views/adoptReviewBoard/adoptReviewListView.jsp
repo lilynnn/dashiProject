@@ -109,7 +109,7 @@
 	            <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
 	                <img src="<%=contextPath%>/<%=ar.getTitleImg()%>" width="200" height="200">
 	                <p>
-	                    <%= ar.getArTitle() %> <br>
+	                    [<%= ar.getAnType() %>]&nbsp;<%= ar.getArTitle() %> <br>
 	                   	조회수:<%= ar.getViewCount() %>
 	                </p>
                     <!--댓글 버튼 클릭 시 입양후기 상세페이지 댓글영역으로 이동-->

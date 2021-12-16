@@ -198,7 +198,7 @@
                 <table align="left" style="margin-left: 150px;">
                     <tr>
                         <td colspan="5" style="height: 80px;">
-                            <h2><b><%= ar.getArTitle() %></b></h2>
+                            <h2><b>[<%= ar.getAnType() %>]&nbsp;<%= ar.getArTitle() %></b></h2>
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">

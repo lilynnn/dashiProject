@@ -55,6 +55,7 @@ public class AdoptReviewInsertController extends HttpServlet {
 			AdoptReview ar = new AdoptReview();
 			ar.setMemNo(Integer.parseInt(multiRequest.getParameter("userNo")));
 			ar.setNickname(multiRequest.getParameter("nickname"));
+			ar.setAnType(multiRequest.getParameter("animal"));
 			ar.setArTitle(multiRequest.getParameter("title"));
 			ar.setArContent(multiRequest.getParameter("content"));
 			

@@ -37,8 +37,9 @@ public class AdoptReviewBoardDao {
 			
 			pstmt.setInt(1, ar.getMemNo());
 			pstmt.setString(2, ar.getNickname());
-			pstmt.setString(3, ar.getArTitle());
-			pstmt.setString(4, ar.getArContent());
+			pstmt.setString(3, ar.getAnType());
+			pstmt.setString(4, ar.getArTitle());
+			pstmt.setString(5, ar.getArContent());
 			
 			result = pstmt.executeUpdate();
 			
@@ -95,6 +96,7 @@ public class AdoptReviewBoardDao {
 			while(rset.next()) {
 				AdoptReview ar = new AdoptReview();
 				ar.setArlistNo(rset.getString("arlist_no"));
+				ar.setAnType(rset.getString("an_type"));
 				ar.setArTitle(rset.getString("ar_title"));
 				ar.setViewCount(rset.getInt("view_count"));
 				ar.setTitleImg(rset.getString("titleimg"));
@@ -148,6 +150,7 @@ public class AdoptReviewBoardDao {
 			
 			if(rset.next()) {
 				ar = new AdoptReview (rset.getString("arlist_no"),
+							  rset.getString("an_type"),
 							  rset.getString("ar_title"),
 							  rset.getString("ar_content"),
 							  rset.getString("nickname"),

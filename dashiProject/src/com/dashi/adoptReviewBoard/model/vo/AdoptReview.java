@@ -15,7 +15,17 @@ public class AdoptReview {
 	private String postStatus;	// 게시글 상태 (유효Y/블라인드B /삭제D)
 	
 	private String titleImg; 	// 썸네일이미지
+	private String anType;		// 동물종류
 	
+	
+	public String getAnType() {
+		return anType;
+	}
+
+	public void setAnType(String anType) {
+		this.anType = anType;
+	}
+
 	public String getTitleImg() {
 		return titleImg;
 	}
@@ -40,10 +50,11 @@ public class AdoptReview {
 		this.postStatus = postStatus;
 	}
 	
-	public AdoptReview(String arlistNo, String arTitle, String arContent, String nickname,
+	public AdoptReview(String arlistNo, String anType, String arTitle, String arContent, String nickname,
 			String writeDate) {
 		super();
 		this.arlistNo = arlistNo;
+		this.anType = anType;
 		this.arTitle = arTitle;
 		this.arContent = arContent;
 		this.nickname = nickname;

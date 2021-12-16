@@ -9,12 +9,14 @@
 			    ARLIST_NO
 			  , MEM_NO
 			  , NICKNAME
+			  , AN_TYPE
 			  , AR_TITLE
 			  , AR_CONTENT
 			  )
 			  VALUES
 			  (
 			    'AR-'||LPAD(SEQ_ARNO.NEXTVAL,3,0)
+			  , ?
 			  , ?
 			  , ?
 			  , ?
@@ -47,6 +49,7 @@
 	<entry key="selectReviewList">
 		SELECT
 		       ARLIST_NO
+		     , AN_TYPE
 		     , AR_TITLE
 		     , VIEW_COUNT
 		     , PATH || CHANGE_NAME "TITLEIMG"
@@ -69,6 +72,7 @@
 	<entry key="selectReview">
 		SELECT 
 		       ARLIST_NO
+		     , AN_TYPE
 		     , AR_TITLE
 		     , AR_CONTENT
 		     , M.NICKNAME
