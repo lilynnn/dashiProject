@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+	<entry key="insertDsp">
+		INSERT
+		  INTO DSP
+		  (
+		    DSP_NO
+		  , MEM_NO
+		  , DSP_TITLE
+		  , NICKNAME
+		  , POST_CTG
+		  , ISSUE_DATE
+		  , LOCATION_NAME
+		  , CASE_PHONE
+		  , ANIMAL_VARIETY
+		  , ANIMAL_GENDER
+		  , ANIMAL_AGE
+		  , ANIMAL_WEIGHT
+		  , ANIMAL_ISSUE
+		  , ETC
+		  )
+		  VALUES
+		  (
+		    SEQ_DSPNO.NEXTVAL
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	
+	</entry>
+
+
+	<entry key="insertDspAttachment">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , CATEGORY_NO
+		  , REF_NO
+		  , PATH
+		  , UPLOAD
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		VALUES
+		 (
+		   SEQ_FNO.NEXTVAL
+		 , SEQ_DSPNO.CURRVAL
+		 , ?
+		 , SYSDATE
+		 , ?
+		 , ?
+		 , ?
+		 )
+
+	</entry>
+</properties>

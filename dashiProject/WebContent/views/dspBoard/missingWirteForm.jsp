@@ -105,7 +105,10 @@
 	
 
 		<div id="writeContent">
-			<form action="" method="">
+			<form action="<%=contextPath%>/insert.dsp" method="post" enctype="multipart/form-data">
+			
+				<input type="hidden" name="userNo" value="<%= loginUser.getMemNo()%>">
+				<input type="hidden" name="nickname" value="<%= loginUser.getNickname()%>">
 				<table id="contentOuter" align="center" >
 					
 					<!--제목 입력란-->
@@ -114,9 +117,9 @@
 						<th style="width:230px; height: 130px;">말머리 *</th>
 						<td style="width: 780px;" >
 							<select id="animal-category" name="animal-category">
-								<option value="miss">실종</option>
-								<option value="protect">보호</option>
-								<option value="sight">목격</option>
+								<option value="실종">실종</option>
+								<option value="보호">보호</option>
+								<option value="목격">목격</option>
 							</select>
 						</td>
 					</tr>
@@ -133,16 +136,24 @@
 						<td>
 							<table id="info">
 								<tr>
-									<th>묘종/견종 *</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_type" required></td>
+									<th>묘종/견종</th>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_type"></td>
 								</tr>
 								<tr>
-									<th>성별</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_gender" ></td>
+									<th>나이</th>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_age"></td>
+								</tr>
+								<tr>
+									<th>몸무게</th>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_weight"></td>
+								</tr>
+								<tr>
+									<th>성별*</th>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_gender" required></td>
 								</tr>
 								<tr>
 									<th>실종날짜 *</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="missing_date" required></td>
+									<td><input type="date" placeholder="내용을 입력해주세요." name="missing_date" required></td>
 								</tr>
 								<tr>
 									<th>지역 *</th>
@@ -156,6 +167,10 @@
 									<th>특징</th>
 									<td><input type="text" placeholder="내용을 입력해주세요." name="characteristic"></td>
 								</tr>
+								<tr>
+									<th>연락처</th>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="phone"></td>
+								</tr>
 							</table>
 							<br><br>
 						</td>
@@ -164,7 +179,7 @@
 					<!--추가 내용입력란-->
 					<tr>
 						<th style="height: 400px;" class="content">추가내용</th>
-						<td><textarea name="content" id="content" cols="80" rows="23" placeholder="내용을 입력해주세요." style="resize: none;"></textarea></td>
+						<td><textarea name="ect" id="content" cols="80" rows="23" placeholder="내용을 입력해주세요." style="resize: none;"></textarea></td>
 					</tr>
 				</table>
 				<br><br><hr><br><br>
