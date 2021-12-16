@@ -31,6 +31,53 @@
 		   AND MEM_PWD = ?
 		   AND DELETE_YN = 'N'
 	</entry>
+	
+	<entry key="insertMember">
+	         INSERT
+               INTO MEM_INFO
+	              (
+	                MEM_NO
+	              , MEM_ID
+	              , MEM_PWD
+	              , MEM_NAME
+	              , NICKNAME
+			      , DOB
+			      , GENDER
+			      , EMAIL
+			      , POST_NO
+			      , ADDRESS
+			      , ADDRESS_D
+			      , PHONE
+			      , ENROLL_DATE
+			      , ADOPT_YN
+			      , ENTER_YN
+			      , PAY_YN
+			      , DELETE_YN
+			      , DEL_REASON
+			      , DEL_DATE
+			      , BLACKLIST_YN
+			      , BLACK_REASON
+			      , BLACK_DATE
+			      , GRADE
+	              )
+	              VALUES
+	              (
+	                SEQ_MEM.NEXTVAL
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              , ?
+	              )
+		
+		
+	</entry>
 
 
 </properties>

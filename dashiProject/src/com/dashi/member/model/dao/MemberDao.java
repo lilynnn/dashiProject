@@ -47,7 +47,7 @@ public class MemberDao {
 							   rset.getString("mem_pwd"),
 							   rset.getString("mem_Name"),
 							   rset.getString("nickname"),
-							   rset.getDate("dob"),
+							   rset.getString("dob"),
 							   rset.getString("gender"),
 							   rset.getString("email"),
 							   rset.getString("post_no"),
@@ -75,6 +75,38 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return m;
+	}
+
+	public int insertMember(Connection conn, Member m) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);// 미완성된 sql문
+		
+			pstmt.setString(1, m.getMemId());
+			pstmt.setString(2, m.getMemPwd());
+			pstmt.setString(3, m.getMemName());
+			pstmt.setString(4, m.getNickname());
+			pstmt.setString(5, m.getBirth());
+			pstmt.setString(6, m.getMemGender());
+			pstmt.setString(7, m.getEmail());
+			pstmt.setString(8, m.getPostNo());
+			pstmt.setString(9, m.getAddress());
+			pstmt.setString(10, m.getAddressDetail());
+			pstmt.setString(11, m.getPhone());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 
 }

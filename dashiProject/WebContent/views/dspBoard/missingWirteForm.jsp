@@ -171,18 +171,81 @@
 
 
 				<!--첨부파일 추가하는 div-->
-				<div>
-					<input type="file" style="margin-left: 45px; font-size: 17px; "value=>
+				<div style="margin-left: 45px;">
+					<table>
+						<tr>
+							<th>대표 이미지</th>
+							<td colspan="3">
+								<img id="titleImg" width="300" height="250" src="" alt="" onclick="chooseFile(1)">
+							</td>
+						</tr>	
+
+						<tr>
+							<th>상세 이미지</th>
+							<td>
+								<img id="contentImg1" width="200" height="150" src="" alt="" onclick="chooseFile(2)">
+							</td>
+							<td>
+								<img id="contentImg2" width="200" height="150" src="" alt="" onclick="chooseFile(3)">
+							</td>
+							<td>
+								<img id="contentImg3" width="200" height="150" src="" alt="" onclick="chooseFile(4)">
+							</td>
+							<td>
+								<img id="contentImg4" width="200" height="150" src="" alt="" onclick="chooseFile(5)">
+							</td>
+
+						</tr>
+					</table>
 				</div>
+
+				<!-- 파일을 입력하느곳-->
+				<div style="display:none">
+					<input type="file" name="file1" id="file1" onchange="loadImg(this ,1);" required>
+					<input type="file" name="file2" id="file2" onchange="loadImg(this ,2);">
+					<input type="file" name="file3" id="file3" onchange="loadImg(this ,3);">
+					<input type="file" name="file4" id="file4" onchange="loadImg(this ,4);">
+					<input type="file" name="file5" id="file5" onchange="loadImg(this ,5);">
+				</div>
+
+				<script>
+					function chooseFile(num){
+						$("#file"+num).click();
+					}
+				
+					function loadImg(inputFile, num) {
+
+						if(inputFile.files.length == 1){
+							const reader = new FileReader();
+
+							reader.readAsDataURL(inputFile.files[0]);
+
+							reader.onload = function (e) {
+								switch(num){
+									case 1:$("#titleImg").attr("src", e.target.result); break;
+									case 2:$("#contentImg1").attr("src", e.target.result); break;
+									case 3:$("#contentImg2").attr("src", e.target.result); break;
+									case 4:$("#contentImg3").attr("src", e.target.result); break;
+									case 5:$("#contentImg4").attr("src", e.target.result); break;
+
+								}
+								
+							}
+						}else{
+							switch(num){
+								case 1:$("#titleImg").attr("src", e.target.null); break;
+								case 2:$("#contentImg1").attr("src", e.target.null); break;
+								case 3:$("#contentImg2").attr("src", e.target.null); break;
+								case 4:$("#contentImg3").attr("src", e.target.null); break;
+								case 5:$("#contentImg4").attr("src", e.target.null); break;
+							}
+						}
+						
+					}
+				</script>
 
 				<br><br><hr><br>
-				
-				<div>
-					<input type="checkbox" style="margin-left: 45px;"> 개인정보 수집 및 이용에 동의합니다. * 
-				</div>
 
-
-				<br><hr><br>
 
 				<button class="enrollBtn1">등록</button>
 				

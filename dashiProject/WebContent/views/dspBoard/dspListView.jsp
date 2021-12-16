@@ -144,17 +144,20 @@
                 <button id="searchBtn">검색하기</button>
             </form>
         </div>
-
-        <div class="write"><button class="writeBtn">글쓰기</button></div>
-
+        <%if(loginUser != null){ %>
+        	<div class="write"><button class="writeBtn">글쓰기</button></div>
+		<%} %>
         <div class="dspList-area">
+        
+            <!-- case 1. 조회된 게시글이 없을경우-->
+            <p style="text-align: center;">조회된 게시글이 없습니다.</p>
 
-
+            <!-- case 1. 조회글이 있을경우-->
             <!--for문 돌려서 썸네일 여러개 만들거임-->
 
             <div class="list">
                 <div class="img-wrap">
-                   <img src="" width="250" height="260"> 
+                   <img src="대표 이미지 경로" width="250" height="260"> 
                 </div>
                 
                 <p>
@@ -165,6 +168,10 @@
             </div>
 
         </div>
+
+
+
+        <!-- 페이징바 영역 -->
         <div class="paging-area" align="center">
 
             <button class="btn btn-light">&lt;</button>
@@ -201,5 +208,7 @@
             })
         })
     </script>
+    
+    
 </body>
 </html>

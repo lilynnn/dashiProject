@@ -1,6 +1,8 @@
 package com.dashi.member.controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,8 +30,8 @@ public class MemberEnrollFormController2 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.getRequestDispatcher("views/member/memberEnrollForm2.jsp").forward(request, response);
-
-	
+		
+		
 	}
 
 	/**

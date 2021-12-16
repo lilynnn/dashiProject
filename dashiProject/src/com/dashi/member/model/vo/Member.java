@@ -9,7 +9,7 @@ public class Member {
 	private String memPwd;
 	private String memName;
 	private String nickname;
-	private Date birth;
+	private String birth;
 	private String memGender;
 	private String email;
 	private String postNo;
@@ -32,7 +32,7 @@ public class Member {
 	
 	
 	
-	public Member(int memNo, String memId, String memPwd, String memName, String nickname, Date birth, String memGender,
+	public Member(int memNo, String memId, String memPwd, String memName, String nickname, String birth, String memGender,
 			String email, String postNo, String address, String addressDetail, String phone, Date enrollDate,
 			String adoptYN, String enterYN, String payYN, String deleteYN, String delReason, Date delDate,
 			String blackYN, String blackReason, Date blackDate, int grade) {
@@ -61,10 +61,31 @@ public class Member {
 		this.blackDate = blackDate;
 		this.grade = grade;
 	}
+	
+	//회원가입 받아줄 객체
+	
 
 	public int getMemNo() {
 		return memNo;
 	}
+
+	public Member(String memId, String memPwd, String memName, String nickname, String birth, String memGender,
+			String email, String postNo, String address, String addressDetail, String phone) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.birth = birth;
+		this.memGender = memGender;
+		this.email = email;
+		this.postNo = postNo;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.phone = phone;
+	}
+
+
 
 	public void setMemNo(int memNo) {
 		this.memNo = memNo;
@@ -102,11 +123,11 @@ public class Member {
 		this.nickname = nickname;
 	}
 
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 

@@ -145,7 +145,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="email" name="userEmail" placeholder="&nbsp;&nbsp;이메일을 입력해주세요">
+                            <input type="email" name="email" placeholder="&nbsp;&nbsp;이메일을 입력해주세요">
                             <br><br>
                         </td>
                     </tr>
