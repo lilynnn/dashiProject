@@ -37,7 +37,7 @@
 		SELECT 
 		       ENT_NO
 		     , ADOPT_STATUS
-		     , ADOPT_DATE
+		     , TO_CHAR(ADOPT_DATE, 'YYYY/MM/DD') "ADOPT_DATE"
 		     , TO_CHAR(ENT_DATE, 'YYYY/MM/DD') "ENT_DATE"
 		     , ANIMAL_VARIETY
 		     , ANIMAL_NAME
@@ -52,7 +52,7 @@
 		 WHERE ENT_NO = ?
 	</entry>
 	
-	<!-- 첨부파일 불러오는 sql 나중에 동물정보 update하고 나서 불러오는 sql -->
+	<!-- 첨부파일 불러오는 sql  -->
 	<entry key="selectAttachment">
 	SELECT
 	       ATTACH_NO
@@ -94,8 +94,10 @@
 		    SET ORIGIN_NAME = ?
 		      , CHANGE_NAME = ?
 		      , PATH = ?
+		      , UPLOAD = SYSDATE
+		      , ATTACH_STATUS = 'Y'
 		      , ATTACH_LEVEL = ?
-		 WHERE ATTACHMENT_NO = ?
+		 WHERE ATTACH_NO = ?
 	</entry>
 	
 	<!-- 첨부파일 없을때 insert하는 sql -->
@@ -103,21 +105,25 @@
 		INSERT 
 			  INTO ATTACHMENT
 			  (
-			    FILE_NO
-			  , REF_BNO
+			    ATTACH_NO
+			  , REF_NO
+			  , UPLOAD
   			  , PATH
 			  , ORIGIN_NAME
 			  , CHANGE_NAME
 			  , ATTACH_LEVEL
+			  , ATTACH_STATUS
 			  )
 			  VALUES
 			  (
 			    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
 			  , ?  
+			  , SYSDATE
 			  , ? 
 			  , ? 
 			  , ? 
 			  , ?
+			  , 'Y'
 			  )
 	</entry>
 	

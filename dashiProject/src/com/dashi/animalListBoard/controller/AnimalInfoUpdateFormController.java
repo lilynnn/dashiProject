@@ -35,9 +35,10 @@ public class AnimalInfoUpdateFormController extends HttpServlet {
 		String animalNo = request.getParameter("ano");
 		
 		Animal a = new AnimalListService().selectAnimalInfo(animalNo);
-		//Attachment at = new AnimalListService().selectAttachment(animalNo);
+		Attachment at = new AnimalListService().selectAttachment(animalNo);
 		
 		request.setAttribute("aInfo", a);
+		request.setAttribute("at", at);
 		request.getRequestDispatcher("views/animalListBoard/animalInfoUpdateForm.jsp").forward(request, response);
 	}
 

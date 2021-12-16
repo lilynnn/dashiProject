@@ -53,7 +53,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			a.setAdoptDate(multiRequest.getParameter("adoptDate"));
 			a.setAnimalAge(Integer.parseInt(multiRequest.getParameter("animalAge")));
 			a.setAnimalVaccin(multiRequest.getParameter("animalVaccin"));
-			a.setAnimalNeutral(multiRequest.getParameter("animalNuetral"));
+			a.setAnimalNeutral(multiRequest.getParameter("animalNeutral"));
 			a.setAnimalDisease(multiRequest.getParameter("animalDisease"));
 			a.setAnimalIssue(multiRequest.getParameter("animalIssue"));
 			
@@ -67,6 +67,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 				at.setPath("resources/upfiles/adoptNotice/");
 				at.setAttachLevel(1);
 				at.setRefNo(multiRequest.getParameter("entNo"));
+				
 				if(multiRequest.getParameter("originFileNo") != null) {
 					// 기존 첨부파일 있을 경우
 					at.setAttachNo(multiRequest.getParameter("originFileNo"));

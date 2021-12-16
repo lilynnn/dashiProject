@@ -142,8 +142,7 @@ public class AnimalListDao {
 		return a;
 	}
 	
-	/////////////////////////////////////////////////////////////////////////수정하기 수정수정!!!!!
-	// 동물정보 update하고 나서 나중에 동물정보조회했을 때 동물 사진 보여지게 하는 메소드
+	//
 	public Attachment selectAttachment(Connection conn, String animalNo) {
 		Attachment at = null;
 		PreparedStatement pstmt = null;
@@ -156,9 +155,22 @@ public class AnimalListDao {
 			
 			rset = pstmt.executeQuery();
 			
+			if(rset.next()) {
+				at = new Attachment();
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setRefNo(rset.getString("REF_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setPath(rset.getString("PATH"));
+				
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
 		
 		return at;
@@ -245,7 +257,9 @@ public class AnimalListDao {
 	public int insertAttachment(Connection conn, Attachment at) {
 		
 		int result = 0;
+		
 		PreparedStatement pstmt = null;
+		
 		String sql = prop.getProperty("insertAttachment");
 		
 		try {

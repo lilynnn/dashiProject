@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.dashi.animalListBoard.model.vo.Animal" %>
+<%@ page import = "com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
 <%
 	Animal a = (Animal)request.getAttribute("aInfo");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -74,17 +75,25 @@
 	             <br><br>
 	            
 	            <!-- 이미지 보여질 영역 -->
-	            <table id="img-area" style="width:650px; text-align:center;">   	
-		          	<tr>
-	            		<td colspan="2">
-	            			<img id="titleImg" onclick="chooseFile(1);" style="width:600px; height:400px;">
-	            		</td>
-	            	</tr>
+	            <table id="img-area" style="width:650px; text-align:center;">
+	            	<%if(at != null) {%>   	
+			          	<tr>
+		            		<td colspan="2">
+		            			<img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" onclick="chooseFile(1);" style="width:600px; height:400px;">
+		            		</td>
+		            	</tr>
+	            	<%} else { %>
+	        			<tr>
+		            		<td colspan="2">
+		            			<img id="titleImg" onclick="chooseFile(1);" style="width:600px; height:400px;">
+		            		</td>
+		            	</tr>
+	            	<%} %>
 	            	<tr><td>&nbsp;</td></tr>
 	            </table>
 
 				<div style="display:none;">
-					<input type="file" name="file1" id="file" onchange="loadImg(this, 1);">
+					<input type="file" name="upfile" id="file" onchange="loadImg(this, 1);" required>
 				</div>
 				<br><br>
 	            <!-- 입소번호, 입소일, 입양여부 보여질 table -->
@@ -111,10 +120,10 @@
 		                        </select>
 	         				</td>
 	                        <td>
-	                        <%if(a.getAdoptDate() != null) {%>
+	                        <%if( a.getAdoptDate() != null ) {%>
 	                        	<input name="adoptDate" type="text" value="<%=a.getAdoptDate() %>" style="text-align:center;">
 	                        <%} else { %>
-	                        	<input name="adoptDate"  type="text" value="--" style="text-align:center;">
+	                        	<input name="adoptDate"  type="text" value="" style="text-align:center;">
 	                        <%} %>
 	                        </td>
 	                    </tr>

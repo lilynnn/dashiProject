@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.dashi.animalListBoard.model.vo.Animal" %>
+<%@ page import = "com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
 <%
 	Animal a = (Animal)request.getAttribute("aInfo");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -75,8 +76,14 @@
             <hr style="width: 900px;">
             <br><br><br>
             
-            
-			<div id="img-area"><img src=""></div>
+			<div id="img-area">
+				<%if(at == null) {%>
+					첨부된 이미지가 없습니다.
+				<%} else {%>
+					<input type="hidden" name="originFileno" value="<%=at.getAttachNo() %>">
+					<img src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>">
+				<%} %>
+			</div>
 			
 			<br>
             <!-- 입소번호, 입소일, 입양여부 보여질 table -->
@@ -90,8 +97,8 @@
                     </tr>
                     <tr>
                         <td><%=a.getEntNo() %></td>
-                        <td><%=a.getEntDate() %></td>
-                        <td><%=a.getAdoptStatus() %></td>
+	 	                <td><%=a.getEntDate() %></td>
+                        <td><%=a.getAdoptStatus()%></td>
                         <td>
                         <%if(a.getAdoptDate() != null) {%>
                         	<%=a.getAdoptDate() %>

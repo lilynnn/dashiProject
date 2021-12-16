@@ -48,14 +48,20 @@ public class AnimalListService {
 		int result2 = new AnimalListDao().updateAnimalInfo2(conn, a);
 		
 		int result3 = 1;
-		if( at != null ) {	// 원래 첨부파일이 존재할 때
-			result3 = new AnimalListDao().updateAttachment(conn, at);
-		} else {
-			result3 = new AnimalListDao().insertAttachment(conn, at);
+		
+		if( at != null ) {	// 새로운 첨부파일이 존재하는 경우
+			
+			if(at.getAttachNo() != null) {	// 기존 첨부파일이 존재하는 경우
+				result3 = new AnimalListDao().updateAttachment(conn, at);
+			} else {	// 존재하지 않을 때
+				result3 = new AnimalListDao().insertAttachment(conn, at);
+			}
 		}
 		System.out.println("result1 : "+result1+"// result2 : "+result2 +" // result3 : "+result3 );
 		
-		if((result1*result2) > 0 && result3>0) {
+		int animalResult = result1*result2;
+		
+		if( animalResult > 0 && result3 > 0) {
 			commit(conn);
 		} else {
 			rollback(conn);
@@ -63,7 +69,7 @@ public class AnimalListService {
 		
 		close(conn);
 		
-		return result1*result2*result3;
+		return animalResult*result3;
 	
 	}
 }
