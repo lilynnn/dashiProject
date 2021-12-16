@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%  String contextPath = request.getContextPath(); %>
+    
 
 <!DOCTYPE html>
 <html>
@@ -111,13 +111,15 @@
 
 <body>
 	<%@ include file="/views/common/menubar.jsp" %>
-    <form action="<% contextPath %>/insert.as" method="post">
 	<div class="outer" align="center">
-
+	
+   
+	
         <!-- 1:1 문의글 제목 -->
     <h3 align= "left" style="margin:30px;">1:1 문의글 작성</h3>
     <hr>
 
+ 	<form action="<%=contextPath %>/insert.as" method="post">
     <table class="table1">
         <tr> <!-- 아이디 -->
             <th  width=220 colspan="2">아이디 <b>*</b></th> 
@@ -137,6 +139,14 @@
                 <br>  &nbsp; &nbsp;<a href="#pop1">내용보기</a></td>
         </tr>
     </table>
+    
+    <hr>
+    
+     <div><button class="btn-1 ButtonBox-right">제출하기</button></div>
+    
+
+    </form>
+    
    
     <!-- 팝업창 만들기 -->
     <div id="pop1" class="pop-up-wrap">
@@ -156,13 +166,9 @@
                 </div>
         </div>
         <div class="dim"></div>
-    <hr>
     
-    <div><button class="btn-1 ButtonBox-right">제출하기</button></div>
     
-
-    </form>
-
+   
 	</div>
 
 	<br><br><br><br>

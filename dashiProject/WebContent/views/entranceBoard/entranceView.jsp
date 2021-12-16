@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +54,20 @@
 		    width:fit-content;
 		    margin-top: 60px;
 		    margin-bottom: 60px; }
-		    
+		 
+		 
+		 /* 버튼 style 태그 */
+		 
+	.ent-bt-wrap{
+        margin-left: 35%;
+    }
+
+   .ent-bt-wrap a{
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        }    
+
    
 		    
 	</style>
@@ -82,14 +97,15 @@
 	            신청글을 남겨주시면 확인 후 유선상으로 연락드리겠습니다. <br>
 	            입소와 입양 후에도 아이들의 소식을 확인하실 수 있습니다.</b></h4>
             
-          
-           <div style="text-align:center";>
-           
-           <!-- 버튼 -->
-           <button type="button" class="entrance" name="" value="">입소신청</button>
             
-           <button type="button" class="answer" name="" value="">1:1 문의</button>
-           </div>
+         <div class="ent-bt-wrap">
+           
+          	<!-- 입소신청 버튼 -->
+            <div><a href="<%=contextPath%>/entWrite.ent" class="entrance">입소신청</a></div>
+         	<!--1:1문의 버튼 -->
+            <div><a href="<%=contextPath%>/insert.as" class="answer">1:1 문의</a></div>
+        
+        </div>
 
         <!-- 이미지2 -->
         <div>

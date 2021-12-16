@@ -105,7 +105,7 @@
             <!-- 1:1 목록-->
         <div id="answerlist" >
         	
-        	<form action="">
+        	<form action="select.as" method="post">
 
                 <!-- 카테고리 및 검색창-->
                  <div class="search-area" style="margin: 20px 0px; display:inline-block;">
@@ -169,24 +169,7 @@
                             </tr>
 
 
-				<% if(list.isEmpty()) { %>
-	                <!--case1. 게시글이 없을 경우-->
-	                <tr>    
-	                    <td colspan="6">조회된 게시글이 없습니다.</td>
-	                </tr>
-                <% }else { %>
-	                <!--case2. 게시글이 있을 경우-->
-	                <% for(Answer a : list) { %>
-		                <tr>
-		                    <td><%= a.getBoardNo() %></td>
-		                    <td><%= a.getCategory() %></td>
-		                    <td><%= a.getBoardTitle() %></td>
-		                    <td><%= a.getBoardWriter() %></td>
-		                    <td><%= a.getCount() %></td>
-		                    <td><%= a.getCreateDate() %></td>
-		                </tr>
-	                <% } %>
-				<% } %>
+			
                         </tbody>
                     </table>
 

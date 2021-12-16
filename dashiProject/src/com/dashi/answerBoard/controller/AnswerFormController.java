@@ -15,6 +15,7 @@ import com.dashi.member.model.vo.Member;
 /**
  * Servlet implementation class AnswerForm
  */
+
 @WebServlet("/insert.as")
 public class AnswerFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,12 +39,9 @@ public class AnswerFormController extends HttpServlet {
 		String qTitle = request.getParameter("qTitle");
 		String qContent= request.getParameter("qContent");
 		
-		// 로그인한 회원 정보를 얻어내는 방법
-		// 1. input type="hidden" 으로 애초에 요청시 숨겨서 전달하기
-		// 2. session영역에 담겨있는 회원객체로부터 뽑기
+	
 		HttpSession session = request.getSession();
-		String memNo = ((Member)session.getAttribute("memNo")).getMemId();
-				
+		
 				Answer a = new Answer();
 				a.setMemId(memId);
 				a.setqTitle(qTitle);
@@ -59,7 +57,7 @@ public class AnswerFormController extends HttpServlet {
 			
 		}else { // 실패 => 에러문구(공지사항 등록 실패)담아서 에러페이지 포워딩
 			request.setAttribute("errorMsg", "등록 실패 하였습니다");
-			response.sendRedirect(request.getContextPath() + "<%contextPath%>");
+			response.sendRedirect(request.getContextPath() + "<%contextPath%>/insert.as");
 		}
 		
 	

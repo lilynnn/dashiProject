@@ -3,7 +3,22 @@
 <properties>
 
 <entry key="insertAnswer">
-
-
+INSERT ANSWER 
+    INTO 
+    (
+    INQUIRE_NO
+    , MEM_ID
+    , Q_TITLE
+    , Q_CONTENT
+    , Q_CREAT
+    )
+    VALUES
+    (
+    'AS-'||LPAD(SEQ_AS.NEXTVAL,3,0)
+    ,?
+    ,?
+    ,?
+    ,SYSDATE
+    )
 </entry>
 </properties>

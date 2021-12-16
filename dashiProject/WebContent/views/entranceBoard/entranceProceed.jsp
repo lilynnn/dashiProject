@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<!-- 이미지 다시 수정하기...ㅎ -->
     <title>입소절차</title>
     <style>
         .outer{
@@ -13,6 +13,7 @@
             width: 1200px;
             height: 1300px;
             align:center;
+            left:50%;
         }
         
     </style>
@@ -23,28 +24,31 @@
 	<%@ include file="../common/menubar.jsp" %>
 
 
-		<!-- 소제목 -->
-		<h2 align:left; style="margin-left:50px;">입소절차</h2>
-		<hr style="width:900px">
+	
 					
 		
-		    <div class="outer">
-		<!-- 이미지1 -->
+		    <div class="outer" >
+		   	<!-- 소제목 -->
+		    <h2 style="margin-top:50px; margin-left:80px;">입소절차</h2>
+			<hr style="width:900px">
+			<!-- 이미지1 -->
+
+		    <div style="margin:auto;">
+		    <img id="ent1" src="<%=request.getContextPath()%>/resources/images/entrance1.PNG" width="70%" height="100%">
+			</div>
 		
-<div>
-		    <img  class="image1" src="../images/entrance1.png">
-		</div>
+			<!-- 이미지2 -->
+		   <div  style="margin:auto; ">
+		    <img id="ent2" src="<%=request.getContextPath()%>/resources/images/entrance2.PNG" width="70%" height="100%">
+			</div>
 		
-		<!-- 이미지2 -->
-		<div>
-		    <img  class="image2" src="../images/entrance2.png">
-		</div>
-		
-		<!-- 이미지3 -->
-		<div>
-		    <img  class="image3" src="../images/entrance3.png">
-		</div>
+			<!-- 이미지3 -->
+		   <div style="margin:auto; margin-bottom:30px;">
+		    <img id="ent3" src="<%=request.getContextPath()%>/resources/images/entrance3.PNG" width="70%" height="100%">
+			</div>
 	
+	
+		
 		
 		<!-- 푸터바 -->
 		<%@ include file="../common/footerbar.jsp" %>
