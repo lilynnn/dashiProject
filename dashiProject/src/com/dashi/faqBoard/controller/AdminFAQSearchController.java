@@ -39,7 +39,7 @@ public class AdminFAQSearchController extends HttpServlet {
 		ArrayList<FAQ> list = new FAQService().keywordFAQ(keyword);
 	
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/faqBoard/AdminFaqListView.jsp").forward(request, response);	
+		request.getRequestDispatcher("views/faqBoard/adminFaqListView.jsp").forward(request, response);	
 	
 	
 	

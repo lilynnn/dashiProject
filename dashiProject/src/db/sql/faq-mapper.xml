@@ -82,6 +82,7 @@
 		     , FAQ_CATEGORY
 		  FROM FAQ
 		 WHERE FAQ_CATEGORY LIKE ?
+		   AND FAQ_STATUS = 'N'
 	</entry>
 
 

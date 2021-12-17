@@ -1,7 +1,9 @@
 package com.dashi.notice.model.service;
 
 import static com.dashi.common.JDBCTemplate.close;
-import static com.dashi.common.JDBCTemplate.*;
+import static com.dashi.common.JDBCTemplate.commit;
+import static com.dashi.common.JDBCTemplate.getConnection;
+import static com.dashi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -63,9 +65,9 @@ public class NoticeService {
 		
 	} // 공지사항 수정
 	
-	public ArrayList<Notice> searchNotice(String titleSearch){
+	public ArrayList<Notice> searchNotice(String keyword){
 		Connection conn = getConnection();
-		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, titleSearch);
+		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, keyword);
 		close(conn);
 		return list;
 		

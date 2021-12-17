@@ -61,15 +61,24 @@
 	</entry>
 
 	<entry key="searchNotice">
-		SELECT
-		       NOTICE_NO
-		     , NOTICE_TITLE
-		     , MN_NO
-		     , WRITE_DATE
-		     , VIEW_COUNT
-		  FROM NOTICE
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                       NOTICE_NO
+		                     , NOTICE_TITLE
+		                     , NOTICE_CONTENT
+		                     , VIEW_COUNT
+		                     , WRITE_DATE
+		                     , MN_NO
+		                     , NOTICE_YN
+		                  FROM NOTICE
+		                 WHERE NO_STATUS = 'N'
+		                 ORDER
+		                       BY NOTICE_NO DESC) A
+		                )
 		 WHERE NOTICE_TITLE LIKE ?
-		   AND NO_STATUS = 'N'
 	</entry>
 
 	<entry key="insertNotice">
@@ -112,9 +121,6 @@
 		   SET NOTICE_YN = 'N'
 		 WHERE NOTICE_NO = ?
 	</entry>
-
-
-
 
 
 

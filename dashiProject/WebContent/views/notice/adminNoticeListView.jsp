@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*, java.util.ArrayList"%>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
-	
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
 	int endPage = pi.getEndPage();
 	int maxPage = pi.getMaxPage();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -114,7 +115,7 @@
                 <hr>
                 </div>
                 <div id="search">
-                	<form action="<%=contextPath%>/noKeyword.ad" method="get">
+                	<form action="<%=contextPath%>/noKeyword.ad?cpage=<%=pi.getCurrentPage()%>" method="get">
 	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
 	                    <button type="submit">검색</button>
                     </form>
@@ -190,7 +191,7 @@
     
 
 	<div class="paging-area" align="center">
-			
+		
 			<% if(currentPage != 1){ %>
             	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noList.ad?cpage=<%=currentPage-1%>';">&lt;</button>
             <% } %>
@@ -206,7 +207,8 @@
             <% if(currentPage != maxPage){ %>
            	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/noList.ad?cpage=<%=currentPage+1%>';">&gt;</button>
 			<% } %>
-        </div>
+        
+     </div>
 
 
 	<!-- footerbar영역 -->
