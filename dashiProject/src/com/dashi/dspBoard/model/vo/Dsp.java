@@ -60,8 +60,9 @@ public class Dsp {
 	
 
 	//리스트 받아줄 객체
-	public Dsp(String ctg, String dspTitle, int money, String locationName, String issue, String titleImg) {
+	public Dsp(String dspNo, String ctg, String dspTitle, int money, String locationName, String issue, String titleImg) {
 		super();
+		this.dspNo = dspNo;
 		this.dspTitle = dspTitle;
 		this.ctg = ctg;
 		this.locationName = locationName;
@@ -70,8 +71,30 @@ public class Dsp {
 		this.titleImg=titleImg;
 	}
 
+	
 
 	
+	public Dsp(String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
+			String phone, String variety, String gender, String age, String weight, String issue, String etc,
+			int money) {
+		super();
+		this.dspTitle = dspTitle;
+		this.viewCount = viewCount;
+		this.writeDate = writeDate;
+		this.ctg = ctg;
+		this.issueDate = issueDate;
+		this.locationName = locationName;
+		this.phone = phone;
+		this.variety = variety;
+		this.gender = gender;
+		this.age = age;
+		this.weight = weight;
+		this.issue = issue;
+		this.etc = etc;
+		this.money = money;
+	}
+
+
 	public String getTitleImg() {
 		return titleImg;
 	}

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.dspBoard.model.vo.Dsp, com.dashi.common.model.vo.Attachment"%>
+    
+<%
+	Dsp d = (Dsp)request.getAttribute("d");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,6 +176,16 @@
         background: rgb(233, 230, 230);
         cursor: pointer;
     }
+    #backBtn{
+        border: none;
+        background: rgb(102,184,94);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        height: 50px;
+        width: 130px;
+        border-radius: 5px;
+    }
 
 </style>
 </head>
@@ -180,65 +195,65 @@
     <div class="outer">
         <hr>
         <div style="margin-left: 100px; margin-top: 30px;">
-            <div id="title">[실종] 귀요미를 찾습니다.</div>
+            <div id="title">[<%=d.getCtg()%>] <%=d.getDspTitle()%></div>
             <div class="dateView">등록일</div>
-            <div class="dateView" style="width: 100px;">2021.12.24</div>
+            <div class="dateView" style="width: 100px;"><%=d.getWriteDate()%></div>
             <div class="dateView">조회수</div>
-            <div class="dateView" style="width: 900px;">123</div>
+            <div class="dateView" style="width: 900px;"><%=d.getViewCount()%></div>
         </div>
         
         <br><hr>
-    
+
 
         <!--실종 보호 목격 정보글-->    
         <div class="Info_outer1" align="center" style="margin-top: 30px;">
 
-            <img class="animal-image" src=""></img>
+            <img class="animal-image" src="<%=contextPath%>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>"></img>
 
             <div>
                 <table class=animalInfo border="1">
                     <!--실종동물 종류-->
                     <tr>
                         <th>묘종/견종</th>
-                        <td>믹스견</td>
+                        <td><%=d.getVariety() %></td>
                     </tr>
                     <!--실종동물 성별-->
                     <tr>
                         <th>나이</th>
-                        <td>2살</td>
+                        <td><%=d.getAge()%></td>
                     </tr>
                     <tr>
                         <th>몸무게</th>
-                        <td>15KG</td>
+                        <td><%=d.getWeight()%></td>
                     </tr>
                     <tr>
                         <th>성별</th>
-                        <td>암컷</td>
+                        <td><%=d.getGender()%></td>
                     </tr>                    
                     <!--실종날짜-->
                     <tr>
                         <th>실종날짜</th>
-                        <td>2021-11-14</td>
+                        <td><%=d.getIssueDate()%></td>
                     </tr>
                     <!--실종지역-->
                     <tr>
                         <th>지역</th>
-                        <td>서울시 강남구</td>
+                        <td><%=d.getLocationName()%></td>
                     </tr>
                     <!--사례금-->
                     <tr>
                         <th>사례금</th>
-                        <td>5억</td>
+                        <td><%=d.getMoney()%></td>
                     </tr>
                     <!--작성자 연락처-->
                     <tr>
                         <th>연락처</th>
-                        <td>010-1111-2222</td>
+                        <td><%=d.getPhone()%></td>
                     </tr>
                     <!--실종동물 특징-->
                     <tr>
                         <th>특징</th>
-                        <td>코 옆 까만점,입주변 하연털</td>
+                        <td><%=d.getIssue()%></td>
                     </tr>
                 </table>
 
@@ -251,13 +266,15 @@
         
         <!-- 밑에 동물사진 2개 및 설명-->
         <div class="Info_outer2" align="center">
-            <img class= "animal-image" src="" ></img><br><br><br><br>
-            <img class= "animal-image" src=""></img><br><br>
+        	
+        	<%for(int i = 1 ; i<list.size() ; i++){ %>
+        
+            <img class= "animal-image" src="<%=contextPath%>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>" ></img><br><br>
+            <%} %>
+
+          
             <div class= "dspConent" style="text-align: center; font-size: 17px; width: 500px; height:300px;"> 
-                무한한 길지 있는 풍부하게 힘있다. 실현에 못할 밝은 같이, 이상의 운다. 동력은 얼마나 많이 칼이다. <br>
-                소금이라 심장은 원질이 인간은 황금시대의 때문이다. 때까지 이상 끓는 설레는 청춘의 인생을 풀이 아름다우냐? <br>
-                이상의 타오르고 대중을 귀는 밥을 찬미를 사막이다. 품고 같은 대중을 우리 이상은 관현악이며, 커다란 것이다. <br>
-                그들에게 설레는 보이는 얼마나 거친 날카로우나 하이름은 귀요미 입니다.
+              <%=d.getEtc()%>
             </div>
         </div> 
 
@@ -546,13 +563,20 @@
                 </div>
 
             </div>
-
-            <button>목록으로</button>
-            <button>공유하기</button>
+<br><br>
+            <button id="backBtn" onclick="back()">목록으로</button>
         </div>
         <br><br><br><br><br>
         <%@ include file="../common/footerbar.jsp" %>
     </div>
+
+    <script>
+        $(function(){
+            $("#backBtn").click(function(){
+                location.href = '<%= contextPath%>/list.dsp';
+            })
+        })
+    </script>
 
 </body>
 </html>

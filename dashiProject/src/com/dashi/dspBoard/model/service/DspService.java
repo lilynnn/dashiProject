@@ -33,7 +33,7 @@ public class DspService {
 	
 	}
 	
-	// 글 조회 메소드
+	// 목록 조회 메소드
 	public ArrayList<Dsp> selectDspList() {
 		Connection conn = getConnection();
 		ArrayList<Dsp> list = new DspDao().selectDspList(conn);
@@ -43,6 +43,36 @@ public class DspService {
 		
 		
 		
+	}
+	
+	// 조회수 증가 메소드
+	public int increasCount(String dspNo) {
+		Connection conn = getConnection();
+		int result = new  DspDao().increaseCount(conn, dspNo);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	}
+	
+	// 상세조회 시 정보 가져오는 메소드
+	public Dsp selectDsp(String dspNo) {
+		Connection conn = getConnection();
+		Dsp d = new DspDao().selectDsp(conn, dspNo);
+		close(conn);
+		return d;
+	}
+
+	// 상세조회 시 첨부파일 가져오는 메소드
+	public ArrayList<Attachment> selectAttachmentList(String dspNo) {
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new DspDao().selectAttachmentList(conn, dspNo);
+		close(conn);
+		return list;
 	}
 
 }

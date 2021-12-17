@@ -161,6 +161,7 @@
             <!--for문 돌려서 썸네일 여러개 만들거임-->
 				<%for(Dsp d:list) {%>
 		            <div class="list">
+		            	<input type="hidden" value="<%= d.getDspNo()%>">
 		                <div class="img-wrap">
 		                   <img src="<%=contextPath%>/<%= d.getTitleImg() %>" width="250" height="260"> 
 		                </div>
@@ -198,11 +199,9 @@
     <script>
         // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
         $(function(){
-            $(".dspList-area>div").click(function(){
-                //const num = $(this).children().eq(0).text();
+            $(".list").click(function(){
 
-                //location.href = '<%= contextPath%>/detail?dspno='+num;
-                location.href = '<%= contextPath%>/detail.dsp';
+                location.href = "<%= contextPath%>/detail.dsp?dspno=" + $(this).children("input").val();
             })
         })
     </script>

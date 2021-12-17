@@ -63,6 +63,7 @@ public class DspDao {
 		return result;
 	}
 
+	//첨부파일 입력 메소드
 	public int insertDspAttachment(Connection conn, ArrayList<Attachment> list) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -91,7 +92,7 @@ public class DspDao {
 	
 	}
 
-	//
+	//목록 리스트 메소드
 	public ArrayList<Dsp> selectDspList(Connection conn) {
 
 		//여러행 조회되니까 리스트 이용
@@ -107,7 +108,8 @@ public class DspDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				list.add(new Dsp(rset.getString("post_ctg")
+				list.add(new Dsp(rset.getString("dsp_no")
+								,rset.getString("post_ctg")
 								,rset.getString("dsp_title")
 								,rset.getInt("money")
 								,rset.getString("location_name")
@@ -125,5 +127,105 @@ public class DspDao {
 		return list;
 		
 	}
+
+	// 조회수 증가 메소드
+	public int increaseCount(Connection conn, String dspNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("increaseCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dspNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+
+	// 상세조회 시 정보 가져오는 메소드
+	public Dsp selectDsp(Connection conn, String dspNo) {
+		
+		Dsp d = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+	
+		String sql = prop.getProperty("selectDsp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dspNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				d = new Dsp(rset.getString("DSP_TITLE"),
+							rset.getDate("WRITE_DATE"),
+							rset.getInt("VIEW_COUNT"),
+							rset.getString("POST_CTG"),			   
+							rset.getString("ISSUE_DATE"),
+							rset.getString("LOCATION_NAME"),
+							rset.getString("CASE_PHONE"),
+							rset.getString("ANIMAL_VARIETY"),
+							rset.getString("ANIMAL_GENDER"),
+							rset.getString("ANIMAL_AGE"),
+							rset.getString("ANIMAL_WEIGHT"),
+							rset.getString("ANIMAL_ISSUE"),
+							rset.getString("ETC"),
+							rset.getInt("MONEY"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
+		return d;
+	}
+
+
+	// 상세조회 시 첨부파일 가져오는 메소드
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, String dspNo) {
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dspNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) { // 커서 움직이면서 필요한거 뽑기
+				Attachment at = new Attachment();
+				at.setChangeName(rset.getString("change_name"));
+				at.setPath(rset.getString("path"));
+				
+				list.add(at);
+	
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return list;
+		
+	}
+
+
 
 }

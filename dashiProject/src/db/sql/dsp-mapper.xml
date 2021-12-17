@@ -2,6 +2,7 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+	<!-- 글작성 -->
 	<entry key="insertDsp">
 		INSERT
 		  INTO DSP
@@ -43,7 +44,7 @@
 	
 	</entry>
 
-
+	<!-- 첨부파일 INSERT -->
 	<entry key="insertDspAttachment">
 		INSERT 
 		  INTO ATTACHMENT
@@ -68,9 +69,12 @@
 	</entry>
 	
 	
+	
+	<!-- 목록조회 -->
 	<entry key="selectDspList">
 		SELECT
-		       POST_CTG
+			    DSP_NO
+		     ,  POST_CTG
 		     , DSP_TITLE
 		     , MONEY
 		     , LOCATION_NAME
@@ -81,5 +85,55 @@
 		 WHERE POST_STATUS = 'Y'
 		 ORDER 
 		    BY DSP_NO DESC
+	</entry>
+	
+	
+	
+	<!-- 조회수 증가 -->
+	<entry key="increaseCount">
+		UPDATE
+		       DSP
+		   SET VIEW_COUNT = VIEW_COUNT+1
+		 WHERE DSP_NO = ?
+		   AND POST_STATUS = 'Y'
+	</entry>
+	
+	
+	
+	<!-- 첨부파일조회 -->
+	<entry key="selectAttachment">
+		SELECT
+			   ATTACH_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , PATH
+		  FROM ATTACHMENT
+			WHERE REF_NO = ?
+		
+	</entry>
+	
+	
+	
+	<!-- 글 상세 조회-->
+	<entry key="selectDsp">
+		SELECT
+		       DSP_TITLE
+		     , WRITE_DATE
+		     , VIEW_COUNT
+		     , POST_CTG
+		     , ISSUE_DATE
+		     , LOCATION_NAME
+		     , CASE_PHONE
+		     , ANIMAL_VARIETY
+		     , ANIMAL_GENDER
+		     , ANIMAL_AGE
+		     , ANIMAL_WEIGHT
+		     , ANIMAL_ISSUE
+		     , ETC
+		     , MONEY
+		 FROM DSP
+		 WHERE DSP_NO = ?
+	
+	
 	</entry>
 </properties>

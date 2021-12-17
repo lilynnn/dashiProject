@@ -95,10 +95,10 @@ public class dpsInsertController extends HttpServlet {
 			int result = new DspService().insertDsp(d, list);
 		
 			if(result>0) { //성공
-				request.getSession().setAttribute("alertMsg", "게시글등록 성공!!");
+				request.getSession().setAttribute("alertMsg", "게시글등록에 성공했습니다!");
 				response.sendRedirect(request.getContextPath() + "/list.dsp");
 			}else {
-				request.getSession().setAttribute("alertMsg", "게시글등록에 실패했습니다.....");
+				request.getSession().setAttribute("alertMsg", "게시글등록에 실패했습니다ㅠㅠㅠ");
 				response.sendRedirect(request.getContextPath() + "/list.dsp");
 			}
 		

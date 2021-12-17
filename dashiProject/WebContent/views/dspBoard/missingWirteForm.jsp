@@ -248,11 +248,11 @@
 							}
 						}else{
 							switch(num){
-								case 1:$("#titleImg").attr("src", e.target.null); break;
-								case 2:$("#contentImg1").attr("src", e.target.null); break;
-								case 3:$("#contentImg2").attr("src", e.target.null); break;
-								case 4:$("#contentImg3").attr("src", e.target.null); break;
-								case 5:$("#contentImg4").attr("src", e.target.null); break;
+								case 1:$("#titleImg").attr("src",null); break;
+								case 2:$("#contentImg1").attr("src",null); break;
+								case 3:$("#contentImg2").attr("src",null); break;
+								case 4:$("#contentImg3").attr("src",null); break;
+								case 5:$("#contentImg4").attr("src",null); break;
 							}
 						}
 						
