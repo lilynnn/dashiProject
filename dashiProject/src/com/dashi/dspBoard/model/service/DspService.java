@@ -36,10 +36,10 @@ public class DspService {
 	// 목록 조회 메소드
 	public ArrayList<Dsp> selectDspList() {
 		Connection conn = getConnection();
-		ArrayList<Dsp> list = new DspDao().selectDspList(conn);
+		ArrayList<Dsp> dsplist = new DspDao().selectDspList(conn);
 		
 		close(conn);
-		return list;
+		return dsplist;
 		
 		
 		

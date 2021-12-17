@@ -34,10 +34,11 @@ public class dspListController extends HttpServlet {
 		
 		
 		// 요청처리(응답페이지에 필요한 데이터 요청)
-		ArrayList<Dsp> list = new DspService().selectDspList();
+		ArrayList<Dsp> dsplist = new DspService().selectDspList();
+		
 		// 응답뷰
 		
-		request.setAttribute("list", list);
+		request.setAttribute("dsplist", dsplist);
 		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);
 
 	}

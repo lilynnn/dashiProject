@@ -214,7 +214,7 @@
 					</table>
 				</div>
 
-				<!-- 파일을 입력하느곳-->
+				<!-- 파일을 입력하는곳-->
 				<div style="display:none">
 					<input type="file" name="file1" id="file1" onchange="loadImg(this ,1);" required>
 					<input type="file" name="file2" id="file2" onchange="loadImg(this ,2);">
