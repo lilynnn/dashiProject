@@ -31,11 +31,11 @@ public class AdminMainPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int noCount = new NoticeService().selectCount();
-		String noDate = new NoticeService().selectDate();
+		//int noCount = new NoticeService().selectCount();
+		//String noDate = new NoticeService().selectDate();
 		
-		System.out.println(noCount);
-		System.out.println(noDate);
+		//System.out.println(noCount);
+		//System.out.println(noDate);
 		
 		
 		request.getRequestDispatcher("views/admin/adminMainPage.jsp").forward(request, response);

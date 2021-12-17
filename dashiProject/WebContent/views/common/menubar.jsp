@@ -261,10 +261,10 @@
                         <input type="password" class="userPwd" name="userPwd" placeholder="비밀번호" required>
                     </div>
                     <div style="margin-top:20px; margin-bottom:15px;"><a href="" class="find">아아디/비밀번호찾기</a></div>
-                    </div>
 
                     <button class="loginBtn">로그인</button><br>
                 </form>
+              </div>
 
                 <p style="font-size: 13px; margin-left: 40px;">다시,사랑받개!가 처음이신가요?</p>
                 <button class="enrollBtn">회원가입</button>
