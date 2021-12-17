@@ -34,7 +34,7 @@ public class AdminFAQSearchController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		String keyword = request.getParameter("fkeyword");
+		String keyword = request.getParameter("fsearch");
 		
 		ArrayList<FAQ> list = new FAQService().keywordFAQ(keyword);
 	
