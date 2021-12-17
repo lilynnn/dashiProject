@@ -5,6 +5,11 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -72,7 +77,7 @@
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
         
-        <form action="">
+
 
              <!-- 입양후기리스트 보여줄 div -->
             <div class="content-area">
@@ -86,6 +91,7 @@
                 <br><br><br>
                 <!-- 검색버튼 -->
                 <div style="margin-left: 530px; width:450px;">
+                <!--
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -97,6 +103,7 @@
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
                     <button>검색</button>
+                  -->
                 </div>
                 
                 <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
@@ -139,13 +146,15 @@
                                     <option value="delete">탈퇴</option>
                                 </select>
                             -->
-                            <%= m.getGrade() %>
-                            </td>
+                            	<%= m.getGrade() %>
+                            </td> 
                         </tr>
                         <% } %>	
 					<% } %>
                     </tbody>
                     </table>
+                    
+                    
                     <br><br><br>
                     <!--수정하기 버튼-->
                     <div align="right">
@@ -155,16 +164,24 @@
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
-                        <button class="page">&lt;</button>
-                        <button class="page">1</button>
-                        <button class="page">2</button>
-                        <button class="page">3</button>
-                        <button class="page">4</button>
-                        <button class="page">5</button>
-                        <button class="page">&gt;</button>
+                    	<% if(currentPage != 1) { %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=currentPage-1%>';">&lt;</button>
+                        <% } %>
+                        
+                        <% for(int p=startPage; p<=endPage; p++){ %>
+                        	<% if(p == currentPage){ %>
+                        	<button class="page" disabled style="background:gray;"><%= p %></button>
+                        	<% } else { %>
+                        	<button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=p%>';"><%=p%></button>
+                        	<% } %>
+                        <% } %>
+                        
+                        <% if(currentPage != maxPage){ %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
+                        <% } %>
                     </div>
                 </div>
-            </form>
+            
     </div>
     <br><br><br><br>
 	<%@ include file="../common/footerbar.jsp" %>
