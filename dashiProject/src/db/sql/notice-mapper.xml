@@ -122,6 +122,35 @@
 		 WHERE NOTICE_NO = ?
 	</entry>
 
+	<entry key="selectCount">
+		SELECT 
+			   COUNT(NOTICE_TITLE) "count"
+		  FROM NOTICE
+         WHERE NO_STATUS = 'N'
+	</entry>
+
+	<entry key="selectDate">
+		SELECT WRITE_DATE
+		  FROM (SELECT WRITE_DATE
+		          FROM NOTICE
+		         ORDER 
+		            BY WRITE_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

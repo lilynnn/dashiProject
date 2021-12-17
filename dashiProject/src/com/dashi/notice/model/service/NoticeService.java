@@ -121,7 +121,19 @@ public class NoticeService {
 		return result;
 	} //공지사항의 공지등록취소
 	
+	public int selectCount() {
+		Connection conn = getConnection();
+		int noCount = new NoticeDao().selectCount(conn);
+		close(conn);
+		return noCount;
+	} // 관리자 메인페이지 숫자 알아오기
 	
+	public String selectDate() {
+		Connection conn = getConnection();
+		String noDate = new NoticeDao().selectDate(conn);
+		close(conn);
+		return noDate;
+	} // 관리자 메인페이지 날짜 알아오기
 	
 	
 	
