@@ -15,7 +15,7 @@
     }
     #mem-boardlist{
         background: rgb(32, 68, 28);
-        color: white;
+        color: orange;
     }
     /*게시판 이름*/
     #bo-name{

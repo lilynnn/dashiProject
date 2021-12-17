@@ -179,7 +179,7 @@
 
         <!-- case 2. 로그인 후-->
        
-       		<div>
+       		<div id="userChoice">
 	            <b><%=loginUser.getMemName() %>님</b>반갑습니다! &nbsp;
 	            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
 	            <a href="<%= contextPath %>/mypage.me" style="color: black;">마이페이지</a>

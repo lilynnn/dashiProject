@@ -25,6 +25,7 @@
         border: 1px solid green;
         border-radius: 3px;
         background:rgb(220, 238, 206);
+        box-sizing:border-box;
     }
     #mem-navi ul>li{
         width: 260px;
@@ -34,15 +35,14 @@
         border: 1px solid green;
         border-radius: 3px;
     }
-    a{
+    #mem-navi a{
         text-decoration: none;
-        color: black;
         display: block;
         line-height: 30px;
     }
-    a:hover{
+    #mem-navi a:hover{
     	text-decoration: none;
-        color: black;
+    	color:black;
     }
     #mem-navi>li>ul{
         padding: 0;

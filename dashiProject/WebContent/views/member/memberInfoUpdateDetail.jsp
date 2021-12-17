@@ -15,7 +15,7 @@
     }
     #mem-update{
         background: rgb(32, 68, 28);
-        color: white;
+        color: orange;
     }
     /*게시판 이름*/
     #name{
@@ -69,6 +69,7 @@
         width: 100%;
         text-align: center;
     }
+
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
