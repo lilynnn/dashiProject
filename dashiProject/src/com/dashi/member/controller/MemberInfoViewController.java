@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MemberInfoUpdateDetail
+ * Servlet implementation class MemberInfoViewController
  */
-@WebServlet("/detailInfo.me")
-public class MemberInfoUpdateDetail extends HttpServlet {
+@WebServlet("/infoView.me")
+public class MemberInfoViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInfoUpdateDetail() {
+    public MemberInfoViewController() {
         super();
         // TODO Auto-generated constructor stub
     }

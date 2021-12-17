@@ -77,8 +77,10 @@
 <body>
 	
     <!--누리 작업-->
-
+    
 	<%@ include file="../common/menubar.jsp" %>
+
+    <% String userPwd = loginUser.getMemPwd(); %>
 
 	 <!--전체 div-->
 	<div class="outer">
@@ -115,13 +117,28 @@
             </div>
         </div>
 
-        <form action="">
+		<form action="<%=contextPath%>/infoView.me" method="post">
             <div id="checkPwd">
                	 회원 비밀번호 
-                <input type="text">
-                <button type="submit"><a href="<%=contextPath%>/detailInfo.me">확인</a></button>
+                <input type="password" id="checkPwd" style="width:200px; height:50px;">
+                <button type="submit" onclick="return checkPwd();">확인</button>
             </div>
-        </form>
+		</form>
+
+	<script>
+		function checkPwd(){
+			if($("input[id=checkPwd]").val() != <%=userPwd%>){
+				alert("비밀번호가 일치하지 않습니다!");
+				
+				return false;
+			}
+			
+		}
+		console.log($("input[id=checkPwd]").val());
+		console.log(<%=userPwd%>);
+	</script>
+
+
 
     </div>
     

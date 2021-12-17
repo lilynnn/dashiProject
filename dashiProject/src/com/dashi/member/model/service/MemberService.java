@@ -51,5 +51,57 @@ public class MemberService {
 		close(conn);
 		return list;
 	}
+	
+	/**
+	 * @author 누리
+	 * @param m : 수정된 멤버객체
+	 * @return : updateMem
+	 */
+	public Member updateMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updateMember(conn, m);
+		
+		Member updateMem = null;
+		
+		if(result > 0) {
+			commit(conn);
+			updateMem = new MemberDao().selectMember(conn, m.getMemId());
+		}else{
+			rollback(conn);
+		}		
+		close(conn);
+		
+		return updateMem;
+		
+	} // 회원정보수정
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

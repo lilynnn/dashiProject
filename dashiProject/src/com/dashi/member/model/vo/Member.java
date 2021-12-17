@@ -64,6 +64,26 @@ public class Member {
 	
 	//회원가입 받아줄 객체
 	
+	/**
+	 * @author 누리
+	 * 회원정보수정용 매개변수!
+	 */
+	public Member(String memId, String memName, String memPwd, String nickname, String birth, String phone,
+			String email, String postNo, String address, String addressDetail) {
+		super();
+		this.memId = memId;
+		this.memPwd = memPwd;
+		this.memName = memName;
+		this.nickname = nickname;
+		this.birth = birth;
+		this.email = email;
+		this.postNo = postNo;
+		this.address = address;
+		this.addressDetail = addressDetail;
+		this.phone = phone;
+	}
+	
+	
 
 	public int getMemNo() {
 		return memNo;

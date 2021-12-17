@@ -183,6 +183,96 @@ public class MemberDao {
 		
 	}
 	
+	/**
+	 * @author 누리
+	 * @param conn
+	 * @param m
+	 * @return result : 업데이트 결과
+	 */
+	public int updateMember(Connection conn, Member m) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, m.getMemPwd());
+			pstmt.setString(2, m.getMemName());
+			pstmt.setString(3, m.getNickname());
+			pstmt.setString(4, m.getBirth());
+			pstmt.setString(5, m.getPhone());
+			pstmt.setString(6, m.getEmail());
+			pstmt.setInt(7, Integer.parseInt(m.getPostNo()));
+			pstmt.setString(8, m.getAddress());
+			pstmt.setString(9, m.getAddressDetail());
+			pstmt.setString(10, m.getMemId());
+			
+			result = pstmt.executeUpdate();		
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	} // 회원정보 업데이트
+	
+	public Member selectMember(Connection conn, String userId) {
+		
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getString("mem_id")
+						     , rset.getString("mem_name")
+						     , rset.getString("mem_pwd")
+						     , rset.getString("nickname")
+						     , rset.getString("dob")
+						     , rset.getString("phone")
+						     , rset.getString("email")
+						     , rset.getString("post_no")
+						     , rset.getString("address")
+						     , rset.getString("address_d"));						
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return m;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

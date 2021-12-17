@@ -87,6 +87,24 @@
 
 
     <%@ include file="../common/menubar.jsp" %>
+    
+    <%
+    	String userId = loginUser.getMemId();
+    	String userName = loginUser.getMemName();
+    	String nickname = (loginUser.getNickname() == null) ? "" : loginUser.getNickname();
+    	String userPwd = loginUser.getMemPwd();
+    	String birth = (loginUser.getBirth() == null) ? "" : loginUser.getBirth();
+    	String phone = (loginUser.getPhone() == null) ? "" : loginUser.getPhone();
+    	String email = (loginUser.getEmail() == null) ? "" : loginUser.getEmail();
+    	String postNo = (loginUser.getPostNo() == null) ? "" : loginUser.getPostNo();
+    	String addressN = (loginUser.getAddress() == null) ? "" : loginUser.getAddress();
+    	String addressD = (loginUser.getAddressDetail() == null) ? "" : loginUser.getAddressDetail();
+    
+    %>
+    
+    
+    
+    
 
     <!--전체 div-->
 	<div class="outer">
@@ -104,7 +122,7 @@
     
         <!--회원정보 폼-->
         <div id="memberInfo">
-            <form action="" method="post">
+            <form action="<%=contextPath%>/updateInfo.me" method="post">
 
                 <table class="member-up">
                     <thead>
@@ -115,7 +133,7 @@
                             </td>
                             <td style="width: 85px; border-bottom: 1px solid black;">
                                 <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMember">
-                                    탈퇴하기
+                                    	탈퇴하기
                                 </button>
                             </td>
                         </tr>
@@ -124,77 +142,76 @@
                     <tbody>
                         <tr>
                             <td class="info">이름</td>
-                            <td colspan="2">강동원</td>
+                            <td colspan="2">
+                            	<input type="text" name="userName" value="<%=userName%>">
+                            </td>
                         </tr>
                         <tr>
                             <td class="info">아이디</td>
-                            <td colspan="2">user01</td>
+                            <td colspan="2">
+								<input type="text" name="userId" value="<%=userId%>" readonly>
+							</td>
                         </tr>
                         <tr>
                             <td class="info">* 닉네임</td>
                             <td colspan="2" id="nickname">
-                                <input type="text" placeholder="변경하실 닉네임을 써주세요" required value="">
-                                특수문자를 제외한 2~10글자 내의 한글,영어,숫자만 가능
+                                <input type="text" name="nickname" placeholder="변경하실 닉네임을 써주세요" value="<%=nickname%>">
+                                	특수문자를 제외한 2~10글자 내의 한글,영어,숫자만 가능
                             </td>
                         </tr>
                         <tr>
                             <td class="info">비밀번호</td>
                             <td colspan="2">
-                                <input type="password">
-                                10~20자내의 영문,숫자,특수기호사용
+                                <input type="password" id="userPwd" name="userPwd" value="<%=userPwd%>">
                             </td>
                         </tr>
                         <tr>
                             <td class="info">비밀번호 확인</td>
                             <td colspan="2">
-                                <input type="password" placeholder="설정하신 비밀번호와 똑같이입력하세요">
+                                <input type="password" id="checkPwd" placeholder="설정하신 비밀번호와 똑같이입력하세요" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td class="info">* 생년월일</td>
                             <td colspan="2">
-                                <input type="date" required value="">
+                                <input type="text" name="birth" required value="<%=birth.substring(0,10)%>">
                             </td>
                         </tr>
                         <tr>
                             <td class="info">* 휴대폰번호</td>
                             <td colspan="2">
-                                <input type="text" placeholder="(-)하이픈을 포함해서 입력해주세요" value="" required>
+                                <input type="text" name="phone" placeholder="(-)을 포함해서 작성해주세요" value="<%=phone%>" required>
                             </td>
                         </tr>
                         <tr>
                             <td class="info">이메일</td>
                             <td colspan="2">
-                                <input type="text" value="">
-                                <select name="domain">
-                                    <option selected value="naver">@naver.com</option>
-                                    <option value="google">@google.com</option>
-                                    <option value="daum">@daum.net</option>
-                                    <option value="none">선택안함</option>
-                                </select>
+                                <input type="text" name="email" value="<%=email%>">
                             </td>
                         </tr>
+                        <!-- 광고멘트 삭제
                         <tr>
                             <td class="info"></td>
                             <td colspan="2">
-                                다시,사랑받개!의 이메일을 받아보시겠습니까?<br>
+                               	 다시,사랑받개!의 이메일을 받아보시겠습니까?<br>
                                 <label><input type="radio" class="radio" name="emailYN">네 </label>
                                 <label><input type="radio" class="radio" name="emailYN">아니오 </label>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td class="info">* 주소</td>
                             <td colspan="2">
-                                <input type="text" style="width: 100px;" value="12345" required>
+                                <input type="text" name="postNo" style="width: 100px;" value="<%=postNo%>" required>
                                 <button>우편번호</button>
                                 <br><br>
-                                <input type="text" style="width: 500px;" value="주소1" required>
-                                기본주소
+                                <input type="text" name="addressN" style="width: 500px;" value="<%=addressN%>" required>
+                                	기본주소
                                 <br><br>
-                                <input type="text" style="width: 500px;" value="주소2" required>
-                                상세주소
+                                <input type="text" name="addressD" style="width: 500px;" value="<%=addressD%>" required>
+                                	상세주소
                             </td>
                         </tr>
+                        <!-- 광고멘트 삭제
                         <tr>
                             <td class="info"></td>
                             <td colspan="2">
@@ -202,14 +219,14 @@
                                 <label><input type="radio" class="radio" name="smsYN">네 </label>
                                 <label><input type="radio" class="radio" name="smsYN">아니오 </label>
                             </td>
-                        </tr>
+                        </tr> -->
                         <tr>
                             <td colspan="3" align="center">
                                 <button type="button" class="btn btn-primary" style="background: rgb(143,153,142); border: none;" onclick=history.back();>
-                                    이전으로
+                                    	이전으로
                                 </button>
-                                <button type="submit" class="btn btn-primary" style="background: rgb(102,184,94); border: none;">
-                                    수정하기
+                                <button type="submit" id="updatebtn" class="btn btn-primary" style="background: rgb(102,184,94); border: none;">
+                                   	 수정하기
                                 </button>
                             </td>
                         </tr>
@@ -219,6 +236,18 @@
             </form>
         </div>
     </div>
+
+	<script>
+                        
+       	$('input[name="userPwd"]').click(function(){
+       		
+        	$("#checkPwd").removeAttr("disabled");
+
+       	})
+       	
+    </script>
+
+
 
     <!-- 회원탈퇴용 모달 -->
     <div class="modal" id="deleteMember">

@@ -109,7 +109,54 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
-	
+	<entry key="updateMember">
+		UPDATE MEM_INFO
+		   SET MEM_PWD = ?
+		     , MEM_NAME = ?
+		     , NICKNAME = ?
+		     , DOB = ?
+		     , PHONE = ?
+		     , EMAIL = ?
+		     , POST_NO = ?
+		     , ADDRESS = ?
+		     , ADDRESS_D = ?
+		 WHERE MEM_ID = ?
+	</entry>
+
+	<entry key="selectMember">
+		SELECT
+		       MEM_ID
+		     , MEM_NAME
+		     , MEM_PWD
+		     , NICKNAME
+		     , DOB
+			 , PHONE
+		     , EMAIL
+		     , POST_NO
+		     , ADDRESS
+		     , ADDRESS_D
+		  FROM MEM_INFO
+		 WHERE MEM_ID = ?
+		   AND DELETE_YN = 'N'
+		   AND BLACKLIST_YN = 'N'
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </properties>
