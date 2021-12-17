@@ -23,7 +23,7 @@ public class Dsp {
 	private String issue;		//동물특이사항
 	private String etc; 		//동물기타내용
 	private int money;          // 사례금
-	
+	private String titleImg;    // 동물 대표사진
 	
 	public Dsp() {
 		super();
@@ -32,7 +32,7 @@ public class Dsp {
 
 	public Dsp(String dspNo, String memNo, String dspTitle, String nickName, int viewCount, Date writeDate,
 			String dspStatus, String postStatus, String ctg, String issueDate, String locationName, String phone,
-			String variety, String gender, String age, String weight, String issue, String etc, int money) {
+			String variety, String gender, String age, String weight, String issue, String etc, int money, String titleImg) {
 		super();
 		this.dspNo = dspNo;
 		this.memNo = memNo;
@@ -53,6 +53,32 @@ public class Dsp {
 		this.issue = issue;
 		this.etc = etc;
 		this.money = money;
+		this.titleImg=titleImg;
+		
+	}
+	
+	
+
+	//리스트 받아줄 객체
+	public Dsp(String ctg, String dspTitle, int money, String locationName, String issue, String titleImg) {
+		super();
+		this.dspTitle = dspTitle;
+		this.ctg = ctg;
+		this.locationName = locationName;
+		this.issue = issue;
+		this.money = money;
+		this.titleImg=titleImg;
+	}
+
+
+	
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 
@@ -252,8 +278,9 @@ public class Dsp {
 				+ ", viewCount=" + viewCount + ", writeDate=" + writeDate + ", dspStatus=" + dspStatus + ", postStatus="
 				+ postStatus + ", ctg=" + ctg + ", issueDate=" + issueDate + ", locationName=" + locationName
 				+ ", phone=" + phone + ", variety=" + variety + ", gender=" + gender + ", age=" + age + ", weight="
-				+ weight + ", issue=" + issue + ", etc=" + etc + ", money=" + money + "]";
+				+ weight + ", issue=" + issue + ", etc=" + etc + ", money=" + money + ", titleImg=" + titleImg + "]";
 	}
+
 
 
 	

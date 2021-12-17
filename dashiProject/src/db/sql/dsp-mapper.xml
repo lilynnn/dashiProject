@@ -58,12 +58,28 @@
 		VALUES
 		 (
 		   SEQ_FNO.NEXTVAL
-		 , SEQ_DSPNO.CURRVAL
+		 , 'DSP-'||LPAD(SEQ_DSPNO.CURRVAL,3,0)
 		 , ?
 		 , ?
 		 , ?
 		 , ?
 		 )
 
+	</entry>
+	
+	
+	<entry key="selectDspList">
+		SELECT
+		       POST_CTG
+		     , DSP_TITLE
+		     , MONEY
+		     , LOCATION_NAME
+		     , ANIMAL_ISSUE
+		     , PATH || CHANGE_NAME "TITLEIMG"
+		  FROM DSP
+		  JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+		 WHERE POST_STATUS = 'Y'
+		 ORDER 
+		    BY DSP_NO DESC
 	</entry>
 </properties>

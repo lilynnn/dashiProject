@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList , com.dashi.dspBoard.model.vo.Dsp"%>
+    
+<%
+	ArrayList<Dsp> list = (ArrayList<Dsp>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -149,23 +153,26 @@
 		<%} %>
         <div class="dspList-area">
         
-            <!-- case 1. 조회된 게시글이 없을경우-->
-            <p style="text-align: center;">조회된 게시글이 없습니다.</p>
-
+        	<%if(list.isEmpty()){ %>
+	            <!-- case 1. 조회된 게시글이 없을경우-->
+	            <p style="text-align: center;">조회된 게시글이 없습니다.</p>
+			<%}else{ %>
             <!-- case 1. 조회글이 있을경우-->
             <!--for문 돌려서 썸네일 여러개 만들거임-->
-
-            <div class="list">
-                <div class="img-wrap">
-                   <img src="대표 이미지 경로" width="250" height="260"> 
-                </div>
-                
-                <p>
-                    <span style="color: red; font-weight: bold;">[실종]</span> 귀요미를 찾습니다<br><br>
-                    <span style="color: red; font-weight: bold;">사례금 5억</span> / 경기도 용인시<br>
-                   내용은 대충 이러쿵 저러쿵
-                </p>
-            </div>
+				<%for(Dsp d:list) {%>
+		            <div class="list">
+		                <div class="img-wrap">
+		                   <img src="<%=contextPath%>/<%= d.getTitleImg() %>" width="250" height="260"> 
+		                </div>
+		                
+		                <p>
+		                    <span style="color: red; font-weight: bold;">[<%=d.getCtg() %>]</span> <%=d.getDspTitle() %><br><br>
+		                    <span style="color: red; font-weight: bold;">사례금 : <%=d.getMoney() %> </span> / <%=d.getLocationName() %><br>
+		                   		<%=d.getIssue() %>
+		                </p>
+		            </div>
+	            <%} %>
+            <%} %>
 
         </div>
 

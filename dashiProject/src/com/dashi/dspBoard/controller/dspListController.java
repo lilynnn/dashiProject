@@ -1,11 +1,16 @@
 package com.dashi.dspBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dashi.dspBoard.model.service.DspService;
+import com.dashi.dspBoard.model.vo.Dsp;
 
 /**
  * Servlet implementation class dspListController
@@ -28,6 +33,11 @@ public class dspListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		// 요청처리(응답페이지에 필요한 데이터 요청)
+		ArrayList<Dsp> list = new DspService().selectDspList();
+		// 응답뷰
+		
+		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);
 
 	}

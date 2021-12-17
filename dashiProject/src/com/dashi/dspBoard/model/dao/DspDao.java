@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -88,6 +89,41 @@ public class DspDao {
 		}
 		return result;
 	
+	}
+
+	//
+	public ArrayList<Dsp> selectDspList(Connection conn) {
+
+		//여러행 조회되니까 리스트 이용
+		ArrayList<Dsp> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectDspList");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Dsp(rset.getString("post_ctg")
+								,rset.getString("dsp_title")
+								,rset.getInt("money")
+								,rset.getString("location_name")
+								,rset.getString("animal_issue")
+								,rset.getString("titleImg")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
 	}
 
 }
