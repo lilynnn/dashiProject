@@ -197,7 +197,7 @@
 	        <div class="menu">
                 <a href="">보호소소개</a>
                     <ul class="menu-tag">
-                        <li><a href="">다시,사랑받개!소개</a></li>
+                        <li><a href="<%=contextPath%>/intro.la">다시,사랑받개!소개</a></li>
                     </ul>
             </div>
 
