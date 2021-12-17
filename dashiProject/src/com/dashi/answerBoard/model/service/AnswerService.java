@@ -8,7 +8,7 @@ import com.dashi.answerBoard.model.dao.AnswerDao;
 import com.dashi.answerBoard.model.vo.Answer;
 
 public class AnswerService {
-	/*
+	
 	// 1대1 전체조회 
 	public ArrayList<Answer> selectAnswerList() {
 		Connection conn = getConnection();
@@ -19,9 +19,10 @@ public class AnswerService {
 		
 		return list;
 		
-	}*/
+	}
 	
 	
+	 /*
 	//1대1 등록
 	public int insertAnswer(Answer a) {
 		Connection conn = getConnection();
@@ -34,6 +35,6 @@ public class AnswerService {
 		}
 		close(conn);
 		return result;
-	}
+	}*/
 	
 }

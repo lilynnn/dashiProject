@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.answerBoard.model.vo.Answer;
@@ -27,6 +28,42 @@ import static com.dashi.common.JDBCTemplate.*;
 		e.printStackTrace();
 		}	
 }
+	
+	
+	// Answer 조회
+	
+	public ArrayList<Answer> selectAnswerList(Connection conn){
+	
+			ArrayList<Answer> list = new ArrayList<>();
+			
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectAnswerList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql); 
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					list.add(new Answer(rset.getString("inquireNo"),
+										rset.getInt("asCategory"),
+										rset.getString("qTitle"),
+										rset.getString("qContent"),
+										rset.getString("memId"),
+										rset.getDate("qCreat")));
+					}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+	}
+	
 	
 	// Answer 등록
 	public int insertAnswer(Connection conn , Answer a ){

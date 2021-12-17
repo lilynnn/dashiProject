@@ -58,8 +58,8 @@
     /*팝업창 스타일 - 커버  */
 
     .pop-up-wrap{
-        width: 300px;
-        background-color: rgba(174, 200, 170, 0.678);
+        width: 400px;
+       	background-color: white;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -83,29 +83,26 @@
         z-index: -1;
         transition: all 0.5s;
     }
-    .pop-up-wrap:target + dim {
+    .pop-up-wrap:target + div {
         opacity: 1;
         z-index: 2;
     }
 
     /* 팝업창 content , btn 스타일 */ 
-    .btn-box{}
-    .btn-box>input{
-        display:block; 
-        width:10px;
-        height: 10px;
-    }
-
-    .btn-box>btn-text{
-        margin-left: 20px;
-    }
-
+    .btn-box{
+    margin-left: 190px;
+    width:367px}
+    
     .btn-clo{
-        float: right; 
-        margin-right: 20px;
         cursor: pointer;    
-        font-size: 10px;
+        font-size: 15px;
+        color:green;
+      
+        text-decoration: none;
+        
             }
+            
+     
 </style>
 </head>
 
@@ -123,15 +120,15 @@
     <table class="table1">
         <tr> <!-- 아이디 -->
             <th  width=220 colspan="2">아이디 <b>*</b></th> 
-            <td  width=780><input type="text" style="width: 690px" name="memId" value="" placeholder="성함을 입력해주세요." required></td>
+            <td  width=780><input type="text" style="width: 690px" name="memberId" value="" placeholder="성함을 입력해주세요." required></td>
         </tr>
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목<b>*</b></th>
-            <td width=780><input type="text" style="width: 690px" name="qTitle" value="" placeholder="연락처를 입력해주세요." required></td>
+            <td width=780><input type="text" style="width: 690px" name="answerTitle" value="" placeholder="연락처를 입력해주세요." required></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
-            <td width=780><textarea name="qcontent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
+            <td width=780><textarea name="answerContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
         </tr>
         <tr>    <!-- 개인정보 수집 동의 체크박스 -->
             <td style="font-size: 13px;" colspan="2"><input type="checkbox" required>개인정보 수집 및 이용에 동의합니다.<b>*</b>
@@ -139,6 +136,28 @@
                 <br>  &nbsp; &nbsp;<a href="#pop1">내용보기</a></td>
         </tr>
     </table>
+    
+    
+    <!-- 팝업창 만들기 -->
+    <div class="dim"></div>
+    <div id="pop1" class="pop-up-wrap">
+        <div class="txt-box">
+        <br><br>
+            <b style="color: black;">수집 목적</b> <br><br>
+            회원가입 및 서비스 신청 등 <br>
+            서비스 이용과 관련된 상담안내 <br><br>
+            <b style="color: black;">수집 항목</b><br><br>
+            이름 ,전화번호, IP (자동수집) <br> <br>
+            <b style="color: black;">보유 및 이용기간</b> <br><br>
+            상담 및 해당 업무 종료 후<br>
+             1년 이내 파기<br><br>
+           
+                    <div class="btn-box" > 
+        <a href="#a" class="btn-clo"><b>X</b></a>
+        <br><br>
+                     </div>
+                </div>
+        </div>
     
     <hr>
     
@@ -148,24 +167,7 @@
     </form>
     
    
-    <!-- 팝업창 만들기 -->
-    <div id="pop1" class="pop-up-wrap">
-        <div class="txt-box">
-            <b style="color: black;">수집 목적</b> <br><br>
-            회원가입 및 서비스 신청 등과 관련된 상담안내 <br><br>
-            <b style="color: black;">수집 항목</b><br><br>
-            이름 ,전화번호, IP (자동수집) <br> <br>
-            <b style="color: black;">보유 및 이용기간</b> <br><br>
-            상담 및 해당 업무 종료 후<br>
-             1년 이내 파기<br><br>
-           
-
-                    <div class="btn-box row" > 
-                     <a href="#a" class="btn-clo">닫기</a>
-                     </div>
-                </div>
-        </div>
-        <div class="dim"></div>
+       
     
     
    

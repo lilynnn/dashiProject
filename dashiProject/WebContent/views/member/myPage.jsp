@@ -319,12 +319,14 @@
                 <div class="box box3">
 
                     <!--1:1문의 조회 영역(클릭 시 이동)-->
+                    
                     <div class="txtarea2"  align="center">
+                  		 <a href="<%= contextPath %>/asList.as">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/answer.png">
                         <br><br>
                         <p align="center">1:1문의내역</p>
-                    </div>
+                    </div></a>
 
                 </div>
             </div>

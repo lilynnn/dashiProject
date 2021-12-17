@@ -1,196 +1,246 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.answerBoard.model.vo.Answer" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>1:1 문의관리</title>
+<title>Insert title here</title>
+</head>
+<body>
+	<% 
+		ArrayList<Answer> list = (ArrayList<Answer>)request.getAttribute("list");
+	%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 <style>
     .outer{
         width: 1100px;
-        height: 800px;
         margin: auto;
         margin-top: 50px;
+        height:1200px
     }
     .outer>div{
-        float: left;
+        float: left; 
         box-sizing: border-box;
     }
-    /*왼쪽메뉴바*/
-    #munubar{width:150px}
-    /*공지사항시작*/
- 	#adminNoticeList{
-         margin-left: 30px;
-         width: 850px;
+    /**/
+    #name, #serve, #meno{margin-top: 10px; height: 50px;}
+    #name{
+        width: 120px;
+        font-size: 24px;
+        line-height: 50px;
+        font-weight: 900;
     }
-    #adminNoticeList div{float: left;}
-    /*검색창*/
-    #search{width: 200px;}
-    #btn{
-        width: 650px;
+    #serve{
+        width: 450px;
+        color: darkgray;
+        line-height: 60px;
     }
-    #btn>button{
-        border-radius: 5px;
-        border: white;
-        width: 60px;
-        font-size: 13px;
+    #meno{width: 700px;}
+    #meno>div{
+        width: auto;
+        float: left;
+        font-weight: 900;
     }
-    thead, tbody{
+    #call{
+        width: 200px;
+        height: 100px;
+        position: absolute;
+        margin-left: 880px;
+    }
+    /*키워드 검색*/
+    #kDiv{width: 100%;}
+    .keyword{
+        float: left;
+        width: 80px;
+        text-align: left;
+        margin-bottom: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgb(84, 103, 121);
+    }
+    .keyword:hover{
+        color:orange;
+        cursor: pointer;
+    }
+    /*FAQ 목록*/
+    #list>table{
         text-align: center;
     }
-    table{ 
-        border-top:1px solid;
-        border-bottom: 1px solid;    
+    thead>tr{height: 30px;}
+    /*답변작업*/
+    .question:hover{
+        cursor: pointer;
     }
-    thead{background: rgb(224, 223, 223);}
+	.Answer{
+		display:none;
+	}
+    /*pagingbar*/
+    .paging-area{
+        width: 100%;
+        margin-top: 30px;
+    }
+    .paging-area>button{
+    	border-radius:3px;
+    	border:none;
+    }
     
-    /*타이틀 정리*/
-    #title{
-        width: 100%; 
-        font-size: 24px; 
-        font-weight: 700;
-        margin-top: 20px;
+    /* 글작성 버튼 */
+    .write{
+    margin-top : 60px;
+    float:right;
+    background-color:rgb(102,184,94);
     }
-    #searchbtn{
-    background: rgb(102,184,94);
-    font-size: 13px;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    text-transform: uppercase;
-    padding: 5px;
-    }
-
-    .checkState{
-        border-radius: 10px;
-        }
-    #answ{
-    font-size:15px;
-    background: rgb(102,184,94);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    font-weight: bold;
-    position: relative;
-    text-transform: uppercase;
     
-    }
-        
 </style>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
+	
     <%@ include file="../common/menubar.jsp" %>
     
-    <!--전체를 감싸는 큰 div-->
-    <div class="outer" >
-    
-                <div id="title">
-                    	1:1 문의 관리
-                <hr style="width: 950px;">
-                </div>
-			<% if(loginUser != null) { %>
-			
-	        <!--로그인한 회원만 보여지는 div-->
-	        <div align="right" style="width:860px">
-	            <a href="<%= contextPath %>/enrollForm.bo" class="btn btn-sm btn-secondary">글작성</a>
+
+    <!--전체 div-->
+	<div class="outer">
+
+        <!--게시판 안내-->
+        <div id="name">
+            1 : 1 문의
+        </div>
+        <div id="serve">| 최대한 빠르게 답변드리겠습니다.</div>
+        <div id="meno">
+            <div style="width: 60px;"></div>
+            <div style="width: 107px; color:rgb(63, 194, 23);">
+               궁금하신 점을
+            </div>
+            <div>문의해주세요. (로그인 후 글작성 가능)</div>
+        </div>
+
+        <!--상담전화카드-->
+        <div id="call">
+            <img src="<%=contextPath%>/resources/images/FAQphonecard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
+        </div>
+
+        <!--키워드 검색-->
+        <div id="kDiv">
+            <div class="keyword">입양</div>
+             <div class="keyword">입소</div>
+            <div class="keyword">실종</div>
+            <div class="keyword">로그인</div>
+            <div class="keyword" style="width: 110px;">결제문의</div>
+            <div class="keyword">기타</div>
+        </div>
+
+        <!--1:1문의리스트-->
+        <div id="list">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
+                       <th width="140px">NO.</th>
+                        <th width="140px">카테고리</th>
+                        <th width="720px">제목</th>
+                        <th width="100px">아이디</th>
+                        <th width="120px">작성일</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                	<% if(list.isEmpty()){ %>
+                    <!--1:1문의 없을 때-->
+	                    <tr>
+	                        <td colspan="5"> 1:1 문의가 없습니다.</td>
+	                    </tr>
+        			<% }else{ %>
+                    <!--1:1 있을 때-->
+                    	<% for(Answer a : list){ %>
+	                    <tr class="question">	
+	                    	<% 
+		                    	String category ="";
+		                    	switch(a.getasCategory()){
+		                    	case 1: category = "입양문의"; break;
+		                    	case 2: category = "입소문의"; break;
+		                    	case 3: category = "실종문의"; break;
+		                    	case 4: category = "로그인관련"; break;
+		                    	case 5: category = "결제문의"; break;
+		                    	case 6: category = "기타"; break;
+								}
+							%>
+	            			<td> <%=a.getInquireNo() %> </td>
+	                        <td><%=category%></td>
+	                        <td><%=a.getqTitle()%></td>
+	                        <td><%=a.getMemId() %>
+	                        <td><%=a.getqCreat()%></td>
+	                    </tr>
+	
+	                    <!--1:1 답변창-->
+	                    <tr class="Answer">
+	                        <td colspan="5" style="background: #ecfafa;">
+	                            <div align="left">
+	                                <p>
+	                                   	<%=a.getqTitle()%>
+	                                <hr>
+	                                </p>
+	                                <p style="font-weight: 600;">
+	                                   	 <%=a.getqContent()%>
+	                                </p>
+	                            </div>
+	                        </td>
+	                    </tr>
+	                    <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+	<% if(loginUser != null ) { %>
+	 
+	        <div align="right" style="width:1100px">
+	            
+	            <a href="<%= contextPath %>/select.as" class="btn btn-sm btn-secondary write">글작성</a>
 	            <br><br>
 	        </div>
         <% } %>
-        
-            <!-- 1:1 목록-->
-        <div id="answerlist" >
-        	
-        	<form action="select.as" method="post">
 
-                <!-- 카테고리 및 검색창-->
-                 <div class="search-area" style="margin: 20px 0px; display:inline-block;">
-                    <select name="search-category" style="height: 30px; margin: 5px;">
-                        <option value="">카테고리</option>
-                        <option value="">입양문의</option>
-                        <option value="">입소문의</option>
-                        <option value="">실종문의</option>
-                        <option value="">로그인관련</option>
-                        <option value="">결제문의</option>
-                        <option value="">기타문의</option>
-                    </select>
-
-                    <input type="text" placeholder="검색어를 입력하세요.">
-                    
-                    <button id="searchbtn" style="margin: 5px; padding-left: 10px;padding-right: 10px;">검색</button>
-                </div>
-                
-                <div id="btn" align="right"; style="display: inline-block;" >
-                    <button>수정</button>
-                    <button>삭제</button>
-                </div>
-
-                
-                   <table align="center" class="table" width="900px">
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <th>No.</th>
-                                <th>이름</th>
-                                <th>분류</th>
-                                <th width="500">제목</th>
-                                <th>작성일</th>
-                                <th width="100"> 상태 </th>
-                                <th width="100"> 답변 </th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <th>1</th>
-                                <th>이철수</th>
-                                <th>입양문의</th>
-                                <th>입양관련 질문드립니다 </th>
-                                <th>2021-12-24</th>
-                                <th class="checkState" style="color:red;">미답변</th>
-                                <th><button value="답변하기" id="answ">답변하기</button></th>
-                            </tr>
-
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <th>1</th>
-                                <th>김영희</th>
-                                <th>실종문의</th>
-                                <th>실종글 문의 어쩌구</th>
-                                <th>2021-12-24</th>
-                                <th class="checkState" style="color:rgb(143,153,142);">답변</th>
-                                <th><button value="답변하기" id="answ">답변하기</button></th>
-                            </tr>
-
-
-			
-                        </tbody>
-                    </table>
-
-            </form>
-        	
-        	
-                    <div align="center" style="margin-top: 30px;">
-                        <button class="btn btn-light">&lt;</button>
-                        <button class="btn btn-light">1</button>
-                        <button class="btn btn-light">2</button>
-                        <button class="btn btn-light">3</button>
-                        <button class="btn btn-light">4</button>
-                        <button class="btn btn-light">&gt;</button>
-                    </div>
-        	
-        	
-        </div>
     </div>
 
-	<!-- footerbar영역 -->
+    <script>
+        
+        $(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next(); 
+
+                if($answer.css("display") == "none"){
+
+                    $(this).siblings(".Answer").slideUp();
+
+                    $answer.slideDown(1000);
+
+                }else{
+
+                    $answer.slideUp();
+                }
+            })
+        })
+        
+    </script>
+
 	<%@ include file="../common/footerbar.jsp" %>
 
+</body>
+</html>
 </body>
 </html>

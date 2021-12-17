@@ -34,7 +34,8 @@ public class AnswerFormController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
-		// 이름 연락처 내용 
+		
+		/* // 이름 연락처 내용 
 		String memId = request.getParameter("memId");
 		String qTitle = request.getParameter("qTitle");
 		String qContent= request.getParameter("qContent");
@@ -48,7 +49,7 @@ public class AnswerFormController extends HttpServlet {
 				a.setqContent(qContent);
 				
 				
-		
+				
 		int result = new AnswerService().insertAnswer(a);
 		if(result > 0) { // 성공 => /jsp/list.no  url 재요청 => 목록페이지 보여지도록 alert(성공적으로 공지사항 등록되었습니다.)
 
@@ -58,8 +59,8 @@ public class AnswerFormController extends HttpServlet {
 		}else { // 실패 => 에러문구(공지사항 등록 실패)담아서 에러페이지 포워딩
 			request.setAttribute("errorMsg", "등록 실패 하였습니다");
 			response.sendRedirect(request.getContextPath() + "<%contextPath%>/insert.as");
-		}
-		
+		}*/
+		request.getRequestDispatcher("views/answerBoard/answerForm.jsp").forward(request, response);	
 	
 	}	
 		

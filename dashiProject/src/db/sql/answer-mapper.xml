@@ -2,6 +2,20 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
+<entry key="selectAnswerList">
+SELECT 
+    INQUIRE_NO
+    , AS_CATEGORY
+    , Q_TITLE
+    , Q_CONTENT
+    , memId
+    , Q_CREAT
+    FROM ANSWER A 
+    JOIN MEMBER ON(MEM_NO = MEM_ID)
+    ORDER 
+    BY INQUIRE_NO DESC
+</entry>
+
 <entry key="insertAnswer">
 INSERT ANSWER 
     INTO 
