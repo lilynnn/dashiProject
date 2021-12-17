@@ -20,10 +20,12 @@
 		  , ANIMAL_WEIGHT
 		  , ANIMAL_ISSUE
 		  , ETC
+		  , MONEY
 		  )
 		  VALUES
 		  (
-		    SEQ_DSPNO.NEXTVAL
+		    'DSP-'||LPAD(SEQ_DSPNO.NEXTVAL,3,0)
+		  , ?
 		  , ?
 		  , ?
 		  , ?
@@ -47,10 +49,8 @@
 		  INTO ATTACHMENT
 		  (
 		    ATTACH_NO
-		  , CATEGORY_NO
 		  , REF_NO
 		  , PATH
-		  , UPLOAD
 		  , ORIGIN_NAME
 		  , CHANGE_NAME
 		  , ATTACH_LEVEL
@@ -60,7 +60,6 @@
 		   SEQ_FNO.NEXTVAL
 		 , SEQ_DSPNO.CURRVAL
 		 , ?
-		 , SYSDATE
 		 , ?
 		 , ?
 		 , ?

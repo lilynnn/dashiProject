@@ -1,5 +1,7 @@
 package com.dashi.dspBoard.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,15 +17,25 @@ public class DspDao {
 	
 	private Properties prop = new Properties();
 
+	public DspDao() {
+		try {
+			prop.loadFromXML(new FileInputStream(DspDao.class.getResource("/db/sql/dsp-mapper.xml").getPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public int insertDsp(Connection conn, Dsp d) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertDsp");
+	
 		
 
 		
 		try {
-			pstmt =conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(d.getMemNo()));
 			pstmt.setString(2, d.getDspTitle());
 			pstmt.setString(3, d.getNickName());
@@ -37,6 +49,7 @@ public class DspDao {
 			pstmt.setString(11, d.getWeight());
 			pstmt.setString(12, d.getIssue());
 			pstmt.setString(13, d.getEtc());
+			pstmt.setInt(14, d.getMoney());
 			
 			result = pstmt.executeUpdate();
 			

@@ -11,6 +11,8 @@ import com.dashi.dspBoard.model.vo.Dsp;
 
 public class DspService {
 
+	//실종보호목격 글 입력라
+	
 	public int insertDsp(Dsp d, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		
