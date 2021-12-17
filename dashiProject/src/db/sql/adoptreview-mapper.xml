@@ -8,6 +8,7 @@
 			  (
 			    ARLIST_NO
 			  , MEM_NO
+			  , MEM_ID
 			  , NICKNAME
 			  , AN_TYPE
 			  , AR_TITLE
@@ -16,6 +17,7 @@
 			  VALUES
 			  (
 			    'AR-'||LPAD(SEQ_ARNO.NEXTVAL,3,0)
+			  , ?
 			  , ?
 			  , ?
 			  , ?
@@ -90,6 +92,37 @@
 		     , PATH
 		  FROM ATTACHMENT
 		 WHERE REF_NO = ?
+	</entry>
+	
+	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM ADOPT_REVIEW
+		 WHERE POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, C.* 
+		          FROM (
+		                SELECT
+		                       ARLIST_NO
+		                     , A.MEM_ID
+		                     , A.NICKNAME
+                             , AN_TYPE
+                             , AR_TITLE
+                             , VIEW_COUNT
+                             , TO_CHAR(WRITE_DATE,'YYYY-MM-DD') WRITE_DATE
+		                  FROM ADOPT_REVIEW A
+                          JOIN MEM_INFO USING(MEM_NO)
+                         WHERE POST_STATUS = 'Y'
+		                 ORDER
+		                    BY ARLIST_NO DESC
+		                ) C
+		        )
+		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	

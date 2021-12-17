@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<AdoptReview> list = (ArrayList<AdoptReview>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +73,7 @@
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
         
-        <form action="">
+        
 
              <!-- 입양후기리스트 보여줄 div -->
             <div class="content-area">
@@ -101,82 +113,54 @@
                         </tr>
                     </thead>
                     <tbody class="tbody">
+                    <% if(list.isEmpty()) { %>
+                    	<tr>
+                    		<td colspan="9">조회된 게시글이 없습니다.</td>
+                    	</tr>
+                    <% }else{ %>
+                    	<% for(AdoptReview ar : list){ %>
                         <tr>
                             <!--체크박스 수정 필요!!!!!!!!!!!!-->
                             <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td>1</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>강아지</td>
-                            <td>입양후기 제목1</td>
-                            <td>10</td>
-                            <td>YYYY-MM-DD</td>
+                            <td><%= ar.getArlistNo() %></td>
+                            <td><%= ar.getMemId() %></td>
+                            <td><%= ar.getNickname() %></td>
+                            <td><%= ar.getAnType() %></td>
+                            <td><%= ar.getArTitle() %></td>
+                            <td><%= ar.getViewCount() %></td>
+                            <td><%= ar.getWriteDate() %></td>
                         </tr>
-                        <tr>
-                            <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td>1</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>강아지</td>
-                            <td>입양후기 제목1</td>
-                            <td>10</td>
-                            <td>YYYY-MM-DD</td>
-                        </tr>
-                        <tr>
-                            <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td>1</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>강아지</td>
-                            <td>입양후기 제목1</td>
-                            <td>10</td>
-                            <td>YYYY-MM-DD</td>
-                        </tr>
-                        <tr>
-                            <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td>1</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>강아지</td>
-                            <td>입양후기 제목1</td>
-                            <td>10</td>
-                            <td>YYYY-MM-DD</td>
-                        </tr>
-                        <tr>
-                            <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td>1</td>
-                            <td>XXX</td>
-                            <td>OOO</td>
-                            <td>강아지</td>
-                            <td>입양후기 제목1</td>
-                            <td>10</td>
-                            <td>YYYY-MM-DD</td>
-                        </tr>
+                        <% } %>	
+					<% } %>
                         </tbody>
                     </table>
                     <br><br><br>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
-                        <button class="page">&lt;</button>
-                        <button class="page">1</button>
-                        <button class="page">2</button>
-                        <button class="page">3</button>
-                        <button class="page">4</button>
-                        <button class="page">5</button>
-                        <button class="page">&gt;</button>
+                    	<% if(currentPage != 1) { %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/reviewlist.ad?cpage=<%=currentPage-1%>';">&lt;</button>
+                        <% } %>
+                        
+                        <% for(int p=startPage; p<=endPage; p++){ %>
+                        	<% if(p == currentPage){ %>
+                        	<button class="page" disabled style="background:gray;"><%= p %></button>
+                        	<% } else { %>
+                        	<button class="page" onclick="location.href='<%=contextPath%>/reviewlist.ad?cpage=<%=p%>';"><%=p%></button>
+                        	<% } %>
+                        <% } %>
+                        
+                        <% if(currentPage != maxPage){ %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/reviewlist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
+                        <% } %>
                     </div>
                 </div>
+                
                 <!--삭제하기 버튼-->
                 <div align="right">
                     <button>삭제</button>
                 </div>
-            </form>
-
+     
     </div>
     <script>
         $(function(){

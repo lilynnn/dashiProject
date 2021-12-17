@@ -16,8 +16,17 @@ public class AdoptReview {
 	
 	private String titleImg; 	// 썸네일이미지
 	private String anType;		// 동물종류
+	private String memId; 		// 회원아이디
 	
 	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
 	public String getAnType() {
 		return anType;
 	}
@@ -61,10 +70,24 @@ public class AdoptReview {
 		this.writeDate = writeDate;
 	}
 
+	// 관리자 입양후기리스트 조회용
+		public AdoptReview(String arlistNo, String memId, String nickname, String anType, String arTitle, int viewCount, String writeDate
+			) {
+		super();
+		this.arlistNo = arlistNo;
+		this.memId = memId;
+		this.nickname = nickname;
+		this.anType = anType;
+		this.arTitle = arTitle;
+		this.viewCount = viewCount;
+		this.writeDate = writeDate;
+	}
 	
 	public String getArlistNo() {
 		return arlistNo;
 	}
+
+
 
 	public void setArlistNo(String arlistNo) {
 		this.arlistNo = arlistNo;

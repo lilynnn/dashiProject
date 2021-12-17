@@ -13,6 +13,8 @@ import java.util.Properties;
 
 import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.common.model.vo.PageInfo;
+import com.dashi.member.model.vo.Member;
 
 public class AdoptReviewBoardDao {
 	private Properties prop = new Properties();
@@ -36,10 +38,11 @@ public class AdoptReviewBoardDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, ar.getMemNo());
-			pstmt.setString(2, ar.getNickname());
-			pstmt.setString(3, ar.getAnType());
-			pstmt.setString(4, ar.getArTitle());
-			pstmt.setString(5, ar.getArContent());
+			pstmt.setString(2, ar.getMemId());
+			pstmt.setString(3, ar.getNickname());
+			pstmt.setString(4, ar.getAnType());
+			pstmt.setString(5, ar.getArTitle());
+			pstmt.setString(6, ar.getArContent());
 			
 			result = pstmt.executeUpdate();
 			
@@ -198,7 +201,73 @@ public class AdoptReviewBoardDao {
 	
 	
 	
+	// 페이징 처리
+	public int selectListCount(Connection conn) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
 	
+
+	// 입양후기 리스트 조회
+	public ArrayList<AdoptReview> selectList(Connection conn, PageInfo pi){
+		ArrayList<AdoptReview> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdoptReview(rset.getString("ARLIST_NO"),
+										rset.getString("MEM_ID"),
+										rset.getString("NICKNAME"),
+										rset.getString("AN_TYPE"),
+										rset.getString("AR_TITLE"),
+										rset.getInt("VIEW_COUNT"),
+										rset.getString("WRITE_DATE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
 	
 	
 }

@@ -6,13 +6,12 @@ import static com.dashi.common.JDBCTemplate.getConnection;
 import static com.dashi.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.dashi.adoptReviewBoard.model.dao.AdoptReviewBoardDao;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.common.model.vo.PageInfo;
 
 public class AdoptReviewBoardService {
 	
@@ -69,6 +68,22 @@ public class AdoptReviewBoardService {
 		return list;
 	}
 	
+	
+	// 페이징 처리
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdoptReviewBoardDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	// 입양후기 리스트 조회
+	public ArrayList<AdoptReview> selectList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<AdoptReview> list = new AdoptReviewBoardDao().selectList(conn, pi);
+		close(conn);
+		return list;
+	}
 	
 	
 	

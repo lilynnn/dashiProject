@@ -48,7 +48,9 @@
         <!--입력폼-->
         <form action="<%=contextPath%>/insert.ar" id="enroll-form" method="post" enctype="multipart/form-data">
         	<input type="hidden" name="userNo" value="<%= loginUser.getMemNo() %>">
+        	<input type="hidden" name="userId" value="<%= loginUser.getMemId() %>">
         	<input type="hidden" name="nickname" value="<%= loginUser.getNickname() %>">
+        	
             <div class="input-area">
                 <!--사용자 선택 말머리 영역-->
                 말머리를 선택해주세요
