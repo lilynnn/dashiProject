@@ -120,6 +120,7 @@
                     <% }else{ %>
                     	<% for(AdoptReview ar : list){ %>
                         <tr>
+                        <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
                             <!--체크박스 수정 필요!!!!!!!!!!!!-->
                             <td><input type="checkbox" id="check" name="post" value="check"></td>
                             <td><%= ar.getArlistNo() %></td>
@@ -165,7 +166,7 @@
     <script>
         $(function(){
             $(".table>tbody>tr").click(function(){
-                location.href="<%=contextPath%>/detail.ar";
+                location.href="<%=contextPath%>/reviewdetail.ad?arno=" + $(this).children("input").val();
             })
         })
     </script>

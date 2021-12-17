@@ -177,12 +177,7 @@
 <body>
 	<%@ include file="../common/menubar.jsp" %>
 
-    <!-- 테스트 영역 -->
 
-
-
-
-    <!-- 여기까지!!!!!! -->
 
     <div class="outer">
 	        <div id="fix-image" align="center">

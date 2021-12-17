@@ -1,11 +1,17 @@
 package com.dashi.adoptReviewBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.common.model.vo.Attachment;
 
 /**
  * Servlet implementation class AdminAdoptReviewDetailController
@@ -27,8 +33,26 @@ public class AdminAdoptReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		request.getRequestDispatcher("views/adoptReviewBoard/adminAdoptReviewDetailView.jsp").forward(request, response);
+		String arlistNo = request.getParameter("arno");
+		
+		AdoptReviewBoardService arService = new AdoptReviewBoardService();
+		int result = arService.increaseCount(arlistNo);
+		
+		if(result > 0) { // 성공 => 상세페이지
+			
+			AdoptReview ar = arService.selectReview(arlistNo);
+			ArrayList<Attachment> list = arService.selectAttachmentList(arlistNo);
+			
+			request.setAttribute("ar", ar);
+			request.setAttribute("list", list);
+		
+		
+			request.getRequestDispatcher("views/adoptReviewBoard/adminAdoptReviewDetailView.jsp").forward(request, response);
 	
+		}else { // 실패 => alrer창
+			
+		}
+		
 	}
 
 	/**
