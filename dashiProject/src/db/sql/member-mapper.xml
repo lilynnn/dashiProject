@@ -109,6 +109,7 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- 누리 작업 -->
 	<entry key="updateMember">
 		UPDATE MEM_INFO
 		   SET MEM_PWD = ?
@@ -123,6 +124,7 @@
 		 WHERE MEM_ID = ?
 	</entry>
 
+	<!-- 누리 작업 -->
 	<entry key="selectMember">
 		SELECT
 		       MEM_ID
@@ -141,7 +143,14 @@
 		   AND BLACKLIST_YN = 'N'
 	</entry>
 
-
+	<entry key="deleteMember">
+		UPDATE MEM_INFO
+		   SET DELETE_YN = 'Y'
+		     , DEL_REASON = ?
+		     , DEL_DATE = SYSDATE
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+	</entry>
 
 
 

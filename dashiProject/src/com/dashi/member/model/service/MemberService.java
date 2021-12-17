@@ -75,7 +75,23 @@ public class MemberService {
 		
 	} // 회원정보수정
 	
-	
+	/**
+	 * @author 누리
+	 * @param m
+	 * @return : result 
+	 */
+	public int deleteMember(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().deleteMember(conn, m);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		return result;
+	} // 회원 탈퇴
 	
 	
 	

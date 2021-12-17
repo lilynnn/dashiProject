@@ -61,10 +61,10 @@
     <div id="updateMenu">
 
         <ul id="mem-navi">
-            <li><a href="" id="mem-update">회원정보수정</a></li>
+            <li><a href="<%=request.getContextPath()%>/infoView.me" id="mem-update">회원정보수정</a></li>
             <li><a href="" id="mem-likelist">찜목록확인</a></li>
             
-            <li><a href="" id="mem-boardlist">글쓴내역확인</a>
+            <li><a href="<%=request.getContextPath()%>/boardList.me" id="mem-boardlist">글쓴내역확인</a>
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/boardList.me" id="boardlist-list">게시글목록</a></li>
                     <li><a href="" id="boardlist-comm">댓글목록</a></li>

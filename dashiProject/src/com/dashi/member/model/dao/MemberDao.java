@@ -185,8 +185,6 @@ public class MemberDao {
 	
 	/**
 	 * @author 누리
-	 * @param conn
-	 * @param m
 	 * @return result : 업데이트 결과
 	 */
 	public int updateMember(Connection conn, Member m) {
@@ -221,6 +219,10 @@ public class MemberDao {
 		
 	} // 회원정보 업데이트
 	
+	/**
+	 * @author 누리
+	 * @return m : 수정된 멤버객체
+	 */
 	public Member selectMember(Connection conn, String userId) {
 		
 		Member m = null;
@@ -256,9 +258,33 @@ public class MemberDao {
 		
 		return m;
 		
-	}
+	} // 수정된 회원정보 조회
 	
-	
+	/**
+	 * @author 누리
+	 * @return result
+	 */
+	public int deleteMember(Connection conn, Member m) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, m.getDelReason());
+			pstmt.setString(2, m.getMemId());
+			pstmt.setString(3, m.getMemPwd());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	} // 회원 탈퇴
 	
 	
 	

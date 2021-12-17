@@ -237,17 +237,7 @@
         </div>
     </div>
 
-	<script>
-                        
-       	$('input[name="userPwd"]').click(function(){
-       		
-        	$("#checkPwd").removeAttr("disabled");
-
-       	})
-       	
-    </script>
-
-
+	
 
     <!-- 회원탈퇴용 모달 -->
     <div class="modal" id="deleteMember">
@@ -261,7 +251,10 @@
             </div>
             
             <!-- Modal body -->
+          <form action="<%=contextPath%>/delete.me" method="post">
+          	<input type="hidden" name="userId" value="<%=userId%>">
             <div class="modal-body">
+            
                 <p style="width: 35px;">정말</p>
                 <p style="width: 100px; color:orange; font-weight: 600;">다시,사랑받개</p>
                 <p style="width: 35px;">에서</p>
@@ -275,41 +268,41 @@
                 <br><br><br>
                 
                 <p class="delReason">
-                    탈퇴하시려는 이유를 알려주세요
+                    	탈퇴하시려는 이유를 알려주세요
                 </p>
                 <p class="delReason">
-                    <input type="radio"> 원하는 만큼의 정보가 없어서
+                    <input type="radio" name="reason" value="원하는 만큼의 정보가 없어서" required> 원하는 만큼의 정보가 없어서
                 </p>
                 <p class="delReason">
-                    <input type="radio"> 자주 이용하지 않아서
+                    <input type="radio" name="reason" value="자주 이용하지 않아서" required> 자주 이용하지 않아서
                 </p>
                 <p class="delReason">
-                    <input type="radio"> 입양신청이 까다로워서
+                    <input type="radio" name="reason" value="입양신청이 까다로워서" required> 입양신청이 까다로워서
                 </p>
                 <p class="delReason">
-                    <input type="radio"> 이미 입양이 끝나서
+                    <input type="radio" name="reason" value="이미 입양이 끝나서" required> 이미 입양이 끝나서
                 </p>
                 <p class="delReason">
-                    <input type="radio"> 이용방법이 어려워서
+                    <input type="radio" name="reason" value="이용방법이 어려워서" required> 이용방법이 어려워서
                 </p>
                 <p id="delcheck">
                 <input type="checkbox" required>위의 안내사항을 읽고 이해했습니다.
                 </p>
+  
+                                 비밀번호 재입력 : <input type="password" name="userPwd" required> <br><br><br>
             </div>
             
             <!-- Modal footer -->
             <div class="modal-footer">
+                <button type="submit" class="btn btn-sm" style="background:rgb(143,153,142);">탈퇴하기</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">취소하기</button>
-                <button type="button" class="btn btn-sm" style="background: rgb(143,153,142); border: none;" data-toggle="modal" data-target="#deletePwd">
-                    탈퇴하기
-                </button>
                 <p align="right" style="font-size: 10px; color: gray; width: 100%;">
-                    탈퇴시에도 개인정보와 게시글은 3년간 보관됩니다.
+                   		탈퇴시에도 개인정보와 게시글은 3년간 보관됩니다.
                 </p>
             </div>
-            
-        </div>
-        </div>
+          </form>
+       </div>
+      </div>
     </div>
 
      <!-- 회원탈퇴 비밀번호 재입력 Modal -->
