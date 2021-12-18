@@ -84,7 +84,7 @@
                 </div>
                 
                 <hr style="width: 900px;">
-                <br><br><br>
+                <br>
                 
                 <!-- 검색버튼 -->
                 <div style="margin-left: 530px; width:450px;">

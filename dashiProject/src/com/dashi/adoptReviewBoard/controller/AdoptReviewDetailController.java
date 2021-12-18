@@ -48,7 +48,7 @@ public class AdoptReviewDetailController extends HttpServlet {
 			
 			request.getRequestDispatcher("views/adoptReviewBoard/adoptReviewDetailView.jsp").forward(request, response);
 			
-		}else {
+		}else { // 실패 => alrert창
 			
 		}
 		
