@@ -137,39 +137,39 @@
 							<table id="info">
 								<tr>
 									<th>묘종/견종</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_type"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_type" required></td>
 								</tr>
 								<tr>
 									<th>나이</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_age"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_age" required></td>
 								</tr>
 								<tr>
 									<th>몸무게</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_weight"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_weight" required></td>
 								</tr>
 								<tr>
-									<th>성별*</th>
+									<th>성별</th>
 									<td><input type="text" placeholder="내용을 입력해주세요." name="animal_gender" required></td>
 								</tr>
 								<tr>
-									<th>실종날짜 *</th>
+									<th>실종날짜 </th>
 									<td><input type="date" placeholder="내용을 입력해주세요." name="missing_date" required></td>
 								</tr>
 								<tr>
-									<th>지역 *</th>
+									<th>지역 </th>
 									<td><input type="text" placeholder="내용을 입력해주세요." name="location" required></td>
 								</tr>
 								<tr>
 									<th>사례금</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="money"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="money" required></td>
 								</tr>
 								<tr>
 									<th>특징</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="characteristic"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="characteristic" required></td>
 								</tr>
 								<tr>
 									<th>연락처</th>
-									<td><input type="text" placeholder="내용을 입력해주세요." name="phone"></td>
+									<td><input type="text" placeholder="내용을 입력해주세요." name="phone" required></td>
 								</tr>
 							</table>
 							<br><br>

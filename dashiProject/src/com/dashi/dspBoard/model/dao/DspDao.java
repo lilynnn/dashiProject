@@ -96,7 +96,7 @@ public class DspDao {
 	public ArrayList<Dsp> selectDspList(Connection conn) {
 
 		//여러행 조회되니까 리스트 이용
-		ArrayList<Dsp> dsplist = new ArrayList<>();
+		ArrayList<Dsp> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
@@ -108,7 +108,7 @@ public class DspDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-				dsplist.add(new Dsp(rset.getString("dsp_no")
+				list.add(new Dsp(rset.getString("dsp_no")
 								,rset.getString("post_ctg")
 								,rset.getString("dsp_title")
 								,rset.getInt("money")
@@ -124,7 +124,7 @@ public class DspDao {
 			close(pstmt);
 		}
 		
-		return dsplist;
+		return list;
 		
 	}
 

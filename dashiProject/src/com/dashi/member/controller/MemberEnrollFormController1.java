@@ -35,7 +35,7 @@ public class MemberEnrollFormController1 extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		String gender = request.getParameter("gender");
+	
 		String userName = request.getParameter("userName");
 		String birthDay = request.getParameter("birthDay");
 		String phone = request.getParameter("phone");
@@ -46,7 +46,14 @@ public class MemberEnrollFormController1 extends HttpServlet {
 		String address = request.getParameter("address");
 		String detailAddress = request.getParameter("detailAddress");
 		String email = request.getParameter("email");
+		int crFirstNum = Integer.parseInt(request.getParameter("crFirstNum"));
 	
+		String gender = null;
+		if(crFirstNum == 1 || crFirstNum == 3) {
+			gender = "M";
+		}else {
+			gender = "F";
+		}
 		
 		Member m = new Member(userId, userPwd, userName, userNickName, birthDay, gender, email, postNo, address, detailAddress, phone);
 		
@@ -64,7 +71,7 @@ public class MemberEnrollFormController1 extends HttpServlet {
 			
 		}else {
 			//실패 => 에러 문구가 보여지는 에러페이지
-			request.setAttribute("alertMsg", "회원가입에 실패했습니다ㅠㅠㅠㅠㅠ");
+			request.setAttribute("alertMsg", "회원가입에 실패했습니다.");
 		}
 	}
 

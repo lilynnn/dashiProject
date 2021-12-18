@@ -79,6 +79,7 @@ public class MemberDao {
 		return m;
 	}
 
+	
 	public int insertMember(Connection conn, Member m) {
 		int result = 0;
 		

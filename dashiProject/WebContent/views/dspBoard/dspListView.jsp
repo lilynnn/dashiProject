@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="java.util.ArrayList , com.dashi.dspBoard.model.vo.Dsp"%>
     
 <%
-	ArrayList<Dsp> dsplist = (ArrayList<Dsp>)request.getAttribute("dsplist");
+	ArrayList<Dsp> list = (ArrayList<Dsp>)request.getAttribute("list");
 %>
 <!DOCTYPE html>
 <html>
@@ -153,13 +153,13 @@
 		<%} %>
         <div class="dspList-area">
         
-        	<%if(dsplist.isEmpty()){ %>
+        	<%if(list.isEmpty()){ %>
 	            <!-- case 1. 조회된 게시글이 없을경우-->
 	            <p style="text-align: center;">조회된 게시글이 없습니다.</p>
 			<%}else{ %>
             <!-- case 1. 조회글이 있을경우-->
             <!--for문 돌려서 썸네일 여러개 만들거임-->
-				<%for(Dsp d:dsplist) {%>
+				<%for(Dsp d:list) {%>
 		            <div class="list">
 		            	<input type="hidden" value="<%= d.getDspNo()%>">
 		                <div class="img-wrap">
