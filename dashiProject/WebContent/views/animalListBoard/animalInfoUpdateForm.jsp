@@ -96,7 +96,7 @@
 	            </table>
 
 				<div >
-						<input type="file" id="file" name="upfile" onchange="loadImg(this, 1);">
+						<input type="file" id="file" name="upfile" onchange="loadImg(this, 1);" style="display:none;">
 				</div>
 				<br><br>
 	            <!-- 입소번호, 입소일, 입양여부 보여질 table -->

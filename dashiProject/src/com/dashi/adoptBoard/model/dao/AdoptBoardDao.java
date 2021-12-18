@@ -219,26 +219,28 @@ public class AdoptBoardDao {
 	}
 	
 	// 입양공고 상세보기시 불러올 첨부파일 사진리스트(동물사진)
-	public ArrayList<Attachment> selectAttachmentList(Connection conn, String boardNo){
+	public Attachment selectAttachment(Connection conn, String boardNo){
 		
-		ArrayList<Attachment> list = new ArrayList<Attachment>();
+		Attachment at = null;
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectAttachmentList");
+		String sql = prop.getProperty("selectAttachment");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardNo);
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) {
-				Attachment at = new Attachment();
+			if(rset.next()) {
+				at = new Attachment();
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setRefNo(rset.getString("REF_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
 				at.setChangeName(rset.getString("CHANGE_NAME"));
 				at.setPath(rset.getString("PATH"));
 				
-				list.add(at);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -247,7 +249,7 @@ public class AdoptBoardDao {
 			close(rset);
 			close(pstmt);
 		}
-		return list;
+		return at;
 	}
 	
 	// 사용자 입양신청시 서약서 첨부하기

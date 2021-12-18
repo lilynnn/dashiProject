@@ -69,6 +69,7 @@ public class Animal {
 		this.animalIssue = animalIssue;
 		this.entDate = entDate;
 	}
+	
 
 	public String getEntNo() {
 		return entNo;

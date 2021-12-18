@@ -138,9 +138,7 @@
                 </tbody>  
             </table>
 
-            <!-- 입양공고 등록하기 -->
-            <a class="btn btn-success" href="<%= contextPath %>/adenroll.ad" style="float: right;">등록하기</a>
-             
+                         
             <br>
 
              <!--페이징바 영역-->
@@ -179,7 +177,7 @@
                 // 콘솔에 출력해서 확인해보기
 
             	console.log($(this).children().eq(0).text());
-                location.href = '<%= contextPath%>/adnodetail.ad?adno='+$(this).children().eq(0).text();
+                location.href = '<%= contextPath%>/adtdetail.ad?adno='+$(this).children().eq(0).text();
                
             })
         })

@@ -78,10 +78,10 @@
             
 			<div id="img-area">
 				<%if(at == null) {%>
-					첨부된 이미지가 없습니다.
+					<p>대표사진이 설정되지 않았습니다.</p>
 				<%} else {%>
 					<input type="hidden" name="originFileno" value="<%=at.getAttachNo() %>">
-					<img src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>">
+					<img src="<%= contextPath%>/<%=at.getPath()+at.getChangeName()%>">
 				<%} %>
 			</div>
 			

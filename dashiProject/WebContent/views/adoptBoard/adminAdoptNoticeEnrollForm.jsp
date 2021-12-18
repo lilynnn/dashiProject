@@ -68,7 +68,7 @@
 			<%@ include file="../admin/adminMenubar.jsp" %>
 		</div>
 
-		<form action="">
+		<form action="<%=contextPath %>/adtenroll.ad"  method="post" enctype="multipart/form-data">
 
 			<div class="content-area">
 
@@ -95,19 +95,23 @@
 							<th width="290">상세사진2</th>
 						</tr>
 						<tr>
+						<%if(at!=null) {%>
 							<td><img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);"></td>
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
+						<%} %>
 						</tr>
-						<tr>
-							<td style="font-size:12px; color:gray;">대표이미지는 전체동물조회에서 수정이 가능합니다.</td>
-						</tr>
+
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td colspan="3"><b style="font-size: 18px; padding-left: 5px;">동물 정보</b></td>
+						</tr>
+						
+						<tr>
+							<td style="font-size:12px; color:gray;">&nbsp;동물정보는 동물관리페이지에서 수정가능합니다.</td>
 						</tr>
 						<!-- 동물 품종  -->
 						<tr>
@@ -118,7 +122,7 @@
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td colspan="2"><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>"></td>
+							<td colspan="2"><input name="animalAge" type="text" value="<%=a.getAnimalAge() %>" readonly></td>
 						</tr>
 
 						<!-- 동물 성별 -->
@@ -130,25 +134,25 @@
 						<!-- 접종 여부 -->
 						<tr>
 							<th>접종 &nbsp; 여부</th>
-							<td colspan="2"><input name="animalVaccin" type="text" value="<%=a.getAnimalVaccin() %>"></td>
+							<td colspan="2"><input name="animalVaccin" type="text" value="<%=a.getAnimalVaccin() %>" readonly></td>
 						</tr>
 						
 						<!-- 중성화 여부 -->
 						<tr>
 							<th>중성화여부</th>
-							<td colspan="2"><input name="animalNeutral" type="text" value="<%=a.getAnimalNeutral() %>"></td>
+							<td colspan="2"><input name="animalNeutral" type="text" value="<%=a.getAnimalNeutral() %>" readonly></td>
 						</tr>
 						
 						<!-- 질병 여부 -->
 						<tr>
 							<th>질병 &nbsp; 여부</th>
-							<td colspan="2"><input name="animalDisease" type="text" value="<%=a.getAnimalDisease() %>"></td>
+							<td colspan="2"><input name="animalDisease" type="text" value="<%=a.getAnimalDisease() %>" readonly></td>
 						</tr>
 						
 						<!-- 특이사항 -->
 						<tr>
 							<th>특이 &nbsp; 사항</th>
-							<td colspan="2"><input name="animalIssue" type="text"  value="<%=a.getAnimalIssue() %>"></td>
+							<td colspan="2"><input name="animalIssue" type="text" value="<%=a.getAnimalIssue() %>" readonly></td>
 						</tr>
 
 						<!-- 내용 -->
@@ -165,14 +169,14 @@
 					<!-- 첨부파일 -->
 
 					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required> <br>
-					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
-					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"> <br>
+					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);" required> <br>
+					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);" required><br>
 
 				</div>
 				
 				<div style=" text-align: center;">
 					<br><br>
-					<button class="btn btn-success">등록하기</button>
+					<button class="btn btn-success" type="submit">등록하기</button>
 					&nbsp;
 					<button class="btn btn-secondary">목록보기</button>
 				</div>

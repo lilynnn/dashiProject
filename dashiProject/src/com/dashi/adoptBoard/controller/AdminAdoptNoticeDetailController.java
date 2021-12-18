@@ -1,7 +1,6 @@
 package com.dashi.adoptBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +15,7 @@ import com.dashi.common.model.vo.Attachment;
 /**
  * Servlet implementation class AdminAdoptNoticeDetailController
  */
-@WebServlet("/adnodetail.ad")
+@WebServlet("/adtdetail.ad")
 public class AdminAdoptNoticeDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,11 +39,14 @@ public class AdminAdoptNoticeDetailController extends HttpServlet {
 		if(result>0) {	// 조회가능한 게시글
 			
 			AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
-			ArrayList<Attachment> atlist =  new AdoptBoardService().selectAttachmentList(boardNo);
+			Attachment at =  new AdoptBoardService().selectAttachment(boardNo);	
 			
+			
+			request.setAttribute("an", an);
+			request.setAttribute("at", at);
+			request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeDetailView.jsp").forward(request, response);
 		}
 		
-
 	}
 
 	/**

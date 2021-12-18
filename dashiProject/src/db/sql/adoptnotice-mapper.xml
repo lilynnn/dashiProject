@@ -169,14 +169,14 @@
 	      )
 	</entry>
 	
-	<entry key="selectAttachmentList">
-	SELECT
-	        ATTACH_NO
-	      , ORIGIN_NAME
-	      , CHANGE_NAME
-	      , PATH
-	   FROM ATTACHMENT
-	  WHERE REF_NO = '?';
+	<entry key="selectAttachment">
+		SELECT
+		        ATTACH_NO
+		      , ORIGIN_NAME
+		      , CHANGE_NAME
+		      , PATH
+		   FROM ATTACHMENT
+		  WHERE REF_NO = '?'
 	</entry>
 	
 	<entry key="selectAnimalInfo">

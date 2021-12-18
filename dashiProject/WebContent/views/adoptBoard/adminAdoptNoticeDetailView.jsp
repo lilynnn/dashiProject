@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ page import = "com.dashi.adoptBoard.model.vo.AdoptNotice, com.dashi.common.model.vo.Attachment" %>
 <%
-
+	AdoptNotice an = (AdoptNotice)request.getAttribute("an");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>

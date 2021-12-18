@@ -60,12 +60,12 @@ public class AdoptBoardService {
 	}
 	
 	// 첨부파일 불러오는 메소드 (입양공고 상세보기)
-	public ArrayList<Attachment> selectAttachmentList(String boardNo) {
+	public Attachment selectAttachment(String boardNo) {
 
 		Connection conn = getConnection();
-		ArrayList<Attachment> atlist = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
+		Attachment at = new AdoptBoardDao().selectAttachment(conn, boardNo);
 		close(conn);
-		return atlist;
+		return at;
 	}
 	
 	// 입양신청서 업로드 메소드
