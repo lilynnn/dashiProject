@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
-import com.dashi.member.model.vo.Member;
 
 public class AdoptReviewBoardDao {
 	private Properties prop = new Properties();
@@ -269,6 +269,9 @@ public class AdoptReviewBoardDao {
 		
 	}
 	
+	public ArrayList<AdoptReviewReply> selectReplyList(Connection conn, String arlistNo){
+		
+	}
 	
 }
 

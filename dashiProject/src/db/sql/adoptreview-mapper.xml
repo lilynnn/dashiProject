@@ -125,6 +125,19 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<entry key="selectReplyList">
+		SELECT
+		       REPLY_NO
+		     , R.NICKNAME
+		     , TO_CHAR(WRITE_DATE, 'YY-MM-DD HH:MI') "WRITE_DATE"
+		  FROM REPLY R
+		  JOIN MEM_INFO USING(MEM_NO)
+		 WHERE REPLY_STATUS = 'Y'
+		   AND REF_POST_CTG = 2
+		   AND CLIST_NO = 'AR-011'
+		 ORDER
+		    BY REPLY_NO DESC;
+	</entry>
 	
 	
 </properties>

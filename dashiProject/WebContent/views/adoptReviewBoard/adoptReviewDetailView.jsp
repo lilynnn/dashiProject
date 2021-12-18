@@ -17,6 +17,7 @@
         margin-top: 50px;
         width: 1200px;
         margin: auto;
+        height: auto;
     }
 
     /*상단 입양후기 백그라운드이미지 영역*/
@@ -385,11 +386,34 @@
                             <td style="height: 20px;"></td>
                         </tr>
                     </table>
+                    
+                    <script>
+                    	$(function(){
+                    	
+                    		selectReplyList();
+                    		
+                    	});
+                    	
+                    	// ajax로 해당 게시글에 딸린 댓글 목록 조회용
+                    	function selectReplyList(){
+                    		$.ajax({
+                    			url:"rlist.ar",
+                    			data:{arno:<%=ar.getArlistNo()%>},
+                    			success:function(){
+                    				
+                    			},error:function(){
+                    				console.log("댓글목록 조회용 ajax 통신 실패")
+                    			}
+                    		})
+                    	}
+                    	
+                    
+                    </script>
             
                     <br><br><br>
                         <!--댓글 입력란-->
                         <div align="center">
-                            <textarea class="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요"></textarea>
+                            <textarea class="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요" style="resize: none;"></textarea>
                         </div>
                         <div align="right">
                         <br>

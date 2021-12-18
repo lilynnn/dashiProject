@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import com.dashi.adoptReviewBoard.model.dao.AdoptReviewBoardDao;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 
@@ -85,7 +86,13 @@ public class AdoptReviewBoardService {
 		return list;
 	}
 	
-	
+	// 댓글 조회
+	public ArrayList<AdoptReviewReply> selectReplyList(String arlistNo){
+		Connection conn = getConnection();
+		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardDao().selectReplyList(conn, arlistNo);
+		close(conn);
+		return list;
+	}
 	
 	
 	
