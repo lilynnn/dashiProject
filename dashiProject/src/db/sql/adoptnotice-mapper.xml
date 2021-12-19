@@ -198,4 +198,52 @@
 		  JOIN ENTRANCE USING (ENT_NO)
 		 WHERE ENT_NO = ?
 	</entry>
+	
+		<entry key="insertAdoptNotice">
+		INSERT 
+		  INTO ADOPT_NOTICE
+		  (
+		    ANLIST_NO
+		  , AN_TITLE
+		  , AN_CONTENT
+		  , WRITE_DATE
+		  , VIEW_COUNT
+		  , ENT_NO
+		  , ADT_STATUS
+		  , POST_STATUS
+		  )
+		  VALUES
+		  (
+		    'AN-'||LPAD(SEQ_ADTNO.NEXTVAL,3,0)
+		  , ? 
+		  , ? 
+		  , SYSDATE 
+		  , 0
+		  , ?
+		  , 1
+		  , 'Y'
+		  )
+	</entry>
+	
+	<entry key="insertAttachList">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_BNO
+		  , PATH
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		  VALUES
+		  (
+		    'AT-'||LPAD(SEQ_FNO.NEXTVAL,3,0)
+		  , 'AN-'||LPAD(SEQ_ADTNO.CURRVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
 </properties>

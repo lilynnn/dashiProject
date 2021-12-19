@@ -324,9 +324,10 @@ public class AdoptBoardDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertAdoptNotice");
-		
+		System.out.println("dao adt : "+ adt);
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, adt.getAnTitle());
 			pstmt.setString(2, adt.getAnContent());
 			pstmt.setString(3, adt.getEntNo());
@@ -345,7 +346,26 @@ public class AdoptBoardDao {
 		
 		int result = 0;
 		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachList");
 		
+		try {
+			for(Attachment at : list) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, at.getPath());
+				pstmt.setString(2, at.getOriginName());
+				pstmt.setString(3, at.getChangeName());
+				pstmt.setInt(4, at.getAttachLevel());
+				
+				result = pstmt.executeUpdate();
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
 		return result;
 	}
 	

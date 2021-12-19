@@ -69,6 +69,7 @@
 		</div>
 
 		<form action="<%=contextPath %>/adtenroll.ad"  method="post" enctype="multipart/form-data">
+			
 			<input type="hidden" name="entNo" value="<%=a.getEntNo() %>">
 			
 			<div class="content-area">
@@ -80,6 +81,7 @@
 				<hr style="width: 900px;">
 
 				<table align="center" id="animalInfo" style="width: 900px;">
+
 					<thead>
 						<tr>
 							<th style="font-size: 15px;">제목</th>
@@ -97,7 +99,10 @@
 						</tr>
 						<tr>
 						<%if(at!=null) {%>
-							<td><img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);"></td>
+							<td>
+								<img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);">
+								<input type="hidden" name="originFileNo" value="<%= at.getAttachNo() %>">		
+							</td>
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						<%} else {%>
@@ -169,13 +174,12 @@
 						</tr>
 					</tbody>
 				</table>
-				
-				<div style="display: none;">
+						<div style="display: none;">
 					<!-- 첨부파일 -->
-
-					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required> <br>
-					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);" required> <br>
-					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);" required><br>
+					
+					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);"> <br>
+					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
+					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"><br>
 
 				</div>
 				
@@ -184,6 +188,8 @@
 					<button class="btn btn-success" type="submit">등록하기</button>
 					&nbsp;
 					<button class="btn btn-secondary">목록보기</button>
+					<br><br>
+					
 				</div>
 				
 				<script>

@@ -70,6 +70,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 				if(multiRequest.getParameter("originFileNo") != null) {
 					// 기존 첨부파일 있을 경우
 					at.setAttachNo(multiRequest.getParameter("originFileNo"));
+					System.out.println("originFileNo");
 				} else {
 					// 입소번호를 첨부파일 참조번호로
 					at.setRefNo(multiRequest.getParameter("entNo"));
@@ -78,7 +79,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			}
 			
 			int result = new AnimalListService().updateAnimalInfo(a, at);
-			
+			System.out.println(at);
 			if(result > 0) {	// 업데이트 성공
 				response.sendRedirect(request.getContextPath() + "/andetail.ad?ano="+a.getEntNo());
 			} else {	// 업데이트 실패

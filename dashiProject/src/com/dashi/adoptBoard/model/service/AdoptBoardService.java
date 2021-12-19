@@ -110,9 +110,18 @@ public class AdoptBoardService {
 		Connection conn = getConnection();
 		
 		int result1 = new AdoptBoardDao().insertAdoptNotice(conn, adt);
+		System.out.println("service adt : "+ adt);
+		System.out.println("result1 :" + result1);
+		// -----------여기까지 성공
+		
 		int result2 = new AdoptBoardDao().insertAttachmentList(conn, list);
 		//int result2 = new BoardDao().insertAttachmentList(conn, list);
 		
-		return result1;
+		if(result1>0 && result2>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		return result1*result2;
 	}
 }
