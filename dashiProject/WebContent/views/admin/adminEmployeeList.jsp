@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.dashi.admin.model.vo.Manager" %>
+<%@ page import="java.util.ArrayList, com.dashi.admin.model.vo.Manager, com.dashi.common.model.vo.PageInfo" %>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Manager> list = (ArrayList<Manager>)request.getAttribute("list");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -100,7 +106,7 @@
                     	사원관리
                 <hr>
                 </div>
-                <form action="" method="get">
+                <form action="<%=contextPath%>/searchAd.ad" method="get">
 	                <div id="search">
 	                    <input type="text" placeholder="이름으로 검색">
 	                    <button type="submit">검색</button>
@@ -159,7 +165,23 @@
             
         	
             <!-- 페이징바 -->
+            <div class="paging-area" align="center">
+			<% if(currentPage != 1){ %>
+            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage-1%>';">&lt;</button>
+            <% } %>
             
+            <% for(int p=startPage; p<=endPage; p++){ %>	
+            	<% if(p == currentPage){ %>
+            	<button disabled><%= p %></button>
+            	<% }else{ %>
+            	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=p%>';"><%= p %></button>
+            	<% } %>
+            <% } %>
+            
+            <% if(currentPage != maxPage){ %>
+            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage+1%>';">&gt;</button>
+			<% } %>
+        	</div>
 
 
         </div>
@@ -174,8 +196,8 @@
     
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">이름자리</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            
+
             </div>
     
             <!-- Modal body -->
@@ -203,6 +225,10 @@
 				    		data:{ano:$(".adminList>tbody>tr").children().eq(0).text()},
 				    		success:function(result){
 
+				    			let name = "";
+				    			name += "<h4 class='modal-title'>" + result.mnName + "</h4>"
+				    			$(".modal-header").html(name);
+				    			
 								let info = "";
 		    					info += "<tr>"
 				    					 + "<th width='100'>사번</th>"

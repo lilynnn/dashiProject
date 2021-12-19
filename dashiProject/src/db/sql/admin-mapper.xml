@@ -20,19 +20,32 @@
 		   AND ACTIVATION = 'N'
 	</entry>
 	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) "count"
+		  FROM MANAGER_INFO
+	</entry>
+	
+	
 	<entry key="selectAdminList">
-        SELECT
-                MN_NO
-              , MN_ID
-	          , MN_PWD
-	          , MN_NICKNAME
-              , MN_NAME
-              , MN_EMAIL
-              , MN_PHONE
-              , MN_JOIN
-              , NVL(TO_CHAR(MN_QUIT, 'YYYY-MM-DD'), '-') "MN_QUIT"
-              , ACTIVATION
-          FROM MANAGER_INFO
+       SELECT *
+		 FROM (
+		       SELECT ROWNUM RNUM, A.*
+		         FROM (
+		               SELECT
+		                       MN_NO
+		                      , MN_ID
+		                      , MN_PWD
+		                      , MN_NICKNAME
+		                      , MN_NAME
+		                      , MN_EMAIL
+		                      , MN_PHONE
+		                      , MN_JOIN
+		                      , NVL(TO_CHAR(MN_QUIT, 'YYYY-MM-DD'), '-') "MN_QUIT"
+		                      , ACTIVATION
+		                  FROM MANAGER_INFO)A
+		                )
+				 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="insertAdmin">
