@@ -142,7 +142,7 @@ public class AnimalListDao {
 		return a;
 	}
 	
-	//
+	// 수정하고 확인하기
 	public Attachment selectAttachment(Connection conn, String animalNo) {
 		Attachment at = null;
 		PreparedStatement pstmt = null;
@@ -164,7 +164,6 @@ public class AnimalListDao {
 				at.setPath(rset.getString("PATH"));
 				
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -174,6 +173,39 @@ public class AnimalListDao {
 		}
 		
 		return at;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, String animalNo){
+		ArrayList<Attachment> list = new ArrayList<Attachment>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setPath(rset.getString("PATH"));
+				at.setAttachLevel(rset.getInt("ATTACH_LEVEL"));
+				
+				list.add(at);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
 	
 	// 동물정보 update할 메소드

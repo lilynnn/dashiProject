@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
+<%@ page import = "java.util.ArrayList, com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
 <%
 	Animal a = (Animal)request.getAttribute("aInfo");
 	Attachment at = (Attachment)request.getAttribute("at");
+	/*ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");*/
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,11 +79,12 @@
             <br><br><br>
             
 			<div id="img-area">
-				<%if(at == null) {%>
+				<%if( at == null) {%>
 					<p>대표사진이 설정되지 않았습니다.</p>
 				<%} else {%>
 					<input type="hidden" name="originFileno" value="<%=at.getAttachNo() %>">
 					<img src="<%= contextPath%>/<%=at.getPath()+at.getChangeName()%>">
+
 				<%} %>
 			</div>
 			

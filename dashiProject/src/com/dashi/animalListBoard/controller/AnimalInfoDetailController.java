@@ -1,6 +1,7 @@
 package com.dashi.animalListBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,10 +35,11 @@ public class AnimalInfoDetailController extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String animalNo = request.getParameter("ano");
-		
+		System.out.println(animalNo);
 		Animal a = new AnimalListService().selectAnimalInfo(animalNo);
+		//ArrayList<Attachment> list = new AnimalListService().selectAttachmentList(animalNo);
 		Attachment at = new AnimalListService().selectAttachment(animalNo);
-		
+		//System.out.println(list);
 		request.setAttribute("aInfo", a);
 		request.setAttribute("at", at);
 		

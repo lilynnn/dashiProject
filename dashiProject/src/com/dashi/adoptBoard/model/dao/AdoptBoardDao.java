@@ -139,6 +139,7 @@ public class AdoptBoardDao {
 			
 			rset = pstmt.executeQuery();
 			
+			// animal정보 불러오는 걸로 바꾸기
 			if(rset.next()) {
 				an = new AdoptNotice(rset.getString("ANLIST_NO")
 						,rset.getString("AN_TITLE")
@@ -317,6 +318,35 @@ public class AdoptBoardDao {
 		}
 		return a;
 		
+	}
+	
+	public int insertAdoptNotice(Connection conn, AdoptNotice adt) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAdoptNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adt.getAnTitle());
+			pstmt.setString(2, adt.getAnContent());
+			pstmt.setString(3, adt.getEntNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		
+		int result = 0;
+		
+		
+		return result;
 	}
 	
 }

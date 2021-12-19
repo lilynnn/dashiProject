@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
+<%@ page import = "java.util.ArrayList,  com.dashi.animalListBoard.model.vo.Animal, com.dashi.common.model.vo.Attachment" %>
 <%
 	Animal a = (Animal)request.getAttribute("aInfo");
+	//ArrayList<Attachment> atlist = (ArrayList<Attachment>)request.getAttribute("atlist");
 	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
@@ -78,7 +79,7 @@
 	            <table id="img-area" style="width:650px; text-align:center;">
 	            
 	            	<!-- 기존에 첨부파일이 존재할 경우 -->
-	            	<%if(at != null) {%>   	
+	            	<%if( at != null) {%>   	
 			          	<tr>
 		            		<td colspan="2">
 		            			<input type="hidden" name="originFileNo" value="<%= at.getAttachNo() %>">
@@ -86,6 +87,7 @@
 		            		</td>
 		            	</tr>
 	            	<%} else { %>
+	            	<!-- 기존 첨부파일이 존재하지 않을 경우 -->
 	        			<tr>
 		            		<td colspan="2">
 		            			<img id="titleImg" onclick="chooseFile(1);" style="width:600px; height:400px;">

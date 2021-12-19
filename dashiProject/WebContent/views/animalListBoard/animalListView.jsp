@@ -126,7 +126,6 @@
             </table>
 
             <br>
-
             <!-- 페이징버튼 영역 -->
             <div align="center">
 				
@@ -143,7 +142,7 @@
 	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/anlist.ad?cpage=<%= p %>';"><%= p %></button>	
 	            	<%} %>
 	         	<%} %>	
-	
+		
 				<%if(currentPage < maxPage) {%>
 	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/aanlist.ad?cpage=<%= currentPage+1%>';">&gt</button>
 	            <%} %>

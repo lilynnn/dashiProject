@@ -104,4 +104,15 @@ public class AdoptBoardService {
 		close(conn);
 		return a;
 	}
+	
+	public int insertAdoptNotice(AdoptNotice adt, ArrayList<Attachment> list) {
+		
+		Connection conn = getConnection();
+		
+		int result1 = new AdoptBoardDao().insertAdoptNotice(conn, adt);
+		int result2 = new AdoptBoardDao().insertAttachmentList(conn, list);
+		//int result2 = new BoardDao().insertAttachmentList(conn, list);
+		
+		return result1;
+	}
 }

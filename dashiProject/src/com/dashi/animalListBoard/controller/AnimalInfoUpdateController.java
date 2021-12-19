@@ -59,7 +59,6 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			
 			Attachment at = null;
 			
-			System.out.println(multiRequest.getParameter("originFileNo"));
 			if(multiRequest.getOriginalFileName("upfile") != null) {
 				at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile"));

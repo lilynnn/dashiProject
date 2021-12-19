@@ -1,6 +1,7 @@
 package com.dashi.animalListBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,10 +36,10 @@ public class AnimalInfoUpdateFormController extends HttpServlet {
 		String animalNo = request.getParameter("ano");
 		
 		Animal a = new AnimalListService().selectAnimalInfo(animalNo);
-		Attachment at = new AnimalListService().selectAttachment(animalNo);
+		ArrayList<Attachment> list = new AnimalListService().selectAttachmentList(animalNo);
 		
 		request.setAttribute("aInfo", a);
-		request.setAttribute("at", at);
+		request.setAttribute("atlit", list);
 		request.getRequestDispatcher("views/animalListBoard/animalInfoUpdateForm.jsp").forward(request, response);
 	}
 

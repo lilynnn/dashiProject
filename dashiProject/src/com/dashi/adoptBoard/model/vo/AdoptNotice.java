@@ -2,6 +2,8 @@ package com.dashi.adoptBoard.model.vo;
 
 public class AdoptNotice {
 
+	// 나중에 동물 정보 보여질 객체 동물객체 불러오는 걸로 변경하기
+	
 	private String anlistNo;	// 입양공고글번호
 	private String anTitle;		// 입양공고글 제목
 	private String anContent;	// 입양공고글 내용
@@ -12,7 +14,8 @@ public class AdoptNotice {
 	private String animalType; 	// D:강아지 / C:고양이 / E:기타
 	private String entNo;		// 입소번호(동물정보 가져올)
 	
-	// 동물정보
+	// 동물정보(입양신청시 사용)
+	
 	private String animalVariety;
 	private String animalName;
 	private String animalGender;
@@ -22,8 +25,18 @@ public class AdoptNotice {
 	private String animalDisease;
 	private String animalIssue;
 	
+	
 	public AdoptNotice() {}
 	
+	
+	public AdoptNotice(String anTitle, String anContent, String entNo) {
+		super();
+		this.anTitle = anTitle;
+		this.anContent = anContent;
+		this.entNo = entNo;
+	}
+
+
 	public AdoptNotice(String anlistNo, String anTitle, String anContent, String writeDate, int viewCount, String entNo,
 			int adtStatus, String postStatus) {
 		super();
@@ -50,6 +63,7 @@ public class AdoptNotice {
 		this.animalType = animalType;
 	}
 
+	
 	public AdoptNotice(String anlistNo, String anTitle, String anContent, String writeDate, int viewCount, String entNo,
 			String animalVariety, String animalName, String animalGender, int animalAge, String animalVaccin,
 			String animalNeutral, String animalDisease, String animalIssue) {
@@ -69,7 +83,9 @@ public class AdoptNotice {
 		this.animalDisease = animalDisease;
 		this.animalIssue = animalIssue;
 	}
-
+	
+	
+	
 	
 	public String getAnimalVariety() {
 		return animalVariety;
@@ -135,6 +151,7 @@ public class AdoptNotice {
 		this.animalIssue = animalIssue;
 	}
 
+	
 	public String getAnimalType() {
 		return animalType;
 	}

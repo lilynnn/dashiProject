@@ -69,7 +69,8 @@
 		</div>
 
 		<form action="<%=contextPath %>/adtenroll.ad"  method="post" enctype="multipart/form-data">
-
+			<input type="hidden" name="entNo" value="<%=a.getEntNo() %>">
+			
 			<div class="content-area">
 
 				<div class="title-area">
@@ -97,6 +98,10 @@
 						<tr>
 						<%if(at!=null) {%>
 							<td><img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);"></td>
+							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
+							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
+						<%} else {%>
+							<td><img id="titleImg" width="290" height="250" onclick="chooseFile(1);"></td>
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						<%} %>

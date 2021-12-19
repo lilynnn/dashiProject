@@ -34,12 +34,22 @@ public class AnimalListService {
 		return a;
 	}
 	
+	// 수정확인하기
 	public Attachment selectAttachment(String animalNo) {
 		Connection conn = getConnection();
 		Attachment at = new AnimalListDao().selectAttachment(conn, animalNo);
 		close(conn);
 		return at;
 	}
+	
+	//첨부파일 list로 불러오기
+	public ArrayList<Attachment> selectAttachmentList(String animalNo){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new AnimalListDao().selectAttachmentList(conn, animalNo);
+		close(conn);
+		return list;
+	}
+	
 	
 	public int updateAnimalInfo(Animal a, Attachment at) {
 		
