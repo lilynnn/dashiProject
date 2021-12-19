@@ -18,105 +18,182 @@ public class AdminDao {
 
 	private Properties prop = new Properties();
 		
-		public AdminDao() {
+	public AdminDao() {
+		
+		try {
+			prop.loadFromXML(new FileInputStream(AdminDao.class.getResource("/db/sql/admin-mapper.xml").getPath()));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	} //프로퍼티스 파일 연결 
+
+	public Manager loginAdmin(Connection conn, String mnId, String mnPwd) {
+		// select문 => ResultSet객체(한 행) => Member객체
+		Manager a = null;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("loginAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
 			
-			try {
-				prop.loadFromXML(new FileInputStream(AdminDao.class.getResource("/db/sql/admin-mapper.xml").getPath()));
-			} catch (IOException e) {
-				e.printStackTrace();
+			pstmt.setString(1, mnId);
+			pstmt.setString(2, mnPwd);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				a = new Manager(rset.getInt("MN_NO")
+							 , rset.getString("MN_ID")
+							 , rset.getString("MN_PWD")
+							 , rset.getString("MN_NICKNAME")
+							 , rset.getString("MN_NAME")
+							 , rset.getString("MN_EMAIL")
+							 , rset.getString("MN_PHONE")
+							 , rset.getDate("MN_JOIN")
+							 , rset.getString("MN_QUIT")
+							 , rset.getString("ACTIVATION"));
 			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return a;
+		
+	} // 관리자 로그인
 	
-		} //프로퍼티스 파일 연결 
+	public ArrayList<Manager> selectAdminList(Connection conn){
+		// select문 => ResultSet(여러 행) => ArrayList<Board>
+		ArrayList<Manager> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdminList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Manager(rset.getInt("mn_no")
+								   , rset.getString("mn_id")
+								   , rset.getString("mn_pwd")
+								   , rset.getString("mn_nickname")
+								   , rset.getString("mn_name")
+								   , rset.getString("mn_email")
+								   , rset.getString("mn_phone")
+								   , rset.getDate("mn_join")
+								   , rset.getString("mn_quit")
+								   , rset.getString("activation")));
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+				
+	} // 전체 사원 조회
 	
-		public Manager loginAdmin(Connection conn, String mnId, String mnPwd) {
-			// select문 => ResultSet객체(한 행) => Member객체
-			Manager a = null;
+	public int insertAdmin(Connection conn, Manager a) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getMnPwd());
+			pstmt.setString(2, a.getMnName());
+			pstmt.setString(3, a.getMnEmail());
+			pstmt.setString(4, a.getMnPhone());
 			
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
+			result = pstmt.executeUpdate();		
 			
-			String sql = prop.getProperty("loginAdmin");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+		
+	} // 사원 등록
+	
+	public Manager selectAdmin(Connection conn, int ano){
+		Manager a = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ano);
 			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setString(1, mnId);
-				pstmt.setString(2, mnPwd);
-				
-				rset = pstmt.executeQuery();
-				
-				if(rset.next()) {
-					a = new Manager(rset.getInt("MN_NO")
-								 , rset.getString("MN_ID")
-								 , rset.getString("MN_PWD")
-								 , rset.getString("MN_NICKNAME")
-								 , rset.getString("MN_NAME")
-								 , rset.getString("MN_EMAIL")
-								 , rset.getString("MN_PHONE")
-								 , rset.getDate("MN_JOIN")
-								 , rset.getString("MN_QUIT")
-								 , rset.getString("ACTIVATION"));
-				}
-				
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				close(rset);
-				close(pstmt);
-			}
+			rset = pstmt.executeQuery();
 			
-			return a;
+			if(rset.next()) {
+				a = (new Manager(rset.getInt("mn_no")
+								   , rset.getString("mn_id")
+								   , rset.getString("mn_name")
+								   , rset.getString("mn_email")
+								   , rset.getString("mn_phone")
+								   , rset.getDate("mn_join")
+								   , rset.getString("mn_quit")
+								   , rset.getString("activation")));
+			}	
 			
-		} // 관리자 로그인
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
 		
-		public ArrayList<Manager> selectAdminList(Connection conn){
-			// select문 => ResultSet(여러 행) => ArrayList<Board>
-			ArrayList<Manager> list = new ArrayList<>();
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			String sql = prop.getProperty("selectList");
+		return a;
+		
+				
+	} // 사원 조회
+	
+	public int updateAdmin(Connection conn, Manager a) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getMnPwd());
+			pstmt.setString(2, a.getMnName());
+			pstmt.setString(3, a.getMnEmail());
+			pstmt.setString(4, a.getMnPhone());
+			pstmt.setString(5, a.getMnQuit());
+			pstmt.setString(6, a.getActivation());
+			pstmt.setInt(7, a.getMnNo());
 			
-			try {
-				pstmt = conn.prepareStatement(sql);
-				
-				
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					list.add(new Manager(rset.getInt("mn_no")
-									   , rset.getString("mn_id")
-									   , rset.getString("mn_pwd")
-									   , rset.getString("mn_nickname")
-									   , rset.getString("mn_name")
-									   , rset.getString("mn_email")
-									   , rset.getString("mn_phone")
-									   , rset.getDate("mn_join")
-									   , rset.getString("mn_quit")
-									   , rset.getString("activation")));
-				}	
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(pstmt);
-			}
+			result = pstmt.executeUpdate();
 			
-			return list;
-					
-		} // 전체 사원 조회
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// 사원 수정&삭제
+	
+	
+	
+	
+	
 		
 		
 		

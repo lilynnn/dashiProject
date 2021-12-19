@@ -20,7 +20,7 @@
 		   AND ACTIVATION = 'N'
 	</entry>
 	
-	<entry key="selectList">
+	<entry key="selectAdminList">
         SELECT
                 MN_NO
               , MN_ID
@@ -35,10 +35,51 @@
           FROM MANAGER_INFO
 	</entry>
 	
+	<entry key="insertAdmin">
+		INSERT
+		  INTO MANAGER_INFO
+		  (
+		    MN_NO
+		  , MN_ID
+		  , MN_PWD
+		  , MN_NAME
+		  , MN_EMAIL
+		  , MN_PHONE
+		  )
+		  VALUES
+		  (
+		    SEQ_ADNO.NEXTVAL
+		  , 'admin'||LPAD(SEQ_ADIDNO.NEXTVAL,2,0)
+		  , ?
+		  , ?
+		  , ?||'@highfive.team'
+		  , ?
+		  )
+	</entry>
 	
+	<entry key="selectAdmin">
+		SELECT
+		       MN_NO
+		     , MN_ID
+		     , MN_NAME
+		     , MN_EMAIL
+		     , MN_PHONE
+		     , MN_JOIN
+		     , NVL(TO_CHAR(MN_QUIT, 'YYYY-MM-DD'), '-') "MN_QUIT"
+		     , ACTIVATION
+		  FROM MANAGER_INFO
+		 WHERE MN_NO = ?
+	</entry>
 
-
-
+	<entry key="updateAdmin">
+		UPDATE
+			   MANAGER_INFO
+		   SET MN_PWD = ?
+		     , MN_NAME = ?
+		     , MN_EMAIL = ?
+		     , MN_PHONE = ?
+		 WHERE MN_NO = ?
+	</entry>
 
 
 

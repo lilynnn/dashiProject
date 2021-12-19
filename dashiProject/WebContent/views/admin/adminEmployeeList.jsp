@@ -64,6 +64,7 @@
     	border-radius:3px;
     	border:none;
     }
+    /*사원정보보기*/
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -99,10 +100,12 @@
                     	사원관리
                 <hr>
                 </div>
-                <div id="search">
-                    <input type="text" placeholder="이름으로 검색">
-                    <button type="submit">검색</button>
-                </div>
+                <form action="" method="get">
+	                <div id="search">
+	                    <input type="text" placeholder="이름으로 검색">
+	                    <button type="submit">검색</button>
+	                </div>
+                </form>
                 
                 <div style="width: 600px;" align="right">
                     <a href="<%=contextPath%>/empEnrollForm.ad" class="btn btn-sm" style="background: rgb(102,184,94);">
@@ -111,7 +114,7 @@
                 </div>
 
                 <div style="margin-top: 10px;">
-                    <table class="table-bordered">
+                    <table class="table-bordered adminList">
                         <thead>
                             <tr align="center">
                                 <th width="50">사번</th>
@@ -133,10 +136,10 @@
 							<% }else{ %>
 	                            <!--사원 있을때-->
 	                            <% for(Manager a : list){ %>
-	                            <tr align="center">
+	                            <tr align="center" class="adminNo">
 	                                <td><%=a.getMnNo()%></td>
 	                                <td>
-	                                    <button type="button" class="btn" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button>    
+	                                    <button type="button" onclick="selectAdmin();" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button> 
 	                                </td>
 	                                <td><%=a.getMnId()%></td>
 	                                <td><%=a.getMnEmail()%></td>
@@ -144,15 +147,15 @@
 	                                <td><%=a.getMnJoin()%></td>
 									<td><%=a.getMnQuit()%></td>    
 	                                <td><%=a.getActivation()%></td>
-	                            </tr>
+	                            </tr>	                            
+	                            
 	                         	<% } %>
 							<% } %>
                         </tbody>
                     </table>
                 </div>
 
-            <!-- </form>  -->
-            
+				
             
         	
             <!-- 페이징바 -->
@@ -167,58 +170,85 @@
     <!-- The Modal -->
     <div class="modal" id="checkInfo">
         <div class="modal-dialog">
-        <div class="modal-content">
+        	<div class="modal-content">
     
             <!-- Modal Header -->
             <div class="modal-header">
-            <h4 class="modal-title">김자두</h4>
+            <h4 class="modal-title">이름자리</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
     
             <!-- Modal body -->
             <div class="modal-body">
                 <table>
-                    <tr>
-                        <th width="100">사번</th>
-                        <td width="200">101</td>
-                        <td rowspan="8" width="200" heigth="300">
-                            <img src="<%=contextPath%>/resources/images/idcard.png" style="width: 100%;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="100">아이디</th>
-                        <td width="200">admin01</td>
-                    </tr>
-                    <tr>
-                        <th width="100">이메일</th>
-                        <td width="200">admin01@highfive.team</td>
-                    </tr>
-                    <tr>
-                        <th width="100">전화번호</th>
-                        <td width="200">010-1111-2222</td>
-                    </tr>
-                    <tr>
-                        <th width="100">입사일</th>
-                        <td width="200">2021-07-27</td>
-                    </tr>
-                    <tr>
-                        <th width="100">퇴사일</th>
-                        <td width="200">-</td>
-                    </tr>
-                    <tr>
-                        <th width="100">퇴사여부</th>
-                        <td width="200">N</td>
-                    </tr>
+							
+					<!-- ajax자리 -->
+				
                 </table>
             </div>
     
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-dismiss="modal">정보수정</button>
+                <a href="<%=contextPath%>/updateForm.ad?ano=101" class="btn btn-warning" data-dismiss="modal">정보수정</a>
                 <button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
             </div>
+            
+              <script>
+
+			    	function selectAdmin(){
+			    		
+			    		$.ajax({
+			    			
+				    		url:"detail.ad",
+				    		data:{ano:$(".adminList>tbody>tr").children().eq(0).text()},
+				    		success:function(result){
+
+								let info = "";
+		    					info += "<tr>"
+				    					 + "<th width='100'>사번</th>"
+										 + "<td width='200'>" + result.mnNo + "</td>"
+										 + "<td rowspan='8' width='200' heigth='300'>"
+				                         + "<img src='<%=contextPath%>/resources/images/idcard.png' style='width: 100%;'>"
+				                         + "</td>"
+								  	 + "</tr>" + "<tr>"
+										 + "<th>아이디</th>"
+										 + "<td>" + result.mnId + "</td>"
+								     + "</tr>" + "<tr>"
+										 + "<th>이메일</th>"
+										 + "<td>" + result.mnEmail + "</td>"
+								     + "</tr>" + "<tr>"
+										 + "<th>전화번호</th>"
+										 + "<td>" + result.mnPhone + "</td>"
+								     + "</tr>" + "<tr>"
+										 + "<th>입사일</th>"
+										 + "<td>" + result.mnJoin + "</td>"
+								     + "</tr>" + "<tr>"
+								 		 + "<th>퇴사일</th>"
+										 + "<td>" + result.mnQuit + "</td>"
+								     + "</tr>"	+ "<tr>"	 
+										 + "<th>퇴사여부</th>"
+										 + "<td>" + result.activation + "</td>"
+								     + "</tr>"
+
+				    			
+				    			$(".modal-body>table").html(info);
+				    			console.log(result);
+				    			
+				    		},error:function(){
+				    			console.log("사원 조회용 ajax통신 실패");
+			    			}
+			    		
+			    		})		
+			    			
+			    	}
+			    
+			    
+			    	
+			    </script>
+            
     
-        </div>
+    
+        	</div>
         </div>
     </div>
   

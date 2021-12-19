@@ -1,6 +1,6 @@
 package com.dashi.admin.model.service;
 
-import static com.dashi.common.JDBCTemplate.close;
+import static com.dashi.common.JDBCTemplate.*;
 import static com.dashi.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -32,11 +32,37 @@ public class AdminService {
 		
 	} // 모든 사원 조회
 	
+	public int insertAdmin(Manager a) {
+		Connection conn = getConnection();
+		int result = new AdminDao().insertAdmin(conn, a);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	} // 관리자 등록
 	
+	public Manager selectAdmin(int ano){
+		Connection conn = getConnection();
+		Manager a = new AdminDao().selectAdmin(conn, ano);
+		close(conn);
+		return a;		
+		
+	} //  사원 조회
 	
-	
-	
-	
+	public int updateAdmin(Manager a) {
+		Connection conn = getConnection();
+		int result = new AdminDao().insertAdmin(conn, a);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	} // 사원 수정 & 탈퇴
 	
 	
 	

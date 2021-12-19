@@ -67,18 +67,22 @@
         <!--관리자 사원관리 목록-->
         <div id="emp-enroll">
         	
-        	<form action="<%=contextPath%>/insert.ad" method="post">
+        	<form action="<%=contextPath%>/update.ad" method="post">
 
                 <div id="title">
-                    	사원등록
+                    	사원정보수정
                 <hr>
                 </div>
 
                 <div id="emp-enroll-form">
                     <table align="center" class="table-bordered">
+                    	<tr>
+                            <th width="100">아이디</th>
+                            <td width="400"><input type="text" name="adminId" required></td>
+                        </tr>
                         <tr>
-                            <th width="100">비밀번호</th>
-                            <td width="400"><input type="password" name="adminPwd"></td>
+                            <th>비밀번호</th>
+                            <td><input type="password" name="adminPwd" required></td>
                         </tr>
                         <tr>
                             <th>이름</th>
@@ -92,12 +96,20 @@
                             <th>전화번호</th>
                             <td><input type="text" name="phone" required></td>
                         </tr>
+                        <tr>
+                            <th>퇴사일</th>
+                            <td><input type="password" name="quit"></td>
+                        </tr>
+                        <tr>
+                            <th>퇴사여부</th>
+                            <td><input type="password" name="activation" required></td>
+                        </tr>
                     </table>
                 </div>
                 
                 <div id="emp-enroll-btn" align="center">
                 
-                    <button type="submit" class="btn" style="background: rgb(102,184,94);">등록하기</button>
+                    <button type="submit" class="btn" style="background: rgb(102,184,94);">수정하기</button>
                     <button type="reset" class="btn btn-light">초기화</button>
                     <button type="button" class="btn" style="background: rgb(143,153,142);" onclick="history.back();">뒤로가기</button>
 
