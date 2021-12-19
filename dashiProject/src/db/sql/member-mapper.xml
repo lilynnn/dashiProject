@@ -48,21 +48,10 @@
 			      , ADDRESS
 			      , ADDRESS_D
 			      , PHONE
-			      , ENROLL_DATE
-			      , ADOPT_YN
-			      , ENTER_YN
-			      , PAY_YN
-			      , DELETE_YN
-			      , DEL_REASON
-			      , DEL_DATE
-			      , BLACKLIST_YN
-			      , BLACK_REASON
-			      , BLACK_DATE
-			      , GRADE
 	              )
 	              VALUES
 	              (
-	                SEQ_MEM.NEXTVAL
+	                SEQ_MNO.NEXTVAL
 	              , ?
 	              , ?
 	              , ?

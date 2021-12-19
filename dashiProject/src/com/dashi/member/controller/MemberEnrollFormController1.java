@@ -35,7 +35,7 @@ public class MemberEnrollFormController1 extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-	
+		String gender = request.getParameter("gender");
 		String userName = request.getParameter("userName");
 		String birthDay = request.getParameter("birthDay");
 		String phone = request.getParameter("phone");
@@ -46,14 +46,8 @@ public class MemberEnrollFormController1 extends HttpServlet {
 		String address = request.getParameter("address");
 		String detailAddress = request.getParameter("detailAddress");
 		String email = request.getParameter("email");
-		int crFirstNum = Integer.parseInt(request.getParameter("crFirstNum"));
-	
-		String gender = null;
-		if(crFirstNum == 1 || crFirstNum == 3) {
-			gender = "M";
-		}else {
-			gender = "F";
-		}
+
+
 		
 		Member m = new Member(userId, userPwd, userName, userNickName, birthDay, gender, email, postNo, address, detailAddress, phone);
 		

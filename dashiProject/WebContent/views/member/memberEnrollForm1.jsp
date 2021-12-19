@@ -99,7 +99,10 @@
        		<!--회원가입 폼-->
 	        <form action="<%=contextPath %>/enroll1.me" method="post" id="enroll-form" style="text-align : left">
 	           
-	            <table>
+	           <input type="radio" name="gender" value="M">남자 &nbsp;&nbsp;&nbsp;
+	           <input type="radio" name="gender" value="F">여자
+				<br><br>
+			   <table>
 	                 <!-- 이름 입력란-->
 	                <tr>
 	                    <td>
