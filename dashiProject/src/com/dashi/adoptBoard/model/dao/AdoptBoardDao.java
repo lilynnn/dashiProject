@@ -324,6 +324,7 @@ public class AdoptBoardDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertAdoptNotice");
+		
 		System.out.println("dao adt : "+ adt);
 		try {
 			pstmt = conn.prepareStatement(sql);

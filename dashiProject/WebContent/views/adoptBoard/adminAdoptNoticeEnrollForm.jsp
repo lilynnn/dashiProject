@@ -102,7 +102,7 @@
 							<td>
 								<img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" width="290" height="250" onclick="chooseFile(1);">
 								<input type="hidden" name="originFileNo" value="<%= at.getAttachNo() %>">		
-							</td>
+							</td>	
 							<td><img id="contentImg1" width="290" height="250" onclick="chooseFile(2);"></td>
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						<%} else {%>
@@ -111,7 +111,9 @@
 							<td><img id="contentImg2" width="290" height="250" onclick="chooseFile(3);"></td>
 						<%} %>
 						</tr>
-
+						<tr>
+							<td colspan="3">나중에 지우기!! <br>동물정보에서 불러온 동물 사진을 다시 입양 공고에 저장하고 싶은데 안됨... <br>일단은 사진이 미리 보여지는 영역도 선택해서 사진을 등록해야함.</td>
+						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
 					</thead>

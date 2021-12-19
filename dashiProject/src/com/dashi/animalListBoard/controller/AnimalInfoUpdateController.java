@@ -43,7 +43,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			
 			int maxSize = 10 * 1024 * 1024;
 			
-			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/adoptNotice/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/animalList/");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
@@ -63,7 +63,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 				at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName("upfile"));
 				at.setChangeName(multiRequest.getFilesystemName("upfile"));
-				at.setPath("resources/upfiles/adoptNotice/");
+				at.setPath("resources/upfiles/animalList/");
 				at.setAttachLevel(1);
 				at.setRefNo(multiRequest.getParameter("entNo"));
 
