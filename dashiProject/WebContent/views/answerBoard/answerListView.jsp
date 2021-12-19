@@ -123,10 +123,7 @@
         <div id="serve">| 최대한 빠르게 답변드리겠습니다.</div>
         <div id="meno">
             <div style="width: 60px;"></div>
-            <div style="width: 107px; color:rgb(63, 194, 23);">
-               궁금하신 점을
-            </div>
-            <div>문의해주세요. (로그인 후 글작성 가능)</div>
+            <div>로그인 후 글작성이 가능합니다.</div>
         </div>
 
         <!--상담전화카드-->
@@ -209,7 +206,7 @@
 	 
 	        <div align="right" style="width:1100px">
 	            
-	            <a href="<%= contextPath %>/select.as" class="btn btn-sm btn-secondary write">글작성</a>
+	            <a href="<%= contextPath %>/insert.as" class="btn btn-sm btn-secondary write">글작성</a>
 	            <br><br>
 	        </div>
         <% } %>

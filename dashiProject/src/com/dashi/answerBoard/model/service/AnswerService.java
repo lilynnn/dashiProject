@@ -21,8 +21,7 @@ public class AnswerService {
 		
 	}
 	
-	
-	 /*
+
 	//1대1 등록
 	public int insertAnswer(Answer a) {
 		Connection conn = getConnection();
@@ -35,6 +34,6 @@ public class AnswerService {
 		}
 		close(conn);
 		return result;
-	}*/
+	}
 	
 }

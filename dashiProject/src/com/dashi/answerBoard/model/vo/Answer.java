@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Answer {
 
 	private String inquireNo;
-	private int memNo;
+	private String memNo;
 	private String memId;
 	private String qTitle;
 	private String qContent;
@@ -19,7 +19,7 @@ public class Answer {
 	public Answer() {}
 
 
-	public Answer(String inquireNo, int memNo, String memId, String qTitle, String qContent, String anContent,
+	public Answer(String inquireNo, String memNo, String memId, String qTitle, String qContent, String anContent,
 			Date qCreat, Date inquireAnswerDate, int mnNo, int asCategory) {
 		super();
 		this.inquireNo = inquireNo;
@@ -56,13 +56,13 @@ public class Answer {
 	}
 
 
-	public int getMemNo() {
+	public String getMemNo() {
 		return memNo;
 	}
 
 
-	public void setMemNo(int memNo) {
-		this.memNo = memNo;
+	public void setMemNo(String string) {
+		this.memNo = string;
 	}
 
 

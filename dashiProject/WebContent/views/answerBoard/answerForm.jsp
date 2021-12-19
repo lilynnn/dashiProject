@@ -118,18 +118,31 @@
 
  	<form action="<%=contextPath %>/insert.as" method="post">
     <table class="table1">
+    		<tr>
+            <th width=220 colspan="2">카테고리</th>
+            <td>
+            <select name="category">
+            <option value="1">입양</option>
+            <option value="2">입소</option>
+        	<option value="3">결제</option>
+           	<option value="4">실종/보호</option>
+           	<option value="5">기타</option>
+            </select>
+            </td> </tr>
+            
         <tr> <!-- 아이디 -->
             <th  width=220 colspan="2">아이디 <b>*</b></th> 
-            <td  width=780><input type="text" style="width: 690px" name="memberId" value="" placeholder="성함을 입력해주세요." required></td>
+            <td  width=780><input type="text" style="width: 690px" name="Id" value="" placeholder="아이디를 입력해주세요." required></td>
         </tr>
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목<b>*</b></th>
-            <td width=780><input type="text" style="width: 690px" name="answerTitle" value="" placeholder="연락처를 입력해주세요." required></td>
+            <td width=780><input type="text" style="width: 690px" name="qTitle" value="" placeholder="제목을 입력해주세요." required></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
-            <td width=780><textarea name="answerContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
+            <td width=780><textarea name="qContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
         </tr>
+        
         <tr>    <!-- 개인정보 수집 동의 체크박스 -->
             <td style="font-size: 13px;" colspan="2"><input type="checkbox" required>개인정보 수집 및 이용에 동의합니다.<b>*</b>
                 <!-- 개인정보 동의 세부내용 link -->
@@ -161,7 +174,7 @@
     
     <hr>
     
-     <div><button class="btn-1 ButtonBox-right">제출하기</button></div>
+     <div><button type="submit" class="btn-1 ButtonBox-right">제출하기</button></div>
     
 
     </form>

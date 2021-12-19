@@ -66,7 +66,7 @@ import static com.dashi.common.JDBCTemplate.*;
 	
 	
 	// Answer 등록
-	public int insertAnswer(Connection conn , Answer a ){
+	public int insertAnswer(Connection conn , Answer a){
 	int result = 0;
 	
 	PreparedStatement pstmt = null;
@@ -77,7 +77,8 @@ import static com.dashi.common.JDBCTemplate.*;
 		pstmt.setString(1, a.getMemId());
 		pstmt.setString(2, a.getqTitle());
 		pstmt.setString(3, a.getqContent());
-		
+		pstmt.setInt(4, Integer.parseInt(a.getMemNo()));
+	
 		result = pstmt.executeUpdate();
 		
 	} catch (SQLException e) {

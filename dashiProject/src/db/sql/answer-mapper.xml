@@ -17,14 +17,14 @@ SELECT
 </entry>
 
 <entry key="insertAnswer">
-INSERT ANSWER 
-    INTO 
+INSERT 
+	INTO ANSWER 
     (
-    INQUIRE_NO
+      INQUIRE_NO
     , MEM_ID
     , Q_TITLE
     , Q_CONTENT
-    , Q_CREAT
+    , MEM_NO
     )
     VALUES
     (
@@ -32,7 +32,7 @@ INSERT ANSWER
     ,?
     ,?
     ,?
-    ,SYSDATE
+    ,?
     )
 </entry>
 </properties>
