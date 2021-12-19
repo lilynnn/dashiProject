@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.dashi.admin.model.vo.Manager" %>
+<%
+	ArrayList<Manager> list = (ArrayList<Manager>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,6 +82,7 @@
     
     <%@ include file="../common/menubar.jsp" %>
     
+    
     <!--전체를 감싸는 큰 div-->
     <div class="outer">
     
@@ -88,7 +93,7 @@
         <!--관리자 사원관리 목록-->
         <div id="adminlist">
         	
-        	<form action="">
+        	<!-- <form action="">  -->
 
                 <div id="title">
                     	사원관리
@@ -120,41 +125,39 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!--사원 없을때-->
-                            <tr align="center">
-                                <td colspan="8">존재하는 사원이 없습니다.</td>
-                            </tr>
-
-                            <!--사원 있을때-->
-                            <tr align="center">
-                                <td>101</td>
-                                <td>
-                                    <button type="button" class="btn" data-toggle="modal" data-target="#checkInfo">김자두</button>    
-                                </td>
-                                <td>admin01</td>
-                                <td>admin01@highfive.team</td>
-                                <td>010-1111-2222</td>
-                                <td>2021-07-27</td>
-                                <td>-</td>
-                                <td>N</td>
-                            </tr>
-
+                        	<% if(list.isEmpty()){ %>
+	                            <!--사원 없을때-->
+	                            <tr align="center">
+	                                <td colspan="8">존재하는 사원이 없습니다.</td>
+	                            </tr>
+							<% }else{ %>
+	                            <!--사원 있을때-->
+	                            <% for(Manager a : list){ %>
+	                            <tr align="center">
+	                                <td><%=a.getMnNo()%></td>
+	                                <td>
+	                                    <button type="button" class="btn" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button>    
+	                                </td>
+	                                <td><%=a.getMnId()%></td>
+	                                <td><%=a.getMnEmail()%></td>
+	                                <td><%=a.getMnPhone()%></td>
+	                                <td><%=a.getMnJoin()%></td>
+									<td><%=a.getMnQuit()%></td>    
+	                                <td><%=a.getActivation()%></td>
+	                            </tr>
+	                         	<% } %>
+							<% } %>
                         </tbody>
                     </table>
                 </div>
 
-            </form>
+            <!-- </form>  -->
+            
+            
         	
             <!-- 페이징바 -->
-            <div align="center" class="paging-area">
-                <button class="btn btn-light">&lt;</button>
-                <button class="btn btn-light">1</button>
-                <button class="btn btn-light">2</button>
-                <button class="btn btn-light">3</button>
-                <button class="btn btn-light">4</button>
-                <button class="btn btn-light">5</button>
-                <button class="btn btn-light">&gt;</button>
-            </div>
+            
+
 
         </div>
     </div>

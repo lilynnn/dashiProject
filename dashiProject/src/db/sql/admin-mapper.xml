@@ -19,6 +19,34 @@
 		   AND MN_PWD = ?
 		   AND ACTIVATION = 'N'
 	</entry>
+	
+	<entry key="selectList">
+        SELECT
+                MN_NO
+              , MN_ID
+	          , MN_PWD
+	          , MN_NICKNAME
+              , MN_NAME
+              , MN_EMAIL
+              , MN_PHONE
+              , MN_JOIN
+              , NVL(TO_CHAR(MN_QUIT, 'YYYY-MM-DD'), '-') "MN_QUIT"
+              , ACTIVATION
+          FROM MANAGER_INFO
+	</entry>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -12,13 +12,13 @@ public class Manager {
 	private String mnEmail;
 	private String mnPhone;
 	private Date mnJoin;
-	private Date mnQuit;
+	private String mnQuit;
 	private String activation;
 	
 	public Manager() {}
 
 	public Manager(int mnNo, String mnId, String mnPwd, String mnNickname, String mnName, String mnEmail,
-			String mnPhone, Date mnJoin, Date mnQuit, String activation) {
+			String mnPhone, Date mnJoin, String mnQuit, String activation) {
 		super();
 		this.mnNo = mnNo;
 		this.mnId = mnId;
@@ -96,11 +96,11 @@ public class Manager {
 		this.mnJoin = mnJoin;
 	}
 
-	public Date getMnQuit() {
+	public String getMnQuit() {
 		return mnQuit;
 	}
 
-	public void setMnQuit(Date mnQuit) {
+	public void setMnQuit(String mnQuit) {
 		this.mnQuit = mnQuit;
 	}
 
@@ -118,5 +118,7 @@ public class Manager {
 				+ ", mnName=" + mnName + ", mnEmail=" + mnEmail + ", mnPhone=" + mnPhone + ", mnJoin=" + mnJoin
 				+ ", mnQuit=" + mnQuit + ", activation=" + activation + "]";
 	}
+
+		
 	
 }
