@@ -146,28 +146,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <th>1</th>
-                                <th>이철수</th>
-                                <th>입양문의</th>
-                                <th>입양관련 질문드립니다 </th>
-                                <th>2021-12-24</th>
-                                <th class="checkState" style="color:red;">미답변</th>
-                                <th><button value="답변하기" id="answ">답변하기</button></th>
-                            </tr>
-
-                            <tr>
-                                <td><input type="checkbox"></td>
-                                <th>1</th>
-                                <th>김영희</th>
-                                <th>실종문의</th>
-                                <th>실종글 문의 어쩌구</th>
-                                <th>2021-12-24</th>
-                                <th class="checkState" style="color:rgb(143,153,142);">답변</th>
-                                <th><button value="답변하기" id="answ">답변하기</button></th>
-                            </tr>
-
+                                
+        <tr> <!-- 아이디 -->
+            <th  width=220 colspan="2">아이디 <b>*</b></th> 
+            <td  width=780><input type="text" style="width: 690px" name="Id" value="" placeholder="아이디를 입력해주세요." required></td>
+        </tr>
+        <tr> <!-- 제목 -->
+            <th width=220 colspan="2">제목<b>*</b></th>
+            <td width=780><input type="text" style="width: 690px" name="qTitle" value="" placeholder="제목을 입력해주세요." required></td>
+        </tr>
+        <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
+            <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
+            <td width=780><textarea name="qContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
+        </tr>
 
 			
                         </tbody>

@@ -46,11 +46,12 @@ import static com.dashi.common.JDBCTemplate.*;
 				rset = pstmt.executeQuery();
 				
 				while(rset.next()) {
-					list.add(new Answer(rset.getString("inquireNo"),
+					list.add(new Answer(
+										rset.getString("inquireNo"),
 										rset.getInt("asCategory"),
+										rset.getString("memId"),
 										rset.getString("qTitle"),
 										rset.getString("qContent"),
-										rset.getString("memId"),
 										rset.getDate("qCreat")));
 					}
 				
@@ -74,10 +75,11 @@ import static com.dashi.common.JDBCTemplate.*;
 	
 	try {
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, a.getMemId());
-		pstmt.setString(2, a.getqTitle());
-		pstmt.setString(3, a.getqContent());
-		pstmt.setInt(4, Integer.parseInt(a.getMemNo()));
+		pstmt.setInt(1, a.getasCategory());
+		pstmt.setString(2, a.getMemId());
+		pstmt.setString(3, a.getqTitle());
+		pstmt.setString(4, a.getqContent());
+		
 	
 		result = pstmt.executeUpdate();
 		
@@ -90,6 +92,29 @@ import static com.dashi.common.JDBCTemplate.*;
 	return result;
 	
 }
-
+	// 관리자 adAnswer 등록
+		public int adinsertAnswer(Connection conn , Answer a){
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adinsertAnswer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, a.getAnContent());
+	
+			
+		
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
 } 
 

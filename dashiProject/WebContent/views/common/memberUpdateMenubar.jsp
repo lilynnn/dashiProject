@@ -71,7 +71,7 @@
                 </ul>
             </li>
             
-            <li><a href="" id="mem-question">1:1문의내역</a></li>
+            <li><a href="<%=request.getContextPath()%>/asList.as" id="mem-question">1:1문의내역</a></li>
         </ul>
     </div>
 

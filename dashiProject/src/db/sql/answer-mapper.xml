@@ -6,9 +6,9 @@
 SELECT 
     INQUIRE_NO
     , AS_CATEGORY
+    , memId
     , Q_TITLE
     , Q_CONTENT
-    , memId
     , Q_CREAT
     FROM ANSWER A 
     JOIN MEMBER ON(MEM_NO = MEM_ID)
@@ -21,6 +21,7 @@ INSERT
 	INTO ANSWER 
     (
       INQUIRE_NO
+    , AS_CATEGORY
     , MEM_ID
     , Q_TITLE
     , Q_CONTENT
@@ -32,6 +33,22 @@ INSERT
     ,?
     ,?
     ,?
+    ,?
+    ,?
+    )
+    JOIN MEMBER ON(MEM_NO = MEM_ID)
+</entry>
+
+<entry key="adinsertAnswer">
+INSERT 
+	INTO ANSWER 
+    (
+  	 AN_CONTENT
+  	 MN_NO
+    )
+    VALUES
+    (
+    ?
     ,?
     )
 </entry>

@@ -125,25 +125,26 @@
             <div style="width: 60px;"></div>
             <div>로그인 후 글작성이 가능합니다.</div>
         </div>
-<hr><br>
+
         <!--상담전화카드-->
         <div id="call">
             <img src="<%=contextPath%>/resources/images/FAQphonecard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
         </div>
         
-  
+        
+		<%@ include file="../common/memberUpdateMenubar.jsp" %>
+		
 		
         <!--키워드 검색-->
         <div id="kDiv">
-            <div class="keyword" name="askeyword" >입양</div>
-             <div class="keyword" name="askeyword">입소</div>
-            <div class="keyword" name="askeyword">실종</div>
-            <div class="keyword" name="askeyword">로그인</div>
-            <div class="keyword" name="askeyword" style="width: 110px;">결제문의</div>
-            <div class="keyword" name="askeyword">기타</div>
+            <div class="keyword">입양</div>
+             <div class="keyword">입소</div>
+            <div class="keyword">실종</div>
+            <div class="keyword">로그인</div>
+            <div class="keyword" style="width: 110px;">결제문의</div>
+            <div class="keyword">기타</div>
         </div>
-		
-		
+
         <!--1:1문의리스트-->
         <div id="list">
             <table class="table table-hover">
@@ -189,10 +190,12 @@
 	                    <tr class="Answer">
 	                        <td colspan="5" style="background: #ecfafa;">
 	                            <div align="left">
+	                                <p>
+	                                   	<%=a.getqTitle()%>
 	                                <hr>
 	                                </p>
 	                                <p style="font-weight: 600;">
-	                                   	 <%=a.getAnContent()%>
+	                                   	 <%=a.getqContent()%>
 	                                </p>
 	                            </div>
 	                        </td>
@@ -207,7 +210,7 @@
 	 
 	        <div align="right" style="width:1100px">
 	            
-	            <a href="<%= contextPath %>/enroll.as" class="btn btn-sm btn-secondary write">글작성</a>
+	            <a href="<%= contextPath %>/insert.as" class="btn btn-sm btn-secondary write">글작성</a>
 	            <br><br>
 	        </div>
         <% } %>

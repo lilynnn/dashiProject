@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"import="com.dashi.answerBoard.model.vo.Answer"%>
+<%
+	Answer a = (Answer)request.getAttribute("a");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,8 +26,8 @@
     }
 
     .content-area{
-        width: 1200px;
         margin: auto;
+        display:inline-block;
     }
     
  
@@ -42,6 +45,9 @@
         width: 780px;
         height: 350px;
     }
+    .buttonadmin{
+    margin-left:600px;
+    }
 </style>
 </head>
 <body>
@@ -50,71 +56,68 @@
 	
 	<div class="outer">
 
-        <form action="">
-
-           
+        <form action="<%= contextPath %>/adInsert.as" method="post">
+  <br><br>
             <div>
                 <h2>1:1 문의 답변</h2>
             </div>
-           
-            
+
+    
           
-            <div class="content-area" align="center">
-
-               
-
+            <div class="content-area" >
+ 		<div id="menubar" style="float:left; display:inline-block; margin-right:80px;">
+    		<%@ include file="../admin/adminMenubar.jsp" %>
+    	</div>
+            
+       
+ <br> 
                 <div>
                    <h4> 1:1 문의내용 </h4>
-                   <hr width="900">
+                   <br><br>
                 </div>
-                <br><br>
-
+                
+					
+				<div >
               	<!-- 1:1 문의내용  -->
-                <table class="animal-info" width="800px" style="border-top:solid 1px black; border-bottom:solid 1px black; ">
+                <table class="animal-info" width="800px" style="border-top:solid 1px black ; border-bottom:solid 1px black; ">
 
                     <tr>
                         <th width="500px">작성자</th>
-                        <td width="300px">~~~~</td>
+                        <td width="200px"><%= a.getMemId() %></td>
                     </tr>
                     <tr>
                         <th>분류 </th>
-                        <td>강아지</td>
+                        <td><%= a.getasCategory() %></td>
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td>어쩌구 저쩌구 </td>
+                        <td><%= a.getqTitle() %></td>
                     </tr>
                     <tr>
                         <th>문의 내용 </th>
-                        <td height="150px" ></td>
+                        <td height="150px" ><%= a.getqContent() %></td>
                     </tr>
-                    <table>
-                    
-				<th>
-				<input type="button" style="float:right; margin-top: 10px; margin-bottom: 50px;" value="목록으로">
-                </div>
-                </th>
-                </table>
-                
+
                 </table>
                 
 				<!-- 답변창  -->
                 <h4>답변하기</h4>
-                <hr width="900" style="margin: 40px;">
-              
+               
+               <br><br>
                   
            
-                 <textarea name="content" class="ansContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none"></textarea>
+                 <textarea name="content" class="ansContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none">
+                 <%= a. getAnContent() %></textarea>
             
             
-                <hr>
-    <br>
-    <label for="" style="float: left;"><input type="file"></label>
-    <br>
-
-    <div>
-    <button class="back">이전으로</button> 
-    <button class="btn-1">작성하기</button>
+               
+    <br><br>
+    <label for="" style="margin-left:280px;"><input type="file"></label>
+    <br><br>
+ 	<hr> <br>
+    <div class="buttonadmin">
+    <button onclick="history.back();" class="back">이전으로</button> 
+    <button type="submit" class="btn-1">작성하기</button>
     </div>
     
 

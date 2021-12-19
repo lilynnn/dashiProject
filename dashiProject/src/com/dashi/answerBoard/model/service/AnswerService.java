@@ -36,4 +36,19 @@ public class AnswerService {
 		return result;
 	}
 	
+	public int adinsertAnswer(Answer a) {
+		Connection conn = getConnection();
+		int result = new AnswerDao().adinsertAnswer(conn, a);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
+	
+	
 }

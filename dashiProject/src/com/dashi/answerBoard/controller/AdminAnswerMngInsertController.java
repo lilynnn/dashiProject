@@ -8,22 +8,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dashi.admin.model.vo.Manager;
 import com.dashi.answerBoard.model.service.AnswerService;
 import com.dashi.answerBoard.model.vo.Answer;
-import com.dashi.member.model.vo.Member;
+import com.dashi.faqBoard.model.service.FAQService;
+import com.dashi.faqBoard.model.vo.FAQ;
 
 /**
- * Servlet implementation class AnswerForm
+ * Servlet implementation class AdminAnswerMngInsertController
  */
 
-@WebServlet("/insert.as")
-public class AnswerFormController extends HttpServlet {
+/*1:1 답변 insert 관리자*/
+@WebServlet("/adInsert.as")
+public class AdminAnswerMngInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerFormController() {
+    public AdminAnswerMngInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,37 +36,27 @@ public class AnswerFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		String content = request.getParameter("content");
 		
-		
-		String memId = request.getParameter("Id");
-		String qTitle = request.getParameter("qTitle");
-		String qContent= request.getParameter("qContent");
-		
-	
 		HttpSession session = request.getSession();
-		int memNo = ((Member)session.getAttribute("loginMember")).getMemNo();
+		int mnNo = ((Manager)session.getAttribute("loginAdmin")).getMnNo();	
 		
-				Answer a = new Answer();
-				a.setMemId(memId);
-				a.setqTitle(qTitle);
-				a.setqContent(qContent);
-				a.setMemNo(String.valueOf(memNo));
-				
-				
-		int result = new AnswerService().insertAnswer(a);
+		Answer a = new Answer();
+		a.setAnContent(content);
+		a.setMnNo(mnNo);
 		
-		if(result > 0) { 
-			session.setAttribute("alertMsg", "성공적으로 문의가 등록되었습니다!");
-			response.sendRedirect(request.getContextPath() + "/asList.as");
-			
-		}else { 
-			session.setAttribute("alertMsg", "등록 실패하였습니다.");
-			
+		int result = new AnswerService().adinsertAnswer(a);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "답변등록에 성공했습니다.");
+			response.sendRedirect(request.getContextPath() + "/admain.ad");
+		}else {
+			request.getSession().setAttribute("alertMsg", "등록에 실패하였습니다.");
 		}
-	}	
-		
 	
+	
+	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

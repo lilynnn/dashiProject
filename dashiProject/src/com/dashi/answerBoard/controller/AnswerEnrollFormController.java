@@ -8,18 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AdminAnswerMng
+ * Servlet implementation class AnswerEnrollFormController
  */
-
-/*화면 컨트롤러*/
-@WebServlet("/adAnswer.as")
-public class AdminAnswerMngController extends HttpServlet {
+@WebServlet("/enroll.as")
+public class AnswerEnrollFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAnswerMngController() {
+    public AnswerEnrollFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,7 +26,7 @@ public class AdminAnswerMngController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/answerBoard/adminAnswerMng.jsp").forward(request, response);
+		request.getRequestDispatcher("views/answerBoard/answerForm.jsp").forward(request, response);
 	}
 
 	/**
