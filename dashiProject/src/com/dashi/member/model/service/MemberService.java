@@ -52,6 +52,22 @@ public class MemberService {
 		return list;
 	}
 	
+	//중복아이디 체크
+	public int idCheck(String checkId) {
+		Connection conn = getConnection();
+		int count = new MemberDao().idCheck(conn, checkId);
+		close(conn);
+		return count;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * @author 누리
 	 * @param m : 수정된 멤버객체

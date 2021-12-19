@@ -101,6 +101,7 @@
 	           
 	           <input type="radio" name="gender" value="M">남자 &nbsp;&nbsp;&nbsp;
 	           <input type="radio" name="gender" value="F">여자
+	           
 				<br><br>
 			   <table>
 	                 <!-- 이름 입력란-->
@@ -108,8 +109,6 @@
 	                    <td>
 	                        <input type="text" name = "userName" placeholder="&nbsp;&nbsp;이름을 입력해주세요." required>
 	                    </td>
-	                </tr>
-	
 	                </tr>
 	
 	                <!--생년월일 입력란-->
@@ -163,12 +162,43 @@
 						
 						<tr>
 							<td>
-								<input type="text" name = "userId" minlength="6" maxlength="20" placeholder="&nbsp;&nbsp;아아디를 입력해주세요" required>
-							</td>
-							<td>
-							   <button id="doubleCheck">중복확인</button>
+								<input type="text" id="userId_enroll" name="userId" minlength="6" maxlength="20" placeholder="&nbsp;&nbsp;아아디를 입력해주세요" required>
+								<br>
+								<span id = "idCheck" style="font-size:15px"></span>
 							</td>
 						</tr>
+						
+						<script>
+							$(function(){
+								$("#userId_enroll").on('keyup', idCheck);
+							})
+	
+							function idCheck(){
+		
+								var $idInput = $("input[id=userId_enroll]");
+								
+								$.ajax({
+									url : 'idCheck.me',
+									data:{checkId:$idInput.val()},
+									success : function(result){
+										if(result == "NNNNN"){
+											$('#idCheck').css('color','red')
+											$('#idCheck').html("사용할 수 없는 아이디입니다.")
+											flag=false;
+										}else{
+											$('#idCheck').css('color','blue')
+											$('#idCheck').html("멋진 아이디군요!!")
+											$("#enroll-form :submit").removeAttr("disabled");
+											flag=true;	
+										}
+										console.log(result);
+									}
+								})
+							}
+
+						</script>
+						
+						
 						<tr>
 							<td>
 								5~20자의 영문 소문자, 숫자의 특수기호 사용 <br><br>

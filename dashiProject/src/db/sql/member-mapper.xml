@@ -140,6 +140,15 @@
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
+	
+	
+	
+	<entry key="idCheck">
+		SELECT
+			   COUNT(*) "COUNT"
+		  FROM MEM_INFO
+		 WHERE MEM_ID = ?
+	</entry>
 
 
 
