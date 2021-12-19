@@ -1,7 +1,6 @@
 package com.dashi.adoptReviewBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
-import com.google.gson.Gson;
+import com.dashi.member.model.vo.Member;
 
 /**
- * Servlet implementation class AjaxAdoptReviewReplyListController
+ * Servlet implementation class AjaxReplyInsertController
  */
-@WebServlet("/rlist.ar")
-public class AjaxAdoptReviewReplyListController extends HttpServlet {
+@WebServlet("/rinsert.ar")
+public class AjaxAdoptReviewReplyInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdoptReviewReplyListController() {
+    public AjaxAdoptReviewReplyInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,13 +32,21 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String replyContent = request.getParameter("content");
 		String arlistNo = request.getParameter("arno");
 		
-		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
+		String nickname = ((Member)request.getSession().getAttribute("loginUser")).getNickname();
+		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
+	
+		AdoptReviewReply r = new AdoptReviewReply();
+		r.setReplyContent(replyContent);
+		r.setClistNo(arlistNo);
+		r.setMemNo(userNo);
+		r.setNickname(nickname);
 		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		int result = new AdoptReviewBoardService().insertReply(r);
 		
+		response.getWriter().print(result);
 	}
 
 	/**

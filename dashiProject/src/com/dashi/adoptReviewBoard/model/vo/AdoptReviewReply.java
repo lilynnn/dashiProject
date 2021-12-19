@@ -29,10 +29,21 @@ public class AdoptReviewReply {
 		this.updateDate = updateDate;
 		this.replyStatus = replyStatus;
 	}
+	
+	// 댓글 조회용
+	public AdoptReviewReply(String replyNo, String nickname, String writeDate, String replyContent) {
+		super();
+		this.replyNo = replyNo;
+		this.nickname = nickname;
+		this.replyContent = replyContent;
+		this.writeDate = writeDate;
+	}	
 
 	public String getReplyNo() {
 		return replyNo;
 	}
+
+
 
 	public void setReplyNo(String replyNo) {
 		this.replyNo = replyNo;

@@ -94,6 +94,18 @@ public class AdoptReviewBoardService {
 		return list;
 	}
 	
+	// 댓글 입력
+	public int insertReply(AdoptReviewReply r) {
+		Connection conn = getConnection();
+		int result = new AdoptReviewBoardDao().insertReply(conn, r);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 	
 	

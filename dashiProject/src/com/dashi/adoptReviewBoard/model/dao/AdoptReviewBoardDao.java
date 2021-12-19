@@ -271,7 +271,63 @@ public class AdoptReviewBoardDao {
 	
 	public ArrayList<AdoptReviewReply> selectReplyList(Connection conn, String arlistNo){
 		
+		ArrayList<AdoptReviewReply> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, arlistNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdoptReviewReply(rset.getString("reply_no"),
+											  rset.getString("nickname"),
+											  rset.getString("WRITE_DATE"),
+											  rset.getString("REPLY_CONTENT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
 	}
+	
+	public int insertReply(Connection conn, AdoptReviewReply r) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getMemNo());
+			pstmt.setString(2, r.getClistNo());
+			pstmt.setString(3, r.getNickname());
+			pstmt.setString(4, r.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	
+	
 	
 }
 

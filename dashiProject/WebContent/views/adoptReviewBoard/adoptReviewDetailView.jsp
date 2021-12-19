@@ -98,7 +98,7 @@
 
     /*댓글영역 스타일*/
 
-    .comm-outer{
+    #comm-outer{
         margin-top: 50px;
         width: 1000px;
         margin: auto;
@@ -129,17 +129,20 @@
         color: rgb(94, 94, 92); 
         font-size: 14px;
     }
-
-    button:hover{
-        color: black;
-        cursor:pointer;    
+    #comm-outer tbody{
+    	border-bottom: solid 1px rgb(175, 173, 173);
     }
-    .comm-btn{
+    #comm-outer tbody td>button{
+        color: rgb(94, 94, 92); 
+        font-size: 14px;
         background: none;
         border: none;
         width: 40px;
     }
-
+    button:hover{
+        color: black;
+        cursor:pointer;    
+    }
     /*신고하기 관련 스타일*/
     /* 신고하기 영역 */
     .report-area{width: 1050px; margin: auto;}
@@ -160,7 +163,7 @@
         padding:10px; 
         margin: 0px 12px ;
     }
-    #boardReport #report-area,#cmtReport #report-area{ padding:10px;}
+    #boardReport #report-area,#cmtReport #report-area{padding:10px;}
     #boardReport table,#cmtReport table{
         margin: 12px; 
         width: 565px; 
@@ -317,45 +320,43 @@
                     </form>
                 </div>
         
-                <div class="comm-outer">
+                <div id="comm-outer">
                     <!--댓글영역-->
                     <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
-                        <tr>
-                            <td><img src="resources/images/comment.png" style="width:20px; height: 20px;"></td>
+                        <tr id="comm-count">
+                            <td style="height: 20px; width: 70px;"><img src="resources/images/comment.png" style="width:20px; height: 20px;"></td>
                             <!--댓글 수 카운트-->  
                             <td>3</td>
                         </tr>
-                        <tr>
-                            <td style="height: 20px; width: 70px;"></td>
-                        </tr>
-                        <tr>
-                            <!--작성자 닉네임-->
-                            <td colspan="2">작성자</td>
-                            <!--댓글 작성일-->
-                            <td width="110px;">YYYY-MM-DD</td>
-                            <!--댓글 작성시간-->
-                            <td width="90px;">HH-MM</td>
-                            <td width="610px;"></td>
-                        </tr>
-                        <tr>
-                            <td style="height: 20px;"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="5" style="font-weight: 900;">댓글내용</td>
-                            <!--답글 작성자에게만 노출-->
-                            <td><button class="font comm-btn">수정</button></td>
-                            <!--답글 작성자에게만 노출-->
-                            <td><button class="font comm-btn">삭제</button></td>
-                            <!-- 댓글 작성자가 아닐 시에만 노출-->
-                            <td><button class="font comm-btn" id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
-                            <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
-                            <td><button class="font comm-btn">답글</button></td>
-                        </tr>
-                        <tr>
-                            <td style="height: 20px;"></td>
-                        </tr>
+                        <tbody>
+							<!-- 
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr id="comm-writer">
+                                <td colspan=2>작성자</td>
+                                <td width=110px;>YYYY-MM-DD</td>
+                                <td width=90px;>HH-MM</td>
+                                <td width=610px;></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr id="comm-content">
+                                <td colspan="5">댓글내용</td>
+                                <td><button>수정</button></td>
+                                <td><button>삭제</button></td>
+                                <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
+                                <td><button>답글</button></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                            </tr>
+							-->
+                        </tbody>
                     </table>
                     <!--대댓글영역-->
+                    <!--
                     <table width="1025" align="center" class="font" style="background: rgb(236, 244, 247);border-bottom: solid 1px rgb(175, 173, 173);">
                         <tr>
                             <td style="height: 20px; "></td>
@@ -369,37 +370,112 @@
                             <td width="560px;"></td>
                         </tr>
                         <tr>
-                            <td style="height: 20px;"></td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
                             <td width="70px;"></td>
                             <td colspan="5" style="font-weight: 900;">댓글내용</td>
                             <td><button class="font comm-btn">수정</button></td>
-                            <!--답글 작성자에게만 노출-->
                             <td><button class="font comm-btn">삭제</button></td>
-                            <!-- 댓글 작성자가 아닐 시에만 노출-->
                             <td><button class="font comm-btn" id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
-                            <!--클릭 시 댓글 작성란이 답글 작성으로 변경-->
                             <td><button class="font comm-btn">답글</button></td>
                         </tr>
                         <tr>
-                            <td style="height: 20px;"></td>
+                            <td>&nbsp;</td>
                         </tr>
                     </table>
-                    
-                    <script>
+                    -->
+
+            
+                    <br><br><br>
+                        <!--댓글 입력란-->
+                        <% if(loginUser != null){  // 로그인인 되어있을 경우 %>
+	                        <div align="center">
+	                            <textarea id="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요" style="resize: none;"></textarea>
+	                        </div>
+	                        <div align="right">
+	                        <br>
+	                        <!--클릭 시 댓글 작성 실패|성공 alert창-->
+	                        <button class="write-btn" onclick="insertReply();">댓글쓰기</button>
+	                        </div>
+                        <% }else{ // 로그인 되어있지 않을 경우 %>
+	                        <div align="center">
+	                            <textarea class="write-area" cols="130" rows="8" placeholder="로그인 후 이용가능한 서비스입니다." style="resize: none;" readonly></textarea>
+	                        </div>
+	                        <div align="right">
+	                        <br>
+	                        <!--클릭 시 댓글 작성 실패|성공 alert창-->
+	                        <button class="write-btn" disabled>댓글쓰기</button>
+	                        </div>
+                        <% } %>
+                        <br><br><br><br><br>
+                </div> 
+                
+                                    <script>
                     	$(function(){
                     	
                     		selectReplyList();
                     		
+                    		setInterval(selectReplyList, 1000);
+                    		
                     	});
                     	
-                    	// ajax로 해당 게시글에 딸린 댓글 목록 조회용
+                    	// ajax로 댓글 작성용
+                    	function insertReply(){
+                    		
+                    		$.ajax({
+                    			url:"rinsert.ar",
+                    			data:{
+                    				content:$("#write-area").val(),
+                    				arno:'<%=ar.getArlistNo()%>'
+                    			},
+                    			type:"post",
+                    			success:function(result){
+                    				if(result > 0){ // 댓글작성 성공 => 갱신된 댓글 리스트 조회
+                    					selectReplyList();
+                    					$("#write-area").val(""); // testarea 초기화
+                    				}
+                    			},error:function(){
+                    				console.log("댓글작성용ajax 통신실패");
+                    			}
+                    			
+                    		})
+                    	}
+                    	
+                    	// ajax로 해당 게시글에 달린 댓글 목록 조회용
                     	function selectReplyList(){
                     		$.ajax({
                     			url:"rlist.ar",
-                    			data:{arno:<%=ar.getArlistNo()%>},
-                    			success:function(){
+                    			data:{arno:'<%=ar.getArlistNo()%>'},
+                    			success:function(list){
+                    				
+                    				//console.log(list);
+                    				
+                    				let result = "";
+                    				for(let i=0; i<list.length; i++){
+                    					result += "<tr>"
+						                            + "<td>&nbsp;</td>"
+						                        + "</tr>"
+						                        + "<tr>"
+						                           + "<td colspan=2>" + list[i].nickname + "</td>"
+						                           + "<td width=200px;>"+ list[i].writeDate + "</td>"
+						                           + "<td width=610px;></td>"
+						                        + "</tr>"
+						                        + "<tr>"
+						                           + "<td>&nbsp;</td>"
+						                        + "</tr>"
+						                        + "<tr>"
+						                           + "<td colspan=5>"+ list[i].replyContent +"</td>"
+						                           + "<td><button>수정</button></td>"
+						                           + "<td><button>삭제</button></td>"
+						                           + "<td><button>답글</button></td>"
+						                        + "</tr>"
+						                        + "<tr>"
+						                           + "<td>&nbsp;</td>"
+						                        + "</tr>";
+                    				}
+
+                                    $("#comm-outer tbody").html(result);
                     				
                     			},error:function(){
                     				console.log("댓글목록 조회용 ajax 통신 실패")
@@ -409,21 +485,6 @@
                     	
                     
                     </script>
-            
-                    <br><br><br>
-                        <!--댓글 입력란-->
-                        <div align="center">
-                            <textarea class="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요" style="resize: none;"></textarea>
-                        </div>
-                        <div align="right">
-                        <br>
-                        <!--클릭 시 댓글 작성 실패|성공 alert창-->
-                        <button class="write-btn">댓글쓰기</button>
-                        </div>
-                        <br><br><br><br><br>
-                </div> 
-                
-                
 
 
                 <!-- 이전글/다음글 넘기는 영역 -->
