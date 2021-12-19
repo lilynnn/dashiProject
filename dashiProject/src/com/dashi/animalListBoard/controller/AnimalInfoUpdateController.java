@@ -77,6 +77,7 @@ public class AnimalInfoUpdateController extends HttpServlet {
 				}
 
 			}
+			System.out.println("at : "+at);
 			
 			int result = new AnimalListService().updateAnimalInfo(a, at);
 			System.out.println(at);

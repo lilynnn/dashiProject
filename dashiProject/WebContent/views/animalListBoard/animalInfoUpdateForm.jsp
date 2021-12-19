@@ -67,6 +67,7 @@
 
         <div class="content-area">
         	<form action="<%=contextPath %>/anupdate.ad"  method="post" enctype="multipart/form-data">
+        	
         		<input type="hidden" name="entNo" value="<%=a.getEntNo() %>">
         		<div class="title-area">
 					동물정보  수정하기
@@ -79,11 +80,11 @@
 	            <table id="img-area" style="width:650px; text-align:center;">
 	            
 	            	<!-- 기존에 첨부파일이 존재할 경우 -->
-	            	<%if( at != null) {%>   	
+	            	<%if(at != null) {%>   	
 			          	<tr>
 		            		<td colspan="2">
 		            			<input type="hidden" name="originFileNo" value="<%= at.getAttachNo() %>">
-		            			<img id="titleImg" src="<%= contextPath%>/<%=at.getPath()+at.getChangeName() %>" onclick="chooseFile(1);" style="width:600px; height:400px;">
+		            			<img id="titleImg" src="<%=contextPath%>/<%=at.getPath()+at.getChangeName() %>" onclick="chooseFile(1);" style="width:600px; height:400px;">
 		            		</td>
 		            	</tr>
 	            	<%} else { %>
@@ -97,7 +98,7 @@
 	            	<tr><td>&nbsp;</td></tr>
 	            </table>
 
-				<div >
+				<div>
 						<input type="file" id="file" name="upfile" onchange="loadImg(this, 1);" style="display:none;">
 				</div>
 				<br><br>
