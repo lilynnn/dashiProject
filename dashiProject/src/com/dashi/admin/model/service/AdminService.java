@@ -22,10 +22,17 @@ public class AdminService {
 		
 		return a;
 	}// 관리자 로그인
-
-	public ArrayList<Manager> selectAdminList(){
+	
+	public int selectListCount() {
 		Connection conn = getConnection();
-		ArrayList<Manager> list = new AdminDao().selectAdminList(conn);
+		int listCount = new AdminDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	} // 관리자 총 명수	
+
+	public ArrayList<Manager> selectAdminList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<Manager> list = new AdminDao().selectAdminList(conn, pi);
 		
 		close(conn);
 		return list;		

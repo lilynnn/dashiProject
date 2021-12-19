@@ -95,7 +95,7 @@
                 <% if(loginAdmin != null && loginAdmin.getMnId().equals("admin01")){ %>
                 <div style="text-align: right; width: 100px; line-height: 60px;">
                     <img src="<%=contextPath%>/resources/images/bulb.png" width="15%">
-                    <a href="<%=contextPath%>/empList.ad">사원관리</a>
+                    <a href="<%=contextPath%>/empList.ad?cpage=1">사원관리</a>
                 </div>
                 <% } %>
                 
