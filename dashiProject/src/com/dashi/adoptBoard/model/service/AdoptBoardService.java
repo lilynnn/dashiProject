@@ -54,7 +54,7 @@ public class AdoptBoardService {
 	public AdoptNotice selectAdoptNotice(String boardNo) {
 		Connection conn = getConnection();
 		AdoptNotice an = new AdoptBoardDao().selectAdoptNotice(conn, boardNo);
-		
+		System.out.println(an);
 		close(conn);
 		return an;
 	}
@@ -123,5 +123,20 @@ public class AdoptBoardService {
 			rollback(conn);
 		}
 		return result1*result2;
+	}
+	
+	public AdoptNotice selectAdminAdoptNotice(String boardNo) {
+		
+		Connection conn = getConnection();
+		AdoptNotice an = new AdoptBoardDao().selectAdminAdoptNotice(conn, boardNo);
+		close(conn);
+		return an;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(String boardNo){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
+		close(conn);
+		return list;
 	}
 }

@@ -87,6 +87,31 @@ public class AdoptNotice {
 	
 	
 	
+	public AdoptNotice(String anlistNo, String anTitle, String anContent, String writeDate, int viewCount,
+			int adtStatus, String postStatus, String animalType, String entNo, String animalVariety, String animalName,
+			String animalGender, int animalAge, String animalVaccin, String animalNeutral, String animalDisease,
+			String animalIssue) {
+		super();
+		this.anlistNo = anlistNo;
+		this.anTitle = anTitle;
+		this.anContent = anContent;
+		this.writeDate = writeDate;
+		this.viewCount = viewCount;
+		this.adtStatus = adtStatus;
+		this.postStatus = postStatus;
+		this.animalType = animalType;
+		this.entNo = entNo;
+		this.animalVariety = animalVariety;
+		this.animalName = animalName;
+		this.animalGender = animalGender;
+		this.animalAge = animalAge;
+		this.animalVaccin = animalVaccin;
+		this.animalNeutral = animalNeutral;
+		this.animalDisease = animalDisease;
+		this.animalIssue = animalIssue;
+	}
+
+
 	public String getAnimalVariety() {
 		return animalVariety;
 	}

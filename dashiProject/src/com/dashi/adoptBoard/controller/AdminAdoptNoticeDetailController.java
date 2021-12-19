@@ -1,6 +1,7 @@
 package com.dashi.adoptBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,17 +34,17 @@ public class AdminAdoptNoticeDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String boardNo = request.getParameter("adno");
-		
 		int result = new AdoptBoardService().increaseCount(boardNo);
 		
 		if(result>0) {	// 조회가능한 게시글
 			
-			AdoptNotice an = new AdoptBoardService().selectAdoptNotice(boardNo);
-			Attachment at =  new AdoptBoardService().selectAttachment(boardNo);	
-			
-			
-			request.setAttribute("an", an);
-			request.setAttribute("at", at);
+			AdoptNotice notice = new AdoptBoardService().selectAdminAdoptNotice(boardNo);
+			//Attachment at =  new AdoptBoardService().selectAttachment(boardNo);	
+			ArrayList<Attachment> list = new AdoptBoardService().selectAttachmentList(boardNo);
+			System.out.println(notice);
+			System.out.println(list);
+			request.setAttribute("notice", notice);
+			request.setAttribute("list", list);
 			request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeDetailView.jsp").forward(request, response);
 		}
 		

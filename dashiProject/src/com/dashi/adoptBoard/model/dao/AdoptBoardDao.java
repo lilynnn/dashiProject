@@ -131,6 +131,7 @@ public class AdoptBoardDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectAdoptNotice");
 		
 		try {
@@ -369,5 +370,82 @@ public class AdoptBoardDao {
 		}
 		return result;
 	}
+	
+	public AdoptNotice selectAdminAdoptNotice(Connection conn, String boardNo) {
+		
+		AdoptNotice an = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdoptNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				an = new AdoptNotice(rset.getString("ANLIST_NO"),
+									 rset.getString("AN_TITLE"),
+									 rset.getString("AN_CONTENT"),
+									 rset.getString("WRITE_DATE"),
+									 rset.getInt("VIEW_COUNT"),
+									 rset.getInt("ADT_STATUS"),
+									 rset.getString("POST_STATUS"),
+									 rset.getString("ANIMAL_TYPE"),
+									 rset.getString("ENT_NO"),
+									 rset.getString("ANIMAL_VARIETY"),
+									 rset.getString("ANIMAL_NAME"),
+									 rset.getString("ANIMAL_GENDER"),
+									 rset.getInt("ANIMAL_AGE"),
+									 rset.getString("ANIMAL_VACCINATED"),
+									 rset.getString("ANIMAL_NEUTRALIZATION"),
+									 rset.getString("ANIMAL_DISEASE"),
+									 rset.getString("ANIMAL_ISSUE")
+									);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return an;
+	}
+	
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, String boardNo){
+		ArrayList<Attachment> list = new ArrayList<Attachment>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachmentList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setChangeName(rset.getString("change_name"));
+				at.setPath(rset.getString("path"));
+				at.setAttachLevel(rset.getInt("attach_level"));
+				list.add(at);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			close(rset);
+			close(pstmt);
+		}		
+		return list;
+	}
+	
+	
+	
 	
 }
