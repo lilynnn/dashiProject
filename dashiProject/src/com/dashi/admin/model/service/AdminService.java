@@ -71,7 +71,13 @@ public class AdminService {
 		return result;
 	} // 사원 수정 & 탈퇴
 	
-	
+	public ArrayList<Manager> searchAdmin(String name){
+		Connection conn = getConnection();
+		ArrayList<Manager> list = new AdminDao().searchAdmin(conn, name);
+		close(conn);
+		return list;		
+		
+	} // 이름으로 조회
 	
 	
 	

@@ -64,9 +64,7 @@ public class AdminEmployeeListController extends HttpServlet {
 						
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
-		
-		System.out.println(pi);
-		
+				
 		request.getRequestDispatcher("views/admin/adminEmployeeList.jsp").forward(request, response);
 	
 	

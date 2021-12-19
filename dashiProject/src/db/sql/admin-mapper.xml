@@ -94,7 +94,21 @@
 		 WHERE MN_NO = ?
 	</entry>
 
-
+	<entry key="searchAdmin">
+		SELECT
+		       MN_NO
+		     , MN_ID
+		     , MN_PWD
+		     , MN_NICKNAME
+		     , MN_NAME
+		     , MN_EMAIL
+		     , MN_PHONE
+		     , MN_JOIN
+		     , NVL(TO_CHAR(MN_QUIT, 'YYYY-MM-DD'), '-') "MN_QUIT"
+		     , ACTIVATION
+		  FROM MANAGER_INFO
+		 WHERE MN_NAME LIKE ?
+	</entry>
 
 
 

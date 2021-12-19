@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList, com.dashi.admin.model.vo.Manager, com.dashi.common.model.vo.PageInfo" %>
+<%@ page import="java.util.ArrayList, com.dashi.admin.model.vo.Manager" %>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Manager> list = (ArrayList<Manager>)request.getAttribute("list");
-
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -106,18 +100,6 @@
                     	사원관리
                 <hr>
                 </div>
-                <form action="<%=contextPath%>/searchAd.ad" method="get">
-	                <div id="search">
-	                    <input type="text" name="nameSearch" placeholder="이름으로 검색">
-	                    <button type="submit">검색</button>
-	                </div>
-                </form>
-                
-                <div style="width: 600px;" align="right">
-                    <a href="<%=contextPath%>/empEnrollForm.ad" class="btn btn-sm" style="background: rgb(102,184,94);">
-                        	사원등록
-                    </a>
-                </div>
 
                 <div style="margin-top: 10px;">
                     <table class="table-bordered adminList">
@@ -145,7 +127,7 @@
 	                            <tr align="center" class="adminNo">
 	                                <td><%=a.getMnNo()%></td>
 	                                <td>
-	                                    <button type="button" class="btn" onclick="selectAdmin();" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button> 
+	                                    <button type="button" onclick="selectAdmin();" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button> 
 	                                </td>
 	                                <td><%=a.getMnId()%></td>
 	                                <td><%=a.getMnEmail()%></td>
@@ -161,28 +143,11 @@
                     </table>
                 </div>
 
-				
+				<div style="width:100%; margin-top:30px" align="center">
+					<button type="button" onclick="history.back();" class="btn btn-warning">뒤로가기</button>
+				</div>
             
         	
-            <!-- 페이징바 -->
-            <div class="paging-area" align="center">
-			<% if(currentPage != 1){ %>
-            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage-1%>';">&lt;</button>
-            <% } %>
-            
-            <% for(int p=startPage; p<=endPage; p++){ %>	
-            	<% if(p == currentPage){ %>
-            	<button disabled><%= p %></button>
-            	<% }else{ %>
-            	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=p%>';"><%= p %></button>
-            	<% } %>
-            <% } %>
-            
-            <% if(currentPage != maxPage){ %>
-            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage+1%>';">&gt;</button>
-			<% } %>
-        	</div>
-
 
         </div>
     </div>

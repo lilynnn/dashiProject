@@ -222,7 +222,42 @@ public class AdminDao {
 		return result;
 	}// 사원 수정&삭제
 	
-	
+	public ArrayList<Manager> searchAdmin(Connection conn, String name){
+		ArrayList<Manager> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, "%" + name + "%");
+
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Manager(rset.getInt("mn_no")
+								   , rset.getString("mn_id")
+								   , rset.getString("mn_pwd")
+								   , rset.getString("mn_nickname")
+								   , rset.getString("mn_name")
+								   , rset.getString("mn_email")
+								   , rset.getString("mn_phone")
+								   , rset.getDate("mn_join")
+								   , rset.getString("mn_quit")
+								   , rset.getString("activation")));
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+				
+	} // 이름으로 검색
 	
 	
 	
