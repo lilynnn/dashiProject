@@ -60,6 +60,14 @@ public class MemberService {
 		return count;
 	}
 	
+	//닉네임 체크
+	public int checkNickName(String checkNickName) {
+		Connection conn = getConnection();
+		int count = new MemberDao().checkNickName(conn, checkNickName);
+		close(conn);
+		return count;
+	}
+	
 	
 	
 	
@@ -108,6 +116,8 @@ public class MemberService {
 		
 		return result;
 	} // 회원 탈퇴
+
+
 	
 	
 	

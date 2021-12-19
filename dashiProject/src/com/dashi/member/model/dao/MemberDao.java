@@ -314,6 +314,32 @@ public class MemberDao {
 
 		return count;
 	}
+	//닉네임중복체크
+	public int checkNickName(Connection conn, String checkNickName) {
+		
+		int count = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("checkNickName");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, checkNickName);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return count;
+	}
 
 	
 	

@@ -162,6 +162,7 @@
 						
 						<tr>
 							<td>
+								<b>아이디</b><br>
 								<input type="text" id="userId_enroll" name="userId" minlength="6" maxlength="20" placeholder="&nbsp;&nbsp;아아디를 입력해주세요" required>
 								<br>
 								<span id = "idCheck" style="font-size:15px"></span>
@@ -188,7 +189,7 @@
 										}else{
 											$('#idCheck').css('color','blue')
 											$('#idCheck').html("멋진 아이디군요!!")
-											$("#enroll-form :submit").removeAttr("disabled");
+											$("#submit_enroll").removeAttr("disabled");
 											flag=true;	
 										}
 										console.log(result);
@@ -225,9 +226,39 @@
 	
 						<tr>
 							<td>
-								<input type="text" name = "userNickName" minlength="6" maxlength="20" placeholder="&nbsp;&nbsp;사용하실 닉네임을 입력해주세요" required>
+								<input type="text" id="NickName" name = "userNickName" minlength="6" maxlength="20" placeholder="&nbsp;&nbsp;사용하실 닉네임을 입력해주세요" required>
+								<br>
+								<span id = "NickNameCheck" style="font-size:15px"></span>
 							</td>
 						</tr>
+						<script>
+							$(function(){
+								$("#NickName").on('keyup', NickNameCheck);
+							})
+	
+							function NickNameCheck(){
+		
+								var $nickNameInput = $("input[id=NickName]");
+								
+								$.ajax({
+									url : 'nickNameCheck.me',
+									data:{checkNickName:$nickNameInput.val()},
+									success : function(result){
+										if(result == "NNNNN"){
+											$('#NickNameCheck').css('color','red')
+											$('#NickNameCheck').html("이미 사용하고 있는 닉네임입니다.")
+											flag=false;
+										}else{
+											$('#NickNameCheck').css('color','blue')
+											$('#NickNameCheck').html("센스있는 닉네임이군요!!")
+											flag=true;	
+										}
+										console.log(result);
+									}
+								})
+							}
+
+						</script>
 						<tr>
 							<td>
 								5~20자의 글자 <br><br>
@@ -307,7 +338,7 @@
 					</table>
 					</div><br><br>
 	        
-        	<input type="submit" value="가입하기" class="next">
+        	<input type="submit" id="submit_enroll" value="가입하기" class="next" disabled>
 
 
 

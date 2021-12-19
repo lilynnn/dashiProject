@@ -149,6 +149,13 @@
 		  FROM MEM_INFO
 		 WHERE MEM_ID = ?
 	</entry>
+	
+	<entry key="checkNickName">
+		SELECT
+			   COUNT(*) "COUNT"
+		  FROM MEM_INFO
+		 WHERE NICKNAME = ?
+	</entry>
 
 
 
