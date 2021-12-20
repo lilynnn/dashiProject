@@ -86,8 +86,8 @@
 	                	<td colspan="4"><b style="font-size: 18px; padding-left: 10px;">게시글 정보</b></td>
 	                </tr>
 	               <tr>
-	                    <th width="200">게시글 번호</th>
-	                    <td>&nbsp;<%=notice.getAnlistNo() %></td>
+	                    <th width="200">입소 번호</th>
+	                    <td>&nbsp;<%=notice.getEntNo() %></td>
 	                    <th width="200">작성일</th>
 	                    <td>&nbsp;<%=notice.getWriteDate() %></td>
 	               </tr>

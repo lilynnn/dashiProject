@@ -67,8 +67,9 @@
 			<%@ include file="../admin/adminMenubar.jsp" %>
 		</div>
 
-		<form action="<%= contextPath %>/adtupdate.ad" method="post" enctype="multipart/form-data">
-
+		<form action="<%=contextPath%>/adtupdate.ad" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="boardNo" value="<%=notice.getAnlistNo() %>">
+		<input type="hidden" name="entNo" value="<%=notice.getEntNo() %>">
 			<div class="content-area">
 
 				<div class="title-area">
@@ -82,8 +83,8 @@
 						<tr>
 							<th style="font-size: 20px;">제목</th>
 							<td colspan="2" style="font-size: 17px;">
-								<input type="text" name="title" value="<%=notice.getAnTitle() %>" readonly>
-								<input type="hidden" name="boardNo" value="<%=notice.getAnlistNo() %>">
+								<input type="text" name="title" value="<%=notice.getAnTitle() %>">
+								
 							</td>
 						</tr>
 						<!-- 공백란 -->
@@ -161,14 +162,18 @@
 						<tr>
 							<th>내 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 용</th>
 							<td colspan="2">
-								<textarea name="content" id="text-area" cols="30" rows="10" >
+ 
+								<input type="text" name="content" value="<%=notice.getAnContent() %>" name="content" style="height:100px;">
+
+								<!-- 
+								<textarea name="content" name="content" cols="100" rows="10" style="resize:none;">
 <%=notice.getAnContent() %>
 								</textarea>
+								-->
 							</td>
 						</tr>
 					</tbody>
 				</table>
-
 
 
 				<% if(list.isEmpty()) {%>

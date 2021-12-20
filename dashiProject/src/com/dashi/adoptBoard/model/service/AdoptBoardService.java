@@ -144,4 +144,22 @@ public class AdoptBoardService {
 		close(conn);
 		return result;
 	}
+	
+	public int updateAdoptNotice(AdoptNotice notice, ArrayList<Attachment> list) {
+		Connection conn = getConnection();
+		int result1 = new AdoptBoardDao().updateAdoptNotice(conn, notice);
+		System.out.println("service : "+result1);
+		int result2 = 1;
+		if(!list.isEmpty()) {
+			result2 = new AdoptBoardDao().updateAttachmentList(conn, list);
+		} 
+		System.out.println("result1 : " + result1);
+		System.out.println("result2 : " + result2);
+		if(result1>0 && result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result1*result2;
+	}
 }

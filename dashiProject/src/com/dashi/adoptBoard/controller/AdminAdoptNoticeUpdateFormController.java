@@ -39,7 +39,7 @@ public class AdminAdoptNoticeUpdateFormController extends HttpServlet {
 		
 		request.setAttribute("notice", notice);
 		request.setAttribute("list", list);
-
+		
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeUpdateView.jsp").forward(request, response);
 	}
 

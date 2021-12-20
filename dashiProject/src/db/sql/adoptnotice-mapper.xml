@@ -229,6 +229,7 @@
 		  )
 	</entry>
 	
+	<!-- 입양공고 등록시 첨브파일 등록 -->
 	<entry key="insertAttachList">
 		INSERT 
 		  INTO ATTACHMENT
@@ -251,6 +252,7 @@
 		  )
 	</entry>
 	
+	<!-- 입양공고 조회시 첨부파일 불러올 sql -->
 	<entry key="selectAttachmentList">
 		SELECT
 		        ATTACH_NO
@@ -262,10 +264,31 @@
 		  WHERE REF_NO = ?
 	</entry>
 	
+	<!-- 입양공고 삭제 sql -->
 	<entry key="deleteAdoptNotice">
 		UPDATE
 		       ADOPT_NOTICE
 		   SET POST_STATUS = 'N'
 		 WHERE ANLIST_NO = ?
+	</entry>
+	
+	<!-- 입양공고 수정 sql -->
+	<entry key="updateAdoptNotice">
+		UPDATE 
+		       ADOPT_NOTICE
+		   SET AN_TITLE = ?
+		     , AN_CONTENT = ?
+		 WHERE ANLIST_NO = ?
+	</entry>
+	
+	<!-- 첨부파일 수정용 sql -->
+	<entry key="updateAttachment">
+		 UPDATE 
+		        ATTACHMENT
+		    SET ORIGIN_NAME = ?
+		      , CHANGE_NAME = ?
+		      , PATH = ?
+		      , ATTACH_LEVEL = ?
+		 WHERE ATTACH_NO = ?
 	</entry>
 </properties>

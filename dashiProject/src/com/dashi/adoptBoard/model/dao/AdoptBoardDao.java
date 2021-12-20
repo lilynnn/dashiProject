@@ -465,6 +465,59 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	public int updateAdoptNotice(Connection conn, AdoptNotice notice) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		System.out.println("antitle : " + notice.getAnTitle());
+		System.out.println("anContent : " + notice.getAnContent());
+		System.out.println("anlistNo : "+notice.getAnlistNo());
+		String sql = prop.getProperty("updateAdoptNotice");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, notice.getAnTitle());
+			pstmt.setString(2, notice.getAnContent());
+			pstmt.setString(3, notice.getAnlistNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
+	
+	public int updateAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		//첨부파일리스트가 비어있지 않을 때. 즉, update할게 있을 때
+		if(!list.isEmpty()) {	
+			try {
+				for(Attachment at : list) {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, at.getOriginName());
+					pstmt.setString(2, at.getChangeName());
+					pstmt.setString(3, at.getPath());
+					pstmt.setInt(4,at.getAttachLevel());
+					pstmt.setString(5, at.getAttachNo());
+					
+					result = pstmt.executeUpdate();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally{
+				close(pstmt);
+			}
+		} else {
+			result = 1;
+		}
+		return result;
+	}
 	
 }
