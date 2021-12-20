@@ -172,6 +172,7 @@
 						<script>
 							$(function(){
 								$("#userId_enroll").on('keyup', idCheck);
+								$("#checkPwd").on('keyup', checkPwd);
 							})
 	
 							function idCheck(){
@@ -187,7 +188,7 @@
 											$('#idCheck').html("사용할 수 없는 아이디입니다.")
 											flag=false;
 										}else{
-											$('#idCheck').css('color','blue')
+											$('#idCheck').css('color','green')
 											$('#idCheck').html("멋진 아이디군요!!")
 											$("#submit_enroll").removeAttr("disabled");
 											flag=true;	
@@ -207,10 +208,39 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name = "userPwd" minlength="10" maxlength="20" placeholder="&nbsp;&nbsp;비밀번호를 입력해주세요" required>
+								<input type="password" id="userPwd_enroll" name = "userPwd" minlength="10" maxlength="20" placeholder="&nbsp;&nbsp;비밀번호를 입력해주세요" required>
+								<br>
+								<span id = "userPwdMsg" style="font-size:15px"></span>
 							</td>
-							
 						</tr>
+						<script>
+						$(function(){
+							$("#userPwd_enroll").on('keyup', checkPwd);
+						})
+						function chkPW(){
+
+							 var pw = $("#userPwd_enroll").val();
+							 var num = pw.search(/[0-9]/g);
+							 var eng = pw.search(/[a-z]/ig);
+							 var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+
+							 if(pw.length < 10 || pw.length > 20){
+								 $('#userPwdMsg').css('color','red')
+								 $('#userPwdMsg').html("10자리 ~ 20자리 이내로 입력해주세요.")
+							  return false;
+							 }else if(pw.search(/\s/) != -1){
+							  alert("비밀번호는 공백 없이 입력해주세요.");
+							  return false;
+							 }else if(num < 0 || eng < 0 || spe < 0 ){
+							  alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+							  return false;
+							 }else {
+								console.log("통과"); 
+							    return true;
+							 }
+
+							}
+						</script>
 						<tr>
 							<td>
 								10~20자의 영문소문자, 숫자의 특수기호 사용 <br><br>
@@ -219,10 +249,35 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" name = "checkPwd" placeholder="&nbsp;&nbsp;비밀번호를 다시 입력해주세요" required>
+								<input type="password" id="checkPwd" name = "checkPwd" placeholder="&nbsp;&nbsp;비밀번호를 다시 입력해주세요" required>
+								<br>
+								<span id = "checkPwdkMsg" style="font-size:15px"></span>
+								
 								<br><br>
 							</td>
 						</tr>
+						<script>
+						$(function(){
+							$("#checkPwd").on('keyup', checkPwd);
+						})
+
+						function checkPwd(){
+	
+							var userPwd = document.getElementById('userPwd');
+							var checkPwd = document.getElementById('checkPwd');
+
+							
+							if(userPwd.value == checkPwd.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+								$('#checkPwdkMsg').css('color','green')
+								$('#checkPwdkMsg').html("비밀번호 일치")
+							}else{
+								$('#checkPwdkMsg').css('color','red')
+								$('#checkPwdkMsg').html("비밀번호가 일치하지않습니다.")
+							}
+				
+						}
+						
+						</script>
 	
 						<tr>
 							<td>
@@ -249,8 +304,8 @@
 											$('#NickNameCheck').html("이미 사용하고 있는 닉네임입니다.")
 											flag=false;
 										}else{
-											$('#NickNameCheck').css('color','blue')
-											$('#NickNameCheck').html("센스있는 닉네임이군요!!")
+											$('#NickNameCheck').css('color','green')
+											$('#NickNameCheck').html("센스있는 닉네임이네요 :)")
 											flag=true;	
 										}
 										console.log(result);

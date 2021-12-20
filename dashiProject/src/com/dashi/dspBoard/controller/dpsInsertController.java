@@ -68,8 +68,9 @@ public class dpsInsertController extends HttpServlet {
 			d.setIssue(multipartRequest.getParameter("characteristic"));		//특이사항
 			d.setEtc(multipartRequest.getParameter("ect"));						//기타사항
 			d.setPhone(multipartRequest.getParameter("phone"));
+	
 			
-			System.out.println(d.toString());
+			
 			// attachment  값 뽑기
 			ArrayList<Attachment> list = new ArrayList<>();
 			

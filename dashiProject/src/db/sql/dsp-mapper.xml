@@ -83,6 +83,7 @@
 		  FROM DSP
 		  JOIN ATTACHMENT ON (DSP_NO = REF_NO)
 		 WHERE POST_STATUS = 'Y'
+           and attach_level = 1
 		 ORDER 
 		    BY DSP_NO DESC
 	</entry>
