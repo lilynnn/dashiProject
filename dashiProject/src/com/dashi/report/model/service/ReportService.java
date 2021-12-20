@@ -29,7 +29,12 @@ public class ReportService {
 		
 	} // 모든 사원 조회
 	
-	
+	public int deleteReport(int reportNo) {
+		Connection conn = getConnection();
+		int result = new ReportDao().deleteReport(conn, reportNo);
+		close(conn);
+		return result;
+	} // 신고글 삭제하기
 	
 	
 	

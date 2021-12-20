@@ -13,9 +13,25 @@ public class Report {
 	private String reportDate;
 	private String reportStatus;
 	private int reportCategory;
-	
+	private int typeBR;
+
 	public Report() {}
 
+	public Report(int reportNo, String contentNo, String replyNo, String reportingMem, String reportedMem,
+			String reportContent, String reportDate, String reportStatus, int reportCategory, int typeBR) {
+		super();
+		this.reportNo = reportNo;
+		this.contentNo = contentNo;
+		this.replyNo = replyNo;
+		this.reportingMem = reportingMem;
+		this.reportedMem = reportedMem;
+		this.reportContent = reportContent;
+		this.reportDate = reportDate;
+		this.reportStatus = reportStatus;
+		this.reportCategory = reportCategory;
+		this.typeBR = typeBR;
+	}
+	
 	public Report(int reportNo, String contentNo, String replyNo, String reportingMem, String reportedMem,
 			String reportContent, String reportDate, String reportStatus, int reportCategory) {
 		super();
@@ -102,14 +118,22 @@ public class Report {
 		this.reportCategory = reportCategory;
 	}
 
+	public int getTypeBR() {
+		return typeBR;
+	}
+
+	public void setTypeBR(int typeBR) {
+		this.typeBR = typeBR;
+	}
+
 	@Override
 	public String toString() {
 		return "Report [reportNo=" + reportNo + ", contentNo=" + contentNo + ", replyNo=" + replyNo + ", reportingMem="
 				+ reportingMem + ", reportedMem=" + reportedMem + ", reportContent=" + reportContent + ", reportDate="
-				+ reportDate + ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + "]";
+				+ reportDate + ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + ", typeBR="
+				+ typeBR + "]";
 	}
 
-	
 	
 		
 }

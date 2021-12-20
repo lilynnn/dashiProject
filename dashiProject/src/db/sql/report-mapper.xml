@@ -18,23 +18,59 @@
 		                     , CONTENT_NO
 		                     , NVL(REPLY_NO, '-') REPLY_NO
 		                     , REPORTING_MEM
-		                     , REPORTED_MEM
+		                     , MEM_ID
 		                     , REPORT_CONTENT
 		                     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
 		                     , REPORT_STATUS
 		                     , REPORT_CTG
 		                  FROM REPORTED
+		                  JOIN MEM_INFO ON (REPORTED_MEM = MEM_NO)
 		                 ORDER
 		                       BY REPORT_NO DESC) A
 		                )
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<entry key="searchReport">
+		SELECT 
+		       REPORT_NO
+		     , CONTENT_NO
+		     , REPLY_NO
+		     , REPORTING_MEM
+		     , MEM_ID
+		     , REPORT_CONTENT
+		     , REPORT_DATE
+		     , REPORT_CTG
+		  FROM REPORTED
+		  JOIN MEM_INFO ON (REPORTED_MEM = MEM_NO)
+		 WHERE TYPE_BR = ?
+		   AND REPORT_DATE BETWEEN ? AND SYSDATE
+		   AND MEM_ID LIKE ?
+		   AND REPORT_STATUS = ?
+	</entry>
 
+	<entry key="deleteReport">
+		UPDATE
+		       REPORTED
+		   SET REPORT_STATUS = 'Y'
+		 WHERE REPORT_NO = ?
+	</entry>
 
-
-
-
+	<entry key="selectReport">
+		SELECT 
+		       REPORT_NO
+		     , CONTENT_NO
+		     , REPLY_NO
+		     , REPORTING_MEM
+		     , REPORTED_MEM
+		     , REPORT_CONTENT
+		     , REPORT_DATE
+		     , REPORT_STATUS
+		     , REPORT_CTG
+		     , TYPE_BR
+		  FROM REPORTED
+		 WHERE REPORT_NO = ?
+	</entry>
 
 
 

@@ -104,7 +104,7 @@
 
 		<div class="re-content">
 			<div id="aReportList-find">
-				<form action="">
+				<form method="get" action="<%=contextPath%>/searchReport.ad">
 					<table id="re-search">
 						<tr>
 							<td colspan="4" width="850px" id="boardName">전체 신고 내역</td>
@@ -115,10 +115,9 @@
 						<tr>
 							<td width="300px" align="center" class="list-name" style="border-top: 1px solid gray;">신고글 코드 조회</td>
 							<td width="400px" class="list-find" style="border-top: 1px solid gray;">
-								<select name="" id="" class="inputwidth">
-									<option value="">전체</option>
-									<option value="">게시글</option>
-									<option value="">댓글</option>
+								<select name="boardType" class="inputwidth">
+									<option value="1">게시글</option>
+									<option value="2">댓글</option>
 								</select>
 							</td>
 							<td rowspan="4" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
@@ -128,13 +127,13 @@
 						<tr>
 							<td align="center" class="list-name">검색 기간</td>
 							<td class="list-find">
-								<input type="date"><p style="margin:0">-</p><input type="date">
+								<input type="date" name="searchDate" style="width:325px;">
 							</td>
 						</tr>
 						<tr>
 							<td align="center" class="list-name">검색어</td>
 							<td class="list-find">
-								<input type="text" class="inputwidth" placeholder="검색할 키워드를 입력해주세요.">
+								<input type="text" name="userId" class="inputwidth" placeholder="검색할 회원의 아이디를 입력해주세요.">
 							</td>
 						</tr>
 						<tr>
@@ -150,61 +149,76 @@
 
 			<div id="aReportList">
 				<table id="re-list" style="font-size:12px;">
-					<tr>
-						<td colspan="8" width="850px"></td>
-					</tr>
-
-					<tr>
-						<td colspan="8" align="right" id="list-btn">
-							<a href="" class="btn" style="background: lightgray;">복구</a>
-							<a href="" class="btn" style="background: #f37878;">삭제</a>
-						</td>
-					</tr>
-
-					<tr align="center" id="re-list-name">
-						<th width="30px"></th>
-						<th width="100px">신고글번호</th>
-						<th width="100px">신고댓글번호</th>
-						<th width="100px">신고종류</th>
-						<th width="100px">작성자</th>
-						<th width="380px">신고내용</th>
-						<th width="100px">작성일</th>
-						<th width="40px">처리</th>
-					</tr>
-					<% if(list.isEmpty()){ %>
-					<!--신고글이 없을때-->
-					<tr align="center" style="border-bottom:1px solid gray;">
-						<td colspan="7">신고된 글이 없습니다.</td>
-					</tr>
-					<% }else{ %>
-					<!--신고글이 있을때-->
-						<% for(Report r : list){ %>
-						<tr align="center" style="border-bottom:1px solid gray;">
-							<td><input type="checkbox"></td>
-							<td><%=r.getContentNo()%></td>
-							<td><%=r.getReplyNo()%></td>
-							
-							<% 
-		                    	String category ="";
-		                    	switch(r.getReportCategory()){
-		                    	case 1: category = "욕설 및 음란"; break;
-		                    	case 2: category = "광고 및 도배"; break;
-		                    	case 3: category = "사생활침해"; break;
-		                    	case 4: category = "저작권위반"; break;
-		                    	case 5: category = "기타"; break;
-								}
-							%>
-							<td><%=category%></td>
-							
-							<td><%=r.getReportedMem()%></td>
-							<td><%=r.getReportContent()%></td>
-							<td><%=r.getReportDate()%></td>
-							<td><%=r.getReportStatus()%></td>
+					<thead>
+						<tr>
+							<td colspan="8" width="850px"></td>
 						</tr>
+	
+						<tr>
+							<td colspan="8" align="right" id="list-btn">
+								<a href="" class="btn" style="background: lightgray;">복구</a>
+								<button type="button" class="btn" style="background: #f37878;">삭제</button>
+							</td>
+						</tr>
+	
+						<tr align="center" id="re-list-name">
+							<th width="30px"></th>
+							<th width="100px">신고글번호</th>
+							<th width="100px">신고댓글번호</th>
+							<th width="100px">신고종류</th>
+							<th width="100px">작성자</th>
+							<th width="380px">신고내용</th>
+							<th width="100px">작성일</th>
+							<th width="40px">처리</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% if(list.isEmpty()){ %>
+						<!--신고글이 없을때-->
+						<tr align="center" style="border-bottom:1px solid gray;">
+							<td colspan="7">신고된 글이 없습니다.</td>
+						</tr>
+						<% }else{ %>
+						<!--신고글이 있을때-->
+							<% for(Report r : list){ %>
+							<tr align="center" style="border-bottom:1px solid gray;">
+								<td><input type="checkbox" name="check"></td>
+								<td><%=r.getContentNo()%></td>
+								<td><%=r.getReplyNo()%></td>
+								
+								<% 
+			                    	String category ="";
+			                    	switch(r.getReportCategory()){
+			                    	case 1: category = "욕설 및 음란"; break;
+			                    	case 2: category = "광고 및 도배"; break;
+			                    	case 3: category = "사생활침해"; break;
+			                    	case 4: category = "저작권위반"; break;
+			                    	case 5: category = "기타"; break;
+									}
+								%>
+								<td><%=category%></td>
+								
+								<td><%=r.getReportedMem()%></td>
+								<td><%=r.getReportContent()%></td>
+								<td><%=r.getReportDate()%></td>
+								<td><%=r.getReportStatus()%></td>
+							</tr>
+							<% } %>
 						<% } %>
-					<% } %>
+					</tbody>
 				</table>
 			</div>
+			
+			<script>
+				$("#re-list>tbody>tr").click(function(){
+					
+					console.log($("#re-list>tbody>tr").children().eq(1).text());
+					location href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(1).text();
+					
+				})
+			</script>
+			
+			
 	
 			<!-- 페이징바 -->
             <div class="paging-area" align="center">
@@ -230,11 +244,7 @@
 
 	</div>
 	
-	
-	
-	
-	
-	
+		
 	
 	<%@ include file="../common/footerbar.jsp" %>
 

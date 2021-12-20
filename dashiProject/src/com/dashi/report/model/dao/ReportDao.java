@@ -80,7 +80,7 @@ public class ReportDao {
 								   , rset.getString("content_no")
 								   , rset.getString("reply_no")
 								   , rset.getString("reporting_mem")
-								   , rset.getString("reported_mem")
+								   , rset.getString("mem_id")
 								   , rset.getString("report_content")
 								   , rset.getString("report_date")
 								   , rset.getString("report_status")
@@ -98,9 +98,63 @@ public class ReportDao {
 				
 	} // 전체 사원 조회
 	
+	public int deleteReport(Connection conn, int reportNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reportNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+	} // 신고글 삭제
 	
-	
-	
+	public Report selectReport(Connection conn, int reportNo) {
+		Report r = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset= null;
+		
+		String sql = prop.getProperty("selectReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				r = new Report(rset.getInt("report_no")
+							 , rset.getString("content_no")	
+							 , rset.getString("reply_no")	
+							 , rset.getString("reporting_mem")	
+							 , rset.getString("reported_mem")	
+							 , rset.getString("report_content")	
+							 , rset.getString("report_date")	
+							 , rset.getString("report_status")	
+							 , rset.getInt("report_ctg")	
+							 , rset.getInt("type_br"));
+						
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return r;
+		
+		
+	}
 	
 	
 	
