@@ -4,20 +4,20 @@ import java.sql.Date;
 
 public class Report {
 	
-	private String reportNo;
+	private int reportNo;
 	private String contentNo;
 	private String replyNo;
-	private int reportingMem;
-	private int reportedMem;
+	private String reportingMem;
+	private String reportedMem;
 	private String reportContent;
-	private Date reportDate;
+	private String reportDate;
 	private String reportStatus;
 	private int reportCategory;
 	
 	public Report() {}
 
-	public Report(String reportNo, String contentNo, String replyNo, int reportingMem, int reportedMem,
-			String reportContent, Date reportDate, String reportStatus, int reportCategory) {
+	public Report(int reportNo, String contentNo, String replyNo, String reportingMem, String reportedMem,
+			String reportContent, String reportDate, String reportStatus, int reportCategory) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
@@ -30,11 +30,11 @@ public class Report {
 		this.reportCategory = reportCategory;
 	}
 
-	public String getReportNo() {
+	public int getReportNo() {
 		return reportNo;
 	}
 
-	public void setReportNo(String reportNo) {
+	public void setReportNo(int reportNo) {
 		this.reportNo = reportNo;
 	}
 
@@ -54,19 +54,19 @@ public class Report {
 		this.replyNo = replyNo;
 	}
 
-	public int getReportingMem() {
+	public String getReportingMem() {
 		return reportingMem;
 	}
 
-	public void setReportingMem(int reportingMem) {
+	public void setReportingMem(String reportingMem) {
 		this.reportingMem = reportingMem;
 	}
 
-	public int getReportedMem() {
+	public String getReportedMem() {
 		return reportedMem;
 	}
 
-	public void setReportedMem(int reportedMem) {
+	public void setReportedMem(String reportedMem) {
 		this.reportedMem = reportedMem;
 	}
 
@@ -78,11 +78,11 @@ public class Report {
 		this.reportContent = reportContent;
 	}
 
-	public Date getReportDate() {
+	public String getReportDate() {
 		return reportDate;
 	}
 
-	public void setReportDate(Date reportDate) {
+	public void setReportDate(String reportDate) {
 		this.reportDate = reportDate;
 	}
 
@@ -108,6 +108,8 @@ public class Report {
 				+ reportingMem + ", reportedMem=" + reportedMem + ", reportContent=" + reportContent + ", reportDate="
 				+ reportDate + ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + "]";
 	}
+
+	
 	
 		
 }

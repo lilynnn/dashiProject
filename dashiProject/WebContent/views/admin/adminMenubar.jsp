@@ -95,7 +95,7 @@
 
                 <div class="aMenu" id="report">신고내역관리</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/reportList.ad" class="menu-detail">전체신고내역</a></li>
+                    <li><a href="<%=request.getContextPath()%>/reportList.ad?cpage=1" class="menu-detail">전체신고내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="payment">결제내역관리</div>

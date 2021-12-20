@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.report.model.vo.Report, com.dashi.common.model.vo.PageInfo"%>
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,57 +104,58 @@
 
 		<div class="re-content">
 			<div id="aReportList-find">
-				
-				<table id="re-search">
-					<tr>
-						<td colspan="4" width="850px" id="boardName">전체 신고 내역</td>
-					</tr>
-					<tr>
-						<th colspan="4"><hr style="height: 1px;"></th>
-					</tr>
-					<tr>
-						<td width="300px" align="center" class="list-name" style="border-top: 1px solid gray;">신고글 코드 조회</td>
-						<td width="400px" class="list-find" style="border-top: 1px solid gray;">
-							<select name="" id="" class="inputwidth">
-								<option value="">전체</option>
-								<option value="">게시글</option>
-								<option value="">댓글</option>
-							</select>
-						</td>
-						<td rowspan="4" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
-							<button type="button" id="search-btn">검색</button>
-						</td>
-					</tr>
-					<tr>
-						<td align="center" class="list-name">검색 기간</td>
-						<td class="list-find">
-							<input type="date"><p style="margin:0">-</p><input type="date">
-						</td>
-					</tr>
-					<tr>
-						<td align="center" class="list-name">검색어</td>
-						<td class="list-find">
-							<input type="text" class="inputwidth" placeholder="검색할 키워드를 입력해주세요.">
-						</td>
-					</tr>
-					<tr>
-						<td align="center" class="list-name">게시물 상태</td>
-						<td id="checkYN" class="list-find">
-							<label><input type="radio" name="status"><p> 확인중</p></label>
-							<label><input type="radio" name="status"><p> 삭제완료</p></label>
-						</td>
-					</tr>
-				</table>
+				<form action="">
+					<table id="re-search">
+						<tr>
+							<td colspan="4" width="850px" id="boardName">전체 신고 내역</td>
+						</tr>
+						<tr>
+							<th colspan="4"><hr style="height: 1px;"></th>
+						</tr>
+						<tr>
+							<td width="300px" align="center" class="list-name" style="border-top: 1px solid gray;">신고글 코드 조회</td>
+							<td width="400px" class="list-find" style="border-top: 1px solid gray;">
+								<select name="" id="" class="inputwidth">
+									<option value="">전체</option>
+									<option value="">게시글</option>
+									<option value="">댓글</option>
+								</select>
+							</td>
+							<td rowspan="4" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
+								<button type="button" id="search-btn">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<td align="center" class="list-name">검색 기간</td>
+							<td class="list-find">
+								<input type="date"><p style="margin:0">-</p><input type="date">
+							</td>
+						</tr>
+						<tr>
+							<td align="center" class="list-name">검색어</td>
+							<td class="list-find">
+								<input type="text" class="inputwidth" placeholder="검색할 키워드를 입력해주세요.">
+							</td>
+						</tr>
+						<tr>
+							<td align="center" class="list-name">게시물 상태</td>
+							<td id="checkYN" class="list-find">
+								<label><input type="radio" name="status" value="N"><p> 확인중</p></label>
+								<label><input type="radio" name="status" value="Y"><p> 삭제완료</p></label>
+							</td>
+						</tr>
+					</table>
+				</form>
 			</div>
 
 			<div id="aReportList">
-				<table id="re-list">
+				<table id="re-list" style="font-size:12px;">
 					<tr>
-						<td colspan="7" width="850px"></td>
+						<td colspan="8" width="850px"></td>
 					</tr>
 
 					<tr>
-						<td colspan="7" align="right" id="list-btn">
+						<td colspan="8" align="right" id="list-btn">
 							<a href="" class="btn" style="background: lightgray;">복구</a>
 							<a href="" class="btn" style="background: #f37878;">삭제</a>
 						</td>
@@ -154,42 +164,66 @@
 					<tr align="center" id="re-list-name">
 						<th width="30px"></th>
 						<th width="100px">신고글번호</th>
+						<th width="100px">신고댓글번호</th>
 						<th width="100px">신고종류</th>
 						<th width="100px">작성자</th>
-						<th width="380px">제목</th>
+						<th width="380px">신고내용</th>
 						<th width="100px">작성일</th>
 						<th width="40px">처리</th>
 					</tr>
-
+					<% if(list.isEmpty()){ %>
 					<!--신고글이 없을때-->
 					<tr align="center" style="border-bottom:1px solid gray;">
 						<td colspan="7">신고된 글이 없습니다.</td>
 					</tr>
-
+					<% }else{ %>
 					<!--신고글이 있을때-->
-					<tr align="center" style="border-bottom:1px solid gray;">
-						<td><input type="checkbox"></td>
-						<td>COMM-001</td>
-						<td>욕설및음란</td>
-						<td>bad0101</td>
-						<td>제목들어갈자리</td>
-						<td>2021/12/07</td>
-						<td>N</td>
-					</tr>
+						<% for(Report r : list){ %>
+						<tr align="center" style="border-bottom:1px solid gray;">
+							<td><input type="checkbox"></td>
+							<td><%=r.getContentNo()%></td>
+							<td><%=r.getReplyNo()%></td>
+							
+							<% 
+		                    	String category ="";
+		                    	switch(r.getReportCategory()){
+		                    	case 1: category = "욕설 및 음란"; break;
+		                    	case 2: category = "광고 및 도배"; break;
+		                    	case 3: category = "사생활침해"; break;
+		                    	case 4: category = "저작권위반"; break;
+		                    	case 5: category = "기타"; break;
+								}
+							%>
+							<td><%=category%></td>
+							
+							<td><%=r.getReportedMem()%></td>
+							<td><%=r.getReportContent()%></td>
+							<td><%=r.getReportDate()%></td>
+							<td><%=r.getReportStatus()%></td>
+						</tr>
+						<% } %>
+					<% } %>
 				</table>
 			</div>
 	
-			<div class="paging-area" align="center">
-
-				<button class="btn btn-light">&lt;</button>
-	            <button class="btn btn-light">1</button>
-	            <button class="btn btn-light">2</button>
-	            <button class="btn btn-light">3</button>
-	            <button class="btn btn-light">4</button>
-	            <button class="btn btn-light">5</button>
-	            <button class="btn btn-light">&gt;</button>
-	            
-			</div>
+			<!-- 페이징바 -->
+            <div class="paging-area" align="center">
+			<% if(currentPage != 1){ %>
+            <button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=currentPage-1%>';" class="btn btn-outline-light text-dark">&lt;</button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++){ %>	
+            	<% if(p == currentPage){ %>
+            	<button disabled><%= p %></button>
+            	<% }else{ %>
+            	<button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=p%>';" class="btn btn-outline-light text-dark"><%= p %></button>
+            	<% } %>
+            <% } %>
+            
+            <% if(currentPage != maxPage){ %>
+            <button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=currentPage+1%>';" class="btn btn-outline-light text-dark">&gt;</button>
+			<% } %>
+        	</div>
 	
 		</div>
 	

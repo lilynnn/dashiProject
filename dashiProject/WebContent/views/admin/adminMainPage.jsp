@@ -207,7 +207,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad">전체신고내역</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad?cpage=1">전체신고내역</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
