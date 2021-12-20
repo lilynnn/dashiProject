@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.dspBoard.model.dao.DspDao;
+import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
 
 public class DspService {
@@ -79,9 +80,16 @@ public class DspService {
 	public ArrayList<Dsp> ctgList(String ctg) {
 		Connection conn = getConnection();
 		ArrayList<Dsp> list = new DspDao().ctgList(conn, ctg);
-		
+		close(conn);
 		return list;
 		
+	}
+
+	public ArrayList<Category> selectCategoryList() {
+		Connection conn = getConnection();
+		ArrayList<Category> list = new DspDao().selectCategoryList(conn);
+		close(conn);
+		return list;
 	}
 	
 

@@ -9,21 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.dspBoard.model.service.DspService;
+import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class AjaxDsplistController
+ * Servlet implementation class dspUpdateController
  */
-@WebServlet("/ajaxCtgList.dsp")
-public class AjaxDspListController extends HttpServlet {
+@WebServlet("/updateForm.dsp")
+public class dspUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDspListController() {
+    public dspUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,14 +33,20 @@ public class AjaxDspListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		String dspNo = request.getParameter("dno");
 		
-		String ctg = request.getParameter("ctg");
-		ArrayList<Dsp> list = new DspService().ctgList(ctg);
-		System.out.println(ctg);
+		DspService dService = new DspService();
+		ArrayList<Category> category = dService.selectCategoryList();
+		Dsp d = dService.selectDsp(dspNo);
+		ArrayList<Attachment> list = dService.selectAttachmentList(dspNo);
 		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		request.setAttribute("category", category);
+		request.setAttribute("list", list);
+		request.setAttribute("d", d);
 		
+		request.getRequestDispatcher("views/dspBoard/dspUpdateForm.jsp").forward(request, response);
+
 	}
 
 	/**

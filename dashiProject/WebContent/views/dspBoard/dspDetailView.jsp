@@ -204,6 +204,15 @@
         
         <br><hr>
 
+        <div align="center">
+            
+			<%if(loginUser != null && loginUser.getNickname().equals(d.getNickName())) { %>
+	            <!--로그인한 사용자가 게시글 작성자일경우-->
+	            <a href="<%=contextPath %>/updateForm.dsp?dno=<%=d.getDspNo()%>" class="btn btn-sm btn-warning">수정하기</a>
+	            <a href="" class="btn btn-sm btn-danger">삭제하기</a>
+            <% } %>
+        </div>
+
 
         <!--실종 보호 목격 정보글-->    
         <div class="Info_outer1" align="center" style="margin-top: 30px;">

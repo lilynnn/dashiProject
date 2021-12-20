@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.dashi.common.JDBCTemplate.*;
 
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
 
 public class DspDao {
@@ -167,7 +168,9 @@ public class DspDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				d = new Dsp(rset.getString("DSP_TITLE"),
+				d = new Dsp(rset.getString("DSP_NO"),
+							rset.getString("NICKNAME"),
+							rset.getString("DSP_TITLE"),
 							rset.getDate("WRITE_DATE"),
 							rset.getInt("VIEW_COUNT"),
 							rset.getString("POST_CTG"),			   
@@ -233,7 +236,6 @@ public class DspDao {
 		ResultSet rset = null;
 		
 		String sql = prop.getProperty("ctgList");
-		System.out.println(ctg);
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, ctg);
@@ -257,6 +259,30 @@ public class DspDao {
 			close(pstmt);
 		}
 		
+		return list;
+	}
+
+
+	public ArrayList<Category> selectCategoryList(Connection conn) {
+		ArrayList<Category> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null; //조회할때 필수요소
+		String sql = prop.getProperty("selectCategoryList");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Category(rset.getString("category_name")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			close(rset);
+			close(pstmt);
+		}
 		return list;
 	}
 

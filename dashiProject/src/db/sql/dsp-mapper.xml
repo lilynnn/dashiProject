@@ -89,6 +89,13 @@
 	</entry>
 	
 	
+	<entry key="selectCategoryList">
+		SELECT
+		      CATEGORY_NAME
+		FROM DSP_CATEGORY
+	</entry>
+	
+	
 	
 	<!-- 조회수 증가 -->
 	<entry key="increaseCount">
@@ -118,7 +125,9 @@
 	<!-- 글 상세 조회-->
 	<entry key="selectDsp">
 		SELECT
-		       DSP_TITLE
+			   DSP_NO
+			 , NICKNAME
+		     , DSP_TITLE
 		     , WRITE_DATE
 		     , VIEW_COUNT
 		     , POST_CTG

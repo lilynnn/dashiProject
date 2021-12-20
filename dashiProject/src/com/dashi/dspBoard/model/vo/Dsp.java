@@ -74,10 +74,13 @@ public class Dsp {
 	
 
 	
-	public Dsp(String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
+	public Dsp(String dspNo, String nickName, String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
 			String phone, String variety, String gender, String age, String weight, String issue, String etc,
 			int money) {
 		super();
+		
+		this.dspNo = dspNo;
+		this.nickName = nickName;
 		this.dspTitle = dspTitle;
 		this.viewCount = viewCount;
 		this.writeDate = writeDate;

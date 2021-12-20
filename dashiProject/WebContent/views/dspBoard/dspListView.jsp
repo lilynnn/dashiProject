@@ -223,9 +223,21 @@
             $.ajax({
 				url : 'ajaxCtgList.dsp?ctg=실종',
 				data: "",
-				success : function(data){
-					$('.dspList-area').html(data);
+				success : function(list){
+					console.log(list);
+					
+					let result = "";
+					for(let i=0 ; i<list.length ; i++){
+						result += 
+							
 					}
+					
+
+					
+					$("#dspList-area").html(result); 
+					
+					console.log(result);
+				}
 			})
 		}
 		
@@ -238,8 +250,7 @@
 			$.ajax({
 				url : 'ajaxCtgList.dsp?ctg=보호',
 				data: "",
-				success : function(data){
-					$('.dspList-area').html(data);
+				success : function(list){
 					}
 			})
 		}
@@ -252,8 +263,7 @@
 			$.ajax({
 				url : 'ajaxCtgList.dsp?ctg=목격',
 				data: "",
-				success : function(data){
-					$('.dspList-area').html(data);
+				success : function(list){
 					}
 			})
 		}
