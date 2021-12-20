@@ -261,4 +261,11 @@
 		   FROM ATTACHMENT
 		  WHERE REF_NO = ?
 	</entry>
+	
+	<entry key="deleteAdoptNotice">
+		UPDATE
+		       ADOPT_NOTICE
+		   SET POST_STATUS = 'N'
+		 WHERE ANLIST_NO = ?
+	</entry>
 </properties>

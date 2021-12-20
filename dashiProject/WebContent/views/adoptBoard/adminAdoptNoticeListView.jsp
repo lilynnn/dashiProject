@@ -130,7 +130,12 @@
 		                        <td><%= an.getViewCount() %></td>
 		                        <td><%= an.getWriteDate() %></td>
 		                        <td>
-		                            <button class="btn btn-sm btn-light">삭제하기</button>
+
+		                        <!-- 관리자 로그인 페이지 완성되면 실행시켜보기!!! -->
+		                        <!-- if(loginUser != null && loginUser.getUserId().startsWith("admin") ){ ===> /* < % 안에 넣어서 작업하기  -->
+
+		                    	<a href="<%=contextPath %>/adtdelete.ad?adno=<%=an.getAnlistNo() %>" class="btn btn-sm btn-light">삭제하기</a>
+	
 		                        </td>
 		                    </tr>
 	                    <%} %>
@@ -145,7 +150,7 @@
         <div align="center">
 			
        		<%if(currentPage != 1) {%>
-            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>adlist.adt?cpage=<%= currentPage-1 %>';">&lt</button>
+            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adlist.ad?cpage=<%= currentPage-1 %>';">&lt</button>
 			<%} %>
 			
 			<% for(int p=startPage; p<=endPage; p++){ %>
@@ -154,12 +159,12 @@
 					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
 					<button class="btn btn-light" disabled><%= p %></button>
 				<%} else { %>
-            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= p %>';"><%= p %></button>	
+            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.ad?cpage=<%= p %>';"><%= p %></button>	
             	<%} %>
          	<%} %>	
 
 			<%if(currentPage < maxPage) {%>
-         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.ad?cpage=<%= currentPage+1%>';">&gt</button>
             <%} %>
             
         </div>
@@ -170,7 +175,7 @@
 
     </div>
     <script>
-        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
+
         $(function(){
             $(".content-area>table>tbody>tr").click(function(){
                 //const num = $(this).children().eq(0).text();

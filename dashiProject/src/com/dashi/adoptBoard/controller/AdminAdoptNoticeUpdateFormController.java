@@ -14,16 +14,16 @@ import com.dashi.adoptBoard.model.vo.AdoptNotice;
 import com.dashi.common.model.vo.Attachment;
 
 /**
- * Servlet implementation class AdminAdoptNoticeDetailController
+ * Servlet implementation class AdminAdoptNoticeUpdateController
  */
-@WebServlet("/adtdetail.ad")
-public class AdminAdoptNoticeDetailController extends HttpServlet {
+@WebServlet("/adtupdateFrom.ad")
+public class AdminAdoptNoticeUpdateFormController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAdoptNoticeDetailController() {
+    public AdminAdoptNoticeUpdateFormController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,19 +34,13 @@ public class AdminAdoptNoticeDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String boardNo = request.getParameter("adno");
-		int result = new AdoptBoardService().increaseCount(boardNo);
+		AdoptNotice notice = new AdoptBoardService().selectAdoptNotice(boardNo);
+		ArrayList<Attachment> list = new AdoptBoardService().selectAttachmentList(boardNo);
 		
-		if(result>0) {	// 조회가능한 게시글
-			
-			AdoptNotice notice = new AdoptBoardService().selectAdminAdoptNotice(boardNo);
-			//Attachment at =  new AdoptBoardService().selectAttachment(boardNo);	
-			ArrayList<Attachment> list = new AdoptBoardService().selectAttachmentList(boardNo);
+		request.setAttribute("notice", notice);
+		request.setAttribute("list", list);
 
-			request.setAttribute("notice", notice);
-			request.setAttribute("list", list);
-			request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeDetailView.jsp").forward(request, response);
-		}
-		
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeUpdateView.jsp").forward(request, response);
 	}
 
 	/**

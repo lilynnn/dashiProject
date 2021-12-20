@@ -430,6 +430,8 @@ public class AdoptBoardDao {
 			
 			while(rset.next()) {
 				Attachment at = new Attachment();
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setOriginName(rset.getString("origin_name"));
 				at.setChangeName(rset.getString("change_name"));
 				at.setPath(rset.getString("path"));
 				at.setAttachLevel(rset.getInt("attach_level"));
@@ -445,6 +447,23 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	public int deleteAdoptNotice(Connection conn, String boardNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteAdoptNotice");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 	
 	

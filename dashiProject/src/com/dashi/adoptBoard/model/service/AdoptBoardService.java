@@ -54,7 +54,6 @@ public class AdoptBoardService {
 	public AdoptNotice selectAdoptNotice(String boardNo) {
 		Connection conn = getConnection();
 		AdoptNotice an = new AdoptBoardDao().selectAdoptNotice(conn, boardNo);
-		System.out.println(an);
 		close(conn);
 		return an;
 	}
@@ -75,13 +74,10 @@ public class AdoptBoardService {
 		
 		// 신청서 업로드 확인
 		int result1 = new AdoptBoardDao().insertAdoptApply(conn, adp);
-		System.out.println(result1);
 		
 		int result2 = 1;
-		
 		if(at != null) {
 			result2 = new AdoptBoardDao().insertAttachment(conn, at);
-			System.out.println("result2 " + result2);
 		}
 		
 		if(result1>0 && result2>0) {
@@ -100,7 +96,7 @@ public class AdoptBoardService {
 	public Animal selectAnimalInfo(String animalNo) {
 		Connection conn = getConnection();
 		Animal a = new AdoptBoardDao().selectAnimalInfo(conn, animalNo);
-		System.out.println(a);
+
 		close(conn);
 		return a;
 	}
@@ -110,13 +106,15 @@ public class AdoptBoardService {
 		Connection conn = getConnection();
 		
 		int result1 = new AdoptBoardDao().insertAdoptNotice(conn, adt);
+		System.out.println("dao의 insertAdoptNotice메소드 확인하기");
 		System.out.println("result1 :" + result1);
 		// -----------여기까지 성공
 		
 		int result2 = new AdoptBoardDao().insertAttachmentList(conn, list);
 		//int result2 = new BoardDao().insertAttachmentList(conn, list);
-		
 		System.out.println("result2 : "+result2);
+		
+		System.out.println("-------------------------------------------------------");
 		if(result1>0 && result2>0) {
 			commit(conn);
 		} else {
@@ -138,5 +136,12 @@ public class AdoptBoardService {
 		ArrayList<Attachment> list = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
 		close(conn);
 		return list;
+	}
+	
+	public int deleteAdoptNotice(String boardNo) {
+		Connection conn = getConnection();
+		int result = new AdoptBoardDao().deleteAdoptNotice(conn, boardNo);
+		close(conn);
+		return result;
 	}
 }

@@ -199,8 +199,8 @@
             <br><br><br>
 
            <div id="btn-area" align="center">
-            <a href="<%=contextPath%>/adnoupdate.ad" class="btn btn-success">수정하기</a>
-            <a href="" class="btn btn-secondary">목록보기</a>
+            <a href="<%=contextPath%>/adtupdateFrom.ad?adno=<%=notice.getAnlistNo() %>" class="btn btn-success">수정하기</a>
+            <a href="<%=contextPath %>/adlist.ad?cpage=1" class="btn btn-secondary">목록보기</a>
            </div>
         </div>
 
