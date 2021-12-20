@@ -74,6 +74,7 @@
 		SELECT
 		       MN_NO
 		     , MN_ID
+		     , MN_PWD
 		     , MN_NAME
 		     , MN_EMAIL
 		     , MN_PHONE
@@ -110,7 +111,13 @@
 		 WHERE MN_NAME LIKE ?
 	</entry>
 
-
+	<entry key="deleteAdmin">
+		UPDATE
+			   MANAGER_INFO
+		   SET MN_QUIT = SYSDATE
+		     , ACTIVATION = 'Y'
+		 WHERE MN_NO = ?
+	</entry>
 
 
 

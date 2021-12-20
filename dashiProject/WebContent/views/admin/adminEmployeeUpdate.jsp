@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.admin.model.vo.Manager"%>
+<%
+	Manager a = (Manager)request.getAttribute("a");
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,7 @@
     }
     #emp-enroll-form{
         width: 600px;
-        height: 300px;
+        height: 400px;
         border: 1px solid;
         margin: auto;
         background:#f8ebe7;
@@ -68,7 +71,7 @@
         <div id="emp-enroll">
         	
         	<form action="<%=contextPath%>/update.ad" method="post">
-
+				<input type="hidden" name="adminNo" value=<%=a.getMnNo()%>>
                 <div id="title">
                     	사원정보수정
                 <hr>
@@ -78,31 +81,23 @@
                     <table align="center" class="table-bordered">
                     	<tr>
                             <th width="100">아이디</th>
-                            <td width="400"><input type="text" name="adminId" required></td>
+                            <td width="400"><input type="text" name="adminId" value="<%=a.getMnId()%>" required readonly></td>
                         </tr>
                         <tr>
                             <th>비밀번호</th>
-                            <td><input type="password" name="adminPwd" required></td>
+                            <td><input type="text" name="adminPwd" value="<%=a.getMnPwd()%>" required></td>
                         </tr>
                         <tr>
                             <th>이름</th>
-                            <td><input type="text" name="adminName" required></td>
+                            <td><input type="text" name="adminName" value="<%=a.getMnName()%>" required></td>
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td><input type="text" name="email" required></td>
+                            <td><input type="text" name="email" value="<%=a.getMnEmail()%>" required></td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td><input type="text" name="phone" required></td>
-                        </tr>
-                        <tr>
-                            <th>퇴사일</th>
-                            <td><input type="password" name="quit"></td>
-                        </tr>
-                        <tr>
-                            <th>퇴사여부</th>
-                            <td><input type="password" name="activation" required></td>
+                            <td><input type="text" name="phone" value="<%=a.getMnPhone()%>" required></td>
                         </tr>
                     </table>
                 </div>
@@ -110,7 +105,7 @@
                 <div id="emp-enroll-btn" align="center">
                 
                     <button type="submit" class="btn" style="background: rgb(102,184,94);">수정하기</button>
-                    <button type="reset" class="btn btn-light">초기화</button>
+                    <a href="<%=contextPath%>/delete.ad?ano=<%=a.getMnNo()%>" class="btn btn-danger">퇴사</a>
                     <button type="button" class="btn" style="background: rgb(143,153,142);" onclick="history.back();">뒤로가기</button>
 
                 </div>

@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.admin.model.service.AdminService;
-import com.dashi.admin.model.vo.Manager;
 
 /**
- * Servlet implementation class AdminUpdateFormController
+ * Servlet implementation class AdminDeleteController
  */
-@WebServlet("/updateForm.ad")
-public class AdminUpdateFormController extends HttpServlet {
+@WebServlet("/delete.ad")
+public class AdminDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminUpdateFormController() {
+    public AdminDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +30,20 @@ public class AdminUpdateFormController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int ano = Integer.parseInt(request.getParameter("ano"));
+		int anum = Integer.parseInt(request.getParameter("ano"));
 		
-		Manager a = new AdminService().selectAdmin(ano);
+		int result = new AdminService().deleteAdmin(anum);
 		
-		request.setAttribute("a", a);
-		request.getRequestDispatcher("views/admin/adminEmployeeUpdate.jsp").forward(request, response);
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "퇴사처리가 되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/empList.ad?cpage=1");
+			
+		} else {
+			request.getSession().setAttribute("alertMsg", "퇴사 처리 실패!");
+			request.getRequestDispatcher("views/admin/adminEmplyoeeList.ad").forward(request, response);
+		}
+	
+	
 	
 	
 	}

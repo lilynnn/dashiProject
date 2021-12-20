@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 <style>
     .outer{
-        width: 1100px;
+        width: 1150px;
         height: 800px;
         margin: auto;
         margin-top: 50px;
@@ -26,6 +26,10 @@
  	#adminlist{
          margin-left: 30px;
          width: 850px;
+    }
+    .adminList{
+    	width: 950px;
+    	font-size:10px;
     }
     .table-bordered *{
         height: 40px;
@@ -64,7 +68,7 @@
     	border-radius:3px;
     	border:none;
     }
-    /*사원정보보기*/
+	.btn-up{width:50px;}
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -101,8 +105,8 @@
                 <hr>
                 </div>
 
-                <div style="margin-top: 10px;">
-                    <table class="table-bordered adminList">
+                <div style="margin-top:10px; width:100%;">
+                    <table class="table-bordered adminList" style="font-size:14px;">
                         <thead>
                             <tr align="center">
                                 <th width="50">사번</th>
@@ -110,16 +114,17 @@
                                 <th width="100">아이디</th>
                                 <th width="200">이메일</th>
                                 <th width="150">전화번호</th>
-                                <th width="100">입사일</th>
-                                <th width="100">퇴사일</th>
+                                <th width="150">입사일</th>
+                                <th width="150">퇴사일</th>
                                 <th width="100">퇴사여부</th>
+                                <th width="100"></th>
                             </tr>
                         </thead>
                         <tbody>
                         	<% if(list.isEmpty()){ %>
 	                            <!--사원 없을때-->
 	                            <tr align="center">
-	                                <td colspan="8">존재하는 사원이 없습니다.</td>
+	                                <td colspan="9">존재하는 사원이 없습니다.</td>
 	                            </tr>
 							<% }else{ %>
 	                            <!--사원 있을때-->
@@ -127,7 +132,7 @@
 	                            <tr align="center" class="adminNo">
 	                                <td><%=a.getMnNo()%></td>
 	                                <td>
-	                                    <button type="button" onclick="selectAdmin();" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button> 
+	                                    <button type="button" class="btn btn-sm btn-outline-info" onclick="selectAdmin(<%=a.getMnNo()%>);" data-toggle="modal" data-target="#checkInfo"><%=a.getMnName()%></button> 
 	                                </td>
 	                                <td><%=a.getMnId()%></td>
 	                                <td><%=a.getMnEmail()%></td>
@@ -135,6 +140,7 @@
 	                                <td><%=a.getMnJoin()%></td>
 									<td><%=a.getMnQuit()%></td>    
 	                                <td><%=a.getActivation()%></td>
+	                                <td><a href="<%=contextPath%>/updateForm.ad?ano=<%=a.getMnNo()%>" class="btn btn-sm btn-up btn-outline-danger">수정</a></td>
 	                            </tr>	                            
 	                            
 	                         	<% } %>
@@ -144,7 +150,7 @@
                 </div>
 
 				<div style="width:100%; margin-top:30px" align="center">
-					<button type="button" onclick="history.back();" class="btn btn-warning">뒤로가기</button>
+					<button type="button" onclick="history.back();" class="btn btn-secondary">뒤로가기</button>
 				</div>
             
         	
@@ -176,18 +182,17 @@
     
             <!-- Modal footer -->
             <div class="modal-footer">
-                <a href="<%=contextPath%>/updateForm.ad?num=101" class="btn btn-warning" data-dismiss="modal">정보수정</a>
                 <button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
             </div>
             
               <script>
 
-			    	function selectAdmin(){
+			    	function selectAdmin(adminNo){
 			    		
 			    		$.ajax({
 			    			
 				    		url:"detail.ad",
-				    		data:{ano:$(".adminList>tbody>tr").children().eq(0).text()},
+				    		data:{ano:adminNo},
 				    		success:function(result){
 
 				    			let name = "";

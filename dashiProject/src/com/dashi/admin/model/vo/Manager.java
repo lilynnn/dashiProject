@@ -17,20 +17,6 @@ public class Manager {
 	
 	public Manager() {}
 	
-	public Manager(int mnNo, String mnId, String mnName, String mnEmail, String mnPhone, Date mnJoin, String mnQuit,
-			String activation) {
-		super();
-		this.mnNo = mnNo;
-		this.mnId = mnId;
-		this.mnName = mnName;
-		this.mnEmail = mnEmail;
-		this.mnPhone = mnPhone;
-		this.mnJoin = mnJoin;
-		this.mnQuit = mnQuit;
-		this.activation = activation;
-	}
-
-
 	public Manager(int mnNo, String mnId, String mnPwd, String mnNickname, String mnName, String mnEmail,
 			String mnPhone, Date mnJoin, String mnQuit, String activation) {
 		super();
@@ -38,6 +24,21 @@ public class Manager {
 		this.mnId = mnId;
 		this.mnPwd = mnPwd;
 		this.mnNickname = mnNickname;
+		this.mnName = mnName;
+		this.mnEmail = mnEmail;
+		this.mnPhone = mnPhone;
+		this.mnJoin = mnJoin;
+		this.mnQuit = mnQuit;
+		this.activation = activation;
+	}
+	
+	
+	public Manager(int mnNo, String mnId, String mnPwd, String mnName, String mnEmail, String mnPhone, Date mnJoin,
+			String mnQuit, String activation) {
+		super();
+		this.mnNo = mnNo;
+		this.mnId = mnId;
+		this.mnPwd = mnPwd;
 		this.mnName = mnName;
 		this.mnEmail = mnEmail;
 		this.mnPhone = mnPhone;

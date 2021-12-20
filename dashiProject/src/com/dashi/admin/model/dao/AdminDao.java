@@ -177,6 +177,7 @@ public class AdminDao {
 			if(rset.next()) {
 				a = (new Manager(rset.getInt("mn_no")
 								   , rset.getString("mn_id")
+								   , rset.getString("mn_pwd")
 								   , rset.getString("mn_name")
 								   , rset.getString("mn_email")
 								   , rset.getString("mn_phone")
@@ -204,13 +205,12 @@ public class AdminDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setString(1, a.getMnPwd());
 			pstmt.setString(2, a.getMnName());
 			pstmt.setString(3, a.getMnEmail());
 			pstmt.setString(4, a.getMnPhone());
-			pstmt.setString(5, a.getMnQuit());
-			pstmt.setString(6, a.getActivation());
-			pstmt.setInt(7, a.getMnNo());
+			pstmt.setInt(5, a.getMnNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -220,7 +220,7 @@ public class AdminDao {
 			close(pstmt);
 		}
 		return result;
-	}// 사원 수정&삭제
+	}// 사원 수정
 	
 	public ArrayList<Manager> searchAdmin(Connection conn, String name){
 		ArrayList<Manager> list = new ArrayList<>();
@@ -259,7 +259,25 @@ public class AdminDao {
 				
 	} // 이름으로 검색
 	
-	
+	public int deleteAdmin(Connection conn, int anum) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteAdmin");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, anum);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}// 사원 퇴사
 	
 		
 		

@@ -61,7 +61,7 @@ public class AdminService {
 	
 	public int updateAdmin(Manager a) {
 		Connection conn = getConnection();
-		int result = new AdminDao().insertAdmin(conn, a);
+		int result = new AdminDao().updateAdmin(conn, a);
 		if(result > 0) {
 			commit(conn);
 		}else {
@@ -69,7 +69,7 @@ public class AdminService {
 		}
 		close(conn);
 		return result;
-	} // 사원 수정 & 탈퇴
+	} // 사원 수정 
 	
 	public ArrayList<Manager> searchAdmin(String name){
 		Connection conn = getConnection();
@@ -79,7 +79,17 @@ public class AdminService {
 		
 	} // 이름으로 조회
 	
-	
+	public int deleteAdmin(int anum) {
+		Connection conn = getConnection();
+		int result = new AdminDao().deleteAdmin(conn, anum);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	} // 사원 퇴사
 	
 	
 	
