@@ -99,6 +99,43 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	// 사용자 입양공고 썸네일리스트
+	public ArrayList<AdoptNotice> selectNoticeThumbnailList(Connection conn, PageInfo pi){
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectNoticeThumbnailList");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+										 rset.getString("AN_TITLE"),
+										 rset.getInt("VIEW_COUNT"),
+										 rset.getInt("ADT_STATUS"),
+										 rset.getString("ANIMAL_TYPE"),
+										 rset.getString("ENT_NO"),
+										 rset.getString("TITLEIMG")
+										 ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
 	// 조회수 증가용 메소드
 	public int increaseCount(Connection conn, String boardNo) {
 		// controller에서 커밋하기
@@ -321,6 +358,7 @@ public class AdoptBoardDao {
 		
 	}
 	
+	// 입양공고등록하는 메소드
 	public int insertAdoptNotice(Connection conn, AdoptNotice adt) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -344,6 +382,7 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	//입양공고등록시 첨부파일 insert
 	public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
 		
 		int result = 0;
@@ -371,6 +410,7 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	// 관리자 입양공고상세보기 
 	public AdoptNotice selectAdminAdoptNotice(Connection conn, String boardNo) {
 		
 		AdoptNotice an = null;
@@ -415,6 +455,7 @@ public class AdoptBoardDao {
 		return an;
 	}
 	
+	// 관리자 입양공고상세보기시 첨부파일리스트 조회
 	public ArrayList<Attachment> selectAttachmentList(Connection conn, String boardNo){
 		ArrayList<Attachment> list = new ArrayList<Attachment>();
 		
@@ -447,6 +488,7 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	// 입양공고삭제하기
 	public int deleteAdoptNotice(Connection conn, String boardNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -465,6 +507,7 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	// 입양공고 수정하기
 	public int updateAdoptNotice(Connection conn, AdoptNotice notice) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -490,6 +533,7 @@ public class AdoptBoardDao {
 	}
 	
 	
+	// 입양공고 수정하기시 첨부파일 update
 	public int updateAttachmentList(Connection conn, ArrayList<Attachment> list) {
 		int result = 0;
 		PreparedStatement pstmt = null;

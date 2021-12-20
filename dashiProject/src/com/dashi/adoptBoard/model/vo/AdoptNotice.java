@@ -25,6 +25,8 @@ public class AdoptNotice {
 	private String animalDisease;
 	private String animalIssue;
 	
+	private String titleImg;	// 입양공고리스트 썸네일 주소
+	
 	
 	public AdoptNotice() {}
 	
@@ -84,9 +86,6 @@ public class AdoptNotice {
 		this.animalIssue = animalIssue;
 	}
 	
-	
-	
-	
 	public AdoptNotice(String anlistNo, String anTitle, String anContent, String writeDate, int viewCount,
 			int adtStatus, String postStatus, String animalType, String entNo, String animalVariety, String animalName,
 			String animalGender, int animalAge, String animalVaccin, String animalNeutral, String animalDisease,
@@ -109,6 +108,29 @@ public class AdoptNotice {
 		this.animalNeutral = animalNeutral;
 		this.animalDisease = animalDisease;
 		this.animalIssue = animalIssue;
+	}
+
+	
+	
+	public AdoptNotice(String anlistNo, String anTitle, int viewCount, int adtStatus, String animalType, String entNo,
+			String titleImg) {
+		super();
+		this.anlistNo = anlistNo;
+		this.anTitle = anTitle;
+		this.viewCount = viewCount;
+		this.adtStatus = adtStatus;
+		this.animalType = animalType;
+		this.entNo = entNo;
+		this.titleImg = titleImg;
+	}
+
+	public String getTitleImg() {
+		return titleImg;
+	}
+
+
+	public void setTitleImg(String titleImg) {
+		this.titleImg = titleImg;
 	}
 
 

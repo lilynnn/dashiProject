@@ -32,7 +32,13 @@ public class AdoptBoardService {
 		ArrayList<AdoptNotice> list = new AdoptBoardDao().selectList(conn, pi);
 		close(conn);
 		return list;
-		
+	}
+	
+	public ArrayList<AdoptNotice> selectNoticeThumbnailList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<AdoptNotice> list = new AdoptBoardDao().selectNoticeThumbnailList(conn, pi);
+		close(conn);
+		return list;
 	}
 	
 	// 조회수 증가 메소드

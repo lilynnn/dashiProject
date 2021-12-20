@@ -153,7 +153,7 @@
                 <!-- 리스트 하나 감싸는 div -->
                 <div class="adoptNotice" align="center">
                     <input type="hidden" value=<%=ad.getAnlistNo() %>>
-                    <img src="입양공고의대표이미지url">
+                    <img src="<%=ad.getTitleImg() %>">
                     
                        <table>
                            <tr>

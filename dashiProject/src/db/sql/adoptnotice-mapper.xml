@@ -10,6 +10,32 @@
          WHERE POST_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectNoticeThumbnailList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                 SELECT 
+		                       ANLIST_NO
+		                     , AN_TITLE
+		                     , VIEW_COUNT
+		                     , ADT_STATUS
+		                     , PATH||CHANGE_NAME "TITLEIMG"
+		                     , ENT_NO
+		                     , E.ANIMAL_TYPE
+		                  FROM ADOPT_NOTICE AN
+		                  JOIN ENTRANCE E USING (ENT_NO)
+		                  JOIN ATTACHMENT A ON (ANLIST_NO = REF_NO)
+		                 WHERE REF_NO LIKE 'AN-%'
+		                   AND AN.POST_STATUS = 'Y'
+		                   AND ATTACH_LEVEL = 1
+		                 ORDER
+		                    BY ANLIST_NO DESC 
+		            ) A
+		      )
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 	<!-- 게시글 리스트 불러오는 sql -->
 	<entry key="selectList">	
 		SELECT *
