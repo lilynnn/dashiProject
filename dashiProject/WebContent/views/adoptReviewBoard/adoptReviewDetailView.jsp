@@ -129,10 +129,10 @@
         color: rgb(94, 94, 92); 
         font-size: 14px;
     }
-    #comm-outer tbody{
+    #comm-outer {
     	border-bottom: solid 1px rgb(175, 173, 173);
     }
-    #comm-outer tbody td>button{
+    #comm-outer td>button{
         color: rgb(94, 94, 92); 
         font-size: 14px;
         background: none;
@@ -303,6 +303,7 @@
 
 
                             <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
+                            
                             <script>
                                 $(function(){
                                     $("input:radio[name=radio]").click(function(){
@@ -316,11 +317,12 @@
                                     })
                                 })
                             </script>
+                            
                         </div>
                     </form>
                 </div>
         
-                <div id="comm-outer">
+                <div>
                     <!--댓글영역-->
                     <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
                         <tr id="comm-count">
@@ -328,7 +330,7 @@
                             <!--댓글 수 카운트-->  
                             <td>3</td>
                         </tr>
-                        <tbody>
+                        <tbody  id="comm-outer">
 							<!-- 
                             <tr>
                                 <td>&nbsp;</td>
@@ -473,7 +475,7 @@
 						                        + "</tr>";
                     				}
 
-                                    $("#comm-outer tbody").html(result);
+                                    $("#comm-outer").html(result);
                     				
                     			},error:function(){
                     				console.log("댓글목록 조회용 ajax 통신 실패")
@@ -572,6 +574,7 @@
                 
                 
                                             <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
+                                            
                                             <script>
                                                 $(function(){
                                                     $("input:radio[name=radio]").click(function(){
@@ -585,7 +588,7 @@
                                                     })
                                                 })
                                             </script>
-                
+                							
                                         </div>
                                     </form>
                                 </div>
