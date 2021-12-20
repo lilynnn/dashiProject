@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 /*화면 컨트롤러*/
-@WebServlet("/adInsert.as")
+@WebServlet("/adAnswer.as")
 public class AdminAnswerMngController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
