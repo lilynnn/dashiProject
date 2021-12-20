@@ -116,5 +116,43 @@ import static com.dashi.common.JDBCTemplate.*;
 		return result;
 		
 	}
-} 
+
+	
+	// Answer 조회
+	
+		public ArrayList<Answer> asselectAnswerList(Connection conn){
+		
+				ArrayList<Answer> list = new ArrayList<>();
+				
+				PreparedStatement pstmt = null;
+				ResultSet rset = null;
+				
+				String sql = prop.getProperty("asselectAnswerList");
+				
+				try {
+					pstmt = conn.prepareStatement(sql); 
+					rset = pstmt.executeQuery();
+					
+					while(rset.next()) {
+						list.add(new Answer(
+											rset.getInt("asCategory"),
+											rset.getString("inquireNo"),
+											rset.getString("memId"),
+											rset.getString("qTitle"),
+											rset.getString("qContent"),
+											rset.getDate("qCreat"),
+											rset.getString("anContent")));
+						}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close(rset);
+					close(pstmt);
+				}
+				
+				return list;
+		}
+		
+	}
 

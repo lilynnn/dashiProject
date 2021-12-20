@@ -49,6 +49,18 @@ public class AnswerService {
 		return result;
 	}
 	
-	
+	// 1대1 관리자 조회  
+		public ArrayList<Answer> asselectAnswerList() {
+			Connection conn = getConnection();
+			
+			ArrayList<Answer> list = new AnswerDao().asselectAnswerList(conn);
+			
+			close(conn);
+			
+			return list;
+			
+		}
+		
+
 	
 }

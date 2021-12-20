@@ -53,7 +53,16 @@ public class Answer {
 		this.qTitle=qTitle;
 	
 	}
-
+	
+	public Answer(int asCategory, String inquireNo, String memId, String qTitle, String qContent, Date qCreat, String anContent) {
+		super();
+		this.asCategory = asCategory ;
+		this.inquireNo=inquireNo;
+		this.memId=memId;
+		this.qTitle=qTitle;
+		this.qCreat=qCreat;
+		this.anContent=anContent;
+	}
 
 	public String getInquireNo() {
 		return inquireNo;

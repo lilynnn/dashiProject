@@ -52,4 +52,18 @@ INSERT
     ,?
     )
 </entry>
+
+<entry key="asselectAnswerList">
+SELECT 				
+	AS_CATEGORY
+	,INQUIRE_NO
+	,MEM_ID
+	,Q_TITLE
+	,Q_CONTENT
+	,Q_CREAT
+	,AN_CONTENT
+	FROM ANSWER;
+										
+						}
+</entry>
 </properties>

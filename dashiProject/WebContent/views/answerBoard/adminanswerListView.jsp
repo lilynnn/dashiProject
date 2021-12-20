@@ -124,20 +124,20 @@
                         <tr align="center">
                             <th width="100">카테고리</th>
                             <th width="550">제목</th>
+                            <th width="80">내용</th>
                             <th width="80"></th>
-                            <th width="80"></th>
-                            <th width="80"></th>
+                            <th width="80"></th> 
                         </tr>
                     </thead>
 
                     <tbody>                       
                         <% if(list.isEmpty()){ %>
-	                   <!--FAQ 없을 때-->
+	                   <!-- 없을 때-->
 	                    <tr>
 	                        <td colspan="5">게시물이 없습니다.</td>
 	                    </tr>
 	        			<% }else{ %>
-	                    <!--FAQ 있을 때-->
+	                    <!--있을 때-->
                     	<% for(Answer a : list){ %>
 	                        <tr align="center" class="question">
 	                        	<% 

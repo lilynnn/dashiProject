@@ -53,20 +53,22 @@
 <body>
 
 	<%@ include file="/views/common/menubar.jsp" %>
-	
+		<div>
+	 <%@ include file="../admin/adminMenubar.jsp" %>
+	 	</div>
 	<div class="outer">
 
-        <form action="<%= contextPath %>/adInsert.as" method="post">
+        <form action="<%= contextPath %>/adInsert.as" method="get">
   <br><br>
             <div>
                 <h2>1:1 문의 답변</h2>
             </div>
 
-    
+   
           
             <div class="content-area" >
  		<div id="menubar" style="float:left; display:inline-block; margin-right:80px;">
-    		<%@ include file="../admin/adminMenubar.jsp" %>
+    		
     	</div>
             
        
