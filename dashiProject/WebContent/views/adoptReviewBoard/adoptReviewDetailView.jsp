@@ -411,7 +411,7 @@
                         <br><br><br><br><br>
                 </div> 
                 
-                                    <script>
+                <script>
                     	$(function(){
                     	
                     		selectReplyList();
@@ -448,8 +448,6 @@
                     			url:"rlist.ar",
                     			data:{arno:'<%=ar.getArlistNo()%>'},
                     			success:function(list){
-                    				
-                    				//console.log(list);
                     				
                     				let result = "";
                     				for(let i=0; i<list.length; i++){
