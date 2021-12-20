@@ -180,7 +180,7 @@
 					<!-- 첨부파일 -->
 					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required> <br>
 					<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);" required> <br>
-					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"><br>
+					<input type="file" name="file3" id="file3" onchange="loadImg(this, 3);" required><br>
 
 				</div>
 				

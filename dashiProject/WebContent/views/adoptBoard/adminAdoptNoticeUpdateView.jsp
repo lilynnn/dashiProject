@@ -162,14 +162,14 @@
 						<tr>
 							<th>내 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 용</th>
 							<td colspan="2">
- 
+								<!--  
 								<input type="text" name="content" value="<%=notice.getAnContent() %>" name="content" style="height:100px;">
 
-								<!-- 
+								-->
 								<textarea name="content" name="content" cols="100" rows="10" style="resize:none;">
 <%=notice.getAnContent() %>
 								</textarea>
-								-->
+
 							</td>
 						</tr>
 					</tbody>
@@ -187,8 +187,9 @@
 						<%for(int i=1; i<=list.size(); i++) {%>
 						<input type="file" name="file<%=i %>" id="file<%=i %>" value="<%=list.get(i-1).getAttachNo() %>" onchange="loadImg(this, <%= i%>);">
 	                	<input type ="hidden" name="originFileNo<%=i %>" value = "<%=list.get(i-1).getAttachNo() %>"><br>
-						<%} %>
+						<%} %>				
 					</div>
+
 				<%} %>
 
 				<div style=" text-align: center;">

@@ -61,7 +61,7 @@
 			<table style="width: 900px;">
 				<!-- 신청할 입양공고문 제목 -->
 				<tr>
-					<td width=220 style="font-size: 14px;">* 입양 공지문 제목 : </td>
+					<td width=220 style="font-size: 14px;">* 입양 공고문 제목 : </td>
 					<td width=780>
 						<input type="text" style="width: 690px" name="adpTitle" value=" <%=an.getAnTitle() %>" readonly>
 					</td>
@@ -197,16 +197,16 @@
 					<td>4. 귀하의 가족은 모두 몇 명입니까?</td>
 				</tr>
 				<tr>
-					<td style="font-size: 13px; color: gray;">자녀가 2명 이상인 경우 ,로 구분해서 작성해주세요.</td>
+					<td style="font-size: 13px; color: gray;">자녀가 2명 이상인 경우 가장 어린 나이를 작성해주세요.</td>
 				</tr>
 				<tr>
 					<td>
 						<p style="display: inline; margin-left: 30px;">성인</p>&nbsp;
-						<input type="text" name="aMate" placeholder="명" required>
+						<input type="text" name="aMate" placeholder="0명" value="0" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="cMate" placeholder="명" required>
+						<input type="text" name="cMate" placeholder="0명" value="0" required>
 						<p style="display: inline; margin-left: 30px;">아이</p>&nbsp;
-						<input type="text" name="childAge" placeholder="세" required>
+						<input type="text" name="childAge" placeholder="0세" value="0" required>
 					</td>
 				</tr>
 

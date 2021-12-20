@@ -77,6 +77,7 @@ public class AdoptApplyInsertController extends HttpServlet {
 											multiRequest.getParameter("neiYN"),
 											Integer.parseInt(multiRequest.getParameter("expCost"))
 											);
+
 			Attachment at = null;
 			
 			if(multiRequest.getOriginalFileName("upfile") != null) {
@@ -87,7 +88,6 @@ public class AdoptApplyInsertController extends HttpServlet {
 				 at.setPath("resources/upfiles/adoptApply/");
 			}
 			
-			System.out.println(at);
 			
 			int result = new AdoptBoardService().insertAdoptApply(adp, at);
 			

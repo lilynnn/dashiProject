@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.dashi.adoptBoard.model.vo.AdoptNotice" %>
+<%@ page import="com.dashi.adoptBoard.model.vo.AdoptNotice, java.util.ArrayList, com.dashi.common.model.vo.Attachment" %>
 <% 
 	AdoptNotice an = (AdoptNotice)request.getAttribute("an");
 	// 글번호, 제목, 내용, 작성일, 조회수, 입소번호
 	// 동물품종, 동물이름, 성별, 나이, 접종여부, 중성화여부, 질병유무, 특이사항
 	
-	// 첨부파일은 나중에
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 	
 %>
 <!DOCTYPE html>
@@ -24,13 +24,12 @@
         height: auto;
     }
 
-    .image-area{
+    .image-area>img{
         width: 600px;
-        height: 300px;
+        height: 500px;
         margin: auto;
-        border: 1px solid black;
     }
-
+	#img-area img{width:400px; height:370px;}
     .content-area{
         width: 1200px;
         margin: auto;
@@ -56,8 +55,6 @@
 	<%@ include file="/views/common/menubar.jsp" %>
 	
 	<div class="outer">
-
-        <form action="">
 
             <br><br><br><br>
             
@@ -86,7 +83,7 @@
 
 				<!-- 관리자가 업로드한 동물 대표 이미지 보여질 table -->
                 <div class="image-area">
-           		         관리자가 작성시 업로드한 동물 사진
+           			<img src="<%=contextPath %>/<%=list.get(0).getPath()+list.get(0).getChangeName() %>">
                 </div>
                 <br><br>
 
@@ -114,10 +111,10 @@
  				<br><br><br>
  				
    				<!-- 관리자가 업로드한 동물 상세 이미지 보여질 table -->
-				<table border="1" id="img-area" style="width:700px; height:250px">
+				<table border="1" id="img-area">
                 	<tr>
-	                	<td><img ></td>
-	                	<td><img ></td>
+	                	<td><img src="<%=contextPath %>/<%=list.get(1).getPath()+list.get(1).getChangeName() %>"></td>
+	                	<td><img src="<%=contextPath %>/<%=list.get(2).getPath()+list.get(2).getChangeName() %>" ></td>
                 	</tr>
                 </table>
                 <br><br><br>
@@ -190,7 +187,7 @@
 
                 
             </div>
-        </form>
+
     </div>
 
     <%@ include file="/views/common/footerbar.jsp" %>
