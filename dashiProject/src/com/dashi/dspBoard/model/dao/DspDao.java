@@ -226,6 +226,40 @@ public class DspDao {
 		
 	}
 
+	// 실종 보호 목격 글 누르면 그에 맞는 목록이 보이는 메소드
+	public ArrayList<Dsp> ctgList(Connection conn, String ctg) {
+		ArrayList<Dsp> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("ctgList");
+		System.out.println(ctg);
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, ctg);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Dsp(rset.getString("dsp_no")
+								,rset.getString("post_ctg")
+								,rset.getString("dsp_title")
+								,rset.getInt("money")
+								,rset.getString("location_name")
+								,rset.getString("animal_issue")
+								,rset.getString("titleImg")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
 
 
 }

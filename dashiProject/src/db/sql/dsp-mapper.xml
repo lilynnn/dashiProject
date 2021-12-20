@@ -134,7 +134,29 @@
 		     , MONEY
 		 FROM DSP
 		 WHERE DSP_NO = ?
-	
-	
 	</entry>
+	
+	<!-- 실종보호 목격글을 누르면 목록조회 -->
+	<entry key="ctgList">
+		SELECT
+			    DSP_NO
+		     ,  POST_CTG
+		     , DSP_TITLE
+		     , MONEY
+		     , LOCATION_NAME
+		     , ANIMAL_ISSUE
+		     , PATH || CHANGE_NAME "TITLEIMG"
+		  FROM DSP
+		  JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+		 WHERE POST_STATUS = 'Y'
+           and attach_level = 1
+           and POST_CTG = ?
+		 ORDER 
+		    BY DSP_NO DESC
+	</entry>
+	
+	
+	
+	
+	
 </properties>

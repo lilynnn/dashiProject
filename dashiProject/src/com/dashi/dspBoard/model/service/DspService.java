@@ -12,7 +12,6 @@ import com.dashi.dspBoard.model.vo.Dsp;
 public class DspService {
 
 	//실종보호목격 글 입력 메소드
-	
 	public int insertDsp(Dsp d, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		
@@ -74,5 +73,16 @@ public class DspService {
 		close(conn);
 		return list;
 	}
+
+	
+	// 실종 보호 목격 눌렀을시 메소드
+	public ArrayList<Dsp> ctgList(String ctg) {
+		Connection conn = getConnection();
+		ArrayList<Dsp> list = new DspDao().ctgList(conn, ctg);
+		
+		return list;
+		
+	}
+	
 
 }

@@ -128,9 +128,9 @@
         </div>
         
         <div class="dsp-nav" align="center" style="margin-top:30px;">
-            <div class="dsp"><a href="">실종</a></div>
-            <div class="dsp"><a href="">보호</a></div>
-            <div class="dsp"><a href="">목격</a></div>
+            <div class="dsp"><a href="javascript:miss();" id="miss">실종</a></div>
+            <div class="dsp"><a href="javascript:protect();" id="protect">보호</a></div>
+            <div class="dsp"><a href="javascript:sight();" id="sight">목격</a></div>
         </div>
 
 
@@ -214,6 +214,51 @@
             })
         })
     </script>
+    
+	<script>
+		function miss(){
+			document.getElementById('miss').style.color = "rgb(102,184,94)";
+            document.getElementById('protect').style.color = "black";
+            document.getElementById('sight').style.color = "black";
+            $.ajax({
+				url : 'ajaxCtgList.dsp?ctg=실종',
+				data: "",
+				success : function(data){
+					$('.dspList-area').html(data);
+					}
+			})
+		}
+		
+
+		function protect(){
+			document.getElementById('miss').style.color = "black";
+            document.getElementById('protect').style.color = "rgb(102,184,94)";
+            document.getElementById('sight').style.color = "black";
+
+			$.ajax({
+				url : 'ajaxCtgList.dsp?ctg=보호',
+				data: "",
+				success : function(data){
+					$('.dspList-area').html(data);
+					}
+			})
+		}
+		
+		function sight(){
+            document.getElementById('miss').style.color = "black";
+            document.getElementById('protect').style.color = "black";
+            document.getElementById('sight').style.color = "rgb(102,184,94)";
+	
+			$.ajax({
+				url : 'ajaxCtgList.dsp?ctg=목격',
+				data: "",
+				success : function(data){
+					$('.dspList-area').html(data);
+					}
+			})
+		}
+						
+	</script>
     
     
 </body>

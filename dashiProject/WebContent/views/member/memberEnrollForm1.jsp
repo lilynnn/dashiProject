@@ -172,7 +172,6 @@
 						<script>
 							$(function(){
 								$("#userId_enroll").on('keyup', idCheck);
-								$("#checkPwd").on('keyup', checkPwd);
 							})
 	
 							function idCheck(){
@@ -215,7 +214,7 @@
 						</tr>
 						<script>
 						$(function(){
-							$("#userPwd_enroll").on('keyup', checkPwd);
+							$("#userPwd_enroll").on('keyup', chkPW);
 						})
 						function chkPW(){
 
@@ -227,19 +226,19 @@
 							 if(pw.length < 10 || pw.length > 20){
 								 $('#userPwdMsg').css('color','red')
 								 $('#userPwdMsg').html("10자리 ~ 20자리 이내로 입력해주세요.")
-							  return false;
 							 }else if(pw.search(/\s/) != -1){
-							  alert("비밀번호는 공백 없이 입력해주세요.");
-							  return false;
+								 $('#userPwdMsg').css('color','red')
+								 $('#userPwdMsg').html("공백이 없게 입력해주세요")
 							 }else if(num < 0 || eng < 0 || spe < 0 ){
-							  alert("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
-							  return false;
+								 $('#userPwdMsg').css('color','red')
+								 $('#userPwdMsg').html("영문,숫자, 특수문자를 혼합하여 입력해주세요.")
 							 }else {
-								console.log("통과"); 
+								 $('#userPwdMsg').css('color','green')
+								 $('#userPwdMsg').html("올바른 비밀번호입니다.")
 							    return true;
 							 }
 
-							}
+						}
 						</script>
 						<tr>
 							<td>
@@ -263,11 +262,11 @@
 
 						function checkPwd(){
 	
-							var userPwd = document.getElementById('userPwd');
+							var userPwd = document.getElementById('userPwd_enroll');
 							var checkPwd = document.getElementById('checkPwd');
 
 							
-							if(userPwd.value == checkPwd.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+							if(userPwd.value == checkPwd.value){
 								$('#checkPwdkMsg').css('color','green')
 								$('#checkPwdkMsg').html("비밀번호 일치")
 							}else{
@@ -308,7 +307,6 @@
 											$('#NickNameCheck').html("센스있는 닉네임이네요 :)")
 											flag=true;	
 										}
-										console.log(result);
 									}
 								})
 							}
