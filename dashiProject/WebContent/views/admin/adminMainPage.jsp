@@ -160,7 +160,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%= request.getContextPath()%>/adplist.ad>cpage=1">입양신청</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/adplist.ad>cpage=1">입양신청</a></td>
                                 <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
@@ -178,7 +178,7 @@
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=request.getContextPath()%>/adlist.ad">입양공고</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/adlist.ad">입양공고</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
@@ -227,7 +227,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=request.getContextPath() %>/anlist.ad">전체동물조회</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/anlist.ad">전체동물조회</a></td>
                             <td class="categoryDate">날짜칸</td>
                         </tr>
                     </table>
