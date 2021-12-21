@@ -1,11 +1,15 @@
 package com.dashi.report.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dashi.report.model.service.ReportService;
+import com.dashi.report.model.vo.Report;
 
 /**
  * Servlet implementation class AdminReportDetailController
@@ -29,6 +33,15 @@ public class AdminReportDetailController extends HttpServlet {
 
 		int reportNo = Integer.parseInt(request.getParameter("rno"));
 		
+		Report r = new ReportService().selectReviewReport(reportNo);
+		Report dspR = new ReportService().selectDSPReport(reportNo);
+		Report cr = new ReportService().selectReplyReport(reportNo);
+		
+		request.setAttribute("r", r);
+		request.setAttribute("dspR", dspR);
+		request.setAttribute("cr", cr);
+				
+		request.getRequestDispatcher("views/report/adminReportDetailView.jsp").forward(request, response);
 		
 	
 	

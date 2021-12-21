@@ -16,7 +16,7 @@
 		                SELECT
 		                       REPORT_NO
 		                     , CONTENT_NO
-		                     , NVL(REPLY_NO, '-') REPLY_NO
+		                     , REPLY_NO
 		                     , REPORTING_MEM
 		                     , MEM_ID
 		                     , REPORT_CONTENT
@@ -62,40 +62,58 @@
 	<entry key="selectReviewReport">
 		SELECT
 		       REPORT_NO
+			 , REPORT_CTG
 		     , CONTENT_NO
-		     , MEM_ID
+		     , REPLY_NO
+		     , M.MEM_ID "MEM_ID"
 		     , REPORT_CONTENT
-		     , REPORT_DATE
-		     , REPORT_CTG
+		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
 		     , REPORT_STATUS
 		     , AR_TITLE
 		     , AR_CONTENT
-		  FROM REPORTED
-		  JOIN ADOPT_REVIEW ON (REPORTED_MEM = MEM_NO)
-		 WHERE CONTENT_NO = ?
+		  FROM REPORTED R
+		  JOIN MEM_INFO M ON (REPORTED_MEM = MEM_NO)
+  		  JOIN ADOPT_REVIEW ON (CONTENT_NO = ARLIST_NO)
+		 WHERE REPORT_NO = ?
+	</entry>
+	
+	<entry key="selectDSPReport">
+		SELECT
+		       REPORT_NO
+		     , CONTENT_NO
+		     , M.MEM_ID "MEM_ID"
+		     , REPORT_CONTENT
+		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
+		     , REPORT_STATUS
+		     , REPORT_CTG
+		     , DSP_TITLE
+		     , ANIMAL_ISSUE
+		     , ETC
+		  FROM REPORTED 
+		  JOIN MEM_INFO M ON (REPORTED_MEM = M.MEM_NO)
+		  JOIN DSP ON (CONTENT_NO = DSP_NO)
+		 WHERE REPORT_NO = ?
 	</entry>
 	
 	<entry key="selectReplyReport">
 		SELECT
 		       REPORT_NO
 		     , CONTENT_NO
-		     , MEM_ID
+		     , REPLY_NO
+		     , M.MEM_ID "MEM_ID"
 		     , REPORT_CONTENT
-		     , REPORT_DATE
-		     , REPORT_CTG
+		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
 		     , REPORT_STATUS
+		     , REPORT_CTG
+		     , AR_TITLE
 		     , REPLY_CONTENT
 		  FROM REPORTED 
 		  JOIN MEM_INFO M ON (REPORTED_MEM = M.MEM_NO)
-		  JOIN REPLY ON (REPLY.REPLY_NO = REPORTED.REPLY_NO)
-		 WHERE REPORTED.REPLY_NO = ?
-	</entry>
-
-	<entry key="selectDSPReport">
-		
+		  JOIN ADOPT_REVIEW ON (CONTENT_NO = ARLIST_NO)
+		  JOIN REPLY R USING (REPLY_NO)
+		 WHERE REPORT_NO = ?
 	</entry>
 	
-
 
 
 

@@ -150,16 +150,12 @@
 						</tr>
 	
 						<tr>
-							<td colspan="8" align="right" id="list-btn">
-								<a href="" class="btn" style="background: lightgray;">복구</a>
-								<button type="button" class="btn" style="background: #f37878;">삭제</button>
-							</td>
+							<td colspan="8" align="right" id="list-btn"></td>
 						</tr>
 	
 						<tr align="center" id="re-list-name">
-							<th width="30px"></th>
-							<th width="100px">신고글번호</th>
-							<th width="100px">신고댓글번호</th>
+							<th width="30px">No.</th>
+							<th width="150px">신고글번호</th>
 							<th width="100px">신고종류</th>
 							<th width="100px">작성자</th>
 							<th width="380px">신고내용</th>
@@ -177,10 +173,12 @@
 						<!--신고글이 있을때-->
 							<% for(Report r : list){ %>
 							<tr align="center" style="border-bottom:1px solid gray;">
-								<td><input type="checkbox" name="check"></td>
-								<td><%=r.getContentNo()%></td>
+								<td><%=r.getReportNo()%></td>
+								<% if(r.getReplyNo() != null){ %>
 								<td><%=r.getReplyNo()%></td>
-								
+								<% }else{ %>
+								<td><%=r.getContentNo()%></td>
+								<% } %>
 								<% 
 			                    	String category ="";
 			                    	switch(r.getReportCategory()){
@@ -205,14 +203,13 @@
 			</div>
 			
 			<script>
-				$("#re-list>tbody>tr").click(function(){
+				$("#re-list>tbody>tr").click(function(){			
 					
-					console.log($("#re-list>tbody>tr").children().eq(1).text());
-					<!--location href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(1).text();-->
-					
+					console.log($("#re-list>tbody>tr").children().eq(0).text());
+					location.href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(0).text();
+				
 				})
 			</script>
-			
 			
 	
 			<!-- 페이징바 -->

@@ -194,6 +194,128 @@ public class ReportDao {
 				
 	} // 전체 사원 조회
 	
+	public Report selectReviewReport(Connection conn, int reportNo) {
+		Report r = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reportNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+			r = new Report(rset.getInt("report_no")
+					 	 , rset.getInt("report_ctg")
+						 , rset.getString("content_no")
+						 , rset.getString("reply_no")
+						 , rset.getString("mem_id")
+						 , rset.getString("report_content")
+						 , rset.getString("report_date")
+						 , rset.getString("report_status")
+						 , rset.getString("ar_title")
+						 , rset.getString("ar_content"));
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return r;
+		
+	} // 신고 입양공고 상세보기
+	
+	public Report selectDSPReport(Connection conn, int reportNo) {
+		Report r = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDSPReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reportNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+			r = new Report(rset.getInt("report_no")
+						 , rset.getString("content_no")
+						 , rset.getString("mem_id")
+						 , rset.getString("report_content")
+						 , rset.getString("report_date")
+						 , rset.getString("report_status")
+						 , rset.getInt("report_ctg")
+						 , rset.getString("dsp_title")
+						 , rset.getString("animal_issue")
+						 , rset.getString("animal_issue"));
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return r;
+		
+	} // 신고 실종보호 상세보기
+	
+	public Report selectReplyReport(Connection conn, int reportNo) {
+		Report r = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReplyReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, reportNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+			r = new Report(rset.getInt("report_no")
+						 , rset.getString("content_no")
+						 , rset.getString("reply_no")
+						 , rset.getString("mem_id")
+						 , rset.getString("report_content")
+						 , rset.getString("report_date")
+						 , rset.getString("report_status")
+						 , rset.getInt("report_ctg")
+						 , rset.getString("ar_title")
+						 , rset.getString("reply_content"));
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return r;
+		
+	} // 신고 댓글 상세보기
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

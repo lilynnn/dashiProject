@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.report.model.vo.Report"%>
+<%
+	Report r = (Report)request.getAttribute("r");
+	Report dspR = (Report)request.getAttribute("dspR");
+	Report cr = (Report)request.getAttribute("cr");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,54 +79,152 @@
                         <a href="" class="btn" style="background: tomato">삭제</a>
                     </td>
                 </tr>
-
+				<% if(r != null && r.getReplyNo() == null){ %>
                 <tr height="40">
                     <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
-                        COMM-001
+                        <%=r.getContentNo()%>
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
                     <td colspan="3" width="300">
-                        2021-12-07
+                        <%=r.getReportDate()%>
                     </td>
                     <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
                     <td width="40">
-                        	1	
+                        <%=r.getReportCategory()%>
                     </td>
                 </tr>
 
                 <tr height="40" id="up-name">
                     <td><mark style="background: #d5c4fb91;">작성자</mark></td>
                     <td width="100">
-                        bad01
+                        <%=r.getReportedMem()%>
                     </td>
                     <td width="50"><mark style="background: #d5c4fb91;">작성일</mark></td>
                     <td width="100">
-                        2021-12-07
+                        <%=r.getReportDate()%>
                     </td>
                     <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
                     <td width="150">
-                        	홍보성 내용 포함
+                        <%=r.getReportContent()%>
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
                     <td width="20">
-                        	N
+                        <%=r.getReportStatus()%>
                     </td>
                 </tr>
 
                 <tr height="40">
                     <td><mark style="background: #d5c4fb91;">제목</mark></td>
                     <td colspan="7">
-                        	여기는제목자리
+                        <%=r.getArTitle() %>
                     </td>
                 </tr>
 
                 <tr align="center">
-                    <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;">내용은여기!</textarea></td>
+                    <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;"><%=r.getArContent()%></textarea></td>
+                </tr>
+				<% } else if(dspR != null){ %>
+				<tr height="40">
+                    <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
+                    <td width="100">
+                        <%=dspR.getContentNo()%>
+                    </td>
+                    <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
+                    <td colspan="3" width="300">
+                        <%=dspR.getReportDate()%>
+                    </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        <%=dspR.getReportCategory()%>
+                    </td>
+                </tr>
+
+                <tr height="40" id="up-name">
+                    <td><mark style="background: #d5c4fb91;">작성자</mark></td>
+                    <td width="100">
+                        <%=dspR.getReportedMem()%>
+                    </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">작성일</mark></td>
+                    <td width="100">
+                        <%=dspR.getReportDate()%>
+                    </td>
+                    <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
+                    <td width="150">
+                        <%=dspR.getReportContent()%>
+                    </td>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        <%=dspR.getReportStatus()%>
+                    </td>
+                </tr>
+
+                <tr height="40">
+                    <td><mark style="background: #d5c4fb91;">제목</mark></td>
+                    <td colspan="7">
+                        <%=dspR.getDspTitle() %>
+                    </td>
                 </tr>
 
                 <tr align="center">
-                    <td colspan="8"><button type="button" class="btn btn-sm" style="background: rgb(143,153,142);">목록으로</button></td>
+                    <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;">
+                    <%=dspR.getAnimalIssue()%>
+                    <br>
+                    <%=dspR.getDspEtc()%></textarea></td>
+                </tr>
+                <% }else if(cr != null){ %>
+					
+					<tr height="40">
+                    <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
+                    <td width="100">
+                        <%=cr.getContentNo()%>
+                    </td>
+                    <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
+                    <td colspan="3" width="300">
+                        <%=cr.getReportDate()%>
+                    </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        <%=cr.getReportCategory()%>
+                    </td>
+                </tr>
+
+                <tr height="40" id="up-name">
+                    <td><mark style="background: #d5c4fb91;">작성자</mark></td>
+                    <td width="100">
+                        <%=cr.getReportedMem()%>
+                    </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">작성일</mark></td>
+                    <td width="100">
+                        <%=cr.getReportDate()%>
+                    </td>
+                    <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
+                    <td width="150">
+                        <%=cr.getReportContent()%>
+                    </td>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        <%=cr.getReportStatus()%>
+                    </td>
+                </tr>
+
+                <tr height="40">
+                    <td><mark style="background: #d5c4fb91;">제목</mark></td>
+                    <td colspan="7">
+                        <%=cr.getArTitle()%>
+                    </td>
+                </tr>
+
+                <tr align="center">
+                    <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;">
+                    <%=cr.getReplyContent()%></textarea></td>
+                </tr>
+                
+                <% } %>
+
+
+                <tr align="center">
+                    <td colspan="8"><button type="button" class="btn btn-sm" style="background: rgb(143,153,142);" onclick="history.back();">목록으로</button></td>
                 </tr>
 
 

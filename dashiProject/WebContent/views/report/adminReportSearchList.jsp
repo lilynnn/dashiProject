@@ -210,6 +210,13 @@
 					location.href = "<%=contextPath%>/reportList.ad?cpage=1";
 					
 				}
+				
+
+				$("#re-list>tbody>tr").click(function(){
+					
+					console.log($("#re-list>tbody>tr").children().eq(1).text());
+					location href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(1).text();
+				})
 			</script>
 			
 			

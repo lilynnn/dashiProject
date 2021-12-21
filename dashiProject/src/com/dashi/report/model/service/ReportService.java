@@ -43,8 +43,26 @@ public class ReportService {
 		return list;	
 	} // 검색
 	
+	public Report selectReviewReport(int reportNo) {
+		Connection conn = getConnection();
+		Report r = new ReportDao().selectReviewReport(conn, reportNo);
+		close(conn);
+		return r;		
+	} // 리뷰 신고글 조회
 	
+	public Report selectDSPReport(int reportNo) {
+		Connection conn = getConnection();
+		Report r = new ReportDao().selectDSPReport(conn, reportNo);
+		close(conn);
+		return r;		
+	} // 실종보호 신고글 조회
 	
+	public Report selectReplyReport(int reportNo) {
+		Connection conn = getConnection();
+		Report r = new ReportDao().selectReplyReport(conn, reportNo);
+		close(conn);
+		return r;		
+	} // 댓글 신고글 조회
 	
 	
 	
