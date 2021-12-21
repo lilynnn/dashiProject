@@ -55,7 +55,7 @@
 
     <!-- 지희 수정중  -->
 	<!-- 입양공고리스트에서 해당 공고 눌렀을 때 상세보기 페이지 -->
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../admin/adminMainMenubar.jsp" %>
 
     <div class="outer">
 

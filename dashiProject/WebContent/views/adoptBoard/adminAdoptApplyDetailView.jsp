@@ -4,8 +4,7 @@
 <%
 	AdoptApply ap = (AdoptApply)request.getAttribute("apply");
 	Attachment at = (Attachment)request.getAttribute("at");
-	
-	System.out.println(ap);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -81,7 +80,7 @@
 	<!-- 지희 수정중  -->
 	<!-- 관리자 입양신청서 상세조회 페이지  -->
 	
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../admin/adminMainMenubar.jsp" %>
 	<!-- 전체 영역 감싸는 div -->
     <div class="outer">
         
@@ -110,23 +109,48 @@
                     <th width=250>작성자</th>
                     <td width=300><%=ap.getMemId() %></td>
                     <th width=250>작성인명</th>
-                    <td width=300></td>
+                    <td width=300><%=ap.getMemName() %></td>
                 </tr>
                 <tr>
                     <th>작성일</th>
-                    <td></td>
+                    <td><%=ap.getApplyDate() %></td>
                     <th>승인상태</th>
                     <td>
                         <select name="status" id="status" class="btn btn-sm dropdown-toggle" style="width: 99%;">
-                        	
-                            <option value="1" selected>승인대기</option>
-                            <option value="2">결제대기</option>
-                            <option value="3">결제완료</option>
-                            <option value="4">입양완료</option>
-                            <option value="5">반려</option>
-                           
+                           	<option id="opt1" value="1">승인대기</option>
+                            <option id="opt2" value="2">결제대기</option>
+                           	<option id="opt3" value="3">결제완료</option>
+                           	<option id="opt4" value="4">입양완료</option>
+                           	<option id="opt5" value="5">반려</option>               
                         </select>
-
+						<script>
+							$(function(){
+								const statusNum = <%=ap.getAdtStatus() %>
+								
+								switch(statusNum){
+									case 1:
+										$("#opt1").attr("selected","selected");
+									break
+									
+									case 2:
+										$("#opt2").attr("selected","selected");
+									break
+									
+									case 3:
+										$("#opt3").attr("selected","selected");
+									break
+									
+									case 4:
+										$("#opt4").attr("selected","selected");
+									break
+									
+									case 5:
+										$("#opt5").attr("selected","selected");
+									break
+									
+								}
+							})
+						</script>
                     </td>
                 </tr>
             </table>
@@ -148,7 +172,7 @@
                         <td style="text-align: center; width: 200px;"><b>입양공고문 제목</b></td>
                         <td colspan="">
                             <!-- input요소에서 disable 사용하면 값 전달 안됨, but readonly는 값 전달 -->
-                            <input style="width: 99%; font-size: 15px;" value="[동물품종][이름]의 가족을 기다려요." readonly>
+                            <input style="width: 99%; font-size: 15px;" value="<%=ap.getAaTitle() %>" readonly>
                         </td>                            
                     </tr>
                     <tr> 
@@ -165,31 +189,27 @@
                 <table style="text-align: center; width: 900px; font-size: 13px; margin: 10px 0px;">
                     <tr>
                         <th width=200>이름</th>
-                        <td width=200>XXX</td>
-                        <th width=200>아이디</th>
-                        <td width=200>@@@</td>
+                        <td width=200><%=ap.getAaName() %></td>
+                        <th width=200>나이</th>
+                        <td width=200><%=ap.getAaAge() %></td>
                     </tr>
                     <tr>
-                        <th>나이</th>
-                        <td>--</td>
                         <th>성별</th>
-                        <td>M or F</td>
-                    </tr>
-                    <tr>
-                        <th>직업</th>
-                        <td>--</td>
+                        <td><%=ap.getAaGender() %></td>
                         <th>결혼여부</th>
-                        <td>Y or N</td>
+                        <td><%=ap.getMarriageYN() %></td>
                     </tr>
                     <tr>
                         <th>전화번호</th>
-                        <td>010-2345-6789</td>
+                        <td><%=ap.getAaPhone() %></td>
                         <th>이메일</th>
-                        <td>test01@gmail.com</td>
+                        <td><%=ap.getAaEmail() %></td>
                     </tr>
                     <tr>
+                        <th>직업</th>
+                        <td><%=ap.getAaJob() %></td>
                         <th>주소</th>
-                        <td colspan="3"></td>
+                        <td style="text-align:left; padding-left:10px"><%=ap.getAaAddress() %></td>
                     </tr>
                 </table>
                     
@@ -203,7 +223,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 100px; border: 1px solid gray;"></div>
+                            <div style="height: 100px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getAdoptReason() %>
+                            </div>
                         </td>
                     </tr>
                       
@@ -212,7 +234,9 @@
                     </tr>                        
                     <tr>
                         <td>
-                            <div style="height: 50px; border: 1px solid gray;"></div>
+                            <div style="height: 50px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getParentExp() %>
+                            </div>
                         </td>
                     </tr>
                         
@@ -221,7 +245,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getHavePetYN() %>
+                            </div>
                         </td>
                     </tr>
                     <!-- 예 라디오버튼 클릭했을때 보여지게끔하기 -->
@@ -235,10 +261,34 @@
                                     <th width=200>중성화여부</th>
                                 </tr>
                                 <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
+                                    <td>
+	                                    <%if(ap.getPetType() != null) { %>
+	                                    <%=ap.getPetType() %>
+	                                    <%} else { %>
+	                                    --
+	                                    <%} %>
+                                    </td>
+                                    <td>
+                                    	<%if(ap.getPetAge() != null) {%>
+                                    	<%=ap.getPetAge() %>
+                                    	<%} else { %>
+                                    	--
+                                    	<%} %>
+                                    </td>
+                                    <td>
+                                    	<%if(ap.getPetGender() != null) {%>
+                                    	<%= ap.getPetGender() %>
+                                    	<%} else { %>
+                                    	-- 
+                                    	<%} %>
+                                    </td>
+                                    <td>
+                                    	<%if(ap.getPetNeutral() != null) {%>
+                                    	<%=ap.getPetNeutral() %>
+                                    	<%} else {%>
+                                    	--
+                                    	<%} %>
+                                    </td>
                                 </tr>
                             </table>
                         </td>
@@ -256,9 +306,9 @@
                                     <th width=250>나이</th>
                                 </tr>
                                 <tr>
-                                    <td>--</td>
-                                    <td>--</td>
-                                    <td>--</td>
+                                    <td><%=ap.getaMate() %></td>
+                                    <td><%=ap.getcMate() %></td>
+                                    <td><%=ap.getChildAge() %></td>
                                 </tr>
                             </table>
                         </td>
@@ -269,7 +319,15 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%if(ap.getAgreeYPN().equals("Y")) {%>
+                            모두찬성
+                            <%}else if(ap.getAgreeNeiYN().equals("P")) {%>
+                            부분찬성
+                            <%} else {%>
+                            본인제외 모두 반대
+                            <%} %>
+                            </div>
                         </td>
                     </tr>
     
@@ -278,7 +336,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 100px; border: 1px solid gray;"></div>
+                            <div style="height: 100px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getEventMngAni() %>
+                            </div>
                         </td>
                     </tr>
     
@@ -287,7 +347,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getEmptyHour() %>
+                            </div>
                         </td>
                     </tr>
     
@@ -296,7 +358,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getHouseType() %>
+                            </div>
                         </td>
                     </tr>
     
@@ -305,7 +369,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getHselfYN() %>
+                            </div>
                         </td>
                     </tr>
     
@@ -314,7 +380,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getAgreeNeiYN() %>
+                            </div>
                         </td>
                     </tr>
     
@@ -323,7 +391,9 @@
                     </tr>
                     <tr>
                         <td>
-                            <div style="height: 30px; border: 1px solid gray;"></div>
+                            <div style="height: 30px; border: 1px solid gray; padding-left:5px;">
+                            <%=ap.getExpCost() %> &nbsp; 만원
+                            </div>
                         </td>
                     </tr>
     

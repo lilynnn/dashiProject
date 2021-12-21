@@ -38,9 +38,7 @@ public class AdminAdoptApplyDetailController extends HttpServlet {
 		Attachment at = new AdoptBoardService().selectAttachment(boardNo);
 		request.setAttribute("apply", apply);
 		request.setAttribute("at", at);
-		System.out.println(apply);
-		System.out.println(at);
-		
+
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptApplyDetailView.jsp").forward(request, response);
 		
 	}

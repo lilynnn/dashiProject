@@ -59,7 +59,7 @@
 
 	<!-- 지희 수정중  -->
 	<!-- 관리자가 입양공고문을 작성하기 위한 페이지 -->
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../admin/adminMainMenubar.jsp" %>
 
 	<!-- 전체 영역 감싸는 div -->
 	<div class="outer">

@@ -68,7 +68,7 @@
     <!-- 지희 수정중  -->
 	<!-- 관리자 입양공고리스트페이지  -->
 	
-	<%@ include file="../common/menubar.jsp" %>
+	<%@ include file="../admin/adminMainMenubar.jsp" %>
     <div class="outer">
 
         <div id="menubar" style="margin-right: 20px;">

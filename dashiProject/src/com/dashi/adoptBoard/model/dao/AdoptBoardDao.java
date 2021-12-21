@@ -265,7 +265,7 @@ public class AdoptBoardDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		System.out.println("attach boardNo : " + boardNo);
+
 		String sql = prop.getProperty("selectAttachment");
 		
 		try {
