@@ -20,13 +20,24 @@ public class Report {
 	private String dspTitle;
 	private String animalIssue;
 	private String dspEtc;
-	
+	private String memId;
+	private String memName;
+	private String blacklist;
+	private int count;
 	
 	public Report() {}
 
 	
 	
-	
+	public Report(String reportedMem, String memId, String memName, String blacklist, int count) {
+		super();
+		this.reportedMem = reportedMem;
+		this.memId = memId;
+		this.memName = memName;
+		this.blacklist = blacklist;
+		this.count = count;
+	}
+
 
 
 	public Report(int reportNo, String contentNo, String replyNo, String reportedMem, String reportContent,
@@ -251,15 +262,49 @@ public class Report {
 		this.dspEtc = dspEtc;
 	}
 
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
+	public String getMemName() {
+		return memName;
+	}
+
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
+
+	public String getBlacklist() {
+		return blacklist;
+	}
+
+	public void setBlacklist(String blacklist) {
+		this.blacklist = blacklist;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "Report [reportNo=" + reportNo + ", contentNo=" + contentNo + ", replyNo=" + replyNo + ", reportingMem="
 				+ reportingMem + ", reportedMem=" + reportedMem + ", reportContent=" + reportContent + ", reportDate="
 				+ reportDate + ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + ", typeBR="
 				+ typeBR + ", arTitle=" + arTitle + ", arContent=" + arContent + ", replyContent=" + replyContent
-				+ ", dspTitle=" + dspTitle + ", animalIssue=" + animalIssue + ", dspEtc=" + dspEtc + "]";
+				+ ", dspTitle=" + dspTitle + ", animalIssue=" + animalIssue + ", dspEtc=" + dspEtc + ", memId=" + memId
+				+ ", memName=" + memName + ", blacklist=" + blacklist + ", count=" + count + "]";
 	}
 
+	
 	
 		
 }

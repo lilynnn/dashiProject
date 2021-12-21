@@ -79,7 +79,7 @@ public class ReportDao {
 				list.add(new Report(rset.getInt("report_no")
 								   , rset.getString("content_no")
 								   , rset.getString("reply_no")
-								   , rset.getString("reporting_mem")
+								   , rset.getString("reported_mem")
 								   , rset.getString("mem_id")
 								   , rset.getString("report_content")
 								   , rset.getString("report_date")
@@ -296,7 +296,35 @@ public class ReportDao {
 		
 	} // 신고 댓글 상세보기
 	
-	
+	public ArrayList<Report> selectUserReportList(Connection conn){
+		ArrayList<Report> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectUserReportList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Report(rset.getString("reported_mem")
+								   , rset.getString("mem_id")
+								   , rset.getString("mem_name")
+								   , rset.getString("blacklist_yn")
+								   , rset.getInt("count")));
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+				
+	} // 신고된 사원 카운트&블랙리스트 여부조회
 	
 	
 	

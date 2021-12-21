@@ -73,13 +73,17 @@
                     <th colspan="8"><hr style="height: 1px;"></th>
                 </tr>
 
-                <tr>
+               
+				<% if(r != null && r.getReplyNo() == null){ %>
+				<tr>
                     <td colspan="8" height="40px" align="right">
-                        <a href="" class="btn" style="background: rgb(102,184,94);">복구</a>
-                        <a href="" class="btn" style="background: tomato">삭제</a>
+                    	<% if(r.getReportStatus().equals("N")){ %>
+                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <% }else{ %>
+                        <a href="" class="btn btn-outline-warning">복구</a>
+                        <% } %>
                     </td>
                 </tr>
-				<% if(r != null && r.getReplyNo() == null){ %>
                 <tr height="40">
                     <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
@@ -125,6 +129,15 @@
                     <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;"><%=r.getArContent()%></textarea></td>
                 </tr>
 				<% } else if(dspR != null){ %>
+				<tr>
+					<td colspan="8" height="40px" align="right">
+                    	<% if(dspR.getReportStatus().equals("N")){ %>
+                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <% }else{ %>
+                        <a href="" class="btn btn-outline-warning">복구</a>
+                        <% } %>
+                    </td>
+                </tr>
 				<tr height="40">
                     <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
@@ -173,7 +186,15 @@
                     <%=dspR.getDspEtc()%></textarea></td>
                 </tr>
                 <% }else if(cr != null){ %>
-					
+				<tr>
+					<td colspan="8" height="40px" align="right">
+                    	<% if(cr.getReportStatus().equals("N")){ %>
+                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <% }else{ %>
+                        <a href="" class="btn btn-outline-warning">복구</a>
+                        <% } %>
+                    </td>
+                </tr>
 					<tr height="40">
                     <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">

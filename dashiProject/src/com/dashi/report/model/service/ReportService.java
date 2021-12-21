@@ -63,6 +63,39 @@ public class ReportService {
 		close(conn);
 		return r;		
 	} // 댓글 신고글 조회
+
+	public ArrayList<Report> selectUserReportList(){
+		Connection conn = getConnection();
+		ArrayList<Report> list = new ReportDao().selectUserReportList(conn);
+		close(conn);
+		return list;		
+		
+	} // 모든 신고된 회원들
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.report.model.vo.Report"%>
 <%
 	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
-
 %>
 <!DOCTYPE html>
 <html>
@@ -41,7 +40,7 @@
 	#re-search{margin-top: 25px;}
 	#re-search *{height: 35px;}
 	.list-name{
-		background: #fbffed;
+		background: #d7e6f5;
 		border-bottom: 1px solid gray;
 	}
 	.list-find{border-bottom: 1px solid gray;}
@@ -74,12 +73,13 @@
 	#re-list-name{
 		border-top: 1px solid gray;
 		border-bottom: 1px solid gray;
-		background: #fbffed;
+		background: #d7e6f5;
 	}
 	.paging-area{
 		margin-top: 30px;
 		margin-left:20px;
 	}
+	#check:hover{cursor:pointer;}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -99,38 +99,24 @@
 
 		<div class="re-content">
 			<div id="aReportList-find">
-				<form action="<%=contextPath%>/searchReport.ad" method="get" >
+				<form action="<%=contextPath%>/searchIdReport.ad"  method="get">
 					<table id="re-search">
 						<tr>
-							<td colspan="4" width="850px" id="boardName">전체 신고 내역</td>
+							<td colspan="2" width="850px" id="boardName">회원별 신고횟수 조회</td>
 						</tr>
 						<tr>
-							<th colspan="4"><hr style="height: 1px;"></th>
+							<th colspan="2"><hr style="height: 1px;"></th>
 						</tr>
 						<tr>
-							<td width="300px" align="center" class="list-name" style="border-top: 1px solid gray;">신고글 코드 조회</td>
-							<td width="400px" class="list-find" style="border-top: 1px solid gray;">
-								<select name="boardType" class="inputwidth">
-									<option value="1">입양후기</option>
-									<option value="2">실종/보호/목격</option>
-									<option value="3">댓글</option>
-								</select>
-							</td>
-							<td rowspan="3" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
-								<button type="submit" id="search-btn">검색</button>
-							</td>
+							<th colspan="2" style="border-bottom: 1px solid gray;"></th>
 						</tr>
 						<tr>
-							<td align="center" class="list-name">검색 기간</td>
+							<td align="center" class="list-name" style="border-top: 1px solid gray;">회원 아이디 검색</td>
 							<td class="list-find">
-								<input type="date" name="searchDate" style="width:325px;">
+								<input type="text" name="searchId" style="width:325px;">
 							</td>
-						</tr>
-						<tr>
-							<td align="center" class="list-name">게시물 상태</td>
-							<td id="checkYN" class="list-find">
-								<label><input type="radio" name="status" value="N"><p> 확인중</p></label>
-								<label><input type="radio" name="status" value="Y"><p> 삭제완료</p></label>
+							<td rowspan="2" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
+								<button type="submit" class="btn btn-outline-primary" style="width:100px;">검색</button>
 							</td>
 						</tr>
 					</table>
@@ -141,55 +127,42 @@
 				<table id="re-list" style="font-size:12px;">
 					<thead>
 						<tr>
-							<td colspan="8" width="850px"></td>
+							<td colspan="6" width="850px"></td>
 						</tr>
 						<tr>
-							<td colspan="8" width="850px">
-								<a href="" class="btn btn-outline-warning">회원별 신고횟수</a>
+							<td colspan="6" width="850px"></td>
+						</tr>
+						<tr align="right">
+							<td colspan="6" width="850px">
+								<button type="button" data-toggle="modal" data-target="#myModal">블랙리스트 처리</button>
 							</td>
 						</tr>
 	
 						<tr align="center" id="re-list-name">
-							<th width="30px">No.</th>
-							<th width="100px">신고글번호</th>
-							<th width="100px">신고댓글번호</th>
-							<th width="100px">신고종류</th>
-							<th width="100px">작성자</th>
-							<th width="380px">신고내용</th>
-							<th width="100px">신고날짜</th>
-							<th width="40px">처리</th>
+							<th width="30px"></th>
+							<th width="100px">회원번호</th>
+							<th width="200px">회원아이디</th>
+							<th width="100px">회원이름</th>
+							<th width="100px">블랙리스트여부</th>
+							<th width="100px">신고횟수</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% if(list.isEmpty()){ %>
 						<!--신고글이 없을때-->
 						<tr align="center" style="border-bottom:1px solid gray;">
-							<td colspan="7">신고된 글이 없습니다.</td>
+							<td colspan="6">신고된 글이 없습니다.</td>
 						</tr>
 						<% }else{ %>
 						<!--신고글이 있을때-->
 							<% for(Report r : list){ %>
 							<tr align="center" style="border-bottom:1px solid gray;">
-								<td><%=r.getReportNo()%></td>
-								<td><%=r.getContentNo()%></td>
-								<td><%=r.getReplyNo()%></td>
-								
-								<% 
-			                    	String category ="";
-			                    	switch(r.getReportCategory()){
-			                    	case 1: category = "욕설 및 음란"; break;
-			                    	case 2: category = "광고 및 도배"; break;
-			                    	case 3: category = "사생활침해"; break;
-			                    	case 4: category = "저작권위반"; break;
-			                    	case 5: category = "기타"; break;
-									}
-								%>
-								<td><%=category%></td>
-								
+								<td><input type="checkbox" id="check"></td>
 								<td><%=r.getReportedMem()%></td>
-								<td><%=r.getReportContent()%></td>
-								<td><%=r.getReportDate()%></td>
-								<td><%=r.getReportStatus()%></td>
+								<td><%=r.getMemId()%></td>
+								<td><%=r.getMemName()%></td>
+								<td><%=r.getBlacklist()%></td>
+								<td><%=r.getCount()%></td>
 							</tr>
 							<% } %>
 						<% } %>
@@ -197,35 +170,43 @@
 				</table>
 			</div>
 			
-			<div style="width:100%; margin-top:30px;" align="center">
-				<button type="submit" class="btn btn-sm btn-outline-secondary" onclick="reportList();">목록으로</button>
-			</div>
-			
-			
 			<script>
-				function reportList(){
+				$("#re-list>tbody>tr").click(function(){			
 					
-					location.href = "<%=contextPath%>/reportList.ad?cpage=1";
-					
-				}
+					console.log($("#re-list>tbody>tr").children().eq(1).text());
+					<!--location.href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(0).text();-->
 				
-
-				$("#re-list>tbody>tr").click(function(){
-					
-					console.log($("#re-list>tbody>tr").children().eq(0).text());
-					location.href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(0).text();
 				})
-			</script>
-			
-			
+			</script>		
 	
-			<!-- 페이징바 -->
-            
-
 		</div>
-	
 
 	</div>
+	
+		<!-- The Modal -->
+		<div class="modal" id="myModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+			<form>
+		      <!-- Modal Header -->
+		      <div class="modal-header">
+		        <h4 class="modal-title">해당회원을<br>블랙리스트 처리하시겠습니까?</h4>
+		      </div>
+		
+		      <!-- Modal body -->
+		      <div class="modal-body">
+		        	회원아이디 : 
+		      </div>
+		
+		      <!-- Modal footer -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		      </div>
+			</form>
+		    </div>
+		  </div>
+		</div>
+	
 	
 		
 	

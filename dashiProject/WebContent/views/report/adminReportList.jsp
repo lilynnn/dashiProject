@@ -150,7 +150,12 @@
 						</tr>
 	
 						<tr>
-							<td colspan="8" align="right" id="list-btn"></td>
+							<td colspan="8" align="left" id="list-btn">
+								<a href="<%=contextPath%>/countReportUser.ad" class="btn btn-outline-warning">회원별 신고횟수 조회</a>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="8" width="850px"></td>
 						</tr>
 	
 						<tr align="center" id="re-list-name">
