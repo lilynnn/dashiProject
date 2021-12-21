@@ -196,15 +196,6 @@
 
     <%@ include file="../common/footerbar.jsp" %>
 
-    <script>
-        // 나중에 수정하기!! => 글 번호에 맞춰서 연결하기
-        $(function(){
-            $(".list").click(function(){
-
-                location.href = "<%= contextPath%>/detail.dsp?dspno=" + $(this).children("input").val();
-            })
-        })
-    </script>
     
     <!-- 글작성 클릭시 스크립트 -->
     <script>
@@ -215,6 +206,7 @@
         })
     </script>
     
+    <!-- 실종보호목격 ajax 스크립트 -->
 	<script>
 		function miss(){
 			document.getElementById('miss').style.color = "rgb(102,184,94)";
@@ -224,19 +216,29 @@
 				url : 'ajaxCtgList.dsp?ctg=실종',
 				data: "",
 				success : function(list){
-					console.log(list);
 					
 					let result = "";
 					for(let i=0 ; i<list.length ; i++){
 						result += 
-							
+							"<div class='list'>"
+		            			+ "<input type='hidden' value=" + list[i].dspNo + ">"
+		               			+ "<div class='img-wrap'>"
+		                   			+ "<img src='<%=contextPath%>/" + list[i].titleImg + "' width='250' height='260'>" 
+		                	+"</div>"
+		                
+		                	+"<p>"
+		                    	+ "<span style='color: red; font-weight: bold;'>[" + list[i].ctg + "]" + "</span>"+ list[i].dspTitle +"<br>"+"<br>"
+		                    	+ "<span style='color: red; font-weight: bold;'>사례금 :" + list[i].money + "</span>" + "/" + list[i].locationName +"<br>"
+		                   		+ list[i].issue
+		                	+"</p>"
+		            	+"</div>"
+														
 					}
 					
-
+					$(".dspList-area").html(result); 
 					
-					$("#dspList-area").html(result); 
-					
-					console.log(result);
+				},error:function(){
+					console.log("ajax 통신실패")
 				}
 			})
 		}
@@ -251,6 +253,31 @@
 				url : 'ajaxCtgList.dsp?ctg=보호',
 				data: "",
 				success : function(list){
+					
+					let result = "";
+					for(let i=0 ; i<list.length ; i++){
+						result += 
+							"<div class='list'>"
+		            			+ "<input type='hidden' value=" + list[i].dspNo + ">"
+		               			+ "<div class='img-wrap'>"
+		                   			+ "<img src='<%=contextPath%>/" + list[i].titleImg + "' width='250' height='260'>" 
+		                	+"</div>"
+		                
+		                	+"<p>"
+		                    	+ "<span style='color: red; font-weight: bold;'>[" + list[i].ctg + "]" + "</span>"+ list[i].dspTitle +"<br>"+"<br>"
+		                    	+ "<span style='color: red; font-weight: bold;'>사례금 :" + list[i].money + "</span>" + "/" + list[i].locationName +"<br>"
+		                   		+ list[i].issue
+		                	+"</p>"
+		            	+"</div>"
+														
+					}
+					
+					$(".dspList-area").html(result); 
+					
+					
+					
+					},error:function(){
+						console.log("ajax 통신실패")
 					}
 			})
 		}
@@ -264,11 +291,52 @@
 				url : 'ajaxCtgList.dsp?ctg=목격',
 				data: "",
 				success : function(list){
+					
+					let result = "";
+					for(let i=0 ; i<list.length ; i++){
+						result += 
+							"<div class='list'>"
+		            			+ "<input type='hidden' value=" + list[i].dspNo + ">"
+		               			+ "<div class='img-wrap'>"
+		                   			+ "<img src='<%=contextPath%>/" + list[i].titleImg + "' width='250' height='260'>" 
+		                	+"</div>"
+		                
+		                	+"<p>"
+		                    	+ "<span style='color: red; font-weight: bold;'>[" + list[i].ctg + "]" + "</span>"+ list[i].dspTitle +"<br>"+"<br>"
+		                    	+ "<span style='color: red; font-weight: bold;'>사례금 :" + list[i].money + "</span>" + "/" + list[i].locationName +"<br>"
+		                   		+ list[i].issue
+		                	+"</p>"
+		            	+"</div>"
+														
 					}
+					
+					$(".dspList-area").html(result); 
+					
+					},error:function(){
+						console.log("ajax 통신실패")
+					}
+			
 			})
 		}
 						
 	</script>
+	
+	<script>
+    	$(function(){
+            $(".list").click(function(){
+                location.href = "<%= contextPath%>/detail.dsp?dspno=" + $(this).children("input").val();
+            })
+        })
+    </script>
+    
+    <!-- 동적으로 만들어진 ajax실종보호목격의 클릭 스크립트 -->
+    <script>
+	    $(function(){
+	    	$(document).on("click",".list",function(){
+	    		location.href = "<%= contextPath%>/detail.dsp?dspno=" + $(this).children("input").val();
+	    	})
+	    })
+    </script>
     
     
 </body>
