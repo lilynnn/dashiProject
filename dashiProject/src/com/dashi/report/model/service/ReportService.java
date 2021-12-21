@@ -36,7 +36,12 @@ public class ReportService {
 		return result;
 	} // 신고글 삭제하기
 	
-	
+	public ArrayList<Report> searchReport(Report r, String date){
+		Connection conn = getConnection();
+		ArrayList<Report> list = new ReportDao().searchReport(conn, r, date);
+		close(conn);
+		return list;	
+	} // 검색
 	
 	
 	

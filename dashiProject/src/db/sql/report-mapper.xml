@@ -31,49 +31,70 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<!-- 검색하기 -->
 	<entry key="searchReport">
 		SELECT 
 		       REPORT_NO
-		     , CONTENT_NO
-		     , REPLY_NO
+		     , NVL(CONTENT_NO, '-') CONTENT_NO
+		     , NVL(REPLY_NO, '-') REPLY_NO
 		     , REPORTING_MEM
 		     , MEM_ID
 		     , REPORT_CONTENT
-		     , REPORT_DATE
+		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
+		     , REPORT_STATUS
 		     , REPORT_CTG
 		  FROM REPORTED
 		  JOIN MEM_INFO ON (REPORTED_MEM = MEM_NO)
 		 WHERE TYPE_BR = ?
 		   AND REPORT_DATE BETWEEN ? AND SYSDATE
-		   AND MEM_ID LIKE ?
 		   AND REPORT_STATUS = ?
 	</entry>
-
+	
+	<!-- 신고글 삭제 -->
 	<entry key="deleteReport">
 		UPDATE
 		       REPORTED
 		   SET REPORT_STATUS = 'Y'
 		 WHERE REPORT_NO = ?
 	</entry>
-
-	<entry key="selectReport">
-		SELECT 
+	
+	<!-- 신고(후기)상세보기 -->
+	<entry key="selectReviewReport">
+		SELECT
 		       REPORT_NO
 		     , CONTENT_NO
-		     , REPLY_NO
-		     , REPORTING_MEM
-		     , REPORTED_MEM
+		     , MEM_ID
 		     , REPORT_CONTENT
 		     , REPORT_DATE
-		     , REPORT_STATUS
 		     , REPORT_CTG
-		     , TYPE_BR
+		     , REPORT_STATUS
+		     , AR_TITLE
+		     , AR_CONTENT
 		  FROM REPORTED
-		 WHERE REPORT_NO = ?
+		  JOIN ADOPT_REVIEW ON (REPORTED_MEM = MEM_NO)
+		 WHERE CONTENT_NO = ?
+	</entry>
+	
+	<entry key="selectReplyReport">
+		SELECT
+		       REPORT_NO
+		     , CONTENT_NO
+		     , MEM_ID
+		     , REPORT_CONTENT
+		     , REPORT_DATE
+		     , REPORT_CTG
+		     , REPORT_STATUS
+		     , REPLY_CONTENT
+		  FROM REPORTED 
+		  JOIN MEM_INFO M ON (REPORTED_MEM = M.MEM_NO)
+		  JOIN REPLY ON (REPLY.REPLY_NO = REPORTED.REPLY_NO)
+		 WHERE REPORTED.REPLY_NO = ?
 	</entry>
 
-
-
+	<entry key="selectDSPReport">
+		
+	</entry>
+	
 
 
 

@@ -154,7 +154,45 @@ public class ReportDao {
 		return r;
 		
 		
-	}
+	} // 수정 해야됨
+	
+	public ArrayList<Report> searchReport(Connection conn, Report r, String date){
+		// select문 => ResultSet(여러 행) => ArrayList<Board>
+		ArrayList<Report> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchReport");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, r.getTypeBR());
+			pstmt.setString(2, date);
+			pstmt.setString(3, r.getReportStatus());
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Report(rset.getInt("report_no")
+								   , rset.getString("content_no")
+								   , rset.getString("reply_no")
+								   , rset.getString("reporting_mem")
+								   , rset.getString("mem_id")
+								   , rset.getString("report_content")
+								   , rset.getString("report_date")
+								   , rset.getString("report_status")
+								   , rset.getInt("report_ctg")));
+			}	
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+				
+	} // 전체 사원 조회
 	
 	
 	

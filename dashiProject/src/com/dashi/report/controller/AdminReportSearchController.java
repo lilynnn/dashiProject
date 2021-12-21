@@ -1,11 +1,16 @@
 package com.dashi.report.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dashi.report.model.service.ReportService;
+import com.dashi.report.model.vo.Report;
 
 /**
  * Servlet implementation class AdminReportSearchController
@@ -26,8 +31,21 @@ public class AdminReportSearchController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		int type = Integer.parseInt(request.getParameter("boardType"));
+		String date = request.getParameter("searchDate");
+		String status = request.getParameter("status");
+		
+		Report r = new Report();
+		r.setTypeBR(type);
+		r.setReportStatus(status);		
+		
+		ArrayList<Report> list = new ReportService().searchReport(r, date);	
+				
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/report/adminReportSearchList.jsp").forward(request, response);
+	
+	
 	}
 
 	/**

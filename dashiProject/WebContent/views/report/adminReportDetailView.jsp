@@ -8,7 +8,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 800px;
+        height: 900px;
         margin: auto;
         margin-top: 50px;
     }
@@ -61,15 +61,15 @@
 
             <table id="re-detail">
                 <tr>
-                    <td colspan="6" width="850px" id="boardName">전체 신고 내역</td>
+                    <td colspan="8" width="850px" id="boardName">전체 신고 내역</td>
                 </tr>
 
                 <tr>
-                    <th colspan="6"><hr style="height: 1px;"></th>
+                    <th colspan="8"><hr style="height: 1px;"></th>
                 </tr>
 
                 <tr>
-                    <td colspan="6" height="40px" align="right">
+                    <td colspan="8" height="40px" align="right">
                         <a href="" class="btn" style="background: rgb(102,184,94);">복구</a>
                         <a href="" class="btn" style="background: tomato">삭제</a>
                     </td>
@@ -77,12 +77,16 @@
 
                 <tr height="40">
                     <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
-                    <td colspan="3" width="300">
+                    <td width="100">
                         COMM-001
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
-                    <td colspan="2" width="300">
+                    <td colspan="3" width="300">
                         2021-12-07
+                    </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        	1	
                     </td>
                 </tr>
 
@@ -91,29 +95,33 @@
                     <td width="100">
                         bad01
                     </td>
-                    <td width="100"><mark style="background: #d5c4fb91;">작성일</mark></td>
+                    <td width="50"><mark style="background: #d5c4fb91;">작성일</mark></td>
                     <td width="100">
                         2021-12-07
                     </td>
-                    <td><mark style="background: #d5c4fb91;">신고사유</mark></td>
-                    <td>
-                        홍보성 내용 포함
+                    <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
+                    <td width="150">
+                        	홍보성 내용 포함
+                    </td>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        	N
                     </td>
                 </tr>
 
                 <tr height="40">
                     <td><mark style="background: #d5c4fb91;">제목</mark></td>
-                    <td colspan="5">
-                        여기는제목자리
+                    <td colspan="7">
+                        	여기는제목자리
                     </td>
                 </tr>
 
                 <tr align="center">
-                    <td colspan="6"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;">내용은여기!</textarea></td>
+                    <td colspan="8"><textarea name="" id="re-up-content" cols="110" rows="18" style="resize: none; padding: 20px;">내용은여기!</textarea></td>
                 </tr>
 
                 <tr align="center">
-                    <td colspan="6"><button type="button" class="btn btn-sm" style="background: rgb(143,153,142);">목록으로</button></td>
+                    <td colspan="8"><button type="button" class="btn btn-sm" style="background: rgb(143,153,142);">목록으로</button></td>
                 </tr>
 
 

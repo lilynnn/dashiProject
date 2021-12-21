@@ -1,13 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.report.model.vo.Report, com.dashi.common.model.vo.PageInfo"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.report.model.vo.Report"%>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Report> list = (ArrayList<Report>)request.getAttribute("list");
 
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -104,7 +99,7 @@
 
 		<div class="re-content">
 			<div id="aReportList-find">
-				<form method="get" action="<%=contextPath%>/searchReport.ad"  method="get">
+				<form action="<%=contextPath%>/searchReport.ad" method="get" >
 					<table id="re-search">
 						<tr>
 							<td colspan="4" width="850px" id="boardName">전체 신고 내역</td>
@@ -204,36 +199,24 @@
 				</table>
 			</div>
 			
+			<div style="width:100%; margin-top:30px;" align="center">
+				<button type="submit" class="btn btn-sm btn-outline-secondary" onclick="reportList();">목록으로</button>
+			</div>
+			
+			
 			<script>
-				$("#re-list>tbody>tr").click(function(){
+				function reportList(){
 					
-					console.log($("#re-list>tbody>tr").children().eq(1).text());
-					<!--location href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(1).text();-->
+					location.href = "<%=contextPath%>/reportList.ad?cpage=1";
 					
-				})
+				}
 			</script>
 			
 			
 	
 			<!-- 페이징바 -->
-            <div class="paging-area" align="center">
-			<% if(currentPage != 1){ %>
-            <button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=currentPage-1%>';" class="btn btn-outline-light text-dark">&lt;</button>
-            <% } %>
             
-            <% for(int p=startPage; p<=endPage; p++){ %>	
-            	<% if(p == currentPage){ %>
-            	<button disabled><%= p %></button>
-            	<% }else{ %>
-            	<button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=p%>';" class="btn btn-outline-light text-dark"><%= p %></button>
-            	<% } %>
-            <% } %>
-            
-            <% if(currentPage != maxPage){ %>
-            <button onclick="location.href='<%=contextPath%>/reportList.ad?cpage=<%=currentPage+1%>';" class="btn btn-outline-light text-dark">&gt;</button>
-			<% } %>
-        	</div>
-	
+
 		</div>
 	
 
