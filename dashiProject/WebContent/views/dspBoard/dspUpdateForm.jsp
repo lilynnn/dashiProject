@@ -6,6 +6,8 @@
 	ArrayList<Category> category = (ArrayList<Category>)request.getAttribute("category");
 	Dsp d = (Dsp)request.getAttribute("d");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	ArrayList<Dsp> contentImgPath = (ArrayList<Dsp>)request.getAttribute("contentImgPath");
+
 %>
 
 <html>
@@ -96,6 +98,9 @@
 		margin-left: 43%;
 		
 	}
+	img{
+	cursor:pointer;
+	}
 
 
 	/*내용 추가내용 위로 붙이기*/
@@ -114,10 +119,9 @@
 	
 
 		<div id="writeContent">
-			<form action="" method="post" enctype="multipart/form-data">
+			<form action="<%=contextPath %>/update.dsp" method="post" enctype="multipart/form-data">
 			
-				<input type="hidden" name="userNo" value="<%= loginUser.getMemNo()%>">
-				<input type="hidden" name="nickname" value="<%= loginUser.getNickname()%>">
+				<input type="hidden" name="dno" value="<%=d.getDspNo() %>">
 				<table id="contentOuter" align="center" >
 					
 					<!--제목 입력란-->
@@ -210,31 +214,26 @@
 						<tr>
 							<th>대표 이미지</th>
 							<td colspan="3">
-								<img id="titleImg" width="300" height="250" src="" alt="" onclick="chooseFile(1)">
+								<img id="titleImg" width="300" height="250" src="<%=d.getTitleImg() %>" alt="" onclick="chooseFile(1)">
 							</td>
 						</tr>	
 
 						<tr>
 							<th>상세 이미지</th>
+							
+							<%for(int i=0; i<contentImgPath.size(); i++){ %>
 							<td>
-								<img id="contentImg1" width="200" height="150" src="" alt="" onclick="chooseFile(2)">
+								<img id="contentImg<%=i+1%>" width="200" height="150" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>" alt="" onclick="chooseFile(<%= i+2 %>)">
 							</td>
-							<td>
-								<img id="contentImg2" width="200" height="150" src="" alt="" onclick="chooseFile(3)">
-							</td>
-							<td>
-								<img id="contentImg3" width="200" height="150" src="" alt="" onclick="chooseFile(4)">
-							</td>
-							<td>
-								<img id="contentImg4" width="200" height="150" src="" alt="" onclick="chooseFile(5)">
-							</td>
+							<%} %>
+							
 
 						</tr>
 					</table>
 				</div>
 
 				<!-- 파일을 입력하는곳-->
-				<div style="display:none">
+				<div style="display:none">	
 					<input type="file" name="file1" id="file1" onchange="loadImg(this ,1);" required>
 					<input type="file" name="file2" id="file2" onchange="loadImg(this ,2);">
 					<input type="file" name="file3" id="file3" onchange="loadImg(this ,3);">

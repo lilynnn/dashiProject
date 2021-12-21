@@ -183,7 +183,8 @@ public class DspDao {
 							rset.getString("ANIMAL_WEIGHT"),
 							rset.getString("ANIMAL_ISSUE"),
 							rset.getString("ETC"),
-							rset.getInt("MONEY"));
+							rset.getInt("MONEY"),
+							rset.getString("TITLEIMG"));
 			}
 
 		} catch (SQLException e) {
@@ -226,7 +227,6 @@ public class DspDao {
 		}
 
 		return list;
-		
 	}
 
 	// 실종 보호 목격 글 누르면 그에 맞는 목록이 보이는 메소드
@@ -283,6 +283,36 @@ public class DspDao {
 			close(rset);
 			close(pstmt);
 		}
+		return list;
+	}
+
+	// 상세이미지 경 뽑아줄것
+	public ArrayList<Dsp> contentImgPath(Connection conn, String dspNo) {
+		
+		ArrayList<Dsp> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("contentImgPath");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dspNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) { 
+				list.add(new Dsp(rset.getString("CONTENTIMG")));
+				
+	
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+
 		return list;
 	}
 

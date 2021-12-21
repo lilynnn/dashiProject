@@ -88,6 +88,11 @@
 		border-radius: 4px;
 		margin-left: 83%;
 	}
+	
+	img{
+	cursor:pointer;
+	}
+	
 
 	/*내용 추가내용 위로 붙이기*/
 	.info, .content{
@@ -189,7 +194,7 @@
 				<div style="margin-left: 45px;">
 					<table>
 						<tr>
-							<th>대표 이미지</th>
+							<th>대표 이미지 * </th>
 							<td colspan="3">
 								<img id="titleImg" width="300" height="250" src="" alt="" onclick="chooseFile(1)">
 							</td>

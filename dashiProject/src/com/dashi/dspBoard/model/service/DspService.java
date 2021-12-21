@@ -84,13 +84,30 @@ public class DspService {
 		return list;
 		
 	}
-
+	// 실종보호 목격 카테고리 불러오기
 	public ArrayList<Category> selectCategoryList() {
 		Connection conn = getConnection();
-		ArrayList<Category> list = new DspDao().selectCategoryList(conn);
+		ArrayList<Category> Category = new DspDao().selectCategoryList(conn);
 		close(conn);
-		return list;
+		return Category;
 	}
+	
+	// 상세이미지 경로 따오는 메소드
+	public ArrayList<Dsp> contentImgPath(String dspNo) {
+		Connection conn = getConnection();
+		ArrayList<Dsp> contentImgPath = new DspDao().contentImgPath(conn, dspNo);
+		close(conn);
+		
+		return contentImgPath;
+	}
+	
+	public int updateDsp(Dsp d, ArrayList<Attachment> list) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+
 	
 
 }

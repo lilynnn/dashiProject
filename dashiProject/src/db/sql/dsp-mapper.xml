@@ -120,11 +120,12 @@
 		
 	</entry>
 	
+
 	
 	
 	<!-- 글 상세 조회-->
 	<entry key="selectDsp">
-		SELECT
+     	SELECT
 			   DSP_NO
 			 , NICKNAME
 		     , DSP_TITLE
@@ -141,8 +142,13 @@
 		     , ANIMAL_ISSUE
 		     , ETC
 		     , MONEY
+             , PATH || CHANGE_NAME "TITLEIMG"
+
 		 FROM DSP
+         JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+
 		 WHERE DSP_NO = ?
+           and attach_level = 1
 	</entry>
 	
 	<!-- 실종보호 목격글을 누르면 목록조회 -->
@@ -164,6 +170,17 @@
 		    BY DSP_NO DESC
 	</entry>
 	
+	
+	<entry key="contentImgPath">
+	     	SELECT
+                   PATH || CHANGE_NAME "CONTENTIMG"
+
+              FROM DSP
+              JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+
+		     WHERE DSP_NO = ?
+               and attach_level = 2
+	</entry>
 	
 	
 	

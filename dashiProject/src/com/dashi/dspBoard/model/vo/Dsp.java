@@ -24,6 +24,7 @@ public class Dsp {
 	private String etc; 		//동물기타내용
 	private int money;          // 사례금
 	private String titleImg;    // 동물 대표사진
+	private String contentImg;    // 동물 대표사진
 	
 	public Dsp() {
 		super();
@@ -32,7 +33,7 @@ public class Dsp {
 
 	public Dsp(String dspNo, String memNo, String dspTitle, String nickName, int viewCount, Date writeDate,
 			String dspStatus, String postStatus, String ctg, String issueDate, String locationName, String phone,
-			String variety, String gender, String age, String weight, String issue, String etc, int money, String titleImg) {
+			String variety, String gender, String age, String weight, String issue, String etc, int money, String titleImg, String contentImg) {
 		super();
 		this.dspNo = dspNo;
 		this.memNo = memNo;
@@ -54,6 +55,7 @@ public class Dsp {
 		this.etc = etc;
 		this.money = money;
 		this.titleImg=titleImg;
+		this.contentImg=contentImg;
 		
 	}
 	
@@ -76,7 +78,7 @@ public class Dsp {
 	
 	public Dsp(String dspNo, String nickName, String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
 			String phone, String variety, String gender, String age, String weight, String issue, String etc,
-			int money) {
+			int money, String titleImg) {
 		super();
 		
 		this.dspNo = dspNo;
@@ -95,6 +97,28 @@ public class Dsp {
 		this.issue = issue;
 		this.etc = etc;
 		this.money = money;
+		this.titleImg = titleImg;
+		
+	}
+
+	
+	//상세이미지 경로 불러올 객체
+	public Dsp(String contentImg) {
+		super();
+		this.contentImg = contentImg;
+	}
+	
+	
+
+	public String getContentImg() {
+		return contentImg;
+	}
+
+
+
+
+	public void setContentImg(String contentImg) {
+		this.contentImg = contentImg;
 	}
 
 
@@ -304,8 +328,12 @@ public class Dsp {
 				+ ", viewCount=" + viewCount + ", writeDate=" + writeDate + ", dspStatus=" + dspStatus + ", postStatus="
 				+ postStatus + ", ctg=" + ctg + ", issueDate=" + issueDate + ", locationName=" + locationName
 				+ ", phone=" + phone + ", variety=" + variety + ", gender=" + gender + ", age=" + age + ", weight="
-				+ weight + ", issue=" + issue + ", etc=" + etc + ", money=" + money + ", titleImg=" + titleImg + "]";
+				+ weight + ", issue=" + issue + ", etc=" + etc + ", money=" + money + ", titleImg=" + titleImg
+				+ ", contentImg=" + contentImg + "]";
 	}
+
+
+
 
 
 
