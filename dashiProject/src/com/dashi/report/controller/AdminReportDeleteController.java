@@ -37,7 +37,7 @@ public class AdminReportDeleteController extends HttpServlet {
 		System.out.println(bno);
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "게시글이 삭제되었습니다!");
-			response.sendRedirect(request.getContextPath() + "/reportList.ad?cpage=1");
+			response.sendRedirect(request.getContextPath() + "/reportDetail.ad?rno=" + bno);
 		}else{
 			
 			
