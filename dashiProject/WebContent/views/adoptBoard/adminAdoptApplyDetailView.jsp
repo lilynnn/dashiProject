@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.dashi.common.model.vo.Attachment, com.dashi.adoptBoard.model.vo.AdoptApply" %>    
 <%
-	AdoptApply ap = (AdoptApply)request.getAttribute("appply");
+	AdoptApply ap = (AdoptApply)request.getAttribute("apply");
 	Attachment at = (Attachment)request.getAttribute("at");
 	
 	System.out.println(ap);
