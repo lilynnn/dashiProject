@@ -68,8 +68,8 @@
 		</div>
 
 		<form action="<%=contextPath%>/adtupdate.ad" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="boardNo" value="<%=notice.getAnlistNo() %>">
-		<input type="hidden" name="entNo" value="<%=notice.getEntNo() %>">
+			<input type="hidden" name="boardNo" value="<%=notice.getAnlistNo() %>">
+			<input type="hidden" name="entNo" value="<%=notice.getEntNo() %>">
 			<div class="content-area">
 
 				<div class="title-area">
@@ -89,7 +89,6 @@
 						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
-	
 						<!--동물 사진 보여질 table-->
 						<tr>
 							<th width="290">대표사진</th>
@@ -98,13 +97,16 @@
 						</tr>
 						<tr>
 							<%for(int i=1; i<=list.size(); i++) {%>
-							<td><img id="Img<%=i%>" src="<%=contextPath %>/<%=list.get(i-1).getPath()+list.get(i-1).getChangeName() %>" width="290" height="250" onclick="chooseFile(<%=i%>);"></td>
+							<td align="center">
+								<img id="Img<%=i%>" src="<%=contextPath %>/<%=list.get(i-1).getPath()+list.get(i-1).getChangeName() %>" width="290" height="250" onclick="chooseFile(<%=i%>);">
+							</td>
 							<%} %>
 						</tr>
-	
+						<tr>
+							<td colspan="3">등록할 사진 3개를 선택하세요.</td>
+						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
-	
 					</thead>
 					<tbody>
 						<tr>
@@ -175,23 +177,24 @@
 					</tbody>
 				</table>
 
-
-				<% if(list.isEmpty()) {%>
-					<div>
-						<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);"> <br>
-	                	<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
-	            	    <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"> <br>
-					</div>
-				<%} else{ %>
+				<!-- 원본파일명 보여질 div -->
+				<% if(!list.isEmpty()) {%>
 					<div >
 						<%for(int i=1; i<=list.size(); i++) {%>
-						<input type="file" name="file<%=i %>" id="file<%=i %>" value="<%=list.get(i-1).getAttachNo() %>" onchange="loadImg(this, <%= i%>);">
-	                	<input type ="hidden" name="originFileNo<%=i %>" value = "<%=list.get(i-1).getAttachNo() %>"><br>
+							<%=list.get(i-1).getOriginName() %>
+	                		<input type ="hidden" name="originFileNo<%=i %>" value = "<%=list.get(i-1).getAttachNo() %>"><br>
 						<%} %>				
 					</div>
-
-				<%} %>
-
+				<%}%>
+				
+				<!-- 새로운 파일 input 보여질 div -->
+				<div>
+					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);"> <br>
+	               	<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
+	           	    <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"> <br>
+				</div>	
+	
+           	    
 				<div style=" text-align: center;">
 					<br><br>
 					<button type="submit" class="btn btn-success">등록하기</button>
@@ -207,6 +210,9 @@
 						
 						if(inputFile.files.length == 1){
 							const reader = new FileReader();
+							
+							reader.readAsDataURL(inputFile.files[0]);
+							
 							reader.onload = function(e){
 								 switch(num){
 	                                case 1:$("#Img1").attr("src",e.target.result); break;

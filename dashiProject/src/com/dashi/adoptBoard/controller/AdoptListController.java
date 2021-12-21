@@ -62,9 +62,8 @@ public class AdoptListController extends HttpServlet {
 		ArrayList<AdoptNotice> list = new AdoptBoardService().selectNoticeThumbnailList(pi);
 		
 		request.setAttribute("pi", pi);
-		
 		request.setAttribute("adtList", list);
-		System.out.println(list);
+		
 		request.getRequestDispatcher("views/adoptBoard/adoptListView.jsp").forward(request, response);
 		
 	}

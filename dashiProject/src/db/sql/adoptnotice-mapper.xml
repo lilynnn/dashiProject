@@ -317,4 +317,13 @@
 		      , ATTACH_LEVEL = ?
 		 WHERE ATTACH_NO = ?
 	</entry>
+	
+	
+	<!-- 입양신청글 갯수 알아오는 메소드   -->
+	<entry key="selectAdoptApplyListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM ADOPT_APPLY
+         WHERE POST_STATUS = 'Y'
+	</entry>
 </properties>

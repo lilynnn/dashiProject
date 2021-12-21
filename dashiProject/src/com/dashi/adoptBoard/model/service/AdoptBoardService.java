@@ -98,7 +98,8 @@ public class AdoptBoardService {
 	}
 		
 	
-///////////////////입양공고 관련 메소드/////////////////////
+	///////////////////입양공고 관련 메소드/////////////////////
+	// 입양공고작성시 동물정보 불러오는 메소드(관)
 	public Animal selectAnimalInfo(String animalNo) {
 		Connection conn = getConnection();
 		Animal a = new AdoptBoardDao().selectAnimalInfo(conn, animalNo);
@@ -107,6 +108,7 @@ public class AdoptBoardService {
 		return a;
 	}
 	
+	// 입양공고 등록 메소드
 	public int insertAdoptNotice(AdoptNotice adt, ArrayList<Attachment> list) {
 		
 		Connection conn = getConnection();
@@ -129,6 +131,7 @@ public class AdoptBoardService {
 		return result1*result2;
 	}
 	
+	// 관리페이지 입양공고 상세조회 메소드
 	public AdoptNotice selectAdminAdoptNotice(String boardNo) {
 		
 		Connection conn = getConnection();
@@ -137,6 +140,7 @@ public class AdoptBoardService {
 		return an;
 	}
 	
+	// 관리자 입양공고상세조회시 첨부파일 리스트 불러올 메소드
 	public ArrayList<Attachment> selectAttachmentList(String boardNo){
 		Connection conn = getConnection();
 		ArrayList<Attachment> list = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
@@ -144,6 +148,7 @@ public class AdoptBoardService {
 		return list;
 	}
 	
+	// 관리자 입양공고 삭제 메소드
 	public int deleteAdoptNotice(String boardNo) {
 		Connection conn = getConnection();
 		int result = new AdoptBoardDao().deleteAdoptNotice(conn, boardNo);
@@ -151,6 +156,7 @@ public class AdoptBoardService {
 		return result;
 	}
 	
+	// 관리자 입양공고 수정 메소드
 	public int updateAdoptNotice(AdoptNotice notice, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		int result1 = new AdoptBoardDao().updateAdoptNotice(conn, notice);
@@ -168,4 +174,23 @@ public class AdoptBoardService {
 		}
 		return result1*result2;
 	}
+	
+	/////////////////입양신청관련메소드/////////////////////////
+	
+	// 입양신청글 갯수 알아오는 메소드
+	public int selectAdoptApplyListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdoptBoardDao().selectAdoptApplyListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
+	// 관리자 입양신청리스트 알아오는 메소드
+	public ArrayList<AdoptApply> selectAdoptApplyList(PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<AdoptApply> list = new AdoptBoardDao().selectAdoptApplyList(conn, pi);
+		close(conn);
+		return list;
+	}
+	
 }

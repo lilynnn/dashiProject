@@ -563,5 +563,58 @@ public class AdoptBoardDao {
 		}
 		return result;
 	}
+
+	/////////////////입양신청관련메소드/////////////////////
+	public int selectAdoptApplyListCount(Connection conn) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdoptApplyListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 	
+	public ArrayList<AdoptApply> selectAdoptApplyList(Connection conn, PageInfo pi){
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdoptApplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

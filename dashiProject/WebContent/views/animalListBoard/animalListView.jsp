@@ -78,13 +78,13 @@
 
             <!-- 검색버튼 -->
             <div class="search-area" style="margin: 20px 0px; float: right;">
-                <select name="search-category" style="height: 30px;">
-                    <option value="">강아지</option>
-                    <option value="">고양이</option>
+                <select name="animalType" style="height: 30px;">
+                    <option value="1">강아지</option>
+                    <option value="2">고양이</option>
                     <option value="">기타</option>
                 </select>
 
-                <input type="text" placeholder="검색어를 입력하세요.">
+                <input type="text" placeholder="품종을입력하세요">
                 
                 <button id="search-btn">검색하기</button>
             </div>

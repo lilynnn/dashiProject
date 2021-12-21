@@ -87,7 +87,7 @@
                 <div style="width: 25%; font-size: 24px; font-weight: 900; line-height:50px">
                     	관리자 메인페이지
                 </div>
-                <div style="text-align: left; width: 60%; font-size: 15px; color: lightslategrey; line-height:55px">
+                <div style="text-align: left; width: 50%; font-size: 15px; color: lightslategrey; line-height:55px">
                     	관리자님, 오늘도 좋은 하루 보내세요!
                 </div>
 
@@ -160,7 +160,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%= request.getContextPath()%>/adapplylist.ad">입양신청</a></td>
+                            <td style="width: 150px;"><a href="<%= request.getContextPath()%>/adplist.ad>cpage=1">입양신청</a></td>
                                 <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>
