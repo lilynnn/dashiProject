@@ -131,7 +131,7 @@ public class ReportDao {
 		
 		return list;
 				
-	} // 전체 사원 조회
+	} // 검색된 사원 조회
 	
 	public Report selectReviewReport(Connection conn, int reportNo) {
 		Report r = null;
@@ -154,7 +154,8 @@ public class ReportDao {
 						 , rset.getString("report_date")
 						 , rset.getString("report_status")
 						 , rset.getString("ar_title")
-						 , rset.getString("ar_content"));
+						 , rset.getString("ar_content")
+						 , rset.getString("post_status"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -188,7 +189,8 @@ public class ReportDao {
 						 , rset.getInt("report_ctg")
 						 , rset.getString("dsp_title")
 						 , rset.getString("animal_issue")
-						 , rset.getString("etc"));
+						 , rset.getString("etc")
+						 , rset.getString("post_status"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -220,7 +222,8 @@ public class ReportDao {
 						 , rset.getString("report_date")
 						 , rset.getString("report_status")
 						 , rset.getInt("report_ctg")
-						 , rset.getString("reply_content"));
+						 , rset.getString("reply_content")
+						 , rset.getString("reply_status"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -283,10 +286,68 @@ public class ReportDao {
 
 	} // 신고글 삭제
 	
+	public int cancleDeleteReview(Connection conn, String bno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("cancleDeleteReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+	} // 후기 신고글 복구
 	
+	public int cancleDeleteReply(Connection conn, String bno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("cancleDeleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+	} // 댓글 복구
 	
-	
-	
+	public int cancleDeleteDsp(Connection conn, String bno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("cancleDeleteDsp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+	} // 실종보호 신고글 복구
 	
 	
 	

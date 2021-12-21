@@ -82,14 +82,26 @@ public class ReportService {
 		return result;
 	} // 후기 신고글 삭제하기
 	
+	public int cancleDeleteReview(String bno) {
+		Connection conn = getConnection();
+		int result = new ReportDao().cancleDeleteReview(conn, bno);
+		close(conn);
+		return result;
+	} // 후기 신고글 복구하기
+
+	public int cancleDeleteReply(String bno) {
+		Connection conn = getConnection();
+		int result = new ReportDao().cancleDeleteReply(conn, bno);
+		close(conn);
+		return result;
+	} // 댓글 신고글 복구하기
 	
-	
-	
-	
-	
-	
-	
-	
+	public int cancleDeleteDsp(String bno) {
+		Connection conn = getConnection();
+		int result = new ReportDao().cancleDeleteDsp(conn, bno);
+		close(conn);
+		return result;
+	} // 실종보호 신고글 복구하기
 	
 	
 	

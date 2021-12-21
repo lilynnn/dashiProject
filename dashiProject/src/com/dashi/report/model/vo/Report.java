@@ -23,6 +23,7 @@ public class Report {
 	private String memName;
 	private String blacklist;
 	private int count;
+	private String status;
 	
 	public Report() {}
 
@@ -81,7 +82,7 @@ public class Report {
 
 	// 입양후기용
 	public Report(int reportNo, int reportCategory, String contentNo, String reportedMem, String reportContent, String reportDate, String reportStatus,
-			 String arTitle, String arContent) {
+			 String arTitle, String arContent, String status) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
@@ -92,11 +93,12 @@ public class Report {
 		this.arTitle = arTitle;
 		this.arContent = arContent;
 		this.reportedMem = reportedMem;
+		this.status = status;
 	}
 	
 	// 실종보호용
 	public Report(int reportNo, String contentNo, String reportedMem, String reportContent, String reportDate,
-			String reportStatus, int reportCategory, String dspTitle, String animalIssue, String dspEtc) {
+			String reportStatus, int reportCategory, String dspTitle, String animalIssue, String dspEtc, String status) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
@@ -108,12 +110,13 @@ public class Report {
 		this.dspTitle = dspTitle;
 		this.animalIssue = animalIssue;
 		this.dspEtc = dspEtc;
+		this.status = status;
 	}
 	
 	
 	// 댓글상세조회용
 	public Report(int reportNo, String contentNo, String reportedMem, String reportContent, String reportDate,
-			String reportStatus, int reportCategory, String replyContent) {
+			String reportStatus, int reportCategory, String replyContent, String status) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
@@ -123,6 +126,7 @@ public class Report {
 		this.reportStatus = reportStatus;
 		this.reportCategory = reportCategory;
 		this.replyContent = replyContent;
+		this.status = status;
 	}
 	
 	// 블랙리스트용
@@ -133,6 +137,16 @@ public class Report {
 		this.memName = memName;
 		this.blacklist = blacklist;
 		this.count = count;
+	}
+
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public String getArTitle() {
@@ -289,8 +303,6 @@ public class Report {
 		this.count = count;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Report [reportNo=" + reportNo + ", contentNo=" + contentNo + ", reportingMem=" + reportingMem
@@ -298,10 +310,8 @@ public class Report {
 				+ ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + ", typeBR=" + typeBR
 				+ ", arTitle=" + arTitle + ", arContent=" + arContent + ", replyContent=" + replyContent + ", dspTitle="
 				+ dspTitle + ", animalIssue=" + animalIssue + ", dspEtc=" + dspEtc + ", memId=" + memId + ", memName="
-				+ memName + ", blacklist=" + blacklist + ", count=" + count + "]";
+				+ memName + ", blacklist=" + blacklist + ", count=" + count + ", status=" + status + "]";
 	}
 
-	
-	
 		
 }

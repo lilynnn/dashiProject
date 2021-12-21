@@ -123,7 +123,7 @@
 						<tr>
 							<td align="center" class="list-name">검색 기간</td>
 							<td class="list-find">
-								<input type="date" name="searchDate" style="width:325px;">
+								<input type="date" name="searchDate" style="width:325px;" required>
 							</td>
 						</tr>
 						<tr>
@@ -144,9 +144,12 @@
 							<td colspan="8" width="850px"></td>
 						</tr>
 						<tr>
-							<td colspan="8" width="850px">
-								<a href="" class="btn btn-outline-warning">회원별 신고횟수</a>
+							<td colspan="8" align="left" id="list-btn">
+								<a href="<%=contextPath%>/countReportUser.ad" class="btn btn-outline-warning">회원별 신고횟수 조회</a>
 							</td>
+						</tr>
+						<tr>
+							<td colspan="8" width="850px"></td>
 						</tr>
 	
 						<tr align="center" id="re-list-name">
@@ -172,8 +175,6 @@
 							<tr align="center" style="border-bottom:1px solid gray;">
 								<td><%=r.getReportNo()%></td>
 								<td><%=r.getContentNo()%></td>
-								<td><%=r.getReplyNo()%></td>
-								
 								<% 
 			                    	String category ="";
 			                    	switch(r.getReportCategory()){

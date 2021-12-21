@@ -68,6 +68,7 @@
 		     , REPORT_STATUS
 		     , AR_TITLE
 		     , AR_CONTENT
+		     , POST_STATUS
 		  FROM REPORTED R
 		  JOIN MEM_INFO M ON (REPORTED_MEM = MEM_NO)
   		  JOIN ADOPT_REVIEW ON (CONTENT_NO = ARLIST_NO)
@@ -87,6 +88,7 @@
 		     , DSP_TITLE
 		     , ANIMAL_ISSUE
 		     , ETC
+			 , POST_STATUS
 		  FROM REPORTED 
 		  JOIN MEM_INFO M ON (REPORTED_MEM = M.MEM_NO)
 		  JOIN DSP ON (CONTENT_NO = DSP_NO)
@@ -128,7 +130,27 @@
 		     , BLACKLIST_YN
 	</entry>
 
-
+	<entry key="cancleDeleteReview">
+		UPDATE
+		       ADOPT_REVIEW
+		   SET POST_STATUS = 'Y'
+		 WHERE ARLIST_NO = ?
+	</entry>
+	
+	<entry key="cancleDeleteReply">
+		UPDATE
+		       REPLY
+		   SET REPLY_STATUS = 'Y'
+		 WHERE REPLY_NO = ?
+	</entry>
+	
+	<entry key="cancleDeleteDsp">
+		UPDATE
+		       DSP
+		   SET POST_STATUS = 'Y'
+		 WHERE DSP_NO = ?
+	</entry>
+	
 
 
 

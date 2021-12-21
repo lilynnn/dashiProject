@@ -77,10 +77,9 @@
 				<% if(r != null){ %>
 				<tr>
                     <td colspan="8" height="40px" align="right">
-                    	<% if(r.getReportStatus().equals("N")){ %>
                         <a href="<%=contextPath%>/deleteReport.ad?bno=<%=r.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
-                        <% }else{ %>
-                        <a href="" class="btn btn-outline-warning">복구</a>
+                        <% if(r.getStatus().equals("D")){ %>
+                        <a href="<%=contextPath%>/cancleReport.ad?bno=<%=r.getContentNo()%>" class="btn btn-outline-warning">복구</a>
                         <% } %>
                     </td>
                 </tr>
@@ -90,8 +89,12 @@
                         <%=r.getContentNo()%>
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
-                    <td colspan="3" width="300">
+                    <td width="200">
                         <%=r.getReportDate()%>
+                    </td>
+                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="150">
+                        <%=r.getStatus()%>
                     </td>
                     <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
                     <td width="40">
@@ -131,10 +134,9 @@
 				<% } else if(dspR != null){ %>
 				<tr>
 					<td colspan="8" height="40px" align="right">
-                    	<% if(dspR.getReportStatus().equals("N")){ %>
                         <a href="<%=contextPath%>/deleteReport.ad?bno=<%=dspR.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
-                        <% }else{ %>
-                        <a href="" class="btn btn-outline-warning">복구</a>
+                        <% if(dspR.getStatus().equals("D")){ %>
+                        <a href="<%=contextPath%>/cancleReport.ad?bno=<%=dspR.getContentNo()%>" class="btn btn-outline-warning">복구</a>
                         <% } %>
                     </td>
                 </tr>
@@ -144,8 +146,12 @@
                         <%=dspR.getContentNo()%>
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
-                    <td colspan="3" width="300">
+                    <td width="200">
                         <%=dspR.getReportDate()%>
+                    </td>
+                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="150">
+                        <%=dspR.getStatus()%>
                     </td>
                     <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
                     <td width="40">
@@ -188,10 +194,9 @@
                 <% }else if(cr != null){ %>
 				<tr>
 					<td colspan="8" height="40px" align="right">
-                    	<% if(cr.getReportStatus().equals("N")){ %>
-                        <a href="<%=contextPath%>/deleteReport.ad?bno=<%=cr.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
-                        <% }else{ %>
-                        <a href="" class="btn btn-outline-warning">복구</a>
+                        	<a href="<%=contextPath%>/deleteReport.ad?bno=<%=cr.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
+                        <% if(cr.getStatus().equals("D")){ %>
+                        	<a href="<%=contextPath%>/cancleReport.ad?bno=<%=cr.getContentNo()%>" class="btn btn-outline-warning">복구</a>
                         <% } %>
                     </td>
                 </tr>
@@ -201,8 +206,12 @@
                         <%=cr.getContentNo()%>
                     </td>
                     <td width="100"><mark style="background: #d5c4fb91;">신고일</mark></td>
-                    <td colspan="3" width="300">
+                    <td width="200">
                         <%=cr.getReportDate()%>
+                    </td>
+                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="150">
+                        <%=cr.getStatus()%>
                     </td>
                     <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
                     <td width="40">
@@ -245,7 +254,7 @@
 
 
                 <tr align="center">
-                    <td colspan="8"><button type="button" class="btn btn-sm" style="background: rgb(143,153,142);" onclick="history.back();">목록으로</button></td>
+                    <td colspan="8"><a href="<%=contextPath%>/reportList.ad?cpage=1"class="btn btn-sm" style="background: rgb(143,153,142);" >목록으로</a></td>
                 </tr>
 
 

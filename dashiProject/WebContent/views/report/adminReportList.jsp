@@ -126,9 +126,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td align="center" class="list-name">검색 기간</td>
+							<td align="center" class="list-name" >검색 기간</td>
 							<td class="list-find">
-								<input type="date" name="searchDate" style="width:325px;">
+								<input type="date" name="searchDate" style="width:325px;" required>
 							</td>
 						</tr>
 						<tr>
