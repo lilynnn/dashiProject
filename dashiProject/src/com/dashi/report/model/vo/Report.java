@@ -6,7 +6,6 @@ public class Report {
 	
 	private int reportNo;
 	private String contentNo;
-	private String replyNo;
 	private String reportingMem;
 	private String reportedMem;
 	private String reportContent;
@@ -27,51 +26,75 @@ public class Report {
 	
 	public Report() {}
 
-	
-	
-	public Report(String reportedMem, String memId, String memName, String blacklist, int count) {
+	public Report(int reportNo, String contentNo, String reportingMem, String reportedMem, String reportContent,
+			String reportDate, String reportStatus, int reportCategory, int typeBR, String arTitle, String arContent,
+			String replyContent, String dspTitle, String animalIssue, String dspEtc, String memId, String memName,
+			String blacklist, int count) {
 		super();
+		this.reportNo = reportNo;
+		this.contentNo = contentNo;
+		this.reportingMem = reportingMem;
 		this.reportedMem = reportedMem;
+		this.reportContent = reportContent;
+		this.reportDate = reportDate;
+		this.reportStatus = reportStatus;
+		this.reportCategory = reportCategory;
+		this.typeBR = typeBR;
+		this.arTitle = arTitle;
+		this.arContent = arContent;
+		this.replyContent = replyContent;
+		this.dspTitle = dspTitle;
+		this.animalIssue = animalIssue;
+		this.dspEtc = dspEtc;
 		this.memId = memId;
 		this.memName = memName;
 		this.blacklist = blacklist;
 		this.count = count;
 	}
 
-
-
-	public Report(int reportNo, String contentNo, String replyNo, String reportedMem, String reportContent,
-			String reportDate, String reportStatus, int reportCategory, String arTitle, String replyContent) {
+	// 전체게시글조회용
+	public Report(int reportNo, String contentNo, String reportedMem, String reportContent, String reportDate,
+			String reportStatus, int reportCategory) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
-		this.replyNo = replyNo;
 		this.reportedMem = reportedMem;
 		this.reportContent = reportContent;
 		this.reportDate = reportDate;
 		this.reportStatus = reportStatus;
 		this.reportCategory = reportCategory;
-		this.arTitle = arTitle;
-		this.replyContent = replyContent;
 	}
-
-
-	public Report(int reportNo, int reportCategory, String contentNo, String replyNo, String reportedMem, String reportContent,
-			String reportDate, String reportStatus, String arTitle, String arContent) {
+	
+		
+	public Report(int reportNo, String contentNo, String reportingMem, String reportedMem, String reportContent,
+			String reportDate, String reportStatus, int reportCategory) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
-		this.replyNo = replyNo;
+		this.reportingMem = reportingMem;
 		this.reportedMem = reportedMem;
+		this.reportContent = reportContent;
+		this.reportDate = reportDate;
+		this.reportStatus = reportStatus;
+		this.reportCategory = reportCategory;
+	}
+
+	// 입양후기용
+	public Report(int reportNo, int reportCategory, String contentNo, String reportedMem, String reportContent, String reportDate, String reportStatus,
+			 String arTitle, String arContent) {
+		super();
+		this.reportNo = reportNo;
+		this.contentNo = contentNo;
 		this.reportContent = reportContent;
 		this.reportDate = reportDate;
 		this.reportStatus = reportStatus;
 		this.reportCategory = reportCategory;
 		this.arTitle = arTitle;
 		this.arContent = arContent;
+		this.reportedMem = reportedMem;
 	}
-
-
+	
+	// 실종보호용
 	public Report(int reportNo, String contentNo, String reportedMem, String reportContent, String reportDate,
 			String reportStatus, int reportCategory, String dspTitle, String animalIssue, String dspEtc) {
 		super();
@@ -86,41 +109,11 @@ public class Report {
 		this.animalIssue = animalIssue;
 		this.dspEtc = dspEtc;
 	}
-
-
-
-
-	public Report(int reportNo, String contentNo, String replyNo, String reportingMem, String reportedMem,
-			String reportContent, String reportDate, String reportStatus, int reportCategory, int typeBR) {
-		super();
-		this.reportNo = reportNo;
-		this.contentNo = contentNo;
-		this.replyNo = replyNo;
-		this.reportingMem = reportingMem;
-		this.reportedMem = reportedMem;
-		this.reportContent = reportContent;
-		this.reportDate = reportDate;
-		this.reportStatus = reportStatus;
-		this.reportCategory = reportCategory;
-		this.typeBR = typeBR;
-	}
 	
-	public Report(int reportNo, String contentNo, String replyNo, String reportingMem, String reportedMem,
-			String reportContent, String reportDate, String reportStatus, int reportCategory) {
-		super();
-		this.reportNo = reportNo;
-		this.contentNo = contentNo;
-		this.replyNo = replyNo;
-		this.reportingMem = reportingMem;
-		this.reportedMem = reportedMem;
-		this.reportContent = reportContent;
-		this.reportDate = reportDate;
-		this.reportStatus = reportStatus;
-		this.reportCategory = reportCategory;
-	}
 	
+	// 댓글상세조회용
 	public Report(int reportNo, String contentNo, String reportedMem, String reportContent, String reportDate,
-			String reportStatus, int reportCategory, String arTitle, String arContent) {
+			String reportStatus, int reportCategory, String replyContent) {
 		super();
 		this.reportNo = reportNo;
 		this.contentNo = contentNo;
@@ -129,8 +122,17 @@ public class Report {
 		this.reportDate = reportDate;
 		this.reportStatus = reportStatus;
 		this.reportCategory = reportCategory;
-		this.arTitle = arTitle;
-		this.arContent = arContent;
+		this.replyContent = replyContent;
+	}
+	
+	// 블랙리스트용
+	public Report(String reportedMem, String memId, String memName, String blacklist, int count) {
+		super();
+		this.reportedMem = reportedMem;
+		this.memId = memId;
+		this.memName = memName;
+		this.blacklist = blacklist;
+		this.count = count;
 	}
 
 	public String getArTitle() {
@@ -165,13 +167,6 @@ public class Report {
 		this.contentNo = contentNo;
 	}
 
-	public String getReplyNo() {
-		return replyNo;
-	}
-
-	public void setReplyNo(String replyNo) {
-		this.replyNo = replyNo;
-	}
 
 	public String getReportingMem() {
 		return reportingMem;
@@ -294,14 +289,16 @@ public class Report {
 		this.count = count;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Report [reportNo=" + reportNo + ", contentNo=" + contentNo + ", replyNo=" + replyNo + ", reportingMem="
-				+ reportingMem + ", reportedMem=" + reportedMem + ", reportContent=" + reportContent + ", reportDate="
-				+ reportDate + ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + ", typeBR="
-				+ typeBR + ", arTitle=" + arTitle + ", arContent=" + arContent + ", replyContent=" + replyContent
-				+ ", dspTitle=" + dspTitle + ", animalIssue=" + animalIssue + ", dspEtc=" + dspEtc + ", memId=" + memId
-				+ ", memName=" + memName + ", blacklist=" + blacklist + ", count=" + count + "]";
+		return "Report [reportNo=" + reportNo + ", contentNo=" + contentNo + ", reportingMem=" + reportingMem
+				+ ", reportedMem=" + reportedMem + ", reportContent=" + reportContent + ", reportDate=" + reportDate
+				+ ", reportStatus=" + reportStatus + ", reportCategory=" + reportCategory + ", typeBR=" + typeBR
+				+ ", arTitle=" + arTitle + ", arContent=" + arContent + ", replyContent=" + replyContent + ", dspTitle="
+				+ dspTitle + ", animalIssue=" + animalIssue + ", dspEtc=" + dspEtc + ", memId=" + memId + ", memName="
+				+ memName + ", blacklist=" + blacklist + ", count=" + count + "]";
 	}
 
 	

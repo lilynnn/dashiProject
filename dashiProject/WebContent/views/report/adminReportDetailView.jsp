@@ -74,11 +74,11 @@
                 </tr>
 
                
-				<% if(r != null && r.getReplyNo() == null){ %>
+				<% if(r != null){ %>
 				<tr>
                     <td colspan="8" height="40px" align="right">
                     	<% if(r.getReportStatus().equals("N")){ %>
-                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <a href="<%=contextPath%>/deleteReport.ad?bno=<%=r.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
                         <% }else{ %>
                         <a href="" class="btn btn-outline-warning">복구</a>
                         <% } %>
@@ -132,7 +132,7 @@
 				<tr>
 					<td colspan="8" height="40px" align="right">
                     	<% if(dspR.getReportStatus().equals("N")){ %>
-                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <a href="<%=contextPath%>/deleteReport.ad?bno=<%=dspR.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
                         <% }else{ %>
                         <a href="" class="btn btn-outline-warning">복구</a>
                         <% } %>
@@ -189,7 +189,7 @@
 				<tr>
 					<td colspan="8" height="40px" align="right">
                     	<% if(cr.getReportStatus().equals("N")){ %>
-                        <a href="" class="btn btn-outline-danger">삭제</a>
+                        <a href="<%=contextPath%>/deleteReport.ad?bno=<%=cr.getReportNo()%>" class="btn btn-outline-danger">삭제</a>
                         <% }else{ %>
                         <a href="" class="btn btn-outline-warning">복구</a>
                         <% } %>
@@ -232,7 +232,7 @@
                 <tr height="40">
                     <td><mark style="background: #d5c4fb91;">제목</mark></td>
                     <td colspan="7">
-                        <%=cr.getArTitle()%>
+                        <!-- 나중에 어떻게 해보기 ㅠㅠ -->
                     </td>
                 </tr>
 

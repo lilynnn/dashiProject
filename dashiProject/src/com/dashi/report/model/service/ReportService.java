@@ -29,12 +29,15 @@ public class ReportService {
 		
 	} // 모든 사원 조회
 	
+	/*
 	public int deleteReport(int reportNo) {
 		Connection conn = getConnection();
 		int result = new ReportDao().deleteReport(conn, reportNo);
 		close(conn);
 		return result;
 	} // 신고글 삭제하기
+	*/
+	
 	
 	public ArrayList<Report> searchReport(Report r, String date){
 		Connection conn = getConnection();
@@ -72,7 +75,12 @@ public class ReportService {
 		
 	} // 모든 신고된 회원들
 	
-	
+	public int deleteReview(int bno) {
+		Connection conn = getConnection();
+		int result = new ReportDao().deleteReview(conn, bno);
+		close(conn);
+		return result;
+	} // 후기 신고글 삭제하기
 	
 	
 	

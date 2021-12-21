@@ -16,7 +16,6 @@
 		                SELECT
 		                       REPORT_NO
 		                     , CONTENT_NO
-		                     , REPLY_NO
 		                     , REPORTED_MEM
 		                     , MEM_ID
 		                     , REPORT_CONTENT
@@ -36,7 +35,6 @@
 		SELECT 
 		       REPORT_NO
 		     , NVL(CONTENT_NO, '-') CONTENT_NO
-		     , NVL(REPLY_NO, '-') REPLY_NO
 		     , REPORTING_MEM
 		     , MEM_ID
 		     , REPORT_CONTENT
@@ -51,7 +49,7 @@
 	</entry>
 	
 	<!-- 신고글 삭제 -->
-	<entry key="deleteReport">
+	<entry key="deleteReview">
 		UPDATE
 		       REPORTED
 		   SET REPORT_STATUS = 'Y'
@@ -64,7 +62,6 @@
 		       REPORT_NO
 			 , REPORT_CTG
 		     , CONTENT_NO
-		     , REPLY_NO
 		     , M.MEM_ID "MEM_ID"
 		     , REPORT_CONTENT
 		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
@@ -101,18 +98,15 @@
 		SELECT
 		       REPORT_NO
 		     , CONTENT_NO
-		     , REPLY_NO
 		     , M.MEM_ID "MEM_ID"
 		     , REPORT_CONTENT
 		     , TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') REPORT_DATE
 		     , REPORT_STATUS
 		     , REPORT_CTG
-		     , AR_TITLE
 		     , REPLY_CONTENT
 		  FROM REPORTED 
 		  JOIN MEM_INFO M ON (REPORTED_MEM = M.MEM_NO)
-		  JOIN ADOPT_REVIEW ON (CONTENT_NO = ARLIST_NO)
-		  JOIN REPLY R USING (REPLY_NO)
+		  JOIN REPLY ON (CONTENT_NO = REPLY_NO)
 		 WHERE REPORT_NO = ?
 	</entry>
 	
@@ -125,7 +119,7 @@
 		     , COUNT(*) count
 		 FROM REPORTED
 		 JOIN MEM_INFO ON (MEM_NO = REPORTED_MEM)
-		WHERE REPORT_STATUS = 'N'
+		WHERE REPORT_STATUS = 'Y'
 		GROUP 
 		      BY 
 		       MEM_ID

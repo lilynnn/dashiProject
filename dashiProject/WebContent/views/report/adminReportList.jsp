@@ -179,11 +179,7 @@
 							<% for(Report r : list){ %>
 							<tr align="center" style="border-bottom:1px solid gray;">
 								<td><%=r.getReportNo()%></td>
-								<% if(r.getReplyNo() != null){ %>
-								<td><%=r.getReplyNo()%></td>
-								<% }else{ %>
 								<td><%=r.getContentNo()%></td>
-								<% } %>
 								<% 
 			                    	String category ="";
 			                    	switch(r.getReportCategory()){

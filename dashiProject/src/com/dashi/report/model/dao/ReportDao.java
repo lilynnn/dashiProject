@@ -78,8 +78,6 @@ public class ReportDao {
 			while(rset.next()) {
 				list.add(new Report(rset.getInt("report_no")
 								   , rset.getString("content_no")
-								   , rset.getString("reply_no")
-								   , rset.getString("reported_mem")
 								   , rset.getString("mem_id")
 								   , rset.getString("report_content")
 								   , rset.getString("report_date")
@@ -97,64 +95,6 @@ public class ReportDao {
 		return list;
 				
 	} // 전체 사원 조회
-	
-	public int deleteReport(Connection conn, int reportNo) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("deleteReport");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, reportNo);
-			
-			result = pstmt.executeUpdate();
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			close(pstmt);
-		}
-		
-		return result;
-
-	} // 신고글 삭제
-	
-	public Report selectReport(Connection conn, int reportNo) {
-		Report r = null;
-		PreparedStatement pstmt = null;
-		ResultSet rset= null;
-		
-		String sql = prop.getProperty("selectReport");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rset = pstmt.executeQuery();
-			
-			if(rset.next()) {
-				r = new Report(rset.getInt("report_no")
-							 , rset.getString("content_no")	
-							 , rset.getString("reply_no")	
-							 , rset.getString("reporting_mem")	
-							 , rset.getString("reported_mem")	
-							 , rset.getString("report_content")	
-							 , rset.getString("report_date")	
-							 , rset.getString("report_status")	
-							 , rset.getInt("report_ctg")	
-							 , rset.getInt("type_br"));
-						
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return r;
-		
-		
-	} // 수정 해야됨
 	
 	public ArrayList<Report> searchReport(Connection conn, Report r, String date){
 		// select문 => ResultSet(여러 행) => ArrayList<Board>
@@ -174,7 +114,6 @@ public class ReportDao {
 			while(rset.next()) {
 				list.add(new Report(rset.getInt("report_no")
 								   , rset.getString("content_no")
-								   , rset.getString("reply_no")
 								   , rset.getString("reporting_mem")
 								   , rset.getString("mem_id")
 								   , rset.getString("report_content")
@@ -210,7 +149,6 @@ public class ReportDao {
 			r = new Report(rset.getInt("report_no")
 					 	 , rset.getInt("report_ctg")
 						 , rset.getString("content_no")
-						 , rset.getString("reply_no")
 						 , rset.getString("mem_id")
 						 , rset.getString("report_content")
 						 , rset.getString("report_date")
@@ -250,7 +188,7 @@ public class ReportDao {
 						 , rset.getInt("report_ctg")
 						 , rset.getString("dsp_title")
 						 , rset.getString("animal_issue")
-						 , rset.getString("animal_issue"));
+						 , rset.getString("etc"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -277,13 +215,11 @@ public class ReportDao {
 			if(rset.next()) {
 			r = new Report(rset.getInt("report_no")
 						 , rset.getString("content_no")
-						 , rset.getString("reply_no")
 						 , rset.getString("mem_id")
 						 , rset.getString("report_content")
 						 , rset.getString("report_date")
 						 , rset.getString("report_status")
 						 , rset.getInt("report_ctg")
-						 , rset.getString("ar_title")
 						 , rset.getString("reply_content"));
 			}	
 		} catch (SQLException e) {
@@ -326,7 +262,26 @@ public class ReportDao {
 				
 	} // 신고된 사원 카운트&블랙리스트 여부조회
 	
-	
+	public int deleteReview(Connection conn, int bno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+
+	} // 신고글 삭제
 	
 	
 	
