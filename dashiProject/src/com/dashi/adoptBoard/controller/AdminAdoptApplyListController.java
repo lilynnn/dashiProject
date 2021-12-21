@@ -42,9 +42,10 @@ public class AdminAdoptApplyListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new AdoptBoardService().selectAdoptApplyListCount();
+		listCount = new AdoptBoardService().selectListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
 		pageLimit = 5;
 		// 나중에 boardLimit 갯수 맞춰서 수정하기!!
 		boardLimit = 4;
@@ -60,8 +61,10 @@ public class AdminAdoptApplyListController extends HttpServlet {
 	
 		ArrayList<AdoptApply> list = new AdoptBoardService().selectAdoptApplyList(pi);
 		
-		System.out.println(list);
-		System.out.println(pi);
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptApplyListView.jsp").forward(request, response);
 	}
 
 	/**

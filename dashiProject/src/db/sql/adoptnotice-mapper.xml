@@ -202,11 +202,12 @@
 	<entry key="selectAttachment">
 		SELECT
 		        ATTACH_NO
+		      , REF_NO
 		      , ORIGIN_NAME
 		      , CHANGE_NAME
 		      , PATH
 		   FROM ATTACHMENT
-		  WHERE REF_NO = '?'
+		  WHERE REF_NO = ?
 	</entry>
 	
 	<entry key="selectAnimalInfo">
@@ -319,11 +320,78 @@
 	</entry>
 	
 	
-	<!-- 입양신청글 갯수 알아오는 메소드   -->
+	<!-- 입양신청글 갯수 알아오는 sql -->
 	<entry key="selectAdoptApplyListCount">
 		SELECT
 		       COUNT(*) count
 		  FROM ADOPT_APPLY
          WHERE POST_STATUS = 'Y'
 	</entry>
+	
+	<!-- 입양신청글 리스트 불러오는 sql -->
+	<entry key="selectAdoptApplyList">		 
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                 SELECT 
+		                       AALIST_NO
+		                     , ANLIST_NO
+		                     , MEM_NO
+		                     , AA_TITLE
+		                     , M.MEM_ID
+		                     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		                     , ADT_STATUS
+		                  FROM ADOPT_APPLY AA
+		                  JOIN MEM_INFO M USING (MEM_NO)
+		                 WHERE AA.POST_STATUS = 'Y'
+		                 ORDER
+		                    BY AALIST_NO DESC 
+		            ) A
+		      )
+		  WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectAdminAdoptApply">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , AA.MEM_NAME
+		     , AA_TITLE
+		     , PAY_STATUS
+		     , ADT_STATUS
+		     , POST_STATUS
+		     , AA_NAME
+		     , AA_AGE
+		     , AA_GENDER
+		     , AA_PHONE
+		     , AA_EMAIL
+		     , AA_ADDRESS
+		     , MARRIAGE_YN
+		     , AA_JOB
+		     , ADOPT_REASON
+		     , PARENT_EXP
+		     , HAVE_PET_YN
+		     , PET_TYPE
+		     , PET_AGE
+		     , PET_GENDER
+		     , PET_NEUTRAL
+		     , A_MATE
+		     , C_MATE
+		     , CHILD_AGE
+		     , AGREE_YPN
+		     , EVENT_MNG_ANI
+		     , EMPTYHOUR
+		     , HOUSETYPE
+		     , HSELF_YN
+		     , AGREE_NEI_YN
+		     , EXP_COST
+		     , MEM_ID
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		  FROM ADOPT_APPLY AA
+		  JOIN MEM_INFO USING (MEM_NO)
+		 WHERE AALIST_NO = ?
+	</entry>
+	
 </properties>

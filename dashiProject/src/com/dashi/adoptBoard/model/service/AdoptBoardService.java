@@ -64,7 +64,7 @@ public class AdoptBoardService {
 		return an;
 	}
 	
-	// 첨부파일 불러오는 메소드 (입양공고 상세보기)
+	// 첨부파일 불러오는 메소드
 	public Attachment selectAttachment(String boardNo) {
 
 		Connection conn = getConnection();
@@ -152,6 +152,11 @@ public class AdoptBoardService {
 	public int deleteAdoptNotice(String boardNo) {
 		Connection conn = getConnection();
 		int result = new AdoptBoardDao().deleteAdoptNotice(conn, boardNo);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	}
@@ -191,6 +196,14 @@ public class AdoptBoardService {
 		ArrayList<AdoptApply> list = new AdoptBoardDao().selectAdoptApplyList(conn, pi);
 		close(conn);
 		return list;
+	}
+	
+	// 입양신청서 상세보기
+	public AdoptApply selectAdminAdoptApply(String boardNo) {
+		Connection conn = getConnection();
+		AdoptApply apply = new AdoptBoardDao().selectAdminAdoptApply(conn, boardNo);
+		close(conn);
+		return apply;
 	}
 	
 }

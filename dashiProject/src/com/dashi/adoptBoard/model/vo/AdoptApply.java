@@ -37,7 +37,24 @@ public class AdoptApply {
 	private String agreeNeiYN;	//이웃 동의여부		 AGREE_NEI_YN
 	private int expCost;		//한달 예상양육비용 	 EXP_COST
 
+	private String memId;
+	private String applyDate;
+	
 	public AdoptApply() {}
+	
+	
+	public AdoptApply(String aalistNo, String anlistNo, int memNo, String aaTitle, int adtStatus, String memId,
+			String applyDate) {
+		super();
+		this.aalistNo = aalistNo;
+		this.anlistNo = anlistNo;
+		this.memNo = memNo;
+		this.aaTitle = aaTitle;
+		this.adtStatus = adtStatus;
+		this.memId = memId;
+		this.applyDate = applyDate;
+	}
+
 
 	public AdoptApply(String aalistNo, String anlistNo, int memNo, String memName, String aaTitle, String payStatus,
 			int adtStatus, String postStatus, String aaName, int aaAge, String aaGender, String aaPhone, String aaEmail,
@@ -117,10 +134,64 @@ public class AdoptApply {
 		this.agreeNeiYN = agreeNeiYN;
 		this.expCost = expCost;
 	}
+	
+	public AdoptApply(String aalistNo, String anlistNo, int memNo, String memName, String aaTitle, String payStatus,
+			int adtStatus, String postStatus, String aaName, int aaAge, String aaGender, String aaPhone, String aaEmail,
+			String aaAddress, String marriageYN, String aaJob, String adoptReason, String parentExp, String havePetYN,
+			String petType, String petAge, String petGender, String petNeutral, int aMate, int cMate, int childAge,
+			String agreeYPN, String eventMngAni, String emptyHour, String houseType, String hselfYN, String agreeNeiYN,
+			int expCost, String memId, String applyDate) {
+		super();
+		this.aalistNo = aalistNo;
+		this.anlistNo = anlistNo;
+		this.memNo = memNo;
+		this.memName = memName;
+		this.aaTitle = aaTitle;
+		this.payStatus = payStatus;
+		this.adtStatus = adtStatus;
+		this.postStatus = postStatus;
+		this.aaName = aaName;
+		this.aaAge = aaAge;
+		this.aaGender = aaGender;
+		this.aaPhone = aaPhone;
+		this.aaEmail = aaEmail;
+		this.aaAddress = aaAddress;
+		this.marriageYN = marriageYN;
+		this.aaJob = aaJob;
+		this.adoptReason = adoptReason;
+		this.parentExp = parentExp;
+		this.havePetYN = havePetYN;
+		this.petType = petType;
+		this.petAge = petAge;
+		this.petGender = petGender;
+		this.petNeutral = petNeutral;
+		this.aMate = aMate;
+		this.cMate = cMate;
+		this.childAge = childAge;
+		this.agreeYPN = agreeYPN;
+		this.eventMngAni = eventMngAni;
+		this.emptyHour = emptyHour;
+		this.houseType = houseType;
+		this.hselfYN = hselfYN;
+		this.agreeNeiYN = agreeNeiYN;
+		this.expCost = expCost;
+		this.memId = memId;
+		this.applyDate = applyDate;
+	}
+
+
+	public String getApplyDate() {
+		return applyDate;
+	}
+
+	public void setApplyDate(String applyDate) {
+		this.applyDate = applyDate;
+	}
 
 	public String getAalistNo() {
 		return aalistNo;
 	}
+
 
 	public void setAalistNo(String aalistNo) {
 		this.aalistNo = aalistNo;
@@ -128,6 +199,16 @@ public class AdoptApply {
 
 	public String getAnlistNo() {
 		return anlistNo;
+	}
+
+	public AdoptApply(String aalistNo, String anlistNo, String aaTitle, int adtStatus, String memId, String applyDate) {
+		super();
+		this.aalistNo = aalistNo;
+		this.anlistNo = anlistNo;
+		this.aaTitle = aaTitle;
+		this.adtStatus = adtStatus;
+		this.memId = memId;
+		this.applyDate = applyDate;
 	}
 
 	public void setAnlistNo(String anlistNo) {
@@ -157,7 +238,7 @@ public class AdoptApply {
 	public void setAaTitle(String aaTitle) {
 		this.aaTitle = aaTitle;
 	}
-
+	
 	public String getPayStatus() {
 		return payStatus;
 	}
@@ -181,7 +262,7 @@ public class AdoptApply {
 	public void setPostStatus(String postStatus) {
 		this.postStatus = postStatus;
 	}
-
+	
 	public String getAaName() {
 		return aaName;
 	}
@@ -346,8 +427,8 @@ public class AdoptApply {
 		return emptyHour;
 	}
 
-	public void setEnmptyHour(String enmptyHour) {
-		this.emptyHour = enmptyHour;
+	public void setEmptyHour(String emptyHour) {
+		this.emptyHour = emptyHour;
 	}
 
 	public String getHouseType() {
@@ -380,6 +461,14 @@ public class AdoptApply {
 
 	public void setExpCost(int expCost) {
 		this.expCost = expCost;
+	}
+
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
 	}
 
 	@Override

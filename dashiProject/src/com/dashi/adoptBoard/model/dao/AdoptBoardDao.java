@@ -195,6 +195,7 @@ public class AdoptBoardDao {
 						,rset.getString("ANIMAL_ISSUE")
 						);
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -264,7 +265,7 @@ public class AdoptBoardDao {
 		
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
+		System.out.println("attach boardNo : " + boardNo);
 		String sql = prop.getProperty("selectAttachment");
 		
 		try {
@@ -273,12 +274,11 @@ public class AdoptBoardDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				at = new Attachment();
-				at.setAttachNo(rset.getString("ATTACH_NO"));
-				at.setRefNo(rset.getString("REF_NO"));
-				at.setOriginName(rset.getString("ORIGIN_NAME"));
-				at.setChangeName(rset.getString("CHANGE_NAME"));
-				at.setPath(rset.getString("PATH"));
+				at = new Attachment(rset.getString("ATTACH_NO"),
+									rset.getString("REF_NO"),
+									rset.getString("PATH"),
+									rset.getString("ORIGIN_NAME"),
+									rset.getString("CHANGE_NAME"));
 				
 			}
 		} catch (SQLException e) {
@@ -599,7 +599,7 @@ public class AdoptBoardDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
+
 			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
@@ -608,6 +608,14 @@ public class AdoptBoardDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
+				list.add(new AdoptApply(rset.getString("AALIST_NO"),
+										rset.getString("ANLIST_NO"),
+										rset.getInt("MEM_NO"),
+										rset.getString("AA_TITLE"),
+										rset.getInt("ADT_STATUS"),
+										rset.getString("MEM_ID"),
+										rset.getString("APPLY_DATE")));
+				
 				
 			}
 		} catch (SQLException e) {
@@ -616,5 +624,69 @@ public class AdoptBoardDao {
 		}
 		
 		return list;
+	}
+	
+	// 관리자 입양신청서 상세보기
+	public AdoptApply selectAdminAdoptApply(Connection conn, String boardNo) {
+		
+		AdoptApply apply = null;
+
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdminAdoptApply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				apply = new AdoptApply(rset.getString("AALIST_NO"),
+									rset.getString("ANLIST_NO"),
+									rset.getInt("MEM_NO"),
+									rset.getString("MEM_NAME"),
+									rset.getString("AA_TITLE"),
+									rset.getString("PAY_STATUS"),
+									rset.getInt("ADT_STATUS"),
+									rset.getString("POST_STATUS"),
+									rset.getString("AA_NAME"),
+									rset.getInt("AA_AGE"),
+									rset.getString("AA_GENDER"),
+									rset.getString("AA_PHONE"),
+									rset.getString("AA_EMAIL"),
+									rset.getString("AA_ADDRESS"),
+									rset.getString("MARRIAGE_YN"),
+									rset.getString("AA_JOB"),
+									rset.getString("ADOPT_REASON"),
+									rset.getString("PARENT_EXP"),
+									rset.getString("HAVE_PET_YN"),
+									rset.getString("PET_TYPE"),
+									rset.getString("PET_AGE"),
+									rset.getString("PET_GENDER"),
+									rset.getString("PET_NEUTRAL"),
+									rset.getInt("A_MATE"),
+									rset.getInt("C_MATE"),
+									rset.getInt("CHILD_AGE"),
+									rset.getString("AGREE_YPN"),
+									rset.getString("EVENT_MNG_ANI"),
+									rset.getString("EMPTYHOUR"),
+									rset.getString("HOUSETYPE"),
+									rset.getString("HSELF_YN"),
+									rset.getString("AGREE_NEI_YN"),
+									rset.getInt("EXP_COST"),
+									rset.getString("MEM_ID"),
+									rset.getString("APPLY_DATE")
+									);
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return apply;
 	}
 }

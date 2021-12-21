@@ -28,6 +28,16 @@ public class Attachment {
 		this.attachLevel = attachLevel;
 	}
 
+	
+	public Attachment(String attachNo, String refNo, String path, String originName, String changeName) {
+		super();
+		this.attachNo = attachNo;
+		this.refNo = refNo;
+		this.path = path;
+		this.originName = originName;
+		this.changeName = changeName;
+	}
+
 	public String getAttachNo() {
 		return attachNo;
 	}

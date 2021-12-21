@@ -160,7 +160,7 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=contextPath%>/adplist.ad>cpage=1">입양신청</a></td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/adplist.ad?cpage=1">입양신청</a></td>
                                 <td class="categoryDate">날짜칸</td>
                         </tr>
                         <tr>

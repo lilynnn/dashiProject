@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.dashi.common.model.vo.Attachment, com.dashi.adoptBoard.model.vo.AdoptApply" %>    
+<%
+	AdoptApply ap = (AdoptApply)request.getAttribute("appply");
+	Attachment at = (Attachment)request.getAttribute("at");
+	
+	System.out.println(ap);
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,21 +108,23 @@
             <table id="writerInfo">
                 <tr>
                     <th width=250>작성자</th>
-                    <td width=300>testuser01</td>
-                    <th width=250>카테고리</th>
-                    <td width=300>강아지</td>
+                    <td width=300><%=ap.getMemId() %></td>
+                    <th width=250>작성인명</th>
+                    <td width=300></td>
                 </tr>
                 <tr>
                     <th>작성일</th>
-                    <td>2021-11-01</td>
+                    <td></td>
                     <th>승인상태</th>
                     <td>
                         <select name="status" id="status" class="btn btn-sm dropdown-toggle" style="width: 99%;">
-                            <option value="1">승인대기</option>
+                        	
+                            <option value="1" selected>승인대기</option>
                             <option value="2">결제대기</option>
                             <option value="3">결제완료</option>
                             <option value="4">입양완료</option>
                             <option value="5">반려</option>
+                           
                         </select>
 
                     </td>
