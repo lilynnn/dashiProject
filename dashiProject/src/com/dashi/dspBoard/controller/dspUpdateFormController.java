@@ -46,7 +46,6 @@ public class dspUpdateFormController extends HttpServlet {
 		request.setAttribute("list", list);
 		request.setAttribute("d", d);
 		request.setAttribute("contentImgPath", contentImgPath);
-		System.out.println(contentImgPath);
 
 		
 		request.getRequestDispatcher("views/dspBoard/dspUpdateForm.jsp").forward(request, response);

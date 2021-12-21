@@ -271,14 +271,13 @@
 
 
         </div>  
-        <br><br><br>
+        <br><br><br><br><br>
         
         <!-- 밑에 동물사진 2개 및 설명-->
         <div class="Info_outer2" align="center">
         	
         	<%for(int i = 1 ; i<list.size() ; i++){ %>
-        
-            <img class= "animal-image" src="<%=contextPath%>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>" ></img><br><br>
+            	<img class= "animal-image" src="<%=contextPath%>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>" ></img><br><br><br><br><br>
             <%} %>
 
           

@@ -220,13 +220,19 @@
 
 						<tr>
 							<th>상세 이미지</th>
-							
+							<!-- 원래 첨부했던 첨부파일 -->
 							<%for(int i=0; i<contentImgPath.size(); i++){ %>
 							<td>
 								<img id="contentImg<%=i+1%>" width="200" height="150" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>" alt="" onclick="chooseFile(<%= i+2 %>)">
 							</td>
 							<%} %>
 							
+							<!-- 남은 첨부파일 이미지 -->
+							<% for(int i = contentImgPath.size() + 1 ; i < 5 ;i++){ %>
+								<td>
+								<img id="contentImg<%=i%>" width="200" height="150" src="" alt="" onclick="chooseFile(<%= i+1 %>)">
+								<td>
+							<%} %>
 
 						</tr>
 					</table>
