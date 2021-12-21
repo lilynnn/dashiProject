@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.dashi.report.model.service.ReportService;
 
 /**
- * Servlet implementation class AdminDeleteReportController
+ * Servlet implementation class AdminReportDeleteController
  */
-//@WebServlet("/deleteReport.ad")
-public class AdminDeleteReportController extends HttpServlet {
+@WebServlet("/deleteReport.ad")
+public class AdminReportDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminDeleteReportController() {
+    public AdminReportDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +30,18 @@ public class AdminDeleteReportController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		int reportNo = Integer.parseInt(request.getParameter("rno"));
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		
-		int result = new ReportService().deleteReport(reportNo);
-		
+		int result = new ReportService().deleteReview(bno);
+
+		System.out.println(bno);
 		if(result > 0) {
-			
-			request.getSession().setAttribute("alertMsg", "신고글이 삭제되었습니다.");
+			request.getSession().setAttribute("alertMsg", "게시글이 삭제되었습니다!");
 			response.sendRedirect(request.getContextPath() + "/reportList.ad?cpage=1");
+		}else{
 			
 			
-		}else {
-			request.getSession().setAttribute("alertMsg", "신고글 삭제 실패!");
-			request.getRequestDispatcher("views/report/adminReportList.jsp").forward(request, response);
 		}
-	
-	
 	
 	
 	}

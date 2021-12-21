@@ -170,6 +170,12 @@
 				</table>
 			</div>
 			
+			<div style="width:100%; margin-top:30px;" align="center">
+				<button type="button" onclick="history.back();">목록으로</button>
+			</div>
+			
+			
+			
 			<script>
 				$("#re-list>tbody>tr").click(function(){			
 					
