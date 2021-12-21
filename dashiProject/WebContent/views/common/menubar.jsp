@@ -139,8 +139,26 @@
    }
 
 
-
-
+  /*인증번호 버튼 text*/
+        .searchbtn{
+            text-align: center;
+            background-color:rgb(40,112,37);
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            padding-top: 10px;
+            padding-bottom: 30px;
+            color: aliceblue;
+            position: relative;
+        }
+        .table{
+            border-spacing: 10px;
+            font-size: larger;
+        }
+	
+	.btn-find{
+	cursor:pointer;
+	}
 
 </style>
 </head>
@@ -257,11 +275,11 @@
                 <form action="<%=contextPath%>/login.me" method="post">
                     <!-- Modal body -->
                     <div class="login-area">
-                        <input type="text" class="userId" name="userId" placeholder="아아디" required>
+                        <input type="text" class="userId" name="userId" placeholder="아이디" required>
                         <br><br>
                         <input type="password" class="userPwd" name="userPwd" placeholder="비밀번호" required>
                     </div>
-                    <div style="margin-top:20px; margin-bottom:15px;"><a href="" class="find">아아디/비밀번호찾기</a></div>
+                    <div class="btn-find" style="margin-top:20px; margin-bottom:15px;" data-toggle="modal" data-target="#findId" onclick="find();">아이디/비밀번호찾기</div>
 
                     <button class="loginBtn">로그인</button><br>
                 </form>
@@ -275,6 +293,118 @@
       </div>
     <!--회원가입 Modal창-->
 
-
-</body>
-</html>
+   	<!--login Modal창-->
+	<div class="modal fade" id="findId">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center;margin-left:115px;">다시,사랑받개 <br></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        	<div class="modal-body">
+                <table style="margin:auto; style="margin-bottom:30px;">  
+           		<tr>
+                <th style="color: rgb(40,112,37); font-size:20px; cursor:pointer;" data-toggle="modal" data-target="#findId" >아이디 찾기<br><br></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                <th style="font-size:20px; margin-bottom:30px; cursor:pointer;" data-toggle="modal" data-target="#findPwd">비밀번호 찾기<br><br></th>
+           		</tr>
+            </table>
+            
+             <table style="margin-left:50px;">
+            <form action="<%=contextPath%>/findId.me" method="post">
+           
+                <!-- Modal body -->
+                  <tr>
+                    <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;" required></th>
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
+                        <input type="text" name="" style="width: 10px; height: 30px; margin-bottom:10px;">&nbsp; *&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*</th> 
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="phone" placeholder="휴대폰 번호를 입력해주세요."  style="width:280px;height:40px; margin-bottom:10px;" required></th>
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="text" value="" name="" placeholder="인증번호 6자리를 입력해주세요." style="width:280px; height: 40px; margin-bottom:10px;" required></th>
+                  </tr>
+                  
+                  <tr>
+                  <th>&nbsp;&nbsp;</th>
+                  </tr>
+		        
+		        <tr>
+		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button class="searchbtn" name="" style="width:280px; height:50px;"><b style="font-size:20px;">아이디찾기 <br></b></button></th>
+		        </tr>
+		             
+		        <tr>
+		        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+		        </tr>
+		        </table>
+      	  </form> 
+ </div> </div> </div> </div>
+    
+                
+         
+    
+   
+   <!--Pwd Modal창-->
+	<div class="modal fade" id="findPwd">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" style="text-align:center; margin-left:115px;">다시,사랑받개 <br></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        	<div class="modal-body">
+                <table style="margin:auto; style="margin-bottom:30px;">  
+           		<tr>
+                <th style="font-size:20px; cursor:pointer;" data-toggle="modal" data-target="#findId" >아이디 찾기<br><br></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th style="font-size:20px; color: rgb(40,112,37); margin-bottom:30px; cursor:pointer;" data-toggle="modal" data-target="#findPwd">비밀번호 찾기<br><br></th>
+           		</tr>
+            </table>
+            
+             <table style="margin-left:50px;">
+            <form action="<%=contextPath%>/findPwd.me" method="post">
+           
+                <!-- Modal body -->
+                <tr>
+                    <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;"></th>
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
+                        <input type="text" name="" style="width: 10px; height: 30px; margin-bottom:10px;">&nbsp; *&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*</th> 
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="phone" placeholder="휴대폰 번호를 입력해주세요."  style="width:280px;height:40px; margin-bottom:10px;"></th>
+                  </tr>
+                  <tr>
+                      <th colspan="2"><input type="text" value="" name="" placeholder="인증번호 6자리를 입력해주세요." style="width:280px; height: 40px; margin-bottom:10px;"></th>
+                  </tr>
+                  <tr><th>&nbsp;&nbsp;</th></tr>
+		        <tr>
+		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button onclick="" class="searchbtn" name="pwd" style="width:280px; height:50px;"><b style="font-size:20px;">PW 재설정 <br></b></button></th>
+		        </tr>     
+		        <tr>
+		        <th>&nbsp;&nbsp;</th>
+		        </tr>
+		        
+        </form> </table>
+      </div>
+      </div>
+    </div>
+  </div>
+                
+         
+         
+         
+         
+				     	   	</body>
+				     	</html>
+				  

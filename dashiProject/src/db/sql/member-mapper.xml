@@ -157,6 +157,12 @@
 		 WHERE NICKNAME = ?
 	</entry>
 
+<entry key="updatePwdMember">
+		UPDATE MEMBER
+		   SET MEM_PWD = ?
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+</entry>
 
 
 

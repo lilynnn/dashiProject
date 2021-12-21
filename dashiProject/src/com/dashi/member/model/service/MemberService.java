@@ -117,8 +117,23 @@ public class MemberService {
 		return result;
 	} // 회원 탈퇴
 
-
+	//비밀번호 재설정 
+	public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
+		Connection conn = getConnection();
+		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
 	
+		Member updateMem = null;
+		if(result > 0) {
+			commit(conn);
+			updateMem = new MemberDao().selectMember(conn, memId);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+	
+		return updateMem;
+	}
 	
 	
 	
