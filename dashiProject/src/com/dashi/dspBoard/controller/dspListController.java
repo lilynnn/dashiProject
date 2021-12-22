@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.service.DspService;
 import com.dashi.dspBoard.model.vo.Dsp;
 
@@ -32,6 +33,40 @@ public class dspListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		int listCount;		// 현재 총 게시글 갯수
+		int currentPage; 	// 현재 페이지(즉, 사용자가 요청한 페이지)
+		int pageLimit; 		// 페이지 하단에 보여질 페이징바의 페이지 최대갯수(몇개 단위씩)
+		int boardLimit; 	// 한페이지내에 보여질 게시글의 최대갯수(몇개단위씩)
+		// 위의 4개를 가지고 아래 3개의 값을 구해낼꺼임
+		int maxPage;    	//가장 마지막 페이지 (총 페이지수)
+		int startPage; 		// 페이징 바의 시작수
+		int endPage;  		// 페이징바의 끝수
+			
+		// * listCount : 총 게시글 갯수
+		listCount = new DspService().selectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		System.out.println(listCount);
+		pageLimit = 5;
+		
+		boardLimit = 16;
+
+		maxPage = (int) Math.ceil((double)listCount / boardLimit);
+		
+		startPage = (currentPage - 1)/ pageLimit * pageLimit + 1;
+		
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<Dsp> list = new AdoptBoardService().selectNoticeThumbnailList(pi);
+
 		
 		// 요청처리(응답페이지에 필요한 데이터 요청)
 		ArrayList<Dsp> list = new DspService().selectDspList();

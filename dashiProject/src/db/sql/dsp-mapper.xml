@@ -201,7 +201,7 @@
 	</entry>
 	
 	
-	
+	<!-- 게시글 삭제하기 -->
 	<entry key="deleteDsp">
 		UPDATE
 		       DSP
@@ -209,7 +209,12 @@
 		 WHERE DSP_NO = ?
 	</entry>
 	
-	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM DSP
+         WHERE POST_STATUS = 'Y'
+	</entry>
 	
 	
 	

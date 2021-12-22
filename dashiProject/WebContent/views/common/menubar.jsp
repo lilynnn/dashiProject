@@ -266,7 +266,7 @@
 	        <div class="menu">
                 <a href="">실종/보호/목격</a>
                     <ul class="menu-tag">
-                        <li><a href="<%=contextPath%>/list.dsp">신고글 작성하기</a></li>
+                        <li><a href="<%=contextPath%>/list.dsp?cpage=1">신고글 작성하기</a></li>
                     </ul>
             </div>
 

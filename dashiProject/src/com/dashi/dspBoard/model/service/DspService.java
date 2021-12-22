@@ -124,6 +124,13 @@ public class DspService {
 		return result;
 	}
 
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new DspDao().selectListCount(conn);
+		close(conn);
+		return listCount;
+	}
+
 	
 
 	
