@@ -73,7 +73,7 @@ public class dspUpdateController extends HttpServlet {
 			for(int i=1; i<5; i++) {
 				String key = "file"+i;
 				//넘어온 파일이 있을경우
-				if(multiRequest.getParameter(key+i) != null) {
+				if(multiRequest.getParameter(key) != null) {
 					at = new Attachment();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));

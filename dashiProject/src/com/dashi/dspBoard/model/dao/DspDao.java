@@ -314,7 +314,7 @@ public class DspDao {
 	}
 
 	// 안에 내용 수정하는 메소드
-	public int updateBoard(Connection conn, Dsp d) {
+	public int updateDsp(Connection conn, Dsp d) {
 		
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -324,6 +324,18 @@ public class DspDao {
 			pstmt = conn.prepareStatement(sql);//미완성된sql
 			
 			pstmt.setString(1, d.getDspTitle());
+			pstmt.setString(2, d.getCtg());
+			pstmt.setString(3, d.getIssueDate());
+			pstmt.setString(4, d.getLocationName());
+			pstmt.setString(5, d.getPhone());
+			pstmt.setString(6, d.getVariety());
+			pstmt.setString(7, d.getGender());
+			pstmt.setString(8, d.getAge());
+			pstmt.setString(9, d.getWeight());
+			pstmt.setString(10, d.getIssue());
+			pstmt.setString(11, d.getEtc());
+			pstmt.setInt(12, d.getMoney());
+			pstmt.setString(13, d.getDspNo());
 			
 			result = pstmt.executeUpdate();
 			
@@ -332,14 +344,10 @@ public class DspDao {
 		}finally {
 			close(pstmt);
 		}
-		
 		return result;
-		
-		
-		
-		
-		
 	}
+	
+	
 
 
 

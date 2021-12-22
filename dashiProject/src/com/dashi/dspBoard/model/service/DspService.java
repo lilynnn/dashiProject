@@ -104,8 +104,8 @@ public class DspService {
 	public int updateDsp(Dsp d, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		
-		int result1 = new BoardDao().updateBoard(conn,d);
-
+		int result1 = new DspDao().updateDsp(conn,d);
+		int result2 = 1;
 		return result1 * result2;
 	}
 
