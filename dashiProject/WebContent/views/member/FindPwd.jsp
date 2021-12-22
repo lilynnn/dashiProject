@@ -85,6 +85,9 @@
 	
 	
 	<br><br><br>
+	
+	<div  align="center" ><b style="font-size:20px; color:green;">비밀번호 찾기</b></div>
+	<br>
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title" style="margin-top:30px;">
 			<div class="card-title"  style="color:rgb(40,112,37);  margin-right:50px;"><img align="center" style="width:97%;" src="<%=contextPath%>/resources/images/logo33.png">

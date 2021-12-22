@@ -80,6 +80,8 @@
 	
 	
 	<br><br><br>
+	<div  align="center" ><b style="font-size:20px; color:green;">아이디 찾기</b></div>
+	<br>
 	<div class="card align-middle" style="width:25rem;">
 		<div class="card-title"  align="center" style="margin-right:40px; color:rgb(40,112,37);"><img align="center"   src="<%=contextPath%>/resources/images/logo33.png">
 			</div>
