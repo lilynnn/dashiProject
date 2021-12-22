@@ -188,11 +188,14 @@ public class NoticeDao {
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
-			list.add(new Notice(rset.getString("notice_no")
-							  , rset.getString("notice_title")
-							  , rset.getInt("view_count")
-							  , rset.getDate("write_date")
-							  , rset.getString("mn_no")));
+				list.add(new Notice(rset.getString("notice_no")
+								  , rset.getString("notice_title")
+								  , rset.getString("notice_content")
+								  , rset.getInt("view_count")
+								  , rset.getDate("write_date")
+								  , rset.getString("mn_no")
+								  , rset.getString("notice_yn")));
+				
 			}
 			
 		} catch (SQLException e) {

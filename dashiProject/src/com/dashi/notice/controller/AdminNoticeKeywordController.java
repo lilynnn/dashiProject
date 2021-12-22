@@ -37,41 +37,12 @@ public class AdminNoticeKeywordController extends HttpServlet {
 		
 		String keyword = request.getParameter("titleSearch");
 		
-		/*
-		// 페이징 처리 
-		int listCount; // 총게시글수
-		int currentPage; // 현재페이지
-		int pageLimit; // 몇 개 단위
-		int boardLimit; // 한 페이지 내에 보여질 게시글 최대갯수
-		
-		int maxPage; // 가장 마지막페이지
-		int startPage; // 페이징바 시작수
-		int endPage; // 페이징바 끝 수
-		
-		listCount = new NoticeService().selectListCount(); // 총 게시글 갯수
-		
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
-				
-		pageLimit = 5;
-		boardLimit = 20;
-		
-		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		startPage = (currentPage -1) / pageLimit * pageLimit + 1;
-		endPage = startPage + pageLimit -1;
-		
-		if(endPage > maxPage) {
-			endPage = maxPage;
-		}
-		
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		나중에 다시 도전!!!!!!!!!!!!*/
 		
 		ArrayList<Notice> list = new NoticeService().searchNotice(keyword);
 	
 		request.setAttribute("list", list);
-		System.out.println(list);
 
-		request.getRequestDispatcher("views/notice/adminNoticeListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/notice/adminNoticeSearchList.jsp").forward(request, response);
 	
 	
 	
