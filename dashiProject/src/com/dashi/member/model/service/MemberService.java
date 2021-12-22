@@ -69,11 +69,11 @@ public class MemberService {
 	}
 	
 	
-
-	public String findId (String name, String email) {
+//아이디찾기
+	public String findId (String memName, String email) {
 		Connection conn = getConnection();
 		
-		 String memId = new MemberDao().findId(conn, name, email);
+		 String memId = new MemberDao().findId(conn, memName, email);
 		
 		if(memId != null) {
 			commit(conn);

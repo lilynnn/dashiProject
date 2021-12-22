@@ -372,18 +372,17 @@ public class MemberDao {
 	
 	
 	
-	public String findId(Connection conn, String name, String email) {
+	public String findId(Connection conn, String memName, String email) {
 		
 		String memId = null; 
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		int result=0;
 		
 		String sql = prop.getProperty("findId");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,name);
+			pstmt.setString(1, memName);
 			pstmt.setString(2, email);
 			
 			rset = pstmt.executeQuery();
