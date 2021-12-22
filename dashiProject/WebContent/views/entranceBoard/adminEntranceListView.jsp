@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8" import="com.dashi.entranceBoard.model.vo.Entrance, com.dashi.common.model.vo.*, java.util.ArrayList"%>
 <%
-	
+	ArrayList<Entrance> list = (ArrayList<Entrance>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -108,7 +115,7 @@
                 <hr>
                 </div>
                 
-                <div style="width: 600px;" align="right">
+                <div style="width:100%;" align="right">
                 	<% if(loginAdmin != null){ %>
                     
                     <a href="<%=contextPath%>" class="btn btn-sm btn-dark">
@@ -121,29 +128,28 @@
                     <table class="noticeList table-bordered">
                         <thead>
                             <tr>
-                                <td width="60"></td>
                                 <th width="80">No.</th>
-                                <th width="470">제목</th>
-                                <th width="70">작성자</th>
+                                <th width="80">승인단계</th>
+                                <th width="450">제목</th>
+                                <th width="90">작성자</th>
                                 <th width="100">작성일</th>
-                                <th width="70">조회수</th>
+                                <th width="60">처리</th>
                             </tr>
                         </thead>
                         <tbody>
 	                    <!--공지글 없을 때-->
 	                    <tr>
-	                        <td colspan="5">게시된 공지사항이 없습니다.</td>
+	                        <td colspan="6">게시된 공지사항이 없습니다.</td>
 	                    </tr>
 	                    
 		                    <!--일반 공지글 있을 때-->
 		                    <tr>
-		                        <td>
-		                        	<button class="btn-sm" style="background: #f57f7f; border: none; font-weight: bolder;">
-	                                	공지
+		                    	<td></td>
+		                    	<td>
+		                        	<button class="btn-sm btn-primary" style="border: none; font-weight: bolder; width:100%">
+	                                	확인
 	                            	</button>
 		                        </td>
-		                        	<td></td>
-		                        <td></td>
 		                        <td></td>
 		                        <td></td>
 		                        <td></td>
@@ -154,6 +160,24 @@
                     </table>
                 </div>
         	
+        	<div class="paging-area" align="center">
+			<% if(currentPage != 1){ %>
+            <button onclick="location.href='<%=contextPath%>/entListView.ad?cpage=<%=currentPage-1%>';">&lt;</button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++){ %>	
+            	<% if(p == currentPage){ %>
+            	<button disabled><%= p %></button>
+            	<% }else{ %>
+            	<button onclick="location.href='<%=contextPath%>/entListView.ad?cpage=<%=p%>';"><%= p %></button>
+            	<% } %>
+            <% } %>
+            
+            <% if(currentPage != maxPage){ %>
+            <button onclick="location.href='<%=contextPath%>/entListView.ad?cpage=<%=currentPage+1%>';">&gt;</button>
+			<% } %>
+        </div>
+ 
         </div>
     </div>
     

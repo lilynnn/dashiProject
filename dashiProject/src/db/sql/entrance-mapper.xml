@@ -116,7 +116,32 @@
 		 WHERE ENT_NO = ?
 	</entry>
 
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) "count"
+		  FROM ENTRANCE
+		 WHERE ENT_STATUS = 'N'
+	</entry>
 
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                       ENT_NO
+		                     , M.MEM_NAME "MEM_NAME"
+		                     , ENT_TITLE
+		                     , ENT_APPLYDATE
+		                     , PROCESS_RESULT
+		                  FROM ENTRANCE
+		                  JOIN MEM_INFO M USING (MEM_NO)
+		                 WHERE ENT_STATUS = 'N'
+		                 ORDER
+		                       BY ENT_NO DESC) A
+		                )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 

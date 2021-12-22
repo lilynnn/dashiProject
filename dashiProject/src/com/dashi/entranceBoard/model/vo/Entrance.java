@@ -86,6 +86,15 @@ public class Entrance {
 		this.animalType = animalType;
 	}
 
+	public Entrance(String entNo, String memNo, String entTitle, Date entApplyDate, String processResult) {
+		super();
+		this.entNo = entNo;
+		this.memNo = memNo;
+		this.entTitle = entTitle;
+		this.entApplyDate = entApplyDate;
+		this.processResult = processResult;
+	}
+
 	public String getTitleimg() {
 		return titleimg;
 	}

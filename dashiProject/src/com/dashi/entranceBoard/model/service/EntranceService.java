@@ -9,8 +9,11 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.entranceBoard.model.dao.EntranceDao;
 import com.dashi.entranceBoard.model.vo.Entrance;
+import com.dashi.notice.model.dao.NoticeDao;
+import com.dashi.notice.model.vo.Notice;
 
 public class EntranceService {
 
@@ -52,7 +55,19 @@ public class EntranceService {
 		return b;
 	} //게시글 상세조회
 	
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new EntranceDao().selectListCount(conn);
+		close(conn);
+		return listCount;		
+	} // 공지사항 총 게시글 갯수 조회
 	
+	public ArrayList<Entrance> selectList(PageInfo pi) {
+		Connection conn = getConnection();
+		ArrayList<Entrance> list = new EntranceDao().selectList(conn, pi);
+		close(conn);
+		return list;
+	} // 게시글 수 만큼(10개)조회
 	
 	
 	
