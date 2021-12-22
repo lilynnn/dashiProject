@@ -42,12 +42,14 @@ public class LoginController extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 		
-		if(loginUser != null) { //로그인성
+		if(loginUser != null) { //로그인성공
 			
 			session.setAttribute("loginUser", loginUser);
 			response.sendRedirect(request.getContextPath());
 			
-		}else { //로그인실
+		}else { //로그인실패
+			request.getSession().setAttribute("errorMsg", "로그인에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath());
 
 		}
 	

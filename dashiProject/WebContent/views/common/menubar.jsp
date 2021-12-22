@@ -5,6 +5,8 @@
 	Member loginUser = (Member)session.getAttribute("loginUser");
 	Manager loginAdmin = (Manager)session.getAttribute("loginAdmin");
 	String alertMsg = (String)session.getAttribute("alertMsg");
+	String errorMsg = (String)session.getAttribute("errorMsg");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -289,6 +291,13 @@
                 <button class="enrollBtn">회원가입</button>
                 <hr>
           </div>
+          <script>
+	        $(function(){
+	            $(".enrollBtn").click(function(){
+	                location.href = '<%= contextPath%>/enroll1.me';
+	            })
+	        })
+    		</script>
         </div>
       </div>
     <!--회원가입 Modal창-->
@@ -354,6 +363,12 @@
 	<div class="modal fade" id="findPwd">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
+      	<% if(errorMsg != null){ %>
+		<script>
+			alert("<%=errorMsg%>");
+		</script>
+		<% session.removeAttribute("errorMsg"); %>
+		<% } %>
       
         <!-- Modal Header -->
         <div class="modal-header">
