@@ -38,10 +38,25 @@ public class AdoptReviewReply {
 		this.replyContent = replyContent;
 		this.writeDate = writeDate;
 	}	
-
+	
+	// 댓글 수정용
+	
+	public AdoptReviewReply(String replyContent, String updateDate, String replyNo) {
+		super();
+		this.replyContent = replyContent;
+		this.updateDate = updateDate;
+		this.replyNo = replyNo;
+	}
+	
+	
+	
+	
+	
 	public String getReplyNo() {
 		return replyNo;
 	}
+
+
 
 
 

@@ -1,7 +1,6 @@
 package com.dashi.adoptReviewBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,19 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class AjaxAdoptReviewReplyListController
+ * Servlet implementation class AjaxAdoptReviewReplyDeleteController
  */
-@WebServlet("/rlist.ar")
-public class AjaxAdoptReviewReplyListController extends HttpServlet {
+@WebServlet("/rdelete.ar")
+public class AjaxAdoptReviewReplyDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdoptReviewReplyListController() {
+    public AjaxAdoptReviewReplyDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +30,15 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		String replyNo = request.getParameter("replyNo");
 
-		String arlistNo = request.getParameter("arno");
-		
-		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
-		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
-		
-		
+		int result = new AdoptReviewBoardService().deleteReply(replyNo);		
+
+		response.getWriter().print(result);
+		//response.sendRedirect(request.getContextPath() + "/list.ar");
+	
 	}
 
 	/**

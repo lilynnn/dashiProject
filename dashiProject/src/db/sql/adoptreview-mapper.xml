@@ -153,13 +153,20 @@
 		  )
 		  VALUES
 		  (
-		    'REPLY-' || LPAD(SEQ_REPLYNO.NEXTVAL,3,'0')
+		    'REPLY-' || RPAD(SEQ_REPLYNO.NEXTVAL,4,'0')
 		  , ?
 		  , 2
 		  , ?
 		  , ?
 		  , ?
 	  )
+	</entry>
+	
+	<entry key="deleteReply">
+		UPDATE
+		       REPLY
+		   SET REPLY_STATUS = 'D'
+		 WHERE REPLY_NO = ?
 	</entry>
 	
 </properties>

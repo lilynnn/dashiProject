@@ -107,7 +107,26 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
+	// 댓글 삭제
+	public int deleteReply(String replyNo) {
+		Connection conn = getConnection();
+		int result = new AdoptReviewBoardDao().deleteReply(conn, replyNo);
+		close(conn);
+		return result;
+	}
 	
+	// 댓글 수정
+	public int updateReply(AdoptReviewReply arp){
+		Connection conn = getConnection();
+		int result = new AdoptReviewBoardDao().updateReply(conn, arp);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 	
 	
 	
