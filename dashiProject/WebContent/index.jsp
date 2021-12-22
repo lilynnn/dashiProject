@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>   
+ <%
+ 	ArrayList<AdoptNotice> anList = (ArrayList<AdoptNotice>)request.getAttribute("anList");
+ 
+ %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,13 +42,16 @@
         margin: auto;
         height: 220px;
     }
-    .area-box{
+    .notice-box{
         width: 210px; 
         height: 220px;
         float: left;
         margin-left: 9px;
     }
-    .photo-area{
+    
+    
+    /*이미지 공통 사이즈*/
+    .photo-area>img{
         width: 195px; 
         height: 200px;
     }
@@ -53,6 +61,12 @@
         width: 1100px;
         margin: auto;
         height: 200px;
+    }
+    .review-box{
+   		width: 210px; 
+        height: 220px;
+        float: left;
+        margin-left: 9px;
     }
 
     /* 입양공고,입양후기 타이틀 영역 스타일 */
@@ -70,7 +84,21 @@
         text-decoration: none;
         color: black
     }
+    
+    /*글씨 중략해서 보여지게*/
+     #noticeTitle{
+        font-size: 14px; 
+        width:180px;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        white-space: nowrap;
 
+    }
+	
+	.notice-box:hover{
+		cursor: pointer;
+	}
+	
 </style>
 </head>
 <body>
@@ -115,27 +143,27 @@
         
         <!-- 입양 공고 게시글 띄우는 영역 -->
         <div class="adopt-area">
-            <div class="area-box" align="center">
-                <div class="photo-area"></div>
-                <div>입양공고제목1</div>
-            </div>
-            <div class="area-box" align="center">
-                <div class="photo-area"></div>
-                <div>입양공고제목1</div>
-            </div>
-            <div class="area-box" align="center">
-                <div class="photo-area"></div>
-                <div>입양공고제목1</div>
-            </div>
-            <div class="area-box" align="center">
-                <div class="photo-area"></div>
-                <div>입양공고제목1</div>
-            </div>
-            <div class="area-box" align="center">
-                <div class="photo-area"></div>
-                <div>입양공고제목1</div>
-            </div>
+            <%if(anList.isEmpty()) {%>
+            <div style="margin-top:150px; height:100px;" align="center">입양공고글이 존재하지 않습니다.</div>
+            <%} else { %>
+            	<%for(AdoptNotice an : anList) {%>
+		            <div class="notice-box" align="center">
+		            	<input type="hidden" value=<%=an.getAnlistNo() %>>
+		                <div class="photo-area"><img src="<%=an.getTitleImg() %>"></div>
+		                <div id="noticeTitle"><%=an.getAnTitle() %></div>
+		            </div>
+            	<%} %>
+            <%} %>
         </div>
+        
+        <script>
+        	$(function(){
+        		$(".notice-box").click(function(){
+        			console.log($(this).children().eq(0).val());
+        			location.href='<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val();
+        		})
+        	})
+        </script>
         
         <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
         <div class="title"><a href=""><b>입양 후기</b></a></div>
@@ -143,24 +171,24 @@
         
         <!-- 입양 후기 게시글 띄우는 영역 -->
         <div class="review-area">
-            <div class="adopt-area">
-                <div class="area-box" align="center">
+            <div class="review-area">
+                <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>
                 </div>
-                <div class="area-box" align="center">
+                <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>
                 </div>
-                <div class="area-box" align="center">
+                <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>
                 </div>
-                <div class="area-box" align="center">
+                <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>
                 </div>
-                <div class="area-box" align="center">
+                <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>
                 </div>

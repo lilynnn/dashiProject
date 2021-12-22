@@ -150,7 +150,7 @@
             <br><br>
         
         </div>
-
+	<%@ include file="../common/footerbar.jsp" %>
     </div>
 
     <script>

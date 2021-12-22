@@ -30,6 +30,46 @@ public class AdoptBoardDao {
 		}
 	}
 
+	// 메인 화면 입양공고리스트 불러올 메소드
+	public ArrayList<AdoptNotice> selectMainAdoptNotice(Connection conn){
+		
+		ArrayList<AdoptNotice> anList = new ArrayList<AdoptNotice>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectNoticeThumbnailList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, 5);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				anList.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+						 rset.getString("AN_TITLE"),
+						 rset.getInt("VIEW_COUNT"),
+						 rset.getInt("ADT_STATUS"),
+						 rset.getString("ANIMAL_TYPE"),
+						 rset.getString("ENT_NO"),
+						 rset.getString("TITLEIMG")
+						 ));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		} 
+		return anList;
+	}
+	
+	
+	
 	// 전체 입양공고글 수 알아오는 메소드
 	public int selectListCount(Connection conn) {
 		

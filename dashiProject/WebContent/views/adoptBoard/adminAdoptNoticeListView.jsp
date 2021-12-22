@@ -101,16 +101,17 @@
                     <tr>
                         <th width="100">글번호</th>
                         <th width="90">카테고리</th>
-                        <th width="300">공고제목</th>
-                        <th width="110">조회수</th>
-                        <th width="120">등록일</th>
+                        <th width="270">공고제목</th>
+                        <th width="90">조회수</th>
+                        <th width="100">등록일</th>
+                        <th width="80">입양여부</th>
                         <th width="100">삭제하기</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- 게시글이 존재하지 않을 경우 -->
                     <%if(adtList.isEmpty()){ %>
-                    	<p>등록된 게시글이 없습니다.</p>
+                    	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
                     <%} else { %>
                  	<!-- 게시글 보여질 tr -->
 	                 	<%for(AdoptNotice an : adtList) {%>
@@ -129,6 +130,15 @@
 		                        <td><%= an.getAnTitle() %></td>
 		                        <td><%= an.getViewCount() %></td>
 		                        <td><%= an.getWriteDate() %></td>
+		                        <td>
+		                        <%if(an.getAdtStatus() == 4) {%>
+		                        입양완료
+		                        <%} else if(an.getAdtStatus() == 2) {%>
+		                        결제대기
+		                        <%} else { %>
+		                        --
+		                        <%} %>
+		                        </td>
 		                        <td>
 
 		                        
@@ -171,7 +181,7 @@
 
 
         </div>
-
+	<%@ include file="../common/footerbar.jsp" %>
     </div>
     <script>
 

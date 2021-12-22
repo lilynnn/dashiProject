@@ -256,7 +256,7 @@
 		  )
 	</entry>
 	
-	<!-- 입양공고 등록시 첨브파일 등록 -->
+	<!-- 입양공고 등록시 첨부파일 등록 -->
 	<entry key="insertAttachList">
 		INSERT 
 		  INTO ATTACHMENT

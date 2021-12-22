@@ -25,6 +25,15 @@ public class AdoptBoardService {
 		return listCount;
 	}
 	
+	// 메인페이지에 입양공고리스트 불러올 메소드
+	public ArrayList<AdoptNotice> selectMainAdoptNotice(){
+		Connection conn = getConnection();
+		ArrayList<AdoptNotice> anList = new AdoptBoardDao().selectMainAdoptNotice(conn);
+		close(conn);
+		return anList;
+	}
+	
+	
 	// 입양공고 리스트 불러오는 메소드
 	public ArrayList<AdoptNotice> selectList(PageInfo pi) {
 		
