@@ -572,7 +572,7 @@
 
             </div>
 <br><br>
-            <button id="backBtn" onclick="back()">목록으로</button>
+            <button id="backBtn">목록으로</button>
         </div>
         <br><br><br><br><br>
         <%@ include file="../common/footerbar.jsp" %>

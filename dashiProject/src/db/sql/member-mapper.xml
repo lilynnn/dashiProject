@@ -23,7 +23,6 @@
 		      , DEL_REASON
 		      , DEL_DATE
 		      , BLACKLIST_YN
-		      , BLACK_REASON
 		      , BLACK_DATE
 		      , GRADE
 		  FROM MEM_INFO

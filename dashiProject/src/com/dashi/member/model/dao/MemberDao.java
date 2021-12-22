@@ -41,6 +41,9 @@ public class MemberDao {
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPwd);
 			
+			System.out.println(userId);
+			System.out.println(userPwd);
+
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
@@ -64,7 +67,6 @@ public class MemberDao {
 							   rset.getString("del_reason"),
 							   rset.getDate("del_date"),
 							   rset.getString("blackList_YN"),
-							   rset.getString("black_reason"),
 							   rset.getDate("black_date"),
 							   rset.getInt("grade"));
 			}

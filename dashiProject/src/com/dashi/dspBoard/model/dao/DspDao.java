@@ -302,10 +302,7 @@ public class DspDao {
 			
 			while(rset.next()) { 
 				list.add(new Dsp(rset.getString("CONTENTIMG")));
-				
-	
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -314,6 +311,34 @@ public class DspDao {
 		}
 
 		return list;
+	}
+
+	// 안에 내용 수정하는 메소드
+	public int updateBoard(Connection conn, Dsp d) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateDsp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);//미완성된sql
+			
+			pstmt.setString(1, d.getDspTitle());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+		
+		
+		
+		
 	}
 
 

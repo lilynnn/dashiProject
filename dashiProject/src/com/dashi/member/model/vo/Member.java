@@ -35,7 +35,7 @@ public class Member {
 	public Member(int memNo, String memId, String memPwd, String memName, String nickname, String birth, String memGender,
 			String email, String postNo, String address, String addressDetail, String phone, Date enrollDate,
 			String adoptYN, String enterYN, String payYN, String deleteYN, String delReason, Date delDate,
-			String blackYN, String blackReason, Date blackDate, int grade) {
+			String blackYN, Date blackDate, int grade) {
 		super();
 		this.memNo = memNo;
 		this.memId = memId;
@@ -57,7 +57,6 @@ public class Member {
 		this.delReason = delReason;
 		this.delDate = delDate;
 		this.blackYN = blackYN;
-		this.blackReason = blackReason;
 		this.blackDate = blackDate;
 		this.grade = grade;
 	}

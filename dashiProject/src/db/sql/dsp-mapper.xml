@@ -182,6 +182,24 @@
                and attach_level = 2
 	</entry>
 	
+	<entry key="updateDsp">
+		UPDATE
+		       DSP
+		   SET DSP_TITLE = ?
+		     , POST_CTG = ?
+		     , ISSUE_DATE = ?
+		     , LOCATION_NAME = ?
+		     , CASE_PHONE = ?
+		     , ANIMAL_VARIETY = ?
+		     , ANIMAL_GENDER = ?
+		     , ANIMAL_AGE = ?
+		     , ANIMAL_WEIGHT = ?
+		     , ANIMAL_ISSUE = ?
+		     , ETC = ?
+		     , MONEY = ?
+		WHERE DSP_NO = ?
+	</entry>
+	
 	
 	
 	
