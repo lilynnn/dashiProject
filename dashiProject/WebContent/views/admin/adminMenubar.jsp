@@ -80,7 +80,7 @@
                 <div class="aMenu" id="apply">신청내역관리</div>
                 <ul>
                 	<li><a href="<%= request.getContextPath()%>/adplist.ad?cpage=1" class="menu-detail">입양신청</a></li>
-                    <li><a href="" class="menu-detail">입소신청</a></li>
+                    <li><a href="<%= request.getContextPath()%>/entListView.ad" class="menu-detail">입소신청</a></li>
                 </ul>
                 
                 <div class="aMenu" id="list">게시글관리</div>

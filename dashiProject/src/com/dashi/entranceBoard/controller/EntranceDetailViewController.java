@@ -9,20 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.entranceBoard.model.service.EntranceService;
 import com.dashi.entranceBoard.model.vo.Entrance;
 
 /**
- * Servlet implementation class EntranceListController
+ * Servlet implementation class EntranceDetailViewController
  */
-@WebServlet("/entList.ent")
-public class EntranceListController extends HttpServlet {
+@WebServlet("/entDetail.ent")
+public class EntranceDetailViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EntranceListController() {
+    public EntranceDetailViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,12 +32,23 @@ public class EntranceListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		String eno = request.getParameter("eno");
+				
+		Entrance e = new EntranceService().selectEntrance(eno);
+		ArrayList<Attachment> list = new EntranceService().selectAttachmentList(eno);
 		
-		ArrayList<Entrance> list = new EntranceService().selectEntranceList();
-		
+		request.setAttribute("e", e);
 		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("views/entranceBoard/entranceDetailView.jsp").forward(request, response);
+		
+		
 	
-		request.getRequestDispatcher("views/entranceBoard/entranceListView.jsp").forward(request, response);
+	
+	
+	
+	
 	
 	
 	}

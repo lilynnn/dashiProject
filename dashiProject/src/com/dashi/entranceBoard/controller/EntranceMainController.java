@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class EntranceViewController
  */
 @WebServlet("/entMain.ent")
-public class EntranceViewController extends HttpServlet {
+public class EntranceMainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EntranceViewController() {
+    public EntranceMainController() {
         super();
         // TODO Auto-generated constructor stub
     }

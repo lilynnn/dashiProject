@@ -30,6 +30,58 @@ public class EntranceService {
 		
 	} // 입소게시글 등록
 	
+	public ArrayList<Entrance> selectEntranceList(){
+		Connection conn = getConnection();
+		ArrayList<Entrance> list = new EntranceDao().selectEntranceList(conn);
+		close(conn);
+		return list;
+	} // 입소신청 게시글 조회해오기
+	
+	public ArrayList<Attachment> selectAttachmentList(String eno){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new EntranceDao().selectAttachmentList(conn, eno);
+		close(conn);
+		return list;
+		
+	}// 여러파일 담겨있는 게시글 읽어오기
+	
+	public Entrance selectEntrance(String eno) {
+		Connection conn = getConnection();
+		Entrance b = new EntranceDao().selectEntrance(conn, eno);
+		close(conn);
+		return b;
+	} //게시글 상세조회
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

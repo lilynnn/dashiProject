@@ -13,7 +13,7 @@
         margin: auto;
     }
 	.title-area{
-		background: rgb(40,112,37);
+		background: #8aa68e;
 		width: 1000px;
 		height: 50px;
 		margin: auto;

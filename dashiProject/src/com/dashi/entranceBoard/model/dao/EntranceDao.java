@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -90,11 +91,109 @@ public class EntranceDao {
 		
 	} // 첨부파일 게시판 등록
 	
+	public ArrayList<Entrance> selectEntranceList(Connection conn){
+		ArrayList<Entrance> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEntranceList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Entrance(rset.getString("ent_no")
+									, rset.getString("ent_title")
+									, rset.getString("process_result")
+									, rset.getString("titleimg")));		
+						
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	} // 썸네일 리스트 조회해오기
 	
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, String eno){
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setAttachNo(rset.getString("attach_no"));
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setPath(rset.getString("path"));
+				
+				list.add(at);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	} //첨부파일 여러개 조회해오기
 	
-	
-	
-	
+	public Entrance selectEntrance(Connection conn, String eno) {
+		// select=>ResultSet=>Board객체
+		Entrance b = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectEntrance");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				b = new Entrance(rset.getString("ENT_NO")
+							   , rset.getString("MEM_NO")
+							   , rset.getString("MEM_NAME")
+							   , rset.getString("ENT_TITLE")
+							   , rset.getDate("ENT_APPLYDATE")
+							   , rset.getString("PROCESS_RESULT")
+							   , rset.getString("ANIMAL_VARIETY")
+							   , rset.getString("ANIMAL_NAME")
+							   , rset.getString("ANIMAL_GENDER")
+							   , rset.getInt("ANIMAL_AGE")
+							   , rset.getString("ANIMAL_VACCINATED")
+							   , rset.getString("ANIMAL_NEUTRALIZATION")
+							   , rset.getString("ANIMAL_DISEASE")
+							   , rset.getString("ANIMAL_ISSUE")
+							   , rset.getDate("ENT_WANT_DATE")
+							   , rset.getString("ENT_WANT_TIME")
+							   , rset.getString("REQ_PHONE")
+							   , rset.getString("ANIMAL_TYPE")
+								);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return b;
+	}// 게시글 상세조회
 	
 	
 	

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.entranceBoard.model.vo.Entrance"%>
+<%
+	ArrayList<Entrance> list = (ArrayList<Entrance>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +15,7 @@
         width: 1100px;
         margin: auto;
         margin-top: 50px;
+        height:900px;
 
     }
     /*찜하기 스타일*/
@@ -73,7 +77,15 @@
     	border-radius:3px;
     	border:none;
     }
-    
+   	#boardlist-ent{
+	font-weight:900px;
+   	color:rgb(252, 186, 3);
+   	background: rgb(32, 68, 28);
+	}
+    #mem-boardlist{
+       background: rgb(32, 68, 28);
+       color: orange;
+    }
 
 
 
@@ -99,38 +111,39 @@
                 <!--전체 찜목록-->
                 <div class="likeList-area">
                     
-                    <!--for문 돌려서 여러개 만들거임--> 
-                    <!--클릭시 그 찜한 동물페이지 넘어가게끔-->
+   					<% if(list.isEmpty()){ %>
+   					<div class="img-wrap">
+                                            조회된 입소신청글이 없습니다.
+                    </div>
+   					<% }else{ %>
+   					
+   					<% for(Entrance e : list){ %>
                     <div class="list">
                         <div class="img-wrap">
-                            <img src="" width="250" height="260">
+                        	<input type="hidden" value=<%=e.getEntNo()%>>
+                            <img src="<%=contextPath%>/<%=e.getTitleimg()%>" width="250" height="260">
                         </div>
                         <p>
-                            <span id="category" class="badge badge-success">강아지</span> 
-                            <span>[품종명][이름]의 가족을 기다려요</span>
+                            <span id="category" class="badge badge-primary"><%=e.getProcessResult()%></span> 
+                            <span><%=e.getEntTitle()%></span>
                         </p>
                     </div>
-
+                    <% } %>
+					<% } %>
 
                 </div>   
-
-                <div class="paging-area" align="center">
-
-                    <button class="btn btn-light">&lt;</button>
-                    <button class="btn btn-light">1</button>
-                    <button class="btn btn-light">2</button>
-                    <button class="btn btn-light">3</button>
-                    <button class="btn btn-light">4</button>
-                    <button class="btn btn-light">5</button>
-                    <button class="btn btn-light">&gt;</button>
-        
-                </div>
-
 
 
     </div>
     <br><br><br><br>
-
+	
+		<script>
+			$(function(){
+				$(".img-wrap").click(function(){
+					location.href = "<%=contextPath%>/entDetail.ent?eno=" + $(this).children("input").val();
+				})
+			})
+		</script>
 
 
 

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AdminEntranceListViewController
  */
-@WebServlet("/adEntListView.ad")
+@WebServlet("/entListView.ad")
 public class AdminEntranceListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

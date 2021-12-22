@@ -22,13 +22,13 @@ import com.oreilly.servlet.MultipartRequest;
  * Servlet implementation class EntranceInserController
  */
 @WebServlet("/entinsert.ent")
-public class EntranceInserController extends HttpServlet {
+public class EntranceInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EntranceInserController() {
+    public EntranceInsertController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -73,7 +73,7 @@ public class EntranceInserController extends HttpServlet {
 				Attachment at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName(key));
 				at.setChangeName(multiRequest.getFilesystemName(key));
-				at.setPath("resources/upfiles/entrance");
+				at.setPath("resources/upfiles/entrance/");
 				
 				if(i == 1) { //대표이미지
 					at.setAttachLevel(1);
