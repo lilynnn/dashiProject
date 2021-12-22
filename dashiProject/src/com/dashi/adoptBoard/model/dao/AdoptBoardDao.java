@@ -69,7 +69,6 @@ public class AdoptBoardDao {
 	}
 	
 	
-	
 	// 전체 입양공고글 수 알아오는 메소드
 	public int selectListCount(Connection conn) {
 		

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice"%>
 <%
-
+	int adtCount = (int)request.getAttribute("adtCount");
 
 %>
 <!DOCTYPE html>
@@ -113,7 +113,7 @@
 
                 <div class="box" style="background: #cce9d3;">
                     <div class="countNum">
-                        	카운트숫자
+                        	<%=adtCount %>
                     </div>
                     <div>입양신청</div>
                 </div>

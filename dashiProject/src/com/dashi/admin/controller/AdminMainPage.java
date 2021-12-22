@@ -8,8 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.notice.model.service.NoticeService;
-import com.dashi.notice.model.vo.Notice;
+import com.dashi.adoptBoard.model.service.AdoptBoardService;
 
 /**
  * Servlet implementation class AdminMainPage
@@ -36,8 +35,9 @@ public class AdminMainPage extends HttpServlet {
 		
 		//System.out.println(noCount);
 		//System.out.println(noDate);
-		
-		
+		int adtCount = new AdoptBoardService().selectListCount();
+		System.out.println(adtCount);
+		request.setAttribute("adtCount", adtCount);
 		request.getRequestDispatcher("views/admin/adminMainPage.jsp").forward(request, response);
 	
 	
