@@ -349,7 +349,25 @@ public class ReportDao {
 
 	} // 실종보호 신고글 복구
 	
-	
+	public int blacklistMem(Connection conn, int rno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("blacklistMem");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}// 신고회원 블랙리스트 지정
 	
 	
 	

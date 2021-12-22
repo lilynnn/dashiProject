@@ -99,7 +99,6 @@
 
 		<div class="re-content">
 			<div id="aReportList-find">
-				<form action="<%=contextPath%>/searchIdReport.ad"  method="get">
 					<table id="re-search">
 						<tr>
 							<td colspan="2" width="850px" id="boardName">회원별 신고횟수 조회</td>
@@ -107,20 +106,7 @@
 						<tr>
 							<th colspan="2"><hr style="height: 1px;"></th>
 						</tr>
-						<tr>
-							<th colspan="2" style="border-bottom: 1px solid gray;"></th>
-						</tr>
-						<tr>
-							<td align="center" class="list-name" style="border-top: 1px solid gray;">회원 아이디 검색</td>
-							<td class="list-find">
-								<input type="text" name="searchId" style="width:325px;">
-							</td>
-							<td rowspan="2" width="100px" style="border-top: 1px solid gray; border-bottom: 1px solid gray;">
-								<button type="submit" class="btn btn-outline-primary" style="width:100px;">검색</button>
-							</td>
-						</tr>
 					</table>
-				</form>
 			</div>
 
 			<div id="aReportList">
@@ -132,19 +118,17 @@
 						<tr>
 							<td colspan="6" width="850px"></td>
 						</tr>
-						<tr align="right">
-							<td colspan="6" width="850px">
-								<button type="button" data-toggle="modal" data-target="#myModal">블랙리스트 처리</button>
-							</td>
+						<tr>
+							<td colspan="6" width="850px"></td>
 						</tr>
 	
 						<tr align="center" id="re-list-name">
-							<th width="30px"></th>
 							<th width="100px">회원번호</th>
 							<th width="200px">회원아이디</th>
 							<th width="100px">회원이름</th>
 							<th width="100px">블랙리스트여부</th>
 							<th width="100px">신고횟수</th>
+							<th width="100px">등록</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -157,12 +141,12 @@
 						<!--신고글이 있을때-->
 							<% for(Report r : list){ %>
 							<tr align="center" style="border-bottom:1px solid gray;">
-								<td><input type="checkbox" id="check"></td>
 								<td><%=r.getReportedMem()%></td>
 								<td><%=r.getMemId()%></td>
 								<td><%=r.getMemName()%></td>
 								<td><%=r.getBlacklist()%></td>
 								<td><%=r.getCount()%></td>
+								<th><a href="<%=contextPath%>/reportedmemBlack.ad?rno=<%=r.getReportedMem()%>" class="btn btn-sm btn-outline-dark" style="font-size:12px;">블랙리스트 처리</a></th>
 							</tr>
 							<% } %>
 						<% } %>
@@ -177,41 +161,18 @@
 			
 			
 			<script>
-				$("#re-list>tbody>tr").click(function(){			
-					
-					console.log($("#re-list>tbody>tr").children().eq(1).text());
-					<!--location.href = '<%=contextPath%>/reportDetail.ad?rno=' + $(this).children().eq(0).text();-->
 				
-				})
+				function blacklistMem(){
+					
+					location.href = '<%=contextPath%>/reportedmemBlack.ad?rno=' + $("#re-list>tbody>tr").children().eq(0).text();
+					
+				}
+				
 			</script>		
 	
 		</div>
 
 	</div>
-	
-		<!-- The Modal -->
-		<div class="modal" id="myModal">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-			<form>
-		      <!-- Modal Header -->
-		      <div class="modal-header">
-		        <h4 class="modal-title">해당회원을<br>블랙리스트 처리하시겠습니까?</h4>
-		      </div>
-		
-		      <!-- Modal body -->
-		      <div class="modal-body">
-		        	회원아이디 : 
-		      </div>
-		
-		      <!-- Modal footer -->
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-		      </div>
-			</form>
-		    </div>
-		  </div>
-		</div>
 	
 	
 		

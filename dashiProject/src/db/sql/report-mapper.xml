@@ -112,6 +112,7 @@
 		 WHERE REPORT_NO = ?
 	</entry>
 	
+	<!-- 회원별 신고횟수 및 블랙리스트 여부 조회 -->
 	<entry key="selectUserReportList">
 		SELECT 
 		       REPORTED_MEM
@@ -122,6 +123,7 @@
 		 FROM REPORTED
 		 JOIN MEM_INFO ON (MEM_NO = REPORTED_MEM)
 		WHERE REPORT_STATUS = 'Y'
+		  AND BLACKLIST_YN = 'N'
 		GROUP 
 		      BY 
 		       MEM_ID
@@ -130,6 +132,7 @@
 		     , BLACKLIST_YN
 	</entry>
 
+	<!-- 입양후기 게시글복구 -->
 	<entry key="cancleDeleteReview">
 		UPDATE
 		       ADOPT_REVIEW
@@ -137,6 +140,7 @@
 		 WHERE ARLIST_NO = ?
 	</entry>
 	
+	<!-- 댓글 게시글복구 -->
 	<entry key="cancleDeleteReply">
 		UPDATE
 		       REPLY
@@ -144,6 +148,7 @@
 		 WHERE REPLY_NO = ?
 	</entry>
 	
+	<!-- 실종보호 게시글복구 -->
 	<entry key="cancleDeleteDsp">
 		UPDATE
 		       DSP
@@ -151,7 +156,13 @@
 		 WHERE DSP_NO = ?
 	</entry>
 	
-
+	<entry key="blacklistMem">
+		UPDATE
+			   MEM_INFO
+		   SET BLACKLIST_YN = 'Y'
+		     , BLACK_DATE = SYSDATE
+		 WHERE MEM_NO = ?	   
+	</entry>
 
 
 

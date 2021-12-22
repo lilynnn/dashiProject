@@ -103,7 +103,12 @@ public class ReportService {
 		return result;
 	} // 실종보호 신고글 복구하기
 	
-	
+	public int blacklistMem(int rno) {
+		Connection conn = getConnection();
+		int result = new ReportDao().blacklistMem(conn, rno);
+		close(conn);
+		return result;
+	} // 신고횟수2회 블랙리스트 등록
 	
 	
 	
