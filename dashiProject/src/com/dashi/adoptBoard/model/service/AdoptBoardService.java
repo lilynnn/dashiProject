@@ -207,33 +207,47 @@ public class AdoptBoardService {
 	}
 	
 	// 입양신청회원 상태변경(승인,반려 등)
-	public int AdoptApplyStatusUpdate(int adpStatus, int memNo, String adpNo) {
+	public int adoptApplyStatusUpdate(int adpStatus, int memNo, String adpNo, String adtNo) {
 		Connection conn = getConnection();
+		
 		// 입양공고에 상태 udpate
-		int memGrade = 1;
-		int adtYN = 1;
+		int memGrade = 1;		// 멤버테이블에 업데이트할 등급
+		String memAdoptYN = "N";	// 멤버테이블에 입양완료시 업데이트
+		int adtYN = 1;			// 입양공고, 입양신청서에 업데이트
+		String memPayYN = "N";	// 결제여부
+		
 		switch(adpStatus) {
 		case 5:
 		case 1: memGrade = 1; break;
 		case 2: memGrade = 2; break;
-		case 3:
-		case 4: memGrade = 3; break;
+		case 3: memGrade = 3; memPayYN="Y"; break;
+		case 4: memGrade = 3; memPayYN="Y"; memAdoptYN = "Y"; break;
 		}
 		
-		//if(memGrade == 3) {
-		//	adtYN = new AdoptBoardDao().
-		//}
-			
-		int result = new AdoptBoardDao().AdoptApplyStatusUpdate(conn, adpStatus, memNo);
+		// adopt_apply 테이블에 업데이트(ADOPT_STATUS, PAY_STATUS)
+		int result1 = new AdoptBoardDao().adoptApplyStatusUpdate(conn, adpStatus, adpNo, memPayYN);
 		
+		// adopt_notice 테이블에 업데이트(ADOPT_STATUS)
+		int result2 = new AdoptBoardDao().adoptNoticeADTStatusUpdate(conn, adpStatus, adtNo);
 		
-		if(result>0) {
+		// adopt_animal 테이블에 업데이트(ADT_STATUS, ADOPT_DATE)
+		int result3 = new AdoptBoardDao().adoptAnimalADTStatusUpdate(conn, memAdoptYN, adtNo);
+		
+		// mem_INFO 테이블에 업데이트(ADOPT_YN, PAY_YN, GRADE)
+		int result4 = new AdoptBoardDao().adoptMemUpdate(conn, memAdoptYN, memGrade, memNo, memPayYN);
+		
+		System.out.println("adt apply : "+result1);
+		System.out.println("adt notice : " + result2);
+		System.out.println("adt animal : " + result3);
+		System.out.println("adt member : " + result4);
+		
+		if(result1*result2*result3*result4>0) {
 			commit(conn);
-		}else {
+		} else {
 			rollback(conn);
 		}
 		close(conn);
-		return result;
+		return result1*result2*result3*result4;
 	}
 	
 }

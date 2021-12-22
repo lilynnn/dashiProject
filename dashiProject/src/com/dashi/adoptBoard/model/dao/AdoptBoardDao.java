@@ -690,9 +690,89 @@ public class AdoptBoardDao {
 		return apply;
 	}
 	
-	public int AdoptApplyStatusUpdate(Connection conn, int adpStatus, int memNo) {
+	// 입양신청서 승인시 입양신청테이블 정보 업데이트(ADOPT_STATUS, PAY_STATUS)
+	public int adoptApplyStatusUpdate(Connection conn, int adpStatus, String adpNo, String memPayYN) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String sql = 
+		String sql = prop.getProperty("adoptApplyStatusUpdate");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, adpStatus);
+			pstmt.setString(2, memPayYN);
+			pstmt.setString(3, adpNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		} 
+		return result;
+	}
+	
+	// 입양신청서 승인시 입양공고 테이블 정보 업데이트(ADOPT_STATUS)
+	public int adoptNoticeADTStatusUpdate(Connection conn, int adpStatus, String adtNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adoptNoticeADTStatusUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, adpStatus);
+			pstmt.setString(2, adtNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 입양신청승인시 전체동물 테이블 업데이트(ADOPT_STATUS, ADOPT_DATE)
+	public int adoptAnimalADTStatusUpdate(Connection conn, String memAdoptYN, String adtNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adoptAnimalADTStatusUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memAdoptYN);
+			pstmt.setString(2, adtNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 입양신청승인시 멤버테이블 정보 업데이트()
+	public int adoptMemUpdate(Connection conn, String memAdoptYN, int memGrade, int memNo, String memPayYN) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("adoptMemUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memAdoptYN);
+			pstmt.setString(2, memPayYN);
+			pstmt.setInt(3, memGrade);
+			pstmt.setInt(4, memNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 	}
 }

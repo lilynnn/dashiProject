@@ -394,4 +394,36 @@
 		 WHERE AALIST_NO = ?
 	</entry>
 	
+	<entry key="adoptApplyStatusUpdate">
+		UPDATE 
+		       ADOPT_APPLY
+		   SET ADT_STATUS = ?
+		     , PAY_STATUS = ?
+		 WHERE AALIST_NO = ?
+	</entry>
+	
+	<entry key="adoptNoticeADTStatusUpdate">
+		UPDATE 
+		       ADOPT_NOTICE
+		   SET ADT_STATUS = ?
+		 WHERE ANLIST_NO = ?
+	</entry>
+	
+	<entry key="adoptAnimalADTStatusUpdate">
+		UPDATE ADOPT_ANIMAL
+		   SET ADOPT_STATUS = ?
+		      ,ADOPT_DATE = SYSDATE
+		 WHERE ENT_NO IN (SELECT ENT_NO
+		                    FROM ADOPT_NOTICE
+		                   WHERE ANLIST_NO = ?)
+	</entry>
+	
+	<entry key="adoptMemUpdate">
+		UPDATE MEM_INFO
+		   SET ADOPT_YN = ?
+		     , PAY_YN = ?
+		     , GRADE = ?
+		 WHERE MEM_NO = ?
+	</entry>
+	
 </properties>

@@ -89,8 +89,8 @@
                 <button id="search-btn">검색하기</button>
             </div>
 
-            <table align="center" class="table" style="width: 950px; text-align: center;">
-                <thead border="1" class="thead-light" style="font-size:14px;">
+            <table align="center" class="table" style="width: 950px; text-align: center; font-size:14px;">
+                <thead border="1" class="thead-light">
                     <tr>
                         <th width="150">입소번호</th>
                         <th width="100">카테고리</th>
