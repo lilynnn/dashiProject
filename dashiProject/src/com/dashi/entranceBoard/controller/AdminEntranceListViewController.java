@@ -44,7 +44,7 @@ public class AdminEntranceListViewController extends HttpServlet {
 		int startPage; // 페이징바 시작수
 		int endPage; // 페이징바 끝 수
 		
-		listCount = new NoticeService().selectListCount(); // 총 게시글 갯수
+		listCount = new EntranceService().selectListCount(); // 총 게시글 갯수
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 				

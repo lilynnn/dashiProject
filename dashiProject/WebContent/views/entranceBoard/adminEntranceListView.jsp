@@ -115,14 +115,6 @@
                 <hr>
                 </div>
                 
-                <div style="width:100%;" align="right">
-                	<% if(loginAdmin != null){ %>
-                    
-                    <a href="<%=contextPath%>" class="btn btn-sm btn-dark">
-                        	글쓰기
-                    </a>
-                    <% } %>
-                </div>
 
                 <div style="margin-top: 10px;">
                     <table class="noticeList table-bordered">
@@ -133,34 +125,63 @@
                                 <th width="450">제목</th>
                                 <th width="90">작성자</th>
                                 <th width="100">작성일</th>
-                                <th width="60">처리</th>
+                                <th colspan="2" width="120">처리</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <% if(list.isEmpty()){ %>
 	                    <!--공지글 없을 때-->
 	                    <tr>
 	                        <td colspan="6">게시된 공지사항이 없습니다.</td>
 	                    </tr>
-	                    
+	                    <% }else{ %>
 		                    <!--일반 공지글 있을 때-->
+		                    <% for(Entrance e : list){ %>
 		                    <tr>
-		                    	<td></td>
+		                    	<td><%=e.getEntNo()%></td>
+		                    	
+		                    	<% if(e.getProcessResult().equals("확인")){ %>
 		                    	<td>
-		                        	<button class="btn-sm btn-primary" style="border: none; font-weight: bolder; width:100%">
+		                        	<button class="btn-sm btn-primary" style="width:100%">
 	                                	확인
 	                            	</button>
 		                        </td>
-		                        <td></td>
-		                        <td></td>
-		                        <td></td>
-		                        <td></td>
+		                        <% }else if(e.getProcessResult().equals("승인")){ %>
+		                        <td>
+		                        	<button class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
+	                                	승인
+	                            	</button>
+		                        </td>
+		                        <% }else{ %>
+		                        <td>
+		                        	<button class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
+	                                	반려
+	                            	</button>
+		                        </td>
+		                        <% } %>
+		                        
+		                        <td><%=e.getEntTitle()%></td>
+		                        <td><%=e.getMemNo()%></td>
+		                        <td><%=e.getEntApplyDate()%></td>
+		                        <td>
+		                        	<button class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
+	                                	승인
+	                            	</button>
+		                        </td>
+		                        <td>
+		                        	<button class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
+	                                	반려
+	                            	</button>
+		                        </td>
 		                    </tr>
-                       
+		                    <% } %>
+                       	<% } %>
                         </tbody>
                     </table>
                 </div>
         	
-        	<div class="paging-area" align="center">
+        	<br><br><br><br><br><br>
+        	<div class="paging-area" align="center" style="width:100%; margin-top:30px;">
 			<% if(currentPage != 1){ %>
             <button onclick="location.href='<%=contextPath%>/entListView.ad?cpage=<%=currentPage-1%>';">&lt;</button>
             <% } %>
