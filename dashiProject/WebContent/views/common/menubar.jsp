@@ -161,6 +161,21 @@
 	.btn-find{
 	cursor:pointer;
 	}
+	
+	#pwre{
+	text-decoration:none;
+	color:white;
+	}
+	
+	.find-btn{
+	text-decoration:none;
+	color:black;
+	}
+	
+	.find-btn>a:hover{
+	color:green;
+	text-decoration:none;
+	}
 
 </style>
 </head>
@@ -281,8 +296,10 @@
                         <br><br>
                         <input type="password" class="userPwd" name="userPwd" placeholder="비밀번호" required>
                     </div>
-                    <div class="btn-find" style="margin-top:20px; margin-bottom:15px;" data-toggle="modal" data-target="#findId" onclick="find();">아이디/비밀번호찾기</div>
-
+	                    
+				<div  class="btn-find" style="margin-top:20px; margin-bottom:15px; margin-left:18px;" data-toggle="modal" data-target="#findId" onclick="find();">
+	            <a class="find-btn" href="<%= contextPath%>/findId.me">아이디 찾기</a> | <a class="find-btn" href="<%= contextPath%>/findPwd.me">비밀번호 찾기</a> 
+	        	</div>
                     <button class="loginBtn">로그인</button><br>
                 </form>
               </div>
@@ -327,17 +344,17 @@
            
                 <!-- Modal body -->
                   <tr>
-                    <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;" required></th>
+                    <th colspan="2"><input type="text" name="name" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;" required></th>
                   </tr>
                   <tr>
-                      <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
+                      <th colspan="2"><input type="text" name="dob" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
                         <input type="text" name="" style="width: 10px; height: 30px; margin-bottom:10px;">&nbsp; *&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*</th> 
                   </tr>
                   <tr>
                       <th colspan="2"><input type="phone" placeholder="휴대폰 번호를 입력해주세요."  style="width:280px;height:40px; margin-bottom:10px;" required></th>
                   </tr>
                   <tr>
-                      <th colspan="2"><input type="text" value="" name="" placeholder="인증번호 6자리를 입력해주세요." style="width:280px; height: 40px; margin-bottom:10px;" required></th>
+                      <th colspan="2"><input type="text" value="" name="checknum" placeholder="인증번호 6자리를 입력해주세요." style="width:280px; height: 40px; margin-bottom:10px;" required></th>
                   </tr>
                   
                   <tr>
@@ -345,7 +362,7 @@
                   </tr>
 		        
 		        <tr>
-		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button class="searchbtn" name="" style="width:280px; height:50px;"><b style="font-size:20px;">아이디찾기 <br></b></button></th>
+		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button class="searchbtn" type="button" onclick="showId();" style="width:280px; height:50px;"><b style="font-size:20px;">아이디찾기 <br></b></button></th>
 		        </tr>
 		             
 		        <tr>
@@ -354,10 +371,18 @@
 		        </table>
       	  </form> 
  </div> </div> </div> </div>
-    
-                
-         
-    
+
+    		<script>
+	        	function validatePwd(){
+	        		if($("input[name=updatePwd]").val() != $("input[name=checkPwd]").val()){
+	        			alert("변경할 비밀번호가 일치하지 않습니다.");
+	        			return false;
+	        		}else{
+	        			alert("정상적으로 변경되었습니다")
+	        			location.href="<%=contextPath%>";
+	        		}
+	        	}
+	        </script>
    
    <!--Pwd Modal창-->
 	<div class="modal fade" id="findPwd">
@@ -390,7 +415,7 @@
            
                 <!-- Modal body -->
                 <tr>
-                    <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;"></th>
+                    <th colspan="2"><input type="text" name="" placeholder="아이디를 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;"></th>
                   </tr>
                   <tr>
                       <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
@@ -404,7 +429,7 @@
                   </tr>
                   <tr><th>&nbsp;&nbsp;</th></tr>
 		        <tr>
-		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button onclick="" class="searchbtn" name="pwd" style="width:280px; height:50px;"><b style="font-size:20px;">PW 재설정 <br></b></button></th>
+		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button onclick="" class="searchbtn" name="pwd" style="width:280px; height:50px;"><a href="<%= contextPath %>/findPwd.me" id="pwre" style="font-size:20px;">PW 재설정 <br></a></button></th>
 		        </tr>     
 		        <tr>
 		        <th>&nbsp;&nbsp;</th>

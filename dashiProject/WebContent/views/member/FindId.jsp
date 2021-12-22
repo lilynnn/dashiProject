@@ -1,98 +1,135 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.dashi.member.model.vo.Member, com.dashi.admin.model.vo.Manager"%>
 
-<% 
-	String contextPath = request.getContextPath(); 
-	Member loginUser = (Member)session.getAttribute("loginUser");
-	Manager loginAdmin = (Manager)session.getAttribute("loginAdmin");
-	String alertMsg = (String)session.getAttribute("alertMsg");
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<body>
-   <%@ include file="../common/menubar.jsp" %> 
-   
-   <!--login Modal창-->
-<div class="modal fade" id="findId">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title" style="text-align:center;margin-left:115px;">다시,사랑받개 <br></h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        	<div class="modal-body">
-                <table style="margin:auto; style="margin-bottom:30px;">  
-           		<tr>
-                <th style="color: rgb(40,112,37); font-size:20px; cursor:pointer;" data-toggle="modal" data-target="#findId" >아이디 찾기<br><br></th>
-                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
-                <th style="font-size:20px; margin-bottom:30px; cursor:pointer;" data-toggle="modal" data-target="#findPwd">비밀번호 찾기<br><br></th>
-           		</tr>
-            </table>
-            
-             <table style="margin-left:50px;">
-            <form action="<%=contextPath%>/findId.me" method="post">
-           
-                <!-- Modal body -->
-                  <tr>
-                    <th colspan="2"><input type="text" name="" placeholder="이름을 입력해주세요." style="width: 280px; height:40px; margin-bottom:10px;" required></th>
-                  </tr>
-                  <tr>
-                      <th colspan="2"><input type="text" name="" placeholder="생년월일6자리" style="width: 180px; height: 40px; margin-bottom:10px;"> &nbsp; - 
-                        <input type="text" name="" style="width: 10px; height: 30px; margin-bottom:10px;">&nbsp; *&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*&nbsp;*</th> 
-                  </tr>
-                  <tr>
-                      <th colspan="2"><input type="phone" placeholder="휴대폰 번호를 입력해주세요."  style="width:280px;height:40px; margin-bottom:10px;" required></th>
-                  </tr>
-                  <tr>
-                      <th colspan="2"><input type="text" value="" name="" placeholder="인증번호 6자리를 입력해주세요." style="width:280px; height: 40px; margin-bottom:10px;" required></th>
-                  </tr>
-                  
-                  <tr>
-                  <th>&nbsp;&nbsp;</th>
-                  </tr>
-		        
-		        <tr>
-		            <th colspan="2" style="padding-right:40px; margin-top:20px;"><button class="searchbtn" name="" style="width:280px; height:50px;"><b style="font-size:20px;">아이디찾기 <br></b></button></th>
-		        </tr>
-		             
-		        <tr>
-		        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-		        </tr>
-		        </table>
-      	  </form> 
- </div> </div> </div> </div>
+<title>아이디찾기</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
     
-                <!-- 아이디찾기 실패 
-         
-   
-    <form action="" method="">
-        <fieldset style="margin: 40px; border-radius: 10px; border; background-color: white; width: 300px;">
-    <table class="table" style="width: 300px;">
-      <tr>
-        <th colspan="2"><h3 style="text-align: center;">다시,사랑받개!</h3></th>
-     </tr>
-      <tr>
-          <th style="padding-bottom: 20px;" onclick="" >아이디 찾기</th>
-          <th style="padding-bottom: 20px;  color: rgb(40,112,37); " onclick="">비밀번호 찾기</th>
-      </tr>
-      <tr>
-          <th colspan="2" style="font-size: large; padding-bottom: 10px;"> 아이디 찾기 실패 </th>
-      </tr>
-      <tr><th colspan="2"><input type="text" style="width: 280px; height: 30px; text-align: center;" value="해당아이디를 찾지 못하였습니다."></th></tr>
-      <tr>
-          <th colspan="2"><button class="searchbtn" name="" value="" style="width:280px; height: 30px;"><b>확인</b></button></th>
-      </tr>
-    </table>
-    </fieldset>
-    </form>
-    
-   -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>dashi:아이디 찾기</title> 
+    <style>
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+	
+	html {
+		height: 100%;
+	}
+	
+	body {
+	    width:100%;
+	    height:100%;
+	    margin: 0;
+  		padding-top: 200px;
+  		padding-bottom: 40px;
+  		font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+  		background-repeat: no-repeat;
+	}
+	
+    .card {
+        margin: 0 auto; /* Added */
+        float: none; /* Added */
+        margin-bottom: 10px; /* Added */
+	}
 
+    #btn-Yes{
+        background-color: rgb(102,184,94);
+        border: none;
+    }
+	
+	.form-signin .form-control {
+  		position: relative;
+  		height: auto;
+  		-webkit-box-sizing: border-box;
+     	-moz-box-sizing: border-box;
+        	 box-sizing: border-box;
+  		padding: 10px;
+  		font-size: 16px;
+	}
+    .card-title{
+        margin-left: 30px;
+    }
+	 .links{
+        text-align: center;
+        margin-bottom: 10px;
+        margin-right:20px;
+    }
+    .links>a{
+    color:black;
+    text-decoration:none;
+    }
+
+    a{ 
+    	color:rgb(143,153,142); text-decoration: none; 
+    }
+    .text2{
+    	color : green ;
+    }
+    </style>
+  </head>
+  <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+	
+	<%@ include file="../common/menubar.jsp" %>
+	
+	
+	<br><br><br>
+	<div class="card align-middle" style="width:25rem;">
+		<div class="card-title" style="margin-top:30px;">
+            
+			<h2 class="card-title" align="center" style="color:rgb(40,112,37);  margin-right:50px;"><img style="width:50%" src="<%=contextPath%>/resources/images/adminloginlogo.png"></h2>
+		</div>
+        
+		<div class="card-body">
+      <form action="findId" class="form-signin" method="POST">
+  		 <p class="text2"> ${findid2}</p>
+        <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
+        <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
+        	<p class="check" id="check">${check}</p><br/>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
+      
+      </form>
+        
+		</div>
+        <div class="links">
+            <a href="<%=contextPath%>/findPwd.me">비밀번호 찾기</a> | <a href="<%= contextPath %>"> 메인으로</a> 
+	<br><br>
+        </div>
+	</div>
+      <br><br><br>
+ 
+  
+  <script type="text/javascript">
+  		$("#name").focusout(function(){
+  			
+	     if($('#name').val() == ""){
+	   		$('#check').text('이름을 입력해주세요.');
+	   	  	$('#check').css('color', 'green');
+	   
+	     }else{
+	    	 $('#check').hide();
+	     }
+	     });
+	     
+  		$("#email").focusout(function(){
+	     if($('#email').val() == ""){
+	   		$('#check').text('이메일을 입력해주세요');
+	   	  	$('#check').css('color', 'green');
+	     }else{
+	    	 $('#check').hide();
+	     }
+	     });
+  
+  </script>
+ 
+<%@include file="../common/footerbar.jsp" %>
+   
+  
 </body>
 </html>

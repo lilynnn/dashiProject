@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.member.model.vo.Member" %>
+    
+<%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,31 +106,12 @@
                                 <th>아이디</th>
                                 <th>이름</th>
                                 <th>신고사유</th>
-                                <th>신고횟수</th>
-                                <th>신고일</th>
-                                <th>신고자</th>
+                                <th>지정일</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                          <% if(list.isEmpty()) { %>
-                    	<tr>
-                    		<td colspan="9">조회된 블랙리스트회원이 없습니다.</td>
-                    	</tr>
-                    	
-                    <% }else{ %>
-                    	<% for(Member m : list){ %>
-                    	
-                            <td><%= m.getMemNo() %></td>
-                            <td><%= m.getMemId() %></td>
-                            <td><%= m.getMemName() %></td>
-                            <td><%= m.getBirth() %></td>
-                            <td><%= m.getAddress() %>&nbsp;<%= m.getAddressDetail() %></td>
-                            <td><%= m.getPhone() %></td>
-                            <td><%= m.getAdoptYN() %></td>
-                            <td><%= m.getPayYN() %></td>
-                            <td>
-                            
-                            
+                        
                             <tr>
                                 <td><input type="checkbox"></td>
                                 <th>2</th>

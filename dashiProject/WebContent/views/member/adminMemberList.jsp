@@ -137,6 +137,7 @@
                             <td><%= m.getAdoptYN() %></td>
                             <td><%= m.getPayYN() %></td>
                             <td>
+                            
                             <!-- 
                                 <select name="grade">
                                     <option value="silver">실버</option>

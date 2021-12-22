@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.member.model.service.MemberService;
+import com.dashi.member.model.vo.Member;
+
 /**
  * Servlet implementation class FindPwdController
  */
@@ -26,6 +29,8 @@ public class FindPwdController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+
 		request.getRequestDispatcher("views/member/FindPwd.jsp").forward(request, response);
 	}
 
