@@ -61,7 +61,12 @@
 						<b style="font-size: 15px;">* 다음 양식을 채워주세요.</b>
 					</td>
 				</tr>
-				
+				<tr>
+					<td width=220><b>제목을 적어주세요</b></td>
+					<td width=780>
+						<input type="text" name="title" style="width: 690px" required>
+					</td>
+				</tr>
 				<!-- 신청자 정보 -->
 				<tr>
 					<td width=220>1. 신청인 성명  </td>
@@ -144,7 +149,7 @@
 				<tr>
 					<td width=220>12. 입소희망시간 </td>
 					<td width=780>
-						<input type="text" name="wantTime" style="width: 690px" required>
+						<input type="number" name="wantTime" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
@@ -189,25 +194,28 @@
 			
 			<div id="file-area" style="display:none">
                 <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required>
-                <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);" required>
-                <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);" required>
+                <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
+                <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
             </div>
             
             <script>
             	function chooseFile(num){
-            		$("file" + num).click();
+            		$("#file" + num).click();
             	}
             	
             	function loadImg(inputFile, num){
             		
             		if(inputFile.files.length == 1){
+            			
             			const reader = new FileReader();
+            			
             			reader.readAsDataURL(inputFile.files[0]);
+            			
             			reader.onload = function(e){
             				switch(num){
-	            				case 1: $("#titleImg").attr("src", e.targer.result); break;
-	            				case 2: $("#contentImg1").attr("src", e.targer.result); break;
-	            				case 3: $("#contentImg2").attr("src", e.targer.result); break;
+	            				case 1: $("#titleImg").attr("src", e.target.result); break;
+	                            case 2: $("#contentImg1").attr("src", e.target.result); break;
+	                            case 3: $("#contentImg2").attr("src", e.target.result); break;
             				
             				}
             			}

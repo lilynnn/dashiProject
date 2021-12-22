@@ -49,7 +49,7 @@
     }
 
     .adate{
-        width: 13px;
+        width: 40px;
         margin-top: 50px;
         margin-bottom: 50px;}
 
@@ -66,7 +66,7 @@
     <form action="" method="">
 
         <!-- 전체 div -->
-	<div class="outer" align="center" enctype="multipart/form-data">
+	<div class="outer" align="center">
 
        
     <h3 align= "center" style="margin-top:50px;">입소신청 전 안내사항</h3>
@@ -109,11 +109,11 @@
     <div style="color: rgb(15, 177, 15);"> <b>동의 후 게시글 작성 페이지로 넘어갑니다. </b></div>
     
     <!-- 확인 날짜 입력 -->
-    <div>20<input class="adate" name="" value="" type="text">년<input class="adate" name="" value="" type="text">월<input class="adate" name="" value="" type="text">일</div>
+    <div>20<input class="adate" name="" value="" type="text" required>년<input class="adate" name="" value="" type="text" required>월<input class="adate" name="" value="" type="text" required>일</div>
     
 
         <!-- 체크박스 : 안내사항 동의 -->
-    <div><input type="checkbox">위의 내용에 동의하시면 아래의 문구를 똑같이 작성해주세요. <br>
+    <div><input type="checkbox" id="agree" required>위의 내용에 동의하시면 아래의 문구를 똑같이 작성해주세요. <br>
 
         안내사항을 모두 숙지하였으며, 위의 내용에 동의합니다.</div>
     
@@ -122,7 +122,7 @@
 
                 <!-- 작성완료 제출버튼-->
                 <div>
-                    <button class="btn-1 ButtonBox">작성완료</button>
+                    <a href="<%=contextPath%>/entWrite.ent" class="btn-1 ButtonBox btn" disabled>작성완료</a>
                 </div>
          
         
@@ -130,13 +130,36 @@
             </div>
         </div>
     <hr>
-    
-    
-    
-
+  
     </form>
 
-	</div>
+	<script>
+		$(function(){
+			$("input:checkbox[id=agree]").click(function(){
+				if($("input[id=agree]:checked")){
+					$(".ButtonBox").attr("disabled",false);
+				} else{
+					$(".ButtonBox").attr("disabled",true);
+				}
+			})
+		})
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	<br><br><br><br>
 	<%@ include file="/views/common/footerbar.jsp" %>

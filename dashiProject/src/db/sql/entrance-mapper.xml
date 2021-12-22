@@ -2,7 +2,94 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
 
-<entry key="">
+	<entry key="insertEntrance">
+		INSERT
+		  INTO ENTRANCE
+		  (
+		  	ENT_NO
+		  , MEM_NO
+		  , MEM_NAME
+		  , ENT_TITLE
+		  , ENT_APPLYDATE
+		  , ANIMAL_VARIETY
+		  , ANIMAL_NAME
+		  , ANIMAL_GENDER
+		  , ANIMAL_AGE
+		  , ANIMAL_VACCINATED
+		  , ANIMAL_NEUTRALIZATION
+		  , ANIMAL_DISEASE
+		  , ANIMAL_ISSUE
+		  , ENT_WANT_DATE
+		  , ENT_WANT_TIME
+		  , REQ_PHONE
+		  , ANIMAL_TYPE
+		  )
+		  VALUES
+		  (
+		  	'EN-'||LPAD(SEQ_EN.NEXTVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , SYSDATE
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
 
-</entry>
+	<entry key="insertAttachmentList">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , PATH
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		  VALUES
+		  (
+		    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+		  , 'EN-'||LPAD(SEQ_EN.CURRVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  ) 
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </properties>

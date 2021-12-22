@@ -43,14 +43,16 @@ public class EntranceInserController extends HttpServlet {
 		if(ServletFileUpload.isMultipartContent(request)) {
 		
 		int maxSize = 10 * 1024 * 1024;
-		String savePath = request.getSession().getServletContext().getRealPath("/resources/thumbnail_upfiles/entrance/");
+		String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/entrance/");
 		MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 		
 		Entrance e = new Entrance();
 		e.setMemNo(multiRequest.getParameter("userNo"));
 		e.setMemName(multiRequest.getParameter("userName"));
+		e.setEntTitle(multiRequest.getParameter("title"));
 		e.setAnimalName(multiRequest.getParameter("petName"));
-		e.setAnimalVariety(multiRequest.getParameter("petType"));
+		e.setAnimalType(multiRequest.getParameter("petType"));
+		e.setAnimalVariety(multiRequest.getParameter("petVariety"));
 		e.setAnimalGender(multiRequest.getParameter("petGender"));
 		e.setAnimalAge(Integer.parseInt(multiRequest.getParameter("petAge")));
 		e.setAnimalVaccinated(multiRequest.getParameter("petVaccin"));
@@ -71,7 +73,7 @@ public class EntranceInserController extends HttpServlet {
 				Attachment at = new Attachment();
 				at.setOriginName(multiRequest.getOriginalFileName(key));
 				at.setChangeName(multiRequest.getFilesystemName(key));
-				at.setPath("resources/thumbnail_upfiles/entrance");
+				at.setPath("resources/upfiles/entrance");
 				
 				if(i == 1) { //대표이미지
 					at.setAttachLevel(1);
@@ -83,7 +85,6 @@ public class EntranceInserController extends HttpServlet {
 			}
 			
 		}
-	
 		
 		int result = new EntranceService().insertEntrance(e, list);
 		

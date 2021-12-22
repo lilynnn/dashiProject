@@ -105,9 +105,13 @@
           
        <div class="ent-bt-wrap">
          
-        	<!-- 입소신청 버튼 -->
-          <div align="right"><a href="<%=contextPath%>/entWrite.ent" class="entrance">입소신청</a></div>
-       	<!--1:1문의 버튼 -->
+         <% if(loginUser != null){ %>
+       	  <!-- 입소신청 버튼 -->
+          <div align="right"><a href="<%=contextPath%>/entBefore.ent" class="entrance">입소신청</a></div>
+         <% }else{ %>
+         	<div align="right"><a class="entrance">로그인 후 신청가능</a></div>
+         <% } %>
+       	  <!--1:1문의 버튼 -->
           <div><a href="<%=contextPath%>/insert.as" class="answer">1:1 문의</a></div>
       
       </div>
