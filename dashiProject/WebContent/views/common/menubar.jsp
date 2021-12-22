@@ -187,7 +187,7 @@
         
         
         <!--case 1.로그인 전 -->
-        <%if(loginUser == null){ %>
+        <%if(loginUser == null && loginAdmin == null){ %>
         <table>
             <tr>
                 <td class="login" data-toggle="modal" data-target="#login_myModal">로그인</td>
@@ -195,17 +195,23 @@
                 <td><a class="enroll" href="<%= contextPath %>/enroll1.me">회원가입</a></td>
             </tr>
         </table>
-        <%}else{ %>
-
-        <!-- case 2. 로그인 후-->
-       
+        <%}else if(loginUser!=null && loginAdmin == null){ %>
+        
+        <!-- case 2. 일반사용자 로그인 후 -->
        		<div>
 	            <b><%=loginUser.getMemName() %>님</b>반갑습니다! &nbsp;
 	            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
 	            <a href="<%= contextPath %>/mypage.me" style="color: black;">마이페이지</a>
 	        </div>
        
-       <%}%>
+       <%} else {%>
+       
+       <!-- case 3. 관리자로 로그인 후 -->
+        	<div>
+	            <b><%=loginAdmin.getMnName() %>님</b>반갑습니다! &nbsp;
+	            <a href="<%= contextPath %>/logout.me" style="color: black;">로그아웃</a>&nbsp;&nbsp;&nbsp;
+	        </div>
+       <%} %>
 
 
     </div>

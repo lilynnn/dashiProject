@@ -44,7 +44,7 @@
 	<!-- 지희 수정중  -->	
 	<!-- 사용자 입양신청서 페이지 -->
 	
-	<%@ include file="/views/common/menubar.jsp" %>
+	<%@ include file="../common/menubar.jsp" %>
 	
 	<div class="outer" align="center">
 	
