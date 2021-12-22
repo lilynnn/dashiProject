@@ -117,7 +117,7 @@
 			  	<h3>입양신청글이 존재하지 않습니다.</h3>
 			  <%} else { %>
 	              <!-- 신청내역 보여질 table -->
-	              <table id="list-area" align="center" class="table" style="width: 950px;">
+	              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
 	                  
 	                  <thead class="thead-light">
 	                      <tr>

@@ -689,4 +689,10 @@ public class AdoptBoardDao {
 		}
 		return apply;
 	}
+	
+	public int AdoptApplyStatusUpdate(Connection conn, int adpStatus, int memNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = 
+	}
 }

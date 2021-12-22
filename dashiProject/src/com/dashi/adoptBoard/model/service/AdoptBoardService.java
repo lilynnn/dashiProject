@@ -206,4 +206,34 @@ public class AdoptBoardService {
 		return apply;
 	}
 	
+	// 입양신청회원 상태변경(승인,반려 등)
+	public int AdoptApplyStatusUpdate(int adpStatus, int memNo, String adpNo) {
+		Connection conn = getConnection();
+		// 입양공고에 상태 udpate
+		int memGrade = 1;
+		int adtYN = 1;
+		switch(adpStatus) {
+		case 5:
+		case 1: memGrade = 1; break;
+		case 2: memGrade = 2; break;
+		case 3:
+		case 4: memGrade = 3; break;
+		}
+		
+		//if(memGrade == 3) {
+		//	adtYN = new AdoptBoardDao().
+		//}
+			
+		int result = new AdoptBoardDao().AdoptApplyStatusUpdate(conn, adpStatus, memNo);
+		
+		
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+	
 }

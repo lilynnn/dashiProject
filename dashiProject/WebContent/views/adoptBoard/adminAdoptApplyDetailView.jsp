@@ -95,7 +95,7 @@
             <hr>
         </div>
 		<form action="adpupdate.ad" method="post">
-		
+			<!-- 순서대로 : 입양신청서번호, 입양공고번호, 회원번호 -->
 			<input type="hidden" id="adpNo" name="adpNo" value="<%=ap.getAalistNo() %>">
 			<input type="hidden" id="adtNo" name="adtNo" value="<%=ap.getAnlistNo() %>">
 			<input type="hidden" id="memNo" name="memNo" value="<%=ap.getMemNo() %>">
@@ -123,7 +123,7 @@
 	                    <td>
 	                        <select name="status" id="status" class="btn btn-sm dropdown-toggle" style="width: 99%;">
 	                           	<option id="opt1" value="1">승인대기</option>
-	                            <option id="opt2" value="2">결제대기</option>
+	                            <option id="opt2" value="2">신청승인(결제대기)</option>
 	                           	<option id="opt3" value="3">결제완료</option>
 	                           	<option id="opt4" value="4">입양완료</option>
 	                           	<option id="opt5" value="5">반려</option>               

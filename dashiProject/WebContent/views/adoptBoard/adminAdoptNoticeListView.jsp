@@ -95,7 +95,7 @@
                 <button id="search-btn">검색하기</button>
             </div>
 
-            <table align="center" class="table" style="width: 950px;">
+            <table align="center" class="table" style="width: 950px; font-size:15px;">
                 
                 <thead class="thead-light">
                     <tr>
@@ -131,8 +131,7 @@
 		                        <td><%= an.getWriteDate() %></td>
 		                        <td>
 
-		                        <!-- 관리자 로그인 페이지 완성되면 실행시켜보기!!! -->
-		                        <!-- if(loginUser != null && loginUser.getUserId().startsWith("admin") ){ ===> /* < % 안에 넣어서 작업하기  -->
+		                        
 								<%if(loginAdmin != null) {%>
 		                    	<a href="<%=contextPath %>/adtdelete.ad?adno=<%=an.getAnlistNo() %>" class="btn btn-sm btn-light">삭제하기</a>
 								<%} %>
