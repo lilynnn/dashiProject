@@ -23,7 +23,6 @@
 		      , DEL_REASON
 		      , DEL_DATE
 		      , BLACKLIST_YN
-		      , BLACK_REASON
 		      , BLACK_DATE
 		      , GRADE
 		  FROM MEM_INFO
@@ -137,6 +136,7 @@
 		   SET DELETE_YN = 'Y'
 		     , DEL_REASON = ?
 		     , DEL_DATE = SYSDATE
+		     , GRADE = 9
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>

@@ -77,7 +77,9 @@ public class dpsInsertController extends HttpServlet {
 			for(int i=1 ; i<=5 ; i++) {
 				String key = "file" + i;
 				
+				
 				if(multipartRequest.getOriginalFileName(key) != null) {
+					//첨부파일이 있을경우 at생성
 					Attachment at = new Attachment();
 					at.setOriginName(multipartRequest.getOriginalFileName(key));
 					at.setChangeName(multipartRequest.getFilesystemName(key));

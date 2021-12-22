@@ -215,6 +215,8 @@
 							<th>대표 이미지</th>
 							<td colspan="3">
 								<img id="titleImg" width="300" height="250" src="<%=d.getTitleImg() %>" alt="" onclick="chooseFile(1)">
+								<input type="hidden" name="originFileNo1" value="<%= list.get(0).getAttachNo() %>">
+								
 							</td>
 						</tr>	
 
@@ -223,6 +225,7 @@
 							<!-- 원래 첨부했던 첨부파일 -->
 							<%for(int i=0; i<contentImgPath.size(); i++){ %>
 							<td>
+								<input type="hidden" name="originFileNo<%=i+2 %>" value="<%= list.get(i+1).getAttachNo() %>">
 								<img id="contentImg<%=i+1%>" width="200" height="150" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>" alt="" onclick="chooseFile(<%= i+2 %>)">
 							</td>
 							<%} %>
@@ -230,13 +233,17 @@
 							<!-- 남은 첨부파일 이미지 -->
 							<% for(int i = contentImgPath.size() + 1 ; i < 5 ;i++){ %>
 								<td>
-								<img id="contentImg<%=i%>" width="200" height="150" src="" alt="" onclick="chooseFile(<%= i+1 %>)">
+									<img id="contentImg<%=i%>" width="200" height="150" src="" alt="" onclick="chooseFile(<%= i+1 %>)">
 								<td>
 							<%} %>
 
 						</tr>
 					</table>
+
 				</div>
+				
+				
+				
 
 				<!-- 파일을 입력하는곳-->
 				<div style="display:none">	

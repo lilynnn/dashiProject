@@ -51,7 +51,6 @@ public class dspUpdateController extends HttpServlet {
 			//새롭게 넘어온값 담기
 			Dsp d = new Dsp();
 			String dspNo = multiRequest.getParameter("dno");
-
 			d.setDspNo(multiRequest.getParameter("dno"));  					// 게시글 번호
 			d.setCtg(multiRequest.getParameter("animal-category")); 		// 실종 보호 목격 카테고리
 			d.setDspTitle(multiRequest.getParameter("title")); 				// 글제목
@@ -68,21 +67,23 @@ public class dspUpdateController extends HttpServlet {
 	
 			
 			ArrayList<Attachment> list = new ArrayList<Attachment>();
+			Attachment at = null;
+
 			
 			for(int i=1; i<5; i++) {
 				String key = "file"+i;
-				
+				//넘어온 파일이 있을경우
 				if(multiRequest.getParameter(key+i) != null) {
-					
-					
-					Attachment at = new Attachment();
-					// 기존에 존재하던 originFile값이 넘어올경우
-					if(multiRequest.getParameter("originFileNo"+i) != null) {
-						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
-					} 
+					at = new Attachment();
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
 					at.setPath("/resources/upfiles/dspThumb/");
+
+					// 기존의 첨부파일이 있었을 경우
+					if(multiRequest.getParameter("originFileNo"+i) != null) {
+						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
+					} 
+	
 					
 					if(i == 1) {
 						at.setAttachLevel(1);

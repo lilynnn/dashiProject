@@ -38,7 +38,7 @@
     }
 
     /* 상태수정버튼 div */
-    #statusBtn{
+    #btn-area{
         margin-top: 10px;
         margin-right: 30px;
     }
@@ -72,7 +72,7 @@
     #app-form{display: none;}
     /* 서약서 div */
     #con-form{display: none;}
-
+	
 </style>
 </head>
 <body>
@@ -80,7 +80,7 @@
 	<!-- 지희 수정중  -->
 	<!-- 관리자 입양신청서 상세조회 페이지  -->
 	
-	<%@ include file="../admin/adminMainMenubar.jsp" %>
+	<%@ include file="../common/menubar.jsp" %>
 	<!-- 전체 영역 감싸는 div -->
     <div class="outer">
         
@@ -94,13 +94,17 @@
             입양신청서 상세보기
             <hr>
         </div>
+		<form action="adpupdate.ad" method="post">
 		
-		<form action="">
+			<input type="hidden" id="adpNo" name="adpNo" value="<%=ap.getAalistNo() %>">
+			<input type="hidden" id="adtNo" name="adtNo" value="<%=ap.getAnlistNo() %>">
+			<input type="hidden" id="memNo" name="memNo" value="<%=ap.getMemNo() %>">
+			
 	        <!-- 상태수정버튼 영역 -->
 	        <%if(loginAdmin != null) {%>
-	        <div id="statusBtn" style="float: right;">
-	            <button class="btn btn-success">수정</button>
-	            <button class="btn btn-secondary">삭제</button>
+	        <div id="btn-area" style="float: right;">
+	            <button id="statusBtn" type="submit" class="btn btn-success">수정하기</button>
+	            <a href="adplist.ad?cpage=1" class="btn btn-secondary">목록보기</a>
 	        </div>
 			<%} %>
 	        <!-- 신청 기본 정보 table -->
@@ -125,32 +129,32 @@
 	                           	<option id="opt5" value="5">반려</option>               
 	                        </select>
 							<script>
-								$(function(){
-									const statusNum = <%=ap.getAdtStatus() %>
+							$(function(){
+								const statusNum = <%=ap.getAdtStatus() %>
+								
+								switch(statusNum){
+									case 1:
+										$("#opt1").attr("selected","selected");
+									break
 									
-									switch(statusNum){
-										case 1:
-											$("#opt1").attr("selected","selected");
-										break
-										
-										case 2:
-											$("#opt2").attr("selected","selected");
-										break
-										
-										case 3:
-											$("#opt3").attr("selected","selected");
-										break
-										
-										case 4:
-											$("#opt4").attr("selected","selected");
-										break
-										
-										case 5:
-											$("#opt5").attr("selected","selected");
-										break
-										
-									}
-								})
+									case 2:
+										$("#opt2").attr("selected","selected");
+									break
+									
+									case 3:
+										$("#opt3").attr("selected","selected");
+									break
+									
+									case 4:
+										$("#opt4").attr("selected","selected");
+									break
+									
+									case 5:
+										$("#opt5").attr("selected","selected");
+									break
+									
+								}
+							})
 							</script>
 	                    </td>
 	                </tr>
@@ -166,8 +170,8 @@
 	            <div id="app-form" style="margin-left: 20px;">
 	
 	                <table style="width: 900px; font-size: 17px; margin: 10px 0px;">
-	                    <tr>&nbsp;
-	                        <!-- 공백란 -->
+	                    <tr>
+	                        <td>&nbsp;</td>
 	                    </tr>
 	                    <tr>
 	                        <td style="text-align: center; width: 200px;"><b>입양공고문 제목</b></td>
@@ -423,7 +427,8 @@
 	            </div>
 	            <br><br><br>
 	        </div>   
-        </form> 
+        </form>
+        
     <%@ include file="../common/footerbar.jsp" %>
     </div>
 
@@ -446,7 +451,7 @@
                     // 사라지게끔
                     $div.slideUp();
                 }
-            });
+            })
                 
             $("#btn2").click(function(){
 
@@ -461,7 +466,9 @@
                 } else {
                     $div.slideUp();
                 }
-            });
+            })
+           
+            		
         })
     </script>
 

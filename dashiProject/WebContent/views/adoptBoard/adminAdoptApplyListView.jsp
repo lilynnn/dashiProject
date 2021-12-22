@@ -83,7 +83,7 @@
 	<!-- 지희 수정중  -->
 	<!-- 관리자 입양신청리스트페이지  -->
 	
-	<%@ include file="../admin/adminMainMenubar.jsp" %>
+	<%@ include file="../common/menubar.jsp" %>
     <div class="outer">
 
         <!-- 관리자 메뉴바 영역-->
@@ -113,51 +113,52 @@
                   <button id="search-btn">검색하기</button>
               </div>
 
-              <!-- 처리상태에 따라 뱃지 바꿔서보여지게 -->
-              <!-- else if사용 -->
-              <!-- 신청내역 보여질 table -->
-              <table id="list-area" align="center" class="table" style="width: 950px;">
-                  
-                  <thead class="thead-light">
-                      <tr>
-                          <th width="115">글번호</th>
-                          <th width="115">공고번호</th>
-                          <th width="300">공고제목</th>
-                          <th width="120">신청인</th>
-                          <th width="150">신청일</th>
-                          <th width="120">처리상태</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                  	<%for(AdoptApply ap : list) { %>
-                  	<tr>
-                  		<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">
-                  		<input type="hidden" name="anlistNo" value="<%=ap.getAnlistNo() %>">
-                  		<input type="hidden" name="memNo" value="<%=ap.getMemNo() %>">
-                          <td><%=ap.getAalistNo() %></td>
-					<td><%=ap.getAnlistNo() %></td>
-                          <td><%=ap.getAaTitle() %></td>
-                          <td><%=ap.getMemId() %></td>
-                          <td><%=ap.getApplyDate() %></td>
-                          <td>
-                          	<%if(ap.getAdtStatus() == 1 ) {%>
-                              	<span class="badge badge-secondary" style=" width:60px; font-weight: 700;">승인대기</span>
-                          	<%} else if(ap.getAdtStatus() == 2) {%>
-                          	 	<span class="badge badge-warning" style=" width:60px; font-weight: 700;">결제대기</span>
-                          	<%} else if(ap.getAdtStatus() == 3) {%>
-                          		<span class="badge badge-danger" style=" width:60px; font-weight: 700;">결제완료</span> 
-                          	<%} else if(ap.getAdtStatus() == 4) {%>
-                          		<span class="badge badge-success" style=" width:60px; font-weight: 700;">입양완료</span>
-                          	<%} else {%>
-                          		<span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
-                          	<%} %>
-                          </td>   
-                      </tr>
-                  	<%} %>
-                  </tbody>  
-              </table>
-
-              
+			  <%if(list.isEmpty()) {%>
+			  	<h3>입양신청글이 존재하지 않습니다.</h3>
+			  <%} else { %>
+	              <!-- 신청내역 보여질 table -->
+	              <table id="list-area" align="center" class="table" style="width: 950px;">
+	                  
+	                  <thead class="thead-light">
+	                      <tr>
+	                          <th width="115">글번호</th>
+	                          <th width="115">공고번호</th>
+	                          <th width="300">공고제목</th>
+	                          <th width="120">신청인</th>
+	                          <th width="150">신청일</th>
+	                          <th width="120">처리상태</th>
+	                      </tr>
+	                  </thead>
+	                  <tbody>
+	                  	<%for(AdoptApply ap : list) { %>
+	                  	<tr>
+	                  		<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">
+	                  		<input type="hidden" name="anlistNo" value="<%=ap.getAnlistNo() %>">
+	                  		<input type="hidden" name="memNo" value="<%=ap.getMemNo() %>">
+	                          <td><%=ap.getAalistNo() %></td>
+						<td><%=ap.getAnlistNo() %></td>
+	                          <td><%=ap.getAaTitle() %></td>
+	                          <td><%=ap.getMemId() %></td>
+	                          <td><%=ap.getApplyDate() %></td>
+	                          <td>
+	                          	<%if(ap.getAdtStatus() == 1 ) {%>
+	                              	<span class="badge badge-secondary" style=" width:60px; font-weight: 700;">승인대기</span>
+	                          	<%} else if(ap.getAdtStatus() == 2) {%>
+	                          	 	<span class="badge badge-warning" style=" width:60px; font-weight: 700;">결제대기</span>
+	                          	<%} else if(ap.getAdtStatus() == 3) {%>
+	                          		<span class="badge badge-danger" style=" width:60px; font-weight: 700;">결제완료</span> 
+	                          	<%} else if(ap.getAdtStatus() == 4) {%>
+	                          		<span class="badge badge-success" style=" width:60px; font-weight: 700;">입양완료</span>
+	                          	<%} else {%>
+	                          		<span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
+	                          	<%} %>
+	                          </td>   
+	                      </tr>
+	                  	<%} %>
+	                  </tbody>  
+	              </table>
+				<%} %>
+	              
               <br>
 
               <!-- 페이징버튼 영역 -->
@@ -183,8 +184,8 @@
 
               <br><br>
 
-
-          </div>
+	
+		</div>
     </div>
     <script>
         $(function(){

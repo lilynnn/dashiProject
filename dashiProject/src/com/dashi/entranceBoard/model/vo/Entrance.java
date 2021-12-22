@@ -5,7 +5,7 @@ import java.sql.Date;
 public class Entrance {
 	
 	private String entNo;
-	private int memNo;
+	private String memNo;
 	private String memName;
 	private  String entTitle;
 	private Date entApplyDate;
@@ -19,16 +19,16 @@ public class Entrance {
 	private String animalDisease;
 	private String animalIssue;
 	private Date entWantDate;
-	private int entWantTime;
+	private String entWantTime;
 	private String reqPhone;
 	private Date entDate;
 	private String animalType;
 	
 	public Entrance() {}
 
-	public Entrance(String entNo, int memNo, String memName, String entTitle, Date entApplyDate, String processResult,
+	public Entrance(String entNo, String memNo, String memName, String entTitle, Date entApplyDate, String processResult,
 			String animalVariety, String animalName, String animalGender, int animalAge, String animalVaccinated,
-			String animalNeturalization, String animalDisease, String animalIssue, Date entWantDate, int entWantTime,
+			String animalNeturalization, String animalDisease, String animalIssue, Date entWantDate, String entWantTime,
 			String reqPhone, Date entDate, String animalType) {
 		super();
 		this.entNo = entNo;
@@ -60,11 +60,11 @@ public class Entrance {
 		this.entNo = entNo;
 	}
 
-	public int getMemNo() {
+	public String getMemNo() {
 		return memNo;
 	}
 
-	public void setMemNo(int memNo) {
+	public void setMemNo(String memNo) {
 		this.memNo = memNo;
 	}
 
@@ -172,11 +172,11 @@ public class Entrance {
 		this.entWantDate = entWantDate;
 	}
 
-	public int getEntWantTime() {
+	public String getEntWantTime() {
 		return entWantTime;
 	}
 
-	public void setEntWantTime(int entWantTime) {
+	public void setEntWantTime(String entWantTime) {
 		this.entWantTime = entWantTime;
 	}
 

@@ -1,4 +1,4 @@
-package com.dashi.entranceBoard.controller;
+package com.dashi.adoptBoard.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class EntranceForm
+ * Servlet implementation class AdminAdoptApplyUpdateController
  */
-@WebServlet("/entWrite.ent")
-public class EntranceFormController extends HttpServlet {
+@WebServlet("/adpupdate.ad")
+public class AdminAdoptApplyUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EntranceFormController() {
+    public AdminAdoptApplyUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,8 @@ public class EntranceFormController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/entranceBoard/entranceEnrollForm.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

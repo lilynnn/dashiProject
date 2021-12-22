@@ -52,7 +52,7 @@
 	<!-- 지희 수정중  -->
 	<!-- 사용자가 보게될 입양 공고문의 상세 페이지 -->
 	
-	<%@ include file="/views/common/menubar.jsp" %>
+	<%@ include file="../common/menubar.jsp" %>
 	
 	<div class="outer">
 

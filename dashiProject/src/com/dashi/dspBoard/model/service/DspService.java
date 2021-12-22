@@ -102,8 +102,11 @@ public class DspService {
 	}
 	
 	public int updateDsp(Dsp d, ArrayList<Attachment> list) {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection conn = getConnection();
+		
+		int result1 = new BoardDao().updateBoard(conn,d);
+
+		return result1 * result2;
 	}
 
 	
