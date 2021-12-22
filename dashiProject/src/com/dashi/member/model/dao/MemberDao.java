@@ -389,7 +389,7 @@ public class MemberDao {
 			
 			if(rset.next()) {
 				
-				memId = rset.getString("findId");
+				memId = rset.getString("MEM_ID");
 			} 
 			
 			System.out.println("member : " + memId);

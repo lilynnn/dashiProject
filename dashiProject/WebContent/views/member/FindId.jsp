@@ -81,11 +81,9 @@
 	
 	<br><br><br>
 	<div class="card align-middle" style="width:25rem;">
-		<div class="card-title" style="margin-top:30px;">
-            
-			<h2 class="card-title" align="center" style="color:rgb(40,112,37);  margin-right:50px;"><img style="width:50%" src="<%=contextPath%>/resources/images/adminloginlogo.png"></h2>
-		</div>
-        
+		<div class="card-title"  align="center" style="margin-right:40px; color:rgb(40,112,37);"><img align="center"   src="<%=contextPath%>/resources/images/logo33.png">
+			</div>
+	
 		<div class="card-body">
       <form action="<%=contextPath %>/findId.me" class="form-signin" method="POST">
   		 <p class="text2"> ${findid2}</p>

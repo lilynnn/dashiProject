@@ -44,12 +44,12 @@ public class FindIdController extends HttpServlet {
 	         //출력
 	         if(memId != null) {//결과가 있으면(정보가 맞다면)
 	        	 request.getSession().setAttribute("alertMsg", String.format("로그인아이디는 %s 입니다.", memId));
-	 			 request.setAttribute("historyBack", true);
+	        	 response.sendRedirect(request.getContextPath());
 
 	         }
 	         else if(memId == null) {//결과가 없으면(정보가 맞지 않으면)
 	        	 request.getSession().setAttribute("alertMsg", "일치하는 회원이 없습니다.");
-	 			 request.setAttribute("historyBack", true);
+	        	 response.sendRedirect(request.getContextPath());
 	         }
 	      }
 	      catch(Exception e) {
