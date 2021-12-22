@@ -355,12 +355,21 @@
                                 <td><button>삭제</button></td>
                                 <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
                                 <td><button>답글</button></td>
+                            </tr>                            
+                            <tr id="" style="display: nonee;">
+                                <td colspan="5"><textarea cols="100" rows="8" placeholder=""></textarea></td>
+                                <td><button>수정</button></td>
+                                <td><button>삭제</button></td>
+                                <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
+                                <td><button>답글</button></td>
                             </tr>
                             <tr>
                                 <td>&nbsp;</td>
                             </tr>
 							
                         </tbody>
+
+
 
                     </table>
                     <!--대댓글영역-->
@@ -424,11 +433,9 @@
                     	
                     		selectReplyList();
                     		
-                    		setInterval(selectReplyList, 1000);
+                    		//setInterval(selectReplyList, 1000);
                     		
                     	});
-                    	
-
                     	
                     	// ajax로 댓글 작성용
                     	function insertReply(){
@@ -456,6 +463,7 @@
                     	
                     	// ajax로 해당 게시글에 달린 댓글 목록 조회용
                     	function selectReplyList(){
+                    		
                     		$.ajax({
                     			url:"rlist.ar",
                     			data:{arno:'<%=ar.getArlistNo()%>'},
@@ -474,18 +482,24 @@
 						                        + "<tr>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>"
-						                        + "<tr>"
-						                           + "<td colspan=5>"+ list[i].replyContent +"</td>"
-						                           + "<td><button>수정</button></td>"
+						                        + "<tr id=\"repcontent-area\">"
+						                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
+						                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + "');\">수정</button></td>"
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
+						                        + "<tr id=\"update-input\" style=\"display: none;\">"
+					                               + "<td colspan=5><textarea cols=100 rows=8 placeholder=\"" + list[i].replyContent + "\"></textarea></td>"
+					                               + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
+					                               + "<td><button>취소</button></td>"
+					                            + "</tr>"
 						                        + "<tr>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>";
                     				}
 
                                     $("#comm-outer").html(result);
+                                    
                     				
                     			},error:function(){
                     				console.log("댓글목록 조회용 ajax 통신 실패")
@@ -514,9 +528,40 @@
                     	
                     	}
                     	
-                    	// 댓글 수정용
+                    	// 댓글 수정 폼용
+                    	function updateReplyForm(replyNo){
+                    		
+                    		$.ajax({
+                    			url:"rupform.ar",
+                    			type:"post",
+                    			data:{
+                    				replyNo:replyNo
+                    			},
+                    			success:function(){
+                    				$('#repcontent-area').attr('style', "display:none;");  //숨기기
+                    				$('#update-input').attr('style', "display:'';");  //나타내기
+                    			}
+                    		})
+                    	}
                     	
-
+                    	
+                    	// 댓글 수정 완료용
+						function updateReply(replyNo){
+                    		$.ajax({
+                    			url:"rupdate.ar",
+                    			type:"post",
+                    			data:{
+                    				replyNo: replyNo
+                    			},
+                    			success:function(result){
+                    				if(result > 0){
+                    					selectReplyList();
+                    				}
+                    			}, error:function(){
+                    				console.log("댓글수정용ajax 통신 실패")
+                    			}
+                    		});
+                    	}
 
                     	
                     

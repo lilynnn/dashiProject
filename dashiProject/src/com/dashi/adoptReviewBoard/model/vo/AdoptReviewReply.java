@@ -39,15 +39,12 @@ public class AdoptReviewReply {
 		this.writeDate = writeDate;
 	}	
 	
-	// 댓글 수정용
-	
-	public AdoptReviewReply(String replyContent, String updateDate, String replyNo) {
+	// 댓글 수정 폼
+	public AdoptReviewReply(String replyNo, String replyContent) {
 		super();
-		this.replyContent = replyContent;
-		this.updateDate = updateDate;
 		this.replyNo = replyNo;
+		this.replyContent = replyContent;
 	}
-	
 	
 	
 	
@@ -59,6 +56,8 @@ public class AdoptReviewReply {
 
 
 
+
+	
 
 	public void setReplyNo(String replyNo) {
 		this.replyNo = replyNo;

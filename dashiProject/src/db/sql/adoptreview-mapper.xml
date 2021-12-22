@@ -169,6 +169,22 @@
 		 WHERE REPLY_NO = ?
 	</entry>
 	
+	<entry key="updateReplyForm">
+		SELECT
+		       REPLY_NO
+		     , REPLY_CONTENT
+		  FROM REPLY
+		 WHERE REPLY_NO = ?
+	</entry>
+	
+	<entry key="updateReply">
+		UPDATE
+		       REPLY
+		   SET REPLY_CONTENT = ?
+		     , UPDATE_DATE = SYSDATE
+		 WHERE REPLY_NO = ?
+	</entry>
+	
 </properties>
 
 

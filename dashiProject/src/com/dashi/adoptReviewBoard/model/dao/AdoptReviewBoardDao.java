@@ -344,6 +344,36 @@ public class AdoptReviewBoardDao {
 		return result;
 	}
 	
+	// 댓글 수정 폼
+	public AdoptReviewReply updateReplyForm(Connection conn, String replyNo) {
+		
+		AdoptReviewReply arp = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("updateReplyForm");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, replyNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				arp = new AdoptReviewReply(rset.getString("REPLY_NO"),
+										   rset.getString("REPLY_CONTENT"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return arp;
+		
+		
+	}
+	
 	// 댓글 수정
 	public int updateReply(Connection conn, AdoptReviewReply arp){
 		

@@ -115,6 +115,14 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
+	// 댓글 수정 폼
+	public AdoptReviewReply updateReplyForm(String replyNo) {
+		Connection conn = getConnection();
+		AdoptReviewReply arp = new AdoptReviewBoardDao().updateReplyForm(conn, replyNo);
+		close(conn);
+		return arp;
+	}
+	
 	// 댓글 수정
 	public int updateReply(AdoptReviewReply arp){
 		Connection conn = getConnection();
