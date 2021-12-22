@@ -209,8 +209,17 @@
 			<%if(loginUser != null && loginUser.getNickname().equals(d.getNickName())) { %>
 	            <!--로그인한 사용자가 게시글 작성자일경우-->
 	            <a href="<%=contextPath %>/updateForm.dsp?dno=<%=d.getDspNo()%>" class="btn btn-sm btn-warning">수정하기</a>
-	            <a href="" class="btn btn-sm btn-danger">삭제하기</a>
+	            <a onclick="deleteconfirm()" class="btn btn-sm btn-danger">삭제하기</a>
             <% } %>
+            <script>
+            function deleteconfirm(){
+            	  if(!confirm('정말로 삭제하시겠습니까?\n삭제하시면 복구할 수 없습니다.')){
+            		    // 아니오를 클릭할 경우 아무 액션 없음
+            		    return false;
+            		  }
+            	  location.href = '<%= contextPath%>/delete.dsp?dno=<%=d.getDspNo()%>';
+            }
+            </script>
         </div>
 
 

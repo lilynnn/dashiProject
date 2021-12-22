@@ -199,9 +199,16 @@
 		     , MONEY = ?
 		WHERE DSP_NO = ?
 	</entry>
-	<entry key=""></entry>
 	
-	<entry key=""></entry>
+	
+	
+	<entry key="deleteDsp">
+		UPDATE
+		       DSP
+		   SET POST_STATUS = 'D'
+		 WHERE DSP_NO = ?
+	</entry>
+	
 	
 	
 	
