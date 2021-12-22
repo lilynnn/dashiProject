@@ -164,6 +164,13 @@
 		   AND MEM_PWD = ?
 </entry>
 
+<entry key="findId">
+SELECT 
+	MEM_ID
+FROM MEM_INFO
+WHERE MEM_NAME =?
+AND EMAIL =? 
+</entry>
 
 
 

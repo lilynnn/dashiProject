@@ -15,7 +15,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>dashi:아이디 찾기</title> 
+    
     <style>
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 	
@@ -87,12 +87,12 @@
 		</div>
         
 		<div class="card-body">
-      <form action="findId" class="form-signin" method="POST">
+      <form action="<%=contextPath %>/findId.me" class="form-signin" method="POST">
   		 <p class="text2"> ${findid2}</p>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
         	<p class="check" id="check">${check}</p><br/>
-        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" type="submit">아 이 디 찾 기</button>
+        <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" value="check" type="submit">아 이 디 찾 기</button>
       
       </form>
         
@@ -126,8 +126,10 @@
 	     }
 	     });
   
+  		
   </script>
- 
+  
+   
 <%@include file="../common/footerbar.jsp" %>
    
   

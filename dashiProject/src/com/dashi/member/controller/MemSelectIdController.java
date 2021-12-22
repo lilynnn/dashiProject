@@ -6,24 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.dashi.member.model.service.MemberService;
-import com.dashi.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberUpdatePwdController
+ * Servlet implementation class MemSelectIdController
  */
-
-/*pw재설정 view*/
-@WebServlet("/updatePwd.me")
-public class MemberUpdatePwdController extends HttpServlet {
+@WebServlet("/selectId.me")
+public class MemSelectIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberUpdatePwdController() {
+    public MemSelectIdController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,8 +27,10 @@ public class MemberUpdatePwdController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/member/MemberUpdatePwd.jsp").forward(request, response);
+		request.getRequestDispatcher("views/member/FindId.jsp").forward(request, response);
+	
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
