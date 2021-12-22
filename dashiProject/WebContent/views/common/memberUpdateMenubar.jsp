@@ -68,6 +68,7 @@
                 <ul>
                     <li><a href="<%=request.getContextPath()%>/boardList.me" id="boardlist-list">게시글목록</a></li>
                     <li><a href="" id="boardlist-comm">댓글목록</a></li>
+                    <li><a href="" id="boardlist-ent">입소신청목록</a></li>
                 </ul>
             </li>
             

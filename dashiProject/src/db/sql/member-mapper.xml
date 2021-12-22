@@ -136,6 +136,7 @@
 		   SET DELETE_YN = 'Y'
 		     , DEL_REASON = ?
 		     , DEL_DATE = SYSDATE
+		     , GRADE = 9
 		 WHERE MEM_ID = ?
 		   AND MEM_PWD = ?
 	</entry>
