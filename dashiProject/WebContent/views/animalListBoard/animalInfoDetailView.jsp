@@ -60,7 +60,7 @@
 <body>
 
     <!-- 동물정보 조회하는 페이지 -->
-    <%@ include file="../common/menubar.jsp" %>
+    <%@ include file="../admin/adminMainMenubar.jsp" %>
 
     <!-- 전체 영역 감싸는 div -->
     <div class="outer">
@@ -154,6 +154,7 @@
 
             <div style=" text-align: center;">
 			<br><br>
+			  <%if(loginAdmin != null) {%>
 				<%if(a.getAdoptStatus().equals("N")) {%>
 	              <a class="btn btn-warning" href="<%= contextPath %>/adtenrollForm.ad?ano=<%=a.getEntNo() %>">공고등록하기</a>
                 <%} %>
@@ -162,7 +163,7 @@
                 <a class="btn btn-success" href="<%=contextPath %>/anupdateForm.ad?ano=<%=a.getEntNo() %>" >수정하기</a>
                 &nbsp;
                 <a class="btn btn-secondary" href="<%=contextPath %>/anlist.ad?cpage=1">목록보기</a>
-	
+			<%} %>
 			</div>
 
             <br><br><br><br>

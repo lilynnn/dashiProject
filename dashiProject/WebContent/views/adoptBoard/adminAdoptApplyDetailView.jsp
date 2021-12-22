@@ -94,14 +94,15 @@
             입양신청서 상세보기
             <hr>
         </div>
-
+		
 		<form action="">
 	        <!-- 상태수정버튼 영역 -->
+	        <%if(loginAdmin != null) {%>
 	        <div id="statusBtn" style="float: right;">
 	            <button class="btn btn-success">수정</button>
 	            <button class="btn btn-secondary">삭제</button>
 	        </div>
-	
+			<%} %>
 	        <!-- 신청 기본 정보 table -->
 	        <div class="content-area">
 	            <table id="writerInfo">
