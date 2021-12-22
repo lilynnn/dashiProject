@@ -68,13 +68,80 @@
 		  ) 
 	</entry>
 
+	<entry key="selectEntranceList">
+		SELECT
+			   ENT_NO
+		     , ENT_TITLE
+		     , PROCESS_RESULT
+		     , PATH||CHANGE_NAME "titleimg"
+		  FROM ENTRANCE
+		  JOIN ATTACHMENT ON (ENT_NO = REF_NO)
+		 WHERE ATTACH_LEVEL = 1
+		   AND ENT_STATUS = 'N'
+		 ORDER
+		       BY ENT_NO DESC
+	</entry>
 
+	<entry key="selectAttachment">
+		SELECT
+		       ATTACH_NO
+		     , ORIGIN_NAME
+		     , CHANGE_NAME
+		     , PATH
+		  FROM ATTACHMENT
+		 WHERE REF_NO = ?
+	</entry>
 
+	<entry key="selectEntrance">
+		SELECT
+		       ENT_NO
+		     , MEM_NO
+		     , MEM_NAME
+		     , ENT_TITLE
+		     , ENT_APPLYDATE
+		     , PROCESS_RESULT
+		     , ANIMAL_VARIETY
+		     , ANIMAL_NAME
+		     , ANIMAL_GENDER
+		     , ANIMAL_AGE
+		     , ANIMAL_VACCINATED
+		     , ANIMAL_NEUTRALIZATION
+		     , ANIMAL_DISEASE
+		     , ANIMAL_ISSUE
+		     , ENT_WANT_DATE
+		     , ENT_WANT_TIME
+		     , REQ_PHONE
+		     , ANIMAL_TYPE
+		  FROM ENTRANCE
+		 WHERE ENT_NO = ?
+	</entry>
 
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) "count"
+		  FROM ENTRANCE
+		 WHERE ENT_STATUS = 'N'
+	</entry>
 
-
-
-
+	<entry key="selectList">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+		                       ENT_NO
+		                     , M.MEM_NAME "MEM_NAME"
+		                     , ENT_TITLE
+		                     , ENT_APPLYDATE
+		                     , PROCESS_RESULT
+		                  FROM ENTRANCE
+		                  JOIN MEM_INFO M USING (MEM_NO)
+		                 WHERE ENT_STATUS = 'N'
+		                 ORDER
+		                       BY ENT_NO DESC) A
+		                )
+		 WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 

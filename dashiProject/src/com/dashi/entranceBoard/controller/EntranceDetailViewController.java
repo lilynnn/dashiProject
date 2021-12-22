@@ -1,4 +1,4 @@
-package com.dashi.adoptReviewBoard.controller;
+package com.dashi.entranceBoard.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
-import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
-import com.google.gson.Gson;
+import com.dashi.common.model.vo.Attachment;
+import com.dashi.entranceBoard.model.service.EntranceService;
+import com.dashi.entranceBoard.model.vo.Entrance;
 
 /**
- * Servlet implementation class AjaxAdoptReviewReplyListController
+ * Servlet implementation class EntranceDetailViewController
  */
-@WebServlet("/rlist.ar")
-public class AjaxAdoptReviewReplyListController extends HttpServlet {
+@WebServlet("/entDetail.ent")
+public class EntranceDetailViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdoptReviewReplyListController() {
+    public EntranceDetailViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +33,24 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String arlistNo = request.getParameter("arno");
+		String eno = request.getParameter("eno");
+				
+		Entrance e = new EntranceService().selectEntrance(eno);
+		ArrayList<Attachment> list = new EntranceService().selectAttachmentList(eno);
 		
-		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
+		request.setAttribute("e", e);
+		request.setAttribute("list", list);
 		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		request.getRequestDispatcher("views/entranceBoard/entranceDetailView.jsp").forward(request, response);
 		
 		
+	
+	
+	
+	
+	
+	
+	
 	}
 
 	/**

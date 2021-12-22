@@ -14,16 +14,16 @@ import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class AjaxAdoptReviewReplyListController
+ * Servlet implementation class AjaxAdoptReviewReplyUpdateController
  */
-@WebServlet("/rlist.ar")
-public class AjaxAdoptReviewReplyListController extends HttpServlet {
+@WebServlet("/rupdate.ar")
+public class AjaxAdoptReviewReplyUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdoptReviewReplyListController() {
+    public AjaxAdoptReviewReplyUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +33,17 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String arlistNo = request.getParameter("arno");
+		String replyNo = request.getParameter("replyNo");
+		String replyContent = request.getParameter("replyContent");
 		
-		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
+		AdoptReviewReply arp = new AdoptReviewReply();
+		arp.setReplyNo(replyNo);
+		arp.setReplyContent(replyContent);
 		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
+		int result = new AdoptReviewBoardService().updateReply(arp);
 		
 		
+	
 	}
 
 	/**

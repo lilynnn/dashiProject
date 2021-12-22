@@ -199,10 +199,22 @@
 		     , MONEY = ?
 		WHERE DSP_NO = ?
 	</entry>
-	<entry key=""></entry>
 	
-	<entry key=""></entry>
 	
+	<!-- 게시글 삭제하기 -->
+	<entry key="deleteDsp">
+		UPDATE
+		       DSP
+		   SET POST_STATUS = 'D'
+		 WHERE DSP_NO = ?
+	</entry>
+	
+	<entry key="selectListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM DSP
+         WHERE POST_STATUS = 'Y'
+	</entry>
 	
 	
 	

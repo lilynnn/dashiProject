@@ -70,7 +70,6 @@
         margin:auto;
     }
     .thumbnail{
-        border:1px solid red;
         width:220px;
         display: inline-block;
         margin:14px;

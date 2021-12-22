@@ -12,8 +12,10 @@ public class PageInfo {
 	private int startPage;		// 페이징 바의 시작 수
 	private int endPage;		// 페이징 바의 끝 수
 
-	public void PageInfo() {
-		
+
+
+	public PageInfo() {
+		super();
 	}
 
 	public PageInfo(int listCount, int currentPage, int pageLimit, int boardLimit, int maxPage, int startPage,

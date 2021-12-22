@@ -101,12 +101,34 @@ public class DspService {
 		return contentImgPath;
 	}
 	
+	//게시글 수정메소드
 	public int updateDsp(Dsp d, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		
 		int result1 = new DspDao().updateDsp(conn,d);
 		int result2 = 1;
 		return result1 * result2;
+	}
+	
+	
+	//게시글 삭제 메소드
+	public int deleteDsp(String dspNo) {
+		Connection conn = getConnection();
+		int result = new DspDao().deleteDsp(conn, dspNo);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
+
+	public int selectListCount() {
+		Connection conn = getConnection();
+		int listCount = new DspDao().selectListCount(conn);
+		close(conn);
+		return listCount;
 	}
 
 	

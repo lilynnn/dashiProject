@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.ArrayList , com.dashi.dspBoard.model.vo.Dsp"%>
+    pageEncoding="UTF-8" import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList , com.dashi.dspBoard.model.vo.Dsp"%>
     
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+
 	ArrayList<Dsp> list = (ArrayList<Dsp>)request.getAttribute("list");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -182,13 +189,21 @@
         <!-- 페이징바 영역 -->
         <div class="paging-area" align="center">
 
-            <button class="btn btn-light">&lt;</button>
-            <button class="btn btn-light">1</button>
-            <button class="btn btn-light">2</button>
-            <button class="btn btn-light">3</button>
-            <button class="btn btn-light">4</button>
-            <button class="btn btn-light">5</button>
-            <button class="btn btn-light">&gt;</button>
+			<% if(currentPage != 1){ %>
+            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.dsp?cpage=<%=currentPage-1%>';">&lt;</button>
+            <% } %>
+            
+            <% for(int p=startPage; p<=endPage; p++){ %>
+            	<% if(p == currentPage){ %>
+            		<button class="btn btn-light" disabled><%=p%></button>
+            	<%}else{ %>
+            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.dsp?cpage=<%=p%>';"><%=p%></button>
+            	<% } %>
+           	<% } %>
+            
+            <% if(currentPage != maxPage){ %>
+           	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/list.dsp?cpage=<%=currentPage+1%>';">&gt;</button>
+			<% } %>
 
         </div>
     </div><br>

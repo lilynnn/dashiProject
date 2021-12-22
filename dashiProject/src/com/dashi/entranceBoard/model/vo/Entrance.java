@@ -7,7 +7,7 @@ public class Entrance {
 	private String entNo;
 	private String memNo;
 	private String memName;
-	private  String entTitle;
+	private String entTitle;
 	private Date entApplyDate;
 	private String processResult;
 	private String animalVariety;
@@ -23,6 +23,7 @@ public class Entrance {
 	private String reqPhone;
 	private Date entDate;
 	private String animalType;
+	private String titleimg;
 	
 	public Entrance() {}
 
@@ -50,6 +51,56 @@ public class Entrance {
 		this.reqPhone = reqPhone;
 		this.entDate = entDate;
 		this.animalType = animalType;
+	}
+
+	public Entrance(String entNo, String entTitle, String processResult, String titleimg) {
+		super();
+		this.entNo = entNo;
+		this.entTitle = entTitle;
+		this.processResult = processResult;
+		this.titleimg = titleimg;
+	}
+
+	public Entrance(String entNo, String memNo, String memName, String entTitle, Date entApplyDate,
+			String processResult, String animalVariety, String animalName, String animalGender, int animalAge,
+			String animalVaccinated, String animalNeturalization, String animalDisease, String animalIssue,
+			Date entWantDate, String entWantTime, String reqPhone, String animalType) {
+		super();
+		this.entNo = entNo;
+		this.memNo = memNo;
+		this.memName = memName;
+		this.entTitle = entTitle;
+		this.entApplyDate = entApplyDate;
+		this.processResult = processResult;
+		this.animalVariety = animalVariety;
+		this.animalName = animalName;
+		this.animalGender = animalGender;
+		this.animalAge = animalAge;
+		this.animalVaccinated = animalVaccinated;
+		this.animalNeturalization = animalNeturalization;
+		this.animalDisease = animalDisease;
+		this.animalIssue = animalIssue;
+		this.entWantDate = entWantDate;
+		this.entWantTime = entWantTime;
+		this.reqPhone = reqPhone;
+		this.animalType = animalType;
+	}
+
+	public Entrance(String entNo, String memNo, String entTitle, Date entApplyDate, String processResult) {
+		super();
+		this.entNo = entNo;
+		this.memNo = memNo;
+		this.entTitle = entTitle;
+		this.entApplyDate = entApplyDate;
+		this.processResult = processResult;
+	}
+
+	public String getTitleimg() {
+		return titleimg;
+	}
+
+	public void setTitleimg(String titleimg) {
+		this.titleimg = titleimg;
 	}
 
 	public String getEntNo() {
@@ -212,7 +263,7 @@ public class Entrance {
 				+ animalAge + ", animalVaccinated=" + animalVaccinated + ", animalNeturalization="
 				+ animalNeturalization + ", animalDisease=" + animalDisease + ", animalIssue=" + animalIssue
 				+ ", entWantDate=" + entWantDate + ", entWantTime=" + entWantTime + ", reqPhone=" + reqPhone
-				+ ", entDate=" + entDate + ", animalType=" + animalType + "]";
+				+ ", entDate=" + entDate + ", animalType=" + animalType + ", titleimg=" + titleimg + "]";
 	}
 
 	

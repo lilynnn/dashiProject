@@ -346,6 +346,50 @@ public class DspDao {
 		}
 		return result;
 	}
+
+	
+	// 게시글 삭제시키는 메소드
+	public int deleteDsp(Connection conn, String dspNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteDsp");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dspNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	public int selectListCount(Connection conn) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 	
 	
 

@@ -1,29 +1,23 @@
-package com.dashi.adoptReviewBoard.controller;
+package com.dashi.entranceBoard.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
-import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
-import com.google.gson.Gson;
-
 /**
- * Servlet implementation class AjaxAdoptReviewReplyListController
+ * Servlet implementation class EntranceViewController
  */
-@WebServlet("/rlist.ar")
-public class AjaxAdoptReviewReplyListController extends HttpServlet {
+@WebServlet("/entMain.ent")
+public class EntranceMainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxAdoptReviewReplyListController() {
+    public EntranceMainController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,15 +26,7 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String arlistNo = request.getParameter("arno");
-		
-		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
-		
-		response.setContentType("application/json; charset=utf-8");
-		new Gson().toJson(list, response.getWriter());
-		
-		
+		request.getRequestDispatcher("views/entranceBoard/entranceView.jsp").forward(request, response);
 	}
 
 	/**

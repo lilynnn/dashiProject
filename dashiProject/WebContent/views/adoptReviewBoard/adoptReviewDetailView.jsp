@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@ page import="java.util.ArrayList, com.dashi.common.model.vo.*, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>
+<%@ page import="java.util.ArrayList, com.dashi.common.model.vo.*, com.dashi.adoptReviewBoard.model.vo.*" %>
     
 <%
 	AdoptReview ar = (AdoptReview)request.getAttribute("ar");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	AdoptReviewReply arp = (AdoptReviewReply)request.getAttribute("arp");
 %>
 <!DOCTYPE html>
 <html>
@@ -176,6 +177,10 @@
         cursor: pointer;
     }
 
+    #update{
+        color:red;
+    }
+
 </style>
 </head>
 <body>
@@ -330,8 +335,8 @@
                             <!--댓글 수 카운트-->  
                             <td>3</td>
                         </tr>
-                        <tbody  id="comm-outer">
-							<!-- 
+                        <tbody id="comm-outer">
+							
                             <tr>
                                 <td>&nbsp;</td>
                             </tr>
@@ -354,8 +359,9 @@
                             <tr>
                                 <td>&nbsp;</td>
                             </tr>
-							-->
+							
                         </tbody>
+
                     </table>
                     <!--대댓글영역-->
                     <!--
@@ -422,6 +428,8 @@
                     		
                     	});
                     	
+
+                    	
                     	// ajax로 댓글 작성용
                     	function insertReply(){
                     		
@@ -441,8 +449,10 @@
                     				console.log("댓글작성용ajax 통신실패");
                     			}
                     			
-                    		})
+                    		});
                     	}
+                    	
+
                     	
                     	// ajax로 해당 게시글에 달린 댓글 목록 조회용
                     	function selectReplyList(){
@@ -467,7 +477,7 @@
 						                        + "<tr>"
 						                           + "<td colspan=5>"+ list[i].replyContent +"</td>"
 						                           + "<td><button>수정</button></td>"
-						                           + "<td><button>삭제</button></td>"
+						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
 						                        + "<tr>"
@@ -480,8 +490,34 @@
                     			},error:function(){
                     				console.log("댓글목록 조회용 ajax 통신 실패")
                     			}
-                    		})
+                    		});
                     	}
+                    	
+                    	// 댓글 삭제용
+                    	function deleteReply(replyNo){
+                    		
+                    		$.ajax({
+                    			url:"rdelete.ar",
+                    			type:"post",
+                    			data:{
+                    				replyNo: replyNo
+                    				},
+                    			success:function(result){
+                    				if(result > 0){ // 댓글삭제 성공 => 갱신된 댓글 리스트 조회
+                    					selectReplyList();
+                    				}
+                    			},error:function(){
+                    				console.log("댓글작성용ajax 통신실패");
+                    			}
+                    			
+                    		});
+                    	
+                    	}
+                    	
+                    	// 댓글 수정용
+                    	
+
+
                     	
                     
                     </script>

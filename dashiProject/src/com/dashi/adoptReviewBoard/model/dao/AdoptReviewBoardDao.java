@@ -269,6 +269,7 @@ public class AdoptReviewBoardDao {
 		
 	}
 	
+	// 댓글 조회
 	public ArrayList<AdoptReviewReply> selectReplyList(Connection conn, String arlistNo){
 		
 		ArrayList<AdoptReviewReply> list = new ArrayList<>();
@@ -300,6 +301,7 @@ public class AdoptReviewBoardDao {
 		return list;
 	}
 	
+	// 댓글작성
 	public int insertReply(Connection conn, AdoptReviewReply r) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -323,9 +325,48 @@ public class AdoptReviewBoardDao {
 		return result;
 	}
 	
+	// 댓글 삭제
+	public int deleteReply(Connection conn, String replyNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, replyNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	
-	
-	
+	// 댓글 수정
+	public int updateReply(Connection conn, AdoptReviewReply arp){
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, arp.getReplyContent());
+			pstmt.setString(2, arp.getReplyNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 	
 	
 	
