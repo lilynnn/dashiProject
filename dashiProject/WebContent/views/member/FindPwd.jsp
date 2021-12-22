@@ -91,12 +91,11 @@
 			</div>
 		</div> 
 		<div class="card-body">
-      <form action="<%= contextPath %>/updatepwd.me" class="form-signin" method="POST">
-        <input type="text" name="member_id" id="member_id" class="form-control" placeholder="아이디를 입력하세요" required><br>
+      <form action="<%= contextPath %>/FindPwd2.me" class="form-signin" method="POST">
+        <input type="text" name="memId" id="memId" class="form-control" placeholder="아이디를 입력하세요" required><br>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required><BR>
-        <input type="text" name="dob" id="dob" class="form-control" placeholder="생년월일" required><BR>
-        <input type="text" style="width:270px;  margin-bottom:20px;display:inline-block;" name="phone" id="phone" class="form-control" placeholder="연락처" required><button type="button" class="searchbtn" style="width: 70px;">전송</button><BR>
-        <input type="text" style="width:270px;  margin-bottom:20px; display:inline-block;"  name="phone2" id="phone2" class="form-control" placeholder="인증번호를 입력하세요" required><button type="button" class="searchbtn" style="width: 70px;">확인</button><br>
+        <input type="text" name="birth" id="birth" class="form-control" placeholder="생년월일(앞 6자리 숫자만)" required><BR>
+        <input type="text" style="margin-bottom:20px; " name="phone" id="phone" class="form-control" placeholder="연락처 (-까지 포함해서 입력)" required>
         <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
         
         <p class="checks" id="checks">${findpw_checkf}</p><br/>

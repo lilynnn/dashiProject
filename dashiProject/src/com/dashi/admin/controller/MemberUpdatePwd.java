@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class MemberUpdatePwd
  */
 @WebServlet("/updatepwd.me")
-public class MemberUpdatePwd extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class MemberUpdatePwd extends HttpServlet {	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()

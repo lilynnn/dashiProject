@@ -86,7 +86,13 @@ public class MemberService {
 		
 	}
 	
+	public Member findPwd(String memId,String memName,String birth,String phone, String email) {
 	
+		Connection conn = getConnection();
+		Member m = new MemberDao().findPwd(conn, memId,memName,birth,phone,email);
+
+		return m;
+	}
 	
 	
 	

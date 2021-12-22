@@ -78,7 +78,7 @@
   <body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
 		
 		 	<%@ include file="../common/menubar.jsp" %>
-		 <br><br><br><br><br><br>
+		 <br><br><br>
 		 <%
 		 Object data = session.getAttribute("findid");
 		 String finduid = (String)data;
@@ -89,11 +89,12 @@
 			<div class="card-title"  style="color:rgb(40,112,37);  margin-right:50px;"><img align="center" style="width:97%;" src="<%=contextPath%>/resources/images/logo33.png">
 			</div>
 		</div> 
-        
 		<div class="card-body">
-      <form action="<%=contextPath%>/updatePwd.me" class="form-signin" method="POST">
+      <form action="<%=contextPath%>/resetPwd2.me" class="form-signin" method="POST">
       <input type="hidden" name="member_id" value="<%= finduid %>">
       <br>
+       <input type="text" name="memId" id="memId" class="form-control" placeholder="아이디를 입력하세요" required><br>
+       <input type="text" name="userpw" id="userpw" class="form-control" placeholder="기존비밀번호를 입력하세요" required><br>
         <input type="passwor" name="pw" id="pw" class="form-control" placeholder="비밀번호" required ><BR>
         <input type="passwor" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
         <p class="check" id="check2">${resetpw_check}</p><br/>

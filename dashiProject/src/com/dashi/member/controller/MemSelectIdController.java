@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MemSelectIdController
  */
+
+/*아이디찾기 화면*/
 @WebServlet("/selectId.me")
 public class MemSelectIdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

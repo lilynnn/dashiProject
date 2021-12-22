@@ -83,6 +83,15 @@ public class Member {
 	}
 	
 	
+	public Member(String memId, String memName, String birth, String phone,
+			String email) {
+		super();
+		this.memId = memId;
+		this.memName = memName;
+		this.birth = birth;
+		this.email = email;
+		this.phone = phone;
+	}
 
 	public int getMemNo() {
 		return memNo;

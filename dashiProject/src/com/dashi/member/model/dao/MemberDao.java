@@ -370,8 +370,45 @@ public class MemberDao {
 		return result;
 	}
 	
+	public Member findPwd (Connection conn, String memId,String memName,String birth,String phone, String email) {
+
+		Member m = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = prop.getProperty("findPwd");
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			pstmt.setString(2, memName);
+			pstmt.setString(3, birth);
+			pstmt.setString(4, phone);
+			pstmt.setString(5, email);
+			
+			System.out.println(memId);
+			System.out.println(memName);
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				m = new Member(rset.getString("mem_Id"),	   
+							   rset.getString("mem_Name"),
+							   rset.getString("dob"),							 
+							   rset.getString("email"),
+							   rset.getString("phone"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return m;
+	}
 	
-	
+//아이디찾기 
 	public String findId(Connection conn, String memName, String email) {
 		
 		String memId = null; 
