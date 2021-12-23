@@ -94,7 +94,22 @@ public class EntranceService {
 		
 	} //게시글 수정 밑 첨부파일 수정,등록
 	
-	
+	public int deleteEntrance(String eno) {
+		Connection conn = getConnection();
+		
+		int result1 = new EntranceDao().deleteEntrance(conn, eno);
+		int result2 = new EntranceDao().deleteAttachment(conn, eno);
+		
+		if(result1 > 0 && result2 > 0){
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		return result1 * result2;
+		
+	} // 게시글 삭제
 	
 	
 	

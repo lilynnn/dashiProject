@@ -329,7 +329,6 @@ public class EntranceDao {
 	
 	public int insertNewAttachment(Connection conn, ArrayList<Attachment> list) {
 		
-		System.out.println();
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertNewAttachment");
@@ -355,9 +354,23 @@ public class EntranceDao {
 		return result;
 	} // 첨부파일 등록
 	
+	public int deleteEntrance(Connection conn, String eno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteEntrance");
+		
+		
+		
+	}
 	
-	
-	
+	public int deleteAttachment(Connection conn, String eno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteAttachment");
+		
+		
+		
+	}
 	
 	
 	
