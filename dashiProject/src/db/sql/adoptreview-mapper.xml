@@ -153,7 +153,7 @@
 		  )
 		  VALUES
 		  (
-		    'REPLY-' || RPAD(SEQ_REPLYNO.NEXTVAL,4,'0')
+		    'REPLY-' || LPAD(SEQ_REPLYNO.NEXTVAL,3,'0')
 		  , ?
 		  , 2
 		  , ?

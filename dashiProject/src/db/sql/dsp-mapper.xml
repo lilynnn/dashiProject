@@ -213,11 +213,12 @@
 	
 	<!-- 기존의 있던 첨부파일 수정 -->
 	<entry key="updateAttachment">
-		UPDATE
-		       ATTATCHMENT
-		   SET PATH
-		     , ORIGIN_NAME
-		     , CHANGE_NAME
+		 UPDATE 
+		        ATTACHMENT
+		    SET ORIGIN_NAME = ?
+		      , CHANGE_NAME = ?
+		      , PATH = ?
+		      , ATTACH_LEVEL = ?
 		 WHERE ATTACH_NO = ?
 	</entry>
 	

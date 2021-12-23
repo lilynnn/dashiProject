@@ -216,7 +216,7 @@ public class DspDao {
 			pstmt.setString(1, dspNo);
 			rset = pstmt.executeQuery();
 			
-			while(rset.next()) { // 커서 움직이면서 필요한거 뽑기
+			while(rset.next()) { 
 				Attachment at = new Attachment();
 				at.setChangeName(rset.getString("change_name"));
 				at.setPath(rset.getString("path"));
@@ -357,6 +357,36 @@ public class DspDao {
 	
 	
 	
+	//첨부파일 수정 메소드
+	public int updateAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		if(!list.isEmpty()) {	
+			try {
+				for(Attachment at : list) {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, at.getOriginName());
+					pstmt.setString(2, at.getChangeName());
+					pstmt.setString(3, at.getPath());
+					pstmt.setInt(4,at.getAttachLevel());
+					pstmt.setString(5, at.getAttachNo());
+					
+					result = pstmt.executeUpdate();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally{
+				close(pstmt);
+			}
+		} else {
+			result = 1;
+		}
+		
+		
+		return result;
+	}
 	
 	
 	
@@ -405,6 +435,7 @@ public class DspDao {
 		}
 		return listCount;
 	}
+
 	
 	
 

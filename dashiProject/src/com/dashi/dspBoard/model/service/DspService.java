@@ -108,10 +108,21 @@ public class DspService {
 		Connection conn = getConnection();
 		
 		int result1 = new DspDao().updateDsp(conn,d);
-		int result2 = 1;
 		
+		int result2 = 1;
+		if(!list.isEmpty()) {
+		} 
 		return result1 * result2;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
