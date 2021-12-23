@@ -1030,9 +1030,9 @@ public class AdoptBoardDao {
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-	
-		String sql = prop.getProperty("searchAdoptNoticeAdtStatus");
 		
+		String sql = prop.getProperty("searchAdoptNoticeAdtStatus");
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, adtStatus);

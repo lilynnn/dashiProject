@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.common.model.vo.PageInfo;
 
 /**
  * Servlet implementation class AdminAdoptNoticeSearchController
@@ -33,10 +34,11 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String searchCtg = request.getParameter("search-category");
 		String searchKey = request.getParameter("searchKey");
-		System.out.println(searchCtg +"," + searchKey);
+
 		ArrayList<AdoptNotice> list = new AdoptBoardService().searchAdoptNotice(searchCtg, searchKey);
 		
-		System.out.println(list);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeSearchListView.jsp").forward(request, response);
 	}
 
 	/**

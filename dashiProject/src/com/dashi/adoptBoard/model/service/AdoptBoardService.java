@@ -299,13 +299,19 @@ public class AdoptBoardService {
 			list = new AdoptBoardDao().searchAdoptNoticeAdtNo(conn, searchKey);
 		
 		}else if(searchCtg.equals("adtStatus")) {
-			switch(searchKey) {
-			case "승인대기": adtStatus = 1; break;
-			case "신청승인":
-			case "결제대기": adtStatus = 2; break;
-			case "결제완료": adtStatus = 3; break;
-			case "입양완료": adtStatus = 4; break;
+			
+			if(searchKey.equals("승인대기")) {
+				adtStatus = 1;
+			}else if(searchKey.equals("신청승인")) {
+				adtStatus = 2;
+			}else if(searchKey.equals("결제대기")) {
+				adtStatus = 2;
+			}else if(searchKey.equals("결제완료")) {
+				adtStatus = 3;
+			}else if(searchKey.equals("입양완료")) {
+				adtStatus = 4;
 			}
+		
 			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, adtStatus);
 		} 
 		
