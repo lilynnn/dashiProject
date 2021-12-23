@@ -178,7 +178,7 @@
 		    BY DSP_NO DESC
 	</entry>
 	
-	
+	<!-- 상세이미지 경로 조회 -->
 	<entry key="contentImgPath">
 	     	SELECT
                    PATH || CHANGE_NAME "CONTENTIMG"
@@ -190,6 +190,7 @@
                and attach_level = 2
 	</entry>
 	
+	<!-- 실종보호목격 내용 수정하기 -->
 	<entry key="updateDsp">
 		UPDATE
 		       DSP
@@ -209,6 +210,21 @@
 	</entry>
 	
 	
+	
+	<!-- 기존의 있던 첨부파일 수정 -->
+	<entry key="updateAttachment">
+		UPDATE
+		       ATTATCHMENT
+		   SET PATH
+		     , ORIGIN_NAME
+		     , CHANGE_NAME
+		 WHERE ATTACH_NO = ?
+	</entry>
+	
+	
+	
+	
+	
 	<!-- 게시글 삭제하기 -->
 	<entry key="deleteDsp">
 		UPDATE
@@ -217,6 +233,7 @@
 		 WHERE DSP_NO = ?
 	</entry>
 	
+	<!-- 페이징바 만들때 전체게시글 갯수조회 -->
 	<entry key="selectListCount">
 		SELECT
 		       COUNT(*) count

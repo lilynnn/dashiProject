@@ -78,7 +78,7 @@ public class dspUpdateController extends HttpServlet {
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
 					at.setPath("/resources/upfiles/dspThumb/");
-
+					at.setRefNo(dspNo);
 					// 기존의 첨부파일이 있었을 경우
 					if(multiRequest.getParameter("originFileNo"+i) != null) {
 						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
@@ -92,16 +92,9 @@ public class dspUpdateController extends HttpServlet {
 					}
 					
 					list.add(at);
-					
 				} 
 			
-			
-			
 			}
-			
-			
-			
-			
 			
 			int result = new DspService().updateDsp(d, list);
 			

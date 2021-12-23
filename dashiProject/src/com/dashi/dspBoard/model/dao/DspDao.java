@@ -352,6 +352,15 @@ public class DspDao {
 		}
 		return result;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	// 게시글 삭제시키는 메소드
@@ -372,7 +381,7 @@ public class DspDao {
 		return result;
 	}
 
-
+	//페이징바 만들때 전체게시글 갯수조회
 	public int selectListCount(Connection conn) {
 		int listCount = 0;
 		
