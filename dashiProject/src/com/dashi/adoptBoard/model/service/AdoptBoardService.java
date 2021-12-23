@@ -213,7 +213,7 @@ public class AdoptBoardService {
 		return apply;
 	}
 	
-	// 입양신청회원 상태변경(승인,반려 등)
+	// 입양신청회원 상태변경(승인,반려 등) --> 질문하기!!
 	public int adoptApplyStatusUpdate(int adpStatus, int memNo, String adpNo, String adtNo) {
 		Connection conn = getConnection();
 		
