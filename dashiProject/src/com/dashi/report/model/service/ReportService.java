@@ -111,7 +111,15 @@ public class ReportService {
 	} // 신고횟수2회 블랙리스트 등록
 	
 	
-	
+	// 게시글에서 신고하기 버튼 눌렀을 때 
+	public int insertReportBr(Report rt) {
+		
+		Connection conn = getConnection();
+		int result = new ReportDao().insertReportBr(conn, rt);
+		close(conn);
+		return result;
+		
+	}
 	
 	
 	

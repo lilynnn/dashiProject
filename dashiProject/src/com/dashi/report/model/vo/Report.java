@@ -27,6 +27,21 @@ public class Report {
 	
 	public Report() {}
 
+	
+	
+	public Report(String contentNo, String reportingMem, String reportedMem, String reportContent, int reportCategory,
+			int typeBR) {
+		super();
+		this.contentNo = contentNo;
+		this.reportingMem = reportingMem;
+		this.reportedMem = reportedMem;
+		this.reportContent = reportContent;
+		this.reportCategory = reportCategory;
+		this.typeBR = typeBR;
+	}
+
+
+
 	public Report(int reportNo, String contentNo, String reportingMem, String reportedMem, String reportContent,
 			String reportDate, String reportStatus, int reportCategory, int typeBR, String arTitle, String arContent,
 			String replyContent, String dspTitle, String animalIssue, String dspEtc, String memId, String memName,

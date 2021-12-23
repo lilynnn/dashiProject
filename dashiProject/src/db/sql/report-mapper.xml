@@ -164,7 +164,33 @@
 		 WHERE MEM_NO = ?	   
 	</entry>
 
-
+	<entry key="insertReportBr">
+		INSERT 
+		  INTO REPORTED
+		  (
+		     REPORT_NO
+		   , CONTENT_NO
+		   , REPORTING_MEM
+		   , REPORTED_MEM
+		   , REPORT_CONTENT
+		   , REPORT_DATE
+		   , REPORT_STATUS
+		   , REPORT_CTG
+		   , TYPE_BR
+		  )
+		  VALUES
+		  (
+		    'RT-'||LPAD(SEQ_RNO.NEXTVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?
+		  , SYSDATE
+		  , 'N'
+		  , ?
+		  , ?
+		  ) 
+	</entry>
 
 
 

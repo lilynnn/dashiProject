@@ -74,11 +74,13 @@
 	<entry key="selectReview">
 		SELECT 
 		       ARLIST_NO
+		     , MEM_NO
 		     , AN_TYPE
 		     , AR_TITLE
 		     , AR_CONTENT
 		     , M.NICKNAME
 		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		     , A.MEM_ID
 		  FROM ADOPT_REVIEW A
 	 	  JOIN MEM_INFO M USING(MEM_NO)
 		 WHERE ARLIST_NO = ?

@@ -152,12 +152,14 @@ public class AdoptReviewBoardDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				ar = new AdoptReview (rset.getString("arlist_no"),
+				ar = new AdoptReview(rset.getString("arlist_no"),
+							  rset.getInt("mem_no"),
 							  rset.getString("an_type"),
 							  rset.getString("ar_title"),
 							  rset.getString("ar_content"),
 							  rset.getString("nickname"),
-							  rset.getString("write_date"));
+							  rset.getString("write_date"),
+							  rset.getString("mem_Id"));
 			}
 			
 		} catch (SQLException e) {

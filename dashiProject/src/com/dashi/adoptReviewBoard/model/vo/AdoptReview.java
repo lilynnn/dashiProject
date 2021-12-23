@@ -59,15 +59,17 @@ public class AdoptReview {
 		this.postStatus = postStatus;
 	}
 	
-	public AdoptReview(String arlistNo, String anType, String arTitle, String arContent, String nickname,
-			String writeDate) {
+	public AdoptReview(String arlistNo, int memNo,  String anType, String arTitle, String arContent, String nickname,
+			String writeDate, String memId) {
 		super();
 		this.arlistNo = arlistNo;
+		this.memNo = memNo;
 		this.anType = anType;
 		this.arTitle = arTitle;
 		this.arContent = arContent;
 		this.nickname = nickname;
 		this.writeDate = writeDate;
+		this.memId = memId;
 	}
 
 	// 관리자 입양후기리스트 조회용
@@ -83,6 +85,8 @@ public class AdoptReview {
 		this.writeDate = writeDate;
 	}
 	
+	
+		
 	public String getArlistNo() {
 		return arlistNo;
 	}

@@ -92,7 +92,7 @@
 
                 <input type="text" placeholder="검색어를 입력하세요.">
                 
-                <button id="search-btn">검색하기</button>
+                <button onclick="" id="search-btn">검색하기</button>
             </div>
 
             <table align="center" class="table" style="width: 950px; font-size:15px;">
