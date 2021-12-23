@@ -5,7 +5,6 @@ import static com.dashi.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import com.dashi.adoptReviewBoard.model.dao.AdoptReviewBoardDao;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.dao.DspDao;
@@ -113,6 +112,7 @@ public class DspService {
 		
 		int result2 = 1;
 		if(!list.isEmpty()) {
+			result2 = new DspDao().updateAttachmentList(conn,list);
 		} 
 		return result1 * result2;
 	}
@@ -164,6 +164,25 @@ public class DspService {
 		}
 		close(conn);
 		return result;
+	}
+
+	// 댓글 전체 조회
+	public ArrayList<DspReply> selectReplyList(String dspNo) {
+		
+		Connection conn = getConnection();
+		ArrayList<DspReply> list = new DspDao().selectReplyList(conn, dspNo);
+		close(conn);
+		return list;
+	}
+
+	// 댓글삭제
+	public int deleteReply(String replyNo) {
+		Connection conn = getConnection();
+		int result = new DspDao().deleteReply(conn, replyNo);
+		close(conn);
+		return result;
+	
+	
 	}
 
 	

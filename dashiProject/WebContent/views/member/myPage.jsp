@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
     div{box-sizing: border-box;}     
     .outer{
@@ -201,7 +204,7 @@
                         <!--(입양신청내역 없을 시)등급별권한안내-->
                         <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
                         <!--(입양승인 시)결제하기버튼--> 
-                        <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" class="btn btn-primary" data-toggle="modal" data-target="#payment">
+                        <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn">
                             책임비 결제하기
                         </button> 
                     </div>
@@ -336,82 +339,39 @@
 
 <%@include file="../common/footerbar.jsp" %>
 
+<script>
 
-<!-- 결제용 모달-->
-
-<!-- The Modal -->
-<div class="modal fade" id="payment">
-    <div class="modal-dialog modal-dialog-centered" style="width: 1000px;">
-      <div class="modal-content" style="border-radius: 2px;">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h3 class="modal-title" style="margin-left: 163px; padding: 10px;"><b>결제 정보</b></h3>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        
-        <!-- 입력란 --> <!--AJAX사용해서 클릭시 밑에 보이는게 달라지게 설정-->
-        <div class="modal-body">
-
-            <form action=""> <!--만약 Form으로 감싸면 여기서부터 @@@@@@@@@-->
-                <!-- 결제수단 고르기 -->
-
-                <div class="pay-area">
-                    <p style="padding-top: 7px;">결제수단을 선택해주세요</p>
-                </div>  
-
-                    <!-- 결제수단 고르기 -->
-                <div style="font-size: 16px; width: 370px; margin:auto; margin-bottom: 20px;">
-                    <input type="radio" name="payMethod" value="card" checked="checked" >&nbsp;신용카드 
-                                                                                                                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="payMethod" value="bank">&nbsp;무통장입금
-                </div>
-
-
-                    <!-- 신용/직불카드번호 입력란 -->
-                <div style="width: 370px; margin:auto; margin-bottom: 20px;">
-                    <p>신용/직불카드번호</p>
-                    <input type="number" id="cardNum" name="cardNum" placeholder="카드 번호 입력(-제외)" required style="padding-top: 0px;">
-                </div>
-
-
-                    <!-- 카드유효기간 입력란--> 
-                <div style="width: 370px; margin:auto;">
-                    <table>
-                        <tr>
-                            <td>
-                                <p style="height: 9px;">카드 유효기간</p>
-                                <input type="text" id="cardAbleTerm" name="cardAbleTerm" placeholder="mm/yy" required>
-                            </td>
-                            <td>
-                                                                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            </td>
-                            <!-- CVC번호 입력란--> 
-                            <td>
-                                <p style="height:9px;float: left;" >CVC(카드 뒷면 세자리)</p>
-                                <input type="number" id="CVCNum" name="CVCNum" placeholder="CVC" required>
-                            </td>
-                        </tr>
-                    </table> 
-                </div>
-
-                <p style="font-size: 14px; text-align: center; margin-top: 28px; margin-bottom: 25px;" >이 결제를 진행함으로써 <b style="color: rgb(34, 125, 211);">개인정보 처리방침</b> 및 <b style="color: rgb(34, 125, 211);">이용약관</b>에 동의합니다.</p>
-
-                <hr>
-
-                <h1 style="text-align: right; font-size: 23px; font-weight: bold;">총 50,000원</h1>
+    $(function(){
+        $("#payBtn").click(function(){
+            var IMP = window.IMP; 
+            IMP.init(' 가맹점 식별 코드'); 
+            IMP.request_pay({
+                pg : "kakaopay", 
+                pay_method : 'card',
+                merchant_uid : 'merchant_' + new Date().getTime(),
+                name : '결제',
+                amount : 주문개수,
+                buyer_email : '구매자 이메일',
+                buyer_name : '구매자 이름',
+                buyer_tel : '구매자 번호',
+                buyer_addr : '구매자 주소',
+                buyer_postcode : '구매자 주소',
+                m_redirect_url : 'redirect url'
+            }, function(rsp) {
+                if ( rsp.success ) {
+                    var msg = '결제가 완료되었습니다.';
+                    location.href='결제완료후 갈 url';
+                } else {
+                    var msg = '결제에 실패하였습니다.';
+                    rsp.error_msg;
                     
-                <input type="submit" id="payMent" value="결제하기">
+                }
+            });
+        })
+    })
 
-            </form><!--여기까지 @@@@@@@@@-->
+    </script>
 
-        </div><!-- 여기까지가 모달 바디 영역-->
-        
-
-      </div>
-    </div>
-  </div>
 
   
 

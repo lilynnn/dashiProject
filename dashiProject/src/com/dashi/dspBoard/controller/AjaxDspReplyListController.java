@@ -1,6 +1,8 @@
 package com.dashi.dspBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,18 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.dspBoard.model.service.DspService;
+import com.dashi.dspBoard.model.vo.DspReply;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class AjaxDspReplyDeleteController
+ * Servlet implementation class AjaxDspReplyListController
  */
-@WebServlet("/rdelete.dsp")
-public class AjaxDspReplyDeleteController extends HttpServlet {
+@WebServlet("/rlist.dsp")
+public class AjaxDspReplyListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDspReplyDeleteController() {
+    public AjaxDspReplyListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,12 +33,13 @@ public class AjaxDspReplyDeleteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String replyNo = request.getParameter("replyNo");
-
-		int result = new DspService().deleteReply(replyNo);		
-
-		response.getWriter().print(result);
+		String dspNo = request.getParameter("dno");
+		System.out.println(dspNo);
 		
+		ArrayList<DspReply> list = new DspService().selectReplyList(dspNo);
+		
+		response.setContentType("application/json; charset=utf-8");
+		new Gson().toJson(list, response.getWriter());
 	}
 
 	/**

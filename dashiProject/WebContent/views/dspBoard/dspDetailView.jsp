@@ -105,42 +105,23 @@
         color: rgb(87, 87, 85); 
         font-size: 12px;
     }
-
-    /*답글|수정|삭제 스타일*/
-    .recomment .btn{
-        border: none;
+    
+     #comm-outer {
+    	border-bottom: solid 1px rgb(175, 173, 173);
+    }
+    #comm-outer td>button{
+        color: rgb(94, 94, 92); 
+        font-size: 14px;
         background: none;
-        font-weight: 900;
-        float: right;
-        width: 100p;
-    }
-
-    /*댓글 전체 스타일*/
-    .comment{
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    /*답글 전체 스타일*/
-    .recomment{
-        background:rgb(236, 244, 247); 
-        border-top: solid 1px rgb(179, 177, 177);
-        border-bottom: solid 1px rgb(179, 177, 177);
-        margin-bottom: 40px;
-    }
-
-    .befAft1>div, .befAft2>div{
-        display: inline-block;
-        text-align: center;
-        height: 30px;
-        font-size: 15px;
-    }
-
-    .fontBtn{
-        width: 50px;
         border: none;
-        background:none;
+        width: 40px;
     }
+    button:hover{
+        color: black;
+        cursor:pointer;    
+    }
+
+ 
 
 
      /*신고하기 관련 스타일*/
@@ -319,11 +300,11 @@
                     <table>
                         <tr>
                             <th width="75">제 &nbsp; 목 </th>
-                            <td>신고글제목보여지게</td>
+                            <td><%=d.getDspTitle() %></td>
                         </tr>
                         <tr>
                             <th>작 성 자 </th>
-                            <td>신고글작성자보여지게</td>
+                            <td><%=d.getNickName() %></td>
                         </tr>
                     </table>
                     <hr>
@@ -463,10 +444,7 @@
                         
                              <script>
                     	$(function(){
-                    	
                     		selectReplyList();
-                    		
-                    		//setInterval(selectReplyList, 1000);
                     		
                     	});
                     	
@@ -499,7 +477,7 @@
                     		
                     		$.ajax({
                     			url:"rlist.dsp",
-                    			data:{dspno:'<%=d.getDspNo()%>'},
+                    			data:{dno:'<%=d.getDspNo()%>'},
                     			success:function(list){
                     				
                     				let result = "";

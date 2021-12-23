@@ -69,33 +69,31 @@ public class dspUpdateController extends HttpServlet {
 			ArrayList<Attachment> list = new ArrayList<Attachment>();
 			Attachment at = null;
 
-			System.out.println(request.getParameter("originFileNo"));
 			
-			for(int i=1; i<5; i++) {
+			for(int i=1; i<=5; i++) {
 				String key = "file"+i;
 				//넘어온 파일이 있을경우
 				if(multiRequest.getParameter(key) != null) {
 					at = new Attachment();
 					
 					// 기존의 첨부파일이 있었을 경우
-					if(multiRequest.getParameter("originFileNo"+i) != null) {
-						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
+					if(multiRequest.getParameter("originFileNo"+ i) != null) {
+						at.setAttachNo(multiRequest.getParameter("originFileNo1" + i));
 					} 
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
 					at.setPath("/resources/upfiles/dspThumb/");
 					at.setRefNo(dspNo);
-					
 					if(i == 1) {
 						at.setAttachLevel(1);
 					} else {
 						at.setAttachLevel(2);
 					}
-					
 					list.add(at);
-				} 
+				 }
 			
 			}
+			System.out.println(list);
 			
 			int result = new DspService().updateDsp(d, list);
 			

@@ -221,11 +221,18 @@ public class DspDao {
 				Attachment at = new Attachment();
 				at.setChangeName(rset.getString("change_name"));
 				at.setPath(rset.getString("path"));
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setAttachLevel(rset.getInt("ATTACH_LEVEL"));
+				at.setAttachStatus(rset.getString("ATTACH_STATUS"));
+				at.setRefNo(rset.getString("REF_NO"));
+				
 				
 				list.add(at);
 	
 			}
 			
+			System.out.println(list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -438,6 +445,7 @@ public class DspDao {
 	}
 
 	//---------------------댓글 관련----------------------
+	// 댓글작성
 	public int insertReply(Connection conn, DspReply dr) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -460,6 +468,57 @@ public class DspDao {
 		
 		return result;
 	
+	}
+
+	// 댓글 조회
+	public ArrayList<DspReply> selectReplyList(Connection conn, String dspNo) {
+		
+		ArrayList<DspReply> list = new ArrayList<>();
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dspNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new DspReply(rset.getString("reply_no"),
+									  rset.getString("nickname"),
+									  rset.getString("WRITE_DATE"),
+									  rset.getString("REPLY_CONTENT")));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+
+	public int deleteReply(Connection conn, String replyNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, replyNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 	

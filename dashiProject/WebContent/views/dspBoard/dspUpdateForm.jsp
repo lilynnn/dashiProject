@@ -7,6 +7,7 @@
 	Dsp d = (Dsp)request.getAttribute("d");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 	ArrayList<Dsp> contentImgPath = (ArrayList<Dsp>)request.getAttribute("contentImgPath");
+	System.out.println(list);
 
 %>
 
@@ -134,15 +135,15 @@
                             	<option value="<%=d.getCtg()%>"><%=c.getCategoryName()%></option>
                             <% } %>
                             
-                         <script>
-                        	$(function(){
-                        		$("#animal-category option").each(function(){
-                        			if($(this).text() == "<%=d.getCtg()%>"){
-                        				$(this).attr("selected",true);
-                        			}
-                        		})
-                        	})
-                        </script>
+	                         <script>
+	                        	$(function(){
+	                        		$("#animal-category option").each(function(){
+	                        			if($(this).text() == "<%=d.getCtg()%>"){
+	                        				$(this).attr("selected",true);
+	                        			}
+	                        		})
+	                        	})
+                        	</script>
 							</select>
 						</td>
 					</tr>
@@ -229,13 +230,7 @@
 								<img id="contentImg<%=i+1%>" width="200" height="150" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>" alt="" onclick="chooseFile(<%= i+2 %>)">
 							</td>
 							<%} %>
-							
-							<!-- 남은 첨부파일 이미지 -->
-							<% for(int i = contentImgPath.size() + 1 ; i < 5 ;i++){ %>
-								<td>
-									<img id="contentImg<%=i%>" width="200" height="150" src="" alt="" onclick="chooseFile(<%= i+1 %>)">
-								<td>
-							<%} %>
+
 
 						</tr>
 					</table>

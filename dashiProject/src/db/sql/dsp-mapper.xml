@@ -119,10 +119,14 @@
 	<!-- 첨부파일조회 -->
 	<entry key="selectAttachment">
 		SELECT
-			   ATTACH_NO
-			 , ORIGIN_NAME
-			 , CHANGE_NAME
+			   CHANGE_NAME
 			 , PATH
+			 , ATTACH_NO
+			 , ORIGIN_NAME
+			 , ATTACH_LEVEL
+			 , ATTACH_STATUS
+			 , REF_NO
+		
 		  FROM ATTACHMENT
 			WHERE REF_NO = ?
 		
@@ -243,7 +247,7 @@
 	</entry>
 	
 
-	
+	<!-- 댓글 작성 -->
 	<entry key="insertReply">
 		INSERT
 		  INTO REPLY
@@ -266,10 +270,28 @@
 	  )
 	</entry>
 	
-	<entry key="">
+	<!-- 댓글 전제 조회-->
+	<entry key="selectReplyList">
+		SELECT
+		       REPLY_NO
+		     , R.NICKNAME
+		     , TO_CHAR(WRITE_DATE, 'YY-MM-DD HH:MI') "WRITE_DATE"
+		     , REPLY_CONTENT
+		  FROM REPLY R
+		  JOIN MEM_INFO USING(MEM_NO)
+		 WHERE REPLY_STATUS = 'Y'
+		   AND REF_POST_CTG = 1
+		   AND CLIST_NO = ?
+		 ORDER
+		    BY REPLY_NO DESC
+	
 	</entry>
 	
-	<entry key="">
+	<entry key="deleteReply">
+		UPDATE
+		       REPLY
+		   SET REPLY_STATUS = 'D'
+		 WHERE REPLY_NO = ?
 	</entry>
 	
 	<entry key="">
