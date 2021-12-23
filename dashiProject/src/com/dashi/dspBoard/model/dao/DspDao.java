@@ -15,6 +15,7 @@ import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
+import com.dashi.dspBoard.model.vo.DspReply;
 
 public class DspDao {
 	
@@ -434,6 +435,31 @@ public class DspDao {
 			close(pstmt);
 		}
 		return listCount;
+	}
+
+	//---------------------댓글 관련----------------------
+	public int insertReply(Connection conn, DspReply dr) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dr.getMemNo());
+			pstmt.setString(2, dr.getClistNo());
+			pstmt.setString(3, dr.getNickname());
+			pstmt.setString(4, dr.getReplyContent());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	
 	}
 
 	

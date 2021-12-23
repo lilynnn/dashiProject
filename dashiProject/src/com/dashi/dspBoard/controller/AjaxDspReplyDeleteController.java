@@ -7,21 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.dspBoard.model.service.DspService;
-import com.dashi.dspBoard.model.vo.DspReply;
-import com.dashi.member.model.vo.Member;
-
 /**
- * Servlet implementation class AjaxDspReplyInsertController
+ * Servlet implementation class AjaxDspReplyDeleteController
  */
-@WebServlet("/rinsert.dsp")
-public class AjaxDspReplyInsertController extends HttpServlet {
+@WebServlet("/rdelete.dsp")
+public class AjaxDspReplyDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxDspReplyInsertController() {
+    public AjaxDspReplyDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,22 +26,8 @@ public class AjaxDspReplyInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String replyContent = request.getParameter("content");
-		String dspNo = request.getParameter("dspno");
-		
-		String nickname = ((Member)request.getSession().getAttribute("loginUser")).getNickname();
-		int userNo = ((Member)request.getSession().getAttribute("loginUser")).getMemNo();
-	
-		DspReply dr = new DspReply();
-		dr.setReplyContent(replyContent);
-		dr.setClistNo(dspNo);
-		dr.setMemNo(userNo);
-		dr.setNickname(nickname);
-		
-		int result = new DspService().insertReply(dr);
-		
-		response.getWriter().print(result);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

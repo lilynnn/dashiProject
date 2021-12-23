@@ -545,7 +545,7 @@
                     	function deleteReply(replyNo){
                     		
                     		$.ajax({
-                    			url:"rdelete.ar",
+                    			url:"rdelete.dsp",
                     			type:"post",
                     			data:{
                     				replyNo: replyNo

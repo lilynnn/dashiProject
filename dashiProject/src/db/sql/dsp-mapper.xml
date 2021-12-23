@@ -242,6 +242,47 @@
          WHERE POST_STATUS = 'Y'
 	</entry>
 	
+
+	
+	<entry key="insertReply">
+		INSERT
+		  INTO REPLY
+		  (
+		    REPLY_NO
+		  , MEM_NO
+		  , REF_POST_CTG
+		  , CLIST_NO
+		  , NICKNAME
+		  , REPLY_CONTENT
+		  )
+		  VALUES
+		  (
+		    'REPLY-' || LPAD(SEQ_REPLYNO.NEXTVAL,3,'0')
+		  , ?
+		  , 1
+		  , ?
+		  , ?
+		  , ?
+	  )
+	</entry>
+	
+	<entry key="">
+	</entry>
+	
+	<entry key="">
+	</entry>
+	
+	<entry key="">
+	</entry>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </properties>

@@ -5,11 +5,13 @@ import static com.dashi.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.dashi.adoptReviewBoard.model.dao.AdoptReviewBoardDao;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.dao.DspDao;
 import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
+import com.dashi.dspBoard.model.vo.DspReply;
 
 public class DspService {
 
@@ -148,6 +150,20 @@ public class DspService {
 		int listCount = new DspDao().selectListCount(conn);
 		close(conn);
 		return listCount;
+	}
+
+	//----------------댓글 관련---------------------------
+	//댓글작성
+	public int insertReply(DspReply dr) {
+		Connection conn = getConnection();
+		int result = new DspDao().insertReply(conn, dr);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 
 	
