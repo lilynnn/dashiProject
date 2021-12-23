@@ -219,7 +219,7 @@
                 <div align="center">
                     <!--로그인 되어있고 작성자와 일치할 경우-->
                     <%if(loginUser != null && loginUser.getNickname().equals(ar.getNickname())) { %>
-                        <button onclick="location.href='<%=contextPath %>/updateForm.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-warning">수정하기</button>
+                        <button onclick="location.href='<%=contextPath %>/updateform.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-warning">수정하기</button>
                         <button onclick="location.href='<%=contextPath %>/delete.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-danger">삭제하기</button>
                     <% } %>
                 </div>
