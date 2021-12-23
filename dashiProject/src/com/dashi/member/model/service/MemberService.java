@@ -86,10 +86,11 @@ public class MemberService {
 		
 	}
 	
-	public Member findPwd(String memId,String memName,String birth,String phone, String email) {
+	//비밀번호찾기
+	public Member findPwd(String memId) {
 	
 		Connection conn = getConnection();
-		Member m = new MemberDao().findPwd(conn, memId,memName,birth,phone,email);
+		Member m = new MemberDao().findPwd(conn, memId);
 
 		return m;
 	}

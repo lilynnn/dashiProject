@@ -63,6 +63,16 @@ public class Answer {
 		this.qCreat=qCreat;
 		this.anContent=anContent;
 	}
+	
+	public Answer(String inquireNo, int asCategory, String qTitle, String qContent , String memId) {
+		super();
+		this.asCategory = asCategory ;
+		this.inquireNo=inquireNo;
+		this.memId=memId;
+		this.qTitle=qTitle;
+		this.qContent=qContent;
+	}
+	
 
 	public String getInquireNo() {
 		return inquireNo;

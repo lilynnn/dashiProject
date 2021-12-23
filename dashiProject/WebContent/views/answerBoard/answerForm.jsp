@@ -119,7 +119,9 @@
     <hr>
 
  	<form action="<%=contextPath %>/insert.as" method="post">
+    
     <table class="table1">
+
     		<tr>
             <th width=220 colspan="2">문의유형</th>
             <td>
@@ -131,10 +133,7 @@
            	<option value="5">기타</option> 
             </td> </tr>
             
-        <tr> <!-- 아이디 -->
-            <th  width=220 colspan="2">아이디 <b>*</b></th> 
-            <td  width=780><input type="text" style="width: 690px" name="Id" id="userId" placeholder="아이디를 입력해주세요." required></td>
-        </tr>
+        
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목<b>*</b></th>
             <td width=780><input type="text" style="width: 690px" name="qTitle"  placeholder="제목을 입력해주세요." required></td>

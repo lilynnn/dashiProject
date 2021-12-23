@@ -370,7 +370,7 @@ public class MemberDao {
 		return result;
 	}
 	//비밀번호 찾기 
-	public Member findPwd (Connection conn, String memId,String memName,String birth,String phone, String email) {
+	public Member findPwd (Connection conn, String memId) {
 
 		Member m = null;
 		PreparedStatement pstmt = null;
@@ -381,22 +381,18 @@ public class MemberDao {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, memId);
-			pstmt.setString(2, memName);
-			pstmt.setString(3, birth);
-			pstmt.setString(4, phone);
-			pstmt.setString(5, email);
-			
-			System.out.println(memId);
-			System.out.println(memName);
 
+			
 			rset = pstmt.executeQuery();
 			
+			
 			if(rset.next()) {
-				m = new Member(rset.getString("mem_Id"),	   
-							   rset.getString("mem_Name"),
-							   rset.getString("dob"),							 
-							   rset.getString("email"),
-							   rset.getString("phone"));
+				 m = new Member(rset.getString("mem_Id")
+						,rset.getString("mem_name")
+						,rset.getString("dob")
+						,rset.getString("phone")
+						,rset.getString("email"));
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -406,6 +402,7 @@ public class MemberDao {
 			close(pstmt);
 		}
 		return m;
+		
 	}
 	
 	//아이디찾기 

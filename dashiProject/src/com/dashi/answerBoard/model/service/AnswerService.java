@@ -9,24 +9,20 @@ import com.dashi.answerBoard.model.vo.Answer;
 
 public class AnswerService {
 	
-	// 1대1 전체조회 
-	public ArrayList<Answer> selectAnswerList() {
+	public ArrayList<Answer> selectAnswerList(){
+		
 		Connection conn = getConnection();
-		
 		ArrayList<Answer> list = new AnswerDao().selectAnswerList(conn);
-		
 		close(conn);
+		return list;	
 		
-		return list;
-		
-	}
+	} // 1) answer 사용자 전체조회
 	
-
-	//1대1 등록
+	
 	public int insertAnswer(Answer a) {
+		
 		Connection conn = getConnection();
 		int result = new AnswerDao().insertAnswer(conn, a);
-		
 		if(result > 0) {
 			commit(conn);
 		}else {
@@ -34,33 +30,7 @@ public class AnswerService {
 		}
 		close(conn);
 		return result;
-	}
-	
-	public int adinsertAnswer(Answer a) {
-		Connection conn = getConnection();
-		int result = new AnswerDao().adinsertAnswer(conn, a);
 		
-		if(result > 0) {
-			commit(conn);
-		}else {
-			rollback(conn);
-		}
-		close(conn);
-		return result;
-	}
-	
-	// 1대1 관리자 조회  
-		public ArrayList<Answer> asselectAnswerList() {
-			Connection conn = getConnection();
-			
-			ArrayList<Answer> list = new AnswerDao().asselectAnswerList(conn);
-			
-			close(conn);
-			
-			return list;
-			
-		}
-		
-
+	} // 2) answer 사용자 등록
 	
 }

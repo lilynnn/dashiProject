@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /*사용자 1:1 등록뷰*/
 @WebServlet("/enroll.as")
-public class AnswerEnrollFormController extends HttpServlet {
+public class AnswerInsertViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerEnrollFormController() {
+    public AnswerInsertViewController() {
         super();
         // TODO Auto-generated constructor stub
     }

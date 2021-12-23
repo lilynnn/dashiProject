@@ -6,10 +6,9 @@
 SELECT 
     INQUIRE_NO
     , AS_CATEGORY
-    , memId
     , Q_TITLE
     , Q_CONTENT
-    , Q_CREAT
+    , MEM_ID
     FROM ANSWER A 
     JOIN MEMBER ON(MEM_NO = MEM_ID)
     ORDER 
@@ -25,7 +24,6 @@ INSERT
     , MEM_ID
     , Q_TITLE
     , Q_CONTENT
-    , MEM_NO
     )
     VALUES
     (
@@ -34,9 +32,9 @@ INSERT
     ,?
     ,?
     ,?
-    ,?
     )
-    JOIN MEMBER ON(MEM_NO = MEM_ID)
+    WHERE MEM_NO =? 
+    AND MEM_ID = ?
 </entry>
 
 <entry key="adinsertAnswer">

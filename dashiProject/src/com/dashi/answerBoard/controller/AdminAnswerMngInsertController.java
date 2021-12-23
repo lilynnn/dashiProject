@@ -18,7 +18,7 @@ import com.dashi.faqBoard.model.vo.FAQ;
  * Servlet implementation class AdminAnswerMngInsertController
  */
 
-/*1:1 답변 insert 관리자*/
+/*1:1 답변 insert 관리자 기능구현*/
 @WebServlet("/adInsert.as")
 public class AdminAnswerMngInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
