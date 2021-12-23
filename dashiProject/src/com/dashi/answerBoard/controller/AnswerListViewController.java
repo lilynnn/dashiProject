@@ -15,6 +15,7 @@ import com.dashi.answerBoard.model.vo.Answer;
 /**
  * Servlet implementation class AnswerListViewController
  */
+/*사용자 1:1 전체목록조회 기능구현*/
 @WebServlet("/asList.as")
 public class AnswerListViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

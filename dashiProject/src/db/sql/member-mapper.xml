@@ -183,6 +183,13 @@ SELECT  MEM_ID
 </entry>
 
 
+<entry key="updatePwdMember">
+UPDATE MEM_INFO
+		   SET MEM_PWD = ?
+		 WHERE MEM_ID = ?
+		   AND MEM_PWD = ?
+</entry>
+
 
 
 

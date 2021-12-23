@@ -16,6 +16,7 @@ import com.dashi.member.model.vo.Member;
  * Servlet implementation class AnswerForm
  */
 
+/*사용자 1:1 등록 기능구현*/
 @WebServlet("/insert.as")
 public class AnswerInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

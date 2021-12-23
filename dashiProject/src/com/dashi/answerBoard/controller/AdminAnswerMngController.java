@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class AdminAnswerMng
  */
 
-/*화면 컨트롤러*/
+/*관리자 1:1 답변관리view*/
 @WebServlet("/adAnswer.as")
 public class AdminAnswerMngController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

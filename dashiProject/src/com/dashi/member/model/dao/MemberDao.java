@@ -345,7 +345,7 @@ public class MemberDao {
 
 	
 	//비밀번호 재설정 
-	public int updatePwdMember(Connection conn, String memId, String memPwd, String updatePwd) {
+	public int updatePwdMember(Connection conn, String memId, String userpwd, String pw) {
 	
 		int result = 0;
 		
@@ -355,9 +355,9 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, updatePwd);
+			pstmt.setString(1, pw);
 			pstmt.setString(2, memId);
-			pstmt.setString(3, memPwd);
+			pstmt.setString(3, userpwd);
 			
 			result = pstmt.executeUpdate();
 			
@@ -369,7 +369,7 @@ public class MemberDao {
 		
 		return result;
 	}
-	
+	//비밀번호 찾기 
 	public Member findPwd (Connection conn, String memId,String memName,String birth,String phone, String email) {
 
 		Member m = null;
@@ -408,7 +408,7 @@ public class MemberDao {
 		return m;
 	}
 	
-//아이디찾기 
+	//아이디찾기 
 	public String findId(Connection conn, String memName, String email) {
 		
 		String memId = null; 

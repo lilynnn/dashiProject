@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class AnswerUpdateController
  */
+
+/*사용자 1:1 수정뷰*/
 @WebServlet("/AnswerUpdateController")
 public class AnswerUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

@@ -140,9 +140,9 @@ public class MemberService {
 	} // 회원 탈퇴
 
 	//비밀번호 재설정 
-	public Member updatePwdMember(String memId, String memPwd, String updatePwd) {
+	public Member updatePwdMember(String memId, String userpwd, String pw) {
 		Connection conn = getConnection();
-		int result = new MemberDao().updatePwdMember(conn, memId, memPwd, updatePwd);
+		int result = new MemberDao().updatePwdMember(conn, memId, userpwd, pw);
 	
 		Member updateMem = null;
 		if(result > 0) {
