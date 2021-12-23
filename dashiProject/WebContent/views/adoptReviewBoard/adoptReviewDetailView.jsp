@@ -225,6 +225,7 @@
                     <br><br>
                 </div>
 
+				<% if(loginUser != null){  // 로그인인 되어있을 경우 %>
                 <!-- 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="ReportModal"> 
                     
@@ -309,8 +310,10 @@
                             </script>
                             
                         </div>
+                        
                     </form>
                 </div>
+                <% } %>
         
                 <div align="center" style="border: 1px solid red; height: auto;">
                     <!--댓글영역-->
