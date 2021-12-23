@@ -45,7 +45,7 @@ public class AdoptReviewInsertController extends HttpServlet {
 			int maxSize = 10 * 1024 * 1024;
 			
 			// 1_2. 저장시킬 폴더의 물리적인 경로
-			String savePath = request.getSession().getServletContext().getRealPath("resources/upfiles/adoptReview/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/adoptReview/");
 			
 			// 2. 전달된 파일 업로드
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
