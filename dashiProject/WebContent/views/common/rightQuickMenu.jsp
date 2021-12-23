@@ -142,6 +142,13 @@
 	
 	#answer-box .modal-footer{
 		border-top:0px;
+		justify-content: center;
+	}
+	
+	#answer-box .btn{
+		background:rgb(102,184,94);
+		color:white;
+		text-align:center;
 	}
 </style>
 </head>
@@ -180,7 +187,7 @@
 		
 		      <!-- Modal Header -->
 		      <div class="modal-header">
-		        <h4 class="modal-title"><a href="">1:1 문의</a></h4>
+		        <h4 class="modal-title"><a href="<%=request.getContextPath()%>/asList.as">1:1 문의</a></h4>
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
 		      </div>
 		
