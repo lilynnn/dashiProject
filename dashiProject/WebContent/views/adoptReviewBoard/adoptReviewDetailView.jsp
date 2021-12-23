@@ -337,35 +337,7 @@
                         </tr>
                         <tbody id="comm-outer">
 							
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr id="comm-writer">
-                                <td colspan=2>작성자</td>
-                                <td width=110px;>YYYY-MM-DD</td>
-                                <td width=90px;>HH-MM</td>
-                                <td width=610px;></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr id="comm-content">
-                                <td colspan="5">댓글내용</td>
-                                <td><button>수정</button></td>
-                                <td><button>삭제</button></td>
-                                <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
-                                <td><button>답글</button></td>
-                            </tr>                            
-                            <tr id="" style="display: nonee;">
-                                <td colspan="5"><textarea cols="100" rows="8" placeholder=""></textarea></td>
-                                <td><button>수정</button></td>
-                                <td><button>삭제</button></td>
-                                <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
-                                <td><button>답글</button></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                            </tr>
+                       
 							
                         </tbody>
 
@@ -486,12 +458,13 @@
 						                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
 						                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + "');\">수정</button></td>"
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
+						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
 						                        + "<tr id=\"update-input\" style=\"display: none;\">"
-					                               + "<td colspan=5><textarea cols=100 rows=8 placeholder=\"" + list[i].replyContent + "\"></textarea></td>"
+					                               + "<td colspan=5><textarea cols=100 rows=8 id='upReplycontent'>" + list[i].replyContent + "</textarea></td>"
 					                               + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
-					                               + "<td><button>취소</button></td>"
+					                               + "<td><button onclick=\"upcancel();\">취소</button></td>"
 					                            + "</tr>"
 						                        + "<tr>"
 						                           + "<td>&nbsp;</td>"
@@ -535,11 +508,11 @@
                     			url:"rupform.ar",
                     			type:"post",
                     			data:{
-                    				replyNo:replyNo
+                    				replyNo: replyNo
                     			},
-                    			success:function(){
-                    				$('#repcontent-area').attr('style', "display:none;");  //숨기기
-                    				$('#update-input').attr('style', "display:'';");  //나타내기
+                    			success:function(arp){
+                    				$('#repcontent-area').attr('style', "display:none;");  // 기존댓글 숨기기
+                    				$('#update-input').attr('style', "display:'';");  // 댓글수정영역 나타내기
                     			}
                     		})
                     	}
@@ -551,7 +524,8 @@
                     			url:"rupdate.ar",
                     			type:"post",
                     			data:{
-                    				replyNo: replyNo
+                    				replyNo: replyNo,
+                    				replyContent:$("#upReplycontent").val()
                     			},
                     			success:function(result){
                     				if(result > 0){
@@ -562,6 +536,14 @@
                     			}
                     		});
                     	}
+                    	
+                    	// 댓글 수정 취소용
+                    	function upcancel(){
+            				$('#update-input').attr('style', "display:none;");  // 댓글수정영역 숨기기
+            				$('#repcontent-area').attr('style', "display:'';");  // 기존댓글 나타내기
+                    	}
+                    	
+                    	
 
                     	
                     

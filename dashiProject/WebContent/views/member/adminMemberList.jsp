@@ -20,7 +20,7 @@
 
     .outer{
         width: 1100px;
-        height: 800px;
+        height: 1000px;
         margin: auto;
         margin-top: 30px;
     }
@@ -88,10 +88,10 @@
                 </div>
                 
                 <hr style="width: 900px;">
-                <br><br><br>
+                
                 <!-- 검색버튼 -->
                 <div style="margin-left: 530px; width:450px;">
-                <!--
+                
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -103,21 +103,21 @@
                     <input type="text" placeholder="검색어를 입력하세요.">
                                 
                     <button>검색</button>
-                  -->
+                  
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
-                            <th width="10">no</th>
-                            <th width="60">이름</th>
-                            <th width="70">아이디</th>
-                            <th width="80">생년월일</th>
+                            <th width="8">no</th>
+                            <th width="50">이름</th>
+                            <th width="30">아이디</th>
+                            <th width="40">생년월일</th>
                             <th width="150">주소</th>
-                            <th width="110">휴대폰</th>
-                            <th width="70">입양신청</th>
-                            <th width="70">결제여부</th>
-                            <th width="40">회원등급</th>
+                            <th width="100">휴대폰</th>
+                            <th width="60">입양신청</th>
+                            <th width="60">결제여부</th>
+                            <th width="60">회원등급</th>
                         </tr>
                     </thead>
                     <tbody class="tbody">

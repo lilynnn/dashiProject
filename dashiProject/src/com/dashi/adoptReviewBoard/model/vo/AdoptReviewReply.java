@@ -53,12 +53,6 @@ public class AdoptReviewReply {
 		return replyNo;
 	}
 
-
-
-
-
-	
-
 	public void setReplyNo(String replyNo) {
 		this.replyNo = replyNo;
 	}

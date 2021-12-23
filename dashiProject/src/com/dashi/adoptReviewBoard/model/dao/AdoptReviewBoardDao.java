@@ -371,7 +371,6 @@ public class AdoptReviewBoardDao {
 		
 		return arp;
 		
-		
 	}
 	
 	// 댓글 수정
@@ -397,6 +396,37 @@ public class AdoptReviewBoardDao {
 		
 		return result;
 	}
+	
+	
+	// 입양후기 삭제
+	public int deleteReview(Connection conn, String arlistNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("deleteReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, arlistNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

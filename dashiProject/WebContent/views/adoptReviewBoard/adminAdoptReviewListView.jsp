@@ -20,7 +20,7 @@
 <style>
     .outer{
         width: 1100px;
-        height: 800px;
+        height: 1000px;
         margin: auto;
         margin-top: 30px;
     }
@@ -99,11 +99,11 @@
                     <button>검색하기</button>
                 </div>
                 
-                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse;">
+                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="25"></th>
-                            <th width="25">no</th>
+                            <th width="80">no</th>
                             <th width="100">아이디</th>
                             <th width="100">닉네임</th>
                             <th width="100">분류</th>
@@ -135,6 +135,10 @@
 					<% } %>
                         </tbody>
                     </table>
+                <!--삭제하기 버튼-->
+                <div align="right">
+                    <button>삭제</button>
+                </div>
                     <br><br><br>
                             
                     <!-- 페이징버튼 영역 -->
@@ -157,10 +161,7 @@
                     </div>
                 </div>
                 
-                <!--삭제하기 버튼-->
-                <div align="right">
-                    <button>삭제</button>
-                </div>
+
      
     </div>
     <script>

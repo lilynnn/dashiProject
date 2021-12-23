@@ -129,7 +129,7 @@
 	                <br><br><br><br>
 
 	                <!--클릭 시 삭제 확인 alert창 발생-->
-	                <button class="btnn" style="margin-bottom: 100px;">삭제하기</button>
+	                <button onclick="location.href='<%= contextPath %>/reviewdelete.ad?arno=<%= ar.getArlistNo() %>'" class="btnn" style="margin-bottom: 100px;">삭제하기</button>
 	            </div>
             </div>
 

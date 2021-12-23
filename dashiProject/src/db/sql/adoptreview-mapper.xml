@@ -171,8 +171,8 @@
 	
 	<entry key="updateReplyForm">
 		SELECT
-		       REPLY_NO
-		     , REPLY_CONTENT
+			   REPLY_NO,
+		       REPLY_CONTENT
 		  FROM REPLY
 		 WHERE REPLY_NO = ?
 	</entry>
@@ -184,6 +184,14 @@
 		     , UPDATE_DATE = SYSDATE
 		 WHERE REPLY_NO = ?
 	</entry>
+	
+	<entry key="deleteReview">
+		UPDATE
+		       ADOPT_REVIEW
+		   SET POST_STATUS = 'D'
+		 WHERE ARLIST_NO = ?
+	</entry>
+	
 	
 </properties>
 

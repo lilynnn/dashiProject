@@ -136,6 +136,21 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
+	// 입양후기 삭제
+	public int deleteReview(String arlistNo) {
+		Connection conn = getConnection();
+		int result = new AdoptReviewBoardDao().deleteReview(conn, arlistNo);
+		
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
 	
 	
 	
