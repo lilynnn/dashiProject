@@ -176,7 +176,6 @@
 					<th colspan="2">상세이미지</th>
 				</tr>
 				<tr>
-					<tr>
                     <td align="center" width="300">
                         <img src="<%=contextPath%>/<%=list.get(0).getPath() + list.get(0).getChangeName()%>" width="300" height="200">
                     </td>
@@ -190,6 +189,10 @@
 			
 			<div align="center">
         		<a href="<%=contextPath%>/entList.ent" class="btn btn-sm btn-secondary">목록가기</a>
+        		<% if(e.getProcessResult().equals("확인")){ %>
+        		<a class="btn btn-sm btn-warning">수정하기</a>
+        		<a class="btn btn-sm btn-danger">삭제하기</a>
+        		<% } %>
         	</div>
         
 			

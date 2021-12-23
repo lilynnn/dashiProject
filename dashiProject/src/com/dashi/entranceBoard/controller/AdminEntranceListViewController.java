@@ -60,10 +60,9 @@ public class AdminEntranceListViewController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
-		
 		ArrayList<Entrance> list = new EntranceService().selectList(pi); 
 				
+		
 		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 

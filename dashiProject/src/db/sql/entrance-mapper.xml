@@ -116,13 +116,15 @@
 		 WHERE ENT_NO = ?
 	</entry>
 
+	<!-- 관리자 페이징처리 -->
 	<entry key="selectListCount">
 		SELECT
 		       COUNT(*) "count"
 		  FROM ENTRANCE
 		 WHERE ENT_STATUS = 'N'
 	</entry>
-
+	
+	<!-- 관리자 입소리스트 -->
 	<entry key="selectList">
 		SELECT *
 		  FROM (

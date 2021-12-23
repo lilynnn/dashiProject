@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.entranceBoard.model.vo.Entrance, com.dashi.common.model.vo.Attachment"%>
+<%
+	Entrance e = (Entrance)request.getAttribute("e");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +16,10 @@
         margin-top: 50px;
         width: 1200px;
         margin: auto;
+        height:1500px;
     }
-
+	#menubar{width:250px;}
+	.outer>div{float:left;}
     .image-area{
         width: 600px;
         height: 300px;
@@ -22,13 +28,8 @@
         border: 1px solid black;
     }
 
-   .entrancetb *{
-   	border:1px solid black;
-   	border-spacing:20px;
-   }
-    
     .content-area{
-        
+        margin-top:20px;
         margin: auto;
     }
     
@@ -41,8 +42,14 @@
         border-spacing: 1px;
         border: 1px solid gray;
     }
-    .animal-info th{background: rgb(211, 208, 208); width: 180px;}
+    .animal-info th{background: #f5e6ff; width: 180px;}
     .animal-info td{width: 220px;}
+    .table-hover tr{
+    	height:50px;
+    	font-size:20px;
+    	border:1px solid gray;
+    	text-align:center;
+    }
 </style>
 </head>
 <body>
@@ -57,26 +64,31 @@
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
         
-            <div width="800px">
+            <div style="margin-top:50px;">
                 <h3>입소신청</h3>
-            </div>
            <hr>
+            </div>
           
             <div class="content-area" align="center">            
                 
                 <!-- 입양공고 제목, 작성일, 조회수 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
-                        <td colspan="5">
-                            <h5><b>[동물품종] [이름]의 입소신청 어쩌구</b></h5>
+                        <td colspan="3" width="100%" align="center">
+                            <h5><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<% if(e.getAnimalType().equals("D")){ %>
+								[강아지] 
+							<% }else if(e.getAnimalType().equals("C")){ %>
+								[고양이]
+							<% }else{ %>
+								[기타]
+							<% } %>                            
+                            [<%=e.getAnimalName()%>]의 입소신청서</b></h5>
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">
-                        <td>작성일&nbsp;</td>
-                        <td>YYYY-MM-DD</td>
-                        <td>&nbsp;<!--공백란--></td>
-                        <td>조회수</td>
-                        <td>NN</td>
+                        <td width="50%" align="right">작성일&nbsp;</td>
+                        <td width="50%" align="center"><%=e.getEntApplyDate()%></td>
                     </tr>
                 </table>
 
@@ -93,28 +105,53 @@
                 <table class="animal-info" width="600px">
                     <tr>
                         <th>작성자</th>
-                        <td>~~~~</td>
+                        <td><%=e.getMemName()%></td>
                         <th>카테고리</th>
-                        <td>강아지</td>
+                        <td>
+                        	<% if(e.getAnimalType().equals("D")){ %>
+								[강아지] 
+							<% }else if(e.getAnimalType().equals("C")){ %>
+								[고양이]
+							<% }else{ %>
+								[기타]
+							<% } %>    
+                        </td>
                     </tr>
                     <tr>
                         <th>작성일</th>
-                        <td>YYYY-MM-DD</td>
+                        <td><%=e.getEntApplyDate()%></td>
                         <th>처리결과</th>
                      
                          <td> 
-                            <select name="search-category">
-	                            <option value="">승인대기</option>
-	                            <option value="">승인</option>
-	                            <option value="">반려</option>
+                            <select name="search-category" id="category">
+	                            <option value="확인">확인</option>
+	                            <option value="승인">승인</option>
+	                            <option value="거부">거부</option>
                             </select>
+                            <script>
+						    	$(function(){
+						    		$("#category option").each(function(){
+						    			if($(this).val() == "<%=e.getProcessResult()%>"){
+						    				$(this).attr("selected", true);
+						    			}
+						    		})
+						    	})
+						    </script>
                    		 </td>
                     </tr>
-                    
                 </table>
-                <div class="image-area" width="500px">
-                    	작성시 업로드한 동물 사진
-                </div>
+                <table>
+                	<tr>
+	                   <td align="center" width="300">
+	                       <img src="<%=contextPath%>/<%=list.get(0).getPath() + list.get(0).getChangeName()%>" width="300" height="200">
+	                   </td>
+	                   <% for(int i=1; i<list.size(); i++){ %>
+	                   <td width="300">
+	                   	<img src="<%=contextPath%>/<%=list.get(i).getPath() + list.get(i).getChangeName()%>" width="300" height="200">
+	                   </td>
+	                   <% } %>
+					</tr>
+                </table>
                 <br>
                 <!-- 내역 -->
                 <div >
@@ -122,62 +159,60 @@
                 </div>
                <br><br>
 
-                <table class="entrancetb" style="text-align: left;" width="500px">
+                <table class="table-hover" style="text-align:left; width:600px;">
                     <tr>
                         <th>1. 신청 보호소명  </th>
-                        <td> 다시 사랑하개 ! </td>
+                        <td> 다시, 사랑받개! </td>
                     </tr>
                     <tr>
                         <th>2. 품종</th>
                         
-                        <td> 강아지</td>
+                        <td><%=e.getAnimalVariety()%></td>
                     </tr>
                     <tr>
                         <th>3. 성별 </th>
                         
-                        <td>여</td>
+                        <td><%=e.getAnimalGender()%></td>
                     </tr>
                     <tr>
                         <th>4. 나이 </th>
                         
-                        <td> XX세 </td>
+                        <td><%=e.getAnimalAge()%></td>
                     </tr>
                     <tr>
                         <th>5. 접종여부 </th>
                        
-                        <td>Y </td>
+                        <td><%=e.getAnimalVaccinated()%></td>
                     </tr>
                     <tr>
                         <th>6. 중성화 유무</th>
-                        <td>Y </td>
+                        <td><%=e.getAnimalNeturalization()%></td>
                     </tr>
                     <tr>
                         <th>7. 질병 유무 </th>
                         
-                        <td> 질병 상세 기입 </td>
+                        <td><%=e.getAnimalDisease()%></td>
                     </tr>
                     <tr>
                         <th>8. 특이사항</th>
                        
-                        <td>특이사항 상세기입 </td>
+                        <td><%=e.getAnimalIssue()%></td>
                     </tr>
                     <tr>
                         <th>9. 입소 희망 일시 </th>
                      
-                        <td>2021년 12월 31일 19시 </td>
-                    </tr>
-                    <tr>
-                        <th>10. 사진 </th>
-                        <!-- 사용자가 첨부한 이미지 파일 -->
-                        <td> 첨부파일1 , 첨부파일2 </td> 
-
+                        <td><%=e.getEntWantDate()%>&nbsp;<%=e.getEntWantTime()%>시</td>
                     </tr>
                 </table>
                 
                 <br><br><br><br>
                 <br>
-
-                </table>
+				
+				<div align="center">
+	        		<a href="<%=contextPath%>/entListView.ad?cpage=1" class="btn btn-sm btn-secondary">목록가기</a>
+	        		<a class="btn btn-sm btn-warning">승인하기</a>
+	        		<a class="btn btn-sm btn-danger">반려하기</a>
+        		</div>
 
 
             </div>

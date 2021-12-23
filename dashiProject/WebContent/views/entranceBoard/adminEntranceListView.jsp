@@ -33,11 +33,11 @@
     /*왼쪽메뉴바*/
     #munubar{width:200px}
     /*공지사항시작*/
- 	#adminNoticeList{
-         margin-left: 30px;
+ 	#adminEntList{
+         margin-left: 50px;
          width: 850px;
     }
-    #adminNoticeList div{float: left;}
+    #adminEntList div{float: left;}
     /*검색창*/
     #search{width: 250px;}
     #search>button{
@@ -52,14 +52,14 @@
         font-size: 13px;
     }
     /*공지사항 목록테이블 정리*/
-    .noticeList thead, tbody{
+    .entList thead, tbody{
         text-align: center;
     }
-    .noticeList{ 
+    .entList{ 
         border-top:1px solid;
         border-bottom: 1px solid;    
     }
-    .noticeList thead{background: rgb(224, 223, 223);}
+    .entList thead{background: rgb(224, 223, 223);}
     /*타이틀 정리*/
     #title{
         width: 100%; 
@@ -78,7 +78,7 @@
     	width:20px;
     	text-align:center;
     }
-    .noticeList>tbody>tr:hover{
+    .entList>tbody>tr:hover{
     	cursor:pointer;
     }
 </style>
@@ -108,7 +108,7 @@
     	</div>
 
         <!--관리자 공지사항 목록-->
-        <div id="adminNoticeList">
+        <div id="adminEntList">
 
                 <div id="title">
                     	입소신청
@@ -117,7 +117,7 @@
                 
 
                 <div style="margin-top: 10px;">
-                    <table class="noticeList table-bordered">
+                    <table class="entList table-bordered">
                         <thead>
                             <tr>
                                 <th width="80">No.</th>
@@ -204,8 +204,8 @@
     
     	<script>
         	$(function(){
-        		$(".noticeList>tbody>tr").click(function(){
-        			        			
+        		$(".entList>tbody>tr").click(function(){
+        			  location.href = '<%=contextPath%>/entDetail.ad?eno=' + $(this).children().eq(0).text();
         		})
         	})
         	
