@@ -404,7 +404,7 @@ public class EntranceDao {
 			close(pstmt);
 		}
 		return result;
-	} // 첨부파일 삭제
+	} // 입소 승인
 	
 	public int rejectEntrance(Connection conn, String eno) {
 		int result = 0;
@@ -423,7 +423,7 @@ public class EntranceDao {
 			close(pstmt);
 		}
 		return result;
-	} // 첨부파일 삭제
+	} // 입소 반려
 	
 	
 	

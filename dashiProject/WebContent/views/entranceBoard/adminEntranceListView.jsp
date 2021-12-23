@@ -81,6 +81,9 @@
     .entList>tbody>tr:hover{
     	cursor:pointer;
     }
+    .entList>tbody>td>a{
+    	box-sizing: border-box;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -122,7 +125,7 @@
                             <tr>
                                 <th width="80">No.</th>
                                 <th width="80">승인단계</th>
-                                <th width="450">제목</th>
+                                <th width="400">제목</th>
                                 <th width="90">작성자</th>
                                 <th width="100">작성일</th>
                                 <th colspan="2" width="120">처리</th>
@@ -164,14 +167,14 @@
 		                        <td><%=e.getMemNo()%></td>
 		                        <td><%=e.getEntApplyDate()%></td>
 		                        <td>
-		                        	<button class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
+		                        	<a href="confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
 	                                	승인
-	                            	</button>
+	                            	</a>
 		                        </td>
 		                        <td>
-		                        	<button class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
+		                        	<a href="rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
 	                                	반려
-	                            	</button>
+	                            	</a>
 		                        </td>
 		                    </tr>
 		                    <% } %>
@@ -208,7 +211,6 @@
         			  location.href = '<%=contextPath%>/entDetail.ad?eno=' + $(this).children().eq(0).text();
         		})
         	})
-        	
         	
         </script>
     

@@ -36,10 +36,10 @@ public class EntranceDeleteController extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/entList.ent");						
+			response.sendRedirect(request.getContextPath() + "/entListView.ad/cpage=1");						
 		}else {
-			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/entList.ent");
+			request.getSession().setAttribute("alertMsg", "입소신청글 삭제 실패!");
+			response.sendRedirect(request.getContextPath() + "/entListView.ad/cpage=1");
 		}
 	
 	

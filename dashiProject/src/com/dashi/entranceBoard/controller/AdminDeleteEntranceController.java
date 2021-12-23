@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.entranceBoard.model.service.EntranceService;
+
 /**
  * Servlet implementation class AdminDeleteEntranceController
  */
@@ -26,8 +28,19 @@ public class AdminDeleteEntranceController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		String eno = request.getParameter("eno");
+		
+		int result = new EntranceService().deleteEntrance(eno);
+		
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/entList.ent");						
+		}else {
+			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
+			response.sendRedirect(request.getContextPath() + "/entList.ent");
+		}
+	
 	}
 
 	/**
