@@ -136,19 +136,34 @@
                             <td><%= m.getPhone() %></td>
                             <td><%= m.getAdoptYN() %></td>
                             <td><%= m.getPayYN() %></td>
-                            <td>
                             
-                            <!-- 
-                                <select name="grade">
-                                    <option value="silver">실버</option>
-                                    <option value="gold">골드</option>
-                                    <option value="diamond">다이아</option>
-                                    <option value="blacklist">블랙리스트</option>
-                                    <option value="delete">탈퇴</option>
-                                </select>
-                            -->
-                            	<%= m.getGrade() %>
-                            </td> 
+	                            <!-- 
+	                                <select name="grade">
+	                                    <option value="silver">실버</option>
+	                                    <option value="gold">골드</option>
+	                                    <option value="diamond">다이아</option>
+	                                    <option value="blacklist">블랙리스트</option>
+	                                    <option value="delete">탈퇴</option>
+	                                </select>
+	                            -->
+	                            
+			                    <% if(m.getGrade() == 1){ %>
+			                    <td>
+										실버
+								</td>		
+			                    <% }else if(m.getGrade() == 2){ %>
+			                    <td>
+			                        	골드
+			                    </td>    	
+			                    <% }else if(m.getGrade() == 3){ %>
+			                    <td>
+			                        	다이아
+			                    </td>    	
+			                    <% }else if(m.getGrade() == 9){ %>
+			                    <td>
+			                        	탈퇴
+			                    </td>    	
+			                    <% } %>
                         </tr>
                         <% } %>	
 					<% } %>
