@@ -72,20 +72,28 @@
 	
 	<!-- 목록조회 -->
 	<entry key="selectDspList">
-		SELECT
-			    DSP_NO
-		     ,  POST_CTG
-		     , DSP_TITLE
-		     , MONEY
-		     , LOCATION_NAME
-		     , ANIMAL_ISSUE
-		     , PATH || CHANGE_NAME "TITLEIMG"
-		  FROM DSP
-		  JOIN ATTACHMENT ON (DSP_NO = REF_NO)
-		 WHERE POST_STATUS = 'Y'
-           and attach_level = 1
-		 ORDER 
-		    BY DSP_NO DESC
+
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT
+							    DSP_NO
+						     ,  POST_CTG
+						     , DSP_TITLE
+						     , MONEY
+						     , LOCATION_NAME
+						     , ANIMAL_ISSUE
+						     , PATH || CHANGE_NAME "TITLEIMG"
+						  FROM DSP
+						  JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+						 WHERE POST_STATUS = 'Y'
+				           and attach_level = 1
+						 ORDER 
+						    BY DSP_NO DESC
+		            	) A
+		      	)
+		  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	

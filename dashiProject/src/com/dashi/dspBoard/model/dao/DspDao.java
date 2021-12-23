@@ -12,6 +12,7 @@ import java.util.Properties;
 import static com.dashi.common.JDBCTemplate.*;
 
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
 
@@ -94,7 +95,7 @@ public class DspDao {
 	}
 
 	//목록 리스트 메소드
-	public ArrayList<Dsp> selectDspList(Connection conn) {
+	public ArrayList<Dsp> selectDspList(Connection conn, PageInfo pi) {
 
 		//여러행 조회되니까 리스트 이용
 		ArrayList<Dsp> list = new ArrayList<>();
@@ -106,6 +107,11 @@ public class DspDao {
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

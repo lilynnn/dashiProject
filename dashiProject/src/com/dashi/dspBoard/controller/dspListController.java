@@ -33,14 +33,13 @@ public class dspListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount;		// 현재 총 게시글 갯수
-		int currentPage; 	// 현재 페이지(즉, 사용자가 요청한 페이지)
-		int pageLimit; 		// 페이지 하단에 보여질 페이징바의 페이지 최대갯수(몇개 단위씩)
-		int boardLimit; 	// 한페이지내에 보여질 게시글의 최대갯수(몇개단위씩)
-		// 위의 4개를 가지고 아래 3개의 값을 구해낼꺼임
-		int maxPage;    	//가장 마지막 페이지 (총 페이지수)
-		int startPage; 		// 페이징 바의 시작수
-		int endPage;  		// 페이징바의 끝수
+		int listCount;		
+		int currentPage; 	
+		int pageLimit; 		
+		int boardLimit; 	
+		int maxPage;    	
+		int startPage; 		
+		int endPage;  		
 			
 		// * listCount : 총 게시글 갯수
 		listCount = new DspService().selectListCount();
@@ -64,14 +63,13 @@ public class dspListController extends HttpServlet {
 		}
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-		
-		ArrayList<Dsp> list = new AdoptBoardService().selectNoticeThumbnailList(pi);
 
 		
 		// 요청처리(응답페이지에 필요한 데이터 요청)
-		ArrayList<Dsp> list = new DspService().selectDspList();
+		ArrayList<Dsp> list = new DspService().selectDspList(pi);
 	
 		// 응답뷰
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/dspBoard/dspListView.jsp").forward(request, response);

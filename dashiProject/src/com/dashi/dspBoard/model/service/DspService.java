@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.dashi.common.model.vo.Attachment;
+import com.dashi.common.model.vo.PageInfo;
 import com.dashi.dspBoard.model.dao.DspDao;
 import com.dashi.dspBoard.model.vo.Category;
 import com.dashi.dspBoard.model.vo.Dsp;
@@ -34,9 +35,9 @@ public class DspService {
 	}
 	
 	// 목록 조회 메소드
-	public ArrayList<Dsp> selectDspList() {
+	public ArrayList<Dsp> selectDspList(PageInfo pi) {
 		Connection conn = getConnection();
-		ArrayList<Dsp> list = new DspDao().selectDspList(conn);
+		ArrayList<Dsp> list = new DspDao().selectDspList(conn, pi);
 		
 		close(conn);
 		return list;
