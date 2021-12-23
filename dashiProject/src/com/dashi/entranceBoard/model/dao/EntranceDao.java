@@ -14,7 +14,6 @@ import java.util.Properties;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.entranceBoard.model.vo.Entrance;
-import com.dashi.notice.model.vo.Notice;
 
 public class EntranceDao {
 	
@@ -260,9 +259,101 @@ public class EntranceDao {
 		
 	}// 일반게시판 각 페이지마다 보여지는 목록
 	
+	public int updateEntrance(Connection conn, Entrance e) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateEntrance");
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, e.getMemName());
+			pstmt.setString(2, e.getEntTitle());
+			pstmt.setString(3, e.getAnimalVariety());
+			pstmt.setString(4, e.getAnimalName());
+			pstmt.setString(5, e.getAnimalGender());
+			pstmt.setInt(6, e.getAnimalAge());
+			pstmt.setString(7, e.getAnimalVaccinated());
+			pstmt.setString(8, e.getAnimalNeturalization());
+			pstmt.setString(9, e.getAnimalDisease());
+			pstmt.setString(10, e.getAnimalIssue());
+			pstmt.setDate(11, e.getEntWantDate());
+			pstmt.setString(12, e.getEntWantTime());
+			pstmt.setString(13, e.getReqPhone());
+			pstmt.setString(14, e.getAnimalType());
+			pstmt.setString(15, e.getEntNo());
+			
+			result = pstmt.executeUpdate();			
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	} // 게시글 수정등록
 	
+	public int updateAttachment(Connection conn, ArrayList<Attachment> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		System.out.println(list);
+		
+		try {
+			
+			int i = 0;
+			
+			for(Attachment at : list) {
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, at.getOriginName());
+				pstmt.setString(2, at.getChangeName());
+				pstmt.setString(3, at.getPath());
+				pstmt.setString(4, at.getAttachNo());				
+
+				result = pstmt.executeUpdate();			
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+		
+	}// 첨부파일 업데이트 (파일변경)
 	
-	
+	public int insertNewAttachment(Connection conn, ArrayList<Attachment> list) {
+		
+		System.out.println();
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachment");
+		
+		try {
+			for(Attachment at : list) {
+				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, at.getRefNo());
+				pstmt.setString(2, at.getOriginName());
+				pstmt.setString(3, at.getChangeName());
+				pstmt.setString(4, at.getPath());
+				
+			}
+			
+			result = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	} // 첨부파일 등록
 	
 	
 	

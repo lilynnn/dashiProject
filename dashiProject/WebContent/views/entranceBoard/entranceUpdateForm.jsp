@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.entranceBoard.model.vo.Entrance, com.dashi.common.model.vo.Attachment"%>    
+<%
+	Entrance e = (Entrance)request.getAttribute("e");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,9 +48,8 @@
 	
 	<div class="outer" align="center">
 	
-		<form action="<%=contextPath %>/entinsert.ent" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="userNo" value="<%=loginUser.getMemNo()%>">
-
+		<form action="<%=contextPath %>/update.ent" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="eno" value="<%=e.getEntNo()%>">
 
 			<div class="title-area">
 				<h4>입소신청서</h4>
@@ -64,57 +67,58 @@
 				<tr>
 					<td width=220><b>제목을 적어주세요</b></td>
 					<td width=780>
-						<input type="text" name="title" style="width: 690px" required>
+						<input type="text" name="title" value="<%=e.getEntTitle()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<!-- 신청자 정보 -->
 				<tr>
 					<td width=220>1. 신청인 성명  </td>
 					<td width=780>
-						<input type="text" name="userName" style="width: 690px" required>
+						<input type="text" name="userName" value="<%=e.getMemName()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>2. 동&nbsp;물&nbsp;&nbsp;&nbsp;이&nbsp;름 </td>
 					<td width=780>
-						<input type="text" name="petName" style="width: 690px" required>
+						<input type="text" name="petName" value="<%=e.getAnimalName()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>3. 동&nbsp;물&nbsp;&nbsp;&nbsp;종&nbsp;류 </td>
-					<td width=780>
-						<input type="radio" name="petType" value="D" required> 강아지
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="petType" value="C"> 고양이
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="petType" value="E"> 기타
-					</td>
+					<td> 
+                         <select name="category" id="tCategory">
+	                          <option value="D">강아지</option>
+	                          <option value="C">고양이</option>
+	                          <option value="E">기타</option>
+                         </select>
+            		 </td>
 				</tr>
 				<tr>
 					<td width=220>4. 동&nbsp;물&nbsp;&nbsp;&nbsp;품&nbsp;종</td>
 					<td width=780>
-						<input type="text" name="petVariety" style="width: 690px" required placeholder="품종을 정확히 적어주세요.">
+						<input type="text" name="petVariety" value=<%=e.getAnimalVariety()%> style="width: 690px" required placeholder="품종을 정확히 적어주세요.">
 					</td>
 				</tr>
 				<tr>
 					<td width=220>5. 동&nbsp;물&nbsp;&nbsp;&nbsp;나&nbsp;이 </td>
 					<td width=780>
-						<input type="number" name="petAge" style="width: 690px" required>
+						<input type="number" name="petAge" value="<%=e.getAnimalAge()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>6. 동&nbsp;물&nbsp;&nbsp;&nbsp;성&nbsp;별</td>
 					<td width=780>
-						<select name="petGender">
+						<select name="petGender" id="gCategory">
                             <option value="F">암컷</option>
                             <option value="M">수컷</option>
                         </select>
 					</td>
+					
 				</tr>
 				<tr>
 					<td width=220>7. 접&nbsp;종&nbsp;&nbsp;&nbsp;여&nbsp;부</td>
 					<td width=780>
-						<select name="petVaccin">
+						<select name="petVaccin" id="vCategory">
                             <option value="Y">접종완료</option>
                             <option value="N">접종전</option>
                         </select>
@@ -123,39 +127,40 @@
 				<tr>
 					<td width=220>8. 중&nbsp;성&nbsp;화&nbsp;여&nbsp;부 </td>
 					<td width=780>
-						<input type="radio" name="neutral" value="Y" required> 중성화 완료
-						&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="radio" name="neutral" value="N"> 중성화 전
+						<select name="neutral" id="nCategory">
+                            <option value="Y">중성화 완료</option>
+                            <option value="N">중성화 전</option>
+                        </select>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>9. 질&nbsp;병&nbsp;&nbsp;&nbsp;유&nbsp;무 </td>
 					<td width=780>
-						<input type="text" name="disease" style="width: 690px" required>
+						<input type="text" name="disease" value="<%=e.getAnimalDisease()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>10. 특&nbsp;이&nbsp;&nbsp;&nbsp;사&nbsp;항 </td>
 					<td width=780>
-						<input type="text" name="petIssue" style="width: 690px" required>
+						<input type="text" name="petIssue" value="<%=e.getAnimalIssue()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>11. 입소희망날짜 </td>
 					<td width=780>
-						<input type="date" name="wantDate" style="width: 690px" required>
+						<input type="date" name="wantDate" value="<%=e.getEntWantDate()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>12. 입소희망시간 </td>
 					<td width=780>
-						<input type="number" name="wantTime" style="width: 690px" required>
+						<input type="number" name="wantTime" value="<%=e.getEntWantTime()%>" style="width: 690px" required>
 					</td>
 				</tr>
 				<tr>
 					<td width=220>13. 전&nbsp;화&nbsp;&nbsp;&nbsp;번&nbsp;호  </td>
 					<td width=780>
-						<input type="text" name="phone" style="width: 690px" required placeholder="(-)포함해서 입력해주세요">
+						<input type="text" name="phone" value="<%=e.getReqPhone()%>" style="width: 690px" required placeholder="(-)포함해서 입력해주세요">
 					</td>
 				</tr>
 			</table>
@@ -175,27 +180,24 @@
 					<td colspan="3">&nbsp;</td>
 				</tr>
 				<tr align="center">
-					<th>대표이미지</th>
-					<th colspan="2">상세이미지</th>
+					<th colspan="3">등록하신사진</th>
 				</tr>
 				<tr>
-					<tr>
-                    <td align="center" width="300">
-                        <img id="titleImg" width="300" height="200" onclick="chooseFile(1);">
-                    </td>
-                    <td width="300">
-                    	<img id="contentImg1" width="300" height="200" onclick="chooseFile(2);">
-                    </td>
-                    <td width="300">
-                    	<img id="contentImg2" width="300" height="200" onclick="chooseFile(3);">
-                    </td>
-				</tr>
 			</table>
+			<% for(int i=0; i<list.size(); i++){ %>
+               	<input type="hidden" name="origin<%=i+1%>" value="<%=list.get(i).getAttachNo()%>">
+			<% } %>
+			
+			<div>
+			<% for(int i=0; i<list.size(); i++){ %>
+             <img id="img<%=i+1%>" width="300" height="200" onclick="chooseFile(<%=i+1%>);" src="<%=contextPath%>/<%=list.get(i).getPath()%><%=list.get(i).getChangeName()%>">
+			<% } %>
+			</div>
 			
 			<div id="file-area" style="display:none">
-                <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);" required>
-                <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);" required>
-                <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);" required>
+                <input type="file" name="file1" id="file1" onchange="loadImg(this, 1);">
+                <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
+                <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
             </div>
             
             <script>
@@ -213,27 +215,28 @@
             			
             			reader.onload = function(e){
             				switch(num){
-	            				case 1: $("#titleImg").attr("src", e.target.result); break;
-	                            case 2: $("#contentImg1").attr("src", e.target.result); break;
-	                            case 3: $("#contentImg2").attr("src", e.target.result); break;
+	            				case 1: $("#img1").attr("src", e.target.result); break;
+	                            case 2: $("#img2").attr("src", e.target.result); break;
+	                            case 3: $("#img3").attr("src", e.target.result); break;
             				
             				}
             			}
             			
             		}else{
             			switch(num){
-	            			case 1: $("#titleImg").attr("src", null); break;
-	        				case 2: $("#contentImg1").attr("src", null); break;
-	        				case 3: $("#contentImg2").attr("src", null); break;
+	            			case 1: $("#img1").attr("src", null); break;
+	        				case 2: $("#img2").attr("src", null); break;
+	        				case 3: $("#img3").attr("src", null); break;
             			}
             		}
             		
             	}
-            </script>
-			
+
+			</script>			
 			
 			<br><br>
-			<button class="btn btn-lg btn-success">제출하기</button>
+			<button type="submit" class="btn btn-sm btn-success">수정하기</button>
+			<button type="button" class="btn btn-sm btn-outline-danger">삭제하기</button>
 			<br><br>
 
 		</form>

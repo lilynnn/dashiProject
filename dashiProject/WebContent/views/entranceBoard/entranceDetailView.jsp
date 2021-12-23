@@ -53,7 +53,7 @@
 	
 	<%@ include file="/views/common/menubar.jsp" %>
 	
-	<div style="width:100%" align="center">
+	<div style="width:100%;" align="center">
 		<br><br><br>
        <%@ include file="../common/memberUpdateMenubar.jsp" %>
        <br><br>
@@ -187,11 +187,11 @@
 				</tr>
 			</table>
 			
-			<div align="center">
+			<div align="center" style="margin-top:30px;">
         		<a href="<%=contextPath%>/entList.ent" class="btn btn-sm btn-secondary">목록가기</a>
         		<% if(e.getProcessResult().equals("확인")){ %>
-        		<a class="btn btn-sm btn-warning">수정하기</a>
-        		<a class="btn btn-sm btn-danger">삭제하기</a>
+        		<a href="<%=contextPath%>/updateForm.ent?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-warning">수정하기</a>
+        		<a href="<%=contextPath%>/delete.ent?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-danger">삭제하기</a>
         		<% } %>
         	</div>
         

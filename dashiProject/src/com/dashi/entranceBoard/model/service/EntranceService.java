@@ -69,7 +69,30 @@ public class EntranceService {
 		return list;
 	} // 게시글 수 만큼(10개)조회
 	
+	public int updateEntrance(Entrance e, ArrayList<Attachment> list) {
+		Connection conn = getConnection();
+		int result1 = new EntranceDao().updateEntrance(conn, e);
+		//--여기까지 board테이블에 게시글 수정		
+		
+		int result2 = 1;
+		
+		if(!list.isEmpty()) { 
+			// 기존 첨부파일 업데이트
+			result2 = new EntranceDao().updateAttachment(conn, list);				
+		}
 	
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		
+		
+		return result1 * result2;
+		
+		
+	} //게시글 수정 밑 첨부파일 수정,등록
 	
 	
 	

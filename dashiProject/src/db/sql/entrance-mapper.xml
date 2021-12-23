@@ -145,11 +145,54 @@
 		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+	<entry key="updateEntrance">
+		UPDATE
+			   ENTRANCE
+		   SET MEM_NAME = ?
+		     , ENT_TITLE = ?
+		     , ANIMAL_VARIETY = ?
+		     , ANIMAL_NAME = ?
+		     , ANIMAL_GENDER = ?
+		     , ANIMAL_AGE = ?
+		     , ANIMAL_VACCINATED = ?
+		     , ANIMAL_NEUTRALIZATION = ?
+		     , ANIMAL_DISEASE = ?
+		     , ANIMAL_ISSUE = ?
+		     , ENT_WANT_DATE = ?
+		     , ENT_WANT_TIME = ?
+		     , REQ_PHONE = ?
+		     , ANIMAL_TYPE = ?
+		 WHERE ENT_NO = ?
+	</entry>
 
+	<entry key="updateAttachment">
+		UPDATE
+			   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , PATH = ?
+		 WHERE ATTACH_NO = ?
+	</entry>
 
-
-
-
+	<entry key="insertNewAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , PATH
+		  )
+		  VALUES
+		  (
+		    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  , ?	
+		  )
+	</entry>
 
 
 
