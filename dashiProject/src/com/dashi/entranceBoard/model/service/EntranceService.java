@@ -111,9 +111,33 @@ public class EntranceService {
 		
 	} // 게시글 삭제
 	
+	public int confirmEntrance(String eno) {
+		Connection conn = getConnection();
+		int result = new EntranceDao().confirmEntrance(conn, eno);
+		
+		if(result > 0){
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	} // 입소 승인
 	
-	
-	
+	public int rejectEntrance(String eno) {
+		Connection conn = getConnection();
+		int result = new EntranceDao().rejectEntrance(conn, eno);
+		
+		if(result > 0){
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	} // 입소 승인
 	
 	
 	

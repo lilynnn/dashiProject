@@ -271,17 +271,13 @@ public class EntranceDao {
 			pstmt.setString(2, e.getEntTitle());
 			pstmt.setString(3, e.getAnimalVariety());
 			pstmt.setString(4, e.getAnimalName());
-			pstmt.setString(5, e.getAnimalGender());
-			pstmt.setInt(6, e.getAnimalAge());
-			pstmt.setString(7, e.getAnimalVaccinated());
-			pstmt.setString(8, e.getAnimalNeturalization());
-			pstmt.setString(9, e.getAnimalDisease());
-			pstmt.setString(10, e.getAnimalIssue());
-			pstmt.setDate(11, e.getEntWantDate());
-			pstmt.setString(12, e.getEntWantTime());
-			pstmt.setString(13, e.getReqPhone());
-			pstmt.setString(14, e.getAnimalType());
-			pstmt.setString(15, e.getEntNo());
+			pstmt.setInt(5, e.getAnimalAge());
+			pstmt.setString(6, e.getAnimalDisease());
+			pstmt.setString(7, e.getAnimalIssue());
+			pstmt.setDate(8, e.getEntWantDate());
+			pstmt.setString(9, e.getEntWantTime());
+			pstmt.setString(10, e.getReqPhone());
+			pstmt.setString(11, e.getEntNo());
 			
 			result = pstmt.executeUpdate();			
 			
@@ -298,9 +294,7 @@ public class EntranceDao {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateAttachment");
-		
-		System.out.println(list);
-		
+				
 		try {
 			
 			int i = 0;
@@ -359,22 +353,77 @@ public class EntranceDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteEntrance");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
 		
-		
-	}
+	} // 입소신청서 삭제
 	
 	public int deleteAttachment(Connection conn, String eno) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("deleteAttachment");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	} // 첨부파일 삭제
+	
+	public int confirmEntrance(Connection conn, String eno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("confirmEntrance");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	} // 첨부파일 삭제
+	
+	public int rejectEntrance(Connection conn, String eno) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("rejectEntrance");
 		
-	}
-	
-	
-	
-	
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, eno);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	} // 첨부파일 삭제
 	
 	
 	

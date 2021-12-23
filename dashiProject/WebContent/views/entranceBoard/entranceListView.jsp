@@ -124,7 +124,13 @@
                             <img src="<%=contextPath%>/<%=e.getTitleimg()%>" width="250" height="260">
                         </div>
                         <p>
-                            <span id="category" class="badge badge-primary"><%=e.getProcessResult()%></span> 
+                            <% if(e.getProcessResult().equals("확인")){ %>
+                            	<span id="category" class="badge badge-primary"><%=e.getProcessResult()%></span>
+	                        <% }else if(e.getProcessResult().equals("승인")){ %>
+								<span id="category" class="badge badge-warning"><%=e.getProcessResult()%></span>
+	                        <% }else{ %>
+								<span id="category" class="badge badge-dark"><%=e.getProcessResult()%></span>
+							<% } %>
                             <span><%=e.getEntTitle()%></span>
                         </p>
                     </div>

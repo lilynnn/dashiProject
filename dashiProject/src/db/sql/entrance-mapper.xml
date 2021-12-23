@@ -152,16 +152,12 @@
 		     , ENT_TITLE = ?
 		     , ANIMAL_VARIETY = ?
 		     , ANIMAL_NAME = ?
-		     , ANIMAL_GENDER = ?
 		     , ANIMAL_AGE = ?
-		     , ANIMAL_VACCINATED = ?
-		     , ANIMAL_NEUTRALIZATION = ?
 		     , ANIMAL_DISEASE = ?
 		     , ANIMAL_ISSUE = ?
 		     , ENT_WANT_DATE = ?
 		     , ENT_WANT_TIME = ?
 		     , REQ_PHONE = ?
-		     , ANIMAL_TYPE = ?
 		 WHERE ENT_NO = ?
 	</entry>
 
@@ -193,6 +189,46 @@
 		  , ?	
 		  )
 	</entry>
+
+	<entry key="deleteEntrance">
+		UPDATE
+		       ENTRANCE
+		   SET ENT_STATUS = 'Y'
+		 WHERE ENT_NO = ?
+	</entry>
+
+	<entry key="deleteAttachment">
+		UPDATE
+		       ATTACHMENT
+		   SET ATTACH_STATUS = 'N'
+		 WHERE REF_NO = ?
+	</entry>
+
+	<entry key="confirmEntrance">
+		UPDATE
+			   ENTRANCE
+		   SET PROCESS_RESULT = '승인'
+		     , ENT_DATE = SYSDATE
+		 WHERE ENT_NO = ?
+	</entry>
+
+	<entry key="rejectEntrance">
+		UPDATE
+			   ENTRANCE
+		   SET PROCESS_RESULT = '반려'
+		 WHERE ENT_NO = ?
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

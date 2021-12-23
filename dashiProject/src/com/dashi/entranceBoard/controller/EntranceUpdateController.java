@@ -47,12 +47,8 @@ public class EntranceUpdateController extends HttpServlet {
 		String title = multiRequest.getParameter("title");
 		String userName = multiRequest.getParameter("userName");
 		String petName = multiRequest.getParameter("petName");
-		String petType = multiRequest.getParameter("category");
 		String petVariety = multiRequest.getParameter("petVariety");
 		int petAge = Integer.parseInt(multiRequest.getParameter("petAge"));
-		String petGender = multiRequest.getParameter("petGender");
-		String petVaccin = multiRequest.getParameter("petVaccin");
-		String neutral = multiRequest.getParameter("neutral");
 		String disease = multiRequest.getParameter("disease");
 		String petIssue = multiRequest.getParameter("petIssue");
 		Date wantDate = Date.valueOf(multiRequest.getParameter("wantDate"));
@@ -64,12 +60,8 @@ public class EntranceUpdateController extends HttpServlet {
 		e.setMemName(userName);
 		e.setEntTitle(title);
 		e.setAnimalName(petName);
-		e.setAnimalType(petType);
 		e.setAnimalVariety(petVariety);
 		e.setAnimalAge(petAge);
-		e.setAnimalGender(petGender);
-		e.setAnimalVaccinated(petVaccin);
-		e.setAnimalNeturalization(neutral);
 		e.setAnimalDisease(disease);
 		e.setAnimalIssue(petIssue);
 		e.setEntWantDate(wantDate);

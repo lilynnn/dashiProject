@@ -140,6 +140,7 @@
                    		 </td>
                     </tr>
                 </table>
+                <br><br><br>
                 <table>
                 	<tr>
 	                   <td align="center" width="300">
@@ -210,8 +211,12 @@
 				
 				<div align="center">
 	        		<a href="<%=contextPath%>/entListView.ad?cpage=1" class="btn btn-sm btn-secondary">목록가기</a>
-	        		<a class="btn btn-sm btn-warning">승인하기</a>
-	        		<a class="btn btn-sm btn-danger">반려하기</a>
+	        		
+	        		<% if(e.getProcessResult().equals("확인")){ %>
+	        		<a href="confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-warning">승인하기</a>
+	        		<% } %>
+	        		<a href="rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-danger">반려하기</a>
+	        		<a href="delete.ent?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-dark">삭제하기</a>
         		</div>
 
 

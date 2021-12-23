@@ -85,13 +85,13 @@
 				</tr>
 				<tr>
 					<td width=220>3. 동&nbsp;물&nbsp;&nbsp;&nbsp;종&nbsp;류 </td>
-					<td> 
-                         <select name="category" id="tCategory">
-	                          <option value="D">강아지</option>
-	                          <option value="C">고양이</option>
-	                          <option value="E">기타</option>
-                         </select>
-            		 </td>
+					<% if(e.getAnimalType().equals("D")){ %>
+						<td>강아지</td>
+					<% }else if(e.getAnimalType().equals("C")){ %>
+						<td>고양이</td>
+					<% }else{ %>
+						<td>기타</td>
+					<% } %>
 				</tr>
 				<tr>
 					<td width=220>4. 동&nbsp;물&nbsp;&nbsp;&nbsp;품&nbsp;종</td>
@@ -107,31 +107,27 @@
 				</tr>
 				<tr>
 					<td width=220>6. 동&nbsp;물&nbsp;&nbsp;&nbsp;성&nbsp;별</td>
-					<td width=780>
-						<select name="petGender" id="gCategory">
-                            <option value="F">암컷</option>
-                            <option value="M">수컷</option>
-                        </select>
-					</td>
-					
+					<% if(e.getAnimalGender().equals("F")){ %>
+						<td>암컷</td>
+					<% }else{ %>
+						<td>수컷</td>
+					<% } %>
 				</tr>
 				<tr>
 					<td width=220>7. 접&nbsp;종&nbsp;&nbsp;&nbsp;여&nbsp;부</td>
-					<td width=780>
-						<select name="petVaccin" id="vCategory">
-                            <option value="Y">접종완료</option>
-                            <option value="N">접종전</option>
-                        </select>
-					</td>
+					<% if(e.getAnimalVaccinated().equals("Y")){ %>
+						<td>접종완료</td>
+					<% }else{ %>
+						<td>접종 전</td>
+					<% } %>
 				</tr>
 				<tr>
 					<td width=220>8. 중&nbsp;성&nbsp;화&nbsp;여&nbsp;부 </td>
-					<td width=780>
-						<select name="neutral" id="nCategory">
-                            <option value="Y">중성화 완료</option>
-                            <option value="N">중성화 전</option>
-                        </select>
-					</td>
+					<% if(e.getAnimalNeturalization().equals("Y")){ %>
+						<td>중성화 완료</td>
+					<% }else{ %>
+						<td>중성화 전</td>
+					<% } %>
 				</tr>
 				<tr>
 					<td width=220>9. 질&nbsp;병&nbsp;&nbsp;&nbsp;유&nbsp;무 </td>
@@ -199,7 +195,7 @@
                 <input type="file" name="file2" id="file2" onchange="loadImg(this, 2);">
                 <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);">
             </div>
-            
+ 
             <script>
             	function chooseFile(num){
             		$("#file" + num).click();
@@ -235,6 +231,7 @@
 			</script>			
 			
 			<br><br>
+			<button type="button" class="btn btn-sm btn-warning">뒤로가기</button>
 			<button type="submit" class="btn btn-sm btn-success">수정하기</button>
 			<button type="button" class="btn btn-sm btn-outline-danger">삭제하기</button>
 			<br><br>
