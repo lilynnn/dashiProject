@@ -119,6 +119,34 @@
             </tr>
         </table>
 
+        <!-- 댓글 수정 -->
+        <tbody id="comm-outer">
+							
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr id="comm-writer">
+                <td colspan=2>작성자</td>
+                <td width=110px;>YYYY-MM-DD</td>
+                <td width=90px;>HH-MM</td>
+                <td width=610px;></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr id="comm-content" style="display: none;">
+                <td colspan="5"><textarea cols="100" rows="8" placeholder=""></textarea></td>
+                <td><button>수정</button></td>
+                <td><button>삭제</button></td>
+                <td><button id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
+                <td><button>답글</button></td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            
+        </tbody>
+
         <br><br><br>
             <!--댓글 입력란-->
             <div align="center">

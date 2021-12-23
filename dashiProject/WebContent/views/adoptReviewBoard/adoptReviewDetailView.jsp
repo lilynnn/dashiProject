@@ -197,7 +197,7 @@
 	        </div>
             <br><br><br><br><br><br>
             <!-- 입양후기 상세내용 영역 -->
-            <div class="content-area" align="center">
+            <div class="content-area" align="center" style="border: 1px solid red; height: auto;">
                 <!-- 입양후기 제목, 작성일, 조회수 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
@@ -215,6 +215,14 @@
                         <td><%=ar.getViewCount() %></td>
                     </tr>
                 </table>
+
+                <div align="center">
+                    <!--로그인 되어있고 작성자와 일치할 경우-->
+                    <%if(loginUser != null && loginUser.getNickname().equals(ar.getNickname())) { %>
+                        <button onclick="location.href='<%=contextPath %>/updateForm.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-warning">수정하기</button>
+                        <button onclick="location.href='<%=contextPath %>/delete.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-danger">삭제하기</button>
+                    <% } %>
+                </div>
         
                 <br><br><br><br>
                 <hr width="900" color="gray">
@@ -227,21 +235,22 @@
 
                 <!-- 사용자 첨부 이미지 -->
                 <div class="image-area">
-                    <img src="<%=contextPath %>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>">
+                    <img  class="image-area" src="<%=contextPath %>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>">
                 </div>
                 <br><br>
                 <div class="image-area">
                 	<% for(int i=1; i<list.size(); i++){ %>
-                    <img src="<%=contextPath %>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>">
+                    <img class="image-area" src="<%=contextPath %>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>">
                     <% } %>
                 </div>
-
+            </div>
         
                 <br><br><br><br><br>
                 <!-- 신고하기 버튼 영역 -->
                 <div class="report-area" align="right">
             
                     <button onclick="" data-toggle="modal" data-target="#reportModal">신고하기</button>
+
                     <br><br>
                 </div>
 
@@ -327,7 +336,7 @@
                     </form>
                 </div>
         
-                <div>
+                <div align="center" style="border: 1px solid red; height: auto;">
                     <!--댓글영역-->
                     <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
                         <tr id="comm-count">
@@ -514,7 +523,7 @@
                     				$('#repcontent-area').attr('style', "display:none;");  // 기존댓글 숨기기
                     				$('#update-input').attr('style', "display:'';");  // 댓글수정영역 나타내기
                     			}
-                    		})
+                    		});
                     	}
                     	
                     	
@@ -655,7 +664,7 @@
                                         </div>
                                     </form>
                                 </div>
-            </div>
+            
  
         
 

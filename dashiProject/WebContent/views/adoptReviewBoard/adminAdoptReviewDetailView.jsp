@@ -116,12 +116,12 @@
 	
 	                <!-- 사용자 첨부 이미지 -->
 	                <div class="image-area">
-	                    <img src="<%=contextPath %>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>">
+	                    <img class="image-area" src="<%=contextPath %>/<%=list.get(0).getPath() + list.get(0).getChangeName() %>">
 	                </div>
 	                <br><br>
 	                <div class="image-area">
 	                	<% for(int i=1; i<list.size(); i++){ %>
-	                    <img src="<%=contextPath %>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>">
+	                    <img class="image-area" src="<%=contextPath %>/<%=list.get(i).getPath() + list.get(i).getChangeName() %>">
 	                    <% } %>
 	                </div>
 	        
