@@ -180,7 +180,7 @@
 		  )
 		  VALUES
 		  (
-		    'RT-'||LPAD(SEQ_RNO.NEXTVAL,3,0)
+		    LPAD(SEQ_RNO.NEXTVAL,3,0)
 		  , ?
 		  , ?
 		  , ?

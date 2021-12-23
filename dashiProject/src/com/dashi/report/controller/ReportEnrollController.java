@@ -54,6 +54,7 @@ public class ReportEnrollController extends HttpServlet {
 			
 			} else if(reportBoardNo.substring(0, 3).equals("DSP")){
 				request.getSession().setAttribute("alertMsg","게시글 신고가 완료되었습니다.");
+				// 나중에 dsplist로 넘기기로 수정
 				response.sendRedirect(request.getContextPath());
 			}
 		} else {
