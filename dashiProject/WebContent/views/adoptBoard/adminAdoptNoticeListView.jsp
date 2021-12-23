@@ -83,17 +83,19 @@
             <hr style="width: 950px;">
 
             <!-- 검색버튼 -->
-            <div class="search-area" style="margin: 20px 0px; float: right;">
+            <form action="<%=contextPath %>/adtsearch.ad" method="get">
+            	<div class="search-area" style="margin: 20px 0px; float: right;">
                 <select name="search-category" style="height: 30px;">
-                    <option value="">카테고리</option>
-                    <option value="">동물품종</option>
-                    <option value="">글번호</option>
+                    <option value="adtTitle">제목</option>
+                    <option value="adtNo">글번호</option>
+                    <option value="adtStatus">처리상태</option>
                 </select>
 
-                <input type="text" placeholder="검색어를 입력하세요.">
+                <input type="text" name="searchKey" placeholder="검색어를 입력하세요.">
                 
-                <button onclick="" id="search-btn">검색하기</button>
+                <button type="submit" id="search-btn">검색하기</button>
             </div>
+            </form>
 
             <table align="center" class="table" style="width: 950px; font-size:15px;">
                 

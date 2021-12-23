@@ -31,6 +31,21 @@ public class AdoptNotice {
 	public AdoptNotice() {}
 	
 	
+	
+	public AdoptNotice(String anlistNo, String anTitle, String writeDate, int viewCount, int adtStatus,
+			String animalType, String entNo) {
+		super();
+		this.anlistNo = anlistNo;
+		this.anTitle = anTitle;
+		this.writeDate = writeDate;
+		this.viewCount = viewCount;
+		this.adtStatus = adtStatus;
+		this.animalType = animalType;
+		this.entNo = entNo;
+	}
+
+
+
 	public AdoptNotice(String anTitle, String anContent, String entNo) {
 		super();
 		this.anTitle = anTitle;

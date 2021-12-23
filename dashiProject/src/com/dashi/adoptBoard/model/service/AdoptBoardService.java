@@ -285,4 +285,30 @@ public class AdoptBoardService {
 		close(conn);
 		return result;
 	}
+	
+	
+	// 입양공고검색하기
+	public ArrayList<AdoptNotice> searchAdoptNotice(String searchCtg, String searchKey){
+		int adtStatus = 0;
+		Connection conn = getConnection();
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		if(searchCtg.equals("adtTitle")) {
+			list = new AdoptBoardDao().searchAdoptNoticeAdtTitle(conn, searchKey);
+		
+		}else if(searchCtg.equals("adtNo")) {
+			list = new AdoptBoardDao().searchAdoptNoticeAdtNo(conn, searchKey);
+		
+		}else if(searchCtg.equals("adtStatus")) {
+			switch(searchKey) {
+			case "승인대기": adtStatus = 1; break;
+			case "신청승인":
+			case "결제대기": adtStatus = 2; break;
+			case "결제완료": adtStatus = 3; break;
+			case "입양완료": adtStatus = 4; break;
+			}
+			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, adtStatus);
+		} 
+		
+		return list;
+	}
 }

@@ -372,7 +372,7 @@
 	                        <!--클릭 시 댓글 작성 실패|성공 alert창-->
 	                        <button class="write-btn" onclick="insertReply();">댓글쓰기</button>
 	                        </div>
-                        <% }else{ // 로그인 되어있지 않을 경우 %>
+                        <% }else { // 로그인 되어있지 않을 경우 %>
 	                        <div align="center">
 	                            <textarea class="write-area" cols="130" rows="8" placeholder="로그인 후 이용가능한 서비스입니다." style="resize: none;" readonly></textarea>
 	                        </div>
@@ -542,7 +542,6 @@
                         <div id="report-title" align="left">
                             <b>댓글신고하기</b>
                         </div>
-						<input type="hidden" value="<%=list.get(i).getReplyNo() %>">
                         <div align="center" style="border:1px solid black;">
                             <!-- 신고게시글 정보 담아 전달하는 table -->
                             <!-- 신고한 사용자 아이디, 신고 당한 게시글 번호, 제목, 작성자 담아서 전달 -->

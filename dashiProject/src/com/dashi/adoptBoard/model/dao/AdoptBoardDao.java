@@ -958,5 +958,104 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
+	// 입양공고글 제목키워드로 검색
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtTitle(Connection conn, String searchKey){
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+	
+		String sql = prop.getProperty("searchAdoptNoticeAdtTitle");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+			rset = pstmt.executeQuery();
+	
+			while(rset.next()) {
+				list.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+										 rset.getString("AN_TITLE"),
+										 rset.getString("WRITE_DATE"),
+										 rset.getInt("VIEW_COUNT"),
+										 rset.getInt("ADT_STATUS"),
+										 rset.getString("ANIMAL_TYPE"),
+										 rset.getString("ENT_NO")
+										 ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	
+	//입양공고글번호로 검색
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtNo(Connection conn, String searchKey){
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+	
+		String sql = prop.getProperty("searchAdoptNoticeAdtNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+			rset = pstmt.executeQuery();
+	
+			while(rset.next()) {
+				list.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+										 rset.getString("AN_TITLE"),
+										 rset.getString("WRITE_DATE"),
+										 rset.getInt("VIEW_COUNT"),
+										 rset.getInt("ADT_STATUS"),
+										 rset.getString("ANIMAL_TYPE"),
+										 rset.getString("ENT_NO")
+										 ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+	//입양처리상태로 검색
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtStatus(Connection conn, int adtStatus){
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+	
+		String sql = prop.getProperty("searchAdoptNoticeAdtStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, adtStatus);
+			rset = pstmt.executeQuery();
+	
+			while(rset.next()) {
+				list.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+										 rset.getString("AN_TITLE"),
+										 rset.getString("WRITE_DATE"),
+										 rset.getInt("VIEW_COUNT"),
+										 rset.getInt("ADT_STATUS"),
+										 rset.getString("ANIMAL_TYPE"),
+										 rset.getString("ENT_NO")
+										 ));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
 	
 }

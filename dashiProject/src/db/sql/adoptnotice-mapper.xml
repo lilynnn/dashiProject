@@ -477,4 +477,33 @@
 		 WHERE AALIST_NO = ?
 	</entry>
 	
+	<entry key="searchAdoptNoticeAdtTitle">
+		SELECT 
+		       ANLIST_NO
+		     , AN_TITLE
+		     , VIEW_COUNT
+		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		     , ADT_STATUS
+		     , ENT_NO
+		     , E.ANIMAL_TYPE
+		  FROM ADOPT_NOTICE AN
+		  JOIN ENTRANCE E USING (ENT_NO)
+		 WHERE AN_TITLE LIKE ?
+		   AND AN.POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="searchAdoptNoticeAdtNo">
+		SELECT 
+		       ANLIST_NO
+		     , AN_TITLE
+		     , VIEW_COUNT
+		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		     , ADT_STATUS
+		     , ENT_NO
+		     , E.ANIMAL_TYPE
+		  FROM ADOPT_NOTICE AN
+		  JOIN ENTRANCE E USING (ENT_NO)
+		 WHERE ANLIST_NO LIKE ?
+		   AND AN.POST_STATUS = 'Y'
+	</entry>
 </properties>
