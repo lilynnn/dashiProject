@@ -116,13 +116,13 @@
 	                  
 	                  <thead class="thead-light">
 	                      <tr>
-	                      	  <th width="50">삭제</th>
 	                          <th width="100">글번호</th>
 	                          <th width="100">공고번호</th>
 	                          <th width="290">공고제목</th>
 	                          <th width="100">신청인</th>
 	                          <th width="100">신청일</th>
 	                          <th width="120">처리상태</th>
+	                          <th width="100">삭제하기</th>
 	                      </tr>
 	                  </thead>
 	                  <tbody>
@@ -131,9 +131,7 @@
 	                     	<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">
 	                  		<input type="hidden" name="anlistNo" value="<%=ap.getAnlistNo() %>">
 	                  		<input type="hidden" name="memNo" value="<%=ap.getMemNo() %>">
-	                     	
-	                     	<th><input type="checkbox" name="deleteChkbx" onclick="delectCheck();"></th>
-	                     	
+	                     		
 	                     	<td><%=ap.getAalistNo() %></td>
 							<td><%=ap.getAnlistNo() %></td>
 	                        <td><%=ap.getAaTitle() %></td>
@@ -152,6 +150,10 @@
 	                          		<span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
 	                          	<%} %>
 	                          </td>   
+	                          
+	                          <td>
+	                          	<a href="<%=contextPath %>/adpdelete.ad?adno=<%=ap.getAalistNo() %>" class="btn btn-sm btn-light">삭제하기</a>
+	                          </td>
 	                      </tr>
 	                  	<%} %>
 	                  </tbody>  

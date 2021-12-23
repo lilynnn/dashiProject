@@ -272,4 +272,17 @@ public class AdoptBoardService {
 		close(conn);
 		return list;	
 	}
+	
+	//입양신청서삭제하기
+	public int deleteAdoptApply(String boardNo) {
+		Connection conn = getConnection();
+		int result = new AdoptBoardDao().deleteAdoptApply(conn, boardNo);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+	}
 }

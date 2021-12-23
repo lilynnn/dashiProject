@@ -92,7 +92,8 @@
 		  FROM ADOPT_NOTICE
 		  JOIN ADOPT_ANIMAL USING(ENT_NO)
      	  JOIN ENTRANCE USING(ENT_NO)
-		 WHERE ANLIST_NO = ?		
+		 WHERE ANLIST_NO = ?
+		   AND POST_STATUS = 'Y'		
 	</entry>
 
 	<!-- 입양신청글 insert sql -->
@@ -392,6 +393,7 @@
 		  FROM ADOPT_APPLY AA
 		  JOIN MEM_INFO USING (MEM_NO)
 		 WHERE AALIST_NO = ?
+		   AND POST_STATUS = 'Y'
 	</entry>
 	
 	<entry key="adoptApplyStatusUpdate">
@@ -466,6 +468,13 @@
 		  FROM ADOPT_APPLY
 		  JOIN MEM_INFO M USING (MEM_NO)
 		 WHERE MEM_ID LIKE ?
+	</entry>
+	
+	<entry key="deleteAdoptApply">
+		UPDATE
+		       ADOPT_APPLY
+		   SET POST_STATUS = 'N'
+		 WHERE AALIST_NO = ?
 	</entry>
 	
 </properties>
