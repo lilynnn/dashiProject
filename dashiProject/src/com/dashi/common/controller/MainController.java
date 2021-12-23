@@ -38,7 +38,7 @@ public class MainController extends HttpServlet {
 		
 		request.setAttribute("anList", anList);
 		
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		//request.getRequestDispatcher("index.jsp").forward(request, response);
 		
 	}
 

@@ -112,10 +112,10 @@
                   
                   <button id="search-btn">검색하기</button>
               </div>
-
-			  <%if(list.isEmpty()) {%>
+			
+				<%if(list.isEmpty()) {%> 
 			  	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
-			  <%} else { %>
+				<%} else { %> -->
 	              <!-- 신청내역 보여질 table -->
 	              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
 	                  
@@ -162,7 +162,7 @@
 	                  </tbody>  
 	              </table>
 				<%} %>
-	              
+	            -->  
               <br>
 
               <!-- 페이징버튼 영역 -->

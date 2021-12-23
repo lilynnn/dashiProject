@@ -36,7 +36,7 @@ public class AdminMainPage extends HttpServlet {
 		//System.out.println(noCount);
 		//System.out.println(noDate);
 		int adtCount = new AdoptBoardService().selectListCount();
-		System.out.println(adtCount);
+
 		request.setAttribute("adtCount", adtCount);
 		request.getRequestDispatcher("views/admin/adminMainPage.jsp").forward(request, response);
 	
