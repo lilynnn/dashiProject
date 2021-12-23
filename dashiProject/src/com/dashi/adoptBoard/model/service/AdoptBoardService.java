@@ -179,8 +179,6 @@ public class AdoptBoardService {
 		if(!list.isEmpty()) {
 			result2 = new AdoptBoardDao().updateAttachmentList(conn, list);
 		} 
-		System.out.println("result1 : " + result1);
-		System.out.println("result2 : " + result2);
 		if(result1>0 && result2>0) {
 			commit(conn);
 		}else {
@@ -259,4 +257,19 @@ public class AdoptBoardService {
 		return result1*result2*result3*result4;
 	}
 	
+	
+	// 입양신청서 검색하기
+	public ArrayList<AdoptApply> searchAdoptApply(String categoryCtg, String searchCtg, String searchKey){
+		Connection conn = getConnection();
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		if(searchCtg.equals("adpNo")) {
+			list = new AdoptBoardDao().searchAdoptApplyADPNO(conn, searchKey);
+		} else if(searchCtg.equals("adtNo")){
+			list = new AdoptBoardDao().searchAdoptApplyADTNO(conn, searchKey);
+		} else if(searchCtg.equals("userId")){
+			list = new AdoptBoardDao().searchAdoptApplyMEMID(conn, searchKey);
+		}
+		close(conn);
+		return list;	
+	}
 }

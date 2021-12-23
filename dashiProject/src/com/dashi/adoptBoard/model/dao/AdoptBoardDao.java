@@ -660,8 +660,10 @@ public class AdoptBoardDao {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
 		}
-		
 		return list;
 	}
 	
@@ -814,4 +816,130 @@ public class AdoptBoardDao {
 		}
 		return result;
 	}
+	
+	
+	// 입양신청서 번호로 검색하기(입양신청글번호)
+	public ArrayList<AdoptApply> searchAdoptApplyADPNO(Connection conn, String searchKey){
+		
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String keyword = "%"+searchKey+"%";
+		System.out.println(keyword);
+		
+		String sql = prop.getProperty("searchAdoptApplyADPNO");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+						
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdoptApply(rset.getString("AALIST_NO"),
+						rset.getString("ANLIST_NO"),
+						rset.getInt("MEM_NO"),
+						rset.getString("AA_TITLE"),
+						rset.getInt("ADT_STATUS"),
+						rset.getString("MEM_ID"),
+						rset.getString("APPLY_DATE")));
+			}
+			
+			System.out.println("dao검색결과 : " + list);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		return list;
+
+	}
+	
+	// 입양신청서 입양공고번호로 검색
+	public ArrayList<AdoptApply> searchAdoptApplyADTNO(Connection conn, String searchKey){
+		
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchAdoptApplyADTNO");
+
+		String key = "%"+searchKey+"%";
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, key);
+						
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdoptApply(rset.getString("AALIST_NO"),
+						rset.getString("ANLIST_NO"),
+						rset.getInt("MEM_NO"),
+						rset.getString("AA_TITLE"),
+						rset.getInt("ADT_STATUS"),
+						rset.getString("MEM_ID"),
+						rset.getString("APPLY_DATE")));
+			}
+			
+			System.out.println("dao검색결과 : " + list);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		return list;
+
+	}
+	
+	// 입양신청서 멤버아이디로 검색
+	public ArrayList<AdoptApply> searchAdoptApplyMEMID(Connection conn, String searchKey){
+		
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("searchAdoptApplyMEMID");
+
+		String key = "%"+searchKey+"%";
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, key);
+						
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new AdoptApply(rset.getString("AALIST_NO"),
+						rset.getString("ANLIST_NO"),
+						rset.getInt("MEM_NO"),
+						rset.getString("AA_TITLE"),
+						rset.getInt("ADT_STATUS"),
+						rset.getString("MEM_ID"),
+						rset.getString("APPLY_DATE")));
+			}
+			
+			System.out.println("dao검색결과 : " + list);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}		
+		return list;
+
+	}
+	
+	
+	
+	
 }

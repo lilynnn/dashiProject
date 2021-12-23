@@ -1,5 +1,4 @@
 package com.dashi.adoptBoard.controller;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -11,19 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptApply;
-import com.dashi.common.model.vo.PageInfo;
 
 /**
- * Servlet implementation class AdminAdoptApplyListController
+ * Servlet implementation class AdminAdoptApplySearchController
  */
-@WebServlet("/adplist.ad")
-public class AdminAdoptApplyListController extends HttpServlet {
+@WebServlet("/adpsearch.ad")
+public class AdminAdoptApplySearchController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAdoptApplyListController() {
+    public AdminAdoptApplySearchController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,38 +31,13 @@ public class AdminAdoptApplyListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int listCount;
-		int currentPage;
-		int pageLimit;
-		int boardLimit;
+		String searchCtg = request.getParameter("search-category");
+		String searchKey = request.getParameter("searchKey");
 		
-		int maxPage;
-		int startPage;
-		int endPage;
+		ArrayList<AdoptApply> list = new AdoptBoardService().searchAdoptApply(searchCtg, searchCtg , searchKey);
 		
-		listCount = new AdoptBoardService().selectListCount();
-		
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
-		
-		pageLimit = 5;
-		// 나중에 boardLimit 갯수 맞춰서 수정하기!!
-		boardLimit = 10;
-		maxPage = (int)Math.ceil((double)listCount / boardLimit);
-		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
-		endPage = startPage + pageLimit - 1;
-		
-		if(endPage>maxPage) {
-			endPage = maxPage;
-		}
-		
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
-	
-		ArrayList<AdoptApply> list = new AdoptBoardService().selectAdoptApplyList(pi);
-		
-		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("views/adoptBoard/adminAdoptApplyListView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/adoptBoard/adminAdoptApplySearchListView.jsp").forward(request, response);
 	}
 
 	/**

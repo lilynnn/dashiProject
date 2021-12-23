@@ -426,4 +426,46 @@
 		 WHERE MEM_NO = ?
 	</entry>
 	
+	<entry key="searchAdoptApplyADPNO">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , AA_TITLE
+		     , M.MEM_ID
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		     , ADT_STATUS
+		  FROM ADOPT_APPLY
+		  JOIN MEM_INFO M USING (MEM_NO)
+		 WHERE AALIST_NO LIKE ?
+	</entry>
+	
+	<entry key="searchAdoptApplyADTNO">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , AA_TITLE
+		     , M.MEM_ID
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		     , ADT_STATUS
+		  FROM ADOPT_APPLY
+		  JOIN MEM_INFO M USING (MEM_NO)
+		 WHERE ANLIST_NO LIKE ?
+	</entry>
+	
+	<entry key="searchAdoptApplyMEMID">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , AA_TITLE
+		     , M.MEM_ID
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		     , ADT_STATUS
+		  FROM ADOPT_APPLY
+		  JOIN MEM_INFO M USING (MEM_NO)
+		 WHERE MEM_ID LIKE ?
+	</entry>
+	
 </properties>

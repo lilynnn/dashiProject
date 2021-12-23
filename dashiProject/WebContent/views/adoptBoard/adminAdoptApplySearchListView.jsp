@@ -3,13 +3,7 @@
     
 <%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptApply" %>
 <%
-	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<AdoptApply> list = (ArrayList<AdoptApply>)request.getAttribute("list");
-	
-	int currentPage = pi.getCurrentPage();
-	int startPage = pi.getStartPage();
-	int endPage = pi.getEndPage();
-	int maxPage = pi.getMaxPage();
 
 %>
 <!DOCTYPE html>
@@ -98,25 +92,25 @@
                   입양신청서 전체조회
               </div>
               <hr style="width: 950px;">
-			  <form action="<%=contextPath %>/adpsearch.ad" method="post">
-			  <!-- 검색버튼 -->
-              <div class="search-area">
-                  <select name="search-category" style="height: 30px;">
-                      <option value="adpNo">입양신청번호</option>
-                      <option value="adtNo">공고번호</option>
-                      <option value="userId">신청인아이디</option>
-                  </select>
 
-                  <input type="text" name="searchKey" placeholder="검색어를 입력하세요.">
-                  
-                  <button id="search-btn">검색하기</button>
+              <!-- 검색버튼 -->
+              <div class="search-area">
+	              <form action="<%=contextPath %>/adpsearch.ad" method="get">
+	                  <select name="search-category" style="height: 30px;">
+	                      <option value="adpNo">입양신청번호</option>
+	                      <option value="adtNo">공고번호</option>
+	                      <option value="userId">아이디</option>
+	                  </select>
+	
+	                  <input type="text" name="searchKey" placeholder="검색어를 입력하세요">
+	                  
+	                  <button id="search-btn" type="submit">검색하기</button>
+	              </form>
               </div>
-			  </form>
-              
 			
 				<%if(list.isEmpty()) {%> 
 			  	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
-				<%} else { %>
+				<%} else { %> 
 	              <!-- 신청내역 보여질 table -->
 	              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
 	                  
@@ -165,27 +159,6 @@
 				<%} %>
 	            
               <br>
-
-              <!-- 페이징버튼 영역 -->
-              <div align="center">
-       		<%if(currentPage != 1) {%>
-            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage-1 %>';">&lt</button>
-			<%} %>
-			
-			<% for(int p=startPage; p<=endPage; p++){ %>
-				
-				<%if(p == currentPage){ %>
-					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
-					<button class="btn btn-light" disabled><%= p %></button>
-				<%} else { %>
-            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
-            	<%} %>
-         	<%} %>	
-
-			<%if(currentPage < maxPage) {%>
-         		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt</button>
-            <%} %>
-              </div>
 
               <br><br>
 
