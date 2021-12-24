@@ -8,6 +8,7 @@ import static com.dashi.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.notice.model.dao.NoticeDao;
 import com.dashi.notice.model.vo.Notice;
@@ -50,6 +51,14 @@ public class NoticeService {
 		
 	} // 게시글 상세조회
 	
+	public Attachment selectAttachment(String noticeNo) {
+		Connection conn = getConnection();
+		Attachment at = new NoticeDao().selectAttachment(conn, noticeNo);
+		close(conn);
+		return at;
+		
+	} // 게시글 상세조회
+	
 	public int updateNotice(Notice n) {
 		Connection conn = getConnection();
 		
@@ -73,17 +82,25 @@ public class NoticeService {
 		
 	}// 공지사항 키워드 검색 ---- 미완성
 	
-	public int insertNotice(Notice n) {
+	public int insertNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();
-		int result = new NoticeDao().insertNotice(conn, n);
-		if(result > 0) {
+		int result1 = new NoticeDao().insertNotice(conn, n);
+		int result2 = 1;
+		
+		if(at != null) {
+			result2 = new NoticeDao().insertAttachment(conn, at);
+		}
+		
+		
+		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
-		return result;
+		return result1 * result2;
 	
 	}// 공지사항 작성
+	
 	
 	public int deleteNotice(String noticeNo) {
 		Connection conn = getConnection();

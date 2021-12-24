@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.notice.model.vo.Notice;
 
@@ -149,6 +150,37 @@ public class NoticeDao {
 		
 	} // 공지사항 상세조회
 	
+	public Attachment selectAttachment(Connection conn, String noticeNo) {
+		Attachment at = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, noticeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				at = new Attachment();
+				at.setAttachNo(rset.getString("attach_no"));
+				at.setOriginName(rset.getString("origin_name"));
+				at.setChangeName(rset.getString("change_name"));
+				at.setPath(rset.getString("path"));
+			} 		
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);				
+		}
+		
+		return at;
+		
+	} // 첨부파일 상세조회
+	
 	public int updateNotice(Connection conn, Notice n) {
 		// update => 트랜잭션
 		int result = 0;
@@ -224,7 +256,6 @@ public class NoticeDao {
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			close(pstmt);
@@ -232,6 +263,30 @@ public class NoticeDao {
 		return result;
 		
 	}// 공지사항 등록
+	
+	public int insertAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getPath());
+			
+			result = pstmt.executeUpdate();			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}// 첨부파일 등록
+	
+	
 	
 	public int deleteNotice(Connection conn, String noticeNo) {
 		int result = 0;

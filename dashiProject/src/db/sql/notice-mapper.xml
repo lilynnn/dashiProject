@@ -51,6 +51,17 @@
           JOIN MANAGER_INFO USING (MN_NO)
 		 WHERE NOTICE_NO = ?
 	</entry>
+	
+	<entry key="selectAttachment">
+		SELECT
+			   ATTACH_NO
+			 , ORIGIN_NAME
+			 , CHANGE_NAME
+			 , PATH
+		  FROM ATTACHMENT
+		 WHERE REF_NO = ?
+	</entry>
+	
 
 	<entry key="updateNotice">
 		UPDATE
@@ -100,6 +111,28 @@
 		  , ?
 		  )
 	</entry>
+	
+	<entry key="insertAttachment">
+		INSERT
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , PATH
+		  )
+		  VALUES
+		  (
+		    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+		  , 'N-'||LPAD(SEQ_NNO.CURRVAL,3,0)
+		  , ?
+		  , ?
+		  , ?
+		  )
+	</entry>
+	
+	
 
 	<entry key="deleteNotice">
 		UPDATE

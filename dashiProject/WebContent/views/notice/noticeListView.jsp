@@ -103,10 +103,10 @@
             <table class="table table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th width="60px">번호</th>
+                        <th width="80px">번호</th>
                         <th width="80px"></th>
-                        <th width="700px">제목</th>
-                        <th width="120px">날짜</th>
+                        <th width="650px">제목</th>
+                        <th width="140px">날짜</th>
                         <th width="120px">조회수</th>
                     </tr>
                 </thead>

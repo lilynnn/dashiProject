@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*"%>
 <%
 	Notice n = (Notice)request.getAttribute("n");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -140,6 +141,15 @@
                     </div>
                     
                 </div>
+                
+                <div style="width:100%;">
+		        	<% if(at == null){ %>
+		        		첨부파일이 없습니다.
+		        	<% }else{ %>
+		        		<a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getPath() + at.getChangeName()%>"><%=at.getOriginName()%></a>
+		        	<% } %>
+		        </div>
+                
 
 
                 <div id="noBtn" align="right">
