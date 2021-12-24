@@ -106,11 +106,9 @@
             <div id="faqLine2">
 
                 <div id="insertbtn" style="width:100px; height:40px;">
-                	<% if(loginAdmin != null){ %>
                     <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
                         	등록하기
                     </a>
-                    <% } %>
                 </div>
                 <form action="<%=contextPath%>/faqSearch.ad" method="get" id="faq-search">
 	                <div align="right" style="width:700px; padding-left:420px;">
@@ -124,7 +122,7 @@
             <div id="aFadList">
                 <table class="table table-hover">
                     <thead>
-                        <tr align="center">
+                        <tr align="center" style="font-size:15px;">
                             <th width="100">카테고리</th>
                             <th width="550">제목</th>
                             <th width="80"></th>
@@ -155,7 +153,6 @@
 								%>
 	                            <td><%=category%></td>
 	                            <td><%=f.getFAQTitle()%></td>
-	                            <% if(loginAdmin != null){ %>
 	                            <td>
 	                                <a href="<%=contextPath%>/faqUpdateForm.ad?fno=<%=f.getFAQNo()%>" class="btn btn-sm btn-warning">
 	                                   	 수정
@@ -167,7 +164,6 @@
 	                                </a>
 	                            </td>
 	                            <td id="faqNum"><%=f.getFAQNo()%></td>
-	                            <% } %>
 	                        </tr>
 	
 	                        <!--답변 있을경우-->
@@ -191,6 +187,48 @@
 			<a href="<%=contextPath%>/faqList.ad" class="btn btn-sm btn-light">목록으로</a>
 		</div>
 		
+		<!-- The Modal faq ajax도전
+		<div class="modal" id="updatefaq">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		
+		      <div class="modal-body">
+		      <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <table>
+		        	<tr>
+		        		<td height="30">
+		        			<select name="cate">
+		        				<option value="1">입양</option>
+		        				<option value="2">입소</option>
+		        				<option value="3">결제</option>
+		        				<option value="4">실종/보호</option>
+		        				<option value="5">기타</option>
+		        			</select>
+		        		</td>
+		        	</tr>
+		        	<tr>
+		        		<td width="370">
+		        			<input type="text" id="title" style="width:100%; height:50px;">
+		        		</td>
+		        	</tr>
+		        	<tr>
+		        		<td width="370">
+		        			<textarea id="content" style="width:100%; height:100px; resize:none;">
+		        			
+		        			</textarea>
+		        		</td>
+		        	</tr>		        
+		        </table>
+		      </div>
+		
+		      <div class="modal-footer">
+		        <a type="button" class="btn btn-outline-warning" data-dismiss="modal">수정하기</a>
+		      </div>
+		
+		    </div>
+		  </div>
+		</div>
+		-->
 		
     </div>
 
