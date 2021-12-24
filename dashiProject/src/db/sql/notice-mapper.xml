@@ -181,9 +181,10 @@
 	</entry>
 
 	<entry key="selectDate">
-		SELECT WRITE_DATE
+		SELECT TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
 		  FROM (SELECT WRITE_DATE
 		          FROM NOTICE
+		         WHERE NO_STATUS = 'N'
 		         ORDER 
 		            BY WRITE_DATE DESC) A
 		 WHERE ROWNUM = 1

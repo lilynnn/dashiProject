@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
+import com.dashi.entranceBoard.model.service.EntranceService;
+import com.dashi.notice.model.service.NoticeService;
+import com.dashi.report.model.service.ReportService;
 
 /**
  * Servlet implementation class AdminMainPage
@@ -30,14 +33,41 @@ public class AdminMainPage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//int noCount = new NoticeService().selectCount();
-		//String noDate = new NoticeService().selectDate();
+		// 메인화면 공지사항 조회용 시작-->
+		int noCount = new NoticeService().selectCount();
+		String noDate = new NoticeService().selectDate();
 		
-		//System.out.println(noCount);
-		//System.out.println(noDate);
+		request.setAttribute("noCount", noCount);
+		request.setAttribute("noDate", noDate);
+		// 여기까지 공지사항!
+
+		// 입양공고 -->
 		int adtCount = new AdoptBoardService().selectListCount();
 
 		request.setAttribute("adtCount", adtCount);
+		// 여기까지 입양공고!
+		
+		// 입소신청-->
+		int entCount = new EntranceService().selectListCount();
+		String entDate = new EntranceService().selectDate();
+		
+		request.setAttribute("entCount", entCount);
+		request.setAttribute("entDate", entDate);
+		// 입소신청 끝
+		
+		// 신고내역-->
+		String reDate = new ReportService().selectDate();
+		request.setAttribute("reDate", reDate);
+		// 신고내역 끝
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		request.getRequestDispatcher("views/admin/adminMainPage.jsp").forward(request, response);
 	
 	

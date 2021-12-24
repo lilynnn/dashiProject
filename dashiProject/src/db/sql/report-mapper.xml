@@ -192,6 +192,15 @@
 		  ) 
 	</entry>
 
+	<entry key="selectDate">
+		SELECT TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		  FROM (SELECT REPORT_DATE
+		          FROM REPORTED
+		         WHERE REPORT_STATUS = 'N'
+		         ORDER 
+		            BY REPORT_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
 
 
 

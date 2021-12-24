@@ -220,8 +220,15 @@
 		 WHERE ENT_NO = ?
 	</entry>
 
-
-
+	<entry key="selectDate">
+		SELECT TO_CHAR(ENT_APPLYDATE, 'YYYY/MM/DD') "WRITE_DATE"
+		  FROM (SELECT ENT_APPLYDATE
+		          FROM ENTRANCE
+		         WHERE ENT_STATUS = 'N'
+		         ORDER 
+		            BY ENT_APPLYDATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
 
 
 

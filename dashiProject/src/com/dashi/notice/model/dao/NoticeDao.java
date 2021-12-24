@@ -5,6 +5,7 @@ import static com.dashi.common.JDBCTemplate.close;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -428,7 +429,7 @@ public class NoticeDao {
 		String noDate = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String sql = prop.getProperty("selectCount");
+		String sql = prop.getProperty("selectDate");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);

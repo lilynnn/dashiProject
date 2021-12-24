@@ -2,6 +2,8 @@
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice"%>
 <%
 	//int adtCount = (int)request.getAttribute("adtCount");
+	int noCount = (int)request.getAttribute("noCount");
+	String noDate = (String)request.getAttribute("noDate");
 
 %>
 <!DOCTYPE html>
@@ -32,6 +34,7 @@
         color: brown;
         font-weight: 900;
     }
+    #boxset{width:100%;}
     #boxset>div{float: left;}
     .box{
         width: 200px;
@@ -48,7 +51,7 @@
     }
     .countNum{
         line-height: 150px; 
-        font-size: 26px;
+        font-size: 40px;
     }
     .categoryDate{
         width: 150px; 
@@ -119,19 +122,19 @@
                 </div>
                 <div class="box" style="background: #abd1a4;">
                     <div class="countNum">
-                       	 카운트숫자
+                       	 숫자
                     </div>
                     <div>입소신청</div>
                 </div>
                 <div class="box" style="background: #91c5ab;">
                     <div class="countNum">
-                       	 카운트숫자
+                       	 숫자
                     </div>
                     <div>1:1문의</div>
                 </div>
                 <div class="box" style="background: #74947d;">
                     <div class="countNum">
-                       	 카운트숫자
+                       	 <%=noCount%>
                     </div>
                     <div>공지사항</div>
                 </div>
@@ -175,7 +178,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/noList.ad?cpage=1">공지사항</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate"><%=noDate%></td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/adlist.ad">입양공고</a></td>

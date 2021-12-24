@@ -139,7 +139,12 @@ public class EntranceService {
 		
 	} // 입소 승인
 	
-	
+	public String selectDate() {
+		Connection conn = getConnection();
+		String noDate = new EntranceDao().selectDate(conn);
+		close(conn);
+		return noDate;
+	} // 관리자 메인페이지 날짜 알아오기
 	
 	
 	

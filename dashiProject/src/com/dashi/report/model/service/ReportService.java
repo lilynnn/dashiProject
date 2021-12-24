@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.dashi.admin.model.dao.AdminDao;
 import com.dashi.common.model.vo.PageInfo;
+import com.dashi.notice.model.dao.NoticeDao;
 import com.dashi.report.model.dao.ReportDao;
 import com.dashi.report.model.vo.Report;
 
@@ -121,7 +122,12 @@ public class ReportService {
 		
 	}
 	
-	
+	public String selectDate() {
+		Connection conn = getConnection();
+		String entDate = new ReportDao().selectDate(conn);
+		close(conn);
+		return entDate;
+	} // 관리자 메인페이지 날짜 알아오기
 	
 	
 	

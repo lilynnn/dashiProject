@@ -395,7 +395,28 @@ public class ReportDao {
 		return result;
 	}
 	
-	
+	public String selectDate(Connection conn) {
+		String entDate = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectDate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				entDate = rset.getString("write_date");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return entDate;
+	} // 관리자페이지 공지사항 최근 날짜 조회
 	
 	
 	
