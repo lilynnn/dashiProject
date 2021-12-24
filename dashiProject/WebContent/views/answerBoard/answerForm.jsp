@@ -122,21 +122,9 @@
     
     <table class="table1">
 
-    		<tr>
-            <th width=220 colspan="2">문의유형</th>
-            <td>
-            <select name="category">
-            <option value="1">입양</option>
-            <option value="2">입소</option>
-        	<option value="3">결제</option>
-           	<option value="4">실종/보호</option>
-           	<option value="5">기타</option> 
-            </td> </tr>
-            
-        
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목<b>*</b></th>
-            <td width=780><input type="text" style="width: 690px" name="qTitle"  placeholder="제목을 입력해주세요." required></td>
+            <td width=780><input type="text" name="qTitle" style="width: 690px" name="qTitle"  placeholder="제목을 입력해주세요." required></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>

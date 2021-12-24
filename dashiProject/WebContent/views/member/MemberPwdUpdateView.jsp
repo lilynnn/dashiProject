@@ -91,21 +91,29 @@
 			</div>
 		</div> 
 		<div class="card-body">
-      <form action="<%=contextPath%>/resetPwd2.me" class="form-signin" method="POST">
-      <input type="hidden" name="member_id" value="<%= finduid %>">
-      <br>
-       <input type="text" name="memId" id="memId" class="form-control" placeholder="아이디를 입력하세요" required><br>
-       <input type="password" name="userpwd" id="userpw" class="form-control" placeholder="기존비밀번호를 입력하세요" required><br>
-        <input type="password" name="pw" id="pw" class="form-control" placeholder="새로운 비밀번호" required ><BR>
-        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
-        <p class="check" id="check2">${resetpw_check}</p><br/>
-        <button type="button"  id="btn-Yes" onclick="regist(); validatePwd();" class="btn btn-lg btn-primary btn-block">비밀번호 재설정</button>
-      </form>
+      		<form action="<%=contextPath%>/resetPwd2.me" class="form-signin" method="POST">
+      
+      			<input type="hidden" name="member_id" value="<%= finduid %>">
+      
+     			 <br>
+		       <input type="text" name="memId" id="memId" class="form-control" placeholder="아이디를 입력하세요" required><br>
+		      
+		       <input type="password" name="userpwd" id="userpw" class="form-control" placeholder="기존비밀번호를 입력하세요" required><br>
+		      
+		        <input type="password" name="pw" id="pw" class="form-control" placeholder="새로운 비밀번호" required ><BR>
+		        
+		        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
+       
+       	 <p class="check" id="check2">${resetpw_check}</p><br/>
+       
+       			 <button type="button"  id="btn-Yes" onclick="regist();" class="btn btn-lg btn-primary btn-block">비밀번호 재설정</button>
+      	</form>
         
 		</div>
+		
         <div class="links">
            <div class="links">
-            <a style="margin-left:30px;" href="<%=contextPath%>/findId.me"> &nbsp;&nbsp;아이디 찾기</a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="<%=contextPath%>">메인으로</a>
+            	<a style="margin-left:30px;" href="<%=contextPath%>/findId.me"> &nbsp;&nbsp;아이디 찾기</a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="<%=contextPath%>">메인으로</a>
 
         </div>
 	
@@ -193,12 +201,7 @@
 		<%session.invalidate();%>
 		};
 		
-		function validatePwd(){
-    		if($("input[name=memId]").val() != $("input[name=userpwd]").val()){
-    			alert("기존 아이디와 비밀번호가 일치하지 않습니다.");
-    			return false;
-    		}
-    	}		
+    		
   </script>
   
     

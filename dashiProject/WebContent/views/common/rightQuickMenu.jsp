@@ -149,6 +149,11 @@
 		background:rgb(102,184,94);
 		color:white;
 		text-align:center;
+		margin-bottom:40px;
+	}
+	
+	#answer-box modal-title a:hover{
+		color:green;
 	}
 </style>
 </head>

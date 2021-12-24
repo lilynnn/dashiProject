@@ -13,50 +13,63 @@ public class Answer {
 	private Date qCreat;
 	private Date inquireAnswerDate;
 	private int mnNo;
-	private int asCategory;
-
+	private int viewCount;
+	
 
 	public Answer() {}
 
 
-	public Answer(String inquireNo, int memNo, String memId, String qTitle, String qContent, String anContent,
-			Date qCreat, Date inquireAnswerDate, int mnNo, int asCategory) {
+	public Answer(String inquireNo, int memNo, String qTitle, String qContent, String anContent,
+			Date qCreat, Date inquireAnswerDate, int mnNo , int viewCount) {
 		super();
 		this.inquireNo = inquireNo;
 		this.memNo = memNo;
-		this.memId = memId;
 		this.qTitle = qTitle;
 		this.qContent = qContent;
 		this.anContent = anContent;
 		this.qCreat = qCreat;
 		this.inquireAnswerDate = inquireAnswerDate;
 		this.mnNo = mnNo;
-		this.asCategory = asCategory;
+		this.viewCount=viewCount;
+		 
 	}
 	
-
-	public Answer(String inquireNo, int asCategory, String qTitle, String qContent, String memId, Date qCreat) {
+	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat) {
 		super();
 		this.inquireNo = inquireNo;
-		this.memId = memId;
+		this.memNo = memNo;
 		this.qTitle = qTitle;
 		this.qContent = qContent;
 		this.qCreat = qCreat;
-		this.asCategory = asCategory;
+		
 	}
+ 
 	
-	public Answer(int asCategory, String inquireNo, String memId, String qTitle, String qContent) {
+	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat, int viewCount) {
 		super();
-		this.asCategory = asCategory ;
+		this.inquireNo = inquireNo;
+		this.memNo = memNo;
+		this.qTitle = qTitle;
+		this.qContent = qContent;
+		this.qCreat = qCreat;
+		this.viewCount=viewCount;
+	}
+ 
+	
+	public Answer(String status, String inquireNo, String memId, String qTitle, String qContent) {
+		super();
+		 
 		this.inquireNo=inquireNo;
 		this.memId=memId;
 		this.qTitle=qTitle;
 	
 	}
 	
-	public Answer(int asCategory, String inquireNo, String memId, String qTitle, String qContent, Date qCreat, String anContent) {
+	 
+	
+	public Answer(  String inquireNo, String memId, String qTitle, String qContent, Date qCreat, String anContent) {
 		super();
-		this.asCategory = asCategory ;
+		 
 		this.inquireNo=inquireNo;
 		this.memId=memId;
 		this.qTitle=qTitle;
@@ -64,21 +77,12 @@ public class Answer {
 		this.anContent=anContent;
 	}
 	
-	public Answer(String inquireNo, int asCategory, String qTitle, String qContent , String memId) {
-		super();
-		this.asCategory = asCategory ;
-		this.inquireNo=inquireNo;
-		this.memId=memId;
-		this.qTitle=qTitle;
-		this.qContent=qContent;
-	}
-	
+	 
 
 	public String getInquireNo() {
 		return inquireNo;
 	}
-
-
+ 
 	public void setInquireNo(String inquireNo) {
 		this.inquireNo = inquireNo;
 	}
@@ -88,11 +92,18 @@ public class Answer {
 		return memNo;
 	}
 
-
 	public void setMemNo(int string) {
 		this.memNo = string;
 	}
 
+	public int getViewCount() {
+		return viewCount;
+	}
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+	
 
 	public String getMemId() {
 		return memId;
@@ -138,13 +149,7 @@ public class Answer {
 		return qCreat;
 	}
 	
-	public void setasCategory(int asCategory) {
-		this.asCategory=asCategory;
-	}
-	
-	public int getasCategory() {
-		return asCategory;
-	}
+	 
 
 
 	public void setqCreat(Date qCreat) {

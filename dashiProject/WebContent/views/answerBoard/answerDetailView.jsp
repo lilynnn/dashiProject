@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.dashi.answerBoard.model.vo.Answer"%>
+    
+<% 
+	 Answer n = (Answer)request.getAttribute("n");
+
+	%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +18,7 @@
         margin: auto;
         margin-top: 50px;
     }
-    .outer>div{
-        float: left;
+    .outer>div{  
         box-sizing: border-box;
     }
     /*왼쪽메뉴바*/
@@ -44,6 +49,9 @@
     }
     thead{background: rgb(224, 223, 223);}
     
+    .answer-table {
+        border-top: 1px solid black;
+    }
     /*타이틀 정리*/
     #title{
         width: 100%; 
@@ -79,109 +87,84 @@
     text-transform: uppercase;
     
     }
-        
+    
+    th{
+        background: rgb(229, 231, 229);
+        font-size:13px;
+    }
+    tr{
+        height:35px; 
+        margin: 0;
+    }
 </style>
 </head>
-<body>
-    
+<body> 
     <%@ include file="../common/menubar.jsp" %>
     
     <!--전체를 감싸는 큰 div-->
-    <div class="outer" >
+    <div class="outer">
     
                 <div id="title">
                     	1:1 문의 관리
                 <hr style="width: 950px;">
                 </div>
-			<% if(loginUser != null) { %>
+		
 			
-	        <!--로그인한 회원만 보여지는 div-->
-	        <div align="right" style="width:860px">
-	            <a href="<%= contextPath %>/enrollForm.bo" class="btn btn-sm btn-secondary">글작성</a>
-	            <br><br>
-	        </div>
-        <% } %>
-        
             <!-- 1:1 목록-->
         <div id="answerlist" >
-        	
-        	<form action="<%= contextPath %>/select.as" method="post">
-
-                <!-- 카테고리 및 검색창-->
-                 <div class="search-area" style="margin: 20px 0px; display:inline-block;">
-                    <select name="search-category" style="height: 30px; margin: 5px;">
-                        <option value="">카테고리</option>
-                        <option value="입양문의">입양문의</option>
-                        <option value="입소문의">입소문의</option>
-                        <option value="실종문의">실종문의</option>
-                        <option value="로그인관련">로그인관련</option>
-                        <option value="결제문의">결제문의</option>
-                        <option value="기타문의">기타문의</option>
-                    </select>
-
-                    <input type="text" placeholder="검색어를 입력하세요.">
-                    
-                    <button id="searchbtn" style="margin: 5px; padding-left: 10px;padding-right: 10px;">검색</button>
-                </div>
-                
                 <div id="btn" align="right"; style="display: inline-block;" >
-                    <button>수정</button>
-                    <button>삭제</button>
+                   <a href="" class="btn btn-sm btn-warning">
+	                        	수정
+	                    </a>
+	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-primary">
+	                        	삭제
+	                    </a>
                 </div>
 
                 
-                   <table align="center" class="table" width="900px">
-                        <thead>
-                            <tr>
-                                <td></td>
-                                <th>No.</th>
-                                <th>이름</th>
-                                <th>분류</th>
-                                <th width="500">제목</th>
-                                <th>작성일</th>
-                                <th width="100"> 상태 </th>
-                                <th width="100"> 답변 </th>
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                                
+       <table align="center" class="answer-table" width="900px">
+                        
+        <tbody>
+        <tr> <!-- no -->
+            <th  width=220 colspan="2">글번호</th> 
+            <td  width=780><%= n.getInquireNo() %></td> 
+	                        
+        </tr> 
+          <tr> <!-- 조회수-->
+            <th  width=220 colspan="2">조회수 </th> 
+            <td  width=780><%= n.getViewCount() %></td>              
+        </tr>         
         <tr> <!-- 아이디 -->
-            <th  width=220 colspan="2">아이디 <b>*</b></th> 
-            <td  width=780><input type="text" style="width: 690px" name="Id" value="" placeholder="아이디를 입력해주세요." required></td>
+            <th  width=220 colspan="2">아이디 </th> 
+            <td  width=780><%= n.getMemId() %></td>              
+        </tr>
+        <tr> <!-- date -->
+            <th  width=220 colspan="2"> 작성날짜  </th> 
+            <td  width=780><%= n.getqCreat() %></td>              
         </tr>
         <tr> <!-- 제목 -->
-            <th width=220 colspan="2">제목<b>*</b></th>
-            <td width=780><input type="text" style="width: 690px" name="qTitle" value="" placeholder="제목을 입력해주세요." required></td>
+            <th width=220 colspan="2">제목 </th>
+            <td width=780><%=n.getqTitle()%></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
-            <th width=220 colspan="2" rowspan="2">문의내용 <b>*</b> </th>
-            <td width=780><textarea name="qContent" placeholder="내용 입력" cols="35" rows="10" style="resize:none; width:690px;" required></textarea></td>
+            <th width=220 colspan="2" rowspan="2">문의내용  </th>
+            <td width=780><%=n.getqContent()%></td>
         </tr>
-
-			
-                        </tbody>
-                    </table>
-
-            </form>
-        	
-        	
-                    <div align="center" style="margin-top: 30px;">
-                        <button class="btn btn-light">&lt;</button>
-                        <button class="btn btn-light">1</button>
-                        <button class="btn btn-light">2</button>
-                        <button class="btn btn-light">3</button>
-                        <button class="btn btn-light">4</button>
-                        <button class="btn btn-light">&gt;</button>
-                    </div>
-        	
-        	
-        </div>
-    </div>
-
+        
+     	</tbody>
+     </table>
+    		 </div>
+    	</div>
+    	
+    	
+		<!-- 관리자는 답변하기 버튼 보이게  -->
+		<!-- 조건문으로 관리자 답변창 띄우고 ,  -->
+	
+	
+	
+	
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
-
+	
 </body>
 </html>

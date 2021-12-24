@@ -37,22 +37,25 @@ import static com.dashi.common.JDBCTemplate.*;
 		ArrayList<Answer> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
+		
 		String sql = prop.getProperty("selectAnswerList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
 			rset = pstmt.executeQuery();
-			
+
 			while(rset.next()) {
-				list.add(new Answer(rset.getString("inquire_no")
-							   , rset.getInt("as_categoty")
-							   , rset.getString("q_title")
-							   , rset.getString("q_content")
-							   , rset.getString("mem_Id"))
-							  );
-			}
-			
+				Answer as = new Answer(rset.getString("inquire_no")
+						   , rset.getInt("MEM_NO")
+						   , rset.getString("Q_TITLE")
+						   , rset.getString("Q_CONTENT")
+						   , rset.getDate("Q_CREAT"));
+				
+				list.add(as);
+				System.out.println(as);
+			} 
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -74,11 +77,9 @@ import static com.dashi.common.JDBCTemplate.*;
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, a.getasCategory());
-				pstmt.setString(2, a.getMemId());
-				pstmt.setString(3, a.getqTitle());
-				pstmt.setString(4, a.getqContent());
-				
+				pstmt.setString(1, a.getqTitle());
+				pstmt.setString(2, a.getqContent());
+				pstmt.setInt(3, a.getMemNo());
 				
 				result = pstmt.executeUpdate();
 				
@@ -92,13 +93,80 @@ import static com.dashi.common.JDBCTemplate.*;
 		
 		
 		
+		public Answer selectDetailAnswer(Connection conn, String answerNo) {
+			 
+			Answer n = null;
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("selectDetailAnswer");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);  
+				
+				pstmt.setString(1, answerNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					n = new Answer(rset.getString("inquire_no")
+								   , rset.getInt("MEM_NO")
+								   , rset.getString("Q_TITLE")
+								   , rset.getString("Q_CONTENT")
+								   , rset.getDate("Q_CREAT")
+								   , rset.getInt("VIEW_COUNT"));
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return n;
+		}
+		
+		public int increaseCount(Connection conn, String answerNo) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("increaseCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, answerNo);
+				
+				result = pstmt.executeUpdate();			
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
+		}// 조회수 증가
 		
 		
+		//삭제
+		public int deleteAnswer(Connection conn, String answerNo) {
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("deleteAnswer");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, answerNo);
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
 		
-		
-		
-		
-		
+		} //삭제
 		
 		
 		

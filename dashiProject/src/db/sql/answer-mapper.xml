@@ -5,14 +5,12 @@
 <entry key="selectAnswerList">
 SELECT 
     INQUIRE_NO
-    , AS_CATEGORY
     , Q_TITLE
     , Q_CONTENT
-    , MEM_ID
-    FROM ANSWER A 
-    JOIN MEMBER ON(MEM_NO = MEM_ID)
-    ORDER 
-    BY INQUIRE_NO DESC
+    , Q_CREAT
+    , MEM_NO
+    FROM ANSWER  
+    WHERE NO_STATUS = 'N' 
 </entry>
 
 <entry key="insertAnswer">
@@ -20,10 +18,9 @@ INSERT
 	INTO ANSWER 
     (
       INQUIRE_NO
-    , AS_CATEGORY
-    , MEM_ID
     , Q_TITLE
     , Q_CONTENT
+    , MEM_NO
     )
     VALUES
     (
@@ -31,37 +28,73 @@ INSERT
     ,?
     ,?
     ,?
-    ,?
     )
-    WHERE MEM_NO =? 
-    AND MEM_ID = ?
 </entry>
 
 <entry key="adinsertAnswer">
 INSERT 
 	INTO ANSWER 
-    (
+    ( 
   	 AN_CONTENT
   	 MN_NO
     )
     VALUES
     (
-    ?
+   	 ?
     ,?
     )
 </entry>
 
+
 <entry key="asselectAnswerList">
 SELECT 				
-	AS_CATEGORY
-	,INQUIRE_NO
-	,MEM_ID
+	INQUIRE_NO
+	,MEM_NO
 	,Q_TITLE
 	,Q_CONTENT
 	,Q_CREAT
 	,AN_CONTENT
-	FROM ANSWER;
+	FROM ANSWER
 										
-						}
+						
 </entry>
+
+
+<entry key="selectDetailAnswer">
+SELECT
+		INQUIRE_NO
+		, MEM_NO
+		, Q_TITLE
+		, Q_CONTENT
+		, Q_CREAT
+		, VIEW_COUNT
+	FROM ANSWER
+	WHERE INQUIRE_NO = ?
+	</entry>
+
+<entry key="increaseCount">
+		UPDATE
+		   ANSWER
+		   SET VIEW_COUNT = VIEW_COUNT + 1
+		 WHERE INQUIRE_NO = ?
+		  AND NO_STATUS = 'N'
+	</entry>
+
+<entry key="deleteAnswer">
+		UPDATE
+			   ANSWER
+		   SET NO_STATUS = 'Y'
+		 WHERE INQUIRE_NO = ?
+	</entry>
+
+
+
+
+
+
+
+
+
+
+
 </properties>

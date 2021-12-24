@@ -31,6 +31,7 @@ public class AnswerListViewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
 				ArrayList<Answer> list = new AnswerService().selectAnswerList();
 				
 				request.setAttribute("list", list); 

@@ -46,7 +46,7 @@ public class reset2PwdController extends HttpServlet {
 			session.setAttribute("alertMsg", "비밀번호 변경이 완료됐습니다");
 			session.setAttribute("loginUser", updateMem);
 		}
-		
+
 		response.sendRedirect(request.getContextPath());
 	}
 	
