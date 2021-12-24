@@ -27,7 +27,7 @@
     /*회원정보수정폼*/
     #memberInfo{
         width: 1040px;
-        margin-top: 70px;
+        margin-top: 90px;
         padding: 20px;
         border: 1px solid black;
     }
@@ -129,11 +129,11 @@
                     <thead>
                         <tr>
                             <th class="info">회원정보</th>
-                            <td style="width: 730px;" id="message">
+                            <td style="width: 600px;" id="message">
                                 *표시는 필수 입력사항입니다.
                             </td>
-                            <td style="width: 85px; border-bottom: 1px solid black;">
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteMember">
+                            <td style="width: 200px; border-bottom: 1px solid black;" align="right">
+                                <button type="button" class="btn btn-sm btn-outline-danger" data-toggle="modal" data-target="#deleteMember">
                                     	탈퇴하기
                                 </button>
                             </td>
@@ -156,20 +156,13 @@
                         <tr>
                             <td class="info">* 닉네임</td>
                             <td colspan="2" id="nickname">
-                                <input type="text" name="nickname" placeholder="변경하실 닉네임을 써주세요" value="<%=nickname%>">
-                                	특수문자를 제외한 2~10글자 내의 한글,영어,숫자만 가능
+                                <input type="text" id="confirmnick" name="nickname" placeholder="변경하실 닉네임을 써주세요" value="<%=nickname%>">
                             </td>
                         </tr>
                         <tr>
                             <td class="info">비밀번호</td>
                             <td colspan="2">
-                                <input type="password" id="userPwd" name="userPwd" value="<%=userPwd%>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="info">비밀번호 확인</td>
-                            <td colspan="2">
-                                <input type="password" id="checkPwd" placeholder="설정하신 비밀번호와 똑같이입력하세요" disabled>
+                                <input type="password" id="userPwd" name="userPwd" value="<%=userPwd%>" readonly>
                             </td>
                         </tr>
                         <tr>
@@ -190,15 +183,6 @@
                                 <input type="text" name="email" value="<%=email%>">
                             </td>
                         </tr>
-                        <!-- 광고멘트 삭제
-                        <tr>
-                            <td class="info"></td>
-                            <td colspan="2">
-                               	 다시,사랑받개!의 이메일을 받아보시겠습니까?<br>
-                                <label><input type="radio" class="radio" name="emailYN">네 </label>
-                                <label><input type="radio" class="radio" name="emailYN">아니오 </label>
-                            </td>
-                        </tr> -->
                         <tr>
                             <td class="info">* 주소</td>
                             <td colspan="2">
@@ -212,21 +196,12 @@
                                 	상세주소
                             </td>
                         </tr>
-                        <!-- 광고멘트 삭제
-                        <tr>
-                            <td class="info"></td>
-                            <td colspan="2">
-                                다시,사랑받개!의 SMS및 광고 수신에 동의하십니까?<br>
-                                <label><input type="radio" class="radio" name="smsYN">네 </label>
-                                <label><input type="radio" class="radio" name="smsYN">아니오 </label>
-                            </td>
-                        </tr> -->
                         <tr>
                             <td colspan="3" align="center">
-                                <button type="button" class="btn btn-primary" style="background: rgb(143,153,142); border: none;" onclick=history.back();>
-                                    	이전으로
-                                </button>
-                                <button type="submit" id="updatebtn" class="btn btn-primary" style="background: rgb(102,184,94); border: none;">
+                                <a href="<%=contextPath%>/mypage.me" class="btn btn-primary" style="background: rgb(143,153,142); border: none;">
+                                    	목록으로
+                                </a>
+                                <button type="submit" id="updatebtn" class="btn btn-primary" style="background: rgb(102,184,94); border: none;" onclick="return validate();">
                                    	 수정하기
                                 </button>
                             </td>
@@ -237,7 +212,7 @@
             </form>
         </div>
     </div>
-
+	
 	
 
     <!-- 회원탈퇴용 모달 -->
@@ -292,10 +267,10 @@
   
                                  비밀번호 재입력 : <input type="password" name="userPwd" required> <br><br><br>
             </div>
-            
+            <input type="hidden" name="password" value="<%=loginUser.getMemPwd()%>">
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="submit" class="btn btn-sm" style="background:rgb(143,153,142);">탈퇴하기</button>
+                <button type="submit" class="btn btn-sm" style="background:rgb(143,153,142);" onclick="return confirmPwd();">탈퇴하기</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">취소하기</button>
                 <p align="right" style="font-size: 10px; color: gray; width: 100%;">
                    		탈퇴시에도 개인정보와 게시글은 3년간 보관됩니다.
@@ -306,29 +281,17 @@
       </div>
     </div>
 
-     <!-- 회원탈퇴 비밀번호 재입력 Modal -->
-    <div class="modal" id="deletePwd">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">비밀번호 재입력</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
+    <script>    
+		function confirmPwd(){
+			
+			if($("input[name=userPwd]").val() != $("input[name=password]").val()){
+				alert("비밀번호가 일치하지 않습니다!");
+				
+				return false;
+			}
+		}
 
-            <form action="" method="post">
-                <!-- Modal body -->
-                <div class="modal-body" align="center">
-                    <input type="hidden" name="userId" value="">
-                    비밀번호 재입력 : <input type="password" name="userPwd" required> <br><br>
-                    <button type="submit" class="btn btn-sm btn-danger">탈퇴하기...</button>
-                </div>
-            </form>
-            
-        </div>
-        </div>
-    </div>
+	</script>
 
 
 

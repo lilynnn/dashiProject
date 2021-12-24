@@ -10,7 +10,7 @@
         width: 1100px;
         margin: auto;
         margin-top: 50px;
-        height:500px
+        height:700px
     }
     .outer>div{
         float: left; 
@@ -18,6 +18,10 @@
         width: 100%;
     }
     /*게시판 이름*/
+    #mem-update{
+        background: rgb(32, 68, 28);
+        color: orange;
+    }
     #name{
         width: 100%;
         font-size: 24px;
@@ -26,7 +30,7 @@
     }
     /*안내 메세지*/
     #checkInfo{
-        margin-top: 70px;
+        margin-top: 100px;
         margin-bottom: 30px;
     }
     #checkInfo>div{
@@ -73,9 +77,7 @@
     
 	<%@ include file="../common/menubar.jsp" %>
 
-    <% String userPwd = loginUser.getMemPwd();
-    System.out.println(loginUser.getMemPwd());
-    %>
+    <% String userPwd = loginUser.getMemPwd();%>
 
 	 <!--전체 div-->
 	<div class="outer">
@@ -127,16 +129,56 @@
 			if($("input[name=checkPwd]").val() != $("input[name=password]").val()){
 				alert("비밀번호가 일치하지 않습니다!");
 				
-				console.log($("input[name=checkPwd]").val());
-				console.log($("input[name=password]").val());
 				return false;
 			}
 		}
+
 	</script>
-
-
-
     </div>
+
+	<!-- The Modal 
+	<div class="modal" id="updateMe">
+	  <div class="modal-dialog modal-lg modal-dialog-centered">
+	    <div class="modal-content">
+	
+	      <div class="modal-header">
+	        <h4 class="modal-title">Modal Heading</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <div class="modal-body">
+	        Modal body..
+	      </div>
+	
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+	      </div>
+	
+	    </div>
+	  </div>
+	</div>
+	-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
     <%@ include file="../common/footerbar.jsp" %>
