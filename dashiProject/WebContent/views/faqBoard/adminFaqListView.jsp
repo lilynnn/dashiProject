@@ -69,6 +69,9 @@
     	width:100px;
     	height:30px;
     }
+    .table-hover tr>td{
+    	font-size:14px;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

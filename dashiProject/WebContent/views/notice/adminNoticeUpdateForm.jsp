@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice" %>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*" %>
 <%
 	Notice n = (Notice)request.getAttribute("n");
 	// 글번호, 제목, 내용, 작성자아이디, 작성일
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -113,7 +114,7 @@
                     공지사항
             </div>
 
-            <form action="<%=contextPath %>/noUpdate.ad" id="update-form" method="post">
+            <form action="<%=contextPath %>/noUpdate.ad" id="update-form" method="post" enctype="multipart/form-data">
 
 				<input type="hidden" name="nno" value="<%=n.getNoticeNo()%>">
                 <div id="noTitleEtc">
@@ -149,6 +150,17 @@
                     </div>
                     
                 </div>
+                
+                <div>
+               		<% if(at != null){ %>
+                    	<!--현재 이 게시글에 첨부파일이 있을 경우-->
+                    	첨부파일 : <%=at.getOriginName()%>
+                    	<input type="hidden" name="originfileNo" value="<%=at.getAttachNo()%>">
+                    <% } %>
+                    <hr>
+                    <input type="file" name="upfile">
+                </div>
+                
 
 
                 <div id="noBtn" align="right" style="line-height: 110px;">

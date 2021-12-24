@@ -205,7 +205,56 @@ public class NoticeDao {
 		return result;		
 	} // 공지사항 수정
 	
-	public ArrayList<Notice> searchNotice(Connection conn, String keyword){
+	public int updateAttachment(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getPath());
+			pstmt.setString(4, at.getAttachNo());
+			
+			result = pstmt.executeUpdate();		
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}// 첨부파일 업데이트
+	
+	public int selectSearchListCount(Connection conn, String keyword){
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSearchListCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;		
+		
+	}// 게시글 총 갯수 조회해서 페이징바 만들기~
+	
+	public ArrayList<Notice> searchNotice(Connection conn, String keyword, PageInfo pi){
 		ArrayList<Notice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -214,8 +263,12 @@ public class NoticeDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, "%" + keyword + "%");		
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
 			
+			pstmt.setString(1, "%" + keyword + "%");		
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);			
 			
 			rset = pstmt.executeQuery();
 			

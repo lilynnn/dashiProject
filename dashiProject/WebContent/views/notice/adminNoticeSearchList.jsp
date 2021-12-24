@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, java.util.ArrayList, com.dashi.common.model.vo.*"%>
 <%
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 
 %>
 <!DOCTYPE html>
@@ -109,8 +115,9 @@
                 <hr>
                 </div>
                 <div id="search">
-                	<form action="<%=contextPath%>/noKeyword.ad" method="get">
+                	<form action="<%=contextPath%>/noKeyword.ad?spage=1" method="post">
 	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
+	                    <input type="hidden" name="spage" value="1">
 	                    <button type="submit">검색</button>
                     </form>
                 </div>
@@ -168,9 +175,31 @@
                         </tbody>
                     </table>
                 </div>
+                
+              <div class="paging-area" align="center" style="width:100%; margin-top:30px;">
+		
+				<% if(currentPage != 1){ %>
+	            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=currentPage-1%>';">&lt;</button>
+	            <% } %>
+	            
+	            <% for(int p=startPage; p<=endPage; p++){ %>
+	            	<% if(p == currentPage){ %>
+	            		<button class="btn btn-light" disabled><%=p%></button>
+	            	<%}else{ %>
+	            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=p%>';"><%=p%></button>
+	            	<% } %>
+	           	<% } %>
+	            
+	            <% if(currentPage != maxPage){ %>
+	           	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=currentPage+1%>';">&gt;</button>
+				<% } %>
+        
+  		 	</div>
+                
+                
         	
         	<div style="width:100%; margin-top:30px;" align="center">
-        		<button type="button" onclick="history.back();" class="btn btn-sm btn-outline-secondary">목록으로</button>
+        		<a href="<%=contextPath%>/noList.ad?cpage=1" class="btn btn-sm btn-outline-secondary">목록으로</a>
         	</div>
         	
         </div>

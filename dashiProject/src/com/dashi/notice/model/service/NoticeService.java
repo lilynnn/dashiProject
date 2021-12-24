@@ -59,28 +59,45 @@ public class NoticeService {
 		
 	} // 게시글 상세조회
 	
-	public int updateNotice(Notice n) {
+	public int updateNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();
+		int result1 = new NoticeDao().updateNotice(conn, n);
 		
-		int result = new NoticeDao().updateNotice(conn, n);
-		if(result > 0) {
+		// 첨부파일용
+		int result2 = 1;
+		if(at != null) {
+			if(at.getAttachNo() != null) {
+				result2 = new NoticeDao().updateAttachment(conn, at);
+			}else {
+				result2 = new NoticeDao().insertAttachment(conn, at);
+			}
+		}
+		
+		if(result1 > 0 && result2 > 0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
 		
 		close(conn);
-		return result;
+		return result1 * result2;
 		
 	} // 공지사항 수정
 	
-	public ArrayList<Notice> searchNotice(String keyword){
+	public int selectSearchListCount(String keyword) {
 		Connection conn = getConnection();
-		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, keyword);
+		int listCount = new NoticeDao().selectSearchListCount(conn, keyword);
+		close(conn);
+		return listCount;		
+	} // 공지사항 총 게시글 갯수 조회
+	
+	public ArrayList<Notice> searchNotice(String keyword, PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<Notice> list = new NoticeDao().searchNotice(conn, keyword, pi);
 		close(conn);
 		return list;
 		
-	}// 공지사항 키워드 검색 ---- 미완성
+	}// 공지사항 키워드 검색
 	
 	public int insertNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();

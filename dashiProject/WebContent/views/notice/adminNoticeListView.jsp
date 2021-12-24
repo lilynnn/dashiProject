@@ -115,8 +115,9 @@
                 <hr>
                 </div>
                 <div id="search">
-                	<form action="<%=contextPath%>/noKeyword.ad" method="get">
+                	<form action="<%=contextPath%>/noKeyword.ad?spage=1" method="get">
 	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
+	                    <input type="hidden" name="spage" value="1">
 	                    <button type="submit">검색</button>
                     </form>
                 </div>

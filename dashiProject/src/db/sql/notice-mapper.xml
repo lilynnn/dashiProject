@@ -71,6 +71,23 @@
 		 WHERE NOTICE_NO = ?
 	</entry>
 
+	<entry key="updateAttachment">
+		UPDATE
+			   ATTACHMENT
+		   SET ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , PATH = ?
+		 WHERE ATTACH_NO = ?
+	</entry>
+
+	<entry key="selectSearchListCount">
+		SELECT
+		       COUNT(*) "count"
+		  FROM NOTICE
+		 WHERE NO_STATUS = 'N'
+		   AND NOTICE_TITLE LIKE ?
+	</entry>
+
 	<entry key="searchNotice">
 		SELECT *
 		  FROM (
@@ -90,6 +107,7 @@
 		                       BY NOTICE_NO DESC) A
 		                )
 		 WHERE NOTICE_TITLE LIKE ?
+		   AND RNUM BETWEEN ? AND ?
 	</entry>
 
 	<entry key="insertNotice">

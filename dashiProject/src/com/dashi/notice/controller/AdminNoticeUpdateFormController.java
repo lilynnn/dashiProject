@@ -1,12 +1,14 @@
 package com.dashi.notice.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.notice.model.service.NoticeService;
 import com.dashi.notice.model.vo.Notice;
 
@@ -33,8 +35,10 @@ public class AdminNoticeUpdateFormController extends HttpServlet {
 		String noticeNo = request.getParameter("nno");
 		
 		Notice n = new NoticeService().selectNotice(noticeNo);
+		Attachment at = new NoticeService().selectAttachment(noticeNo);
 		
 		request.setAttribute("n", n);
+		request.setAttribute("at", at);
 		request.getRequestDispatcher("views/notice/adminNoticeUpdateForm.jsp").forward(request, response);
 		
 	
