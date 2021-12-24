@@ -522,6 +522,16 @@
 		   AND AN.POST_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectSearchAdoptNoticeListCount">
+		SELECT
+			   COUNT(*) count
+			FROM ADOPT_NOTICE
+			JOIN ENTRANCE E USING (ENT_NO)
+			WHERE E.ANIMAL_TYPE = ?
+			  AND AN_TITLE LIKE ?
+			  AND POST_STATUS = 'Y'
+		</entry>
+	
 	<entry key="searchAdoptNoticeList">
 		SELECT *
 		  FROM (

@@ -318,6 +318,14 @@ public class AdoptBoardService {
 		return list;
 	}
 	
+	// 검색할 입양공고문 갯수
+	public int selectSearchAdoptNoticeListCount(String animalCtg, String keyword) {
+		Connection conn = getConnection();
+		int listCount = new AdoptBoardDao().selectSearchAdoptNoticeListCount(conn, animalCtg, keyword);
+		close(conn);
+		return listCount;
+	}
+	
 	// 사용자- 입양공고검색하기
 	public ArrayList<AdoptNotice> searchAdoptNoticeList(PageInfo pi,String animalCtg, String keyword){
 		Connection conn = getConnection();

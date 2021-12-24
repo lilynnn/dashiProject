@@ -45,7 +45,7 @@ public class AdoptNoticeSearchListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new AdoptBoardService().selectListCount();
+		listCount = new AdoptBoardService().selectSearchAdoptNoticeListCount(animalCtg, keyword);
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		pageLimit = 5;

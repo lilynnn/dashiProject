@@ -68,7 +68,6 @@ public class AdoptBoardDao {
 		return anList;
 	}
 	
-	
 	// 전체 입양공고글 수 알아오는 메소드
 	public int selectListCount(Connection conn) {
 		
@@ -1058,6 +1057,33 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	// 입양공고 검색시 리스트 카운트
+	public int selectSearchAdoptNoticeListCount(Connection conn, String animalCtg, String keyword) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectSearchAdoptNoticeListCount");
+		String key = "%"+keyword+"%";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalCtg);
+			pstmt.setString(2, key);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;		
+	}
 	
 	// 사용자 입양신청서 검색(페이징처리 완)
 	public ArrayList<AdoptNotice> searchAdoptNoticeList(Connection conn, PageInfo pi, String animalCtg, String keyword){
