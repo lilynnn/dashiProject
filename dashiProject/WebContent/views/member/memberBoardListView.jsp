@@ -78,50 +78,6 @@
         <!--글쓴내역 폼-->
         <div id="board-list">
 
-            <table id="apply-list" class="table table-hover" style="font-size:15px;">
-				<thead>
-	                <tr>
-	                    <td colspan="5" style="border: none; background: white;">
-	                        <a href="" class="btn btn-sm btn-danger">삭제</a>
-	                    </td>
-	                </tr>
-	                <tr align="left">
-	                    <th colspan="5">입소신청</th>
-	                </tr>
-	                <tr  style="background: white;">
-	                    <td align="center" colspan="4"></td>
-	                    <td>
-	                        <a href="">더보기▼</a>
-	                    </td>
-	                </tr>
-	                <tr align="center">
-	                    <td width="30">No.</td>
-	                    <td width="30"></td>
-	                    <td width="750">제목</td>
-	                    <td width="110">신청날짜</td>
-	                    <td width="110">진행상태</td>
-	                </tr>
-				</thead>
-				<tbody>
-	                <!--글 없을때-->
-	                <tr align="center">
-	                    <td colspan="5">작성된 글이 없습니다.</td>
-	                </tr>
-	
-	                <!--글 있을때-->
-	                <tr align="center">
-	                    <td>1</td>
-	                    <td>
-	                        <input type="checkbox">
-	                    </td>
-	                    <td>여기는 제목자리</td>
-	                    <td>2021-12-08</td>
-	                    <td>승인</td>
-	                </tr>
-                </tbody>
-            </table>
-        
-            <br><br>
             
             <!-- 입양신청서  영역 -->
             <table id="adopt-list" class="table table-hover" style="font-size:15px; line-hieght:100%">
