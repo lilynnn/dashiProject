@@ -126,20 +126,20 @@
        	     다시, 사랑받개의 아이들이 가족을 기다려요!
         </div>
         
-
+		<form action="<%=contextPath %>/adsearch.adt" method="get">
            <div class="search-area" align="right">
                <select name="animal-category" style="height: 30px;">
-                   <option value="dog">강아지</option>
-                   <option value="cat">고양이</option>
-                   <option value="etc">기타</option>
+                   <option value="D">강아지</option>
+                   <option value="C">고양이</option>
+                   <option value="E">기타</option>
                </select>
 
-               <input type="text" placeholder="검색어를 입력하세요.">
-               
+               <input type="text" name="keyword" placeholder="검색어를 입력하세요.">
+               <input type="hidden" name ="cpage" value="1">
                <button id="search-btn">검색하기</button>
-
            </div>
-
+		</form>
+		
            <!-- 5행4열 배치 -->
            <!-- 페이징바는 5개 -->
            <!-- 입양공고 리스트가 보여질 영역-->

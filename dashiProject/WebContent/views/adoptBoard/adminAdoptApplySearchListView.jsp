@@ -108,24 +108,25 @@
 	              </form>
               </div>
 			
-				<%if(list.isEmpty()) {%> 
-			  	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
-				<%} else { %> 
-	              <!-- 신청내역 보여질 table -->
-	              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
-	                  
-	                  <thead class="thead-light">
-	                      <tr>
-	                          <th width="100">글번호</th>
-	                          <th width="100">공고번호</th>
-	                          <th width="290">공고제목</th>
-	                          <th width="100">신청인</th>
-	                          <th width="100">신청일</th>
-	                          <th width="120">처리상태</th>
-	                          <th width="100">삭제하기</th>
-	                      </tr>
-	                  </thead>
-	                  <tbody>
+             <!-- 신청내역 보여질 table -->
+             <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">          
+                 <thead class="thead-light">
+                     <tr>
+                         <th width="100">글번호</th>
+                         <th width="100">공고번호</th>
+                         <th width="290">공고제목</th>
+                         <th width="100">신청인</th>
+                         <th width="100">신청일</th>
+                         <th width="120">처리상태</th>
+                         <th width="100">삭제하기</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                 <%if(list.isEmpty()) {%> 
+			  	 	<tr>
+	                 	<td colspan="7" align="center">입양신청글이 존재하지 않습니다.</td>
+	             	</tr>
+				 <%} else { %> 
 	                  	<%for(AdoptApply ap : list) { %>
 	                  	<tr>
 	                     	<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">

@@ -36,7 +36,7 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 		String searchKey = request.getParameter("searchKey");
 
 		ArrayList<AdoptNotice> list = new AdoptBoardService().searchAdoptNotice(searchCtg, searchKey);
-		
+
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeSearchListView.jsp").forward(request, response);
 	}

@@ -314,7 +314,16 @@ public class AdoptBoardService {
 		
 			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, adtStatus);
 		} 
-		
+		close(conn);
 		return list;
+	}
+	
+	// 사용자- 입양공고검색하기
+	public ArrayList<AdoptNotice> searchAdoptNoticeList(PageInfo pi,String animalCtg, String keyword){
+		Connection conn = getConnection();
+		ArrayList<AdoptNotice> list = new AdoptBoardDao().searchAdoptNoticeList(conn, pi, animalCtg, keyword);
+		close(conn);
+		return list;
+		
 	}
 }

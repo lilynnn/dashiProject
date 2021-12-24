@@ -113,7 +113,9 @@
                 <tbody>
                     <!-- 게시글이 존재하지 않을 경우 -->
                     <%if(adtList.isEmpty()){ %>
-                    	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
+                    	<tr>
+	                    	<td colspan="7" align="center">입양공고글이 존재하지 않습니다.</td>
+	                    </tr>
                     <%} else { %>
                  	<!-- 게시글 보여질 tr -->
 	                 	<%for(AdoptNotice an : adtList) {%>

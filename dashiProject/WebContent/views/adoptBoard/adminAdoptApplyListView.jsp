@@ -118,83 +118,88 @@
 			  	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
 				<%} else { %>
 	              <!-- 신청내역 보여질 table -->
-	              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
-	                  
-	                  <thead class="thead-light">
-	                      <tr>
-	                          <th width="100">글번호</th>
-	                          <th width="100">공고번호</th>
-	                          <th width="290">공고제목</th>
-	                          <th width="100">신청인</th>
-	                          <th width="100">신청일</th>
-	                          <th width="120">처리상태</th>
-	                          <th width="100">삭제</th>
-	                      </tr>
-	                  </thead>
-	                  <tbody>
-	                  	<%for(AdoptApply ap : list) { %>
-	                  	<tr>
-	                     	<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">
-	                  		<input type="hidden" name="anlistNo" value="<%=ap.getAnlistNo() %>">
-	                  		<input type="hidden" name="memNo" value="<%=ap.getMemNo() %>">
-	                     	
-	                     	<td><%=ap.getAalistNo() %></td>
-							<td><%=ap.getAnlistNo() %></td>
-	                        <td><%=ap.getAaTitle() %></td>
-	                        <td><%=ap.getMemId() %></td>
-	                        <td><%=ap.getApplyDate() %></td>
-	                        <td>
-	                          	<%if(ap.getAdtStatus() == 1 ) {%>
-	                              	<span class="badge badge-secondary" style=" width:60px; font-weight: 700;">승인대기</span>
-	                          	<%} else if(ap.getAdtStatus() == 2) {%>
-	                          	 	<span class="badge badge-warning" style=" width:60px; font-weight: 700;">결제대기</span>
-	                          	<%} else if(ap.getAdtStatus() == 3) {%>
-	                          		<span class="badge badge-danger" style=" width:60px; font-weight: 700;">결제완료</span> 
-	                          	<%} else if(ap.getAdtStatus() == 4) {%>
-	                          		<span class="badge badge-success" style=" width:60px; font-weight: 700;">입양완료</span>
-	                          	<%} else {%>
-	                          		<span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
-	                          	<%} %>
-	                          </td>
-	                          <td>
-	                         	<%if(loginAdmin != null) {%>
-		                    	<a href="<%=contextPath %>/adpdelete.ad?adno=<%=ap.getAalistNo() %>" class="btn btn-sm btn-light">삭제하기</a>
-								<%} %>
-	                          </td>   
-	                      </tr>
-	                  	<%} %>
-	                  </tbody>  
-	              </table>
-				<%} %>
-	            
-              <br>
-
-              <!-- 페이징버튼 영역 -->
-              <div align="center">
-       		<%if(currentPage != 1) {%>
-            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage-1 %>';">&lt</button>
+              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
+                  
+                  <thead class="thead-light">
+                      <tr>
+                          <th width="100">글번호</th>
+                          <th width="100">공고번호</th>
+                          <th width="290">공고제목</th>
+                          <th width="100">신청인</th>
+                          <th width="100">신청일</th>
+                          <th width="120">처리상태</th>
+                          <th width="100">삭제</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  <%if(list.isEmpty()) {%> 
+			  	  	<tr>
+	                 	<td colspan="7" align="center">입양신청글이 존재하지 않습니다.</td>
+	             	</tr>
+				  <%} else { %>
+                  	<%for(AdoptApply ap : list) { %>
+                  	<tr>
+                     	<input type="hidden" name="aalistNo" value="<%=ap.getAalistNo() %>">
+                  		<input type="hidden" name="anlistNo" value="<%=ap.getAnlistNo() %>">
+                  		<input type="hidden" name="memNo" value="<%=ap.getMemNo() %>">
+                     	
+                     	<td><%=ap.getAalistNo() %></td>
+						<td><%=ap.getAnlistNo() %></td>
+                        <td><%=ap.getAaTitle() %></td>
+                        <td><%=ap.getMemId() %></td>
+                        <td><%=ap.getApplyDate() %></td>
+                        <td>
+                          	<%if(ap.getAdtStatus() == 1 ) {%>
+                              	<span class="badge badge-secondary" style=" width:60px; font-weight: 700;">승인대기</span>
+                          	<%} else if(ap.getAdtStatus() == 2) {%>
+                          	 	<span class="badge badge-warning" style=" width:60px; font-weight: 700;">결제대기</span>
+                          	<%} else if(ap.getAdtStatus() == 3) {%>
+                          		<span class="badge badge-danger" style=" width:60px; font-weight: 700;">결제완료</span> 
+                          	<%} else if(ap.getAdtStatus() == 4) {%>
+                          		<span class="badge badge-success" style=" width:60px; font-weight: 700;">입양완료</span>
+                          	<%} else {%>
+                          		<span class="badge badge-dark" style=" width:60px; font-weight: 700;">반려</span>
+                          	<%} %>
+                          </td>
+                          <td>
+                         	<%if(loginAdmin != null) {%>
+	                    	<a href="<%=contextPath %>/adpdelete.ad?adno=<%=ap.getAalistNo() %>" class="btn btn-sm btn-light">삭제하기</a>
+							<%} %>
+                          </td>   
+                      </tr>
+                  	<%} %>
+                  </tbody>  
+              </table>
 			<%} %>
+            
+             <br>
+
+             <!-- 페이징버튼 영역 -->
+             <div align="center">
+      		<%if(currentPage != 1) {%>
+           	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage-1 %>';">&lt</button>
+		<%} %>
+		
+		<% for(int p=startPage; p<=endPage; p++){ %>
 			
-			<% for(int p=startPage; p<=endPage; p++){ %>
-				
-				<%if(p == currentPage){ %>
-					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
-					<button class="btn btn-light" disabled><%= p %></button>
-				<%} else { %>
-            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
-            	<%} %>
-         	<%} %>	
+			<%if(p == currentPage){ %>
+				<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+				<button class="btn btn-light" disabled><%= p %></button>
+			<%} else { %>
+           		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
+           	<%} %>
+        	<%} %>	
 
-			<%if(currentPage < maxPage) {%>
-         		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt</button>
-            <%} %>
-              </div>
+		<%if(currentPage < maxPage) {%>
+        		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt</button>
+           <%} %>
+             </div>
 
-              <br><br>
+             <br><br>
 
-	
-		</div>
-    </div>
+
+	</div>
+   </div>
     <script>
         $(function(){
             $("#list-area>tbody>tr").click(function(){

@@ -1058,4 +1058,45 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	
+	// 사용자 입양신청서 검색(페이징처리 완)
+	public ArrayList<AdoptNotice> searchAdoptNoticeList(Connection conn, PageInfo pi, String animalCtg, String keyword){
+		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchAdoptNoticeList");
+		String key = "%"+keyword+"%";
+		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalCtg);
+			pstmt.setString(2, key);
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
+			
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				list.add(new AdoptNotice(rset.getString("ANLIST_NO"),
+						 rset.getString("AN_TITLE"),
+						 rset.getInt("VIEW_COUNT"),
+						 rset.getInt("ADT_STATUS"),
+						 rset.getString("ANIMAL_TYPE"),
+						 rset.getString("ENT_NO"),
+						 rset.getString("TITLEIMG")
+						 ));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
 }
