@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.dashi.adoptBoard.model.vo.AdoptApply;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.vo.Member;
 
@@ -436,9 +437,98 @@ public class MemberDao {
 	}
 	
 	
+	// 작성한 입양공고리스트 불러오기
+	public ArrayList<AdoptApply> selectWriteAdoptApplyList(Connection conn, int userNo){
+		
+		ArrayList<AdoptApply> adplist = new ArrayList<AdoptApply>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectWriteAdoptApplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,userNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				adplist.add(new AdoptApply(rset.getString("AALIST_NO"),
+										   rset.getString("ANLIST_NO"),
+										   rset.getInt("MEM_NO"),
+										   rset.getString("AA_TITLE"),
+										   rset.getInt("ADT_STATUS"),
+										   rset.getString("MEM_ID"),
+										   rset.getString("APPLY_DATE")));
+			}
+			System.out.println(adplist);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(conn);
+		}
+		return adplist;
+	}
 	
-	
-	
+	// 작성한 입양신청서 상세조히
+	public AdoptApply selectAdoptApply(Connection conn, String adpNo) {
+		AdoptApply adp = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdoptApply");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adpNo);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				adp = new AdoptApply(rset.getString("AALIST_NO"),
+									rset.getString("ANLIST_NO"),
+									rset.getInt("MEM_NO"),
+									rset.getString("MEM_NAME"),
+									rset.getString("AA_TITLE"),
+									rset.getString("PAY_STATUS"),
+									rset.getInt("ADT_STATUS"),
+									rset.getString("POST_STATUS"),
+									rset.getString("AA_NAME"),
+									rset.getInt("AA_AGE"),
+									rset.getString("AA_GENDER"),
+									rset.getString("AA_PHONE"),
+									rset.getString("AA_EMAIL"),
+									rset.getString("AA_ADDRESS"),
+									rset.getString("MARRIAGE_YN"),
+									rset.getString("AA_JOB"),
+									rset.getString("ADOPT_REASON"),
+									rset.getString("PARENT_EXP"),
+									rset.getString("HAVE_PET_YN"),
+									rset.getString("PET_TYPE"),
+									rset.getString("PET_AGE"),
+									rset.getString("PET_GENDER"),
+									rset.getString("PET_NEUTRAL"),
+									rset.getInt("A_MATE"),
+									rset.getInt("C_MATE"),
+									rset.getInt("CHILD_AGE"),
+									rset.getString("AGREE_YPN"),
+									rset.getString("EVENT_MNG_ANI"),
+									rset.getString("EMPTYHOUR"),
+									rset.getString("HOUSETYPE"),
+									rset.getString("HSELF_YN"),
+									rset.getString("AGREE_NEI_YN"),
+									rset.getInt("EXP_COST"),
+									rset.getString("MEM_ID"),
+									rset.getString("APPLY_DATE")
+									);
+			}
+			System.out.println(adp);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return adp;
+	}
 	
 	
 	

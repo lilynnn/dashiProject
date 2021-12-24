@@ -157,39 +157,92 @@
 		  FROM MEM_INFO
 		 WHERE NICKNAME = ?
 	</entry>
-
-<entry key="updatePwdMember">
-		UPDATE MEMBER
-		   SET MEM_PWD = ?
-		 WHERE MEM_ID = ?
-		   AND MEM_PWD = ?
-</entry>
-
-<entry key="findId">
-SELECT MEM_ID
-FROM MEM_INFO
-WHERE MEM_NAME =?
-AND EMAIL =? 
-</entry>
-
-<entry key="findPwd">
-SELECT *
-		 FROM MEM_INFO
-		 WHERE MEM_ID = ?
-</entry>
-
-
-<entry key="updatePwdMember">
-UPDATE MEM_INFO
-		   SET MEM_PWD = ?
-		 WHERE MEM_ID = ?
-		   AND MEM_PWD = ?
-</entry>
-
-
-
-
-
+	
+	<entry key="updatePwdMember">
+			UPDATE MEMBER
+			   SET MEM_PWD = ?
+			 WHERE MEM_ID = ?
+			   AND MEM_PWD = ?
+	</entry>
+	
+	<entry key="findId">
+	SELECT MEM_ID
+	FROM MEM_INFO
+	WHERE MEM_NAME =?
+	AND EMAIL =? 
+	</entry>
+	
+	<entry key="findPwd">
+	SELECT *
+			 FROM MEM_INFO
+			 WHERE MEM_ID = ?
+	</entry>
+	
+	
+	<entry key="updatePwdMember">
+	UPDATE MEM_INFO
+			   SET MEM_PWD = ?
+			 WHERE MEM_ID = ?
+			   AND MEM_PWD = ?
+	</entry>
+	
+	
+	<entry key="selectWriteAdoptApplyList">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , MEM_ID
+		     , AA_TITLE
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		     , ADT_STATUS
+		 FROM ADOPT_APPLY
+		 JOIN MEM_INFO USING(MEM_NO)
+		 where MEM_NO = ?
+	</entry>
+	
+	<entry key="selectAdoptApply">
+		SELECT 
+		       AALIST_NO
+		     , ANLIST_NO
+		     , MEM_NO
+		     , AA.MEM_NAME
+		     , AA_TITLE
+		     , PAY_STATUS
+		     , ADT_STATUS
+		     , POST_STATUS
+		     , AA_NAME
+		     , AA_AGE
+		     , AA_GENDER
+		     , AA_PHONE
+		     , AA_EMAIL
+		     , AA_ADDRESS
+		     , MARRIAGE_YN
+		     , AA_JOB
+		     , ADOPT_REASON
+		     , PARENT_EXP
+		     , HAVE_PET_YN
+		     , PET_TYPE
+		     , PET_AGE
+		     , PET_GENDER
+		     , PET_NEUTRAL
+		     , A_MATE
+		     , C_MATE
+		     , CHILD_AGE
+		     , AGREE_YPN
+		     , EVENT_MNG_ANI
+		     , EMPTYHOUR
+		     , HOUSETYPE
+		     , HSELF_YN
+		     , AGREE_NEI_YN
+		     , EXP_COST
+		     , MEM_ID
+		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		  FROM ADOPT_APPLY AA
+		  JOIN MEM_INFO USING (MEM_NO)
+		 WHERE AALIST_NO = ?
+		   AND POST_STATUS = 'Y'
+	</entry>
 
 
 

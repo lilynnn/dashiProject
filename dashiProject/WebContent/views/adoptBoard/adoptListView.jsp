@@ -135,7 +135,7 @@
                </select>
 
                <input type="text" name="keyword" placeholder="검색어를 입력하세요.">
-               <input type="hidden" name ="cpage" value="1">
+               <input type="hidden" name ="cpage" value="<%=pi.getCurrentPage() %>">
                <button id="search-btn">검색하기</button>
            </div>
 		</form>

@@ -231,7 +231,7 @@
 		 WHERE ENT_NO = ?
 	</entry>
 	
-		<entry key="insertAdoptNotice">
+	<entry key="insertAdoptNotice">
 		INSERT 
 		  INTO ADOPT_NOTICE
 		  (

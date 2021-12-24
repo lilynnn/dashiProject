@@ -1,30 +1,29 @@
 package com.dashi.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptApply;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.member.model.service.MemberService;
-import com.dashi.member.model.vo.Member;
 
 /**
- * Servlet implementation class MemberBoardListController
+ * Servlet implementation class AdoptApplyDetailController
  */
-@WebServlet("/boardList.me")
-public class MemberBoardListController extends HttpServlet {
+@WebServlet("/detail.adp")
+public class AdoptApplyDetailController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberBoardListController() {
+    public AdoptApplyDetailController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,16 +32,16 @@ public class MemberBoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String adpNo = request.getParameter("adpno");
 		
-		HttpSession session = request.getSession();
-		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		AdoptApply adp = new MemberService().selectAdoptApply(adpNo);
+		Attachment at = new AdoptBoardService().selectAttachment(adpNo);
 		
-		// 작성한 입양신청서 조회
-		ArrayList<AdoptApply> adplist = new MemberService().selectWriteAdoptApplyList(userNo);
+		request.setAttribute("at", at);
+		request.setAttribute("adp", adp);
 		
-		request.setAttribute("adplist", adplist);
-		request.getRequestDispatcher("views/member/memberBoardListView.jsp").forward(request, response);
-	
+		request.getRequestDispatcher("views/member/adoptApplyDetailView.jsp").forward(request, response);
 	}
 
 	/**

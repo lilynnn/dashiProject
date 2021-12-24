@@ -8,6 +8,7 @@ import static com.dashi.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.dashi.adoptBoard.model.vo.AdoptApply;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.dao.MemberDao;
 import com.dashi.member.model.vo.Member;
@@ -158,9 +159,21 @@ public class MemberService {
 		return updateMem;
 	}
 	
+	// 작성한 입양신청서 조회
+	public ArrayList<AdoptApply> selectWriteAdoptApplyList(int userNo){
+		Connection conn = getConnection();
+		ArrayList<AdoptApply> adplist = new MemberDao().selectWriteAdoptApplyList(conn, userNo);
+		close(conn);
+		return adplist;
+	}
 	
-	
-	
+	// 작성한 입양신청서 상세조회
+	public AdoptApply selectAdoptApply(String adpNo) {
+		Connection conn = getConnection();
+		AdoptApply adp = new MemberDao().selectAdoptApply(conn, adpNo);
+		close(conn);
+		return adp;
+	}
 	
 	
 	
