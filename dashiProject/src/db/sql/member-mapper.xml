@@ -198,7 +198,8 @@
 		     , ADT_STATUS
 		 FROM ADOPT_APPLY
 		 JOIN MEM_INFO USING(MEM_NO)
-		 where MEM_NO = ?
+		 WHERE MEM_NO = ?
+		   AND ADT_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectAdoptApply">
