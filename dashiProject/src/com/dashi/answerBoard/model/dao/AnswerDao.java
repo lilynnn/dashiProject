@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.answerBoard.model.vo.Answer;
+import com.dashi.faqBoard.model.vo.FAQ;
 
 import static com.dashi.common.JDBCTemplate.*;
 
@@ -27,132 +28,85 @@ import static com.dashi.common.JDBCTemplate.*;
 	} catch (IOException e) {
 		e.printStackTrace();
 		}	
-}
 	
-	
-	// Answer 조회
-	
-	public ArrayList<Answer> selectAnswerList(Connection conn){
-	
-			ArrayList<Answer> list = new ArrayList<>();
-			
-			PreparedStatement pstmt = null;
-			ResultSet rset = null;
-			
-			String sql = prop.getProperty("selectAnswerList");
-			
-			try {
-				pstmt = conn.prepareStatement(sql); 
-				rset = pstmt.executeQuery();
-				
-				while(rset.next()) {
-					list.add(new Answer(
-										rset.getString("inquireNo"),
-										rset.getInt("asCategory"),
-										rset.getString("memId"),
-										rset.getString("qTitle"),
-										rset.getString("qContent"),
-										rset.getDate("qCreat")));
-					}
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(rset);
-				close(pstmt);
-			}
-			
-			return list;
 	}
 	
-	
-	// Answer 등록
-	public int insertAnswer(Connection conn , Answer a){
-	int result = 0;
-	
-	PreparedStatement pstmt = null;
-	String sql = prop.getProperty("insertAnswer");
-	
-	try {
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setInt(1, a.getasCategory());
-		pstmt.setString(2, a.getMemId());
-		pstmt.setString(3, a.getqTitle());
-		pstmt.setString(4, a.getqContent());
+	// 1) answer 사용자 전체조회 
+		public ArrayList<Answer> selectAnswerList(Connection conn){
 		
-	
-		result = pstmt.executeUpdate();
-		
-	} catch (SQLException e) {
-		e.printStackTrace();
-	} finally {
-		close(pstmt);
-	}
-	
-	return result;
-	
-}
-	// 관리자 adAnswer 등록
-		public int adinsertAnswer(Connection conn , Answer a){
-		int result = 0;
-		
+		ArrayList<Answer> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
-		String sql = prop.getProperty("adinsertAnswer");
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAnswerList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, a.getAnContent());
-	
 			
-		
-			result = pstmt.executeUpdate();
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Answer(rset.getString("inquire_no")
+							   , rset.getInt("as_categoty")
+							   , rset.getString("q_title")
+							   , rset.getString("q_content")
+							   , rset.getString("mem_Id"))
+							  );
+			}
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
+		}finally {
+			close(rset);
 			close(pstmt);
 		}
 		
-		return result;
+		return list;
 		
-	}
-
-	
-	// Answer 조회
-	
-		public ArrayList<Answer> asselectAnswerList(Connection conn){
-		
-				ArrayList<Answer> list = new ArrayList<>();
-				
-				PreparedStatement pstmt = null;
-				ResultSet rset = null;
-				
-				String sql = prop.getProperty("asselectAnswerList");
-				
-				try {
-					pstmt = conn.prepareStatement(sql); 
-					rset = pstmt.executeQuery();
-					
-					while(rset.next()) {
-						list.add(new Answer(
-											rset.getInt("asCategory"),
-											rset.getString("inquireNo"),
-											rset.getString("memId"),
-											rset.getString("qTitle"),
-											rset.getString("qContent"),
-											rset.getDate("qCreat"),
-											rset.getString("anContent")));
-						}
-					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} finally {
-					close(rset);
-					close(pstmt);
-				}
-				
-				return list;
 		}
 		
-	}
+	// 2) 사용자 answer 등록	
+		public int insertAnswer(Connection conn, Answer a) {
+			
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("insertAnswer");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, a.getasCategory());
+				pstmt.setString(2, a.getMemId());
+				pstmt.setString(3, a.getqTitle());
+				pstmt.setString(4, a.getqContent());
+				
+				
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+			return result;
+		}// 사용자 answer 등록
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+}
+	
+	
+		
+	
 

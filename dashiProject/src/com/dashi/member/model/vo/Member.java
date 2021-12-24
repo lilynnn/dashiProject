@@ -82,6 +82,13 @@ public class Member {
 		this.phone = phone;
 	}
 	
+	public Member(String memId) {
+		
+		super();
+		this.memId = memId;
+		
+	
+	}
 	
 	public Member(String memId, String memName, String birth, String phone,
 			String email) {
@@ -96,7 +103,8 @@ public class Member {
 	public int getMemNo() {
 		return memNo;
 	}
-
+	
+	
 	public Member(String memId, String memPwd, String memName, String nickname, String birth, String memGender,
 			String email, String postNo, String address, String addressDetail, String phone) {
 		super();

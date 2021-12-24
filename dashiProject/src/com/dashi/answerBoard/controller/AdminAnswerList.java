@@ -15,7 +15,9 @@ import com.dashi.answerBoard.model.vo.Answer;
 /**
  * Servlet implementation class AdminAnswerList
  */
-@WebServlet("/AdminAnswerList")
+
+
+@WebServlet("/answerList.ad")
 public class AdminAnswerList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,10 +34,8 @@ public class AdminAnswerList extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Answer> list = new AnswerService().asselectAnswerList();
-		
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("views/answerBoard/AdminanswerList.jsp").forward(request, response);	
+
+		request.getRequestDispatcher("views/answerBoard/adminanswerListView.jsp").forward(request, response);	
 	
 	}
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.notice.model.service.NoticeService;
 import com.dashi.notice.model.vo.Notice;
 
@@ -39,16 +40,15 @@ public class NoticeDetailController extends HttpServlet {
 		
 		if(result > 0) {
 			Notice n = nService.selectNotice(noticeNo);
-			//Attachment at = bService.selectAttachment(noticeNo);
+			Attachment at = nService.selectAttachment(noticeNo);
 			
 			request.setAttribute("n", n);
+			request.setAttribute("at", at);
 			request.getRequestDispatcher("views/notice/noticeDetailView.jsp").forward(request, response);
 			
 		}else {
 			//에러메세지 자리
 		}
-		
-		
 		
 	
 	}

@@ -75,7 +75,7 @@
 
         <!--관리자 공지사항 상세페이지-->
         <div id="noDetailEnroll">
-            <form action="<%=contextPath%>/noInsert.ad" id="enroll-form" method="post">
+            <form action="<%=contextPath%>/noInsert.ad" id="enroll-form" method="post" enctype="multipart/form-data">
                 <div style="width: 100%; padding: 20px; font-weight: 600;">
                     	공지 선택
                     <select name="noSelect">
@@ -100,7 +100,7 @@
                 </div>
 
                 <div id="noFile">
-                    <input type="file">
+                    <input type="file" name="upfile">
                 </div>
 
                 <div id="noBtns" align="center" style="border: none;">

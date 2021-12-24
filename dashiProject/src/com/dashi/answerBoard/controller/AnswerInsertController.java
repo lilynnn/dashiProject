@@ -37,7 +37,6 @@ public class AnswerInsertController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		int category = Integer.parseInt(request.getParameter("category"));
-		String memId = request.getParameter("Id");
 		String qTitle = request.getParameter("qTitle");
 		String qContent= request.getParameter("qContent");
 		
@@ -47,7 +46,6 @@ public class AnswerInsertController extends HttpServlet {
 		
 				Answer a = new Answer();
 				a.setasCategory(category);
-				a.setMemId(memId);
 				a.setqTitle(qTitle);
 				a.setqContent(qContent);
 				a.setMemNo(memNo);
@@ -60,7 +58,7 @@ public class AnswerInsertController extends HttpServlet {
 		}else { 
 			session.setAttribute("alertMsg", "등록 실패하였습니다.");
 			
-		} response.sendRedirect(request.getContextPath() + "/asList.as");
+		} response.sendRedirect(request.getContextPath() + "/enroll.as");
 		
 	}	
 		

@@ -38,22 +38,30 @@ public class FindPwd2Controller extends HttpServlet {
 	         request.setCharacterEncoding("UTF-8");
  
 	         String memId = request.getParameter("memId");
-	         String memName = request.getParameter("name");
-	         String dob = request.getParameter("birth");
+	         String name = request.getParameter("name");
+	         String birth = request.getParameter("birth");
 	         String phone = request.getParameter("phone");
 	         String email = request.getParameter("email");
 
-	         Member m = new MemberService().findPwd(memId,memName,dob,phone,email);
+	         Member m = new MemberService().findPwd(memId);
+	         
+	         System.out.println(m);
+	        
+	         
+	         String dateDob = String.join("", m.getBirth().substring(2,10).split("-"));
+	         //date 생년월일 6자리로 변환
 
 	         //출력
-	         if(memId != null) {//결과가 있으면(정보가 맞다면)
+	         if(m.getMemName().equals(name) && dateDob.equals(birth) && m.getPhone().equals(phone)
+	        		 && m.getEmail().equals(email)) {//정보가 모두 일치한다면
 	        	 request.getSession().setAttribute("alertMsg", "비밀번호 변경화면으로 이동합니다");
 	        	 response.sendRedirect(request.getContextPath()+"/resetPwd.me");
 	         }
-	         else if(memId == null) {//결과가 없으면(정보가 맞지 않으면)
+	         else {//잘못된 정보인 경우
+	        	
 	        	 request.getSession().setAttribute("alertMsg", "일치하는 회원이 없습니다.");
 	        	 response.sendRedirect(request.getContextPath());
-	         }
+	         } 
 	      }
 	      catch(Exception e) {
 	         e.printStackTrace();

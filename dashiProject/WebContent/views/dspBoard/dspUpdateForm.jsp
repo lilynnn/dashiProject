@@ -7,7 +7,6 @@
 	Dsp d = (Dsp)request.getAttribute("d");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 	ArrayList<Dsp> contentImgPath = (ArrayList<Dsp>)request.getAttribute("contentImgPath");
-	System.out.println(list);
 
 %>
 
@@ -217,9 +216,10 @@
 							<td colspan="3">
 								<img id="titleImg" width="300" height="250" src="<%=d.getTitleImg() %>" alt="" onclick="chooseFile(1)">
 								<input type="hidden" name="originFileNo1" value="<%= list.get(0).getAttachNo() %>">
-								
 							</td>
 						</tr>	
+						
+
 
 						<tr>
 							<th>상세 이미지</th>
@@ -228,6 +228,13 @@
 							<td>
 								<input type="hidden" name="originFileNo<%=i+2 %>" value="<%= list.get(i+1).getAttachNo() %>">
 								<img id="contentImg<%=i+1%>" width="200" height="150" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>" alt="" onclick="chooseFile(<%= i+2 %>)">
+							</td>
+							<%} %>
+							
+							<!-- 기존에 없었던 첨부파일을 입력하는 란 -->
+							<%for(int i=contentImgPath.size() + 1; i < 5; i++){ %>
+							<td>
+								<img id="contentImg<%=i+1%>" width="200" height="150" src="" alt="" onclick="chooseFile(<%= i+2 %>)">
 							</td>
 							<%} %>
 
@@ -242,7 +249,7 @@
 
 				<!-- 파일을 입력하는곳-->
 				<div style="display:none">	
-					<input type="file" name="file1" id="file1" onchange="loadImg(this ,1);" required>
+					<input type="file" name="file1" id="file1" onchange="loadImg(this ,1);">
 					<input type="file" name="file2" id="file2" onchange="loadImg(this ,2);">
 					<input type="file" name="file3" id="file3" onchange="loadImg(this ,3);">
 					<input type="file" name="file4" id="file4" onchange="loadImg(this ,4);">

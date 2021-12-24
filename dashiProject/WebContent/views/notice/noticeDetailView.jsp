@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice, com.dashi.common.model.vo.*"%>
 <%
 	Notice n = (Notice)request.getAttribute("n");
+	Attachment at = (Attachment)request.getAttribute("at");
 %>
 <!DOCTYPE html>
 <html>
@@ -82,17 +83,24 @@
         <!--제목, 등록일, 조회수-->
         <div id="title"><%=n.getNoticeTitle()%></div>
         <div class="dateView">등록일</div>
-        <div class="dateView" style="width: 100px;"><%=n.getWriteDate()%></div>
+        <div class="dateView" style="width: 120px;"><%=n.getWriteDate()%></div>
         <div class="dateView">조회수</div>
         <div class="dateView" style="width: 900px;"><%=n.getViewCount()%></div>
         
         <!--본문-->
         <div id="noContent">
             <hr>
-            <!-- <img src="<%=contextPath%>/resources/images/noticeMainNotice.png" width="700px" height="800px" style="margin-left:180px">-->
             <p><%=n.getNoticeContent() %></p>
         </div>
-        
+        <div style="width:100%;">
+        	<% if(at == null){ %>
+        		<hr>
+        		첨부파일이 없습니다.
+        	<% }else{ %>
+        		<hr>
+        		<a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getPath() + at.getChangeName()%>"><%=at.getOriginName()%></a>
+        	<% } %>
+        </div>
 
         <div id="btn" align="center">
             <button onclick="location.href='<%=contextPath%>/list.no?cpage=1';">목록으로</button>
