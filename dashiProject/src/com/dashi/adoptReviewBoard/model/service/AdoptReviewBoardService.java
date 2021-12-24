@@ -16,6 +16,7 @@ import com.dashi.common.model.vo.PageInfo;
 
 public class AdoptReviewBoardService {
 	
+	// 입양후기 작성
 	public int insertThumbnailAdoptReview(AdoptReview ar, ArrayList<Attachment> list) {
 		Connection conn = getConnection();
 		
@@ -32,7 +33,7 @@ public class AdoptReviewBoardService {
 		return result1 * result2;
 	}
 
-	
+	// 입양후기 조회
 	public ArrayList<AdoptReview> selectReviewList(){
 		Connection conn = getConnection();
 		ArrayList<AdoptReview> list = new AdoptReviewBoardDao().selectReviewList(conn);
@@ -41,7 +42,7 @@ public class AdoptReviewBoardService {
 		return list;
 	}
 	
-
+	// 입양후기 조회수
 	public int increaseCount(String arlistNo) {
 		Connection conn = getConnection();
 		int result = new AdoptReviewBoardDao().increaseCount(conn, arlistNo);
@@ -152,7 +153,27 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
+
 	
+	
+	// 입양후기 수정
+	public int updateReview(AdoptReview ar, ArrayList<Attachment> list) {
+		Connection conn = getConnection();
+		int result1 = new AdoptReviewBoardDao().updateReview(conn, ar);
+		System.out.println("service: "+ result1);
+		
+		int result2 = 1;
+		
+		if(!list.isEmpty()) {
+				result2 = new AdoptReviewBoardDao().updateReviewAttachmentList(conn, list);
+		}
+		if(result1>0 && result2>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		return result1*result2;
+	}
 	
 	
 }

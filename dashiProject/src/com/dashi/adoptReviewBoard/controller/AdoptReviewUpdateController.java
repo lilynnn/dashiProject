@@ -46,9 +46,11 @@ public class AdoptReviewUpdateController extends HttpServlet {
 			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/adoptReview/");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
-			String arlistNo = multiRequest.getParameter("arlistNo");
+			
+			String arlistNo = multiRequest.getParameter("arno");
 			
 			AdoptReview ar = new AdoptReview();
+			ar.setArlistNo(multiRequest.getParameter("arlistNo"));
 			ar.setMemNo(Integer.parseInt(multiRequest.getParameter("userNo")));
 			ar.setMemId(multiRequest.getParameter("userId"));
 			ar.setNickname(multiRequest.getParameter("nickname"));
@@ -56,14 +58,16 @@ public class AdoptReviewUpdateController extends HttpServlet {
 			ar.setArTitle(multiRequest.getParameter("title"));
 			ar.setArContent(multiRequest.getParameter("content"));
 			
-			ArrayList<Attachment> list = new ArrayList<>();
+			ArrayList<Attachment> list = new ArrayList<Attachment>();
 			
 			for(int i=1; i<=5; i++) {
 				String key = "file" + i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
+					// 넘어온파일있을경우
 					Attachment at = new Attachment();
 					
+					//첨부파일 있을 경우
 					if(multiRequest.getParameter("originFileNo"+i) != null) {
 						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
 					}
@@ -71,6 +75,7 @@ public class AdoptReviewUpdateController extends HttpServlet {
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
 					at.setPath("resources/upfiles/adoptReview/");	
+					at.setRefNo(arlistNo);
 					
 					if(i == 1) { // 대표이미지일 경우
 						at.setAttachLevel(1);
@@ -81,7 +86,14 @@ public class AdoptReviewUpdateController extends HttpServlet {
 				}
 			}
 			
-			int result = new AdoptReviewBoardService().insertThumbnailAdoptReview(ar, list);
+			System.out.println("----------AdoptNoticeUpdateController----------");
+			System.out.println("원래 담겨있던 첨부파일번호" + request.getParameter("originFileNo"));
+			System.out.println("boardNo : " + arlistNo);
+			System.out.println("adoptNotice : " + ar);
+			System.out.println("첨부파일 : " + list);
+			System.out.println("--------------------------------");
+			
+			int result = new AdoptReviewBoardService().updateReview(ar, list);
 			
 			if(result > 0) { // 성공 => /loveagain/list.ar 	url요청 => 목록페이지
 				
@@ -92,6 +104,7 @@ public class AdoptReviewUpdateController extends HttpServlet {
 				request.getSession().setAttribute("alertMsg", "입양후기 수정 실패");
 				response.sendRedirect(request.getContextPath() + "/detail.ar?arno="+arlistNo);
 			}
+			System.out.println("controller: " + result);
 		}
 	
 	}

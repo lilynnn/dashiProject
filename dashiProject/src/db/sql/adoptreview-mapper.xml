@@ -194,6 +194,26 @@
 		 WHERE ARLIST_NO = ?
 	</entry>
 	
+	<entry key="updateReview">
+		UPDATE
+			   ADOPT_REVIEW
+		   SET AN_TYPE = ?
+		     , AR_TITLE = ?
+		     , AR_CONTENT = ?
+		 WHERE ARLIST_NO = ?
+	</entry>
+	
+	<entry key="updateReviewAttachment">
+		UPDATE
+			   ATTACHMENT
+		   SET PATH = ?
+		     , ORIGIN_NAME = ?
+		     , CHANGE_NAME = ?
+		     , ATTACH_LEVEL = ?
+		 WHERE ATTACH_NO = ?
+	</entry>
+	
+
 	
 </properties>
 

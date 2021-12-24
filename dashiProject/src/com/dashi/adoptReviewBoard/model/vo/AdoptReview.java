@@ -17,6 +17,7 @@ public class AdoptReview {
 	private String titleImg; 	// 썸네일이미지
 	private String anType;		// 동물종류
 	private String memId; 		// 회원아이디
+	private String contentImg; 	// 상세이미지
 	
 	
 	public String getMemId() {
@@ -85,8 +86,24 @@ public class AdoptReview {
 		this.writeDate = writeDate;
 	}
 	
-	
 		
+		
+	// 상세이미지 조회용
+	public AdoptReview(String contentImg) {
+			super();
+			this.contentImg = contentImg;
+	}
+
+	
+	
+	public String getContentImg() {
+		return contentImg;
+	}
+
+	public void setContentImg(String contentImg) {
+		this.contentImg = contentImg;
+	}
+
 	public String getArlistNo() {
 		return arlistNo;
 	}

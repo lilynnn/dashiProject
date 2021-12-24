@@ -54,6 +54,7 @@ public class AdoptReviewInsertController extends HttpServlet {
 			// AdoptReview insert
 			AdoptReview ar = new AdoptReview();
 			ar.setMemNo(Integer.parseInt(multiRequest.getParameter("userNo")));
+			ar.setArlistNo(multiRequest.getParameter("arlistNo"));
 			ar.setMemId(multiRequest.getParameter("userId"));
 			ar.setNickname(multiRequest.getParameter("nickname"));
 			ar.setAnType(multiRequest.getParameter("animal"));
@@ -91,7 +92,8 @@ public class AdoptReviewInsertController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/list.ar");
 				
 			}else { // 실패 => 에러페이지
-				
+				request.getSession().setAttribute("alertMsg", "등록 실패");
+				response.sendRedirect(request.getContextPath() + "/list.ar?cpage=1");				
 			}
 		}
 	}

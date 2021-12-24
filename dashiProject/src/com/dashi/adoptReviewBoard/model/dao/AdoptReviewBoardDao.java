@@ -422,8 +422,92 @@ public class AdoptReviewBoardDao {
 		
 	}
 	
+	// 입양후기 수정
+	public int updateReview(Connection conn, AdoptReview ar) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		System.out.println("antype: " + ar.getAnType());
+		System.out.println("artitle : " + ar.getArTitle());
+		System.out.println("arContent : " + ar.getArContent());
+		System.out.println("arlistNo : "+ar.getArlistNo());
+		String sql = prop.getProperty("updateReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, ar.getAnType());
+			pstmt.setString(2, ar.getArTitle());
+			pstmt.setString(3, ar.getArContent());
+			pstmt.setString(4, ar.getArlistNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 	
+	// 입양후기 기존첨부파일 수정
+	public int updateReviewAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updateReviewAttachment");
+		
+		if(!list.isEmpty()) {
+			try {
+				for(Attachment at : list) {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, at.getPath());
+					pstmt.setString(2, at.getOriginName());
+					pstmt.setString(3, at.getChangeName());
+					pstmt.setInt(4, at.getAttachLevel());
+					pstmt.setString(5, at.getAttachNo());
+					
+				}
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+		}else {
+			result = 1;
+		}
+		return result;
+	}
 	
+	// 입양후기 수정 상세이미지
+	public ArrayList<AdoptReview> contentImgPath(Connection conn, String arlistNo){
+		ArrayList<AdoptReview> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("contentImgPath");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,arlistNo);
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()){
+				list.add(new AdoptReview(rset.getString("CONTENTIMG")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
+	}
+	
+
 	
 	
 	
