@@ -33,9 +33,9 @@ public class EntranceService {
 		
 	} // 입소게시글 등록
 	
-	public ArrayList<Entrance> selectEntranceList(){
+	public ArrayList<Entrance> selectEntranceList(int userNo){
 		Connection conn = getConnection();
-		ArrayList<Entrance> list = new EntranceDao().selectEntranceList(conn);
+		ArrayList<Entrance> list = new EntranceDao().selectEntranceList(conn, userNo);
 		close(conn);
 		return list;
 	} // 입소신청 게시글 조회해오기

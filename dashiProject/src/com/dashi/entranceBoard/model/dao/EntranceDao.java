@@ -92,7 +92,7 @@ public class EntranceDao {
 		
 	} // 첨부파일 게시판 등록
 	
-	public ArrayList<Entrance> selectEntranceList(Connection conn){
+	public ArrayList<Entrance> selectEntranceList(Connection conn, int userNo){
 		ArrayList<Entrance> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -100,6 +100,7 @@ public class EntranceDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userNo);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

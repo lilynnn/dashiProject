@@ -78,6 +78,7 @@
 		  JOIN ATTACHMENT ON (ENT_NO = REF_NO)
 		 WHERE ATTACH_LEVEL = 1
 		   AND ENT_STATUS = 'N'
+		   AND MEM_NO = ?
 		 ORDER
 		       BY ENT_NO DESC
 	</entry>
