@@ -33,7 +33,8 @@ public class AdoptNoticeSearchListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String animalCtg = request.getParameter("animal-category");
+		request.setCharacterEncoding("UTF-8");
+		String animalCtg = request.getParameter("animalCtg");
 		String keyword = request.getParameter("keyword");
 		
 		int listCount;
@@ -47,10 +48,10 @@ public class AdoptNoticeSearchListController extends HttpServlet {
 		
 		listCount = new AdoptBoardService().selectSearchAdoptNoticeListCount(animalCtg, keyword);
 		
-		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		currentPage = Integer.parseInt(request.getParameter("spage"));
 		pageLimit = 5;
 		// 나중에 boardLimit 갯수 맞춰서 수정하기!!
-		boardLimit = 4;
+		boardLimit = 1;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;
@@ -65,8 +66,9 @@ public class AdoptNoticeSearchListController extends HttpServlet {
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("adtList", list);
-		
-		request.getRequestDispatcher("views/adoptBoard/adoptListView.jsp").forward(request, response);
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("animalCtg", animalCtg);
+		request.getRequestDispatcher("views/adoptBoard/adoptSearchListView.jsp").forward(request, response);
 	}
 
 	/**

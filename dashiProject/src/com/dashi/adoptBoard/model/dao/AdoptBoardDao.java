@@ -1091,14 +1091,14 @@ public class AdoptBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		String sql = prop.getProperty("searchAdoptNoticeList");
-		String key = "%"+keyword+"%";
+		
 		try {
 			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
 			int endRow = startRow + pi.getBoardLimit() - 1;
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, animalCtg);
-			pstmt.setString(2, key);
+			pstmt.setString(2, "%"+keyword+"%");
 			pstmt.setInt(3, startRow);
 			pstmt.setInt(4, endRow);
 			

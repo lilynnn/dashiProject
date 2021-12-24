@@ -555,7 +555,7 @@
 		                 ORDER
 		                    BY ANLIST_NO DESC 
 		            ) A
-		        Where AN_TITLE LIKE ?
+		        WHERE AN_TITLE LIKE ?
 		      )
 		  WHERE RNUM BETWEEN ? AND ?
 	</entry>

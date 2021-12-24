@@ -163,7 +163,7 @@
         <div align="center">
 			
        		<%if(currentPage != 1) {%>
-            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adlist.ad?cpage=<%= currentPage-1 %>';">&lt</button>
+            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adlist.ad?cpage=<%= currentPage-1 %>';">&lt;</button>
 			<%} %>
 			
 			<% for(int p=startPage; p<=endPage; p++){ %>
@@ -177,7 +177,7 @@
          	<%} %>	
 
 			<%if(currentPage < maxPage) {%>
-         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.ad?cpage=<%= currentPage+1%>';">&gt</button>
+         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.ad?cpage=<%= currentPage+1%>';">&gt;</button>
             <%} %>
             
         </div>

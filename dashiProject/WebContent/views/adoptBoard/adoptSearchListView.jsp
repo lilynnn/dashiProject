@@ -4,6 +4,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<AdoptNotice> adtList = (ArrayList<AdoptNotice>)request.getAttribute("adtList");
+	String keyword = (String)request.getAttribute("keyword");
+	String animalCtg = (String)request.getAttribute("animalCtg");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -126,19 +128,19 @@
        	     다시, 사랑받개의 아이들이 가족을 기다려요!
         </div>
         
-		
-       <div class="search-area" align="right">
-           <form action="<%=contextPath %>/adsearch.adt?spage=1" method="get">
+		<form action="<%=contextPath %>/adsearch.adt" method="get">
+           <div class="search-area" align="right">
                <select name="animalCtg" style="height: 30px;">
                    <option value="D">강아지</option>
                    <option value="C">고양이</option>
                    <option value="E">기타</option>
                </select>
-			   <input type="hidden" name="spage" value="1">
-               <input type="text" name="keyword" placeholder="검색어를 입력하세요." required>
+
+               <input type="text" name="keyword" placeholder="검색어를 입력하세요.">
+               <input type="hidden" name="spage" value="1">
                <button id="search-btn" type="submit">검색하기</button>
-       	  </form>
-       </div>
+           </div>
+		</form>
 		
            <!-- 5행4열 배치 -->
            <!-- 페이징바는 5개 -->
@@ -198,7 +200,7 @@
         <div align="center">
 			
        		<%if(currentPage != 1) {%>
-            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adlist.adt?cpage=<%= currentPage-1 %>';">&lt</button>
+            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adsearch.adt?animalCtg=<%=animalCtg %>&keyword=<%=keyword%>&spage=<%=currentPage-1 %>';">&lt;</button>
 			<%} %>
 			
 			<% for(int p=startPage; p<=endPage; p++){ %>
@@ -207,12 +209,12 @@
 					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
 					<button class="btn btn-light" disabled><%= p %></button>
 				<%} else { %>
-            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= p %>';"><%= p %></button>	
+            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adsearch.adt?animalCtg=<%=animalCtg %>&keyword=<%=keyword%>&spage=<%=p%>';"><%= p %></button>	
             	<%} %>
          	<%} %>	
 
 			<%if(currentPage < maxPage) {%>
-         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adlist.adt?cpage=<%= currentPage+1%>';">&gt</button>
+         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adsearch.adt?animalCtg=<%=animalCtg %>&keyword=<%=keyword%>&spage=<%=currentPage+1%>';">&gt;</button>
             <%} %>
             
         </div>
