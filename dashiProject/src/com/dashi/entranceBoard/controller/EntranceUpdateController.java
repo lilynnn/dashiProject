@@ -84,7 +84,6 @@ public class EntranceUpdateController extends HttpServlet {
 					at.setAttachNo(multiRequest.getParameter("origin" + i));
 				}
 
-				
 				// 새로 넘어올 첨부파일 있으면 
 				at.setOriginName(multiRequest.getOriginalFileName(key));
 				at.setChangeName(multiRequest.getFilesystemName(key));

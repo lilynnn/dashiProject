@@ -232,7 +232,6 @@ public class DspDao {
 	
 			}
 			
-			System.out.println(list);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -396,6 +395,13 @@ public class DspDao {
 		return result;
 	}
 	
+	public int insertNewAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachmentList");
+	}
+
+	
 	
 	
 	
@@ -502,7 +508,6 @@ public class DspDao {
 		return list;
 	}
 
-
 	public int deleteReply(Connection conn, String replyNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
@@ -520,6 +525,8 @@ public class DspDao {
 		
 		return result;
 	}
+
+
 
 	
 	

@@ -37,10 +37,13 @@ public class dspUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		System.out.println("서블릿 실행 ");
 		request.setCharacterEncoding("UTF-8");
 		
 		//enctype타입이 multipart/form-data인지 확인
 		if(ServletFileUpload.isMultipartContent(request)) {
+			
+			System.out.println("if문 안");
 			
 			int maxSize = 10 * 1024 * 1024;
 			
@@ -73,16 +76,16 @@ public class dspUpdateController extends HttpServlet {
 			for(int i=1; i<=5; i++) {
 				String key = "file"+i;
 				//넘어온 파일이 있을경우
-				if(multiRequest.getParameter(key) != null) {
+				if(multiRequest.getOriginalFileName(key) != null) { // 새로이 넘어온 첨부파일이 있을 경우 
 					at = new Attachment();
 					
 					// 기존의 첨부파일이 있었을 경우
 					if(multiRequest.getParameter("originFileNo"+ i) != null) {
-						at.setAttachNo(multiRequest.getParameter("originFileNo1" + i));
+						at.setAttachNo(multiRequest.getParameter("originFileNo" + i));
 					} 
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setPath("/resources/upfiles/dspThumb/");
+					at.setPath("resources/upfiles/dspThumb/");
 					at.setRefNo(dspNo);
 					if(i == 1) {
 						at.setAttachLevel(1);
@@ -91,9 +94,10 @@ public class dspUpdateController extends HttpServlet {
 					}
 					list.add(at);
 				 }
-			
+
 			}
-			System.out.println(list);
+
+			System.out.println("리스트 : " + list);
 			
 			int result = new DspService().updateDsp(d, list);
 			

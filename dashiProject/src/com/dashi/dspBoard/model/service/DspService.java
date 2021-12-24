@@ -111,9 +111,18 @@ public class DspService {
 		int result1 = new DspDao().updateDsp(conn,d);
 		
 		int result2 = 1;
+		
 		if(!list.isEmpty()) {
+			// 기존의 첨부파일 업데이트
 			result2 = new DspDao().updateAttachmentList(conn,list);
 		} 
+		
+		if(result1 > 0 && result2 > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
 		return result1 * result2;
 	}
 	

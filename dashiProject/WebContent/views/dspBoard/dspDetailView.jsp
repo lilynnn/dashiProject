@@ -590,34 +590,7 @@
         </div>
 
         <div class="befAft" align="center">
-            
-            <div><!-- 이전글 다음글-->
-                <table class="table"style="width: 1100px;">
-                
-                    <!-- 한 줄 영역으로 클릭 효과 주기 -->
-                    <tbody>
-                        <tr>
-                            <td width="100">이전글</td>
-                            <td width="700">[실종]멍멍이 찾아요ㅠㅠ</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                        <tr>
-                            <td width="100">다음글</td>
-                            <td width="700">[보호]야옹이를 보호하고있어요 !</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                        <tr>
-                            <!-- 구분선용 공백란 -->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-
+            <div>
                 <!-- 댓글 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="cmtReport"> 
                     <form action="">
@@ -699,7 +672,7 @@
                 </div>
 
             </div>
-<br><br>
+			<br><br>
             <button id="backBtn">목록으로</button>
         </div>
         <br><br><br><br><br>

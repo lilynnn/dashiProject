@@ -227,6 +227,28 @@
 	</entry>
 	
 	
+	<!-- 새로 넘어온 첨부파일 INSERT -->
+	<entry key="insertNewAttachment">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , PATH
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		VALUES
+		 (
+		   SEQ_FNO.NEXTVAL
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 )
+	</entry>
 	
 	
 	
