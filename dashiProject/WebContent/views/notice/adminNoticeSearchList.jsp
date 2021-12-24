@@ -3,6 +3,7 @@
 <%
 	ArrayList<Notice> list = (ArrayList<Notice>)request.getAttribute("list");
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String keyword = (String)request.getAttribute("keyword");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -115,8 +116,8 @@
                 <hr>
                 </div>
                 <div id="search">
-                	<form action="<%=contextPath%>/noKeyword.ad?spage=1" method="post">
-	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
+                	<form action="<%=contextPath%>/noKeyword.ad" method="post">
+	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" value="<%=keyword %>" required>
 	                    <input type="hidden" name="spage" value="1">
 	                    <button type="submit">검색</button>
                     </form>
@@ -179,19 +180,19 @@
               <div class="paging-area" align="center" style="width:100%; margin-top:30px;">
 		
 				<% if(currentPage != 1){ %>
-	            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=currentPage-1%>';">&lt;</button>
+	            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?titleSearch=<%=keyword%>&spage=<%=currentPage-1%>';">&lt;</button>
 	            <% } %>
 	            
 	            <% for(int p=startPage; p<=endPage; p++){ %>
 	            	<% if(p == currentPage){ %>
 	            		<button class="btn btn-light" disabled><%=p%></button>
 	            	<%}else{ %>
-	            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=p%>';"><%=p%></button>
+	            		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?titleSearch=<%=keyword%>&spage=<%=p%>';"><%=p%></button>
 	            	<% } %>
 	           	<% } %>
 	            
 	            <% if(currentPage != maxPage){ %>
-	           	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?spage=<%=currentPage+1%>';">&gt;</button>
+	           	 <button class="btn btn-light" onclick="location.href='<%=contextPath%>/noKeyword.ad?titleSearch=<%=keyword%>&spage=<%=currentPage+1%>';">&gt;</button>
 				<% } %>
         
   		 	</div>

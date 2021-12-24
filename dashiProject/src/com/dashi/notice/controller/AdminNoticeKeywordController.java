@@ -49,9 +49,7 @@ public class AdminNoticeKeywordController extends HttpServlet {
 		listCount = new NoticeService().selectSearchListCount(keyword); // 총 게시글 갯수
 		
 		currentPage = Integer.parseInt(request.getParameter("spage"));
-		
-		System.out.println(currentPage);
-		
+				
 		pageLimit = 5;
 		boardLimit = 20;
 		
@@ -69,6 +67,7 @@ public class AdminNoticeKeywordController extends HttpServlet {
 	
 		request.setAttribute("list", list);
 		request.setAttribute("pi", pi);
+		request.setAttribute("keyword", keyword);
 
 		request.getRequestDispatcher("views/notice/adminNoticeSearchList.jsp").forward(request, response);
 	

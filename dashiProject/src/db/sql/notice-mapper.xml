@@ -105,9 +105,9 @@
 		                 WHERE NO_STATUS = 'N'
 		                 ORDER
 		                       BY NOTICE_NO DESC) A
-		                )
 		 WHERE NOTICE_TITLE LIKE ?
-		   AND RNUM BETWEEN ? AND ?
+	    )
+		 WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
 	<entry key="insertNotice">
