@@ -72,6 +72,7 @@ public class DspDao {
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertDspAttachment");
 		
+		System.out.println(list);
 		try {
 			for(Attachment at : list) {
 				pstmt =conn.prepareStatement(sql);
@@ -81,9 +82,8 @@ public class DspDao {
 				pstmt.setString(3, at.getChangeName());
 				pstmt.setInt(4, at.getAttachLevel());
 				
-				result=pstmt.executeUpdate();
+				result = pstmt.executeUpdate();
 			}
-			
 			
 			
 		} catch (SQLException e) {
@@ -364,41 +364,52 @@ public class DspDao {
 	
 	
 	
-	//첨부파일 수정 메소드
-	public int updateAttachmentList(Connection conn, ArrayList<Attachment> list) {
+	// 기존의 첨부파일 수정 메소드
+	public int updateAttachmentList(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateAttachment");
-		
-		if(!list.isEmpty()) {	
-			try {
-				for(Attachment at : list) {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, at.getOriginName());
-					pstmt.setString(2, at.getChangeName());
-					pstmt.setString(3, at.getPath());
-					pstmt.setInt(4,at.getAttachLevel());
-					pstmt.setString(5, at.getAttachNo());
-					
-					result = pstmt.executeUpdate();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally{
-				close(pstmt);
-			}
-		} else {
-			result = 1;
+		System.out.println("기존의 첨부파일 dao안 at" + at);
+
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getPath());
+			pstmt.setInt(4,at.getAttachLevel());
+			pstmt.setString(5, at.getAttachNo());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
-		
-		
 		return result;
 	}
 	
-	public int insertNewAttachmentList(Connection conn, ArrayList<Attachment> list) {
+	// 새로운 첨부파일 입력 메소드
+	public int insertNewAttachmentList(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("insertNewAttachmentList");
+		System.out.println("새로운 첨부파일 dao안 at" + at);
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, at.getRefNo());
+			pstmt.setString(2, at.getPath());
+			pstmt.setString(3, at.getOriginName());
+			pstmt.setString(4, at.getChangeName());
+			pstmt.setInt(5, at.getAttachLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
 	}
 
 	

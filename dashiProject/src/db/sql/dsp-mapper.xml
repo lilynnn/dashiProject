@@ -58,7 +58,7 @@
 		  )
 		VALUES
 		 (
-		   SEQ_FNO.NEXTVAL
+		   'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
 		 , 'DSP-'||LPAD(SEQ_DSPNO.CURRVAL,3,0)
 		 , ?
 		 , ?
@@ -228,7 +228,7 @@
 	
 	
 	<!-- 새로 넘어온 첨부파일 INSERT -->
-	<entry key="insertNewAttachment">
+	<entry key="insertNewAttachmentList">
 		INSERT 
 		  INTO ATTACHMENT
 		  (
@@ -241,7 +241,7 @@
 		  )
 		VALUES
 		 (
-		   SEQ_FNO.NEXTVAL
+		   'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
 		 , ?
 		 , ?
 		 , ?

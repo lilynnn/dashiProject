@@ -37,13 +37,10 @@ public class dspUpdateController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("서블릿 실행 ");
 		request.setCharacterEncoding("UTF-8");
 		
 		//enctype타입이 multipart/form-data인지 확인
 		if(ServletFileUpload.isMultipartContent(request)) {
-			
-			System.out.println("if문 안");
 			
 			int maxSize = 10 * 1024 * 1024;
 			
@@ -106,7 +103,7 @@ public class dspUpdateController extends HttpServlet {
 				response.sendRedirect(request.getContextPath()+"/list.dsp?cpage=1");
 			} else {
 				request.getSession().setAttribute("alertMsg", "게시글 수정에 실패했습니다.");
-				response.sendRedirect(request.getContextPath()+"/detail.dsp?dno="+ dspNo);
+				response.sendRedirect(request.getContextPath()+"/detail.dsp?dno=1"+ dspNo);
 			}
 
 		}

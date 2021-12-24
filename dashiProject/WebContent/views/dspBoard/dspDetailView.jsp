@@ -682,7 +682,7 @@
     <script>
         $(function(){
             $("#backBtn").click(function(){
-                location.href = '<%= contextPath%>/list.dsp';
+                location.href = '<%= contextPath%>/list.dsp?cpage=1';
             })
         })
     </script>
