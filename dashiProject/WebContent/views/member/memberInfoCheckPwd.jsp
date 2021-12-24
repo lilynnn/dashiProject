@@ -60,13 +60,6 @@
         border: 1px solid red;
         border-radius: 3px;
     }
-    button{
-        height: 30px;
-        background-color: tomato;
-        color: white;
-        border: 1px solid red;
-        font-weight: 600;
-    }
     #mem-update{
         background: rgb(32, 68, 28);
         color: white;
@@ -80,7 +73,9 @@
     
 	<%@ include file="../common/menubar.jsp" %>
 
-    <% String userPwd = loginUser.getMemPwd(); %>
+    <% String userPwd = loginUser.getMemPwd();
+    System.out.println(loginUser.getMemPwd());
+    %>
 
 	 <!--전체 div-->
 	<div class="outer">
@@ -120,22 +115,23 @@
 		<form action="<%=contextPath%>/infoView.me" method="post">
             <div id="checkPwd">
                	 회원 비밀번호 
-                <input type="password" id="checkPwd" style="width:200px; height:50px;">
-                <button type="submit" onclick="return checkPwd();">확인</button>
+                <input type="password" name="checkPwd" style="width:200px; height:50px;">
+                <button type="submit" class="btn btn-lg btn-outline-danger" id="confirm" onclick="return confirmPwd();">확인</button>
+                <input type="hidden" name="password" value="<%=loginUser.getMemPwd()%>">
             </div>
 		</form>
 
 	<script>
-		function checkPwd(){
-			if($("input[id=checkPwd]").val() != <%=userPwd%>){
+		function confirmPwd(){
+			
+			if($("input[name=checkPwd]").val() != $("input[name=password]").val()){
 				alert("비밀번호가 일치하지 않습니다!");
 				
+				console.log($("input[name=checkPwd]").val());
+				console.log($("input[name=password]").val());
 				return false;
 			}
-			
 		}
-		console.log($("input[id=checkPwd]").val());
-		console.log(<%=userPwd%>);
 	</script>
 
 
