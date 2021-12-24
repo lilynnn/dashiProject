@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dashi.entranceBoard.model.service.EntranceService;
 import com.dashi.entranceBoard.model.vo.Entrance;
+import com.dashi.member.model.vo.Member;
 
 /**
  * Servlet implementation class EntranceListController
@@ -32,7 +34,10 @@ public class EntranceListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Entrance> list = new EntranceService().selectEntranceList();
+		HttpSession session = request.getSession();
+		int userNo = ((Member)session.getAttribute("loginUser")).getMemNo();
+		
+		ArrayList<Entrance> list = new EntranceService().selectEntranceList(userNo);
 		
 		request.setAttribute("list", list);
 	
