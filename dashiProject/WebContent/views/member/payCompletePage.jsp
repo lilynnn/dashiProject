@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
+
 <style>
     div{box-sizing: border-box;}     
     .outer{
@@ -73,15 +79,11 @@
         height: 60%;
         margin:auto;  
     }
-
-    /*각 탭 아이콘 스타일 (아이콘 이미지 넣은 뒤 border 지우기)*/
     #updateimage{
-        border: 1px solid black;
-        width:70px;
-        height: 70px;;
+        width:60px;
+        height: 60px;
     }
     .bottomimage{
-        border: 1px solid black;
         width: 60px;
         height: 60px;;  
     }
@@ -90,7 +92,7 @@
     p{
         color:rgb(54, 53, 53); 
         font-weight: 900;
-        font-size: 12px;
+        font-size: 14px;
     }
 
     /*입양신청 현황 스타일*/
@@ -98,7 +100,8 @@
         width: 100px;
         height: 100px;
         float: left;
-        margin: 23px;
+        margin-left: 23px;
+        margin-top: 20px;
         text-align: center;
         font-size: large;
         font-weight: 550;
@@ -106,6 +109,59 @@
         background: lightgray;
         color: rgb(54, 53, 53);
     }
+    .arrow{
+        width: 50px;
+        height: 100px;
+        float: left;
+        margin-left: 23px;
+        margin-top: 20px;
+        text-align: center;
+        font-size: large;
+        font-weight: 550;
+        padding-top: 25px;
+    }
+    #arrowimage{width: 50px; height: 50px;}
+   #toparea>div:hover{
+        cursor: pointer;
+    }
+    #bottomarea>div:hover{
+        cursor: pointer;
+    }
+
+    /*-------------모달창-----------------*/
+
+    #payMent{
+          width: 140px;
+          height: 45px;
+          border: none;
+          background-color: rgb(207, 60, 60);
+          color: white;
+          font-size: 17px;
+          font-weight:bolder;
+          margin-top: 30px;
+          margin-left: 70%;
+          border-radius: 4px;
+      }
+      .pay-area{
+        font-size: 18px; 
+        text-align: center; 
+        background:rgb(212, 212, 212);
+        font-weight: bold;
+        height: 35px;
+        width: 370px;
+        margin: auto;
+        margin-bottom: 20px;
+        
+      }
+      #cardNum{
+        width: 342px;
+        height: 36px; 
+      } 
+      
+      #CVCNum, #cardAbleTerm{
+        width: 150px; 
+        height: 36px; 
+      }
 
 </style>
 
@@ -115,11 +171,12 @@
 <%@ include file="../common/menubar.jsp" %>
 
 <div class="outer">
-    <div class="wrap">
         <!--마이페이지(타이틀)-->
-        <div id="title" style="width: 20%; font-size: 26px; font-weight: 900;">
+        <div id="title" style="width: 20%; font-size: 26px; font-weight: 900; margin-left: 200px;">
             마이페이지
         </div>
+        <br>
+        <div class="wrap">
         <hr>
         <!--상단부-->
         <div id="toparea">
@@ -129,10 +186,12 @@
                     <!--회원정보 수정 영역(클릭 시 이동)-->
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
-                        <div id="updateimage">  
-                            <img src="resources/images/pencil.png">
+                        <div>  
+                        	<a href="<%=contextPath%>/infoView.me">
+                            <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
+                        	<br><br>
+                            <p align="center">회원정보수정</p></a>
                         </div>
-                        <p align="center">회원정보수정</p>
                     </div>
                     
                 </div>
@@ -148,8 +207,8 @@
                         <!--(입양신청내역 없을 시)등급별권한안내-->
                         <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
                         <!--(입양승인 시)결제하기버튼--> 
-                        <button style="width:150px; height:30px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;">
-                            책임비 결제하기
+                        <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn" disabled>
+                         	   책임비 결제완료
                         </button> 
                     </div>
 
@@ -163,24 +222,61 @@
                 <!--입양신청현황 영역(클릭 시 이동)-->
                 <div style="width: 98%; height: 15%; background: lightgray; margin-top: 7px;    display: flex;
                 align-items: center;">
-                <h4>입양신청현황</h4>
+                <p style="margin-top: 15px;">&nbsp;입양신청현황</p>
                 </div>
                 
-                <div style="width: 98%; height: 80%; margin-top: 25px;">
+                <div style="width: 98%; height: 80%; margin-top: 25px;" >
                     <!--입양신청 없을 시??????-->
                     <!--<h3 align="center" style="margin: auto; margin-top: 80px;">신청 내역이 없습니다.</h3>-->
                     <!--입양신청 처리상태 1(승인대기)일 시-->
-                    <div style="height: 60%; ">
-                        <div class="adopt-status">입양신청</div>
-                        <div class="adopt-status">입양승인</div>
-                        <div class="adopt-status">결제하기</div>
+
+                        <div class="adopt-status" >입양신청</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status" style="background: rgb(102,184,94);">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
                         <div class="adopt-status">입양완료</div>
-                    </div>
+
+                    
                     <!--입양신청 처리상태 2(결제대기)일 시-->
+                    <!--
+
+                        <div class="adopt-status">입양신청</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">입양완료</div>
+
+                    -->
                     <!--입양신청 처리상태 3(결제완료)일 시-->
-                    <!--입양신청 처리상태 4(입양완료)일 시-->
+                    <!--                    
+
+                        <div class="adopt-status">입양신청</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">입양완료</div>
+
+                    -->
+                    <!--입양신청 처리상태 4(입양완료)일 시-->  
+                    <!--                  
+
+                        <div class="adopt-status" >입양신청</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div class="adopt-status" style="background: rgb(102,184,94);">입양완료</div>
+
+                    -->
                     <!--입양신청 처리상태 5(반려))일 시-->
+                    <!--<h3 align="center" style="margin: auto; margin-top: 80px;">입양 신청이 반려되었습니다.</h3>-->
                 </div>
 
             </div>
@@ -193,24 +289,34 @@
                     <!--찜목록 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/heart.png">
-                        </div>
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/heart.png">
+                        <br><br>
                         <p align="center">찜 목록확인</p>
                     </div>
 
                 </div>
             </div>
+            <!-- 찜목록 클릭시 페이지 이동 스크립트  -->
+		    <script>
+		        $(function(){
+		            $("#bottomarea").click(function(){
+		                location.href = '<%= contextPath%>/likepage.me';
+		            })
+		        })
+		    </script>
+            
             <div id="bottom2">
                 <div class="box box3">
 
                     <!--글쓴내역 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
                         <!-- 글쓴내역 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/post.png">
+                        <div>
+                        	<a href="<%=contextPath%>/boardList.me">
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/post.png">
+	                        <br><br>
+                            <p align="center">글쓴내역확인</p></a>
                         </div>
-                        <p align="center">글쓴내역확인</p>
                     </div>
 
                 </div>
@@ -219,13 +325,14 @@
                 <div class="box box3">
 
                     <!--1:1문의 조회 영역(클릭 시 이동)-->
+                    
                     <div class="txtarea2"  align="center">
+                  		 <a href="<%= contextPath %>/asList.as">
                         <!-- 1:1문의 아이콘 이미지 들어갈 공간 -->
-                        <div class="bottomimage">
-                            <img src="resources/images/answer.png">
-                        </div>
+                            <img class="bottomimage" src="<%=contextPath%>/resources/images/answer.png">
+                        <br><br>
                         <p align="center">1:1문의내역</p>
-                    </div>
+                    </div></a>
 
                 </div>
             </div>
@@ -234,6 +341,9 @@
 </div>
 
 <%@include file="../common/footerbar.jsp" %>
+
+
+  
 
 </body>
 </html>
