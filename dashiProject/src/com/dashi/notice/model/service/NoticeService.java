@@ -57,7 +57,7 @@ public class NoticeService {
 		close(conn);
 		return at;
 		
-	} // 게시글 상세조회
+	} // 게시글 첨부파일 상세조회
 	
 	public int updateNotice(Notice n, Attachment at) {
 		Connection conn = getConnection();

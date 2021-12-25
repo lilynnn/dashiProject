@@ -137,7 +137,7 @@ public class EntranceService {
 		close(conn);
 		return result;
 		
-	} // 입소 승인
+	} // 입소 거절
 	
 	public String selectDate() {
 		Connection conn = getConnection();
