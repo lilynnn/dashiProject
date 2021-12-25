@@ -321,9 +321,7 @@ public class AdminDao {
 			if(rset.next()) {
 				findPwd = rset.getString("mn_pwd");
 			}
-			
-			System.out.println("find :" + findPwd);
-			
+						
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {

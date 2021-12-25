@@ -141,7 +141,7 @@
 	        	</tr>
 	        	<tr>
 	        		<td>
-	        			<input type="text" name="adid">
+	        			<input type="text" name="adid" required>
 	        		</td>
 	        	</tr>
 	        	<tr>
@@ -149,7 +149,7 @@
 	        	</tr>
 	        	<tr>
 	        		<td>
-	        			<input type="text" name="adPwdphone" placeholder="(-)포함 전화번호 입력">
+	        			<input type="text" name="adPwdphone" placeholder="(-)포함 전화번호 입력" required>
 	        		</td>
 	        	</tr>
 	        	<tr align="right">
@@ -179,8 +179,8 @@
 				},
 				type:"post",
 				success:function(result){
-					
-					if(result != null){
+
+					if(result != ""){
 						
 						let adId = "";
 						adId += "<span>회원님의 아이디 : </span>"
@@ -188,12 +188,16 @@
 		
 				 	    $("#findidfooter").html(adId);
 						
-					}else{
+						$("input[name=adname]").val("");
+						$("input[name=adphone]").val("");
 						
+					}else{	
 						let noresult = "";
-						noresult += "<span>올바른 이름과 비밀번호를 입력해주세요!</span>"
+						noresult += "<span class='text-danger'>올바른 이름과 비밀번호를 입력해주세요!</span>"
 		
 				 	    $("#findidfooter").html(noresult);
+						$("input[name=adname]").val("");
+						$("input[name=adphone]").val("");
 					}
 					
 					
@@ -218,18 +222,20 @@
 					
 					console.log(result);
 					
-					if(result != null){
+					if(result != ""){
 						
 						let adPwd = "";
 						adPwd += "<span>회원님의 비밀번호 : </span>"
 						 	  + "<span>" + result + "</span>"
 		
 				 	    $("#findPwdfooter").html(adPwd);
+						$("input[name=adid]").val("");
+						$("input[name=adPwdphone]").val("");
 						
 					}else{
 						
 						let noresult = "";
-						noresult += "<span>올바른 아이디와 전화번호를 입력해주세요!</span>"
+						noresult += "<span class='text-danger'>올바른 아이디와 전화번호를 입력해주세요!</span>"
 		
 				 	    $("#findPwdfooter").html(noresult);
 					}
