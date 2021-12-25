@@ -34,22 +34,20 @@ public class ReplyReportEnrollController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("UTF-8");
+		
 		HttpSession session = request.getSession();
+		
 		String reportCmtNo = request.getParameter("replyNo");
 		String reportedMemNo = request.getParameter("memNo");	//신고당한회원번호
 		String reportingMemNo =  Integer.toString(((Member)session.getAttribute("loginUser")).getMemNo());
 		String reportContent = request.getParameter("replyContent");//신고게시글내용
-		
-		System.out.println(reportCmtNo);
-		System.out.println(reportedMemNo );
-		System.out.println(reportingMemNo);
-		System.out.println(reportContent);
 		
 		Report rt = new Report();
 		rt.setContentNo(reportCmtNo);
 		rt.setReportingMem(reportingMemNo);
 		rt.setReportedMem(reportedMemNo);
 		rt.setReportContent(reportContent);
+		
 		switch(Integer.parseInt(request.getParameter("radio2"))) {
 		case 21: rt.setReportCategory(1); break;
 		case 22: rt.setReportCategory(2); break;
