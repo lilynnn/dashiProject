@@ -84,7 +84,7 @@
                     </td>
                 </tr>
                 <tr height="40">
-                    <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
+                    <td width="120"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
                         <%=r.getContentNo()%>
                     </td>
@@ -92,13 +92,13 @@
                     <td width="200">
                         <%=r.getReportDate()%>
                     </td>
-                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="100"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
                     <td width="150">
                         <%=r.getStatus()%>
                     </td>
-                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
-                    <td width="40">
-                        <%=r.getReportCategory()%>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        <%=r.getReportStatus()%>
                     </td>
                 </tr>
 
@@ -111,14 +111,25 @@
                     <td width="100">
                         <%=r.getReportDate()%>
                     </td>
+                    <td width="80"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        <%=r.getReportCategory()%>
+                    </td>
                     <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
                     <td width="150">
-                        <%=r.getReportContent()%>
+                        <%if(r.getReportCategory()==1) {%>
+                        욕설 또는 음란성 내용
+                        <%} else if(r.getReportCategory()==2) {%>
+                        부적절한 홍보성 댓글
+                        <%} else if(r.getReportCategory()==3) {%>
+                        사생활 침해 및 불법 촬영물
+                        <%} else if(r.getReportCategory()==4) {%>
+                        명예훼손 및 저작권침해
+                        <%} else {%>
+                        기타
+                        <%} %>
                     </td>
-                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
-                    <td width="20">
-                        <%=r.getReportStatus()%>
-                    </td>
+                    
                 </tr>
 
                 <tr height="40">
@@ -141,7 +152,7 @@
                     </td>
                 </tr>
 				<tr height="40">
-                    <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
+                    <td width="120"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
                         <%=dspR.getContentNo()%>
                     </td>
@@ -149,13 +160,13 @@
                     <td width="200">
                         <%=dspR.getReportDate()%>
                     </td>
-                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="100"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
                     <td width="150">
                         <%=dspR.getStatus()%>
                     </td>
-                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
-                    <td width="40">
-                        <%=dspR.getReportCategory()%>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        <%=dspR.getReportStatus()%>
                     </td>
                 </tr>
 
@@ -168,13 +179,23 @@
                     <td width="100">
                         <%=dspR.getReportDate()%>
                     </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        <%=dspR.getReportCategory()%>
+                    </td>
                     <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
                     <td width="150">
-                        <%=dspR.getReportContent()%>
-                    </td>
-                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
-                    <td width="20">
-                        <%=dspR.getReportStatus()%>
+                        <%if(dspR.getReportCategory()==1) {%>
+                        욕설 또는 음란성 내용
+                        <%} else if(dspR.getReportCategory()==2) {%>
+                        부적절한 홍보성 댓글
+                        <%} else if(dspR.getReportCategory()==3) {%>
+                        사생활 침해 및 불법 촬영물
+                        <%} else if(dspR.getReportCategory()==4) {%>
+                        명예훼손 및 저작권침해
+                        <%} else {%>
+                        기타
+                        <%} %>
                     </td>
                 </tr>
 
@@ -201,7 +222,7 @@
                     </td>
                 </tr>
 					<tr height="40">
-                    <td width="100"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
+                    <td width="120"><mark style="background: #d5c4fb91;">해당글번호</mark></td>
                     <td width="100">
                         <%=cr.getContentNo()%>
                     </td>
@@ -209,14 +230,15 @@
                     <td width="200">
                         <%=cr.getReportDate()%>
                     </td>
-                    <td width="80"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
+                    <td width="100"><mark style="background: #d5c4fb91;">삭제여부</mark></td>
                     <td width="150">
                         <%=cr.getStatus()%>
                     </td>
-                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
-                    <td width="40">
-                        <%=cr.getReportCategory()%>
+                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
+                    <td width="20">
+                        <%=cr.getReportStatus()%>
                     </td>
+                    
                 </tr>
 
                 <tr height="40" id="up-name">
@@ -228,13 +250,23 @@
                     <td width="100">
                         <%=cr.getReportDate()%>
                     </td>
+                    <td width="50"><mark style="background: #d5c4fb91;">신고분류</mark></td>
+                    <td width="40">
+                        <%=cr.getReportCategory()%>
+                    </td>
                     <td width="70"><mark style="background: #d5c4fb91;">신고사유</mark></td>
                     <td width="150">
-                        <%=cr.getReportContent()%>
-                    </td>
-                    <td width="100"><mark style="background: #d5c4fb91;">처리여부</mark></td>
-                    <td width="20">
-                        <%=cr.getReportStatus()%>
+                        <%if(cr.getReportCategory()==1) {%>
+                        욕설 또는 음란성 내용
+                        <%} else if(cr.getReportCategory()==2) {%>
+                        부적절한 홍보성 댓글
+                        <%} else if(cr.getReportCategory()==3) {%>
+                        사생활 침해 및 불법 촬영물
+                        <%} else if(cr.getReportCategory()==4) {%>
+                        명예훼손 및 저작권침해
+                        <%} else {%>
+                        기타
+                        <%} %>
                     </td>
                 </tr>
 
