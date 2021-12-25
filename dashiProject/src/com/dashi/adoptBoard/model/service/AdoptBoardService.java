@@ -288,15 +288,15 @@ public class AdoptBoardService {
 	
 	
 	// 입양공고검색하기
-	public ArrayList<AdoptNotice> searchAdoptNotice(String searchCtg, String searchKey){
+	public ArrayList<AdoptNotice> searchAdoptNotice(PageInfo pi, String searchCtg, String searchKey){
 		int adtStatus = 0;
 		Connection conn = getConnection();
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		if(searchCtg.equals("adtTitle")) {
-			list = new AdoptBoardDao().searchAdoptNoticeAdtTitle(conn, searchKey);
+			list = new AdoptBoardDao().searchAdoptNoticeAdtTitle(conn, pi, searchKey);
 		
 		}else if(searchCtg.equals("adtNo")) {
-			list = new AdoptBoardDao().searchAdoptNoticeAdtNo(conn, searchKey);
+			list = new AdoptBoardDao().searchAdoptNoticeAdtNo(conn, pi, searchKey);
 		
 		}else if(searchCtg.equals("adtStatus")) {
 			
@@ -312,7 +312,7 @@ public class AdoptBoardService {
 				adtStatus = 4;
 			}
 		
-			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, adtStatus);
+			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, pi, adtStatus);
 		} 
 		close(conn);
 		return list;
@@ -334,4 +334,36 @@ public class AdoptBoardService {
 		return list;
 		
 	}
+	
+	// 관리자 입양공고 검색시 게시글 갯수 
+	public int selectAdminSearchAdoptNoticeListCount(String searchCtg, String searchKey) {
+		Connection conn = getConnection();
+		int listCount = 0;
+		int adtStatus = 0;
+		if(searchCtg.equals("adtTitle")) {
+			listCount = new AdoptBoardDao().selectAdminAdoptNoticeSearchTitle(conn, searchKey);
+		} else if(searchCtg.equals("adtNo")) {
+			listCount = new AdoptBoardDao().selectAdminAdoptNoticeSearchAnNo(conn, searchKey);
+		} else if(searchCtg.equals("adtStatus")) {
+			if(searchCtg.equals("승인대기")) {
+				adtStatus = 1;
+			} else if(searchCtg.equals("신청승인")) {
+				adtStatus = 2;
+			} else if(searchCtg.equals("결제대기")) {
+				adtStatus = 2;
+			} else if(searchCtg.equals("결제완료")) {
+				adtStatus = 3;
+			} else if(searchCtg.equals("입양완료")) {
+				adtStatus = 4;
+			} else if(searchCtg.equals("반려")) {
+				adtStatus = 5;
+			}
+			listCount = new AdoptBoardDao().selectAdminAdoptNoticeSearchAdtStatus(conn, adtStatus);
+		}
+		
+		return listCount;
+	}
+	
+	
+	
 }

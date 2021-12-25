@@ -47,8 +47,7 @@ public class AdoptListController extends HttpServlet {
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		pageLimit = 5;
-		// 나중에 boardLimit 갯수 맞춰서 수정하기!!
-		boardLimit = 4;
+		boardLimit = 20;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;

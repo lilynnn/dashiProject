@@ -83,14 +83,14 @@
             <hr style="width: 950px;">
 
             <!-- 검색버튼 -->
-            <form action="<%=contextPath %>/adtsearch.ad" method="get">
+            <form action="<%=contextPath %>/adtsearch.ad?spage=1" method="get">
             	<div class="search-area" style="margin: 20px 0px; float: right;">
                 <select name="search-category" style="height: 30px;">
                     <option value="adtTitle">제목</option>
                     <option value="adtNo">글번호</option>
                     <option value="adtStatus">처리상태</option>
                 </select>
-
+				<input type="hidden" name="spage" value="1">
                 <input type="text" name="searchKey" placeholder="검색어를 입력하세요.">
                 
                 <button type="submit" id="search-btn">검색하기</button>

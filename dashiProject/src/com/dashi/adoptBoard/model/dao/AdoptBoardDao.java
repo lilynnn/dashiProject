@@ -957,8 +957,8 @@ public class AdoptBoardDao {
 		return result;
 	}
 	
-	// 입양공고글 제목키워드로 검색
-	public ArrayList<AdoptNotice> searchAdoptNoticeAdtTitle(Connection conn, String searchKey){
+	// 관리자 입양공고글 제목키워드로 검색
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtTitle(Connection conn,PageInfo pi, String searchKey){
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -966,6 +966,9 @@ public class AdoptBoardDao {
 		String sql = prop.getProperty("searchAdoptNoticeAdtTitle");
 		
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
 			rset = pstmt.executeQuery();
@@ -991,7 +994,7 @@ public class AdoptBoardDao {
 	}
 	
 	
-	//입양공고글번호로 검색
+	//관리자 입양공고글번호로 검색
 	public ArrayList<AdoptNotice> searchAdoptNoticeAdtNo(Connection conn, String searchKey){
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
@@ -1024,7 +1027,7 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
-	//입양처리상태로 검색
+	//관리자 입양처리상태로 검색
 	public ArrayList<AdoptNotice> searchAdoptNoticeAdtStatus(Connection conn, int adtStatus){
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
@@ -1057,7 +1060,7 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
-	// 입양공고 검색시 리스트 카운트
+	// 사용자 입양공고 검색시 리스트 카운트
 	public int selectSearchAdoptNoticeListCount(Connection conn, String animalCtg, String keyword) {
 		int listCount = 0;
 		
@@ -1125,4 +1128,84 @@ public class AdoptBoardDao {
 		return list;
 	}
 	
+	// 관리자 입양공고 검색(제목으로 검색시) 게시글 갯수
+	public int selectAdminAdoptNoticeSearchTitle(Connection conn, String searchKey) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminAdoptNoticeSearchTitle");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	// 관리자 입양공고 검색(글번호로 검색시) 게시글 갯수
+	public int selectAdminAdoptNoticeSearchAnNo(Connection conn, String searchKey) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminAdoptNoticeSearchAnNo");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
+	
+	// 관리자 입양공고 검색(처리상태로 검색) 게시글 갯수
+	public int selectAdminAdoptNoticeSearchAdtStatus(Connection conn, int adtStatus) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectAdminAdoptNoticeSearchAdtStatus");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, adtStatus);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;
+	}
 }
