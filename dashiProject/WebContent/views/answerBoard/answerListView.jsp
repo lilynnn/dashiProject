@@ -80,12 +80,7 @@
     tbody>tr>td:hover{
     	color:rgb(40,112,37);
     }
-   .pagination{
-    justify-content: center;
-    margin-top: 100px;
-    }
-    
-    
+ 
     /* 글작성 버튼 */
     .btn-1{
 	  background: rgb(102,184,94);
@@ -176,23 +171,20 @@
    					</tbody>
    					 
 		</table>
- 			 <div><button type="button" class="btn-1 ButtonBox-right" onclick="location.href='<%=contextPath%>/enroll.as';" >글쓰기</button></div>
- 
- </div>
-	<ul class="pagination">
-	  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	  <li class="page-item"><a class="page-link" href="#">1</a></li>
-	  <li class="page-item"><a class="page-link" href="#">2</a></li>
-	  <li class="page-item"><a class="page-link" href="#">3</a></li>
-	  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-	</ul>
- </div>
- 
-	
+		
+ 			 <div>
+ 			 <button type="button" class="btn-1 ButtonBox-right" onclick="location.href='<%=contextPath%>/enroll.as';" >글쓰기</button>
+ 			 </div>
+  
         
+        </div>
+        
+       
+        </div>
+        
+     <div style="margin-top:10px;">  
 	<%@ include file="../common/footerbar.jsp" %>
-	
-	
+	</div>  
 	<script>
         	$(function(){
         		$(".answer-table>tbody>tr").click(function(){
@@ -201,6 +193,8 @@
         		})
         	})
         </script>
- 
+ 	
+ 	
+	
 </body>
 </html>

@@ -104,15 +104,14 @@
     <!--전체를 감싸는 큰 div-->
     <div class="outer">
     
-                <div id="title">
+                <div style="margin-left:100px;" id="title">
                     	1:1 문의 관리
-                <hr style="width: 950px;">
                 </div>
-		
+		  	 <hr style="width: 900px;">
 			
             <!-- 1:1 목록-->
         <div id="answerlist" >
-                	<div id="btn-answer" align="right"; style="display: inline-block;" >
+                	<div id="btn-answer" align="right"; style="margin-bottom:10px; margin-right:100px;" >
                    		<a href="<%= contextPath %>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-warning">
 	                        	수정
 	                    </a>
@@ -148,7 +147,7 @@
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용  </th>
-            <td width=780><%=n.getqContent()%></td>
+            <td width=780 height=300 ><%=n.getqContent()%></td>
         </tr>
         
      	</tbody>
@@ -156,6 +155,7 @@
     		 </div>
     	</div>
     	
+    	 
     	
 		<!-- 관리자는 답변하기 버튼 보이게  -->
 		<!-- 조건문으로 관리자 답변창 띄우고 ,  -->

@@ -275,7 +275,6 @@
                 <a href="">고객센터</a>
                     <ul class="menu-tag">
                         <li><a href="<%=contextPath%>/list.no?cpage=1">공지사항</a></li>
-                        <li><a href="<%=contextPath%>/asList.as">1:1문의</a></li>
                         <li><a href="<%=contextPath%>/list.faq">FAQ</a></li>
                     </ul>
             </div>

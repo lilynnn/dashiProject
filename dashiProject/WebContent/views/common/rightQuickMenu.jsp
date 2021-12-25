@@ -103,7 +103,8 @@
 	
 	#answer-box .modal-title{
 		text-align: center;
-	    width: 80%;
+	    width: 90%;
+	    margin-top:10px;
 	}
 	
 	#answer-box .modal-content{
@@ -152,9 +153,11 @@
 		margin-bottom:40px;
 	}
 	
-	#answer-box modal-title a:hover{
-		color:green;
+	#answer-box .modal-title a:hover{
+		color:lightgreen;
+		 
 	}
+	 
 </style>
 </head>
 <body>
@@ -170,7 +173,7 @@
 		
 			<div>
 				<button class="modal-btn" type="button" data-toggle="modal" data-target="#answer-box">
-				 	<img src="<%=request.getContextPath()%>/resources/images/answer.png">
+				 	</a><img src="<%=request.getContextPath()%>/resources/images/answer.png">
 				</button>
 			</div>
 		
@@ -189,6 +192,7 @@
 		<div class="modal" id="answer-box">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
+		
 		
 		      <!-- Modal Header -->
 		      <div class="modal-header">
