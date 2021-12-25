@@ -34,9 +34,9 @@ public class AdoptReviewBoardService {
 	}
 
 	// 입양후기 조회
-	public ArrayList<AdoptReview> selectReviewList(){
+	public ArrayList<AdoptReview> selectReviewList(PageInfo pi){
 		Connection conn = getConnection();
-		ArrayList<AdoptReview> list = new AdoptReviewBoardDao().selectReviewList(conn);
+		ArrayList<AdoptReview> list = new AdoptReviewBoardDao().selectReviewList(conn, pi);
 		
 		close(conn);
 		return list;
@@ -175,5 +175,14 @@ public class AdoptReviewBoardService {
 		return result1*result2;
 	}
 	
+	
+	// 메인페이지에 입양후기 리스트 노출
+	public ArrayList<AdoptReview> selectMainAdoptReview(){
+		Connection conn = getConnection();
+		ArrayList<AdoptReview> arlist = new AdoptReviewBoardDao().selectMainAdoptReview(conn);
+		close(conn);
+		return arlist;
+		
+	}
 
 }

@@ -85,9 +85,19 @@ public class AdoptReview {
 		this.viewCount = viewCount;
 		this.writeDate = writeDate;
 	}
+		
+
+	// 사용자 입양후기 리스트 조회용
+	public AdoptReview(String arlistNo, String anType, String arTitle, int viewCount, String titleImg) {
+			super();
+			this.arlistNo = arlistNo;
+			this.arTitle = arTitle;
+			this.viewCount = viewCount;
+			this.titleImg = titleImg;
+			this.anType = anType;
+		}
 	
-		
-		
+
 	// 상세이미지 조회용
 	public AdoptReview(String contentImg) {
 			super();

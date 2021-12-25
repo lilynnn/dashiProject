@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>   
+ <%@ page import="java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>   
  <%
  	//ArrayList<AdoptNotice> anList = (ArrayList<AdoptNotice>)request.getAttribute("anList");
- 
+ 	ArrayList<AdoptReview> arlist = (ArrayList<AdoptReview>)request.getAttribute("arlist");
  %>
 <!DOCTYPE html>
 <html>
@@ -144,16 +144,15 @@
        
         
         <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
-        <div class="title"><a href=""><b>입양 후기</b></a></div>
+        <div class="title">
+        <a href="<%=contextPath%>/list.ar?cpage=1"><b>입양 후기</b></a>
+        </div>
         <hr style="width: 1100px; margin-top: 10px;">
         
         <!-- 입양 후기 게시글 띄우는 영역 -->
         <div class="review-area">
             <div class="review-area">
-                <div class="review-box" align="center">
-                    <div class="photo-area"></div>
-                    <div>입양후기제목1</div>
-                </div>
+
                 <div class="review-box" align="center">
                     <div class="photo-area"></div>
                     <div>입양후기제목1</div>

@@ -64,7 +64,7 @@ public class AdoptReviewListController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
 		
-		ArrayList<AdoptReview> list = new AdoptReviewBoardService().selectList(pi);
+		ArrayList<AdoptReview> list = new AdoptReviewBoardService().selectReviewList(pi);
 		
 		
 		// 리스트 담아서 목록페이지

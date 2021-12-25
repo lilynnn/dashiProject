@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
-import com.dashi.common.model.vo.Attachment;
+import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
 
 /**
  * Servlet implementation class MainController
@@ -35,8 +36,9 @@ public class MainController extends HttpServlet {
 		
 		
 		ArrayList<AdoptNotice> anList = new AdoptBoardService().selectMainAdoptNotice();
-		
+		ArrayList<AdoptReview> arlist = new AdoptReviewBoardService().selectMainAdoptReview();
 		request.setAttribute("anList", anList);
+		request.setAttribute("arlist", arlist);
 		
 		//request.getRequestDispatcher("index.jsp").forward(request, response);
 		

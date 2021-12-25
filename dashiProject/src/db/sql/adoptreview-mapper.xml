@@ -49,19 +49,53 @@
 	</entry>
 	
 	<entry key="selectReviewList">
-		SELECT
-		       ARLIST_NO
-		     , AN_TYPE
-		     , AR_TITLE
-		     , VIEW_COUNT
-		     , PATH || CHANGE_NAME "TITLEIMG"
-		  FROM ADOPT_REVIEW
-		  JOIN ATTACHMENT ON(ARLIST_NO = REF_NO)
-		 WHERE POST_STATUS = 'Y'
-		   AND ATTACH_LEVEL = 1
-		 ORDER
-		    BY ARLIST_NO DESC
+		SELECT *
+		  FROM(
+				SELECT ROWNUM RNUM, C.*
+				FROM (
+					   SELECT
+		       		   ARLIST_NO
+		     		   , AN_TYPE
+				       , AR_TITLE
+				       , VIEW_COUNT
+				       , PATH || CHANGE_NAME "TITLEIMG"
+				    FROM ADOPT_REVIEW
+				    JOIN ATTACHMENT ON(ARLIST_NO = REF_NO)
+				   WHERE POST_STATUS = 'Y'
+				     AND ATTACH_LEVEL = 1
+				   ORDER
+				      BY ARLIST_NO DESC
+		    	 ) C
+		    )
+		    WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	
+	<!-- 
+			SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, C.* 
+		          FROM (
+		                SELECT
+		                       ARLIST_NO
+		                     , A.MEM_ID
+		                     , A.NICKNAME
+                             , AN_TYPE
+                             , AR_TITLE
+                             , VIEW_COUNT
+                             , TO_CHAR(WRITE_DATE,'YYYY-MM-DD') WRITE_DATE
+		                  FROM ADOPT_REVIEW A
+                          JOIN MEM_INFO USING(MEM_NO)
+                         WHERE POST_STATUS = 'Y'
+		                 ORDER
+		                    BY ARLIST_NO DESC
+		                ) C
+		        )
+		WHERE RNUM BETWEEN ? AND ? 
+	 -->
+	
+	
+	
 	
 	<entry key="increaseCount">
 		UPDATE 

@@ -176,7 +176,7 @@
                     
                     
                     
-                    <br><br><br>
+                    <br>
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
@@ -187,6 +187,8 @@
                     <div style="width:100%; margin-top:30px;" align="center">
         				<a href="<%=contextPath%>/memberlist.ad?cpage=1" class="btn btn-sm btn-outline-secondary">목록으로</a>
         			</div>
+        			<br>
+        			
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
