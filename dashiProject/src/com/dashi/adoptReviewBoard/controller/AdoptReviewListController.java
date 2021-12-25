@@ -50,7 +50,7 @@ public class AdoptReviewListController extends HttpServlet {
 		
 		pageLimit = 5;
 		
-		boardLimit = 10;
+		boardLimit = 12;
 		
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		
