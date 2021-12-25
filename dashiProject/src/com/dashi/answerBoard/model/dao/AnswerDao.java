@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.answerBoard.model.vo.Answer;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.faqBoard.model.vo.FAQ;
+import com.dashi.notice.model.dao.NoticeDao;
+import com.dashi.notice.model.vo.Notice;
 
 import static com.dashi.common.JDBCTemplate.*;
 
@@ -92,7 +95,7 @@ import static com.dashi.common.JDBCTemplate.*;
 		}// 사용자 answer 등록
 		
 		
-		
+		// 게시글 상세조회
 		public Answer selectDetailAnswer(Connection conn, String answerNo) {
 			 
 			Answer n = null;
@@ -169,8 +172,29 @@ import static com.dashi.common.JDBCTemplate.*;
 		} //삭제
 		
 		
-		
-		
+		//user 수정
+		public int updateAnswer(Connection conn, Answer n) {
+			// update => 트랜잭션
+			int result = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("updateAnswer");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, n.getqTitle());
+				pstmt.setString(2, n.getqContent());
+				pstmt.setString(3, n.getInquireNo());
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+			return result;		
+		} //user 수정
 		
 }
 	

@@ -108,23 +108,14 @@
                     	1:1 문의 관리
                 <hr style="width: 950px;">
                 </div>
-		
+		  
 			
-            <!-- 1:1 목록-->
-        <div id="answerlist" >
-                	<div id="btn-answer" align="right"; style="display: inline-block;" >
-                   		<a href="<%= contextPath %>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-warning">
-	                        	수정
-	                    </a>
-	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-primary">
-	                        	삭제
-	                    </a>
-                	</div>
-
-                
+            <!-- 1:1 목록-->        
        <table align="center" class="answer-table" width="900px">
-              
+       	<form action="<%=contextPath%>/asupdate?asno=<%=n.getInquireNo()%>" method="post">               
         <tbody>
+         
+           
         <tr> <!-- no -->
             <th  width=220 colspan="2">글번호</th> 
             <td  width=780><%= n.getInquireNo() %></td> 
@@ -144,18 +135,29 @@
         </tr>
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목 </th>
-            <td width=780><%=n.getqTitle()%></td>
+            <td width=780><input type="text" name="title" value="<%=n.getqTitle()%>"></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용  </th>
-            <td width=780><%=n.getqContent()%></td>
+            <td width=780><textarea name="content" cols="100" rows="15" style="resize: none; border: none;" required><%=n.getqContent()%></textarea></td>
         </tr>
         
      	</tbody>
-     </table>
+     	</table> 
     		 </div>
     	</div>
     	
+    	 <div id="answerlist" >
+    	 
+                	<div id="btn-answer" align="right"; style="display: inline-block;" >
+                   		 <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94)">
+                        	수정완료
+                    	</button>
+	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-primary">
+	                        	삭제
+	                    </a>
+                	</div>
+    	 </form>
     	
 		<!-- 관리자는 답변하기 버튼 보이게  -->
 		<!-- 조건문으로 관리자 답변창 띄우고 ,  -->

@@ -8,19 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.answerBoard.model.service.AnswerService;
+import com.dashi.answerBoard.model.vo.Answer;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.notice.model.service.NoticeService;
+import com.dashi.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AnswerDeleteController
+ * Servlet implementation class AnswerUpdateView
  */
-@WebServlet("/asdelete")
-public class AnswerDeleteController extends HttpServlet {
+@WebServlet("/updateview")
+public class AnswerUpdateView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerDeleteController() {
+    public AnswerUpdateView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,18 +32,13 @@ public class AnswerDeleteController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		String answerNo = request.getParameter("asno");
-	
-		int result = new AnswerService().deleteAnswer(answerNo);
 		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "문의가 삭제 되었습니다.");
-			response.sendRedirect(request.getContextPath());
-		}else {
-			request.getSession().setAttribute("alertMsg", "문의삭제 실패!");
-		}
-	
+		Answer n = new AnswerService().selectDetailAnswer(answerNo);
+		request.setAttribute("n", n);
+		 
+		request.getRequestDispatcher("views/answerBoard/answerUpdateView.jsp").forward(request, response);
 	
 	}
 

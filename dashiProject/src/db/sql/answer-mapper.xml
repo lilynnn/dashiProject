@@ -85,9 +85,15 @@ SELECT
 			   ANSWER
 		   SET NO_STATUS = 'Y'
 		 WHERE INQUIRE_NO = ?
+</entry>
+
+<entry key="updateAnswer">
+	UPDATE
+		   ANSWER
+		   SET Q_TITLE = ?
+		     , Q_CONTENT = ?
+		 WHERE INQUIRE_NO = ?
 	</entry>
-
-
 
 
 

@@ -65,6 +65,21 @@ public class AnswerService {
 		}
 		close(conn);
 		return result;
-	}// 공지사항 삭제
+	}//   삭제
+	
+
+	public int updateAnswer(Answer n) {
+		Connection conn = getConnection();
+		int result = new AnswerDao().updateAnswer(conn, n);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	} //수정
+	
 	
 }
