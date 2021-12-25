@@ -189,6 +189,7 @@ public class MemberService {
 	public ArrayList<Member> searchMember(String keyword, PageInfo pi){
 		Connection conn = getConnection();
 		ArrayList<Member> list = new MemberDao().searchMember(conn, keyword, pi);
+		System.out.println("sevice: " + list);
 		close(conn);
 		return list;
 	}

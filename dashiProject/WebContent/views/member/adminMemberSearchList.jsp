@@ -175,29 +175,35 @@
                     </table>
                     
                     
+                    
                     <br><br><br>
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
                         <button>수정</button>
                     </div>
+                    
+                    <br>
+                    <div style="width:100%; margin-top:30px;" align="center">
+        				<a href="<%=contextPath%>/memberlist.ad?cpage=1" class="btn btn-sm btn-outline-secondary">목록으로</a>
+        			</div>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
                     	<% if(currentPage != 1) { %>
-                        <button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=currentPage-1%>';">&lt;</button>
+                        <button class="page" onclick="location.href='<%=contextPath%>/searchmem.ad?searchmem=<%=keyword%>&spage=<%=currentPage-1%>';">&lt;</button>
                         <% } %>
                         
                         <% for(int p=startPage; p<=endPage; p++){ %>
                         	<% if(p == currentPage){ %>
                         	<button class="page" disabled style="background:gray;"><%= p %></button>
                         	<% } else { %>
-                        	<button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=p%>';"><%=p%></button>
+                        	<button class="page" onclick="location.href='<%=contextPath%>/searchmem.ad?searchmem=<%=keyword%>&spage=<%=p%>';"><%=p%></button>
                         	<% } %>
                         <% } %>
                         
                         <% if(currentPage != maxPage){ %>
-                        <button class="page" onclick="location.href='<%=contextPath%>/memberlist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
+                        <button class="page" onclick="location.href='<%=contextPath%>/searchmem.ad?searchmem=<%=keyword%>&spage=<%=currentPage+1%>';">&gt;</button>
                         <% } %>
                     </div>
                 </div>

@@ -272,10 +272,11 @@
 		                     , GRADE
 		                  FROM MEM_INFO
 		                 WHERE GRADE IN ('1', '2', '3','9')
-                           AND MEM_NAME = ?
+		                   AND MEM_NAME LIKE ?
 		                 ORDER
 		                    BY MEM_NO DESC
 		                ) A
+		  
 		        )
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
