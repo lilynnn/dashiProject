@@ -44,6 +44,7 @@
     	border:none;
     	height:30px;
     	border-radius:3px;
+    	width:30px;
     }
     #btn>button{
         border-radius: 5px;
@@ -115,7 +116,7 @@
                 <hr>
                 </div>
                 <div id="search">
-                	<form action="<%=contextPath%>/noKeyword.ad?spage=1" method="get">
+                	<form action="<%=contextPath%>/noKeyword.ad?spage=1" method="get" style="width:270px;">
 	                    <input type="text" name="titleSearch" placeholder="제목 키워드 검색" required>
 	                    <input type="hidden" name="spage" value="1">
 	                    <button type="submit">검색</button>
@@ -123,12 +124,10 @@
                 </div>
                 
                 <div style="width: 600px;" align="right">
-                	<% if(loginAdmin != null){ %>
                     
                     <a href="<%=contextPath%>/noEnrollForm.ad" class="btn btn-sm btn-dark">
                         	글쓰기
                     </a>
-                    <% } %>
                 </div>
 
                 <div style="margin-top: 10px;">

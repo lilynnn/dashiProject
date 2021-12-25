@@ -12,7 +12,7 @@ import com.dashi.entranceBoard.model.service.EntranceService;
 /**
  * Servlet implementation class AdminDeleteEntranceController
  */
-@WebServlet("/AdminDeleteEntranceController")
+@WebServlet("/entDelete.ad")
 public class AdminDeleteEntranceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,10 +35,10 @@ public class AdminDeleteEntranceController extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/entList.ent");						
+			response.sendRedirect(request.getContextPath() + "/entListView.ad?cpage=1");						
 		}else {
-			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/entList.ent");
+			request.getSession().setAttribute("alertMsg", "입소신청글이 삭제 실패!");
+			response.sendRedirect(request.getContextPath() + "/entListView.ad?cpage=1");
 		}
 	
 	}

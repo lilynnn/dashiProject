@@ -43,7 +43,7 @@
         background: #d8f3f0;
     }
     .noEct{
-        height: 49px;
+        height: 48px;
         width: 100px;
         text-align: center;
         line-height: 49px;
@@ -141,6 +141,8 @@
                     </div>
                     
                 </div>
+                
+                <div></div>
                 
                 <div style="width:100%;">
 		        	<% if(at == null){ %>

@@ -213,10 +213,10 @@
 	        		<a href="<%=contextPath%>/entListView.ad?cpage=1" class="btn btn-sm btn-secondary">목록가기</a>
 	        		
 	        		<% if(e.getProcessResult().equals("확인")){ %>
-	        		<a href="confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-warning">승인하기</a>
+	        		<a href="<%=contextPath%>/confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-warning">승인하기</a>
 	        		<% } %>
-	        		<a href="rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-danger">반려하기</a>
-	        		<a href="delete.ent?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-dark">삭제하기</a>
+	        		<a href="<%=contextPath%>/rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-danger">반려하기</a>
+	        		<a href="<%=contextPath%>/entDelete.ad?eno=<%=e.getEntNo()%>" class="btn btn-sm btn-dark">삭제하기</a>
         		</div>
 
 

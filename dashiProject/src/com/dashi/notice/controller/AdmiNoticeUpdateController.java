@@ -79,7 +79,7 @@ public class AdmiNoticeUpdateController extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/noDetail.ad?nno=" + noticeNo);
 				
 			}else { // 실패=>에러페이지
-				request.getSession().setAttribute("alertMsg", "공지사항이 수정 실패");
+				request.getSession().setAttribute("alertMsg", "공지사항 수정 실패");
 			}
 		}
 

@@ -95,7 +95,7 @@
         <div style="width:100%;">
         	<% if(at == null){ %>
         		<hr>
-        		첨부파일이 없습니다.
+        		<p><p>
         	<% }else{ %>
         		<hr>
         		<a download="<%=at.getOriginName()%>" href="<%=contextPath%>/<%=at.getPath() + at.getChangeName()%>"><%=at.getOriginName()%></a>

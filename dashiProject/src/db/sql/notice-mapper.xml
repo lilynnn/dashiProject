@@ -28,6 +28,8 @@
 		                       BY NOTICE_NO DESC) A
 		                )
 		 WHERE RNUM BETWEEN ? AND ?
+		 ORDER 
+		       BY NOTICE_YN DESC, WRITE_DATE DESC
 	</entry>
 
 	<entry key="increaseCount">

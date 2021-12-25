@@ -115,9 +115,9 @@
 
                 <div align="center" style="margin-top: 20px;">
                     <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94);">수정하기</button>
-                    <button type="reset" class="btn btn-sm" style="background: rgb(143,153,142);" onclick="history.back();">
+                    <a href="<%=contextPath%>/faqList.ad" class="btn btn-sm" style="background: rgb(143,153,142);">
                     	취소하기
-                    </button>
+                    </a>
                 </div>
 
             </form>

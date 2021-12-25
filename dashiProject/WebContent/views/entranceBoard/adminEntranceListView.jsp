@@ -167,12 +167,12 @@
 		                        <td><%=e.getMemNo()%></td>
 		                        <td><%=e.getEntApplyDate()%></td>
 		                        <td>
-		                        	<a href="confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
+		                        	<a href="<%=contextPath%>/confirmEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-danger" style="border: none; font-weight: bolder; width:100%">
 	                                	승인
 	                            	</a>
 		                        </td>
 		                        <td>
-		                        	<a href="rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
+		                        	<a href="<%=contextPath%>/rejectEnt.ad?eno=<%=e.getEntNo()%>" class="btn-sm btn-outline-dark" style="border: none; font-weight: bolder; width:100%">
 	                                	반려
 	                            	</a>
 		                        </td>

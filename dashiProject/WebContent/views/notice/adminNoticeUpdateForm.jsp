@@ -46,7 +46,7 @@
     }
     .noEtc{
         height: 49px;
-        width: 100px;
+        width: 98px;
         text-align: center;
         line-height: 49px;
     }

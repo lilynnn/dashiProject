@@ -48,7 +48,7 @@
     #kDiv{width: 100%;}
     .keyword{
         float: left;
-        width: 80px;
+        width: 90px;
         text-align: left;
         margin-bottom: 30px;
         font-size: 12px;
@@ -116,7 +116,7 @@
 
         <!--상담전화카드-->
         <div id="call">
-            <img src="<%=contextPath%>/resources/images/FAQphonecard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
+            <img src="<%=contextPath%>/resources/images/faqCard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
         </div>
 
         <!--키워드 검색-->
@@ -148,9 +148,8 @@
             <table class="table table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th width="140px">카테고리</th>
-                        <th width="820px">제목</th>
-                        <th width="120px">날짜</th>
+                        <th width="180px">카테고리</th>
+                        <th width="900px">제목</th>
                     </tr>
                 </thead>
                 
@@ -178,7 +177,6 @@
 	                                    
 	                        <td><%=category%></td>
 	                        <td><%=f.getFAQTitle()%></td>
-	                        <td><%=f.getFAQEnrollDate()%></td>
 	                    </tr>
 	
 	                    <!--FAQ 답변창-->
