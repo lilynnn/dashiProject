@@ -311,7 +311,7 @@ public class AdoptBoardService {
 			}else if(searchKey.equals("입양완료")) {
 				adtStatus = 4;
 			}
-		
+			System.out.println(adtStatus);
 			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, pi, adtStatus);
 		} 
 		close(conn);

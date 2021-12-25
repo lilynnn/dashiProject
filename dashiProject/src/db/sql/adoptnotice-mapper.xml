@@ -498,37 +498,51 @@
 		                    BY ANLIST_NO DESC 
 		            ) A
 		      )
-		  WHERE RNUM BETWEEN ? AND ?;
+		  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="searchAdoptNoticeAdtNo">
-		SELECT 
-		       ANLIST_NO
-		     , AN_TITLE
-		     , VIEW_COUNT
-		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
-		     , ADT_STATUS
-		     , ENT_NO
-		     , E.ANIMAL_TYPE
-		  FROM ADOPT_NOTICE AN
-		  JOIN ENTRANCE E USING (ENT_NO)
-		 WHERE ANLIST_NO LIKE ?
-		   AND AN.POST_STATUS = 'Y'
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.*
+		          FROM (
+		                SELECT 
+		                   ANLIST_NO
+		                 , AN_TITLE
+		                 , VIEW_COUNT
+		                 , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		                 , ADT_STATUS
+		                 , ENT_NO
+		                 , E.ANIMAL_TYPE
+		              FROM ADOPT_NOTICE AN
+		              JOIN ENTRANCE E USING (ENT_NO)
+		             WHERE ANLIST_NO LIKE ?
+		               AND AN.POST_STATUS = 'Y'
+		            ) A
+		      )
+		  WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="searchAdoptNoticeAdtStatus">
-		SELECT 
-		       ANLIST_NO
-		     , AN_TITLE
-		     , VIEW_COUNT
-		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
-		     , ADT_STATUS
-		     , ENT_NO
-		     , E.ANIMAL_TYPE
-		  FROM ADOPT_NOTICE AN
-		  JOIN ENTRANCE E USING (ENT_NO)
-		 WHERE ADT_STATUS = ?
-		   AND AN.POST_STATUS = 'Y'
+	    SELECT *
+	      FROM (
+	            SELECT ROWNUM RNUM, A.*
+	              FROM (
+	                    SELECT 
+	                           ANLIST_NO
+	                         , AN_TITLE
+	                         , VIEW_COUNT
+	                         , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+	                         , ADT_STATUS
+	                         , ENT_NO
+	                         , E.ANIMAL_TYPE
+	                      FROM ADOPT_NOTICE AN
+	                      JOIN ENTRANCE E USING (ENT_NO)
+	                     WHERE ADT_STATUS = ?
+	                       AND AN.POST_STATUS = 'Y'
+	                ) A
+	          )
+	      WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="selectSearchAdoptNoticeListCount">
@@ -575,7 +589,7 @@
 		    FROM ADOPT_NOTICE
 		    JOIN ENTRANCE E USING (ENT_NO)
 		    WHERE AN_TITLE LIKE ?
-		      AND POST_STATUS = 'Y';
+		      AND POST_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectAdminAdoptNoticeSearchAnNo">
@@ -584,7 +598,7 @@
 		    FROM ADOPT_NOTICE
 		    JOIN ENTRANCE E USING (ENT_NO)
 		    WHERE ANLIST_NO LIKE ?
-		      AND POST_STATUS = 'Y';
+		      AND POST_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectAdminAdoptNoticeSearchAdtStatus">
@@ -593,7 +607,7 @@
 		    FROM ADOPT_NOTICE
 		    JOIN ENTRANCE E USING (ENT_NO)
 		    WHERE ADT_STATUS = ?
-		      AND POST_STATUS = 'Y';
+		      AND POST_STATUS = 'Y'
 	</entry>
 	
 </properties>

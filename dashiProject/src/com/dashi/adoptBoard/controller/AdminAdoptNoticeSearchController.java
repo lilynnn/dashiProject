@@ -35,7 +35,7 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 
-		String searchCtg = request.getParameter("search-category");
+		String searchCtg = request.getParameter("searchCtg");
 		String searchKey = request.getParameter("searchKey");
 
 		int listCount;
@@ -51,7 +51,7 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 		
 		currentPage = Integer.parseInt(request.getParameter("spage"));
 		pageLimit = 5;
-		boardLimit = 10;
+		boardLimit = 5;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;
@@ -65,6 +65,9 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 		ArrayList<AdoptNotice> list = new AdoptBoardService().searchAdoptNotice(pi, searchCtg, searchKey);
 
 		request.setAttribute("list", list);
+		request.setAttribute("pi", pi);
+		request.setAttribute("searchCtg", searchCtg);
+		request.setAttribute("searchKey", searchKey);
 		request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeSearchListView.jsp").forward(request, response);
 	}
 

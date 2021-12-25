@@ -2,7 +2,15 @@
     pageEncoding="UTF-8"%> 
 <%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice" %>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<AdoptNotice> adtList = (ArrayList<AdoptNotice>)request.getAttribute("list");
+	String searchCtg = (String)request.getAttribute("searchCtg");
+	String searchKey = (String)request.getAttribute("searchKey");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 
 <!DOCTYPE html>
@@ -78,12 +86,12 @@
             <!-- 검색버튼 -->
             <form action="<%=contextPath %>/adtsearch.ad" method="get">
             	<div class="search-area" style="margin: 20px 0px; float: right;">
-                <select name="search-category" style="height: 30px;">
+                <select name="searchCtg" style="height: 30px;">
                     <option value="adtTitle">제목</option>
                     <option value="adtNo">글번호</option>
                     <option value="adtStatus">처리상태</option>
                 </select>
-
+				<input type="hidden" name="spage" value="1">
                 <input type="text" name="searchKey" placeholder="검색어를 입력하세요.">
                 
                 <button type="submit" id="search-btn">검색하기</button>
@@ -147,12 +155,30 @@
 	                    <%} %>
                    	<%} %>
                 </tbody>  
-            </table>
-
-                         
+            </table>     
             <br>
+            <div align="center">
+				
+	       		<%if(currentPage != 1) {%>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adsearch.adt?&searchCtg=<%=searchCtg%>&spage=<%=currentPage-1 %>&searchKey=<%=searchKey%>';">&lt;</button>
+				<%} %>
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					
+					<%if(p == currentPage){ %>
+						<button class="btn btn-light" disabled><%= p %></button>
+					<%} else { %>
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=p%>&searchKey=<%=searchKey%>';"><%= p %></button>	
+	            	<%} %>
+	         	<%} %>	
+	
+				<%if(currentPage < maxPage) {%>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=currentPage+1%>&searchKey=<%=searchKey%>';">&gt;</button>
+	            <%} %>
+	            
+	        </div>
             <br><br>
-
+	        
 
         </div>
 	<%@ include file="../common/footerbar.jsp" %>

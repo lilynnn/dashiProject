@@ -971,6 +971,9 @@ public class AdoptBoardDao {
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
 			rset = pstmt.executeQuery();
 	
 			while(rset.next()) {
@@ -995,7 +998,7 @@ public class AdoptBoardDao {
 	
 	
 	//관리자 입양공고글번호로 검색
-	public ArrayList<AdoptNotice> searchAdoptNoticeAdtNo(Connection conn, String searchKey){
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtNo(Connection conn, PageInfo pi, String searchKey){
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -1003,8 +1006,13 @@ public class AdoptBoardDao {
 		String sql = prop.getProperty("searchAdoptNoticeAdtNo");
 		
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 	
 			while(rset.next()) {
@@ -1028,7 +1036,7 @@ public class AdoptBoardDao {
 	}
 	
 	//관리자 입양처리상태로 검색
-	public ArrayList<AdoptNotice> searchAdoptNoticeAdtStatus(Connection conn, int adtStatus){
+	public ArrayList<AdoptNotice> searchAdoptNoticeAdtStatus(Connection conn, PageInfo pi, int adtStatus){
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -1036,8 +1044,14 @@ public class AdoptBoardDao {
 		String sql = prop.getProperty("searchAdoptNoticeAdtStatus");
 
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, adtStatus);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
 			rset = pstmt.executeQuery();
 	
 			while(rset.next()) {
