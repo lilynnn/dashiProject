@@ -15,13 +15,13 @@ import com.dashi.admin.model.vo.Manager;
  * Servlet implementation class AdminUpdateAndDeleteController
  */
 @WebServlet("/update.ad")
-public class AdminUpdateController extends HttpServlet {
+public class AjaxAdminUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminUpdateController() {
+    public AjaxAdminUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,14 +49,7 @@ public class AdminUpdateController extends HttpServlet {
 		
 		int result = new AdminService().updateAdmin(a);
 		
-		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "관리자 정보 수정에 성공했습니다.");
-			response.sendRedirect(request.getContextPath() + "/empList.ad?cpage=1");
-			
-		}else {
-			request.getSession().setAttribute("alertMsg", "관리자 정보수정 실패.");
-			request.getRequestDispatcher("views/admin/adminEmployeeUpdate.jsp").forward(request, response);
-		}
+		response.getWriter().print(result);
 		
 	
 	

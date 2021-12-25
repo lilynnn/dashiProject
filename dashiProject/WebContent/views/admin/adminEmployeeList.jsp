@@ -154,7 +154,7 @@
 	                                <td><%=a.getMnJoin()%></td>
 									<td><%=a.getMnQuit()%></td>    
 	                                <td><%=a.getActivation()%></td>
-	                                <td><a href="<%=contextPath%>/updateForm.ad?ano=<%=a.getMnNo()%>" class="btn btn-sm btn-up btn-outline-danger">수정</a></td>
+	                                <td><a href="<%=contextPath%>/delete.ad?ano=<%=a.getMnNo()%>" class="btn btn-sm btn-up btn-outline-danger">퇴사</a></td>
 	                            </tr>	                            
 	                            
 	                         	<% } %>
@@ -198,7 +198,7 @@
     
             <!-- Modal Header -->
             <div class="modal-header">
-            
+            	<!-- 관리자 이름 ajax -->
 
             </div>
     
@@ -206,18 +206,19 @@
             <div class="modal-body">
                 <table>
 							
-					<!-- ajax자리 -->
+					<!--관리자 정보 ajax -->
 				
                 </table>
             </div>
     
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-dismiss="modal">닫기</button>
+            	<button type="button" class="btn btn-outline-danger" id="adminUpdate" onclick="updateAdmin();">수정</button>
+            	<button type="button" class="btn btn-outline-primary" id="adminUpdateInfo" onclick="updateAdminInfo();">수정완료</button>
+                <button type="button" class="btn btn-light" data-dismiss="modal" onclick="history.go(0)">닫기</button>
             </div>
             
               <script>
-
 			    	function selectAdmin(adminNum){
 			    		
 			    		$.ajax({
@@ -227,25 +228,28 @@
 				    		success:function(result){
 
 				    			let name = "";
-				    			name += "<h4 class='modal-title'>" + result.mnName + "</h4>"
+				    			name += "<h4 class='modal-title'>" + "<input type='text' name='adminName' value='" +result.mnName+ "' readonly>" + "</h4>"
 				    			$(".modal-header").html(name);
 				    			
 								let info = "";
 		    					info += "<tr>"
 				    					 + "<th width='100'>사번</th>"
-										 + "<td width='200'>" + result.mnNo + "</td>"
+										 + "<td width='200' id='adminNo'>" + result.mnNo + "</td>"
 										 + "<td rowspan='8' width='200' heigth='300'>"
 				                         + "<img src='<%=contextPath%>/resources/images/idcard.png' style='width: 100%;'>"
 				                         + "</td>"
 								  	 + "</tr>" + "<tr>"
 										 + "<th>아이디</th>"
 										 + "<td>" + result.mnId + "</td>"
+									 + "</tr>" + "<tr>"
+										 + "<th>비밀번호</th>"
+										 + "<td>" + "<input type='text' name='adminPwd' value='" +result.mnPwd+ "' readonly>" + "</td>"
 								     + "</tr>" + "<tr>"
 										 + "<th>이메일</th>"
-										 + "<td>" + result.mnEmail + "</td>"
+										 + "<td>" + "<input type='text' name='email' value='" +result.mnEmail+ "' readonly>" + "</td>"
 								     + "</tr>" + "<tr>"
 										 + "<th>전화번호</th>"
-										 + "<td>" + result.mnPhone + "</td>"
+										 + "<td>" + "<input type='text' name='phone' value='" +result.mnPhone+ "' readonly>" + "</td>"
 								     + "</tr>" + "<tr>"
 										 + "<th>입사일</th>"
 										 + "<td>" + result.mnJoin + "</td>"
@@ -254,12 +258,12 @@
 										 + "<td>" + result.mnQuit + "</td>"
 								     + "</tr>"	+ "<tr>"	 
 										 + "<th>퇴사여부</th>"
-										 + "<td>" + result.activation + "</td>"
+										 + "<td>"+ result.activation + "</td>"
 								     + "</tr>"
-
 				    			
 				    			$(".modal-body>table").html(info);
-				    			console.log(result);
+				    			
+				    			$("#adminUpdateInfo").hide();
 				    			
 				    		},error:function(){
 				    			console.log("사원 조회용 ajax통신 실패");
@@ -269,6 +273,54 @@
 			    			
 			    	}
 			    
+			    	function updateAdmin(){
+			    		
+			    		$(".modal-body>table>tr>td>input").attr("readonly", false);
+			    		$("#adminUpdate").hide();
+			    		$("#adminUpdateInfo").show();
+						
+						
+			    				    		
+			    	}
+			    	
+			    	function updateAdminInfo(){
+			    		
+			    		$.ajax({
+			    			url:"update.ad",
+			    			data:{
+			    				adminNo:$("#adminNo").text(),
+			    				adminPwd:$("input[name=adminPwd]").val(),
+			    				adminName:$("input[name=adminName]").val(),
+			    				email:$("input[name=email]").val(),
+			    				phone:$("input[name=phone]").val()
+			    			},
+			    			type:"post",
+			    			success:function(result){
+			    				
+			    				console.log(result);
+			    				if(result > 0){
+				    				alert("관리자 정보 수정에 성공했습니다!");
+				    				$("#adminUpdate").show(); 
+				    				$("#adminUpdateInfo").hide();
+				    				$(".modal-body>table>tr>td>input").attr("readonly", true);
+			    				}else{
+			    					alert("관리자 정보 수정에 실패했습니다.");
+			    				}	 				
+			    				
+			    			},error:function(){
+			    				console.log("관리자 수정용 ajax통신 실패");
+			    			}
+			    			
+			    			
+			    		})
+		
+			    		
+			    		
+			    	}
+			    	
+			    	
+			    	
+			    	
 			    	
 			    </script>
             
