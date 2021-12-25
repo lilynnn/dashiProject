@@ -33,18 +33,18 @@
 			<hr style="width:900px">
 			<!-- 이미지1 -->
 
-		    <div style="margin:auto;">
-		    <img id="ent1" src="<%=request.getContextPath()%>/resources/images/entrance1.PNG" width="70%" height="100%">
+		    <div>
+		    <img id="ent1" src="<%=request.getContextPath()%>/resources/images/entrance1.PNG" width="100%" height="100%">
 			</div>
 		
 			<!-- 이미지2 -->
-		   <div  style="margin:auto; ">
-		    <img id="ent2" src="<%=request.getContextPath()%>/resources/images/entrance2.PNG" width="70%" height="100%">
+		   <div>
+		    <img id="ent2" src="<%=request.getContextPath()%>/resources/images/entrance2.PNG" width="100%" height="100%">
 			</div>
 		
 			<!-- 이미지3 -->
-		   <div style="margin:auto; margin-bottom:30px;">
-		    <img id="ent3" src="<%=request.getContextPath()%>/resources/images/entrance3.PNG" width="70%" height="100%">
+		   <div style="margin-bottom:30px;">
+		    <img id="ent3" src="<%=request.getContextPath()%>/resources/images/entrance3.PNG" width="100%" height="100%">
 			</div>
 	
 	

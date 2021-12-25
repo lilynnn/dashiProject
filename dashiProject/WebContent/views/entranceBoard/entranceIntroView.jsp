@@ -58,7 +58,7 @@
 			
         	<!-- 이미지1 -->
         	<div class="int-1" style="float:left;">
-            <img  class="image1" src="<%=contextPath%>/resources/images/testimg2.jpg">
+            <img  class="image1" src="<%=contextPath%>/resources/images/rabbit.jpg">
 			</div>
 			
 			<!-- 이미지1 옆 텍스트 영역  -->
@@ -82,7 +82,7 @@
 			<br clear="both">
 	        <!-- 이미지2 -->
 	        <div class="int-2" style="float:right;">
-            <img class="image2" src="<%=contextPath%>/resources/images/testimg.jpg">
+            <img class="image2" src="<%=contextPath%>/resources/images/hamster.jpg">
 			</div>
 			  
                <!-- 이미지2 옆 텍스트 영역  -->
