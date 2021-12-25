@@ -56,6 +56,14 @@ public class ReplyReportEnrollController extends HttpServlet {
 		
 		int result = new ReportService().insertReportCmt(rt);
 		System.out.println(result);
+		
+		if(result>0) {
+			request.getSession().setAttribute("alertMsg","게시글 신고가 완료되었습니다.");
+			response.sendRedirect(request.getContextPath()+"/list.ar?cpage=1");
+		}else{
+			request.getSession().setAttribute("alertMsg","게시글 신고에 실패했습니다.");
+			response.sendRedirect(request.getContextPath());
+		}
 	}
 
 	/**
