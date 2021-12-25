@@ -91,7 +91,19 @@ public class AdminService {
 		return result;
 	} // 사원 퇴사
 	
+	public String findId(String adname, String adphone) {
+		Connection conn = getConnection();
+		String findId = new AdminDao().findId(conn, adname, adphone);
+		close(conn);
+		return findId;
+	} // 관리자 아이디 조회
 	
+	public String findAdPwd(String adid, String adPwdphone) {
+		Connection conn = getConnection();
+		String findPwd = new AdminDao().findAdPwd(conn, adid, adPwdphone);
+		close(conn);
+		return findPwd;
+	} // 관리자 비밀번호 조회
 	
 	
 	
