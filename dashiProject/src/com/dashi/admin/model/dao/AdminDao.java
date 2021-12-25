@@ -279,9 +279,57 @@ public class AdminDao {
 		return result;
 	}// 사원 퇴사
 	
+	public String findId(Connection conn, String adname, String adphone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String findId = "";
+		String sql = prop.getProperty("findId");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adname);
+			pstmt.setString(2, adphone);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				findId = rset.getString("mn_id");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return findId;
+	}// 아이디찾기
 		
+	public String findAdPwd(Connection conn, String adid, String adPwdphone) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String findPwd = "";
+		String sql = prop.getProperty("findPwd");
 		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, adid);
+			pstmt.setString(2, adPwdphone);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				findPwd = rset.getString("mn_pwd");
+			}
+						
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return findPwd;
+	}// 비밀번호 찾기
 		
 		
 		

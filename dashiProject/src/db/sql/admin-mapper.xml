@@ -119,7 +119,21 @@
 		 WHERE MN_NO = ?
 	</entry>
 
-
+	<entry key="findId">
+		SELECT
+		       MN_ID
+		  FROM MANAGER_INFO
+		 WHERE MN_NAME = ?
+		   AND MN_PHONE = ?
+	</entry>
+	
+	<entry key="findPwd">
+		SELECT
+		       MN_PWD
+		  FROM MANAGER_INFO
+		 WHERE MN_ID = ?
+		   AND MN_PHONE = ?
+	</entry>
 
 
 
