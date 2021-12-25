@@ -135,7 +135,7 @@
         /* margin으로 modal위치 조정 */
         margin: 120px 530px; 
         width: 500px; 
-        height: 450px; 
+        height: 470px; 
         background: white; 
         padding: 5px;
     }
@@ -166,7 +166,7 @@
         width: 130px;
         border-radius: 5px;
     }
-
+	
 </style>
 </head>
 <body>
@@ -287,7 +287,13 @@
         <!-- 신고하기 버튼 클릭시 보여질 Modal -->
         <div class="modal" id="boardReport"> 
             
-            <form action="">
+            <form action="<%=contextPath%>/report.bo" method="post">
+		            <input type="hidden" name="boardNo" value="<%=d.getDspNo() %>">
+                    <input type="hidden" name="writerNo" value="<%=d.getMemNo() %>">
+                    <input type="hidden" name="boardTitle" value="<%=d.getDspTitle() %>">
+                    <input type="hidden" name="boardContent" value="<%=d.getEtc() %>">
+                    <input type="hidden" name="loginUser" value="<%=loginUser.getMemNo() %>">
+                    
                 <button type="button" class="close" data-dismiss="modal">&times;</button><br>
                 <div id="report-title">
                     <b>신고하기</b>
@@ -319,8 +325,7 @@
                         <tr>
                             <!-- 버튼 아이디 및 라벨 연결 임의 설정 !! 나중에 내용에 맞게 수정하기 -->
                             <!-- 스타일도 나중에 헤더로 옮기기 -->
-                            <th>&nbsp;</th>
-                            <td>
+                            <td colspan="2" style="padding-left:10px">
                                 <input name="radio" id="radio1" value="1" type="radio">
                                 <label for="radio1">욕설 또는 음란성 내용</label> <br>
                                 
@@ -497,7 +502,8 @@
 						                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
 						                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + "');\">수정</button></td>"
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
-						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
+						                           //+ "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
+						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ list[i].replyNo +"','"+ list[i].replyContent +"','"+list[i].memNo+"','"+list[i].nickname+"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
 						                        + "<tr id=\"update-input\" style=\"display: none;\">"
@@ -582,7 +588,21 @@
             				$('#repcontent-area').attr('style', "display:'';");  // 기존댓글 나타내기
                     	}
                     	
-                    	
+                    	// 댓글신고시 모달 호출용 함수
+						function cmtReport(replyNo, replyContent, memNo, nickName){
+							console.log(replyNo);
+							console.log(replyContent);
+							console.log(memNo);
+							console.log(nickName);
+							
+							$("#replyNo").val(replyNo);
+							$("#replyContent").val(replyContent);
+							$("#memNo").val(memNo);
+							$("#nickName").val(nickName);
+							
+							$("#cmtReport").show();
+
+						}
 
                     	
                     
@@ -593,7 +613,7 @@
             <div>
                 <!-- 댓글 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="cmtReport"> 
-                    <form action="">
+                    <form action="<%=contextPath%>/report.cmt" method="post">
                         <button type="button" class="close" data-dismiss="modal">&times;</button><br>
                         <div id="report-title">
                             <b>댓글 신고하기</b>
@@ -606,13 +626,15 @@
                             <table>
                                 <tr>
                                     <th width="80">댓글내용 </th>
-                                    <td>신고글제목보여지게</td>
+                                    <td><input id="replyContent" name="replyContent" style="border:none;" readonly></td>
                                 </tr>
                                 <tr>
                                     <th>작 성 자 </th>
-                                    <td>신고글작성자보여지게</td>
+                                    <td><input id="nickName" name="nickName" style="border:none;" readonly></td>
                                 </tr>
                             </table>
+                            <input type="hidden" name="replyNo" id="replyNo">
+                       		<input type="hidden" name="memNo" id="memNo">
                             <hr>
                         <!-- 신고 타입 및 내용 작성하는 table -->
                             <table>
@@ -622,27 +644,27 @@
                                         여러사유에 해당하는 경우 대표적인 사유 1개를 선택해주세요.
                                     </td>
                                 </tr>
+                                <tr><td>&nbsp;</td></tr>
                                 <tr>
                                     <!-- 버튼 아이디 및 라벨 연결 임의 설정 !! 나중에 내용에 맞게 수정하기 -->
                                     <!-- 스타일도 나중에 헤더로 옮기기 -->
-                                    <th>&nbsp;</th>
-                                    <td>
-                                        <input name="radio" id="radio1" value="1" type="radio">
-                                        <label for="radio1">욕설 또는 음란성 내용</label> <br>
+                                    <td colspan="2" style="padding-left:10px;">
+                                        <input name="radio2" id="radio21" value="21" type="radio">
+                                        <label for="radio21">욕설 또는 음란성 내용</label> <br>
                                         
-                                        <input name="radio" id="radio2" value="2" type="radio">
-                                        <label for="radio2">부적절한 홍보성 댓글</label> <br>
+                                        <input name="radio2" id="radio22" value="22" type="radio">
+                                        <label for="radio22">부적절한 홍보성 댓글</label> <br>
                                         
-                                        <input name="radio" id="radio3" value="3" type="radio">
-                                        <label for="radio3">사생활 침해 및 불법 촬영물</label> <br>
+                                        <input name="radio2" id="radio23" value="23" type="radio">
+                                        <label for="radio23">사생활 침해 및 불법 촬영물</label> <br>
                                         
-                                        <input name="radio" id="radio4" value="4" type="radio">
-                                        <label for="radio4">명예훼손 및 저작권침해</label> <br>
+                                        <input name="radio2" id="radio24" value="24" type="radio">
+                                        <label for="radio24">명예훼손 및 저작권침해</label> <br>
                                         
-                                        <input name="radio" id="radio5" value="5" type="radio">
-                                        <label for="radio5">기타</label><br>
+                                        <input name="radio2" id="radio25" value="25" type="radio">
+                                        <label for="radio25">기타</label><br>
                                         
-                                        <textarea name="" cols="60" rows="" id="input-area" disabled></textarea>
+                                        <textarea name="" cols="60" rows="" id="input-area2" disabled></textarea>
                                         
                                     </td>
                                 </tr>
@@ -655,12 +677,12 @@
                             <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
                             <script>
                                 $(function(){
-                                    $("input:radio[name=radio]").click(function(){
+                                    $("input:radio[name=radio2]").click(function(){
                                         // value값이 5인 라디오버튼 체크시에만 text-area 활성화
-                                        if($("input[name=radio]:checked").val() == "5"){
-                                            $("#input-area").attr("disabled",false);
+                                        if($("input[name=radio2]:checked").val() == "25"){
+                                            $("#input-area2").attr("disabled",false);
                                         } else{
-                                            $("#input-area").attr("disabled",true);
+                                            $("#input-area2").attr("disabled",true);
                                         }
 
                                     })

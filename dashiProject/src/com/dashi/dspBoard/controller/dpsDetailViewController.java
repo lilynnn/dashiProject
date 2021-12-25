@@ -45,7 +45,7 @@ public class dpsDetailViewController extends HttpServlet {
 			
 			request.setAttribute("d", d);
 			request.setAttribute("list", list);
-			
+
 			request.getRequestDispatcher("views/dspBoard/dspDetailView.jsp").forward(request, response);
 		}else {
 			

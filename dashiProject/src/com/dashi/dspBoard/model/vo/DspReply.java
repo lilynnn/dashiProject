@@ -12,6 +12,8 @@ public class DspReply {
 	private String updateDate;
 	private String replyStatus;
 	
+	private String memId;
+	
 	public DspReply() {}
 
 	public DspReply(String replyNo, int memNo, int refPostCTG, String clistNo, String nickname,
@@ -29,9 +31,11 @@ public class DspReply {
 	}
 	
 	// 댓글 조회용
-	public DspReply(String replyNo, String nickname, String writeDate, String replyContent) {
+	public DspReply(String replyNo, int memNo, String memId  ,String nickname, String writeDate, String replyContent) {
 		super();
 		this.replyNo = replyNo;
+		this.memNo = memNo;
+		this.memId = memId;
 		this.nickname = nickname;
 		this.replyContent = replyContent;
 		this.writeDate = writeDate;
@@ -47,6 +51,14 @@ public class DspReply {
 	
 	
 	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
 	public String getReplyNo() {
 		return replyNo;
 	}

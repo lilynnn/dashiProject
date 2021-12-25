@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.dashi.report.model.service.ReportService;
 import com.dashi.report.model.vo.Report;
@@ -32,6 +33,8 @@ public class ReportEnrollController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
+		HttpSession session = request.getSession();
+		
 		String reportBoardNo = request.getParameter("boardNo");
 		String reportedMemNo = request.getParameter("writerNo");	//신고당한회원번호
 		String reportingMemNo = request.getParameter("loginUser");	//신고한회원번호
@@ -40,9 +43,10 @@ public class ReportEnrollController extends HttpServlet {
 
 		if(reportBoardNo.substring(0, 3).equals("AR-")) {
 			typeBr = 1;
-		} else {
+		} else if(reportBoardNo.substring(0, 3).equals("DSP")){
 			typeBr = 2;
 		}
+		
 		Report rt = new Report(reportBoardNo, reportingMemNo, reportedMemNo, reportContent, Integer.parseInt(request.getParameter("radio")), typeBr);
 		
 		int result = new ReportService().insertReportBr(rt);
@@ -54,8 +58,7 @@ public class ReportEnrollController extends HttpServlet {
 			
 			} else if(reportBoardNo.substring(0, 3).equals("DSP")){
 				request.getSession().setAttribute("alertMsg","게시글 신고가 완료되었습니다.");
-				// 나중에 dsplist로 넘기기로 수정
-				response.sendRedirect(request.getContextPath());
+				response.sendRedirect(request.getContextPath()+"/list.dsp?cpage=1");
 			}
 		} else {
 			request.getSession().setAttribute("alertMsg","게시글 신고에 실패했습니다.");

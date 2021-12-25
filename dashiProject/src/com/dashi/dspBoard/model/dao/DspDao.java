@@ -176,6 +176,7 @@ public class DspDao {
 			
 			if(rset.next()) {
 				d = new Dsp(rset.getString("DSP_NO"),
+							Integer.toString(rset.getInt("MEM_NO")),
 							rset.getString("NICKNAME"),
 							rset.getString("DSP_TITLE"),
 							rset.getDate("WRITE_DATE"),
@@ -505,6 +506,8 @@ public class DspDao {
 			
 			while(rset.next()) {
 				list.add(new DspReply(rset.getString("reply_no"),
+ 									  rset.getInt("MEM_NO"),
+				  					  rset.getString("MEM_ID"),
 									  rset.getString("nickname"),
 									  rset.getString("WRITE_DATE"),
 									  rset.getString("REPLY_CONTENT")));

@@ -137,30 +137,30 @@
 	
 	<!-- 글 상세 조회-->
 	<entry key="selectDsp">
-     	SELECT
-			   DSP_NO
-			 , NICKNAME
-		     , DSP_TITLE
-		     , WRITE_DATE
-		     , VIEW_COUNT
-		     , POST_CTG
-		     , ISSUE_DATE
-		     , LOCATION_NAME
-		     , CASE_PHONE
-		     , ANIMAL_VARIETY
-		     , ANIMAL_GENDER
-		     , ANIMAL_AGE
-		     , ANIMAL_WEIGHT
-		     , ANIMAL_ISSUE
-		     , ETC
-		     , MONEY
-             , PATH || CHANGE_NAME "TITLEIMG"
-
-		 FROM DSP
-         JOIN ATTACHMENT ON (DSP_NO = REF_NO)
-
-		 WHERE DSP_NO = ?
-           and attach_level = 1
+		SELECT
+		           DSP_NO
+		         , MEM_NO
+		         , NICKNAME
+		         , DSP_TITLE
+		         , WRITE_DATE
+		         , VIEW_COUNT
+		         , POST_CTG
+		         , ISSUE_DATE
+		         , LOCATION_NAME
+		         , CASE_PHONE
+		         , ANIMAL_VARIETY
+		         , ANIMAL_GENDER
+		         , ANIMAL_AGE
+		         , ANIMAL_WEIGHT
+		         , ANIMAL_ISSUE
+		         , ETC
+		         , MONEY
+		         , PATH || CHANGE_NAME "TITLEIMG"
+		
+		     FROM DSP D
+		     JOIN ATTACHMENT ON (DSP_NO = REF_NO)
+		     WHERE DSP_NO = ?
+		       and attach_level = 1
 	</entry>
 	
 	<!-- 실종보호 목격글을 누르면 목록조회 -->
@@ -296,6 +296,8 @@
 	<entry key="selectReplyList">
 		SELECT
 		       REPLY_NO
+		     , MEM_NO
+		     , MEM_ID
 		     , R.NICKNAME
 		     , TO_CHAR(WRITE_DATE, 'YY-MM-DD HH:MI') "WRITE_DATE"
 		     , REPLY_CONTENT

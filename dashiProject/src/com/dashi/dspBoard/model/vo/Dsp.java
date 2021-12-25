@@ -26,6 +26,7 @@ public class Dsp {
 	private String titleImg;    // 동물 대표사진
 	private String contentImg;    // 동물 대표사진
 	
+	
 	public Dsp() {
 		super();
 	}
@@ -76,12 +77,13 @@ public class Dsp {
 	
 
 	
-	public Dsp(String dspNo, String nickName, String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
+	public Dsp(String dspNo, String memNo, String nickName, String dspTitle, Date writeDate, int viewCount,  String ctg, String issueDate, String locationName,
 			String phone, String variety, String gender, String age, String weight, String issue, String etc,
 			int money, String titleImg) {
 		super();
 		
 		this.dspNo = dspNo;
+		this.memNo = memNo;
 		this.nickName = nickName;
 		this.dspTitle = dspTitle;
 		this.viewCount = viewCount;
