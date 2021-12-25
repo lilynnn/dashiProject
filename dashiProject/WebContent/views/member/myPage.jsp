@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
 
 <style>
     div{box-sizing: border-box;}     
@@ -184,7 +187,7 @@
                     <div class="txtarea1"  align="center">
                         <!-- 회원정보 수정 아이콘 이미지 들어갈 공간 -->
                         <div>  
-                        	<a href="<%=contextPath%>/updateCheckPwd.me">
+                        	<a href="<%=contextPath%>/infoView.me">
                             <img id="updateimage" src="<%=contextPath%>/resources/images/pencil.png">
                         	<br><br>
                             <p align="center">회원정보수정</p></a>
@@ -205,7 +208,7 @@
                         <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
                         <!--(입양승인 시)결제하기버튼--> 
                         <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn">
-                            책임비 결제하기
+                         	   책임비 결제하기
                         </button> 
                     </div>
 
@@ -342,32 +345,38 @@
 <script>
 
     $(function(){
-        $("#payBtn").click(function(){
-            var IMP = window.IMP; 
-            IMP.init(' 가맹점 식별 코드'); 
-            IMP.request_pay({
-                pg : "kakaopay", 
-                pay_method : 'card',
-                merchant_uid : 'merchant_' + new Date().getTime(),
-                name : '결제',
-                amount : 주문개수,
-                buyer_email : '구매자 이메일',
-                buyer_name : '구매자 이름',
-                buyer_tel : '구매자 번호',
-                buyer_addr : '구매자 주소',
-                buyer_postcode : '구매자 주소',
-                m_redirect_url : 'redirect url'
-            }, function(rsp) {
-                if ( rsp.success ) {
-                    var msg = '결제가 완료되었습니다.';
-                    location.href='결제완료후 갈 url';
-                } else {
-                    var msg = '결제에 실패하였습니다.';
-                    rsp.error_msg;
-                    
-                }
-            });
-        })
+    	$("#payBtn").click(function () {
+    		var IMP = window.IMP; // 생략가능
+    		IMP.init('imp45615037');
+    		IMP.request_pay({
+    		pg: 'inicis', 
+    	
+    		pay_method: 'card',
+    	
+    		merchant_uid: 'merchant_' + new Date().getTime(),
+    		name: '주문명:결제테스트',
+    		amount: 100,
+    		buyer_email: 'iamport@siot.do',
+    		buyer_name: '사용자이름',
+    		buyer_tel: '010-1234-5678',
+    		buyer_addr: '서울특별시 강남구 삼성동',
+    		buyer_postcode: '123-456',
+    		m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+    		}, function (rsp) {
+    		console.log(rsp);
+    		if (rsp.success) {
+    		var msg = '결제가 완료되었습니다.';
+    		msg += '고유ID : ' + rsp.imp_uid;
+    		msg += '상점 거래ID : ' + rsp.merchant_uid;
+    		msg += '결제 금액 : ' + rsp.paid_amount;
+    		msg += '카드 승인번호 : ' + rsp.apply_num;
+    		} else {
+    		var msg = '결제에 실패하였습니다.';
+    		msg += '에러내용 : ' + rsp.error_msg;
+    		}
+    		alert(msg);
+    		});
+    	});
     })
 
     </script>
