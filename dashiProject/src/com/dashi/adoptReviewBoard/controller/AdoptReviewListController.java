@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dashi.adoptReviewBoard.model.service.AdoptReviewBoardService;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.common.model.vo.PageInfo;
+import com.dashi.member.model.service.MemberService;
+import com.dashi.member.model.vo.Member;
 
 /**
  * Servlet implementation class AdoptReviewListController
@@ -32,8 +35,40 @@ public class AdoptReviewListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		ArrayList<AdoptReview> list = new AdoptReviewBoardService().selectReviewList();
+		int listCount;		
+		int currentPage; 	
+		int pageLimit; 		
+		int boardLimit;		
+		
+		int maxPage;		
+		int startPage;		
+		int endPage;	
+		
+		listCount = new AdoptReviewBoardService().selectListCount();
+		
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		
+		pageLimit = 5;
+		
+		boardLimit = 10;
+		
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);
+		
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
+		
+		endPage = startPage + pageLimit - 1;
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+		
+		ArrayList<AdoptReview> list = new AdoptReviewBoardService().selectList(pi);
+		
+		
 		// 리스트 담아서 목록페이지
+		request.setAttribute("pi", pi);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/adoptReviewBoard/adoptReviewListView.jsp").forward(request, response);

@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.adoptReviewBoard.model.vo.AdoptReview"%>
+<%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>
 <%
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<AdoptReview> list = (ArrayList<AdoptReview>)request.getAttribute("list");
+
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 %>
 <!DOCTYPE html>
 <html>
@@ -137,16 +144,24 @@
 
         <br><br><br>
 
-        <!-- 페이징버튼 영역 -->
-        <div align="center">
-            <button class="page">&lt;</button>
-            <button class="page">1</button>
-            <button class="page">2</button>
-            <button class="page">3</button>
-            <button class="page">4</button>
-            <button class="page">5</button>
-            <button class="page">&gt;</button>
-        </div>
+                    <!-- 페이징버튼 영역 -->
+                    <div align="center">
+                    	<% if(currentPage != 1) { %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/list.ar?cpage=<%=currentPage-1%>';">&lt;</button>
+                        <% } %>
+                        
+                        <% for(int p=startPage; p<=endPage; p++){ %>
+                        	<% if(p == currentPage){ %>
+                        	<button class="page" disabled style="background:gray;"><%= p %></button>
+                        	<% } else { %>
+                        	<button class="page" onclick="location.href='<%=contextPath%>/list.ar?cpage=<%=p%>';"><%=p%></button>
+                        	<% } %>
+                        <% } %>
+                        
+                        <% if(currentPage != maxPage){ %>
+                        <button class="page" onclick="location.href='<%=contextPath%>/list.ar?cpage=<%=currentPage+1%>';">&gt;</button>
+                        <% } %>
+                    </div>
     </div>
 
 	<br><br><br><br><br>
