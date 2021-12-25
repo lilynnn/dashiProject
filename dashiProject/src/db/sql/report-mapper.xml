@@ -191,6 +191,34 @@
 		  , ?
 		  ) 
 	</entry>
+	
+	<entry key="insertReportCmt">
+		INSERT 
+			  INTO REPORTED
+			  (
+			     REPORT_NO
+			   , CONTENT_NO
+			   , REPORTING_MEM
+			   , REPORTED_MEM
+			   , REPORT_CONTENT
+			   , REPORT_DATE
+			   , REPORT_STATUS
+			   , REPORT_CTG
+			   , TYPE_BR
+			  )
+			  VALUES
+			  (
+			    LPAD(SEQ_RNO.NEXTVAL,3,0)
+			  , ?
+			  , ?
+			  , ?
+			  , ?
+			  , SYSDATE
+			  , 'N'
+			  , ?
+			  , ?
+			  ) 
+	</entry>
 
 	<entry key="selectDate">
 		SELECT TO_CHAR(REPORT_DATE, 'YYYY/MM/DD') "WRITE_DATE"

@@ -1,6 +1,6 @@
 package com.dashi.report.model.service;
 
-import static com.dashi.common.JDBCTemplate.close;
+import static com.dashi.common.JDBCTemplate.*;
 import static com.dashi.common.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
@@ -79,6 +79,11 @@ public class ReportService {
 	public int deleteReview(int bno) {
 		Connection conn = getConnection();
 		int result = new ReportDao().deleteReview(conn, bno);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	} // 후기 신고글 삭제하기
@@ -86,6 +91,11 @@ public class ReportService {
 	public int cancleDeleteReview(String bno) {
 		Connection conn = getConnection();
 		int result = new ReportDao().cancleDeleteReview(conn, bno);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	} // 후기 신고글 복구하기
@@ -93,6 +103,11 @@ public class ReportService {
 	public int cancleDeleteReply(String bno) {
 		Connection conn = getConnection();
 		int result = new ReportDao().cancleDeleteReply(conn, bno);
+		if(result>0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	} // 댓글 신고글 복구하기
@@ -100,6 +115,11 @@ public class ReportService {
 	public int cancleDeleteDsp(String bno) {
 		Connection conn = getConnection();
 		int result = new ReportDao().cancleDeleteDsp(conn, bno);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	} // 실종보호 신고글 복구하기
@@ -107,6 +127,11 @@ public class ReportService {
 	public int blacklistMem(int rno) {
 		Connection conn = getConnection();
 		int result = new ReportDao().blacklistMem(conn, rno);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 	} // 신고횟수2회 블랙리스트 등록
@@ -117,9 +142,27 @@ public class ReportService {
 		
 		Connection conn = getConnection();
 		int result = new ReportDao().insertReportBr(conn, rt);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
 		close(conn);
 		return result;
 		
+	}
+	
+	// 댓글 신고하기눌렀을때
+	public int insertReportCmt(Report rt) {
+		Connection conn = getConnection();
+		int result = new ReportDao().insertReportCmt(conn, rt);
+		if(result>0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		close(conn);
+		return result;
 	}
 	
 	public String selectDate() {

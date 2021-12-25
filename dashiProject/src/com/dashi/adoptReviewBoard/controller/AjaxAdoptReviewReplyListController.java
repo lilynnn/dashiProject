@@ -34,9 +34,9 @@ public class AjaxAdoptReviewReplyListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String arlistNo = request.getParameter("arno");
-		
+
 		ArrayList<AdoptReviewReply> list = new AdoptReviewBoardService().selectReplyList(arlistNo);
-		
+		System.out.println(list);		
 		response.setContentType("application/json; charset=utf-8");
 		new Gson().toJson(list, response.getWriter());
 		

@@ -395,6 +395,32 @@ public class ReportDao {
 		return result;
 	}
 	
+	
+	//댓글 신고시 insert메소드
+	public int insertReportCmt(Connection conn, Report rt) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertReportCmt");
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, rt.getContentNo());
+			pstmt.setInt(2, Integer.parseInt(rt.getReportingMem()));
+			pstmt.setInt(3, Integer.parseInt(rt.getReportedMem()));
+			pstmt.setString(4, rt.getReportContent());
+			pstmt.setInt(5, rt.getReportCategory());
+			pstmt.setString(6, Integer.toString(rt.getTypeBR()));
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		} 
+		return result;		
+	}
+	
 	public String selectDate(Connection conn) {
 		String entDate = null;
 		PreparedStatement pstmt = null;

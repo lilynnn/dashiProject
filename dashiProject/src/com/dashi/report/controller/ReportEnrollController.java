@@ -14,7 +14,7 @@ import com.dashi.report.model.vo.Report;
 /**
  * Servlet implementation class ReportEnrollController
  */
-@WebServlet("/report")
+@WebServlet("/report.bo")
 public class ReportEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

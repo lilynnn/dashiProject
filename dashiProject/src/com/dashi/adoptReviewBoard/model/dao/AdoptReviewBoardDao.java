@@ -289,6 +289,8 @@ public class AdoptReviewBoardDao {
 			
 			while(rset.next()) {
 				list.add(new AdoptReviewReply(rset.getString("reply_no"),
+						  					  rset.getInt("MEM_NO"),
+						  					  rset.getString("MEM_ID"),
 											  rset.getString("nickname"),
 											  rset.getString("WRITE_DATE"),
 											  rset.getString("REPLY_CONTENT")));

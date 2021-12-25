@@ -113,7 +113,9 @@
         color: black;
         cursor:pointer;    
     }
-    
+    #cmtReport input{
+    	border:none;
+    }
     
     /*신고하기 관련 스타일*/
     /* 신고하기 영역 */
@@ -126,9 +128,10 @@
         /* margin으로 modal위치 조정 */
         margin: 120px 530px; 
         width: 500px; 
-        height: 500px; 
+        height: 510px; 
         background: white; 
         padding: 5px;
+        padding-left:10px;
     }
     #ReportModal #report-title, #cmtReport #report-title{
         background: lightgray; 
@@ -220,7 +223,7 @@
                 <!-- 신고하기 버튼 영역 -->
                 <div class="report-area" align="right">
             
-                    <button onclick="" data-toggle="modal" data-target="#ReportModal">신고하기</button>
+                    <button data-toggle="modal" data-target="#ReportModal">신고하기</button>
 
                     <br><br>
                 </div>
@@ -229,7 +232,7 @@
                 <!-- 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="ReportModal"> 
                     
-                    <form action="<%=contextPath%>/report" method="post">
+                    <form action="<%=contextPath%>/report.bo" method="post">
                     
                     <input type="hidden" name="boardNo" value="<%=ar.getArlistNo() %>">
                     <input type="hidden" name="writerNo" value="<%=ar.getMemNo() %>">
@@ -241,23 +244,24 @@
                             <b>신고하기</b>
                         </div>
 						
-                        <div align="center" style="border:1px solid black;">
+                        <div align="center">
                             <!-- 신고게시글 정보 담아 전달하는 table -->
                             <!-- 신고한 사용자 아이디, 신고 당한 게시글 번호, 제목, 작성자 담아서 전달 -->
-                            <table border="1" style="float:left; margin-left:10px;">
+                            <table style="float:left; margin-left:10px;">
+                            	<tr><td>&nbsp;</td></tr>
                                 <tr>
-                                    <th width="75">제 &nbsp; 목 </th>
-                                    <td><%=ar.getArTitle() %></td>
+                                    <th width="75" style="font-size:13px;">제 &nbsp; 목 </th>
+                                    <td style="font-size:13px;"><%=ar.getArTitle() %></td>
                                 </tr>
                                 <tr>
-                                    <th>작 성 자 </th>
-                                    <td><%=ar.getMemId() %></td>
+                                    <th style="font-size:13px;">작 성 자 </th>
+                                    <td style="font-size:13px;"><%=ar.getMemId() %></td>
                                 </tr>
                             </table>
-                            <br><br>
+                            <br><br><br>
                             <hr>
                         <!-- 신고 타입 및 내용 작성하는 table -->
-                            <table border="1" style="float:left; margin-left:10px;">
+                            <table style="float:left; margin-left:10px; font-size:15px;">
                                 <tr>
                                     <th style="width:75px;"> 사유선택 </th>
                                 </tr>
@@ -288,6 +292,7 @@
                                     </td>
                                 </tr>
                             </table>
+                            <br>
                             <div align="center">
                                 <button class="btn btn-secondary" style="line-height: 100%;">신고하기</button>
                             </div>
@@ -446,7 +451,8 @@
 						                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
 						                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + "');\">수정</button></td>"
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
-						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
+						                           //+ "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ i +"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
+						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ list[i].replyNo +"','"+ list[i].replyContent +"','"+list[i].memNo+"','"+list[i].nickname+"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
 						                        + "<tr id=\"update-input\" style=\"display: none;\">"
@@ -531,7 +537,21 @@
             				$('#repcontent-area').attr('style', "display:'';");  // 기존댓글 나타내기
                     	}
                     	
-                    	
+						// 댓글신고시 모달 호출용 함수
+						function cmtReport(replyNo, replyContent, memNo, nickName){
+							console.log(replyNo);
+							console.log(replyContent);
+							console.log(memNo);
+							console.log(nickName);
+							
+							$("#replyNo").val(replyNo);
+							$("#replyContent").val(replyContent);
+							$("#memNo").val(memNo);
+							$("#nickName").val(nickName);
+							
+							$("#cmtReport").show();
+
+						}
 
                     	
                     
@@ -540,28 +560,31 @@
                 <!-- 댓글 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="cmtReport"> 
                     
-                    <form action="<%=contextPath%>/cmtreport">
+                    <form action="<%=contextPath%>/report.cmt">
                         <button type="button" class="close" data-dismiss="modal">&times;</button><br>
                         <div id="report-title" align="left">
                             <b>댓글신고하기</b>
                         </div>
-                        <div align="center" style="border:1px solid black;">
+                        <div align="center">     
+                            
                             <!-- 신고게시글 정보 담아 전달하는 table -->
                             <!-- 신고한 사용자 아이디, 신고 당한 게시글 번호, 제목, 작성자 담아서 전달 -->
-                            <table border="1" style="float:left; margin-left:10px;">
+                            <table style="float:left; margin-left:10px;">
                                 <tr>
-                                    <th width="75">제 &nbsp; 목 </th>
-                                    <td>신고글제목보여지게</td>
+                                    <th width="75">내 &nbsp; 용 </th>
+                                    <td><input id="replyContent" name="replyContent" readonly></td>
                                 </tr>
                                 <tr>
                                     <th>작 성 자 </th>
-                                    <td>신고글작성자보여지게</td>
+                                    <td><input id="nickName" name="nickName" readonly></td>
                                 </tr>
                             </table>
+                            <input type="hidden" name="replyNo" id="replyNo">
+                       		<input type="hidden" name="memNo" id="memNo">
                             <br><br>
                             <hr>
                         <!-- 신고 타입 및 내용 작성하는 table -->
-                            <table border="1" style="float:left; margin-left:10px;">
+                            <table style="float:left; margin-left:10px;">
                                 <tr>
                                     <th style="width:75px;"> 사유선택 </th>
                                 </tr>
@@ -588,15 +611,14 @@
                                         <input name="radio" id="radio5" value="5" type="radio">
                                         <label for="radio5">기타</label><br>
                                         
-                                        <textarea name="ectContent" cols="50" id="input-area" disabled></textarea>
+                                        <textarea name="ectContent" cols="50" id="input-area2" disabled></textarea>
                                     </td>
                                 </tr>
                             </table>
                             <div align="center">
                                 <button class="btn btn-secondary" style="line-height: 100%;">신고하기</button>
                             </div>
-
-
+                            
                             <!-- 라디오버튼 value값 수정시 script에 사용된 val 같이 수정하기 -->
                             
                             <script>
@@ -604,9 +626,9 @@
                                     $("input:radio[name=radio]").click(function(){
                                         // value값이 5인 라디오버튼 체크시에만 text-area 활성화
                                         if($("input[name=radio]:checked").val() == "5"){
-                                            $("#input-area").attr("disabled",false);
+                                            $("#input-area2").attr("disabled",false);
                                         } else{
-                                            $("#input-area").attr("disabled",true);
+                                            $("#input-area2").attr("disabled",true);
                                         }
 
                                     })

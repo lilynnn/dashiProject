@@ -14,6 +14,8 @@ public class AdoptReviewReply {
 	private String updateDate;
 	private String replyStatus;
 	
+	private String memId;
+	
 	public AdoptReviewReply() {}
 
 	public AdoptReviewReply(String replyNo, int memNo, int refPostCTG, String clistNo, String nickname,
@@ -31,9 +33,11 @@ public class AdoptReviewReply {
 	}
 	
 	// 댓글 조회용
-	public AdoptReviewReply(String replyNo, String nickname, String writeDate, String replyContent) {
+	public AdoptReviewReply(String replyNo, int memNo, String memId, String nickname, String writeDate, String replyContent) {
 		super();
 		this.replyNo = replyNo;
+		this.memNo = memNo;
+		this.memId = memId;
 		this.nickname = nickname;
 		this.replyContent = replyContent;
 		this.writeDate = writeDate;
@@ -49,6 +53,14 @@ public class AdoptReviewReply {
 	
 	
 	
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+
 	public String getReplyNo() {
 		return replyNo;
 	}
