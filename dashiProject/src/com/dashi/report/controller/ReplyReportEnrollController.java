@@ -50,9 +50,15 @@ public class ReplyReportEnrollController extends HttpServlet {
 		rt.setReportingMem(reportingMemNo);
 		rt.setReportedMem(reportedMemNo);
 		rt.setReportContent(reportContent);
-		rt.setReportCategory(Integer.parseInt(request.getParameter("radio2")));
+		switch(Integer.parseInt(request.getParameter("radio2"))) {
+		case 21: rt.setReportCategory(1); break;
+		case 22: rt.setReportCategory(2); break;
+		case 23: rt.setReportCategory(3); break;
+		case 24: rt.setReportCategory(4); break;
+		case 25: rt.setReportCategory(5); break;
+		
+		}
 		rt.setTypeBR(3);
-		System.out.println(rt);
 		
 		int result = new ReportService().insertReportCmt(rt);
 		
