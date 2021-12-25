@@ -175,5 +175,5 @@ public class AdoptReviewBoardService {
 		return result1*result2;
 	}
 	
-	
+
 }

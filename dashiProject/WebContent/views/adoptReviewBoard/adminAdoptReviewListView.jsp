@@ -122,8 +122,8 @@
                         <tr>
                         <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
                             <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" id="check" name="post" value="check"></td>
-                            <td><%= ar.getArlistNo() %></td>
+                            <td><input type="checkbox" class="check" value="<%= ar.getArlistNo() %>"></td>
+                            <td class="arno"><%= ar.getArlistNo() %></td>
                             <td><%= ar.getMemId() %></td>
                             <td><%= ar.getNickname() %></td>
                             <td><%= ar.getAnType() %></td>
@@ -135,10 +135,13 @@
 					<% } %>
                         </tbody>
                     </table>
+                
+                
                 <!--삭제하기 버튼-->
                 <div align="right">
-                    <button>삭제</button>
+                    <button id="revdelete">삭제</button>
                 </div>
+                
                     <br><br><br>
                             
                     <!-- 페이징버튼 영역 -->

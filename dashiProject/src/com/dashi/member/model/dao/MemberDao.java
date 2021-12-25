@@ -530,6 +530,71 @@ public class MemberDao {
 		return adp;
 	}
 	
+	// ---------------관리자 회원 키워드 검색 영역
+	
+	// 검색결과 총 회원 수
+	public int searchMemberCount(Connection conn, String keyword) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchMemberCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + keyword + "%");
+			rset = pstmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return listCount;
+	}
+	
+	public ArrayList<Member> searchMember(Connection conn, String keyword, PageInfo pi){
+		ArrayList<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("searchMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			int startRow = (pi.getCurrentPage() -1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() -1;
+			
+			pstmt.setString(1, "%" + keyword + "%");
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("mem_no"),
+						   rset.getString("MEM_NAME"),
+						   rset.getString("MEM_ID"),
+						   rset.getString("DOB"),
+						   rset.getString("ADDRESS"),
+						   rset.getString("ADDRESS_D"),
+						   rset.getString("PHONE"),
+						   rset.getString("ADOPT_YN"),
+						   rset.getString("PAY_YN"),
+						   rset.getInt("GRADE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+	
 	
 	
 	

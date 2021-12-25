@@ -175,7 +175,23 @@ public class MemberService {
 		return adp;
 	}
 	
+	// ---------관리자 회원 검색 영역
 	
+	// 검색 후 총 회원 수
+	public int searchMemberCount(String keyword) {
+		Connection conn = getConnection();
+		int listCount = new MemberDao().searchMemberCount(conn, keyword);
+		close(conn);
+		return listCount;
+	}
+	
+	// 관리자 회원 키워드검색
+	public ArrayList<Member> searchMember(String keyword, PageInfo pi){
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MemberDao().searchMember(conn, keyword, pi);
+		close(conn);
+		return list;
+	}
 	
 	
 	

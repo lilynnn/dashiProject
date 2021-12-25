@@ -119,12 +119,16 @@
 	                   	조회수:<%= ar.getViewCount() %>
 	                </p>
                     <!--댓글 버튼 클릭 시 입양후기 상세페이지 댓글영역으로 이동-->
+                    <!--
                     <button id="commenticon">
                         댓글
                     </button>
+                    -->
                     <!--댓글 수-->
+                    <!--
                     <span class="comm-count">3</span>
-	            </div>
+                    -->
+                </div>
 	        <% } %>
 	    </div>
 	    

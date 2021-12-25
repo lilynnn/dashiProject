@@ -71,6 +71,7 @@
 		SELECT
 		       COUNT(*) count
 		  FROM MEM_INFO
+		 WHERE GRADE IN ('1', '2', '3','9')
 	</entry>
 	
 	<entry key="selectList">
@@ -244,8 +245,40 @@
 		 WHERE AALIST_NO = ?
 		   AND POST_STATUS = 'Y'
 	</entry>
+	
+	<entry key="searchMemberCount">
+		SELECT
+		 	   COUNT(*) "count"
+		  FROM MEM_INFO
+		 WHERE GRADE IN ('1', '2', '3','9')
+		   AND MEM_NAME LIKE ?
+	</entry>
 
-
+	<entry key="searchMember">
+		SELECT *
+		  FROM (
+		        SELECT ROWNUM RNUM, A.* 
+		          FROM (
+		                SELECT
+		                       MEM_NO
+		                     , MEM_NAME
+		                     , MEM_ID
+		                     , TO_CHAR(DOB,'YYMMDD') DOB
+		                     , ADDRESS
+		                     , ADDRESS_D
+		                     , PHONE
+		                     , ADOPT_YN
+		                     , PAY_YN
+		                     , GRADE
+		                  FROM MEM_INFO
+		                 WHERE GRADE IN ('1', '2', '3','9')
+                           AND MEM_NAME = ?
+		                 ORDER
+		                    BY MEM_NO DESC
+		                ) A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
 
 
 

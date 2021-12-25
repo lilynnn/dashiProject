@@ -508,8 +508,7 @@ public class AdoptReviewBoardDao {
 	}
 	
 
-	
-	
+
 	
 	
 	

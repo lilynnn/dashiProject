@@ -5,6 +5,7 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
+	String keyword = (String)request.getAttribute("keyword");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -99,8 +100,8 @@
                         <option value="delete">탈퇴</option>
                         <option selected>선택안함</option>
                     </select>
-                    <form action="<%=contextPath%>/searchmem.ad?spage=1" method="get">
-                    	<input type="text" name="searchmem" placeholder="이름을 입력하세요." required>
+                    <form action="<%=contextPath%>/searchmem.ad" method="post">
+                    	<input type="text" name="searchmem" placeholder="이름을 입력하세요." value="<%=keyword %>" required>
                     	<input type="hidden" name="spage" value="1">
                     	<button type="submit">검색</button>
                     </form>
