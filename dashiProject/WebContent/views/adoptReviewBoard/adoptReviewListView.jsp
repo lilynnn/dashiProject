@@ -98,7 +98,7 @@
         <div id="title" style="width: 100%; font-size: 26px; font-weight: 900;">
             입양 후기  
             <!--로그인한 회원에게만 보여지도록-->
-			<% if(loginUser != null) { %>
+			<% if(loginUser != null && loginUser.getGrade() == 3) { %>
             <!--클릭 시 입양후기 작성 뷰로 이동-->
             <button id="write" onclick="location.href='<%=contextPath %>/enroll.ar';">글쓰기</button>   
             <% } %>   

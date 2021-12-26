@@ -175,7 +175,15 @@
                 <table align="left" style="margin-left: 150px;">
                     <tr>
                         <td colspan="5" style="height: 80px;">
-                            <h2><b>[<%= ar.getAnType() %>]&nbsp;<%= ar.getArTitle() %></b></h2>
+                            <h2><b>
+			                <% if(ar.getAnType().equals("cat")){ %>
+			                [고양이]
+			                <%}else if(ar.getAnType().equals("dog")){ %>
+			                [강아지]
+			                <%}else if(ar.getAnType().equals("etc")){ %>
+			                [기타동물]
+			                <%} %>
+                            &nbsp;<%= ar.getArTitle() %></b></h2>
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">
@@ -191,9 +199,19 @@
                     <!--로그인 되어있고 작성자와 일치할 경우-->
                     <%if(loginUser != null && loginUser.getNickname().equals(ar.getNickname())) { %>
                         <button onclick="location.href='<%=contextPath %>/updateform.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-warning">수정하기</button>
-                        <button onclick="location.href='<%=contextPath %>/delete.ar?arno=<%=ar.getArlistNo()%>'" class="btn btn-sm btn-danger">삭제하기</button>
+                        <button id="ardelete" class="btn btn-sm btn-danger">삭제하기</button>
                     <% } %>
                 </div>
+                <script>
+                $("#ardelete").click(function(){
+                	var result = confirm('게시글을 삭제하시겠습니까?');
+                	if(result){
+                		location.href='<%=contextPath %>/delete.ar?arno=<%=ar.getArlistNo()%>';
+                	}else{
+                		return false;
+                	}
+                })
+                </script>
         
                 <br><br><br><br>
                 <hr width="900" color="gray">
@@ -328,9 +346,6 @@
                        
 							
                         </tbody>
-
-
-
                     </table>
                     <!--대댓글영역-->
                     <!--
@@ -442,7 +457,7 @@
 						                        + "<tr>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>"
-						                        + "<tr id=\"repcontent-area\">"
+						                        + "<tr id=\"repcontent-area" + list[i].replyNo +"\">"
 						                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
 						                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + "');\">수정</button></td>"
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
@@ -450,11 +465,11 @@
 						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ list[i].replyNo +"','"+ list[i].replyContent +"','"+list[i].memNo+"','"+list[i].nickname+"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
 						                           + "<td><button>답글</button></td>"
 						                        + "</tr>"
-						                        + "<tr id=\"update-input\" style=\"display: none;\">"
-					                               + "<td colspan=5><textarea cols=100 rows=8 id='upReplycontent'>" + list[i].replyContent + "</textarea></td>"
-					                               + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
-					                               + "<td><button onclick=\"upcancel();\">취소</button></td>"
-					                            + "</tr>"
+							                    + "<tr id=\"update-input"+ list[i].replyNo +"\" style=\"display: none;\">"
+						                           + "<td colspan=5><textarea cols=100 rows=8 id='upReplycontent"+ list[i].replyNo +"'>" + list[i].replyContent + "</textarea></td>"
+						                           + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
+						                           + "<td><button onclick=\"upcancel('" + list[i].replyNo + "');\">취소</button></td>"
+						                        + "</tr>"
 						                        + "<tr style='border-bottom: solid 1px rgb(175, 173, 173);'>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>";
@@ -504,8 +519,8 @@
                     				replyNo: replyNo
                     			},
                     			success:function(arp){
-                    				$('#repcontent-area').attr('style', "display:none;");  // 기존댓글 숨기기
-                    				$('#update-input').attr('style', "display:'';");  // 댓글수정영역 나타내기
+                    				$('#repcontent-area'+replyNo).attr('style', "display:none;");  // 기존댓글 숨기기
+                    				$('#update-input'+replyNo).attr('style', "display:'';");  // 댓글수정영역 나타내기
                     			}
                     		});
                     	}
@@ -518,12 +533,14 @@
                     			type:"post",
                     			data:{
                     				replyNo: replyNo,
-                    				replyContent:$("#upReplycontent").val()
+                    				replyContent:$("#upReplycontent"+replyNo).val()
                     			},
                     			success:function(result){
+                    				alert("댓글 수정 완료");
                     				if(result > 0){
                     					selectReplyList();
                     				}
+                    				
                     			}, error:function(){
                     				console.log("댓글수정용ajax 통신 실패")
                     			}
@@ -531,9 +548,9 @@
                     	}
                     	
                     	// 댓글 수정 취소용
-                    	function upcancel(){
-            				$('#update-input').attr('style', "display:none;");  // 댓글수정영역 숨기기
-            				$('#repcontent-area').attr('style', "display:'';");  // 기존댓글 나타내기
+                    	function upcancel(replyNo){
+            				$('#update-input'+replyNo).attr('style', "display:none;");  // 댓글수정영역 숨기기
+            				$('#repcontent-area'+replyNo).attr('style', "display:'';");  // 기존댓글 나타내기
                     	}
                     	
 						// 댓글신고시 모달 호출용 함수
@@ -663,7 +680,7 @@
                 <br><br><br>
  
                 <!--클릭 시 입양후기 전체조회 페이지로 이동-->
-                <a href="<%= contextPath %>/list.ar" class="btn" >목록으로</a>
+                <button onclick="location.href='<%= contextPath %>/list.ar?cpage=1'" class="btn" align="center">목록으로</button>
 
                 <br><br><br><br>
             
