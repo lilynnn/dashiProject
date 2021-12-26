@@ -171,7 +171,7 @@
             <br><br><br><br><br><br>
             <!-- 입양후기 상세내용 영역 -->
             <div class="content-area" align="center" style="border: 1px solid red; height: auto;">
-                <!-- 입양후기 제목, 작성일, 조회수 -->
+                <!-- 입양후기 제목, 작성일 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
                         <td colspan="5" style="height: 80px;">
@@ -179,13 +179,11 @@
                         </td>
                     </tr>
                     <tr style="color: rgb(87, 87, 85); font-size: 14px;">
-                        <td>작성자</td>
-                        <td><%= ar.getNickname() %></td>
-                        <td>작성일&nbsp;</td>
+                        <td style="color:black;">작성자&nbsp;</td>
+                        <td><%= ar.getNickname() %>&nbsp;&nbsp;</td>
+                        <td style="color:black;">작성일&nbsp;</td>
                         <td><%= ar.getWriteDate() %></td>
                         <td>&nbsp;<!--공백란--></td>
-                        <td>조회수</td>
-                        <td><%=ar.getViewCount() %></td>
                     </tr>
                 </table>
 
