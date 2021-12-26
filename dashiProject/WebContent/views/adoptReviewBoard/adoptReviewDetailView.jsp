@@ -7,6 +7,7 @@
 	AdoptReview ar = (AdoptReview)request.getAttribute("ar");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
 	AdoptReviewReply arp = (AdoptReviewReply)request.getAttribute("arp");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -152,6 +153,9 @@
 	
     #update{
         color:red;
+    }
+    table{
+    	border-collapse: collapse;
     }
 
 </style>
@@ -446,7 +450,8 @@
                     				
                     				let result = "";
                     				for(let i=0; i<list.length; i++){
-                    					result += "<tr>"
+                    					result += // 댓글영역
+                    							"<tr>"
 						                            + "<td>&nbsp;</td>"
 						                        + "</tr>"
 						                        + "<tr>"
@@ -463,7 +468,7 @@
 						                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + "');\">삭제</button></td>"
 						                           //+ "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ i +"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
 						                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ list[i].replyNo +"','"+ list[i].replyContent +"','"+list[i].memNo+"','"+list[i].nickname+"');\" data-toggle=\"modal\" data-target=\"#cmtReport\">신고</button></td>"
-						                           + "<td><button>답글</button></td>"
+						                           + "<td><button onclick=\"plusReplyForm('"+ list[i].replyNo +"');\">답글</button></td>"
 						                        + "</tr>"
 							                    + "<tr id=\"update-input"+ list[i].replyNo +"\" style=\"display: none;\">"
 						                           + "<td colspan=5><textarea cols=100 rows=8 id='upReplycontent"+ list[i].replyNo +"'>" + list[i].replyContent + "</textarea></td>"
@@ -472,7 +477,42 @@
 						                        + "</tr>"
 						                        + "<tr style='border-bottom: solid 1px rgb(175, 173, 173);'>"
 						                           + "<td>&nbsp;</td>"
-						                        + "</tr>";
+						                        + "</tr>"
+						                        // 대댓글 영역
+						                        /*
+									                    +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td style='height: 20px;'></td>"
+								                            +"<td width= \"70px;\"></td>"
+								                        +"</tr>"
+								                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td width=\"70px;\" style=\"text-align: center;\">➜</td>"
+								                            +"<td>"+list[i].nickname+"</td>"
+								                            +"<td width=\"110px;\">"+ list[i].writeDate + "</td>"
+								                            +"<td width=\"560px;\"></td>"
+								                        +"</tr>"
+								                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td>&nbsp;</td>"
+								                        +"</tr>"
+								                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td width=\"70px;\"></td>"
+								                            // 대댓글 내용
+								                            +"<td id='prcontent"+ list[i].replyNo +"' colspan=\"5\" style=\"font-weight: 900;\">"+ list[i].replyContent +"</td>"
+								                            +"<td><button class=\"font comm-btn\">수정</button></td>"
+								                            +"<td><button class=\"font comm-btn\">삭제</button></td>"
+								                            +"<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\#cmtReport\">신고</button></td>"
+								                        +"</tr>"
+								                        // 대댓글 작성폼
+									                    + "<tr class=\"pr-input"+ list[i].replyNo +"\" style=\"display: none;\">"
+								                           + "<td colspan=5><textarea cols=100 rows=8 id='pr-content"+ list[i].replyNo +"'></textarea></td>"
+								                           + "<td><button onclick=\"updatepr('" + list[i].replyNo + "');\">작성</button></td>"
+								                           + "<td><button onclick=\"prcancel('" + list[i].replyNo + "');\">취소</button></td>"
+								                        + "</tr>"
+								                        
+								                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td>&nbsp;</td>"
+								                        +"</tr>"
+								                        */
+						                        ;
                     				}
 
                                     $("#comm-outer").html(result);
@@ -552,6 +592,14 @@
             				$('#update-input'+replyNo).attr('style', "display:none;");  // 댓글수정영역 숨기기
             				$('#repcontent-area'+replyNo).attr('style', "display:'';");  // 기존댓글 나타내기
                     	}
+                    	
+                    	// 답글 작성 폼용
+                    	
+                    	function plusReplyForm(replyNo){
+                    		$('.prview'+replyNo).attr('style', "display:'';");  // 답글작성폼 나타내기
+                    		$('.prinput'+replyNo).attr('style', "display:'';");
+                    	}
+                    	
                     	
 						// 댓글신고시 모달 호출용 함수
 						function cmtReport(replyNo, replyContent, memNo, nickName){

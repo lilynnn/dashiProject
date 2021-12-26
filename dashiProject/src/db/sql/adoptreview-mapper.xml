@@ -70,6 +70,7 @@
 		    WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- 입양후기 조회수 -->
 	<entry key="increaseCount">
 		UPDATE 
 		       ADOPT_REVIEW
@@ -140,6 +141,7 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
+	<!-- 댓글 조회 -->
 	<entry key="selectReplyList">
 		SELECT
 		       REPLY_NO
@@ -157,6 +159,7 @@
 		    BY REPLY_NO DESC
 	</entry>
 	
+	<!-- 댓글 작성 -->
 	<entry key="insertReply">
 		INSERT
 		  INTO REPLY
@@ -179,6 +182,7 @@
 	  )
 	</entry>
 	
+	<!-- 댓글 삭제 -->
 	<entry key="deleteReply">
 		UPDATE
 		       REPLY
@@ -186,6 +190,7 @@
 		 WHERE REPLY_NO = ?
 	</entry>
 	
+	<!-- 댓글 수정 폼 -->
 	<entry key="updateReplyForm">
 		SELECT
 			   REPLY_NO,
@@ -194,6 +199,7 @@
 		 WHERE REPLY_NO = ?
 	</entry>
 	
+	<!-- 댓글 수정 완료 -->
 	<entry key="updateReply">
 		UPDATE
 		       REPLY
@@ -202,6 +208,7 @@
 		 WHERE REPLY_NO = ?
 	</entry>
 	
+	<!-- 입양후기 삭제 -->
 	<entry key="deleteReview">
 		UPDATE
 		       ADOPT_REVIEW
@@ -209,6 +216,7 @@
 		 WHERE ARLIST_NO = ?
 	</entry>
 	
+	<!-- 입양후기 내용(글) 수정 -->
 	<entry key="updateReview">
 		UPDATE
 			   ADOPT_REVIEW
