@@ -6,27 +6,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.dashi.admin.model.vo.Manager;
 import com.dashi.answerBoard.model.service.AnswerService;
 import com.dashi.answerBoard.model.vo.Answer;
-import com.dashi.faqBoard.model.service.FAQService;
-import com.dashi.faqBoard.model.vo.FAQ;
+import com.dashi.common.model.vo.Attachment;
+import com.dashi.notice.model.service.NoticeService;
+import com.dashi.notice.model.vo.Notice;
 
 /**
- * Servlet implementation class AdminAnswerMngInsertController
+ * Servlet implementation class AnswerselectView
  */
-
-/*1:1 답변 insert 관리자 기능구현*/
-@WebServlet("/adInsert.as")
-public class AdminAnswerMngInsertController extends HttpServlet {
+@WebServlet("/admindetail")
+public class AdminAnswerselectView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAnswerMngInsertController() {
+    public AdminAnswerselectView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,26 +33,22 @@ public class AdminAnswerMngInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String content = request.getParameter("content");
+		String answerNo = request.getParameter("asno");
 		
-		HttpSession session = request.getSession();
-		int mnNo = ((Manager)session.getAttribute("loginAdmin")).getMnNo();	
+		AnswerService as = new AnswerService();
 		
-		Answer a = new Answer();
-		a.setAnContent(content);
-		a.setMnNo(mnNo);
-		
-		int result = new AnswerService().adinsertAnswer(a);
+		int result = as.increaseCount(answerNo);
 		
 		if(result > 0) {
-			request.getSession().setAttribute("alertMsg", "답변등록에 성공했습니다.");
-			response.sendRedirect(request.getContextPath() + "/admain.ad");
+			Answer n = as.selectDetailAnswer(answerNo);
+
+			request.setAttribute("n", n);
+			request.getRequestDispatcher("views/answerBoard/adDetail.jsp").forward(request, response);			
+
 		}else {
-			request.getSession().setAttribute("alertMsg", "등록에 실패하였습니다.");
+			request.getSession().setAttribute("alertMsg", "게시글 조회 실패");
 		}
-	
-	
-	
+		
 	}
 
 	/**

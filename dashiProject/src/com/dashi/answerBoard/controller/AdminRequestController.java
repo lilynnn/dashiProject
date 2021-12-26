@@ -13,18 +13,16 @@ import com.dashi.answerBoard.model.vo.Answer;
 import com.dashi.member.model.vo.Member;
 
 /**
- * Servlet implementation class AnswerForm
+ * 수정해야해 Servlet implementation class AdminRequestController
  */
-
-/*사용자 1:1 등록 기능구현*/
-@WebServlet("/insert.as")
-public class AnswerInsertController extends HttpServlet {
+@WebServlet("/adupdate.ad")
+public class AdminRequestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerInsertController() {
+    public AdminRequestController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,38 +32,9 @@ public class AnswerInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
 		
-		 
-		String qTitle = request.getParameter("qTitle");
-		String qContent= request.getParameter("qContent");
-		
-		System.out.println(qTitle);
-		System.out.println(qContent);
-		
-		HttpSession session = request.getSession();
-		int memNo = ((Member)session.getAttribute("loginUser")).getMemNo();
-		
-
-				Answer a = new Answer();
-				
-				a.setqTitle(qTitle);
-				a.setqContent(qContent);
-				a.setMemNo(memNo);
-				
-				
-		int result = new AnswerService().insertAnswer(a);
-		
-		if(result > 0) { 
-			session.setAttribute("alertMsg", "성공적으로 문의가 등록되었습니다!");
-		}else { 
-			session.setAttribute("alertMsg", "등록 실패하였습니다.");
-			
-		} response.sendRedirect(request.getContextPath() + "/enroll.as");
 		
 	}	
-		
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

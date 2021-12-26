@@ -1,28 +1,23 @@
 package com.dashi.member.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dashi.member.model.service.MemberService;
-import com.dashi.member.model.vo.Member;
-
 /**
- * Servlet implementation class AdminBlackListMemController
+ * Servlet implementation class BlackListView
  */
-@WebServlet("/blackList.ad")
-public class AdminBlackListMemController extends HttpServlet {
+@WebServlet("/BlackListView")
+public class BlackListView extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminBlackListMemController() {
+    public BlackListView() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,8 +27,6 @@ public class AdminBlackListMemController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Member> list = new MemberService().selectBlackList();
-		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/admin/adminBlackListMem.jsp").forward(request, response);
 	}

@@ -53,7 +53,8 @@ import static com.dashi.common.JDBCTemplate.*;
 						   , rset.getInt("MEM_NO")
 						   , rset.getString("Q_TITLE")
 						   , rset.getString("Q_CONTENT")
-						   , rset.getDate("Q_CREAT"));
+						   , rset.getDate("Q_CREAT")
+						   , rset.getString("AN_CONTENT"));
 				
 				list.add(as);
 				System.out.println(as);
@@ -83,6 +84,7 @@ import static com.dashi.common.JDBCTemplate.*;
 				pstmt.setString(1, a.getqTitle());
 				pstmt.setString(2, a.getqContent());
 				pstmt.setInt(3, a.getMemNo());
+
 				
 				result = pstmt.executeUpdate();
 				
@@ -184,7 +186,9 @@ import static com.dashi.common.JDBCTemplate.*;
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, n.getqTitle());
 				pstmt.setString(2, n.getqContent());
-				pstmt.setString(3, n.getInquireNo());
+				pstmt.setString(3, n.getAnContent());
+				pstmt.setString(4, n.getInquireNo());
+				
 				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
@@ -195,6 +199,38 @@ import static com.dashi.common.JDBCTemplate.*;
 			
 			return result;		
 		} //user 수정
+		
+		
+		public int requestAnswer(Connection conn, Answer n) {
+			// update => 트랜잭션
+			int result = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("requestAnswer");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);			
+				pstmt.setString(1, n.getInquireNo());
+				pstmt.setString(2, n.getAnContent());
+				result = pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(pstmt);
+			}
+			
+			return result;		
+		} 
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 }
 	

@@ -12,7 +12,6 @@
 <meta charset="UTF-8">
 <title>1:1 문의관리</title>
 <style>
-
     .outer{
         width: 1100px;
         height: 800px;
@@ -29,22 +28,17 @@
          margin-left: 30px;
          width: 850px;
     }
-    #adminNoticeList div{}
+    #adminNoticeList div{float: left;}
     /*검색창*/
     #search{width: 200px;}
     #btn{
         width: 650px;
-        font-size:13px;
     }
     #btn>button{
         border-radius: 5px;
         border: white;
         width: 60px;
         font-size: 13px;
-    }
-     .btn-primary {
-    	background:rgb(143,153,142);
-    	border-color:rgb(143,153,142);
     }
     thead, tbody{
         text-align: center;
@@ -60,13 +54,10 @@
     }
     /*타이틀 정리*/
     #title{
+        width: 100%; 
         font-size: 24px; 
         font-weight: 700;
         margin-top: 20px;
-        width:700px;
-    }
-    #content{
-    border:1px solid rgb(143,153,142);
     }
     #searchbtn{
     background: rgb(102,184,94);
@@ -80,7 +71,7 @@
     text-transform: uppercase;
     padding: 5px;
     }
-	
+
     .checkState{
         border-radius: 10px;
         }
@@ -105,17 +96,6 @@
         height:35px; 
         margin: 0;
     }
-    .btn-warning{
-  	font-size: 13px; !important
-    margin-left: 8px;
-    color: black;
-   }
-    .btn-answer{
-    	width:200px;
-    }
-  
-    
-    
 </style>
 </head>
 <body> 
@@ -123,17 +103,27 @@
     
     <!--전체를 감싸는 큰 div-->
     <div class="outer">
-            <!-- 1:1 목록-->        
-       <table align="center" class="answer-table" width="900px">
-           		<div id="title" style="width:800px; margin-left:100px;">
-                    	1:1 문의 수정
-                <hr style="width: 900px;">
+    
+                <div style="margin-left:100px;" id="title">
+                    	1:1 문의 관리
                 </div>
-       
-       	<form action="<%=contextPath%>/asupdate?asno=<%=n.getInquireNo()%>" method="post">               
+		  	 <hr style="width: 900px;">
+		<% if(loginUser!=null && loginUser.getMemNo()==(n.getMemNo()) ){ %>	
+            <!-- 1:1 목록-->
+        <div id="answerlist" >
+                	<div id="btn-answer" align="right"; style="margin-bottom:10px; margin-right:100px;" >
+                   		<a href="<%= contextPath %>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-warning">
+	                        	수정
+	                    </a>
+	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-primary">
+	                        	삭제
+	                    </a>
+                	</div>
+	<% } %>
+                
+       <table align="center" class="answer-table" width="900px">
+              
         <tbody>
-         
-           
         <tr> <!-- no -->
             <th  width=220 colspan="2">글번호</th> 
             <td  width=780><%= n.getInquireNo() %></td> 
@@ -143,55 +133,45 @@
             <th  width=220 colspan="2">조회수 </th> 
             <td  width=780><%= n.getViewCount() %></td>              
         </tr>         
-        
+    
         <tr> <!-- date -->
             <th  width=220 colspan="2"> 작성날짜  </th> 
             <td  width=780><%= n.getqCreat() %></td>              
         </tr>
         <tr> <!-- 제목 -->
             <th width=220 colspan="2">제목 </th>
-            <td width=780><input style="width:760px;" type="text" name="qTitle" value="<%=n.getqTitle()%>"></td>
+            <td width=780><%=n.getqTitle()%></td>
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
-            <th width=220 colspan="2" rowspan=" ">문의내용  </th>
-            <td width=780><textarea name="qContent" cols="100" rows="15" style="resize: none;" required><%=n.getqContent()%></textarea></td>
+            <th width=220 colspan="2" rowspan="2">문의내용  </th>
+            <td width=780 name="qcontent" height=300 ><%=n.getqContent()%></td>
         </tr>
-        <tr><td></td><td></td></tr>
-        <tr >
-        <th style="margin-top:50px;" width=220 colspan="2">답변</th>
-        <td style="margin-top:50px;" width=780> 
-        <textarea name="anContent"class="anContent" placeholder="내용 입력" cols="100" rows="10" style="resize:none">
-        <%=n.getAnContent() %></textarea></td>
-        </tr>
-  
+        
      	</tbody>
-     	</table> 
-     	 <div id="answerlist" >
-    	 
-                	<div id="btn-answer" align="right"; style="float:right; margin-top:30px; margin-right:100px;" >
-                   		 <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94); margin-right:8px">
-                        	수정완료
-                    	</button>
-	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-danger">
-	                        	삭제
-	                    </a>
-	                     
-			 			 <button type="button" class="btn-warning btn" style="font-size:13px; margin-left:8px;" onclick="location.href='<%=contextPath%>/asList.as';" >목록으로</button>
-			 			 
-                	</div>
+     </table>
+     
+     	<div class="ad-answer"> 
+    	<hr><table align="center" width="900px" class="answer-table"style="margin-bottom:100px;">
+    	<form action="<%= contextPath %>/" method="post">
+     	<tr> <!-- 문의내용 -->
+            <th width=220 colspan="2" rowspan="2"> <b>답변</b></th>
+            
+           		<td width=780 style="padding:10px;">
+                 
+                 <%= n.getAnContent() %> 
+            	</td>
+          
+        </tr>
+        </table>	
     		 </div>
-    	 
+    	</div>
     	
-    	
-    	 </form>
-    	 </div></div>
-    	
-		<!-- 관리자는 답변하기 버튼 보이게  -->
-		<!-- 조건문으로 관리자 답변창 띄우고 ,  -->
+    	<div>
+    	 <a class="btn btn-warning" href="<%=contextPath%>/adupdate.ad?asno=<%=n.getInquireNo()%>;" style="font-size:13px; margin-top:20px; margin-right:100px;float:right;">답변등록</a>
+     </div>
 	
-		
 	
-	<div style="margin-top:400px;">
+	<div style="margin-top:100px;">
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
 	</div>

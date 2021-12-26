@@ -10,44 +10,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+
 <title>Insert title here</title>
 <style>
     .outer{
         width: 1100px;
         margin: auto;
         margin-top: 50px;
-        height:1200px
+        height:1200px;
+        
     }
     .outer>div{
-         
+        float: left; 
         box-sizing: border-box;
     }
-    .as-banner>div{
-    	display:inline-block;
-    }
-    /**/
-    #name, #serve, #meno{margin-top: 10px; height:  0px;}
+    /*자주하는질문~노력하겠습니다div*/
+    #name, #serve, #meno{margin-top: 10px; height: 50px;}
     #name{
-        width: 120px;
+        width: 250px;
         font-size: 24px;
         line-height: 50px;
         font-weight: 900;
-        margin-left:20px;
+        height:50px;
     }
     #serve{
         width: 450px;
-        line-height: 25px;
-        font-size:15px;
-        font-weight: 10px;
-        color:green;
-         
+        color: darkgray;
+        line-height: 60px;
     }
     #meno{width: 700px;}
     #meno>div{
@@ -59,48 +48,48 @@
         width: 200px;
         height: 100px;
         position: absolute;
-       	margin-left: 730px;
-        margin-right:400px;
+        margin-left: 880px;
     }
-    .as-title{
-    	font-weight:900px;
+    /*키워드 검색*/
+    #kDiv{width: 100%;}
+    .keyword{
+        float: left;
+        width: 90px;
+        text-align: left;
+        margin-bottom: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        color: rgb(84, 103, 121);
+    }
+    .keyword:hover{
+        color:orange;
+        cursor: pointer;
+    }
+    /*FAQ 목록*/
+    #list>table{
+        text-align: center;
     }
     thead>tr{height: 30px;}
+    /*답변작업*/
     .question:hover{
         cursor: pointer;
     }
-	.Answer{
-		display:none;
-	}    
-	
+   .faqAnswer{
+      display:none;
+   }
+    /*pagingbar*/
     .paging-area{
         width: 100%;
         margin-top: 30px;
     }
-    tbody>tr>td:hover{
-    	color:rgb(40,112,37);
+    .paging-area>button{
+       border-radius:3px;
+       border:none;
     }
- 
-    /* 글작성 버튼 */
-    .btn-1{
-	  background: rgb(102,184,94);
-	  font-size: 15px;
-	  border: none;
-	  border-radius: 5px;
-	  color: #fff;
-	  display: block;
-	  font-size: 15px;
-	  font-weight: bold;
-	  margin: 1em auto;
-	  padding: 0.5em 1em;
-	  position: relative;
- 	  text-transform: uppercase;
-	 }
-
-	.ButtonBox-right{
-	margin-top:30px;
-	float: right;}
-	
+   
+    
+     
+    
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -115,86 +104,120 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	
+   
     <%@ include file="../common/menubar.jsp" %>
     
 
-     <!--전체 div-->
-	<div class="outer">
-		<div class="as-banner">
+    <!--전체 div-->
+   <div class="outer">
+
+        <!--게시판 안내-->
+        <div class="as-banner">
         <!--게시판 안내-->
         <div id="name" class="as-title">
             1:1 문의
-            <div id="serve">
-	            	서비스 이용시 궁금하신 부분은 문의남겨주세요. <br>
-	            	관리자의 확인 후 답변드리겠습니다 :) 
-	        </div>
-        </div>        
+        <br><br><br>         
+          
+        </div>  
+        <hr>          
 
-        <!--상담전화카드-->
-        <div id="call">
-            <img src="<%=contextPath%>/resources/images/FAQphonecard.JPG" alt="상담전화카드 사진입니다." style="width:100%">
-        </div>
- 		</div>
- 		<br>
- 		<hr>
- 		<br> 
-        <!--리스트-->
- 
- 
- 			<div class="answer-table">
-			<table class="answer-table" style="text-align:center">
-    			 <thead  class="thead-light">
-                    <tr style="margin-bottom:30px;">
+        
+  
+  
+        <!--FAQ 리스트-->
+        <div id="list" style="font-size:15px;">
+            <table class="table table-hover">
+                <thead class="thead-light">
+                    <tr>
                         <th width="140px">게시물번호</th>
                         <th width="820px">제목</th>
                         <th width="120px">날짜</th>
+
                     </tr>
                 </thead>
                 
-    			<tbody>
-                	<% if(list.isEmpty()){ %>
-                    	<!--answer 없을 때-->
-	                    <tr>
-	                        <td colspan="5">게시된 질문이 없습니다.</td>
-	                    </tr>
-	        				<% }else{ %>
-	                    		<!--answer 있을 때-->
-	                    		<% for(Answer a: list){ %>
-	       						<tr class="question">	
-		                        <td><%=a.getInquireNo()%></td>
-		                        <td><%=a.getqTitle()%></td>
-		                        <td><%=a.getqCreat()%></td>
-		                    	</tr>
-   							 	<% } %>
-   							<% } %>
-   					</tbody>
-   					 
-		</table>
-		
- 			 <div>
- 			 <button type="button" class="btn-1 ButtonBox-right" onclick="location.href='<%=contextPath%>/enroll.as';" >글쓰기</button>
- 			 </div>
-  
-        
+                <tbody>
+                   <% if(list.isEmpty()){ %>
+                       <!--answer 없을 때-->
+                       <tr>
+                           <td colspan="5">게시된 질문이 없습니다.</td>
+                       </tr>
+   					<% }else{ %>
+  <!--answer 있을 때-->
+                             <% for(Answer a: list){ %>
+                            <tr class="question">  
+                              <td><%=a.getInquireNo()%></td>
+                              <td><%=a.getqTitle()%></td>
+                              <td><%=a.getqCreat()%></td>
+                             </tr>
+
+   
+                       <!--FAQ 답변창-->
+                       <tr class="faqAnswer">
+                           <td colspan="5" style="background:#c0e2bc; font-size:15px; text-align:center;">
+                               <div>
+                                   <p><b>문의내용</b><br>
+                                         <%=a.getqContent()%>
+                                   <hr>
+                                   </p><b style="color:green;">관리자 답변</b>
+                                   <p style="font-weight: 600;">
+                                          <%=a.getAnContent()%>
+                                   </p>
+                                 <% if(loginUser!=null && loginUser.getMemNo()==(a.getMemNo()) ){ %>	
+                                   <p align="right";><a href="<%=contextPath%>/updateview?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-warning">
+                                        		  수정
+                                   </a>
+                                   <a href="<%=contextPath%>/asdelete?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-danger">
+                                      		 삭제
+                  	                 </a></p>
+                                   <% } %>
+                               </div>
+                           </td>
+                       </tr>
+                       <% } %>
+                    <% } %>
+                </tbody>
+            </table>
         </div>
-        
+
+      
        
-        </div>
+
+    </div>
+    
+      <% if(loginUser!=null){ %>
+           <div style="margin-top:40px;">
+           <button type="button" class="btn btn-success" onclick="location.href='<%=contextPath%>/enroll.as';" >글쓰기</button>
+           </div>
+        <% } else { %>
+            <div>
+           <button type="button" class="btn btn-success" onclick="location.href='<%=contextPath%>/asList.as';" >로그인 후 작성가능</button>
+           </div>
+        <% } %>
+</div>
+    <script>
         
-     <div style="margin-top:10px;">  
-	<%@ include file="../common/footerbar.jsp" %>
-	</div>  
-	<script>
-        	$(function(){
-        		$(".answer-table>tbody>tr").click(function(){
-        			        			
-        			location.href = '<%=contextPath%>/userdatail.as?asno='+ $(this).children().eq(0).text();
-        		})
-        	})
-        </script>
- 	
- 	
-	
+        $(function(){
+            $(".question").click(function(){
+                
+                const $answer = $(this).next(); 
+
+                if($answer.css("display") == "none"){
+
+                    $(this).siblings(".faqAnswer").slideUp();
+
+                    $answer.slideDown(1000);
+
+                }else{
+
+                    $answer.slideUp();
+                }
+            })
+        })
+        
+    </script>
+
+   <%@ include file="../common/footerbar.jsp" %>
+
 </body>
 </html>

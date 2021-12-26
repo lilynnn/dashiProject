@@ -9,9 +9,11 @@ SELECT
     , Q_CONTENT
     , Q_CREAT
     , MEM_NO
+    , AN_CONTENT
     FROM ANSWER  
     WHERE NO_STATUS = 'N' 
 </entry>
+
 
 <entry key="insertAnswer">
 INSERT 
@@ -36,13 +38,14 @@ INSERT
 	INTO ANSWER 
     ( 
   	 AN_CONTENT
-  	 MN_NO
+  
     )
     VALUES
     (
    	 ?
-    ,?
+ 
     )
+WHERE INQUIRE_NO = ?
 </entry>
 
 
@@ -92,13 +95,20 @@ SELECT
 		   ANSWER
 		   SET Q_TITLE = ?
 		     , Q_CONTENT = ?
+		     , AN_CONTENT= ?
 		 WHERE INQUIRE_NO = ?
 	</entry>
 
 
+<entry key="requestAnswer">
+	UPDATE
+		   ANSWER
+		   SET AN_CONTENT = ?
+		 WHERE INQUIRE_NO = ?
+	</entry>
 
 
-
+ 
 
 
 

@@ -112,7 +112,7 @@
          	<div align="right"><a class="entrance">로그인 후 신청가능</a></div>
          <% } %>
        	  <!--1:1문의 버튼 -->
-          <div><a href="<%=contextPath%>/insert.as" class="answer">1:1 문의</a></div>
+          <div><a href="<%=contextPath%>/asList.as" class="answer">1:1 문의</a></div>
       
       </div>
 

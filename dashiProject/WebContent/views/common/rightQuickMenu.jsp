@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import = "com.dashi.member.model.vo.Member" %>
+<% 
+
+	Member user = (Member)session.getAttribute("loginUser");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,6 +104,7 @@
 	
 	#answer-box .modal-header{
 		border-bottom:0;
+		padding-bottom: 0px;
 	}
 	
 	#answer-box .modal-title{
@@ -172,8 +178,8 @@
 		<div class="sidebar">
 		
 			<div>
-				<button class="modal-btn" type="button" data-toggle="modal" data-target="#answer-box">
-				 	</a><img src="<%=request.getContextPath()%>/resources/images/answer.png">
+				<button class="modal-btn" type="button" onclick="location.href='<%=request.getContextPath()%>/asList.as';">
+				 	<img src="<%=request.getContextPath()%>/resources/images/answer.png">
 				</button>
 			</div>
 		
@@ -188,51 +194,8 @@
 			<div><img id="top" src="<%=request.getContextPath()%>/resources/images/up.png" width="50%" height="100%"></div>
 		</div>	
 
-		<!-- The Modal -->
-		<div class="modal" id="answer-box">
-		  <div class="modal-dialog">
-		    <div class="modal-content">
-		
-		
-		      <!-- Modal Header -->
-		      <div class="modal-header">
-		        <h4 class="modal-title"><a href="<%=request.getContextPath()%>/asList.as">1:1 문의</a></h4>
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		      </div>
-		
-		      <!-- Modal body -->
-		      <div class="modal-body">
-		      
-		 
-		      	<div class="modal-label">
-		      	성함 
-		      	</div>
-		       <input placeholder="성함을 입력해주세요" type="text" />
-		       
-		       	<div class="modal-label">
-		      	연락처
-		      	</div>
-		       <input placeholder="연락처를 입력해주세요" type="text" />
-		       
-		       	<div class="modal-label">
-		      	문의내용
-		      	</div>
-		       <textarea placeholder="내용을 입력하세요" ></textarea>
-		      
-		       
-		       
-		      </div>
-		
-		      <!-- Modal footer -->
-		      <div class="modal-footer">
-		        <button type="button" class="btn" data-dismiss="modal">제출</button>
-		      </div>
-		
-		    </div>
-		  </div>
-		</div>
+	 
 
-		
 		<script>
 			$('#top').click(function(){
 				$('html, body').animate({scrollTop:0}, 400);

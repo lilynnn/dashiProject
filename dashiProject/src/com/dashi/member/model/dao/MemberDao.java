@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.adoptBoard.model.vo.AdoptApply;
+import com.dashi.answerBoard.model.vo.Answer;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.vo.Member;
 
@@ -174,6 +175,38 @@ public class MemberDao {
 								   rset.getString("ADOPT_YN"),
 								   rset.getString("PAY_YN"),
 								   rset.getInt("GRADE")));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+		
+	}
+	
+	//블랙리스트 조회
+	public ArrayList<Member> selectBlackList(Connection conn){
+		ArrayList<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectBlackList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+		 
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("MEM_NO"),
+									rset.getString("MEM_ID"),
+								   rset.getString("MEM_NAME"),
+								   rset.getDate("BLACK_DATE"),
+								   rset.getInt("GRADE"),
+								   rset.getString("BLACKLIST_YN")));
 			}
 			
 		} catch (SQLException e) {
@@ -596,7 +629,29 @@ public class MemberDao {
 	}
 	
 	
-	
+	//grade 수정 (bl->일반)
+			public int deleteBlackGrade(Connection conn, Member m) {
+				// update => 트랜잭션
+				int result = 0;
+				PreparedStatement pstmt = null;
+				
+				String sql = prop.getProperty("deleteBlackGrade");
+				
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, m.getMemNo());
+					
+					
+					result = pstmt.executeUpdate();
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close(pstmt);
+				}
+				
+				return result;		
+			} //user 수정
 	
 
 }

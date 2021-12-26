@@ -122,9 +122,25 @@ public class Member {
 	}
 
 	
-
+	public Member(int memNo, String MemId, String memName, Date blackDate, int grade) {
+		super();
+		this.memNo=memNo;
+		this.memId = memId;
+		this.memName = memName;
+		this.blackDate = blackDate;
+		this.grade = grade;
+		 
+	}
 	
-	
+	public Member(int memNo, String MemId, String memName, Date blackDate, int grade, String blackYN) {
+		super();
+		this.memNo=memNo;
+		this.memId = memId;
+		this.memName = memName;
+		this.blackDate = blackDate;
+		this.grade = grade;
+		this.blackYN=blackYN;
+	}
 
 	public void setMemNo(int memNo) {
 		this.memNo = memNo;

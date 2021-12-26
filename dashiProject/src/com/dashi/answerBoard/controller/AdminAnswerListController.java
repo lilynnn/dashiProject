@@ -1,25 +1,28 @@
 package com.dashi.answerBoard.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AdminAnswerMng
- */
+import com.dashi.answerBoard.model.service.AnswerService;
+import com.dashi.answerBoard.model.vo.Answer;
 
-/*관리자 1:1 답변관리view*/
-@WebServlet("/adAnswer.as")
-public class AdminAnswerMngController extends HttpServlet {
+/**
+ * Servlet implementation class AdminAnswerListController
+ */
+@WebServlet("/adlist.as")
+public class AdminAnswerListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdminAnswerMngController() {
+    public AdminAnswerListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,9 +31,12 @@ public class AdminAnswerMngController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		ArrayList<Answer> list = new AnswerService().selectAnswerList();
 		
-		
-		request.getRequestDispatcher("views/answerBoard/adminAnswerMng.jsp").forward(request, response);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/answerBoard/adminanswerListView.jsp").forward(request, response);	
+	
 	}
 
 	/**

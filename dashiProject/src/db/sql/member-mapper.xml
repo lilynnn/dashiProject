@@ -281,6 +281,23 @@
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 
+<entry key="selectBlackList">
+	SELECT MEM_NO
+	,MEM_ID
+	,MEM_NAME
+	,BLACK_DATE
+			 FROM MEM_INFO
+			 WHERE GRADE = 4
+			 AND BLACKLIST_YN ='Y'
+	</entry>
+	
 
-
+<entry key="deleteBlackGrade">
+	UPDATE
+		   MEM_INFO
+		   SET GRADE = 1
+		 WHERE MEM_NO = ?
+	</entry>
+	
+	
 </properties>

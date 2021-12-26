@@ -1,106 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.dashi.common.model.vo.*,java.util.ArrayList, com.dashi.answerBoard.model.vo.Answer" %>
 <%
-	 
-	ArrayList<Answer> list = (ArrayList<Answer>)request.getAttribute("list"); 
-	 
+    
+   ArrayList<Answer> list = (ArrayList<Answer>)request.getAttribute("list"); 
+    
 %>
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+ 
 <body>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 1:1 </title>
+
+
 <style>
     .outer{
         width: 1100px;
-        margin: auto;
+        height: 1500px;
         margin-top: 50px;
-        height:1200px
+        margin: auto;
     }
-    .outer>div{
-         
+    #menubar{width: 200px;}
+    .outer>div{float: left;}
+    /*faq목록*/
+    .faqLine{
+        width: 800px;
         box-sizing: border-box;
+        margin: 20px;
     }
-    .as-banner>div{
-    	display:inline-block;
-    }
-    /**/
-    #name, #serve, #meno{margin-top: 10px; height:  0px;}
-    #name{
-        width: 120px;
-        font-size: 24px;
-        line-height: 50px;
-        font-weight: 900;
-        margin-left:20px;
-    }
-    #serve{
-        width: 450px;
-        line-height: 25px;
-        font-size:15px;
-        font-weight: 10px;
-        color:green;
-         
-    }
-    #meno{width: 700px;}
-    #meno>div{
-        width: auto;
+    .faqLine>div{
         float: left;
+    }
+    #faqLine1{
+        width: 100%;
+        font-size: 24px;
         font-weight: 900;
+        margin-top: 20px;
     }
-    #call{
-        width: 200px;
-        height: 100px;
-        position: absolute;
-       	margin-left: 730px;
-        margin-right:400px;
+    #faqLine2{
+        width: 100%;
+        height: 50px;
+        box-sizing: border-box;
+        margin-left:30px;
     }
-    .as-title{
-    	font-weight:900px;
+    #faqLine2>div{
+        float: left;
+        height: 100%;     
     }
-    thead>tr{height: 30px;}
+    #faqLine2>div>*{
+        float: left;  
+    }
+    #aFadList{width: 100%; margin-left:30px;}
+    .faqAnswer a{
+        color: black;
+        font-size: 12px;
+        font-weight: 600;
+    }
     .question:hover{
         cursor: pointer;
     }
-	.Answer{
-		display:none;
-	}    
-	
-    .paging-area{
-        width: 100%;
-        margin-top: 30px;
+    .faqAnswer{display: none;}
+    #sel-faq{
+       font-weight:700px;
+       color:rgb(252, 186, 3);
     }
-    tbody>tr>td:hover{
-    	color:rgb(40,112,37);
+    #faq-search{
+       width:100%;
+       height:50px;
     }
- 
-    /* 글작성 버튼 */
-    .btn-1{
-	  background: rgb(102,184,94);
-	  font-size: 15px;
-	  border: none;
-	  border-radius: 5px;
-	  color: #fff;
-	  display: block;
-	  font-size: 15px;
-	  font-weight: bold;
-	  margin: 1em auto;
-	  padding: 0.5em 1em;
-	  position: relative;
- 	  text-transform: uppercase;
-	 }
-
-	.ButtonBox-right{
-	margin-top:30px;
-	float: right;}
-	
+    #faq-search>div{float:left;}
+    #faq-search>div>*{float:left;}
+    #insertbtn{
+       width:100px;
+       height:30px;
+    }
+    .table-hover tr>td{
+       font-size:14px;
+    }
 </style>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -113,80 +93,130 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-	
-    <%@ include file="../common/menubar.jsp" %>
-    
+   
+   <%@ include file="../common/menubar.jsp" %>
 
-     <!--전체 div-->
-	<div class="outer">
-		<div class="as-banner">
-        <!--게시판 안내-->
-        <div id="name" class="as-title">
-            [관리자 전용] 1:1 문의 
-            <div id="serve">
-				1:1 문의 관리자 페이지입니다.
-	        </div>
-        </div>        
+    <div class="outer">
 
-        
- 		<br> 
-        <!--리스트-->
- 
- 			<div class="answer-table">
-			<table class="answer-table" style="text-align:center">
-    			 <thead  class="thead-light">
-                    <tr style="margin-bottom:30px;">
-                        <th width="140px">게시물번호</th>
-                        <th width="820px">제목</th>
-                        <th width="120px">날짜</th>
-                    </tr>
-                </thead>
+        <div id="menubar">
+            <%@ include file="../admin/adminMenubar.jsp"%>
+        </div>
+
+        <div class="faqLine">
+            
+            <div id="faqLine1">
+               관리자 1:1
+                <hr>
+            </div>
+
+            <div id="faqLine2">
+
+                <div id="insertbtn" style="width:100px; height:40px;">
+                    <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
+                           등록하기
+                    </a>
+                </div>
+            </div>
+
+            
+            <div id="aFadList">
+                <table class="table table-hover">
+                    <thead>
+                        <tr align="center" style="font-size:15px;">
+                            <th width="100">No.</th>
+                            <th width="470">제목</th>
+                            <th width="80">날짜</th>
+                            <th width="80"></th>
+                            <th width="80"></th>
+                            <th width="80"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>                       
+                        <% if(list.isEmpty()){ %>
+                      <!--as없을 때-->
+                       <tr>
+                           <td colspan="5">게시된 문의가 없습니다.</td>
+                       </tr>
+                    <% }else{ %>
+                       <!--as 있을 때-->
+                       <% for(Answer n: list){ %>
+                           <tr align="center" class="question">
+                            
+                               <td><%=n.getInquireNo()%></td>
+                               <td>
+                                   <%=n.getqTitle()%>
+                               </td>
+                               <td>
+                                   <%=n.getqCreat()%>
+                               </td>
+                               <td id="faqNum"><a href="<%=contextPath%>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-warning">
+                                          수정
+                                   </a>
+</td> <td id="faqNum"> <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-danger">
+                                       삭제
+
+</td>
+ <td id="faqNum"><a href="" class="btn btn-sm btn-primary">
+                                       답변
+                                   </a>
+
+</td>
+                           </tr>
+   
+                           <!--답변 있을경우-->
+                           <tr class="faqAnswer" style="background: lightgray;">
+                               <td></td>   
+                               <td colspan="4" id="titleNcontent">
+                                     <%=n.getqCreat()%>
+                                   <hr>
+                                      <%=n.getAnContent()%>
+                               </td>
+                           </tr>
+                     <% } %>
+                       <% } %>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+      
+      <div style="width:100%" align="center">
+         <a href="<%=contextPath%>/faqList.ad" class="btn btn-sm btn-light">목록으로</a>
+      </div> 
+    </div>
+
+    <script>
+        $(function(){
+            $(".question").click(function(){
                 
-    			<tbody>
-                	<% if(list.isEmpty()){ %>
-                    	<!--answer 없을 때-->
-	                    <tr>
-	                        <td colspan="5">게시된 질문이 없습니다.</td>
-	                    </tr>
-	        				<% }else{ %>
-	                    		<!--answer 있을 때-->
-	                    		<% for(Answer a: list){ %>
-	       						<tr class="question">	
-		                        <td><%=a.getInquireNo()%></td>
-		                        <td><%=a.getqTitle()%></td>
-		                        <td><%=a.getqCreat()%></td>
-		                    	</tr>
-   							 	<% } %>
-   							<% } %>
-   					</tbody>
-   					 
-		</table>
-		
- 			 <div>
- 			 <button type="button" class="btn-1 ButtonBox-right" onclick="location.href='<%=contextPath%>/enroll.as';" >글쓰기</button>
- 			 </div>
-  
+                const $answer = $(this).next();  
+
+                if($answer.css("display") == "none"){
+
+                    $(this).siblings(".faqAnswer").slideUp();
+
+                    $answer.slideDown(1000);
+
+                }else{
+
+                    $answer.slideUp();
+
+                }
+
+            })
+        })
         
-        </div>
         
-       
-        </div>
-        
-     <div style="margin-top:10px;">  
-	<%@ include file="../common/footerbar.jsp" %>
-	</div>  
-	<script>
-        	$(function(){
-        		$(".answer-table>tbody>tr").click(function(){
-        			        			
-        			location.href = '<%=contextPath%>/userdatail.as?asno='+ $(this).children().eq(0).text();
-        		})
-        	})
-        </script>
- 	
- 	
-	
+    </script>
+
+
+
+
+   <%@ include file="../common/footerbar.jsp" %>
+
 </body>
 </html>

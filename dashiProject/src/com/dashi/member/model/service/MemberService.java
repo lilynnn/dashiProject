@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.dashi.adoptBoard.model.vo.AdoptApply;
+import com.dashi.answerBoard.model.dao.AnswerDao;
+import com.dashi.answerBoard.model.vo.Answer;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.dao.MemberDao;
 import com.dashi.member.model.vo.Member;
@@ -96,7 +98,13 @@ public class MemberService {
 		return m;
 	}
 	
-	
+	// 블랙리스트 조회
+		public ArrayList<Member> selectBlackList(){
+			Connection conn = getConnection();
+			ArrayList<Member> list = new MemberDao().selectBlackList(conn);
+			close(conn);
+			return list;
+		}
 	
 	
 	
@@ -195,7 +203,18 @@ public class MemberService {
 	}
 	
 	
-	
+	public int deleteBlackGrade(Member m) {
+		Connection conn = getConnection();
+		int result = new MemberDao().deleteBlackGrade(conn, m);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	} //수정
 	
 	
 	

@@ -81,5 +81,17 @@ public class AnswerService {
 		return result;
 	} //수정
 	
-	
+	public int requestAnswer(Answer n) {
+		Connection conn = getConnection();
+		int result = new AnswerDao().updateAnswer(conn, n);
+		if(result > 0) {
+			commit(conn);
+		}else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		return result;
+	} 
+
 }

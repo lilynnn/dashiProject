@@ -31,7 +31,6 @@ public class Answer {
 		this.inquireAnswerDate = inquireAnswerDate;
 		this.mnNo = mnNo;
 		this.viewCount=viewCount;
-		 
 	}
 	
 	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat) {
@@ -44,6 +43,26 @@ public class Answer {
 		
 	}
  
+	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat, String anContent) {
+		super();
+		this.inquireNo = inquireNo;
+		this.memNo = memNo;
+		this.qTitle = qTitle;
+		this.qContent = qContent;
+		this.qCreat = qCreat;
+		this.anContent=anContent;
+	}
+	
+	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat, String anContent,int mnNo) {
+		super();
+		this.inquireNo = inquireNo;
+		this.memNo = memNo;
+		this.qTitle = qTitle;
+		this.qContent = qContent;
+		this.qCreat = qCreat;
+		this.anContent=anContent;
+		this.mnNo=mnNo;
+	}
 	
 	public Answer(String inquireNo, int memNo, String qTitle, String qContent, Date qCreat, int viewCount) {
 		super();

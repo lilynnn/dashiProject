@@ -162,7 +162,7 @@
     
     <hr>
     
-     <div><button type="submit" class="btn-1 ButtonBox-right">제출하기</button></div>
+     <div><button type="submit" class="btn btn-success">제출하기</button></div>
     
 
     </form>

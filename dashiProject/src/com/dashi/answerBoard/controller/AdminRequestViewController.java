@@ -6,25 +6,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.dashi.answerBoard.model.service.AnswerService;
 import com.dashi.answerBoard.model.vo.Answer;
-import com.dashi.member.model.vo.Member;
 
 /**
- * Servlet implementation class AnswerForm
+ * Servlet implementation class AdminRequestViewController
  */
-
-/*사용자 1:1 등록 기능구현*/
-@WebServlet("/insert.as")
-public class AnswerInsertController extends HttpServlet {
+@WebServlet("/requestView.ad")
+public class AdminRequestViewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerInsertController() {
+    public AdminRequestViewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,37 +30,22 @@ public class AnswerInsertController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.setCharacterEncoding("UTF-8");
+		String answerNo = request.getParameter("asno");
 		
-		 
-		String qTitle = request.getParameter("qTitle");
-		String qContent= request.getParameter("qContent");
+		AnswerService as = new AnswerService();
+		int result = as.increaseCount(answerNo);
 		
-		System.out.println(qTitle);
-		System.out.println(qContent);
-		
-		HttpSession session = request.getSession();
-		int memNo = ((Member)session.getAttribute("loginUser")).getMemNo();
-		
+		if(result > 0) {
+			Answer n = as.selectDetailAnswer(answerNo);
 
-				Answer a = new Answer();
-				
-				a.setqTitle(qTitle);
-				a.setqContent(qContent);
-				a.setMemNo(memNo);
-				
-				
-		int result = new AnswerService().insertAnswer(a);
+			request.setAttribute("n", n);
+			request.getRequestDispatcher("views/answerBoard/adDetail.jsp").forward(request, response);			
+
+		}else {
+			request.getSession().setAttribute("alertMsg", "게시글 조회 실패");
+		}
 		
-		if(result > 0) { 
-			session.setAttribute("alertMsg", "성공적으로 문의가 등록되었습니다!");
-		}else { 
-			session.setAttribute("alertMsg", "등록 실패하였습니다.");
-			
-		} response.sendRedirect(request.getContextPath() + "/enroll.as");
-		
-	}	
-		
+	}
 	
 
 	/**

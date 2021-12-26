@@ -108,7 +108,7 @@
                     	1:1 문의 관리
                 </div>
 		  	 <hr style="width: 900px;">
-			
+		<% if(loginUser!=null && loginUser.getMemNo()==(n.getMemNo()) ){ %>	
             <!-- 1:1 목록-->
         <div id="answerlist" >
                 	<div id="btn-answer" align="right"; style="margin-bottom:10px; margin-right:100px;" >
@@ -119,7 +119,7 @@
 	                        	삭제
 	                    </a>
                 	</div>
-
+	<% } %>
                 
        <table align="center" class="answer-table" width="900px">
               
@@ -133,10 +133,7 @@
             <th  width=220 colspan="2">조회수 </th> 
             <td  width=780><%= n.getViewCount() %></td>              
         </tr>         
-        <tr> <!-- 아이디 -->
-            <th  width=220 colspan="2">아이디 </th> 
-            <td  width=780><%= n.getMemId() %></td>              
-        </tr>
+    
         <tr> <!-- date -->
             <th  width=220 colspan="2"> 작성날짜  </th> 
             <td  width=780><%= n.getqCreat() %></td>              
@@ -147,24 +144,40 @@
         </tr>
         <tr style="margin-bottom:30px;" > <!-- 문의내용 -->
             <th width=220 colspan="2" rowspan="2">문의내용  </th>
-            <td width=780 height=300 ><%=n.getqContent()%></td>
+            <td width=780 name="qcontent" height=300 ><%=n.getqContent()%></td>
         </tr>
         
      	</tbody>
      </table>
+     
+     	<div class="ad-answer"> 
+    	<hr><table align="center" width="900px" class="answer-table"style="margin-bottom:100px;">
+     	
+     	 <% if(n.getAnContent() == null){ %>
+            
+     	<tr> <!-- 문의내용 -->
+            <th width=220 colspan="2" rowspan="2"> <b>답변</b></th>
+           
+            <td width=780> <div>질문 확인 중입니다.</div> </td>
+            </tr>
+            <% } else { %>
+            <tr>
+            	<th width=220 colspan="2" rowspan="2"> <b>답변</b></th>
+           		<td width=780 style="padding:10px;">
+                 <%= n.getAnContent() %> 
+            	</td>
+            <% } %>
+          
+        </tr>
+        </table>	
     		 </div>
     	</div>
     	
-    	 
-    	
-		<!-- 관리자는 답변하기 버튼 보이게  -->
-		<!-- 조건문으로 관리자 답변창 띄우고 ,  -->
+    
 	
-	
-	
-	
+	<div style="margin-top:100px;">
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
-	
+	</div>
 </body>
 </html>

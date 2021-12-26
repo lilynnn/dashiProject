@@ -38,17 +38,27 @@ public class AnswerUpdateController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String answerNo = request.getParameter("asno");
-		String qTitle = request.getParameter("title");
-		String qContent = request.getParameter("content");
+		String qTitle = request.getParameter("qTitle");
+		String qContent = request.getParameter("qContent");
+		String anContent = request.getParameter("anContent");
+		
+
 		
 		Answer n = new Answer();
 		
 		n.setInquireNo(answerNo);
 		n.setqTitle(qTitle);
 		n.setqContent(qContent);
+		n.setAnContent(anContent);
+		
+		
+		
+		
 		
 		int result = new AnswerService().updateAnswer(n);
 		
+		
+		System.out.println(result);
 		if(result > 0) { //성공 => /jsp/detail.no?num=현재글번호 =>상세페이지
 			
 			request.getSession().setAttribute("alertMsg", "문의글 수정에 성공했습니다!");
