@@ -162,8 +162,9 @@
     
     <hr>
     
-     <div><button type="submit" class="btn btn-success">제출하기</button></div>
-    
+     <div><button type="submit" class="btn btn-success">제출하기</button>
+     	   <a href="<%= contextPath %>/asList.as" class="btn btn-secondary">목록으로</a></div>
+     
 
     </form>
     

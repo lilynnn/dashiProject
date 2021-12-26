@@ -160,13 +160,13 @@
                                        삭제
 
 </td>
- <td id="faqNum"><a href="" class="btn btn-sm btn-primary">
+ <td id="faqNum"><a href="<%=contextPath%>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-dark">
                                        답변
                                    </a>
 
 </td>
                            </tr>
-   
+    
                            <!--답변 있을경우-->
                            <tr class="faqAnswer" style="background: lightgray;">
                                <td></td>   
