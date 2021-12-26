@@ -203,9 +203,9 @@ public class MemberService {
 	}
 	
 	
-	public int deleteBlackGrade(Member m) {
+	public int deleteBlack(int memNo) {
 		Connection conn = getConnection();
-		int result = new MemberDao().deleteBlackGrade(conn, m);
+		int result = new MemberDao().deleteBlack(conn, memNo);
 		if(result > 0) {
 			commit(conn);
 		}else {

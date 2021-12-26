@@ -116,6 +116,8 @@
 	
         <!-- 1:1 문의글 제목 -->
     <h3 align= "left" style="margin:30px;">1:1 문의글 작성</h3>
+    <div align="left" style="font-size:13px; margin-left:30px;"> 글 작성 후 <b style="color:green;">수정</b>이 불가능합니다. <br>
+    	    삭제만 가능하므로 정확하게 기술해주세요</div>
     <hr>
 
  	<form action="<%=contextPath %>/insert.as" method="post">

@@ -3,7 +3,7 @@
 <%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.member.model.vo.Member" %>
     
 <%
-	Member e = (Member)request.getAttribute("e");
+ 
 	ArrayList<Member> list = (ArrayList<Member>)request.getAttribute("list");
 %>   
 
@@ -74,7 +74,7 @@
         
         
 
-             <!-- 입양후기리스트 보여줄 div -->
+             
             <div class="content-area">
                 
                 <!-- 전체 제목 div -->
@@ -86,21 +86,21 @@
                 <br>
                 
                 
-                <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
-                    <thead style="background: rgb(214, 235, 241);">
+                <table align="center" class="table" style="width: 900px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
+                    <thead style="background: #c0e2bc;">
                         <tr>
-                            
                             <th width="80">회원번호</th>
                             <th width="100">아이디</th>
-                            <th width="100">이름</th>
-                            <th width="100">지정일</th>
-                          	<th width="100"> </th>
+                             <th width="100">이름</th>
+                            <th width="100">등급</th>
+                            <th width="100">상태</th>
+                          	<th width="100">삭제</th>
                         </tr>
                     </thead>
-                    <tbody class="tbody">
                     <% if(list.isEmpty()) { %>
+                    <tbody class="tbody">
                     	<tr>
-                    		<td colspan="5"> 블랙리스트로 지정된 회원이 없습니다.</td>
+                    		<td colspan="6"> 블랙리스트로 지정된 회원이 없습니다.</td>
                     	</tr>
                     <% }else{ %>
                     	<% for(Member m : list){ %>
@@ -108,10 +108,13 @@
                             <td><%= m.getMemNo() %></td>
                             <td><%= m.getMemId() %></td>
                             <td><%= m.getMemName() %></td>
-                            <td><%= m.getBlackDate() %></td>
-                            <td> <button class="btn btn-danger" onclick="location.href='<%=contextPath%>/blackdelete?bno=<%=e.getMemNo()%>;" style="font-size:13px;" id="revdelete">해제</button></td>
+                            <td><%= m.getGrade() %></td>
+                            <td><%= m.getBlackYN() %></td>
+                            <td><a href="<%=contextPath%>/blackdelete?bno=<%=m.getMemNo()%>" class="btn btn-sm btn-danger">삭제</a></td>
                         </tr>
                         <% } %>	
+                        
+                        
 					<% } %>
                         </tbody>
                     </table>

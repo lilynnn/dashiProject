@@ -163,7 +163,6 @@
  <td id="faqNum"><a href="<%=contextPath%>/updateview?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-dark">
                                        답변
                                    </a>
-
 </td>
                            </tr>
     

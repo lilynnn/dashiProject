@@ -197,14 +197,12 @@ public class MemberDao {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-		 
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				list.add(new Member(rset.getInt("MEM_NO"),
 									rset.getString("MEM_ID"),
 								   rset.getString("MEM_NAME"),
-								   rset.getDate("BLACK_DATE"),
 								   rset.getInt("GRADE"),
 								   rset.getString("BLACKLIST_YN")));
 			}
@@ -630,7 +628,7 @@ public class MemberDao {
 	
 	
 	//grade 수정 (bl->일반)
-			public int deleteBlackGrade(Connection conn, Member m) {
+			public int deleteBlack(Connection conn, int memNo) {
 				// update => 트랜잭션
 				int result = 0;
 				PreparedStatement pstmt = null;
@@ -639,7 +637,8 @@ public class MemberDao {
 				
 				try {
 					pstmt = conn.prepareStatement(sql);
-					pstmt.setInt(1, m.getMemNo());
+					
+					pstmt.setInt(1, memNo);
 					
 					
 					result = pstmt.executeUpdate();

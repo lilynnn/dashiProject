@@ -34,7 +34,7 @@ public class AdminBlackListMemController extends HttpServlet {
 		
 		ArrayList<Member> list = new MemberService().selectBlackList();
 		request.setAttribute("list", list);
-		
+		System.out.println(list);
 		request.getRequestDispatcher("views/admin/adminBlackListMem.jsp").forward(request, response);
 	}
 

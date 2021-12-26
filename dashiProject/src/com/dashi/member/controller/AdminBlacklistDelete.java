@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.answerBoard.model.service.AnswerService;
 import com.dashi.member.model.service.MemberService;
 import com.dashi.member.model.vo.Member;
 
@@ -34,28 +35,15 @@ public class AdminBlacklistDelete extends HttpServlet {
 		
 		int memNo = (Integer.parseInt(request.getParameter("bno")));
 		 
-		 
+		int result = new MemberService().deleteBlack(memNo);
 		
-
-		
-		Member m = new Member();
-		
-		m.setMemNo(memNo);
-		 
-		 
- 
-		int result = new MemberService().deleteBlackGrade(m);
-		
-		
-		System.out.println(result);
-		if(result > 0) { 
-			
-			request.getSession().setAttribute("alertMsg", "정상회원으로 복원되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/blackList.ad");
-			
-		} else { // 실패=>에러페이지
+		if(result > 0) {
+			request.getSession().setAttribute("alertMsg", "등급이 변경되었습니다.");
+			response.sendRedirect(request.getContextPath());
+		}else {
 			request.getSession().setAttribute("alertMsg", "등급 변경 실패");
 		}
+		 
 	}
 
 	/**
