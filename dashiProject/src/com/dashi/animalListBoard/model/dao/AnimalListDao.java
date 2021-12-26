@@ -312,4 +312,28 @@ public class AnimalListDao {
 		}
 		return result;
 	}
+	
+	public String selectaniDate(Connection conn) {
+		String aniDate = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectaniDate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				aniDate = rset.getString("write_date");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return aniDate;
+	}
+	
 }

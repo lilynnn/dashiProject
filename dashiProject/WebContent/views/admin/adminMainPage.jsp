@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.dashi.notice.model.vo.Notice"%>
 <%
-	//int adtCount = (int)request.getAttribute("adtCount");
+	int adpCount = (int)request.getAttribute("adpCount");
 	int noCount = (int)request.getAttribute("noCount");
 	String noDate = (String)request.getAttribute("noDate");
-
+	String adtDate = (String)request.getAttribute("adtDate");
+	String adpDate = (String)request.getAttribute("adpDate");
+	String aniDate = (String)request.getAttribute("aniDate");
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -116,7 +119,7 @@
 
                 <div class="box" style="background: #cce9d3;">
                     <div class="countNum">
-                        00
+                        <%=adpCount %>
                     </div>
                     <div>입양신청</div>
                 </div>
@@ -164,7 +167,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/adplist.ad?cpage=1">입양신청</a></td>
-                                <td class="categoryDate">날짜칸</td>
+                                <td class="categoryDate"><%=adpDate %></td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/entListView.ad?cpage=1">입소신청</a></td>
@@ -181,8 +184,8 @@
                             <td class="categoryDate"><%=noDate%></td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=contextPath%>/adlist.ad">입양공고</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/adlist.ad?cpage=1">입양공고</a></td>
+                            <td class="categoryDate"><%=adtDate %></td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="">입양후기</a></td>
@@ -230,8 +233,8 @@
                     <hr>
                     <table>
                         <tr>
-                            <td style="width: 150px;"><a href="<%=contextPath%>/anlist.ad">전체동물조회</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/anlist.ad?cpage=1">전체동물조회</a></td>
+                            <td class="categoryDate"><%=aniDate %></td>
                         </tr>
                     </table>
                 </div>

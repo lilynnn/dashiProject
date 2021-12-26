@@ -14,6 +14,7 @@ import com.dashi.adoptBoard.model.vo.AdoptNotice;
 import com.dashi.animalListBoard.model.vo.Animal;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
+import com.dashi.notice.model.dao.NoticeDao;
 
 public class AdoptBoardService {
 
@@ -364,6 +365,18 @@ public class AdoptBoardService {
 		return listCount;
 	}
 	
+	public String selectadtDate() {
+		Connection conn = getConnection();
+		String adtDate = new AdoptBoardDao().selectadtDate(conn);
+		close(conn);
+		return adtDate;
+	}
 	
+	public String selectadpDate() {
+		Connection conn = getConnection();
+		String adpDate = new AdoptBoardDao().selectadtDate(conn);
+		close(conn);
+		return adpDate;
+	}
 	
 }

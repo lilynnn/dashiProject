@@ -118,9 +118,9 @@
 			  	<div style="margin-top:150px; height:100px;" align="center">입양신청글이 존재하지 않습니다.</div>
 				<%} else { %>
 	              <!-- 신청내역 보여질 table -->
-              <table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
+             		<table id="list-area" align="center" class="table" style="width: 950px; font-size: 15px;">
                   
-                  <thead class="thead-light">
+                    <thead class="thead-light">
                       <tr>
                           <th width="100">글번호</th>
                           <th width="100">공고번호</th>
@@ -130,8 +130,8 @@
                           <th width="120">처리상태</th>
                           <th width="100">삭제</th>
                       </tr>
-                  </thead>
-                  <tbody>
+                    </thead>
+                    <tbody>
                   <%if(list.isEmpty()) {%> 
 			  	  	<tr>
 	                 	<td colspan="7" align="center">입양신청글이 존재하지 않습니다.</td>
@@ -178,21 +178,21 @@
              <div align="center">
       		<%if(currentPage != 1) {%>
            	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage-1 %>';">&lt;</button>
-		<%} %>
+			<%} %>
 		
-		<% for(int p=startPage; p<=endPage; p++){ %>
-			
-			<%if(p == currentPage){ %>
-				<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
-				<button class="btn btn-light" disabled><%= p %></button>
-			<%} else { %>
-           		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
-           	<%} %>
-        	<%} %>	
-
-		<%if(currentPage < maxPage) {%>
-        		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
-           <%} %>
+			<% for(int p=startPage; p<=endPage; p++){ %>		
+				<%if(p == currentPage){ %>
+					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+					<button class="btn btn-light" disabled><%= p %></button>
+				<%} else { %>
+	           		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
+	           	<%} %>
+	        <%} %>	
+	
+			<%if(currentPage < maxPage) {%>
+	        		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
+	        <%} %>
+        <%} %>
              </div>
 
              <br><br>
@@ -205,7 +205,7 @@
             $("#list-area>tbody>tr").click(function(){
 				console.log($(this).children().eq(0).val());
             	const key = $(this).children().eq(0).val();
-                location.href="<%=contextPath%>/adpdetail.ad?apno="+key;
+                location.href="/adpdetail.ad?apno="+key;
            
             }) 
             

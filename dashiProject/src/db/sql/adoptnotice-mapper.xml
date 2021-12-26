@@ -610,4 +610,23 @@
 		      AND POST_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectadtDate">
+		SELECT TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
+		  FROM (SELECT WRITE_DATE
+		          FROM ADOPT_NOTICE
+		         WHERE ADT_STATUS = '1'
+		         ORDER 
+		            BY WRITE_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
+	
+	<entry key="selectadpDate">
+		SELECT TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		  FROM (SELECT APPLY_DATE
+		          FROM ADOPT_APPLY
+		         WHERE ADT_STATUS = '1'
+		         ORDER 
+		            BY APPLY_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
 </properties>

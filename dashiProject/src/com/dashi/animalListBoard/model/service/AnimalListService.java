@@ -5,6 +5,7 @@ import static com.dashi.common.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.dashi.adoptBoard.model.dao.AdoptBoardDao;
 import com.dashi.animalListBoard.model.dao.AnimalListDao;
 import com.dashi.animalListBoard.model.vo.Animal;
 import com.dashi.common.model.vo.Attachment;
@@ -80,5 +81,12 @@ public class AnimalListService {
 		
 		return animalResult*result3;
 	
+	}
+	
+	public String selectaniDate() {
+		Connection conn = getConnection();
+		String aniDate = new AnimalListDao().selectaniDate(conn);
+		close(conn);
+		return aniDate;
 	}
 }

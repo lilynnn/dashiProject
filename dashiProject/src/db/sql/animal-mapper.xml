@@ -127,4 +127,14 @@
 			  )
 	</entry>
 	
+	<entry key="selectaniDate">
+		SELECT TO_CHAR(ENT_DATE, 'YYYY/MM/DD') "ENT_DATE"
+		  FROM (SELECT ENT_DATE
+		          FROM ADOPT_ANIMAL
+                  JOIN ENTRANCE E USING (ENT_NO)
+		         WHERE ADOPT_STATUS = 'Y'
+		         ORDER 
+		            BY ENT_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
 </properties>
