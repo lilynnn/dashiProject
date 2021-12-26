@@ -307,6 +307,12 @@
 	        	</div>
                     <button class="loginBtn">로그인</button><br>
                 </form>
+                <% if(errorMsg != null){ %>
+				<script>
+					alert("<%=errorMsg%>");
+				</script>
+				<% session.removeAttribute("errorMsg"); %>
+				<% } %>
               </div>
 
                 <p style="font-size: 13px; margin-left: 40px;">다시,사랑받개!가 처음이신가요?</p>
