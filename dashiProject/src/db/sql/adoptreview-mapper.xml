@@ -88,19 +88,25 @@
 		     , M.NICKNAME
 		     , TO_CHAR(WRITE_DATE, 'YYYY/MM/DD') "WRITE_DATE"
 		     , A.MEM_ID
+		     , PATH || CHANGE_NAME "TITLE_IMG"
 		  FROM ADOPT_REVIEW A
 	 	  JOIN MEM_INFO M USING(MEM_NO)
+	 	  JOIN ATTACHMENT ON (ARLIST_NO = REF_NO)
 		 WHERE ARLIST_NO = ?
+		   AND ATTACH_LEVEL = 1
 	</entry>
 	
 	<entry key="selectAttachment">
-		SELECT 
-		       ATTACH_NO
-		     , ORIGIN_NAME
-		     , CHANGE_NAME
-		     , PATH
+		SELECT
+			   CHANGE_NAME
+			 , PATH
+			 , ATTACH_NO
+			 , ORIGIN_NAME
+			 , ATTACH_LEVEL
+			 , ATTACH_STATUS
+			 , REF_NO
 		  FROM ATTACHMENT
-		 WHERE REF_NO = ?
+			WHERE REF_NO = ?
 	</entry>
 	
 	
@@ -212,16 +218,50 @@
 		 WHERE ARLIST_NO = ?
 	</entry>
 	
+	<!-- 기존첨부파일 수정 -->
 	<entry key="updateReviewAttachment">
-		UPDATE
-			   ATTACHMENT
-		   SET PATH = ?
-		     , ORIGIN_NAME = ?
-		     , CHANGE_NAME = ?
-		     , ATTACH_LEVEL = ?
+		 UPDATE 
+		        ATTACHMENT
+		    SET ORIGIN_NAME = ?
+		      , CHANGE_NAME = ?
+		      , PATH = ?
+		      , ATTACH_LEVEL = ?
 		 WHERE ATTACH_NO = ?
 	</entry>
 	
+	<!-- 새로운 첨부파일 인서트 -->
+	<entry key="insertNewAttachmentList">
+		INSERT 
+		  INTO ATTACHMENT
+		  (
+		    ATTACH_NO
+		  , REF_NO
+		  , PATH
+		  , ORIGIN_NAME
+		  , CHANGE_NAME
+		  , ATTACH_LEVEL
+		  )
+		VALUES
+		 (
+		   'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 , ?
+		 )
+	</entry>	
+	
+	
+	<!-- 입양후기 수정 상세이미지 -->
+	<entry key="contentImgPath">
+		    SELECT
+                   PATH || CHANGE_NAME "CONTENTIMG"
+              FROM ADOPT_REVIEW
+              JOIN ATTACHMENT ON (ARLIST_NO = REF_NO)
+		     WHERE ARLIST_NO = ?
+               AND ATTACH_LEVEL = 2
+	</entry>
 
 	
 </properties>

@@ -6,6 +6,7 @@
 <%
  	AdoptReview ar = (AdoptReview)request.getAttribute("ar");
 	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	ArrayList<AdoptReview> contentImgPath = (ArrayList<AdoptReview>)request.getAttribute("contentImgPath");
 %>
 <!DOCTYPE html>
 <html>
@@ -50,10 +51,10 @@
         <hr>        
         <!--입력폼-->
         <form action="<%=contextPath%>/update.ar" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="arno" value="<%= ar.getArlistNo() %>" >
         	<input type="hidden" name="userNo" value="<%= ar.getMemNo() %>">
         	<input type="hidden" name="userId" value="<%= ar.getMemId() %>">
         	<input type="hidden" name="nickname" value="<%= ar.getNickname() %>">
-        	<input type="hidden" name="arno" value="<%= ar.getArlistNo() %>" >
         	
             <div class="input-area">
                 <!--사용자 선택 말머리 영역-->
@@ -69,14 +70,14 @@
                 <div style="width: 100px; float: left;">
                 제목                    
                 </div>
-                <input type="text" style="width: 850px; height: 30px;" name="title" required value="<%= ar.getArTitle()%>">
+                <input type="text" style="width: 850px; height: 30px;" name="title" id="title" required value="<%= ar.getArTitle()%>">
             </div>
             <div class="input-area" style="height: 400px;">
                 <div style="width: 100px; float: left;">
                  내용   
                 </div>
                 <div style="width: 850px; float: left;">
-                    <textarea id="summernote" name="content" required><%=ar.getArContent()%></textarea>
+                    <textarea id="summernote" name="content" id="content" required><%=ar.getArContent()%></textarea>
                 </div>
             </div>
             <br><br>
@@ -85,7 +86,7 @@
                     대표이미지
             	</div>
                 <div style="width: 850px; float: left;">
-                    <img id="titleImg" width="150" height="150" src="<%=contextPath%>/<%=list.get(0).getPath()%><%=list.get(0).getChangeName()%>" onclick="chooseFile(1);">
+                    <img id="titleImg" width="150" height="150" src="<%=ar.getTitleImg() %>" onclick="chooseFile(1);">
                     <input type="hidden" name="originFileNo1" value="<%= list.get(0).getAttachNo() %>">
                 </div>
             </div>
@@ -95,18 +96,17 @@
                 </div>
                 <div style="width: 850px; float: left;">
                 	<!-- 기존이미지 -->
-                	<% for(int i=1; i<list.size(); i++){ %>
-		             <img id="contentimg<%=i%>" width="150" height="150" onclick="chooseFile(<%=i+1%>);" src="<%=contextPath%>/<%=list.get(i).getPath()+list.get(i).getChangeName()%>">
-                	 <input type="hidden" name="originFileNo<%=i+1%>" value="<%=list.get(i-1).getAttachNo()%>">
+                	<% for(int i=0; i<contentImgPath.size(); i++){ %>
+		             <img id="contentImg<%=i+1%>" width="150" height="150" onclick="chooseFile(<%= i+2 %>)" src="<%=contextPath %>/<%=contentImgPath.get(i).getContentImg() %>">
+                	 <input type="hidden" name="originFileNo<%=i+2 %>" value="<%= list.get(i+1).getAttachNo() %>">
 					<% } %>
-				</div>
 					<!-- 첨부파일 입력 칸 5칸으로 보여지게 -->
-					<%for(int i=list.size() + 1; i < 5; i++){ %>
+					<%for(int i=contentImgPath.size() + 1; i < 5; i++){ %>
 						<img id="contentImg<%=i+1%>" width="150" height="150" src="" alt="" onclick="chooseFile(<%= i+2 %>)" src="">
 					<%} %>                
+				</div>
             </div>
             
-           
            <!-- 첨부파일 입력받는 영역 -->
             <div class="input-area" style="height:80px; margin-top: 20px; display:none">
                 <div style="width: 120px; float:left;">
@@ -166,8 +166,8 @@
                 }
             </script>            
             <div class="input-area" align="center">
-                <button class="btn2" type="reset" onclick="location.href='<%=contextPath%>/list.ar'">취소</button>
-                <button class="btn2" type="submit" onclick="location.href='<%=contextPath %>/update.ar'" style="background: rgb(102,184,94);">수정</button>
+                <button class="btn2" type="reset" onclick="location.href='<%=contextPath%>/list.ar?cpage=1'">취소</button>
+                <button class="btn2" type="submit" style="background: rgb(102,184,94);">수정</button>
             </div>
         </form>
 

@@ -61,7 +61,7 @@ public class AdoptReview {
 	}
 	
 	public AdoptReview(String arlistNo, int memNo,  String anType, String arTitle, String arContent, String nickname,
-			String writeDate, String memId) {
+			String writeDate, String memId, String titleImg) {
 		super();
 		this.arlistNo = arlistNo;
 		this.memNo = memNo;
@@ -71,6 +71,7 @@ public class AdoptReview {
 		this.nickname = nickname;
 		this.writeDate = writeDate;
 		this.memId = memId;
+		this.titleImg = titleImg;
 	}
 
 	// 관리자 입양후기리스트 조회용

@@ -121,46 +121,6 @@ public class AdoptReviewBoardDao {
 		return list;
 	}
 	
-	/*
-	 * 	// 입양후기 리스트 조회
-	public ArrayList<AdoptReview> selectList(Connection conn, PageInfo pi){
-		ArrayList<AdoptReview> list = new ArrayList<>();
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		String sql = prop.getProperty("selectList");
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-		
-			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
-			int endRow = startRow + pi.getBoardLimit() - 1;
-			
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
-			
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
-				list.add(new AdoptReview(rset.getString("ARLIST_NO"),
-										rset.getString("MEM_ID"),
-										rset.getString("NICKNAME"),
-										rset.getString("AN_TYPE"),
-										rset.getString("AR_TITLE"),
-										rset.getInt("VIEW_COUNT"),
-										rset.getString("WRITE_DATE")));
-			}
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-		}
-		
-		return list;
-		
-	}
-	 * */
 	
 	
 	public int increaseCount(Connection conn, String arlistNo) {
@@ -183,6 +143,7 @@ public class AdoptReviewBoardDao {
 		return result;
 	}
 	
+	// 입양후기 상세조회
 	public AdoptReview selectReview(Connection conn, String arlistNo) {
 		// select문 => ResultSet (한행) => Board
 		AdoptReview ar = null;
@@ -204,7 +165,8 @@ public class AdoptReviewBoardDao {
 							  rset.getString("ar_content"),
 							  rset.getString("nickname"),
 							  rset.getString("write_date"),
-							  rset.getString("mem_Id"));
+							  rset.getString("mem_Id"),
+							  rset.getString("TITLE_IMG"));
 			}
 			
 		} catch (SQLException e) {
@@ -231,8 +193,13 @@ public class AdoptReviewBoardDao {
 			
 			while(rset.next()) {
 				Attachment at = new Attachment();
-				at.setChangeName(rset.getString("change_name"));
-				at.setPath(rset.getString("path"));
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setPath(rset.getString("PATH"));
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setAttachLevel(rset.getInt("ATTACH_LEVEL"));
+				at.setAttachStatus(rset.getString("ATTACH_STATUS"));
+				at.setRefNo(rset.getString("REF_NO"));
 				
 				list.add(at);
 			}
@@ -479,6 +446,7 @@ public class AdoptReviewBoardDao {
 		System.out.println("artitle : " + ar.getArTitle());
 		System.out.println("arContent : " + ar.getArContent());
 		System.out.println("arlistNo : "+ar.getArlistNo());
+		
 		String sql = prop.getProperty("updateReview");
 		
 		try {
@@ -498,32 +466,27 @@ public class AdoptReviewBoardDao {
 	}
 	
 	// 입양후기 기존첨부파일 수정
-	public int updateReviewAttachmentList(Connection conn, ArrayList<Attachment> list) {
+	public int updateReviewAttachmentList(Connection conn, Attachment at) {
 		int result = 0;
 		PreparedStatement pstmt = null;
 		String sql = prop.getProperty("updateReviewAttachment");
 		
-		if(!list.isEmpty()) {
-			try {
-				for(Attachment at : list) {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, at.getPath());
-					pstmt.setString(2, at.getOriginName());
-					pstmt.setString(3, at.getChangeName());
-					pstmt.setInt(4, at.getAttachLevel());
-					pstmt.setString(5, at.getAttachNo());
-					
-				}
-				
-				result = pstmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close(pstmt);
-			}
+		System.out.println("기존첨부파일 수정 " + at);
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setString(3, at.getPath());
+			pstmt.setInt(4,at.getAttachLevel());
+			pstmt.setString(5, at.getAttachNo());
 			
-		}else {
-			result = 1;
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
 		}
 		return result;
 	}
@@ -553,6 +516,32 @@ public class AdoptReviewBoardDao {
 		}
 		return list;
 	}
+	
+	// 입양후기 수정 첨부파일 새로 인서트
+	public int insertNewAttachmentList(Connection conn, Attachment at) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertNewAttachmentList");
+		
+		System.out.println("새로운 첨부파일 dao안 at" + at);
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, at.getRefNo());
+			pstmt.setString(2, at.getPath());
+			pstmt.setString(3, at.getOriginName());
+			pstmt.setString(4, at.getChangeName());
+			pstmt.setInt(5, at.getAttachLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+		return result;
+	}	
+	
 	
 	// 메인페이지에 입양후기 노출
 	public ArrayList<AdoptReview> selectMainAdoptReview(Connection conn){

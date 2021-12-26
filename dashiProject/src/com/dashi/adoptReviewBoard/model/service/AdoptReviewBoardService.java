@@ -13,6 +13,8 @@ import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
 import com.dashi.adoptReviewBoard.model.vo.AdoptReviewReply;
 import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
+import com.dashi.dspBoard.model.dao.DspDao;
+import com.dashi.dspBoard.model.vo.Dsp;
 
 public class AdoptReviewBoardService {
 	
@@ -153,8 +155,15 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
-
 	
+	// 입양후기 수정 상세이미지
+	public ArrayList<AdoptReview> contentImgPath(String arlistNo){
+		Connection conn = getConnection();
+		ArrayList<AdoptReview> contentImgPath = new AdoptReviewBoardDao().contentImgPath(conn, arlistNo);
+		close(conn);
+		
+		return contentImgPath;
+	}
 	
 	// 입양후기 수정
 	public int updateReview(AdoptReview ar, ArrayList<Attachment> list) {
@@ -164,14 +173,21 @@ public class AdoptReviewBoardService {
 		
 		int result2 = 1;
 		
-		if(!list.isEmpty()) {
-				result2 = new AdoptReviewBoardDao().updateReviewAttachmentList(conn, list);
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i).getAttachNo() != null) {
+				result2 = new AdoptReviewBoardDao().updateReviewAttachmentList(conn,list.get(i));
+			}else {
+				result2 = new AdoptReviewBoardDao().insertNewAttachmentList(conn,list.get(i));
+
+			}
 		}
+		
 		if(result1>0 && result2>0) {
 			commit(conn);
 		}else {
 			rollback(conn);
 		}
+		close(conn);
 		return result1*result2;
 	}
 	
@@ -184,5 +200,7 @@ public class AdoptReviewBoardService {
 		return arlist;
 		
 	}
+	
+	
 
 }

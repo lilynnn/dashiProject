@@ -35,10 +35,12 @@ public class AdoptReviewUpdateFormController extends HttpServlet {
 
 		String arlistNo = request.getParameter("arno");
 		AdoptReview ar = new AdoptReviewBoardService().selectReview(arlistNo);
+		ArrayList<AdoptReview> contentImgPath = new AdoptReviewBoardService().contentImgPath(arlistNo);
 		ArrayList<Attachment> list = new AdoptReviewBoardService().selectAttachmentList(arlistNo);
 		
 		request.setAttribute("ar", ar);
 		request.setAttribute("list", list);
+		request.setAttribute("contentImgPath", contentImgPath);
 		
 		request.getRequestDispatcher("views/adoptReviewBoard/adoptReviewUpdateForm.jsp").forward(request, response);
 	
