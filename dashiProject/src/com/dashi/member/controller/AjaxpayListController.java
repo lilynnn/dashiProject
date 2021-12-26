@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dashi.dspBoard.model.service.DspService;
+import com.dashi.member.model.service.MemberService;
+
 /**
  * Servlet implementation class AjaxpayListController
  */
@@ -27,25 +30,10 @@ public class AjaxpayListController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
-		String amount = request.getParameter("amount");
-		String bmemno = request.getParameter("buyer_memno");
-		String bemail = request.getParameter("buyer_email");
-		String bname = request.getParameter("buyer_name");
-		String bphone = request.getParameter("buyer_phone");
-		String baddr = request.getParameter("buyer_addr");
-		String merchant_uid = request.getParameter("merchant_uid");
-		String pay_method = request.getParameter("pay_method");
+		String memno = request.getParameter("memno");
 
-		System.out.println(amount);
-		System.out.println(bmemno);
-		System.out.println(bemail);
-		System.out.println(bname);
-		System.out.println(amount);
-		System.out.println(bphone);
-		
-		
-		
+		int result = new MemberService().pay(memno);
+
 	}
 
 	/**

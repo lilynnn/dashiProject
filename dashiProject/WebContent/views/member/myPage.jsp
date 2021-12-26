@@ -78,7 +78,7 @@
     }
     #grade{
         width: 70%;
-        height: 75%;
+        height: 60%;
         margin:auto;  
     }
     #updateimage{
@@ -205,32 +205,21 @@
                     <div id="grade" style="text-align: center;">
                         <p>현재 회원님의 등급은</p> <br>
                         <!--회원등급조회-->
-                        <span><strong><span style="font-size: 20px;">
-                        <%if(loginUser.getGrade() == 1){ %>
-                        실버
-                        <%}else if(loginUser.getGrade() == 2){ %>
-                        골드
-                        <%}else if(loginUser.getGrade() == 3){ %>
-                        다이아
-                        <%}else if(loginUser.getGrade() == 4){ %>
-                        블랙리스트
-                        <%} %>
-                        </span></strong>입니다</span> <br><br>
+                        <span><strong><span style="font-size: 20px;">XXX</span></strong>입니다</span> <br><br>
                         <!--(입양신청내역 없을 시)등급별권한안내-->
-                        <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>
-                        <%if(loginUser.getGrade() == 1){ %>
-                        입양신청 / 입소신청 / 댓글  / 실종,보호,목격글 작성
-                        <%}else if(loginUser.getGrade() == 2){ %>
-                        <!--(입양승인 시)결제하기버튼--> 
-                        <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn">
+                        <p style="color:rgb(121, 118, 118); font-weight: 500;"><span>xxx,xxx</span>이(가) 가능합니다.</p>
+                        <!--(입양승인 시)결제하기버튼-->
+                        
+						<%if(loginUser.getPayYN().equals("N")){ %>
+						<button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn">
                          	   책임비 결제하기
                         </button> 
-                        <br>
-                        <%}else if(loginUser.getGrade() == 3){ %>
-                        입양신청 / 입소신청 / 댓글  / 실종,보호,목격 / 입양후기 작성 
-                        <%} %>
-                        <br></span>이(가) 가능합니다.</p>
-
+                        console.log(<%=loginUser.getPayYN()%>);
+						<%}else { %>
+						 <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn" disabled>
+                         	   책임비 결제완료
+                        </button> 
+						 <%} %>
                     </div>
 
                 </div>
@@ -375,15 +364,22 @@
     		        msg += '고유ID : ' + rsp.imp_uid;
     		        msg += '상점 거래ID : ' + rsp.merchant_uid;
     		        msg += '결제 금액 : ' + rsp.paid_amount;
-    		        msg += '카드 승인번호 : ' + rsp.apply_num;
-
-    		        
+    		        msg += '카드 승인번호 : ' + rsp.apply_num; 
     		    } else {
     		    	 var msg = '결제에 실패하였습니다.';
     		         msg += '에러내용 : ' + rsp.error_msg;
     		    }
     		    alert(msg);
-    		    location.href = '<%= contextPath%>/complete.pay';
+    		    
+    		    
+    		    $.ajax({
+    				url : 'pay.do',
+    				data: {memno : <%=loginUser.getMemNo()%>},
+    				success : function(){},
+					error : function(){}    		    
+    		    })
+
+    		    
     		});
     	});
     })

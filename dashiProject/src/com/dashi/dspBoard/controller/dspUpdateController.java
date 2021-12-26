@@ -94,7 +94,6 @@ public class dspUpdateController extends HttpServlet {
 
 			}
 
-			System.out.println("리스트 : " + list);
 			
 			int result = new DspService().updateDsp(d, list);
 			

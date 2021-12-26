@@ -215,6 +215,23 @@ public class MemberService {
 		close(conn);
 		return result;
 	} //수정
+
+	
+	//결제시 회원번호 넘기기
+	public int pay(String memno) {
+		Connection conn = getConnection();
+		int result = new MemberDao().pay(conn, memno);
+		
+		if(result > 0) {
+			commit(conn);
+		}else{
+			rollback(conn);
+		}		
+		close(conn);
+		
+		return result;
+	}
+	
 	
 	
 	

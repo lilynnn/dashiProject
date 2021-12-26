@@ -302,4 +302,14 @@
 	</entry>
 	
 	
+	
+	
+	<entry key="pay">
+	UPDATE
+		   MEM_INFO
+	   SET PAY_YN = 'Y'
+     WHERE MEM_NO = ?
+	</entry>
+	
+	
 </properties>

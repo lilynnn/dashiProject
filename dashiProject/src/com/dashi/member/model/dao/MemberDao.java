@@ -651,6 +651,27 @@ public class MemberDao {
 				
 				return result;		
 			} //user 수정
+
+			
+		// 결제시 회원번호 넘기기
+		public int pay(Connection conn, String memno) {
+			
+			int result = 0;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("pay");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, memno);
+				
+				result = pstmt.executeUpdate();	
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close(pstmt);
+			}
+		return result;
+		}
 	
 
 }
