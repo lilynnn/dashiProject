@@ -171,6 +171,8 @@
 	FROM MEM_INFO
 	WHERE MEM_NAME =?
 	AND EMAIL =? 
+	AND PHONE =?
+	
 	</entry>
 	
 	<entry key="findPwd">

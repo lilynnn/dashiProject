@@ -39,9 +39,13 @@ public class FindIdController extends HttpServlet {
  
 	         String memName = request.getParameter("name");
 	         String email = request.getParameter("email");
+	         String phone = request.getParameter("phone");
+ 
 	         
-	         String memId = new MemberService().findId(memName,email);
-
+	         
+	         
+	         String memId = new MemberService().findId(memName,email,phone);
+	         
 
 	         //출력
 	         if(memId != null) {//결과가 있으면(정보가 맞다면)

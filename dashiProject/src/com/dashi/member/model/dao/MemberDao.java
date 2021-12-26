@@ -438,7 +438,7 @@ public class MemberDao {
 	}
 	
 	//아이디찾기 
-	public String findId(Connection conn, String memName, String email) {
+	public String findId(Connection conn, String memName, String email ,String phone) {
 		
 		String memId = null; 
 		PreparedStatement pstmt = null;
@@ -450,6 +450,8 @@ public class MemberDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memName);
 			pstmt.setString(2, email);
+			pstmt.setString(3, phone);
+			 
 			
 			rset = pstmt.executeQuery();
 			

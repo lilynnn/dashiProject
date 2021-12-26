@@ -99,6 +99,25 @@ public class Member {
 		this.email = email;
 		this.phone = phone;
 	}
+	
+	public Member(int memNo, String memName, String phone, String birth, 
+			String email) {
+		super();
+		this.memNo = memNo;
+		this.memName = memName;
+		this.birth = birth;
+		this.email = email;
+		this.phone = phone;
+	}
+	
+	public Member(String memName, String email, String phone) {
+		super();
+		this.memName = memName;
+		this.email = email;
+		this.phone = phone;
+		 
+	}
+	
 
 	public int getMemNo() {
 		return memNo;
@@ -124,7 +143,7 @@ public class Member {
 	
 	 
 	
-	public Member(int memNo, String MemId, String memName, int grade, String blackYN) {
+	public Member(int memNo, String memId, String memName, int grade, String blackYN) {
 		super();
 		this.memNo=memNo;
 		this.memId = memId;

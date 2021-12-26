@@ -91,6 +91,7 @@
   		 <p class="text2"> ${findid2}</p>
         <input type="text" name="name" id="name" class="form-control" placeholder="이름" required autofocus><BR>
         <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required><br>
+        <input type="text" style="margin-bottom:20px; " name="phone" id="phone" class="form-control" placeholder="연락처 (-까지 포함해서 입력)" required>
         	<p class="check" id="check">${check}</p><br/>
         <button id="btn-Yes" class="btn btn-lg btn-primary btn-block" value="check" type="submit">아 이 디 찾 기</button>
       

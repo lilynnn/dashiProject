@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>블랙리스트 관리</title>
 <style>
     .outer{
         width: 1100px;
