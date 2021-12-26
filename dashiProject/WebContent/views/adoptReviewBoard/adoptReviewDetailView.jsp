@@ -455,7 +455,7 @@
 					                               + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
 					                               + "<td><button onclick=\"upcancel();\">취소</button></td>"
 					                            + "</tr>"
-						                        + "<tr>"
+						                        + "<tr style='border-bottom: solid 1px rgb(175, 173, 173);'>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>";
                     				}
@@ -471,22 +471,26 @@
                     	
                     	// 댓글 삭제용
                     	function deleteReply(replyNo){
-                    		
-                    		$.ajax({
-                    			url:"rdelete.ar",
-                    			type:"post",
-                    			data:{
-                    				replyNo: replyNo
-                    				},
-                    			success:function(result){
-                    				if(result > 0){ // 댓글삭제 성공 => 갱신된 댓글 리스트 조회
-                    					selectReplyList();
-                    				}
-                    			},error:function(){
-                    				console.log("댓글작성용ajax 통신실패");
-                    			}
+                    		var result = confirm('댓글을 삭제하시겠습니까?');
+                    		if(result){
+	                    		$.ajax({
+	                    			url:"rdelete.ar",
+	                    			type:"post",
+	                    			data:{
+	                    				replyNo: replyNo
+	                    				},
+	                    			success:function(result){
+	                    				if(result > 0){ // 댓글삭제 성공 => 갱신된 댓글 리스트 조회
+	                    					selectReplyList();
+	                    				}
+	                    			},error:function(){
+	                    				console.log("댓글작성용ajax 통신실패");
+	                    			}
+	                    			
+	                    		});
+                    		}else{
                     			
-                    		});
+                    		}
                     	
                     	}
                     	

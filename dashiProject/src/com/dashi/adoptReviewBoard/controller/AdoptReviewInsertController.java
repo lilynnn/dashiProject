@@ -89,7 +89,7 @@ public class AdoptReviewInsertController extends HttpServlet {
 			if(result > 0) { // 성공 => /loveagain/list.ar 	url요청 => 목록페이지
 				
 				request.getSession().setAttribute("alertMsg", "성공적으로 등록되었습니다.");
-				response.sendRedirect(request.getContextPath() + "/list.ar");
+				response.sendRedirect(request.getContextPath() + "/list.ar?cpage=1");
 				
 			}else { // 실패 => 에러페이지
 				request.getSession().setAttribute("alertMsg", "등록 실패");

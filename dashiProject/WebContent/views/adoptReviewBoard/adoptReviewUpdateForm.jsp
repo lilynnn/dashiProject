@@ -97,7 +97,7 @@
                 	<!-- 기존이미지 -->
                 	<% for(int i=1; i<list.size(); i++){ %>
 		             <img id="contentimg<%=i%>" width="150" height="150" onclick="chooseFile(<%=i+1%>);" src="<%=contextPath%>/<%=list.get(i).getPath()+list.get(i).getChangeName()%>">
-                	 <input type="hidden" name="originFileNo<%=i+1%>" value="<%=list.get(i).getAttachNo()%>">
+                	 <input type="hidden" name="originFileNo<%=i+1%>" value="<%=list.get(i-1).getAttachNo()%>">
 					<% } %>
 				</div>
 					<!-- 첨부파일 입력 칸 5칸으로 보여지게 -->

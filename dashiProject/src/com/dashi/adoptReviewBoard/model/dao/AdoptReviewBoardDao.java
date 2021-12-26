@@ -561,7 +561,7 @@ public class AdoptReviewBoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		
-		String sql = prop.getProperty("selectReviewList");
+		String sql = prop.getProperty("selectMainAdoptReview");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
