@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptApply"%>
+<%	AdoptApply ap = (AdoptApply)request.getAttribute("ap"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -225,61 +227,49 @@
                 <p style="margin-top: 15px;">&nbsp;입양신청현황</p>
                 </div>
                 
-                <div style="width: 98%; height: 80%; margin-top: 25px;" >
-                    <!--입양신청 없을 시??????-->
-                    <!--<h3 align="center" style="margin: auto; margin-top: 80px;">신청 내역이 없습니다.</h3>-->
-                    <!--입양신청 처리상태 1(승인대기)일 시-->
+                <div id="adoptst" style="width: 98%; height: 80%; margin-top: 25px;" >
+	                    
+	                    <!--입양신청 없을 시??????-->
+	                    <h3 id="stnone" align="center" style="margin: auto; margin-top: 80px; display: none;">신청 내역이 없습니다.</h3>
+	                    <!--입양신청 처리상태 1(승인대기)일 시-->
+	                    <h3 id="stdecline" align="center" style="margin: auto; margin-top: 80px; display: none;">입양 신청이 반려되었습니다.</h3>
+                        <div id="st1" class="adopt-status">입양신청</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div id="st2" class="adopt-status">신청승인</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div id="st3" class="adopt-status">결제완료</div>
+                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
+                        <div id="st4" class="adopt-status">입양완료</div>
 
-                        <div class="adopt-status" style="background: rgb(102,184,94);">입양신청</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">신청승인</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">결제완료</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">입양완료</div>
 
-                    
-                    <!--입양신청 처리상태 2(결제대기)일 시-->
-                    <!--
-
-                        <div class="adopt-status">입양신청</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status" style="background: rgb(102,184,94);">신청승인</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">결제완료</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">입양완료</div>
-
-                    -->
-                    <!--입양신청 처리상태 3(결제완료)일 시-->
-                    <!--                    
-
-                        <div class="adopt-status">입양신청</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">신청승인</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status" style="background: rgb(102,184,94);">결제완료</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">입양완료</div>
-
-                    -->
-                    <!--입양신청 처리상태 4(입양완료)일 시-->  
-                    <!--                  
-
-                        <div class="adopt-status" >입양신청</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">신청승인</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status">결제완료</div>
-                        <div class="arrow"><img id="arrowimage" src="<%=contextPath%>/resources/images/arrow.png"></div>
-                        <div class="adopt-status" style="background: rgb(102,184,94);">입양완료</div>
-
-                    -->
                     <!--입양신청 처리상태 5(반려))일 시-->
                     <!--<h3 align="center" style="margin: auto; margin-top: 80px;">입양 신청이 반려되었습니다.</h3>-->
                 </div>
-
+                <% if(loginUser!= null && loginUser.getGrade() == 1 && loginUser.getAdoptYN().equals("Y")){ %>
+            		<script>
+                    $("#st1").css("backgroundColor","rgb(102,184,94)");
+                    </script>
+                <%}else if(loginUser!= null && loginUser.getGrade() == 2){ %>
+            		<script>
+                    $("#st2").css("backgroundColor","rgb(102,184,94)");
+                    </script>
+                <%}else if(loginUser!= null && loginUser.getGrade() == 3){ %>
+            		<script>
+                    $("#st3").css("backgroundColor","rgb(102,184,94)");
+                    </script>
+                <%}else if(loginUser!= null && loginUser.getGrade() == 4){ %>
+            		<script>
+                    $("#st4").css("backgroundColor","rgb(102,184,94)");
+                    </script>
+                <%}else if(loginUser != null && loginUser.getAdoptYN().equals("N")){ %>
+                	<script>
+                	$(".arrow").css("display","none");
+                	$(".adopt-status").css("display","none");
+                	$("#stnone").css("display","");
+                	</script>
+                <%} %>   
             </div>
+              
         </div>    
         <!--하단부-->
         <div id="bottomarea">
