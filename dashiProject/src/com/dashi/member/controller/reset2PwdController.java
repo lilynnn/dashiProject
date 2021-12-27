@@ -34,11 +34,13 @@ public class reset2PwdController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String memId = request.getParameter("memId");
-		String userpwd = request.getParameter("userpwd");
 		String pw = request.getParameter("pw");
+		 
 		
-		Member updateMem = new MemberService().updatePwdMember(memId, userpwd, pw);
+		Member updateMem = new MemberService().updatePwdMember(memId, pw);
 	
+		 
+		
 		HttpSession session = request.getSession();
 		if(updateMem == null) { // 실패
 			session.setAttribute("alertMsg", "비밀번호 변경에 실패했습니다.");

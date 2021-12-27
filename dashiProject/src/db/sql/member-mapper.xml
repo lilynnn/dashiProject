@@ -163,7 +163,7 @@
 			UPDATE MEMBER
 			   SET MEM_PWD = ?
 			 WHERE MEM_ID = ?
-			   AND MEM_PWD = ?
+			 
 	</entry>
 	
 	<entry key="findId">

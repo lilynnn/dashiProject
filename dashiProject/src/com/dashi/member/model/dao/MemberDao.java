@@ -377,7 +377,7 @@ public class MemberDao {
 
 	
 	//비밀번호 재설정 
-	public int updatePwdMember(Connection conn, String memId, String userpwd, String pw) {
+	public int updatePwdMember(Connection conn, String memId, String pw) {
 	
 		int result = 0;
 		
@@ -389,7 +389,6 @@ public class MemberDao {
 			
 			pstmt.setString(1, pw);
 			pstmt.setString(2, memId);
-			pstmt.setString(3, userpwd);
 			
 			result = pstmt.executeUpdate();
 			

@@ -98,8 +98,6 @@
      			 <br>
 		       <input type="text" name="memId" id="memId" class="form-control" placeholder="아이디를 입력하세요" required><br>
 		      
-		       <input type="password" name="userpwd" id="userpw" class="form-control" placeholder="기존비밀번호를 입력하세요" required><br>
-		      
 		        <input type="password" name="pw" id="pw" class="form-control" placeholder="새로운 비밀번호" required ><BR>
 		        
 		        <input type="password" name="pw2" id="pw2" class="form-control" placeholder="비밀번호 재확인" required><br>
