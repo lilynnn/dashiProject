@@ -169,26 +169,27 @@
         
         <!-- 입양 후기 게시글 띄우는 영역 -->
         <div class="review-area">
-            <div class="review-area">
-
-                <div class="review-box" align="center">
-                    <div class="photo-area"></div>
-                    <div>입양후기제목1</div>
-                </div>
-                <div class="review-box" align="center">
-                    <div class="photo-area"></div>
-                    <div>입양후기제목1</div>
-                </div>
-                <div class="review-box" align="center">
-                    <div class="photo-area"></div>
-                    <div>입양후기제목1</div>
-                </div>
-                <div class="review-box" align="center">
-                    <div class="photo-area"></div>
-                    <div>입양후기제목1</div>
-                </div>
-            </div>
+            <%if(arlist.isEmpty()) {%>
+            <div style="margin-top:150px; height:100px;" align="center">입양후기가 존재하지 않습니다.</div>
+            <%} else { %>
+            	<%for(AdoptReview ar : arlist) {%>
+		            <div class="reviewlist" align="center" style="float:left; padding:10px;">
+		            	<input type="hidden" value=<%=ar.getArlistNo() %>>
+		                <div class="photo-area"><img src="<%=ar.getTitleImg() %>"></div>
+		                <div id="noticeTitle" style="margin-top:10px;"><%=ar.getArTitle() %></div>
+		            </div>
+            	<%} %>
+            <%} %>
         </div>
+        <script>
+        	$(function(){
+        		$(".reviewlist").click(function(){
+        			console.log($(this).children().eq(0).val());
+        			location.href='<%=contextPath%>/detail.ar?arno=' + $(this).children().eq(0).val();
+        		})
+        	})
+        </script>
+        
         <br><br>
     </div>
 

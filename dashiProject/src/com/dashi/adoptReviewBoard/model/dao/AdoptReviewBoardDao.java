@@ -545,37 +545,35 @@ public class AdoptReviewBoardDao {
 	
 	// 메인페이지에 입양후기 노출
 	public ArrayList<AdoptReview> selectMainAdoptReview(Connection conn){
-		ArrayList<AdoptReview> arlist = new ArrayList<AdoptReview>();
-		
+		ArrayList<AdoptReview> arlist = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		
-		String sql = prop.getProperty("selectMainAdoptReview");
+		String sql = prop.getProperty("selectReviewList");
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setInt(1, 1);
 			pstmt.setInt(2, 5);
 			
 			rset = pstmt.executeQuery();
 			
+			// 조회결과들 뽑아서 list 담아서 변환
 			while(rset.next()) {
-				AdoptReview ar = new AdoptReview();
-				ar.setArlistNo(rset.getString("arlist_no"));
-				ar.setAnType(rset.getString("an_type"));
-				ar.setArTitle(rset.getString("ar_title"));
-				ar.setViewCount(rset.getInt("view_count"));
-				ar.setTitleImg(rset.getString("titleimg"));
-				
-				arlist.add(ar);
+				arlist.add(new AdoptReview(rset.getString("arlist_no")
+										, rset.getString("an_type") 
+										, rset.getString("ar_title")
+										, rset.getInt("view_count")
+										, rset.getString("titleimg")));
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close(rset);
 			close(pstmt);
 		}
+		
 		return arlist;
 	}
 
