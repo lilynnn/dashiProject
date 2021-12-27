@@ -137,7 +137,7 @@
                         <% if(list.isEmpty()){ %>
                       <!--as없을 때-->
                        <tr>
-                           <td colspan="5">게시된 문의가 없습니다.</td>
+                           <td colspan="6">게시된 문의가 없습니다.</td>
                        </tr>
                     <% }else{ %>
                        <!--as 있을 때-->
@@ -167,7 +167,7 @@
                            <!--답변 있을경우-->
                            <tr class="faqAnswer" style="background: lightgray;">
                                <td></td>   
-                               <td colspan="4" id="titleNcontent">
+                               <td colspan="6" id="titleNcontent">
                                      <%=n.getqCreat()%>
                                    <hr>
                                       <%=n.getAnContent()%>
