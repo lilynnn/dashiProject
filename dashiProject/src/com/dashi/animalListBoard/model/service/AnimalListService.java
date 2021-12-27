@@ -89,4 +89,19 @@ public class AnimalListService {
 		close(conn);
 		return aniDate;
 	}
+	
+	public int selectSearchAnimalListCount(String animalType, String key) {
+		Connection conn = getConnection();
+
+		int listCount = new AnimalListDao().selectSearchAnimalListCount(conn, animalType, key);
+		close(conn);
+		return listCount;
+	}
+	
+	public ArrayList<Animal> selectSearchAnimalList(PageInfo pi, String animalType, String key){
+		Connection conn = getConnection();
+		ArrayList<Animal> list = new AnimalListDao().selectSearchAnimalList(conn , pi, animalType, key);
+		close(conn);
+		return list;
+	}
 }

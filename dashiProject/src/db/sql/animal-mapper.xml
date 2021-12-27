@@ -137,4 +137,36 @@
 		            BY ENT_DATE DESC) A
 		 WHERE ROWNUM = 1
 	</entry>
+	
+	<entry key="selectSearchAnimalListCount">
+		SELECT
+		       COUNT(*) count
+		    FROM ADOPT_ANIMAL
+		    JOIN ENTRANCE E USING (ENT_NO)
+		    WHERE E.ANIMAL_TYPE = ?
+		      AND E.ANIMAL_VARIETY LIKE ?
+	</entry>
+	
+	<entry key="selectSearchAnimalList">
+		 SELECT *
+		      FROM (   
+	             SELECT ROWNUM RNUM, A.*
+			          FROM (
+			                  SELECT
+			                          ENT_NO
+			                        , ADOPT_STATUS
+			                        , E.ANIMAL_VARIETY
+			                        , E.ANIMAL_NAME
+			                        , E.ANIMAL_TYPE
+			                        , TO_CHAR(ENT_DATE, 'YYYY/MM/DD') "ENT_DATE"
+			                     FROM ADOPT_ANIMAL
+			                     JOIN ENTRANCE E USING (ENT_NO)
+	                             WHERE E.ANIMAL_TYPE = ?
+	                             AND E.ANIMAL_VARIETY LIKE ?
+			                 ORDER 
+			                    BY ENT_NO DESC
+		                ) A
+		          )
+		      WHERE RNUM BETWEEN ? AND ?
+	</entry>
 </properties>

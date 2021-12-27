@@ -324,7 +324,7 @@ public class AnimalListDao {
 			rset = pstmt.executeQuery();
 			
 			if(rset.next()) {
-				aniDate = rset.getString("write_date");
+				aniDate = rset.getString("ENT_DATE");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -334,6 +334,77 @@ public class AnimalListDao {
 			close(pstmt);
 		}
 		return aniDate;
+	}
+	
+	public int selectSearchAnimalListCount(Connection conn, String animalType, String key) {
+		
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null; 
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchAnimalListCount");
+		String keyword = "%"+key+"%";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalType);
+			pstmt.setString(2, keyword);
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return listCount;	
+	}
+	
+	public ArrayList<Animal> selectSearchAnimalList(Connection conn, PageInfo pi, String animalType, String key){
+		ArrayList<Animal> list = new ArrayList<Animal>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		String sql = prop.getProperty("selectSearchAnimalList");
+		
+		try {
+			
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, animalType);
+			pstmt.setString(2, "%"+key+"%");
+			pstmt.setInt(3, startRow);
+			pstmt.setInt(4, endRow);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Animal(rset.getString("ENT_NO"),
+									rset.getString("ADOPT_STATUS"),
+									rset.getString("ANIMAL_VARIETY"),
+									rset.getString("ANIMAL_NAME"),
+									rset.getString("ANIMAL_TYPE"),
+									rset.getString("ENT_DATE")
+									));	
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return list;
 	}
 	
 }

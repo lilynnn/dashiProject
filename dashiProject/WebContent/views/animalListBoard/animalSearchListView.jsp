@@ -5,6 +5,8 @@
 <%
 	PageInfo pi = (PageInfo)request.getAttribute("pi");
 	ArrayList<Animal> list = (ArrayList<Animal>)request.getAttribute("list");
+	String animalType = (String)request.getAttribute("animalType");
+	String key = (String)request.getAttribute("key");
 	
 	int currentPage = pi.getCurrentPage();
 	int startPage = pi.getStartPage();
@@ -61,11 +63,8 @@
 
     <!-- 동물목록 전체 조회하는 페이지 -->
     <%@ include file="../common/menubar.jsp" %>
-
-    <!-- 전체영역 감싸는 div -->
     <div class="outer">
 
-        <!-- 관리자 메뉴바 영역 -->
         <div id="menubar" style="margin-right: 20px;">
             <%@ include file="../admin/adminMenubar.jsp" %>
         </div>
@@ -78,8 +77,8 @@
 
             <!-- 검색버튼 -->
             <div class="search-area" style="margin: 20px 0px; float: right;">
-                <form action="ansearch.ad?spage=1" method="get">
-	                <select name="animalType" style="height: 30px;">
+                <form action="<%=contextPath%>/ansearch.ad" method="get">
+                	<select name="animalType" style="height: 30px;">
 	                    <option value="D">강아지</option>
 	                    <option value="C">고양이</option>
 	                    <option value="E">기타</option>
@@ -103,36 +102,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                
-                	<%for(Animal a : list) { %>
-	                    <tr>
-	                        <td><%=a.getEntNo() %></td>
-	                        <td>
-	                        <%if(a.getAnimalType().equals("D")) {%>
-	                        	강아지
-	                        <%}else if(a.getAnimalType().equals("C")){ %>
-	                        	고양이
-	                        <%} else { %>
-	                        	기타
-	                        <%} %>
-	                        </td>
-	                        <td><%=a.getAnimalVariety() %></td>
-	                        <td><%=a.getAnimalName() %></td>
-	                        <td><%=a.getEntDate() %></td>
-	                        <td><%=a.getAdoptStatus() %></td>
+                	<%if(list.isEmpty()){ %>
+                		<tr>
+	                    	<td colspan="7" align="center">해당동물이 존재하지 않습니다.</td>
 	                    </tr>
+                	<%} else { %>
+                	
+	                	<%for(Animal a : list) { %>
+		                    <tr>
+		                        <td><%=a.getEntNo() %></td>
+		                        <td>
+		                        <%if(a.getAnimalType().equals("D")) {%>
+		                        	강아지
+		                        <%}else if(a.getAnimalType().equals("C")){ %>
+		                        	고양이
+		                        <%} else { %>
+		                        	기타
+		                        <%} %>
+		                        </td>
+		                        <td><%=a.getAnimalVariety() %></td>
+		                        <td><%=a.getAnimalName() %></td>
+		                        <td><%=a.getEntDate() %></td>
+		                        <td><%=a.getAdoptStatus() %></td>
+		                    </tr>
+	                    <%} %>
                     <%} %>
-                    
                 </tbody>
 
             </table>
 
             <br>
-            <!-- 페이징버튼 영역 -->
-            <div align="center">
+        	<div align="center">
 				
 	       		<%if(currentPage != 1) {%>
-	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/anlist.ad?cpage=<%= currentPage-1 %>';">&lt</button>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%= currentPage-1 %>';">&lt;</button>
 				<%} %>
 				
 				<% for(int p=startPage; p<=endPage; p++){ %>
@@ -141,17 +144,16 @@
 						<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
 						<button class="btn btn-light" disabled><%= p %></button>
 					<%} else { %>
-	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/anlist.ad?cpage=<%= p %>';"><%= p %></button>	
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%=p%>';"><%= p %></button>	
 	            	<%} %>
 	         	<%} %>	
 		
 				<%if(currentPage < maxPage) {%>
-	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/aanlist.ad?cpage=<%= currentPage+1%>';">&gt</button>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%= currentPage+1%>';">&gt;</button>
 	            <%} %>
 			</div>
-            <br><br>
-        
         </div>
+         
 	<%@ include file="../common/footerbar.jsp" %>
     </div>
 
