@@ -488,8 +488,42 @@
 						                        + "<tr style='border-bottom: solid 1px rgb(175, 173, 173);'>"
 						                           + "<td>&nbsp;</td>"
 						                        + "</tr>"
+						                        // 대댓글 시연용
+						                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td style='height: 20px;'></td>"
+								                            +"<td width= \"70px;\"></td>"
+								                        +"</tr>"
+								                        +"<tr class='prview2" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td width=\"70px;\" style=\"text-align: center;\">➜</td>"
+								                            +"<td width='100px;' style=\"font-weight: 900;\">겨울이아빠</td>"
+								                            +"<td width=\"110px;\">21-12-28</td>"
+								                            +"<td width=\"560px;\"></td>"
+								                        +"</tr>"
+								                        +"<tr class='prview2" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td>&nbsp;</td>"
+								                        +"</tr>"
+								                        +"<tr class='prview2" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td width=\"70px;\"></td>"
+								                            // 대댓글 내용
+								                            +"<td id='prcontent"+ list[i].replyNo +"' colspan=\"5\">답글테스트</td>"
+								                            +"<td><button class=\"font comm-btn\">수정</button></td>"
+								                            +"<td><button class=\"font comm-btn\">삭제</button></td>"
+								                            +"<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"\" data-toggle=\"modal\" data-target=\#cmtReport\">신고</button></td>"
+								                        +"</tr>"
+								                        // 대댓글 작성폼
+									                    + "<tr class=\"prview1"+ list[i].replyNo +"\" style=\"display: none;\">"
+								                           + "<td colspan=5><textarea cols=100 rows=8 id='pr-content"+ list[i].replyNo +"'></textarea></td>"
+								                           + "<td><button onclick=\"updatepr('" + list[i].replyNo + "');\">작성</button></td>"
+								                           + "<td><button onclick=\"prcancel('" + list[i].replyNo + "');\">취소</button></td>"
+								                        + "</tr>"
+								                        
+								                        +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
+								                            +"<td>&nbsp;</td>"
+								                        +"</tr>"
+						                        
+						                        
 						                        // 대댓글 영역
-						                        /*
+						                        	/*
 									                    +"<tr class='prview" + list[i].replyNo + "' style='display:none;'>"
 								                            +"<td style='height: 20px;'></td>"
 								                            +"<td width= \"70px;\"></td>"
@@ -604,10 +638,22 @@
                     	}
                     	
                     	// 답글 작성 폼용
-                    	
+                    	/*
                     	function plusReplyForm(replyNo){
-                    		$('.prview'+replyNo).attr('style', "display:'';");  // 답글작성폼 나타내기
+                    		$('.prview'+replyNo).attr('style', "display:none;");  // 답글작성폼 나타내기
                     		$('.prinput'+replyNo).attr('style', "display:'';");
+                    	}
+                    	*/
+                    	
+                    	// 답글 시연용
+       					function plusReplyForm(replyNo){
+                    		$('.prview'+replyNo).attr('style', "display:'';");  // 답글작성폼 나타내기
+                    		$('.prview1'+replyNo).attr('style', "display:'';");
+                    	}
+                    	
+                    	function updatepr(replyNo){
+                    		$('.prview1'+replyNo).attr('style', "display:none;");
+                    		$('.prview2'+replyNo).attr('style', "display:'';");
                     	}
                     	
                     	
