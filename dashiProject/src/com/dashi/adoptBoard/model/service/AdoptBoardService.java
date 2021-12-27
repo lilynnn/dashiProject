@@ -34,6 +34,12 @@ public class AdoptBoardService {
 		return anList;
 	}
 	
+	public ArrayList<AdoptNotice> selectAjaxMainAdoptNotice(int startIndex, int endIndex){
+		Connection conn = getConnection();
+		ArrayList<AdoptNotice> anList = new AdoptBoardDao().selectAjaxMainAdoptNotice(conn, startIndex, endIndex);
+		close(conn);
+		return anList;
+	}
 	
 	// 입양공고 리스트 불러오는 메소드
 	public ArrayList<AdoptNotice> selectList(PageInfo pi) {
