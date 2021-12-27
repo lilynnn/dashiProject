@@ -111,7 +111,7 @@
  				<br><br><br>
  				
    				<!-- 관리자가 업로드한 동물 상세 이미지 보여질 table -->
-				<table border="1" id="img-area">
+				<table id="img-area">
                 	<tr>
 	                	<td><img src="<%=contextPath %>/<%=list.get(1).getPath()+list.get(1).getChangeName() %>"></td>
 	                	<td><img src="<%=contextPath %>/<%=list.get(2).getPath()+list.get(2).getChangeName() %>" ></td>
@@ -125,60 +125,16 @@
 					<%= an.getAnContent() %>
                 </div>  
 
-                <br><br>
                 <!-- 고정으로 가져갈 주의사항 멘트 -->
                 <img src="<%= contextPath%>/resources/images/adopt/adoptProcedureGuide.png" style="width: 800px;">
                 <br>
                 <img src="<%=contextPath%>/resources/images/adopt/adoptnotice.png" width="600">
                 <br><br>
                 
-                <br><br><br><br>
-
-                <table style="margin: auto;"> 
-                    <tr>
-                        <td width="900"><!-- 공백란으로 사용 --></td>
-                        <td width="100" style="padding-left: 30px;">
-                            <!-- 나중에 이미지 찾아서 넣기-->
-                            찜하기
-                        </td>
-                        <td width="100" style="padding-left: 10px;">
-                            <!-- 나중에 이미지 찾아서 넣기-->
-                            공유하기
-                        </td>
-                    </tr>
-                </table>
+                <br><br>
 
                 <br>
 
-                <!-- 이전글/다음글 넘기는 영역 -->
-                <table class="table"style="width: 1100px;">
-                
-                    <!-- 한 줄 영역으로 클릭 효과 주기 -->
-                    <tbody>
-                        <tr>
-                            <td width="100">이전글</td>
-                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                        <tr>
-                            <td width="100">다음글</td>
-                            <td width="700">[동물품종][이름]의 가족을 기다려요.</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                        <tr>
-                            <!-- 구분선용 공백란 -->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-                <!-- 나중에 경로 수정하기!! -->
                 <%if(loginUser != null) {%>
                 <a href="<%= contextPath%>/adapply.adt?adtno=<%=an.getAnlistNo() %>" class="btn btn-success">입양신청하기</a>
                 <%} %>

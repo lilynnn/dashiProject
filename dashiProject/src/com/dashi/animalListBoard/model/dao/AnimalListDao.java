@@ -248,6 +248,7 @@ public class AnimalListDao {
 			pstmt.setString(6, a.getEntNo());
 			
 			result = pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

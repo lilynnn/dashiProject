@@ -178,17 +178,18 @@
 				</table>
 
 				<!-- 원본파일명 보여질 div -->
-				<% if(!list.isEmpty()) {%>
-					<div >
+				<div style="disply:none;">
+					<% if(!list.isEmpty()) {%>
 						<%for(int i=1; i<=list.size(); i++) {%>
-							<%=list.get(i-1).getOriginName() %>
-	                		<input type ="hidden" name="originFileNo<%=i %>" value = "<%=list.get(i-1).getAttachNo() %>"><br>
+							<input type="hidden" value="<%=list.get(i-1).getOriginName() %>">
+	                		<input type="hidden" name="originFileNo<%=i %>" value = "<%=list.get(i-1).getAttachNo() %>"><br>
+
 						<%} %>				
-					</div>
-				<%}%>
-				
+					<%}%>				
+				</div>
+
 				<!-- 새로운 파일 input 보여질 div -->
-				<div>
+				<div style="display:none;">
 					<input type="file" name="file1" id="file1" onchange="loadImg(this, 1);"> <br>
 	               	<input type="file" name="file2" id="file2" onchange="loadImg(this, 2);"> <br>
 	           	    <input type="file" name="file3" id="file3" onchange="loadImg(this, 3);"> <br>

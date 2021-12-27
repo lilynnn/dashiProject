@@ -293,8 +293,11 @@
 					<td><b>모든 문항을 작성한 후 유의사항을 읽고 서명한 파일을 첨부해서 제출해주세요.</b></td>
 				</tr>
 				<tr>
+					<td><b style="font-size:13px; color:gray;">서약서 미첨부시 자동으로 반려처리됩니다.</b></td>
+				</tr>
+				<tr>
 					<td>
-						<input name="upfile" type="file">
+						<input name="upfile" type="file" required>
 					</td>
 				</tr>
 			</table>

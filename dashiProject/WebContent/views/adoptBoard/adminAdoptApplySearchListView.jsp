@@ -105,7 +105,7 @@
               <!-- 검색버튼 -->
               <div class="search-area">
 	              <form action="<%=contextPath %>/adpsearch.ad" method="get">
-	                  <select name="search-category" style="height: 30px;">
+	                  <select name="searchCtg" style="height: 30px;">
 	                      <option value="adpNo">입양신청번호</option>
 	                      <option value="adtNo">공고번호</option>
 	                      <option value="userId">아이디</option>

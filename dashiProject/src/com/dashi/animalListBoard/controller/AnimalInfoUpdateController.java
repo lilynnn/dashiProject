@@ -81,8 +81,10 @@ public class AnimalInfoUpdateController extends HttpServlet {
 			int result = new AnimalListService().updateAnimalInfo(a, at);
 			System.out.println(at);
 			if(result > 0) {	// 업데이트 성공
+				request.getSession().setAttribute("alertMsg", "동물정보수정이 성공적으로 완료되었습니다.");
 				response.sendRedirect(request.getContextPath() + "/andetail.ad?ano="+a.getEntNo());
 			} else {	// 업데이트 실패
+				request.getSession().setAttribute("alertMsg", "동물정보수정에 실패했습니다.");
 				response.sendRedirect(request.getContextPath() + "/anlist.ad?cpage=1");
 			}
 		}

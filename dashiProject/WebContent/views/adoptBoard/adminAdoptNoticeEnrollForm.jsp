@@ -178,7 +178,7 @@
 					<br><br>
 					<button class="btn btn-success" type="submit">등록하기</button>
 					&nbsp;
-					<button class="btn btn-secondary">목록보기</button>
+					<a href="<%=contextPath %>/adlist.ad?cpage=1" class="btn btn-secondary">목록보기</a>
 					<br><br>
 					
 				</div>

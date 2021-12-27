@@ -391,10 +391,13 @@ public class AdoptBoardService {
 		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
 		if(searchCtg.equals("adpNo")) {
 			listCount = new AdoptBoardDao().searchAdoptApplyADPNOCount(conn, searchKey);
+			System.out.println("service: " + listCount);
 		} else if(searchCtg.equals("adtNo")){
 			listCount = new AdoptBoardDao().searchAdoptApplyADTNOCount(conn, searchKey);
+			System.out.println("service: " + listCount);
 		} else if(searchCtg.equals("userId")){
 			listCount = new AdoptBoardDao().searchAdoptApplyMEMIDCount(conn, searchKey);
+			System.out.println("service: " + listCount);
 		}
 		close(conn);
 		return listCount;

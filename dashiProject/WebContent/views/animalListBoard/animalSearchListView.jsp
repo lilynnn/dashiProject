@@ -135,7 +135,7 @@
         	<div align="center">
 				
 	       		<%if(currentPage != 1) {%>
-	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%= currentPage-1 %>';">&lt;</button>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/ansearch.ad?animalType=<%=animalType%>&key=<%=key %>&spage=<%= currentPage-1 %>';">&lt;</button>
 				<%} %>
 				
 				<% for(int p=startPage; p<=endPage; p++){ %>
@@ -144,12 +144,12 @@
 						<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
 						<button class="btn btn-light" disabled><%= p %></button>
 					<%} else { %>
-	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%=p%>';"><%= p %></button>	
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType=<%=animalType%>&key=<%=key %>&spage=<%=p%>';"><%= p %></button>	
 	            	<%} %>
 	         	<%} %>	
 		
 				<%if(currentPage < maxPage) {%>
-	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType='<%=animalType%>'&key='<%=key %>'&spage=<%= currentPage+1%>';">&gt;</button>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/ansearch.ad?animalType=<%=animalType%>&key=<%=key %>&spage=<%=currentPage+1%>';">&gt;</button>
 	            <%} %>
 			</div>
         </div>

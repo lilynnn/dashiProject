@@ -160,7 +160,7 @@
             <div align="center">
 				
 	       		<%if(currentPage != 1) {%>
-	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adtsearch.adt?&searchCtg=<%=searchCtg%>&spage=<%=currentPage-1 %>&searchKey=<%=searchKey%>';">&lt;</button>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adtsearch.ad?&searchCtg=<%=searchCtg%>&searchKey=<%=searchKey%>&spage=<%=currentPage-1 %>';">&lt;</button>
 				<%} %>
 				
 				<% for(int p=startPage; p<=endPage; p++){ %>
@@ -168,12 +168,12 @@
 					<%if(p == currentPage){ %>
 						<button class="btn btn-light" disabled><%= p %></button>
 					<%} else { %>
-	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=p%>&searchKey=<%=searchKey%>';"><%= p %></button>	
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&searchKey=<%=searchKey%>&spage=<%=p%>';"><%= p %></button>	
 	            	<%} %>
 	         	<%} %>	
 	
 				<%if(currentPage != maxPage) {%>
-	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=currentPage+1%>&searchKey=<%=searchKey%>';">&gt;</button>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adtsearch.ad?searchCtg=<%=searchCtg%>&searchKey=<%=searchKey%>&spage=<%=currentPage+1%>';">&gt;</button>
 	            <%} %>
 	            
 	        </div>

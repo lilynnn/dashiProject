@@ -1288,6 +1288,11 @@ public class AdoptBoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1307,6 +1312,11 @@ public class AdoptBoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1326,6 +1336,11 @@ public class AdoptBoardDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				listCount = rset.getInt("count");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

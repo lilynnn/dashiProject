@@ -96,7 +96,7 @@ public class dspUpdateController extends HttpServlet {
 
 			
 			int result = new DspService().updateDsp(d, list);
-			
+		
 			if(result>0) {
 				request.getSession().setAttribute("alertMsg", "게시글이 수정되었습니다..");
 				response.sendRedirect(request.getContextPath()+"/list.dsp?cpage=1");
