@@ -97,7 +97,7 @@
 
         <div style="width: 570px; margin-left: 100px;">
        		<!--회원가입 폼-->
-	        <form action="<%=contextPath %>/enroll1.me" method="post" id="enroll-form" style="text-align : left">
+	        <form action="<%=contextPath %>/insert.me" method="post" id="enroll-form" style="text-align : left">
 	           
 	           <input type="radio" name="gender" value="M">남자 &nbsp;&nbsp;&nbsp;
 	           <input type="radio" name="gender" value="F">여자
