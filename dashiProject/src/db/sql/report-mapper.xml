@@ -182,7 +182,7 @@
 		  )
 		  VALUES
 		  (
-		    LPAD(SEQ_RNO.NEXTVAL,3,0)
+		    SEQ_RNO.NEXTVAL
 		  , ?
 		  , ?
 		  , ?
@@ -210,7 +210,7 @@
 			  )
 			  VALUES
 			  (
-			    LPAD(SEQ_RNO.NEXTVAL,3,0)
+			    SEQ_RNO.NEXTVAL
 			  , ?
 			  , ?
 			  , ?

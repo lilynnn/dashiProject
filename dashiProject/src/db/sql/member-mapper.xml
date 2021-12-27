@@ -190,7 +190,7 @@
 	</entry>
 	
 	
-	<entry key="selectWriteAdoptApplyList">
+	<entry key="selectWriteAdoptApplyList">            
 		SELECT 
 		       AALIST_NO
 		     , ANLIST_NO
@@ -199,10 +199,10 @@
 		     , AA_TITLE
 		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
 		     , ADT_STATUS
-		 FROM ADOPT_APPLY
+		 FROM ADOPT_APPLY A
 		 JOIN MEM_INFO USING(MEM_NO)
 		 WHERE MEM_NO = ?
-		   AND ADT_STATUS = 'Y'
+		   AND A.POST_STATUS = 'Y'
 	</entry>
 	
 	<entry key="selectAdoptApply">

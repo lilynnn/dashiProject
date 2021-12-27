@@ -40,6 +40,9 @@ public class MemberBoardListController extends HttpServlet {
 		// 작성한 입양신청서 조회
 		ArrayList<AdoptApply> adplist = new MemberService().selectWriteAdoptApplyList(userNo);
 		
+		System.out.println(userNo);
+		System.out.println(adplist);
+		
 		request.setAttribute("adplist", adplist);
 		request.getRequestDispatcher("views/member/memberBoardListView.jsp").forward(request, response);
 	
