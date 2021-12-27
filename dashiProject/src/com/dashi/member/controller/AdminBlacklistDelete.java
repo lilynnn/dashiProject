@@ -39,11 +39,11 @@ public class AdminBlacklistDelete extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "등급이 변경되었습니다.");
-			response.sendRedirect(request.getContextPath());
+			
 		}else {
 			request.getSession().setAttribute("alertMsg", "등급 변경 실패");
 		}
-		 
+		response.sendRedirect(request.getContextPath()+"/main.ad");
 	}
 
 	/**
