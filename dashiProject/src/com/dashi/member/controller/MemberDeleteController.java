@@ -35,7 +35,7 @@ public class MemberDeleteController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");		
 		
 		String userId = request.getParameter("userId");
-		String userPwd = request.getParameter("userPwd");
+		String userPwd = request.getParameter("confirmPwd");
 		String reason = request.getParameter("reason");
 		
 		Member m = new Member();

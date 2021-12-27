@@ -82,7 +82,7 @@
    	color:rgb(252, 186, 3);
    	background: rgb(32, 68, 28);
 	}
-    #mem-boardlist{
+    #mem-likelist{
        background: rgb(32, 68, 28);
        color: orange;
     }

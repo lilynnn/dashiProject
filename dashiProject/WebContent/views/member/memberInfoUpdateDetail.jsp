@@ -265,9 +265,9 @@
                 <input type="checkbox" required>위의 안내사항을 읽고 이해했습니다.
                 </p>
   
-                                 비밀번호 재입력 : <input type="password" name="userPwd" required> <br><br><br>
+                                 비밀번호 재입력 : <input type="password" name="confirmPwd" required> <br><br><br>
             </div>
-            <input type="hidden" name="password" value="<%=loginUser.getMemPwd()%>">
+            <input type="hidden" name="originPwd" value="<%=loginUser.getMemPwd()%>">
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="submit" class="btn btn-sm" style="background:rgb(143,153,142);" onclick="return confirmPwd();">탈퇴하기</button>
@@ -283,11 +283,14 @@
 
     <script>    
 		function confirmPwd(){
+				console.log($("input[name=confirmPwd]").val());
+				console.log($("input[name=originPwd]").val());
 			
-			if($("input[name=userPwd]").val() != $("input[name=password]").val()){
+			if($("input[name=confirmPwd]").val() != $("input[name=originPwd]").val()){
 				alert("비밀번호가 일치하지 않습니다!");
 				
 				return false;
+				
 			}
 		}
 
