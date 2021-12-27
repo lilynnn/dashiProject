@@ -141,20 +141,11 @@
         </div>
 
 
-        <div class="search-area">
-            <form action="">
-
-                <select name="animal-category">
-                    <option value="dog">강아지</option>
-                    <option value="cat">고양이</option>
-                    <option value="etc">기타</option>
-                </select>
-
-                <input type="search" placeholder="검색어를 입력하세요." style="border: 1px solid black;">
-                
-                <button id="searchBtn">검색하기</button>
-            </form>
+        <div>
+            <br>
         </div>
+
+
         <%if(loginUser != null){ %>
         	<div class="write"><button class="writeBtn">글쓰기</button></div>
 		<%} %>
