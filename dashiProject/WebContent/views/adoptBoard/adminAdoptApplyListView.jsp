@@ -205,7 +205,7 @@
             $("#list-area>tbody>tr").click(function(){
 				console.log($(this).children().eq(0).val());
             	const key = $(this).children().eq(0).val();
-                location.href="/adpdetail.ad?apno="+key;
+				location.href="<%= contextPath%>/adpdetail.ad?apno="+key;
            
             }) 
             
