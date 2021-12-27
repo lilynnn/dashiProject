@@ -30,7 +30,7 @@
         width: 1100px;
         height: 110px;
         margin: auto;
-        border: 1px solid black;
+
     }
     .dsp{
         display: table-cell;
@@ -112,6 +112,8 @@
  
     }
 
+    
+
     /*pagingbar*/
     .paging-area{
         width: 100%;
@@ -122,6 +124,7 @@
     	border:none;
     }
 
+
 </style>
 </head>
 
@@ -130,16 +133,14 @@
 	<%@ include file="../common/menubar.jsp" %>
 
     <div class="outer">
-        <div class="image-area" >
-            이미지
-        </div>
-        
+
+
         <div class="dsp-nav" align="center" style="margin-top:30px;">
             <div class="dsp"><a href="javascript:miss();" id="miss">실종</a></div>
             <div class="dsp"><a href="javascript:protect();" id="protect">보호</a></div>
             <div class="dsp"><a href="javascript:sight();" id="sight">목격</a></div>
         </div>
-
+<hr>
 
         <div>
             <br>

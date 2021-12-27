@@ -121,6 +121,7 @@
     color: white;
     font-size: 20px;
     border:none;
+    margin-left: 19px;
    }
 
    .enrollBtn{

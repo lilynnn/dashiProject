@@ -378,51 +378,15 @@
         
         <div class="comment-area" >
             <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
-                        <tr id="comm-count">
-                            <td style="height: 20px; width: 70px;"><img src="resources/images/comment.png" style="width:20px; height: 20px;"></td>
-                            <!--댓글 수 카운트-->  
-                            <td>3</td>
-                        </tr>
                         <tbody id="comm-outer">
 							
                        
 							
                         </tbody>
 
-
+                    <hr>
 
                     </table>
-                    <!--대댓글영역-->
-                    <!--
-                    <table width="1025" align="center" class="font" style="background: rgb(236, 244, 247);border-bottom: solid 1px rgb(175, 173, 173);">
-                        <tr>
-                            <td style="height: 20px; "></td>
-                            <td width= "70px;"></td>
-                        </tr>
-                        <tr>
-                            <td width="70px;" style="text-align: center;">➜</td>
-                            <td>작성자</td>
-                            <td width="110px;">YYYY-MM-DD</td>
-                            <td width="90px;">HH-MM</td>
-                            <td width="560px;"></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td width="70px;"></td>
-                            <td colspan="5" style="font-weight: 900;">댓글내용</td>
-                            <td><button class="font comm-btn">수정</button></td>
-                            <td><button class="font comm-btn">삭제</button></td>
-                            <td><button class="font comm-btn" id="report-btn" onclick="" data-toggle="modal" data-target="#cmtReport">신고</button></td>
-                            <td><button class="font comm-btn">답글</button></td>
-                        </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                        </tr>
-                    </table>
-                    -->
-
             
                     <br><br><br>
                         <!--댓글 입력란-->
