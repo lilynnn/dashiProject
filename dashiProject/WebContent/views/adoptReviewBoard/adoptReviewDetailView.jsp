@@ -28,26 +28,25 @@
         height: 300px;
         margin: auto;
         margin-top: 30px;
-        border: 1px solid black;
     }
 
     /*사용자 첨부 이미지 영역*/
     .image-area{
         width: 600px;
-        height: 300px;
+        height: auto;
         margin: auto;
         margin-top: 30px;
-        border: 1px solid black;
     }
 
     /*사용자 작성 글내용 영역*/
     .content-area{
         width: 1200px;
         margin: auto;
+        height: auto;
     }
 
     /*버튼 영역*/
-    .btn{
+    .btnn{
         border: none;
         background: rgb(221, 221, 221);
         color: rgb(80, 79, 79);
@@ -57,7 +56,7 @@
         width: 100px;
         border-radius: 9px;
     }
-    .btn:hover{
+    .btnn:hover{
         color:black;
         cursor:pointer;
     }
@@ -174,7 +173,7 @@
 	        </div>
             <br><br><br><br><br><br>
             <!-- 입양후기 상세내용 영역 -->
-            <div class="content-area" align="center" style="border: 1px solid red; height: auto;">
+            <div class="content-area" align="center">
                 <!-- 입양후기 제목, 작성일 -->
                 <table align="left" style="margin-left: 150px;">
                     <tr>
@@ -242,7 +241,14 @@
                 <!-- 신고하기 버튼 영역 -->
                 <div class="report-area" align="right">
             
-                    <button data-toggle="modal" data-target="#boardReport">신고하기</button>
+                    <button data-toggle="modal" data-target="#boardReport" class="btnn" style="border: none;
+                    background: rgb(221, 221, 221);
+                    color: rgb(80, 79, 79);
+                    font-size: 14px;
+                    font-weight: bold;
+                    height: 33px;
+                    width: 100px;
+                    border-radius: 9px;">신고하기</button>
 
                     <br><br>
                 </div>
@@ -337,13 +343,12 @@
                 </div>
                 <% } %>
         
-                <div align="center" style="border: 1px solid red; height: auto;">
+                <div align="center" style="height: auto;">
                     <!--댓글영역-->
                     <table width="1025" align="center" class="font" style="border-bottom: solid 1px rgb(175, 173, 173);">
                         <tr id="comm-count">
                             <td style="height: 20px; width: 70px;"><img src="resources/images/comment.png" style="width:20px; height: 20px;"></td>
-                            <!--댓글 수 카운트-->  
-                            <td>3</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tbody id="comm-outer">
 							
@@ -406,6 +411,11 @@
                         <% } %>
                         <br><br><br><br><br>
                 </div> 
+                            <div style="width: 100%;" align="center">
+                                <!--클릭 시 입양후기 전체조회 페이지로 이동-->
+                                <button onclick="location.href='<%= contextPath %>/list.ar?cpage=1'" class="btnn" style="background:rgb(102,184,94);">목록으로</button>
+                            </div>
+                                
                 
                 <script>
                     	$(function(){
@@ -455,9 +465,9 @@
 						                            + "<td>&nbsp;</td>"
 						                        + "</tr>"
 						                        + "<tr>"
-						                           + "<td colspan=2>" + list[i].nickname + "</td>"
+						                           + "<td colspan=2><b>" + list[i].nickname + "</b></td>"
 						                           + "<td width=200px;>"+ list[i].writeDate + "</td>"
-						                           + "<td width=610px;></td>"
+						                           + "<td width=600px;></td>"
 						                        + "</tr>"
 						                        + "<tr>"
 						                           + "<td>&nbsp;</td>"
@@ -681,7 +691,7 @@
                                 </tr>
                             </table>
                             <div align="center">
-                                <button class="btn btn-secondary">신고하기</button>
+                                <button class="btnn btn-secondary" style="">신고하기</button>
                             </div>
 
 
@@ -703,34 +713,11 @@
                         </div>
                     </form>
                 </div>
+        </div>	
+        <br><br><br><br><br>
 				
 				
-				
-                <!-- 이전글/다음글 넘기는 영역 -->
-                <table class="table" style="width: 1050px; border-collapse: collapse;">
-                        
-                    <!-- 한 줄 영역으로 클릭 효과 주기 -->
-                    <tbody>
-                        <tr style="border-top: solid 1px rgb(175, 173, 173); height: 50px; font-weight: 600;">
-                            <td width="100">이전글</td>
-                            <td width="700">기요미 입양후기</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                        <tr style="border-top: solid 1px gray; border-bottom: solid 1px rgb(175, 173, 173); height: 50px; font-weight: 600;">
-                            <td width="100">다음글</td>
-                            <td width="700">멍멍이 입양후기</td>
-                            <td width="150">YYYY-MM-DD</td>
-                            <td width="100">조회수</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <br><br><br>
- 
-                <!--클릭 시 입양후기 전체조회 페이지로 이동-->
-                <button onclick="location.href='<%= contextPath %>/list.ar?cpage=1'" class="btn" align="center">목록으로</button>
 
-                <br><br><br><br>
             
  
         
