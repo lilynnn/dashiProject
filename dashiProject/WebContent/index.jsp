@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ page import="java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptNotice, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>   
  <%
- 	//ArrayList<AdoptNotice> anList = (ArrayList<AdoptNotice>)request.getAttribute("anList");
+ 	ArrayList<AdoptNotice> anList = (ArrayList<AdoptNotice>)request.getAttribute("anList");
  	ArrayList<AdoptReview> arlist = (ArrayList<AdoptReview>)request.getAttribute("arlist");
  %>
 <!DOCTYPE html>
@@ -13,11 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     div{box-sizing: border-box;}
-    
-    /* 사진 넣고 나서 테두리 지우기~! */
-    .image-area, .photo-area{
-        border: 1px solid gray;
-    }
+   
     /* 메인페이지 전체 감싸는 div */
     .outer{
         margin: auto;
@@ -140,7 +136,29 @@
    		<a href="<%=contextPath %>/adlist.adt?cpage=1"><b>입양 공고</b></a>
    		</div>
         <hr style="width: 1100px; margin-top: 10px;">
+                <!-- 입양 공고 게시글 띄우는 영역 -->
+        <div class="adopt-area">
+            <%if(anList.isEmpty()) {%>
+            <div style="margin-top:150px; height:100px;" align="center">입양공고글이 존재하지 않습니다.</div>
+            <%} else { %>
+            	<%for(AdoptNotice an : anList) {%>
+		            <div class="notice-box" align="center">
+		            	<input type="hidden" value=<%=an.getAnlistNo() %>>
+		                <div class="photo-area"><img src="<%=an.getTitleImg() %>"></div>
+		                <div id="noticeTitle"><%=an.getAnTitle() %></div>
+		            </div>
+            	<%} %>
+            <%} %>
+        </div>
         
+        <script>
+        	$(function(){
+        		$(".notice-box").click(function(){
+        			console.log($(this).children().eq(0).val());
+        			location.href='<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val();
+        		})
+        	})
+        </script>
        
         
         <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
