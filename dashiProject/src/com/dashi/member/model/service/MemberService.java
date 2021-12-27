@@ -9,8 +9,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import com.dashi.adoptBoard.model.vo.AdoptApply;
-import com.dashi.answerBoard.model.dao.AnswerDao;
-import com.dashi.answerBoard.model.vo.Answer;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.dao.MemberDao;
 import com.dashi.member.model.vo.Member;
@@ -192,6 +192,30 @@ public class MemberService {
 		close(conn);
 		return adp;
 	}
+	
+	// 작성한 입양후기 리스트 조회
+	public ArrayList<AdoptReview> selectWriteAdoptReviewList(int userNo){
+		Connection conn = getConnection();
+		ArrayList<AdoptReview> arlist = new MemberDao().selectWriteAdoptReviewList(conn, userNo);
+		close(conn);
+		return arlist;
+	}
+	
+	// 작성한 입양후기 상세조회
+	public AdoptReview selectReview(String arlistNo) {
+		Connection conn = getConnection();
+		AdoptReview ar = new MemberDao().selectReview(conn, arlistNo);
+		close(conn);
+		return ar;
+	}
+	public ArrayList<Attachment> selectAttachmentList(String arlistNo){
+		Connection conn = getConnection();
+		ArrayList<Attachment> list = new MemberDao().selectReviewAttachmentList(conn, arlistNo);
+		close(conn);
+		return list;
+	}
+	
+	
 	
 	// ---------관리자 회원 검색 영역
 	

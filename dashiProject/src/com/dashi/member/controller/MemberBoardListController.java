@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.dashi.adoptBoard.model.vo.AdoptApply;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
 import com.dashi.member.model.service.MemberService;
 import com.dashi.member.model.vo.Member;
 
@@ -41,8 +42,14 @@ public class MemberBoardListController extends HttpServlet {
 		ArrayList<AdoptApply> adplist = new MemberService().selectWriteAdoptApplyList(userNo);
 
 		request.setAttribute("adplist", adplist);
+		
+		// 작성한 입양후기 조회
+		ArrayList<AdoptReview> arlist = new MemberService().selectWriteAdoptReviewList(userNo);
+		request.setAttribute("arlist", arlist);
+		
 		request.getRequestDispatcher("views/member/memberBoardListView.jsp").forward(request, response);
 	
+		
 	}
 
 	/**

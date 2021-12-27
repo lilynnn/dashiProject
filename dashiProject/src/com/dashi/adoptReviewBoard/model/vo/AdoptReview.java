@@ -106,7 +106,22 @@ public class AdoptReview {
 	}
 
 	
+	// 글쓴내역확인용
 	
+	public AdoptReview(String arlistNo, int memNo, String anType, String arTitle, String arContent, String nickname,
+			String writeDate, String memId, int viewCount) {
+		super();
+		this.arlistNo = arlistNo;
+		this.memNo = memNo;
+		this.nickname = nickname;
+		this.arTitle = arTitle;
+		this.arContent = arContent;
+		this.viewCount = viewCount;
+		this.writeDate = writeDate;
+		this.anType = anType;
+		this.memId = memId;
+	}
+
 	public String getContentImg() {
 		return contentImg;
 	}

@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptApply" %>
+<%@ page import = "java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptApply, com.dashi.adoptReviewBoard.model.vo.AdoptReview" %>
 <%
 	ArrayList<AdoptApply> adplist = (ArrayList<AdoptApply>)request.getAttribute("adplist");
+	ArrayList<AdoptReview> arlist = (ArrayList<AdoptReview>)request.getAttribute("arlist");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -144,38 +146,43 @@
 	                <tr align="left">
 	                    <th colspan="5">입양후기</th>
 	                </tr>
+	                <!--
 	                <tr style="background: white;">
 	                    <td colspan="4"></td>
 	                    <td align="center">
 	                        <a href="">더보기▼</a>
 	                    </td>
 	                </tr>
-	
+					-->
 	                
 	                <tr align="center">
-	                    <td width="30">No.</td>
-	                    <td width="30"></td>
+	                    <td width="120">No.</td>
 	                    <td width="750">제목</td>
 	                    <td width="110">작성날짜</td>
 	                    <td width="110">조회수</td>
+	                    <td width="100">삭제하기</td>
 	                </tr>
 				</thead>
 				<tbody>
 	                <!--글 없을때-->
+	                <%if(arlist.isEmpty()){ %>
 	                <tr align="center">
 	                    <td colspan="5">작성한 게시글이 없습니다.</td>
 	                </tr>
-	
-	                <!--글 있을때-->
-	                <tr align="center">
-	                    <td>1</td>
-	                    <td>
-	                        <input type="checkbox">
-	                    </td>
-	                    <td>여기는 제목자리</td>
-	                    <td>2021-12-08</td>
-	                    <td>123</td>
-	                </tr>
+	                <%} else{ %>
+	                	<%for(AdoptReview ar : arlist){ %>
+		                <!--글 있을때-->
+		                <tr align="center">
+		                    <td><%=ar.getArlistNo() %></td>
+		                    <td><%=ar.getArTitle() %></td>
+		                    <td><%=ar.getWriteDate() %></td>
+		                    <td><%=ar.getViewCount() %></td>
+		                    <td>
+		                    <button onclick="location.href='<%=contextPath%>/delete.ar?arno=<%=ar.getArlistNo() %>'" class="btn btn-sm btn-danger">삭제</button>
+		                    </td>
+		                </tr>
+		                <%}%>
+		            <%}%>
                 </tbody>
             </table>
 
@@ -229,7 +236,9 @@
 			$("#adopt-list>tbody>tr").click(function(){
 				console.log($(this).children().eq(0).text());
 				location.href='<%=contextPath%>/detail.adp?adpno=' + $(this).children().eq(0).text();
-			})
+			});
+			
+
 			
 		})
 	

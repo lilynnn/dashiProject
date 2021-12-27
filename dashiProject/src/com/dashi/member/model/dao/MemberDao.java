@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.dashi.adoptBoard.model.vo.AdoptApply;
-import com.dashi.answerBoard.model.vo.Answer;
+import com.dashi.adoptReviewBoard.model.vo.AdoptReview;
+import com.dashi.common.model.vo.Attachment;
 import com.dashi.common.model.vo.PageInfo;
 import com.dashi.member.model.vo.Member;
 
@@ -562,6 +563,114 @@ public class MemberDao {
 		}
 		return adp;
 	}
+	
+	// 작성한 입양후기 리스트 조회
+	public ArrayList<AdoptReview> selectWriteAdoptReviewList(Connection conn, int userNo){
+		
+		ArrayList<AdoptReview> arlist = new ArrayList<AdoptReview>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectWriteAdoptReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				arlist.add(new AdoptReview(rset.getString("ARLIST_NO")
+						                , rset.getInt("MEM_NO")
+						                , rset.getString("AN_TYPE")
+						                , rset.getString("AR_TITLE")
+						                , rset.getString("AR_CONTENT")
+						                , rset.getString("NICKNAME")
+						                , rset.getString("WRITE_DATE")
+						                , rset.getString("MEM_ID")
+						                , rset.getInt("view_count")));
+			}
+			System.out.println(arlist);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(conn);
+		}
+		return arlist;
+		
+	}
+	
+	// 입양후기 상세조회
+	public AdoptReview selectReview(Connection conn, String arlistNo) {
+		// select문 => ResultSet (한행) => Board
+		AdoptReview ar = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReview");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, arlistNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				ar = new AdoptReview(rset.getString("arlist_no"),
+							  rset.getInt("mem_no"),
+							  rset.getString("an_type"),
+							  rset.getString("ar_title"),
+							  rset.getString("ar_content"),
+							  rset.getString("nickname"),
+							  rset.getString("write_date"),
+							  rset.getString("mem_Id"),
+							  rset.getString("TITLE_IMG"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return ar;
+	}
+	
+	public ArrayList<Attachment> selectReviewAttachmentList(Connection conn, String arlistNo){
+		ArrayList<Attachment> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectReviewAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, arlistNo);
+		
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				Attachment at = new Attachment();
+				at.setChangeName(rset.getString("CHANGE_NAME"));
+				at.setPath(rset.getString("PATH"));
+				at.setAttachNo(rset.getString("ATTACH_NO"));
+				at.setOriginName(rset.getString("ORIGIN_NAME"));
+				at.setAttachLevel(rset.getInt("ATTACH_LEVEL"));
+				at.setAttachStatus(rset.getString("ATTACH_STATUS"));
+				at.setRefNo(rset.getString("REF_NO"));
+				
+				list.add(at);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return list;
+	}
+
+	
 	
 	// ---------------관리자 회원 키워드 검색 영역
 	

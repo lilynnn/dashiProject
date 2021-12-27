@@ -57,7 +57,7 @@ public class AdoptReviewBoardService {
 		return result;
 	}
 	
-	// 입양후기 상세보기
+	// ------ 입양후기 상세보기
 	public AdoptReview selectReview(String arlistNo) {
 		Connection conn = getConnection();
 		AdoptReview ar = new AdoptReviewBoardDao().selectReview(conn, arlistNo);
