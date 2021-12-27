@@ -496,7 +496,7 @@
 								                        +"<tr class='prview2" + list[i].replyNo + "' style='display:none;'>"
 								                            +"<td width=\"70px;\" style=\"text-align: center;\">➜</td>"
 								                            +"<td width='100px;' style=\"font-weight: 900;\">겨울이아빠</td>"
-								                            +"<td width=\"110px;\">21-12-28</td>"
+								                            +"<td width=\"110px;\">21-12-28 10:27</td>"
 								                            +"<td width=\"560px;\"></td>"
 								                        +"</tr>"
 								                        +"<tr class='prview2" + list[i].replyNo + "' style='display:none;'>"
