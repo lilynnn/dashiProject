@@ -164,9 +164,7 @@
                                           <%=a.getAnContent()%>
                                    </p>
                                  <% if(loginUser!=null && loginUser.getMemNo()==(a.getMemNo()) ){ %>	
-                                   <p align="right";><a href="<%=contextPath%>/updateview?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-warning">
-                                        		  수정
-                                   </a>
+                                   <p align="right"; style="margin-right:10px;" > 
                                    <a href="<%=contextPath%>/asdelete?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-danger">
                                       		 삭제
                   	                 </a></p>
