@@ -39,6 +39,7 @@ public class dpsDetailViewController extends HttpServlet {
 		DspService dService = new DspService();
 		int result = dService.increasCount(dspNo);
 		
+		
 		if(result > 0) {// 성공 => 유효한게시글 => 상세페이지
 			Dsp d = dService.selectDsp(dspNo);
 			ArrayList<Attachment> list = dService.selectAttachmentList(dspNo);
@@ -48,7 +49,7 @@ public class dpsDetailViewController extends HttpServlet {
 
 			request.getRequestDispatcher("views/dspBoard/dspDetailView.jsp").forward(request, response);
 		}else {
-			
+			request.getSession().setAttribute("alertMsg", "잘못된 접근입니다.");
 		}
 	
 		

@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.ArrayList, com.dashi.dspBoard.model.vo.Category ,com.dashi.dspBoard.model.vo.Dsp, com.dashi.common.model.vo.Attachment"%>
 <!DOCTYPE html>
+
+<%
+	ArrayList<Category> category = (ArrayList<Category>)request.getAttribute("category");
+	Dsp d = (Dsp)request.getAttribute("d");
+	ArrayList<Attachment> list = (ArrayList<Attachment>)request.getAttribute("list");
+	ArrayList<Dsp> contentImgPath = (ArrayList<Dsp>)request.getAttribute("contentImgPath");
+
+%>
+
+
+
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -103,7 +115,7 @@
                
                 <!--제목-->
                 <div id="title">
-                    [강아지] 실종 믹스견
+                    
                 </div>
 
                 <!--사진-->
@@ -142,10 +154,6 @@
                                 <th>몸무게</th>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <th>중성화</th>
-                                <td></td>
-                            </tr>
                         </table>
                     </div><br>
                     <!--기본정보-->
@@ -180,43 +188,6 @@
                     <button>확인</button>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
 
