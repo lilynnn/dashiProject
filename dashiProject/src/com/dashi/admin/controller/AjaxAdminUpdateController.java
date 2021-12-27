@@ -35,7 +35,7 @@ public class AjaxAdminUpdateController extends HttpServlet {
 		
 		int ano = Integer.parseInt(request.getParameter("adminNo"));
 		String adminPwd = request.getParameter("adminPwd");
-		String adminName = request.getParameter("adminName");
+		String adminName = request.getParameter("adname");
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 
@@ -46,6 +46,8 @@ public class AjaxAdminUpdateController extends HttpServlet {
 		a.setMnName(adminName);
 		a.setMnEmail(email);
 		a.setMnPhone(phone);
+		
+		System.out.println(a);
 		
 		int result = new AdminService().updateAdmin(a);
 		

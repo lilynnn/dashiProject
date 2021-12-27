@@ -86,11 +86,11 @@
                         </tr>
                         <tr>
                             <th>이메일</th>
-                            <td><input type="text" name="email" required></td>
+                            <td><input type="text" name="email" required placeholder="@전까지만 입력해주세요."></td>
                         </tr>
                         <tr>
                             <th>전화번호</th>
-                            <td><input type="text" name="phone" required></td>
+                            <td><input type="text" name="phone" required placeholder="(-)포함 입력해주세요."></td>
                         </tr>
                     </table>
                 </div>

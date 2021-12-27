@@ -302,10 +302,11 @@
 
                     <!--찜목록 조회 영역(클릭 시 이동)-->
                     <div class="txtarea2"  align="center">
+                    	<a href="<%=contextPath%>/entList.ent">
                         <!-- 찜목록 아이콘 이미지 들어갈 공간 -->
                             <img class="bottomimage" src="<%=contextPath%>/resources/images/heart.png">
                         <br><br>
-                        <p align="center">찜 목록확인</p>
+                        <p align="center">입소신청목록확인</p></a>
                     </div>
 
                 </div>

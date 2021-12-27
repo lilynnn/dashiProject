@@ -45,18 +45,18 @@ public class AdminInsertController extends HttpServlet {
 		a.setMnName(adminName);
 		a.setMnEmail(email);
 		a.setMnPhone(phone);
-		
+				
 		int result = new AdminService().insertAdmin(a);
 		
 		if(result > 0) {
 			
 			request.getSession().setAttribute("alertMsg", "관리자 등록에 성공했습니다!");
-			response.sendRedirect(request.getContextPath() + "/empList.ad");
+			response.sendRedirect(request.getContextPath() + "/empList.ad?cpage=1");
 			
 		} else {
 			
 			request.getSession().setAttribute("alertMsg", "관리자 등록 실패!");
-			request.getRequestDispatcher("views/admin/adminEmployeeList.jsp").forward(request, response);
+			request.getRequestDispatcher("views/admin/adminEmployeeList?cpage=1.jsp").forward(request, response);
 		}
 	
 	

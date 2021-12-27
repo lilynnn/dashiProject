@@ -169,19 +169,19 @@
             <!-- 페이징바 -->
             <div class="paging-area" align="center">
 			<% if(currentPage != 1){ %>
-            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage-1%>';">&lt;</button>
+            <button onclick="location.href='<%=contextPath%>/empList.ad?cpage=<%=currentPage-1%>';">&lt;</button>
             <% } %>
             
             <% for(int p=startPage; p<=endPage; p++){ %>	
             	<% if(p == currentPage){ %>
             	<button disabled><%= p %></button>
             	<% }else{ %>
-            	<button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=p%>';"><%= p %></button>
+            	<button onclick="location.href='<%=contextPath%>/empList.ad?cpage=<%=p%>';"><%= p %></button>
             	<% } %>
             <% } %>
             
             <% if(currentPage != maxPage){ %>
-            <button onclick="location.href='<%=contextPath%>/list.bo?cpage=<%=currentPage+1%>';">&gt;</button>
+            <button onclick="location.href='<%=contextPath%>/empList.ad?cpage=<%=currentPage+1%>';">&gt;</button>
 			<% } %>
         	</div>
 
@@ -228,7 +228,7 @@
 				    		success:function(result){
 
 				    			let name = "";
-				    			name += "<h4 class='modal-title'>" + "<input type='text' name='adminName' value='" +result.mnName+ "' readonly>" + "</h4>"
+				    			name += "<h4 class='modal-title'>" + "<input type='text' name='adname' value='" +result.mnName+ "' readonly>" + "</h4>"
 				    			$(".modal-header").html(name);
 				    			
 								let info = "";
@@ -264,7 +264,7 @@
 				    			$(".modal-body>table").html(info);
 				    			
 				    			$("#adminUpdateInfo").hide();
-				    			
+				    							    			
 				    		},error:function(){
 				    			console.log("사원 조회용 ajax통신 실패");
 			    			}
@@ -275,6 +275,7 @@
 			    
 			    	function updateAdmin(){
 			    		
+			    		$(".modal-header>h4>input").attr("readonly", false);
 			    		$(".modal-body>table>tr>td>input").attr("readonly", false);
 			    		$("#adminUpdate").hide();
 			    		$("#adminUpdateInfo").show();
@@ -289,10 +290,10 @@
 			    			url:"update.ad",
 			    			data:{
 			    				adminNo:$("#adminNo").text(),
+			    				adname:$("input[name=adname]").val(),
 			    				adminPwd:$("input[name=adminPwd]").val(),
-			    				adminName:$("input[name=adminName]").val(),
 			    				email:$("input[name=email]").val(),
-			    				phone:$("input[name=phone]").val()
+			    				phone:$("input[name=phone]").val()			    				
 			    			},
 			    			type:"post",
 			    			success:function(result){
