@@ -90,8 +90,9 @@
                 <hr style="width: 900px;">
                 
                 <!-- 검색버튼 -->
-                <div style="margin-left: 530px; width:450px;">
+                <div style="margin-left: 600px; width:550px;">
                 
+                    <!--
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -99,6 +100,7 @@
                         <option value="delete">탈퇴</option>
                         <option selected>선택안함</option>
                     </select>
+                    -->
                     <form action="<%=contextPath%>/searchmem.ad?spage=1" method="get">
                     	<input type="text" name="searchmem" placeholder="이름을 입력하세요." required>
                     	<input type="hidden" name="spage" value="1">
@@ -113,10 +115,10 @@
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
                             <th width="8">no</th>
-                            <th width="50">이름</th>
+                            <th width="55">이름</th>
                             <th width="30">아이디</th>
                             <th width="40">생년월일</th>
-                            <th width="150">주소</th>
+                            <th width="155">주소</th>
                             <th width="100">휴대폰</th>
                             <th width="60">입양신청</th>
                             <th width="60">결제여부</th>
@@ -140,16 +142,22 @@
                             <td><%= m.getAdoptYN() %></td>
                             <td><%= m.getPayYN() %></td>
                             
-	                            <!-- 
+	                            <td>
 	                                <select name="grade">
-	                                    <option value="silver">실버</option>
+	                                    <option value="silver">
+                                            <% if(m.getGrade() == 1){ %>
+                                                        실버
+                                            <% }else if(m.getGrade() == 2){ %>
+                                                        골드
+                                                <% }else if(m.getGrade() == 3){ %>
+                                                        다이아
+                                                <% } %>
+                                        </option>
 	                                    <option value="gold">골드</option>
 	                                    <option value="diamond">다이아</option>
-	                                    <option value="blacklist">블랙리스트</option>
-	                                    <option value="delete">탈퇴</option>
 	                                </select>
-	                            -->
-	                            
+	                            </td>
+	                            <!--
 			                    <% if(m.getGrade() == 1){ %>
 			                    <td>
 										실버
@@ -167,6 +175,7 @@
 			                        	탈퇴
 			                    </td>    	
 			                    <% } %>
+                                -->
                         </tr>
                         <% } %>	
 					<% } %>
@@ -174,12 +183,25 @@
                     </table>
                     
                     
-                    <br><br><br>
+                    <br>
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
-                        <button>수정</button>
+                        <button id="update-grade">등급 변경</button>
                     </div>
+                    <br>
+                    <script>
+			        	$(function(){
+			        		$("#update-grade").click(function(){
+			        			var result = confirm('등급을 변경하시겠습니까?');
+	                    		if(result){
+		                    		alert('회원 등급이 변경되었습니다.');
+	                    		}else{
+	                    			
+	                    		}
+			        		})
+			        	})
+			        </script>
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">

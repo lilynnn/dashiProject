@@ -91,8 +91,8 @@
                 <hr style="width: 900px;">
                 
                 <!-- 검색버튼 -->
-                <div style="margin-left: 530px; width:450px;">
-                
+                <div style="margin-left: 600px; width:450px;">
+                    <!--
                     <select name="grade">
                         <option value="silver">실버</option>
                         <option value="gold">골드</option>
@@ -100,6 +100,7 @@
                         <option value="delete">탈퇴</option>
                         <option selected>선택안함</option>
                     </select>
+                    -->
                     <form action="<%=contextPath%>/searchmem.ad" method="post">
                     	<input type="text" name="searchmem" placeholder="이름을 입력하세요." value="<%=keyword %>" required>
                     	<input type="hidden" name="spage" value="1">
@@ -141,16 +142,22 @@
                             <td><%= m.getAdoptYN() %></td>
                             <td><%= m.getPayYN() %></td>
                             
-	                            <!-- 
-	                                <select name="grade">
-	                                    <option value="silver">실버</option>
-	                                    <option value="gold">골드</option>
-	                                    <option value="diamond">다이아</option>
-	                                    <option value="blacklist">블랙리스트</option>
-	                                    <option value="delete">탈퇴</option>
-	                                </select>
-	                            -->
-	                            
+                            <td>
+                                <select name="grade">
+                                    <option value="silver">
+                                        <% if(m.getGrade() == 1){ %>
+                                                    실버
+                                        <% }else if(m.getGrade() == 2){ %>
+                                                    골드
+                                            <% }else if(m.getGrade() == 3){ %>
+                                                    다이아
+                                            <% } %>
+                                    </option>
+                                    <option value="gold">골드</option>
+                                    <option value="diamond">다이아</option>
+                                </select>
+                            </td>
+	                            <!--
 			                    <% if(m.getGrade() == 1){ %>
 			                    <td>
 										실버
@@ -168,6 +175,7 @@
 			                        	탈퇴
 			                    </td>    	
 			                    <% } %>
+                            -->
                         </tr>
                         <% } %>	
 					<% } %>
@@ -180,15 +188,21 @@
                     <!--수정하기 버튼-->
                     <div align="right">
                         <!--클릭 시 alert창 발생-->
-                        <button>수정</button>
+                        <button id="update-grade">등급 변경</button>
                     </div>
-                    
                     <br>
-                    <div style="width:100%; margin-top:30px;" align="center">
-        				<a href="<%=contextPath%>/memberlist.ad?cpage=1" class="btn btn-sm btn-outline-secondary">목록으로</a>
-        			</div>
-        			<br>
-        			
+                    <script>
+			        	$(function(){
+			        		$("#update-grade").click(function(){
+			        			var result = confirm('등급을 변경하시겠습니까?');
+	                    		if(result){
+		                    		alert('회원 등급이 변경되었습니다.');
+	                    		}else{
+	                    			
+	                    		}
+			        		})
+			        	})
+			        </script>                
                             
                     <!-- 페이징버튼 영역 -->
                     <div align="center">
@@ -208,6 +222,11 @@
                         <button class="page" onclick="location.href='<%=contextPath%>/searchmem.ad?searchmem=<%=keyword%>&spage=<%=currentPage+1%>';">&gt;</button>
                         <% } %>
                     </div>
+                    <br>
+                    <div style="width:100%; margin-top:30px;" align="center">
+        				<a href="<%=contextPath%>/memberlist.ad?cpage=1" class="btn btn-sm btn-outline-secondary">목록으로</a>
+        			</div>
+        			<br>
                 </div>
             
     </div>

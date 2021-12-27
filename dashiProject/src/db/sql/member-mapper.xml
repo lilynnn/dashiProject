@@ -91,7 +91,7 @@
 		                     , PAY_YN
 		                     , GRADE
 		                  FROM MEM_INFO
-		                 WHERE GRADE IN ('1', '2', '3','9')
+		                 WHERE GRADE IN ('1', '2', '3')
 		                 ORDER
 		                    BY MEM_NO DESC
 		                ) A

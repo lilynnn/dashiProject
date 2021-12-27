@@ -78,7 +78,7 @@
     }
     #grade{
         width: 70%;
-        height: 60%;
+        height: 75%;
         margin:auto;  
     }
     #updateimage{
@@ -226,11 +226,13 @@
 							<button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn">
 	                         	   책임비 결제하기
 	                        </button> 
+                            <br><br>
 	                        console.log(<%=loginUser.getPayYN()%>);
 							<%}else { %>
 							 <button style="width:150px; height:40px; background:rgb(102,184,94); border:none; border-radius: 5px; font-weight: 900;" id="payBtn" disabled>
 	                         	   책임비 결제완료
-	                        </button> 
+	                        </button>
+                            <br><br> 
 							 <%} %>
 						 <%}else if(loginUser.getGrade() == 3){ %>
                         입양신청 / 입소신청 / 댓글  / 실종,보호,목격 / 입양후기 작성 
