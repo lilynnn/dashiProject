@@ -51,7 +51,7 @@ public class AdminAdoptNoticeSearchController extends HttpServlet {
 		
 		currentPage = Integer.parseInt(request.getParameter("spage"));
 		pageLimit = 5;
-		boardLimit = 5;
+		boardLimit = 10;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;
 		endPage = startPage + pageLimit - 1;

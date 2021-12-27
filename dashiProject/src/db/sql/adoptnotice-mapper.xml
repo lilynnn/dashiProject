@@ -272,7 +272,7 @@
 		  VALUES
 		  (
 		    'AT-'||LPAD(SEQ_ATNO.NEXTVAL,3,0)
-		  , 'AN-'||LPAD(SEQ_ADTNO.CURRVAL,3,0)
+		  , ?
 		  , ?
 		  , ?
 		  , ?
@@ -429,45 +429,69 @@
 	</entry>
 	
 	<entry key="searchAdoptApplyADPNO">
-		SELECT 
-		       AALIST_NO
-		     , ANLIST_NO
-		     , MEM_NO
-		     , AA_TITLE
-		     , M.MEM_ID
-		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
-		     , ADT_STATUS
-		  FROM ADOPT_APPLY
-		  JOIN MEM_INFO M USING (MEM_NO)
-		 WHERE AALIST_NO LIKE ?
+		SELECT *
+	      FROM (
+	            SELECT ROWNUM RNUM, A.*
+	              FROM (
+	                    SELECT 
+	                           AALIST_NO
+	                         , ANLIST_NO
+	                         , MEM_NO
+	                         , AA_TITLE
+	                         , M.MEM_ID
+	                         , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+	                         , ADT_STATUS
+	                      FROM ADOPT_APPLY AA
+	                      JOIN MEM_INFO M USING (MEM_NO)
+	                     WHERE AALIST_NO LIKE ?
+	                       AND AA.POST_STATUS = 'Y'
+	                ) A
+	          )
+	      WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="searchAdoptApplyADTNO">
-		SELECT 
-		       AALIST_NO
-		     , ANLIST_NO
-		     , MEM_NO
-		     , AA_TITLE
-		     , M.MEM_ID
-		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
-		     , ADT_STATUS
-		  FROM ADOPT_APPLY
-		  JOIN MEM_INFO M USING (MEM_NO)
-		 WHERE ANLIST_NO LIKE ?
+	    SELECT *
+	      FROM (
+	            SELECT ROWNUM RNUM, A.*
+	              FROM (
+	                SELECT 
+	                       AALIST_NO
+	                     , ANLIST_NO
+	                     , MEM_NO
+	                     , AA_TITLE
+	                     , M.MEM_ID
+	                     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+	                     , ADT_STATUS
+	                  FROM ADOPT_APPLY
+	                  JOIN MEM_INFO M USING (MEM_NO)
+	                 WHERE ANLIST_NO LIKE ?
+	                   AND POST_STATUS = 'Y'
+	                ) A
+	          )
+	      WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="searchAdoptApplyMEMID">
-		SELECT 
-		       AALIST_NO
-		     , ANLIST_NO
-		     , MEM_NO
-		     , AA_TITLE
-		     , M.MEM_ID
-		     , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
-		     , ADT_STATUS
-		  FROM ADOPT_APPLY
-		  JOIN MEM_INFO M USING (MEM_NO)
-		 WHERE MEM_ID LIKE ?
+		 SELECT *
+			      FROM (   
+		             SELECT ROWNUM RNUM, A.*
+				          FROM (
+		                    SELECT 
+		                           AALIST_NO
+		                         , ANLIST_NO
+		                         , MEM_NO
+		                         , AA_TITLE
+		                         , M.MEM_ID
+		                         , TO_CHAR(APPLY_DATE, 'YYYY/MM/DD') "APPLY_DATE"
+		                         , ADT_STATUS
+		                      FROM ADOPT_APPLY
+		                      JOIN MEM_INFO M USING (MEM_NO)
+		                     WHERE MEM_ID LIKE ?
+		                       AND POST_STATUS = 'Y'
+			                ) A
+			          )
+			      WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
 	<entry key="deleteAdoptApply">
@@ -629,4 +653,35 @@
 		            BY APPLY_DATE DESC) A
 		 WHERE ROWNUM = 1
 	</entry>
+	
+	<entry key="selectAdoptApplyADPNOCount">
+		SELECT
+			   COUNT(*) count
+			FROM ADOPT_APPLY A
+			WHERE A.AALIST_NO LIKE ?
+			  AND POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAdoptApplyADTNOCount">
+		SELECT
+			   COUNT(*) count
+			FROM ADOPT_APPLY A
+			WHERE A.ANLIST_NO LIKE ?
+			  AND POST_STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAdoptApplyMEMIDCount">
+		SELECT
+			   COUNT(*) count
+			FROM ADOPT_APPLY A
+			JOIN MEM_INFO USING (MEM_NO)
+			WHERE MEM_ID LIKE ?
+			  AND POST_STATUS = 'Y'
+	</entry>
+	
+	
+	
+	
+	
+	
 </properties>

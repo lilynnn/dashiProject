@@ -4,8 +4,17 @@
 <%@ page import="com.dashi.common.model.vo.PageInfo, java.util.ArrayList, com.dashi.adoptBoard.model.vo.AdoptApply" %>
 <%
 	ArrayList<AdoptApply> list = (ArrayList<AdoptApply>)request.getAttribute("list");
+	PageInfo pi = (PageInfo)request.getAttribute("pi");
+	String searchCtg = (String)request.getAttribute("searchCtg");
+	String searchKey = (String)request.getAttribute("searchKey");
+	
+	int currentPage = pi.getCurrentPage();
+	int startPage = pi.getStartPage();
+	int endPage = pi.getEndPage();
+	int maxPage = pi.getMaxPage();
 
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +112,7 @@
 	                  </select>
 	
 	                  <input type="text" name="searchKey" placeholder="검색어를 입력하세요">
-	                  
+                      <input type="hidden" name="spage" value="1">
 	                  <button id="search-btn" type="submit">검색하기</button>
 	              </form>
               </div>
@@ -165,8 +174,28 @@
 
               <br><br>
 
+			<div align="center">
+				
+	       		<%if(currentPage != 1) {%>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adpsearch.adt?&searchCtg=<%=searchCtg%>&spage=<%=currentPage-1 %>&searchKey=<%=searchKey%>';">&lt;</button>
+				<%} %>
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					
+					<%if(p == currentPage){ %>
+						<button class="btn btn-light" disabled><%= p %></button>
+					<%} else { %>
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adpsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=p%>&searchKey=<%=searchKey%>';"><%= p %></button>	
+	            	<%} %>
+	         	<%} %>	
 	
+				<%if(currentPage < maxPage) {%>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adpsearch.ad?searchCtg=<%=searchCtg%>&spage=<%=currentPage+1%>&searchKey=<%=searchKey%>';">&gt;</button>
+	            <%} %>
+	            
+	        </div>
 		</div>
+
     </div>
     <script>
         $(function(){
@@ -177,12 +206,8 @@
            
             })
             
-            
-            
-            
         })
-        
-        
+                
     </script>
 </body>
 </html>

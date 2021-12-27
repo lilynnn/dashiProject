@@ -44,9 +44,11 @@ public class AdminAdoptNoticeEnrollController extends HttpServlet {
 			
 			int maxSize = 10*1024*1024;
 			
-			String savePath = request.getSession().getServletContext().getRealPath("resources/upfiles/adoptNotice/");
+			String savePath = request.getSession().getServletContext().getRealPath("/resources/upfiles/adoptNotice/");
 			
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
+			
+			String entNo = multiRequest.getParameter("entNo");
 			
 			AdoptNotice adt = new AdoptNotice(multiRequest.getParameter("title"),
 											  multiRequest.getParameter("content"),
@@ -56,18 +58,17 @@ public class AdminAdoptNoticeEnrollController extends HttpServlet {
 
 			for(int i=1; i<4; i++) {
 				String key = "file" + i;
+				Attachment at = new Attachment();
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
-					
-					Attachment at = new Attachment();
 					
 					if(multiRequest.getParameter("originFileNo") != null){
 						
 					} 
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setPath("resources/upfiles/adoptNotice/");
-
+					at.setPath("/resources/upfiles/adoptNotice/");
+					at.setRefNo(entNo);
 					if(i==1) {
 						at.setAttachLevel(1);
 					} else {

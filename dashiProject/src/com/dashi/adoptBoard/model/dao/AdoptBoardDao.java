@@ -431,10 +431,11 @@ public class AdoptBoardDao {
 		try {
 			for(Attachment at : list) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, at.getPath());
-				pstmt.setString(2, at.getOriginName());
-				pstmt.setString(3, at.getChangeName());
-				pstmt.setInt(4, at.getAttachLevel());
+				pstmt.setString(1, at.getRefNo());
+				pstmt.setString(2, at.getPath());
+				pstmt.setString(3, at.getOriginName());
+				pstmt.setString(4, at.getChangeName());
+				pstmt.setInt(5, at.getAttachLevel());
 				
 				result = pstmt.executeUpdate();
 			}
@@ -578,26 +579,22 @@ public class AdoptBoardDao {
 		String sql = prop.getProperty("updateAttachment");
 		
 		//첨부파일리스트가 비어있지 않을 때. 즉, update할게 있을 때
-		if(!list.isEmpty()) {	
-			try {
-				for(Attachment at : list) {
-					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, at.getOriginName());
-					pstmt.setString(2, at.getChangeName());
-					pstmt.setString(3, at.getPath());
-					pstmt.setInt(4,at.getAttachLevel());
-					pstmt.setString(5, at.getAttachNo());
-					
-					result = pstmt.executeUpdate();
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally{
-				close(pstmt);
+		try {
+			for(Attachment at : list) {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, at.getOriginName());
+				pstmt.setString(2, at.getChangeName());
+				pstmt.setString(3, at.getPath());
+				pstmt.setInt(4,at.getAttachLevel());
+				pstmt.setString(5, at.getAttachNo());
+				
+				result = pstmt.executeUpdate();
 			}
-		} else {
-			result = 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally{
+			close(pstmt);
 		}
 		return result;
 	}
@@ -818,7 +815,7 @@ public class AdoptBoardDao {
 	
 	
 	// 입양신청서 번호로 검색하기(입양신청글번호)
-	public ArrayList<AdoptApply> searchAdoptApplyADPNO(Connection conn, String searchKey){
+	public ArrayList<AdoptApply> searchAdoptApplyADPNO(Connection conn, PageInfo pi, String searchKey){
 		
 		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
 		PreparedStatement pstmt = null;
@@ -830,9 +827,13 @@ public class AdoptBoardDao {
 		String sql = prop.getProperty("searchAdoptApplyADPNO");
 		
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
-						
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -859,7 +860,7 @@ public class AdoptBoardDao {
 	}
 	
 	// 입양신청서 입양공고번호로 검색
-	public ArrayList<AdoptApply> searchAdoptApplyADTNO(Connection conn, String searchKey){
+	public ArrayList<AdoptApply> searchAdoptApplyADTNO(Connection conn, PageInfo pi, String searchKey){
 		
 		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
 		PreparedStatement pstmt = null;
@@ -870,9 +871,13 @@ public class AdoptBoardDao {
 		String key = "%"+searchKey+"%";
 				
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, key);
-						
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -899,7 +904,7 @@ public class AdoptBoardDao {
 	}
 	
 	// 입양신청서 멤버아이디로 검색
-	public ArrayList<AdoptApply> searchAdoptApplyMEMID(Connection conn, String searchKey){
+	public ArrayList<AdoptApply> searchAdoptApplyMEMID(Connection conn, PageInfo pi, String searchKey){
 		
 		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
 		PreparedStatement pstmt = null;
@@ -910,9 +915,13 @@ public class AdoptBoardDao {
 		String key = "%"+searchKey+"%";
 				
 		try {
+			int startRow = (pi.getCurrentPage()-1) * pi.getBoardLimit() + 1;
+			int endRow = startRow + pi.getBoardLimit() - 1;
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, key);
-						
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
@@ -1267,6 +1276,63 @@ public class AdoptBoardDao {
 			close(pstmt);
 		}
 		return adpDate;
+	}
+	
+	public int searchAdoptApplyADPNOCount(Connection conn, String searchKey) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdoptApplyADPNOCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listCount;
+		
+	}
+	
+	public int searchAdoptApplyADTNOCount(Connection conn, String searchKey) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdoptApplyADTNOCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listCount;
+		
+	}
+	
+	public int searchAdoptApplyMEMIDCount(Connection conn, String searchKey) {
+		int listCount = 0;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectAdoptApplyMEMIDCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return listCount;
+		
 	}
 
 }

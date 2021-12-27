@@ -98,7 +98,7 @@
                   입양신청서 전체조회
               </div>
               <hr style="width: 950px;">
-			  <form action="<%=contextPath %>/adpsearch.ad" method="post">
+			  <form action="<%=contextPath %>/adpsearch.ad?spage=1" method="post">
 			  <!-- 검색버튼 -->
               <div class="search-area">
                   <select name="search-category" style="height: 30px;">
@@ -106,7 +106,7 @@
                       <option value="adtNo">공고번호</option>
                       <option value="userId">신청인아이디</option>
                   </select>
-
+				  <input type="hidden" name="spage" value="1">
                   <input type="text" name="searchKey" placeholder="검색어를 입력하세요.">
                   
                   <button id="search-btn">검색하기</button>
@@ -174,26 +174,29 @@
             
              <br>
 
-             <!-- 페이징버튼 영역 -->
-             <div align="center">
-      		<%if(currentPage != 1) {%>
-           	<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage-1 %>';">&lt;</button>
-			<%} %>
+			<!-- 페이징버튼 영역 -->
+            <div align="center">
+				
+	       		<%if(currentPage != 1) {%>
+	            	<button class="btn btn-light" onclick="location.href='<%= contextPath%>/adplist.ad?cpage=<%= currentPage-1 %>';">&lt;</button>
+				<%} %>
+				
+				<% for(int p=startPage; p<=endPage; p++){ %>
+					
+					<%if(p == currentPage){ %>
+						<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
+						<button class="btn btn-light" disabled><%= p %></button>
+					<%} else { %>
+	            		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adplist.ad?cpage=<%= p %>';"><%= p %></button>	
+	            	<%} %>
+	         	<%} %>	
 		
-			<% for(int p=startPage; p<=endPage; p++){ %>		
-				<%if(p == currentPage){ %>
-					<!-- p라는 숫자가 현재 보고있는 페이지와 동일할 경우 -->
-					<button class="btn btn-light" disabled><%= p %></button>
-				<%} else { %>
-	           		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=p %>';"><%= p %></button>	
-	           	<%} %>
-	        <%} %>	
-	
-			<%if(currentPage < maxPage) {%>
-	        		<button class="btn btn-light" onclick="location.href='<%=contextPath%>/adplist.ad?cpage=<%=currentPage+1%>';">&gt;</button>
-	        <%} %>
+				<%if(currentPage != maxPage) {%>
+	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adplist.ad?cpage=<%= currentPage+1%>';">&gt;</button>
+	            <%} %>
+			</div>
+             
         <%} %>
-             </div>
 
              <br><br>
 

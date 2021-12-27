@@ -177,9 +177,14 @@ public class AdoptBoardService {
 		int result1 = new AdoptBoardDao().updateAdoptNotice(conn, notice);
 		System.out.println("service : "+result1);
 		int result2 = 1;
-		if(!list.isEmpty()) {
-			result2 = new AdoptBoardDao().updateAttachmentList(conn, list);
-		} 
+		for(int i=0; i<list.size(); i++) {
+			if(!list.isEmpty()) {
+				result2 = new AdoptBoardDao().updateAttachmentList(conn, list);
+			} else {
+				result2 = new AdoptBoardDao().insertAttachment(conn, list.get(i));
+			}
+		}
+		
 		if(result1>0 && result2>0) {
 			commit(conn);
 		}else {
@@ -260,15 +265,15 @@ public class AdoptBoardService {
 	
 	
 	// 입양신청서 검색하기
-	public ArrayList<AdoptApply> searchAdoptApply(String categoryCtg, String searchCtg, String searchKey){
+	public ArrayList<AdoptApply> searchAdoptApply(PageInfo pi, String categoryCtg, String searchCtg, String searchKey){
 		Connection conn = getConnection();
 		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
 		if(searchCtg.equals("adpNo")) {
-			list = new AdoptBoardDao().searchAdoptApplyADPNO(conn, searchKey);
+			list = new AdoptBoardDao().searchAdoptApplyADPNO(conn, pi, searchKey);
 		} else if(searchCtg.equals("adtNo")){
-			list = new AdoptBoardDao().searchAdoptApplyADTNO(conn, searchKey);
+			list = new AdoptBoardDao().searchAdoptApplyADTNO(conn, pi, searchKey);
 		} else if(searchCtg.equals("userId")){
-			list = new AdoptBoardDao().searchAdoptApplyMEMID(conn, searchKey);
+			list = new AdoptBoardDao().searchAdoptApplyMEMID(conn, pi, searchKey);
 		}
 		close(conn);
 		return list;	
@@ -377,6 +382,22 @@ public class AdoptBoardService {
 		String adpDate = new AdoptBoardDao().selectadtDate(conn);
 		close(conn);
 		return adpDate;
+	}
+	
+	public int selectAdminSearchAdoptApplyListCount(String searchCtg, String searchKey) {
+		Connection conn = getConnection();
+		int listCount = 0;
+		int adtStatus = 0;
+		ArrayList<AdoptApply> list = new ArrayList<AdoptApply>();
+		if(searchCtg.equals("adpNo")) {
+			listCount = new AdoptBoardDao().searchAdoptApplyADPNOCount(conn, searchKey);
+		} else if(searchCtg.equals("adtNo")){
+			listCount = new AdoptBoardDao().searchAdoptApplyADTNOCount(conn, searchKey);
+		} else if(searchCtg.equals("userId")){
+			listCount = new AdoptBoardDao().searchAdoptApplyMEMIDCount(conn, searchKey);
+		}
+		close(conn);
+		return listCount;
 	}
 	
 }

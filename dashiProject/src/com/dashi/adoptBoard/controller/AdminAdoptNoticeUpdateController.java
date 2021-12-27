@@ -57,13 +57,13 @@ public class AdminAdoptNoticeUpdateController extends HttpServlet {
 
 			// attach 뽑아서 저장
 			ArrayList<Attachment> list = new ArrayList<Attachment>();
-			
+			Attachment at = null;
 			for(int i=1; i<4; i++) {
 				String key = "file"+i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
 					// 첨부파일이있다. => at생성
-					Attachment at = new Attachment();
+					at = new Attachment();
 					
 					// 기존에 존재하던 originFile값이 넘어올경우
 					if(multiRequest.getParameter("originFileNo"+i) != null) {
@@ -71,7 +71,7 @@ public class AdminAdoptNoticeUpdateController extends HttpServlet {
 					} 
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setPath("/resources/upfiles/adoptNotice/");
+					at.setPath("resources/upfiles/adoptNotice/");
 					at.setRefNo(boardNo);
 					if(i == 1) {
 						at.setAttachLevel(1);
@@ -82,12 +82,6 @@ public class AdminAdoptNoticeUpdateController extends HttpServlet {
 					list.add(at);
 				}
 			}
-			System.out.println("----------AdoptNoticeUpdateController----------");
-			System.out.println("원래 담겨있던 첨부파일번호" + request.getParameter("originFileNo"));
-			System.out.println("boardNo : " + boardNo);
-			System.out.println("adoptNotice : " + notice);
-			System.out.println("첨부파일 : " + list);
-			System.out.println("--------------------------------");
 			
 			int result = new AdoptBoardService().updateAdoptNotice(notice, list);
 			
