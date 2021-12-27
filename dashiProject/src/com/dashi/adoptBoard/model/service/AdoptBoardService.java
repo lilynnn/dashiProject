@@ -228,7 +228,7 @@ public class AdoptBoardService {
 		case 5:
 		case 1: memGrade = 1; break;
 		case 2: memGrade = 2; break;
-		case 3: memGrade = 3; memPayYN="Y"; break;
+		case 3: memGrade = 2; memPayYN="Y"; break;
 		case 4: memGrade = 3; memPayYN="Y"; memAdoptYN = "Y"; break;
 		}
 		
