@@ -149,7 +149,7 @@
 				<tr>
 					<td width=220>12. 입소희망시간 </td>
 					<td width=780>
-						<input type="number" name="wantTime" style="width: 690px" required>
+						<input type="number" name="wantTime" style="width: 690px" required placeholder="숫자만 입력하세요(24시간표시)">
 					</td>
 				</tr>
 				<tr>

@@ -155,7 +155,7 @@
 			</div>
 			
 			<div style="width:100%; margin-top:30px;" align="center">
-				<button type="button" onclick="history.back();">목록으로</button>
+				<a class="btn btn-outline-dark" href="<%=contextPath%>/reportList.ad?cpage=1">목록으로</a>
 			</div>
 			
 			

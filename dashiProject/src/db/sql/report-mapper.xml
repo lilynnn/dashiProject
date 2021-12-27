@@ -162,6 +162,7 @@
 			   MEM_INFO
 		   SET BLACKLIST_YN = 'Y'
 		     , BLACK_DATE = SYSDATE
+		     , GRADE = 4
 		 WHERE MEM_NO = ?	   
 	</entry>
 
