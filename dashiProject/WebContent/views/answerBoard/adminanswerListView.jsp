@@ -115,9 +115,7 @@
             <div id="faqLine2">
 
                 <div id="insertbtn" style="width:100px; height:40px;">
-                    <a href="<%=contextPath%>/faqEnrollForm.ad" class="btn btn-sm btn-success">
-                           등록하기
-                    </a>
+                   
                 </div>
             </div>
 
@@ -184,7 +182,7 @@
         </div>
       
       <div style="width:100%" align="center">
-         <a href="<%=contextPath%>/faqList.ad" class="btn btn-sm btn-light">목록으로</a>
+          
       </div> 
     </div>
 

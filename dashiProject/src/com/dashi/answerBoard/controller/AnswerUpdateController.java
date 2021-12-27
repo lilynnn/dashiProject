@@ -62,11 +62,11 @@ public class AnswerUpdateController extends HttpServlet {
 		if(result > 0) { //성공 => /jsp/detail.no?num=현재글번호 =>상세페이지
 			
 			request.getSession().setAttribute("alertMsg", "문의글 수정에 성공했습니다!");
-			response.sendRedirect(request.getContextPath() + "/asList.as");
+			 
 			
 		} else { // 실패=>에러페이지
 			request.getSession().setAttribute("alertMsg", "문의글 수정 실패");
-		}
+		} response.sendRedirect(request.getContextPath()+"/adlist.as");
 	}
 		
 		

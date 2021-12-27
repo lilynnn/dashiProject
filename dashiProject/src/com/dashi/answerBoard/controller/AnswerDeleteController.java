@@ -36,10 +36,10 @@ public class AnswerDeleteController extends HttpServlet {
 		
 		if(result > 0) {
 			request.getSession().setAttribute("alertMsg", "문의가 삭제 되었습니다.");
-			response.sendRedirect(request.getContextPath());
+			
 		}else {
 			request.getSession().setAttribute("alertMsg", "문의삭제 실패!");
-		}
+		}response.sendRedirect(request.getContextPath()+"/adlist.as");
 	
 	
 	}
