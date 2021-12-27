@@ -61,7 +61,7 @@ public class MemberEnrollFormController1 extends HttpServlet {
 			session.setAttribute("alertMsg","성공적으로 회원가입이 되었습니다");
 			
 			// 성공 => /jsp url 재요청 => index페이지
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 
 			
 		}else {

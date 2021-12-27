@@ -310,6 +310,7 @@
 	UPDATE
 		   MEM_INFO
 	   SET PAY_YN = 'Y'
+	     , GRADE = 2
      WHERE MEM_NO = ?
 	</entry>
 	
