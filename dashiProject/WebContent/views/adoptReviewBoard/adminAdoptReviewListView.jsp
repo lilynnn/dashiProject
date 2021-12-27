@@ -102,7 +102,6 @@
                 <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
                     <thead style="background: rgb(214, 235, 241);">
                         <tr>
-                            <th width="25"></th>
                             <th width="80">no</th>
                             <th width="100">아이디</th>
                             <th width="100">닉네임</th>
@@ -122,7 +121,6 @@
                         <tr>
                         <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
                             <!--체크박스 수정 필요!!!!!!!!!!!!-->
-                            <td><input type="checkbox" class="check" value="<%= ar.getArlistNo() %>"></td>
                             <td class="arno"><%= ar.getArlistNo() %></td>
                             <td><%= ar.getMemId() %></td>
                             <td><%= ar.getNickname() %></td>
@@ -136,11 +134,6 @@
                         </tbody>
                     </table>
                 
-                
-                <!--삭제하기 버튼-->
-                <div align="right">
-                    <button id="revdelete">삭제</button>
-                </div>
                 
                     <br><br><br>
                             

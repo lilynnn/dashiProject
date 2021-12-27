@@ -39,10 +39,9 @@
     /*사용자 첨부 이미지 영역*/
     .image-area{
         width: 600px;
-        height: 300px;
+        height: auto;
         margin: auto;
         margin-top: 30px;
-        border: 1px solid black;
     }
 
     /*버튼 영역*/
@@ -92,7 +91,15 @@
 	                <table align="left" style="margin-left: 150px;">
 	                    <tr>
 	                        <td colspan="5" style="height: 80px;">
-	                            <h2><b>[<%= ar.getAnType() %>]&nbsp;<%= ar.getArTitle() %></b></h2>
+	                            <h2><b>
+		                        <% if(ar.getAnType().equals("cat")){ %>
+				                [고양이]
+				                <%}else if(ar.getAnType().equals("dog")){ %>
+				                [강아지]
+				                <%}else if(ar.getAnType().equals("etc")){ %>
+				                [기타동물]
+				                <%} %>
+	                            &nbsp;<%= ar.getArTitle() %></b></h2>
 	                        </td>
 	                    </tr>
 	                    <tr style="color: rgb(87, 87, 85); font-size: 14px;">
@@ -101,8 +108,6 @@
 	                        <td>작성일&nbsp;</td>
 	                        <td><%= ar.getWriteDate() %></td>
 	                        <td>&nbsp;<!--공백란--></td>
-	                        <td>조회수</td>
-	                        <td><%=ar.getViewCount() %></td>
 	                    </tr>
 	                </table>
                     <br><br><br><br>
