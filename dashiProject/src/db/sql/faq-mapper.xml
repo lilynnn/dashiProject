@@ -85,7 +85,16 @@
 		   AND FAQ_STATUS = 'N'
 	</entry>
 
-
+	<entry key="selectfaqDate">
+		SELECT TO_CHAR(FAQ_ENROLL_DATE, 'YYYY/MM/DD') "FAQ_DATE"
+		  FROM (SELECT FAQ_ENROLL_DATE
+		          FROM FAQ
+		         WHERE FAQ_STATUS = 'N'
+		         ORDER 
+		            BY FAQ_ENROLL_DATE DESC) A
+		 WHERE ROWNUM = 1
+	</entry>
+	
 
 
 

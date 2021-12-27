@@ -219,7 +219,28 @@ public class FAQDao {
 		
 	} // faq keyword
 	
-	
+	public String selectfaqDate(Connection conn) {
+		String faqDate = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectfaqDate");
+				
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				faqDate = rset.getString("faq_date");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return faqDate;
+	} // 관리자페이지 공지사항 최근 날짜 조회
 	
 	
 	

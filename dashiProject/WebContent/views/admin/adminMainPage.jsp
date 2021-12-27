@@ -3,11 +3,15 @@
 <%
 	int adpCount = (int)request.getAttribute("adpCount");
 	int noCount = (int)request.getAttribute("noCount");
+	int entCount = (int)request.getAttribute("entCount");
+	
 	String noDate = (String)request.getAttribute("noDate");
 	String adtDate = (String)request.getAttribute("adtDate");
 	String adpDate = (String)request.getAttribute("adpDate");
 	String aniDate = (String)request.getAttribute("aniDate");
-	
+	String entDate = (String)request.getAttribute("entDate");
+	String reDate = (String)request.getAttribute("reDate");
+	String faqDate = (String)request.getAttribute("faqDate");
 %>
 <!DOCTYPE html>
 <html>
@@ -125,7 +129,7 @@
                 </div>
                 <div class="box" style="background: #abd1a4;">
                     <div class="countNum">
-                       	 숫자
+                       	 <%=entCount%>
                     </div>
                     <div>입소신청</div>
                 </div>
@@ -171,7 +175,7 @@
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/entListView.ad?cpage=1">입소신청</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate"><%=entDate%></td>
                         </tr>
                     </table>
                 </div>
@@ -201,7 +205,7 @@
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/faqList.ad">FAQ</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate"><%=faqDate%></td>
                         </tr>
                     </table>
                 </div>
@@ -214,7 +218,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad?cpage=1">전체신고내역</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate"><%=reDate%></td>
                         </tr>
                     </table>
                 </div>

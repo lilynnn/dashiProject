@@ -64,7 +64,7 @@
         		
             <div style="width:200px; height:80px; margin-bottom:5px;">
             	<!-- servlet생성 후 경로수정 -->
-                <a href="<%=request.getContextPath()%>/views/admin/adminMainPage.jsp">
+                <a href="<%=request.getContextPath()%>/main.ad">
                 	<img src="<%=request.getContextPath()%>/resources/images/adminlogo.JPG" alt="관리자 로고입니다." style="width:100%">
                 </a>
             </div>

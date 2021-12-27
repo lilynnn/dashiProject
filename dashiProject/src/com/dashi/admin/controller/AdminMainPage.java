@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.animalListBoard.model.service.AnimalListService;
 import com.dashi.entranceBoard.model.service.EntranceService;
+import com.dashi.faqBoard.model.service.FAQService;
 import com.dashi.notice.model.service.NoticeService;
 import com.dashi.report.model.service.ReportService;
 
@@ -69,7 +70,8 @@ public class AdminMainPage extends HttpServlet {
 		request.setAttribute("aniDate", animalDate);
 		// 전체동물조회 끝
 		
-		
+		String faqDate = new FAQService().selectfaqDate();
+		request.setAttribute("faqDate", faqDate);
 		
 		
 		

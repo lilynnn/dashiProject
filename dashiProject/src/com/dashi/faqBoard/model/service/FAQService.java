@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.dashi.faqBoard.model.dao.FAQDao;
 import com.dashi.faqBoard.model.vo.FAQ;
+import com.dashi.notice.model.dao.NoticeDao;
 
 public class FAQService {
 	
@@ -88,7 +89,12 @@ public class FAQService {
 		
 	} // faq 카테고리 keyword조회
 	
-	
+	public String selectfaqDate() {
+		Connection conn = getConnection();
+		String faqDate = new FAQDao().selectfaqDate(conn);
+		close(conn);
+		return faqDate;
+	}
 	
 	
 	
