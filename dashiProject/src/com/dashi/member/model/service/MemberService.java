@@ -98,6 +98,15 @@ public class MemberService {
 		return m;
 	}
 	
+	// 결제회원조회
+	public ArrayList<Member> selectPayList(){
+		Connection conn = getConnection();
+		ArrayList<Member> list = new MemberDao().selectPayList(conn);
+		close(conn);
+		return list;
+	}
+	
+	
 	// 블랙리스트 조회
 		public ArrayList<Member> selectBlackList(){
 			Connection conn = getConnection();

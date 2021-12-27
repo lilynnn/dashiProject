@@ -152,7 +152,7 @@
 			
 			</div>
 	
-			<div style="width: 570px; margin-left: 50px;">
+			<div style="width: 570px;">
 				<!--회원가입 폼-->
 	
 				<!--AJAX 사용하기-->

@@ -674,6 +674,33 @@ public class MemberDao {
 			}
 		return result;
 		}
+
+		public ArrayList<Member> selectPayList(Connection conn) {
+			ArrayList<Member> list = new ArrayList<>();
+			PreparedStatement pstmt = null;
+			ResultSet rset = null;
+			String sql = prop.getProperty("selectPayList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					list.add(new Member(rset.getInt("MEM_NO"),
+										rset.getString("MEM_ID"),
+									   rset.getString("MEM_NAME"),
+									   rset.getString("NICKNAME")));
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			
+			return list;
+		}
 	
 
 }

@@ -61,6 +61,17 @@ public class Member {
 		this.grade = grade;
 	}
 	
+	
+	
+	public Member(int memNo, String memId, String memName, String nickname) {
+		this.memNo = memNo;
+		this.memId = memId;
+		this.memName = memName;
+		this.nickname = nickname;
+	}
+
+
+
 	//회원가입 받아줄 객체
 	
 	/**

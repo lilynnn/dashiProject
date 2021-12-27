@@ -100,7 +100,7 @@
 
                 <div class="aMenu" id="payment">결제내역관리</div>
                 <ul>
-                    <li><a href="" class="menu-detail">전체결제내역</a></li>
+                    <li><a href="<%=request.getContextPath()%>/payList.ad" class="menu-detail">전체결제내역</a></li>
                 </ul>
 
                 <div class="aMenu" id="animal">동물관리</div>
