@@ -481,6 +481,7 @@ public class MemberDao {
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,userNo);
+			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {

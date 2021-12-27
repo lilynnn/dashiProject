@@ -251,7 +251,7 @@
                 <!-- 신고하기 버튼 클릭시 보여질 내용 -->
                 <div class="modal" id="boardReport"> 
                     
-                    <form action="<%=contextPath%>/arreport.bo" method="post">
+                    <form action="<%=contextPath%>/report.bo" method="post">
                     
                     <input type="hidden" name="boardNo" value="<%=ar.getArlistNo() %>">
                     <input type="hidden" name="writerNo" value="<%=ar.getMemNo() %>">
