@@ -94,7 +94,7 @@ public class AdoptApplyInsertController extends HttpServlet {
 			if(result == 1) {
 				// 입양신청서 업로드 성공 => alertMsg, 입양공고목록으로 돌아가기(adlist.ad?cpage=1)
 				request.getSession().setAttribute("alertMsg", "입양신청이 성공적으로 완료되었습니다.");
-				response.sendRedirect(request.getContextPath());
+				response.sendRedirect(request.getContextPath()+"/home");
 			} else {
 				// 입양신청서 업로드 실패 => 현재 공고페이지로 돌아가기/입양공고목록으로 돌아기기
 				
