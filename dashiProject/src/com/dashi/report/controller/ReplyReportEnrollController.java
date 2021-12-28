@@ -63,10 +63,10 @@ public class ReplyReportEnrollController extends HttpServlet {
 		
 		if(result>0) {
 			request.getSession().setAttribute("alertMsg","댓글 신고가 완료되었습니다.");
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/home");
 		}else{
 			request.getSession().setAttribute("alertMsg","댓글 신고에 실패했습니다.");
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/home");
 		}
 	}
 
