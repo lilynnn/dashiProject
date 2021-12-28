@@ -156,12 +156,12 @@
                     <div>
                         <table>
                             <tr>
-                                <td style="width: 150px;"><a href="">전체회원조회</a></td>
-                                <td class="categoryDate">날짜칸</td>
+                                <td style="width: 150px;"><a href="<%=contextPath%>/memberlist.ad?cpage=1">전체회원조회</a></td>
+                                <td class="categoryDate">2021/12/27</td>
                             </tr>
                             <tr>
                                 <td style="width: 150px;"><a href="">블랙리스트조회</a></td>
-                                <td class="categoryDate">날짜칸</td>
+                                <td class="categoryDate">2021/12/27</td>
                             </tr>
                         </table>
                     </div>
@@ -193,8 +193,8 @@
                             <td class="categoryDate"><%=adtDate %></td>
                         </tr>
                         <tr>
-                            <td style="width: 150px;"><a href="">입양후기</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td style="width: 150px;"><a href="<%=contextPath%>/reviewlist.ad?cpage=1">입양후기</a></td>
+                            <td class="categoryDate">2021/12/27</td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/adlist.dsp">실종/보호/목격</a></td>

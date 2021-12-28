@@ -620,10 +620,8 @@
                     				replyContent:$("#upReplycontent"+replyNo).val()
                     			},
                     			success:function(result){
-                    				alert("댓글 수정 완료");
-                    				if(result > 0){
+                    					alert("댓글 수정 완료");
                     					selectReplyList();
-                    				}
                     				
                     			}, error:function(){
                     				console.log("댓글수정용ajax 통신 실패")

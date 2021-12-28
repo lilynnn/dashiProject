@@ -62,7 +62,7 @@ public class ReportEnrollController extends HttpServlet {
 			}
 		} else {
 			request.getSession().setAttribute("alertMsg","게시글 신고에 실패했습니다.");
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/home");
 		}
 	}
 
