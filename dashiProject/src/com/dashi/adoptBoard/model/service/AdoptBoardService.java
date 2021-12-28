@@ -160,6 +160,7 @@ public class AdoptBoardService {
 	public ArrayList<Attachment> selectAttachmentList(String boardNo){
 		Connection conn = getConnection();
 		ArrayList<Attachment> list = new AdoptBoardDao().selectAttachmentList(conn, boardNo);
+		System.out.println(boardNo);
 		close(conn);
 		return list;
 	}

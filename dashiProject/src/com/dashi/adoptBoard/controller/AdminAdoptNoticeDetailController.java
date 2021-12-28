@@ -41,7 +41,7 @@ public class AdminAdoptNoticeDetailController extends HttpServlet {
 			AdoptNotice notice = new AdoptBoardService().selectAdminAdoptNotice(boardNo);
 			//Attachment at =  new AdoptBoardService().selectAttachment(boardNo);	
 			ArrayList<Attachment> list = new AdoptBoardService().selectAttachmentList(boardNo);
-
+			System.out.println(list);
 			request.setAttribute("notice", notice);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("views/adoptBoard/adminAdoptNoticeDetailView.jsp").forward(request, response);

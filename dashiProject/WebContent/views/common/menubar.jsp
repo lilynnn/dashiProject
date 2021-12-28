@@ -195,7 +195,7 @@
 	
     <!-- 메인로고 영역 -->
     <div class="logo-area" align="center">
-        <a href="<%= contextPath %>"><img src="/loveagain/resources/images/mainLogo.JPG"></a>
+        <a href="<%= contextPath %>/home"><img src="/loveagain/resources/images/mainLogo.JPG"></a>
     </div>
     
     <!-- 로그인 영역 -->

@@ -67,7 +67,7 @@ public class AdminAdoptNoticeEnrollController extends HttpServlet {
 					} 
 					at.setOriginName(multiRequest.getOriginalFileName(key));
 					at.setChangeName(multiRequest.getFilesystemName(key));
-					at.setPath("/resources/upfiles/adoptNotice/");
+					at.setPath("resources/upfiles/adoptNotice/");
 					at.setRefNo(entNo);
 					if(i==1) {
 						at.setAttachLevel(1);

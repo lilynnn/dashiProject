@@ -469,11 +469,10 @@ public ArrayList<AdoptNotice> selectAjaxMainAdoptNotice(Connection conn, int sta
 		try {
 			for(Attachment at : list) {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, at.getRefNo());
-				pstmt.setString(2, at.getPath());
-				pstmt.setString(3, at.getOriginName());
-				pstmt.setString(4, at.getChangeName());
-				pstmt.setInt(5, at.getAttachLevel());
+				pstmt.setString(1, at.getPath());
+				pstmt.setString(2, at.getOriginName());
+				pstmt.setString(3, at.getChangeName());
+				pstmt.setInt(4, at.getAttachLevel());
 				
 				result = pstmt.executeUpdate();
 			}
