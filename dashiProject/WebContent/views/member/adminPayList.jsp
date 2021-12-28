@@ -85,6 +85,8 @@
                             <th width="100">닉네임</th>
                             <th width="300">이름</th>
                             <th width="100">결제금액</th>
+                            <th width="100">결제날짜</th>
+                            
                             <th width="110">결제여부</th>
                         </tr>
                     </thead>
@@ -101,11 +103,61 @@
                               <td><%= m.getNickname()%></td>
                               <td><%= m.getMemName()%></td>
                               <td>50,000</td>
+                              <td>2021/12/28</td>
                               <td>Y</td>
                                           
                         </tr>
                         <% } %>	
 					<% } %>
+					   <tr>
+                              <td>1007</td>
+                              <td>user07</td>
+                              <td>겨울이아빠</td>
+                              <td>허원식</td>
+                              <td>50,000</td>
+                              <td>2021/12/25</td>
+                              <td>Y</td>
+                                          
+                        </tr>                        
+                        <tr>
+                              <td>1050</td>
+                              <td>user50</td>
+                              <td>천하장사</td>
+                              <td>김지우</td>
+                              <td>50,000</td>
+                              <td>2021/12/22</td>
+                              <td>Y</td>
+                                          
+                        </tr>                        
+                        <tr>
+                              <td>1020</td>
+                              <td>user20</td>
+                              <td>유쾌한반란</td>
+                              <td>김말똥</td>
+                              <td>50,000</td>
+                              <td>2021/12/20</td>
+                              <td>Y</td>
+                                          
+                        </tr>                        
+                        <tr>
+                              <td>1039</td>
+                              <td>user39</td>
+                              <td>아버지부름</td>
+                              <td>홍길동</td>
+                              <td>50,000</td>
+                              <td>2021/12/18</td>
+                              <td>Y</td>
+                                          
+                        </tr>                        <tr>
+                              <td>1048</td>
+                              <td>user48</td>
+                              <td>개똥벌레</td>
+                              <td>강개똥</td>
+                              <td>50,000</td>
+                              <td>2021/12/14</td>
+                              <td>Y</td>
+                                          
+                        </tr>
                         </tbody>
                     </table>
                 
