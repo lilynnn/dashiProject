@@ -114,7 +114,8 @@
 	            <div class="thumbnail">
 	            <input type="hidden" value="<%= ar.getArlistNo()%>"></input>
 	                <img src="<%=contextPath%>/<%=ar.getTitleImg()%>" width="200" height="200">
-	                <p>
+                    <br>
+	                <p style="margin-top: 7px;">
 	                <% if(ar.getAnType().equals("cat")){ %>
 	                [고양이]
 	                <%}else if(ar.getAnType().equals("dog")){ %>
