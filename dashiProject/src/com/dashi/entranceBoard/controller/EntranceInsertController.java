@@ -91,7 +91,7 @@ public class EntranceInsertController extends HttpServlet {
 		if(result > 0) {
 			// 성공 => /jsp/list.th    url요청 => 목록페이지
 			request.getSession().setAttribute("alertMsg", "입소신청이 완료되었습니다!");
-			response.sendRedirect(request.getContextPath());				
+			response.sendRedirect(request.getContextPath() + "/home");				
 		}else {
 			request.getSession().setAttribute("alertMsg", "입소신청 실패");
 			//request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

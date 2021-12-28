@@ -52,7 +52,7 @@ public class MemberDeleteController extends HttpServlet {
 			session.setAttribute("alertMsg", "그동안 다시,사랑받개!를 이용해주셔서 감사합니다.");
 			session.removeAttribute("loginUser");
 			
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath() + "/home");
 			
 		}else {
 			
