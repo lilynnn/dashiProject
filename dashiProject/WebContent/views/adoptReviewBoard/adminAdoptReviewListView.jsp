@@ -85,19 +85,7 @@
                 
                 <hr style="width: 900px;">
                 <br>
-                
-                <!-- 검색버튼 -->
-                <div style="margin-left: 530px; width:450px;">
-                    <select name="animal">
-                        <option value="dog">강아지</option>
-                        <option value="cat">고양이</option>
-                        <option value="etc">기타</option>
-                        <option selected>선택안함</option>
-                    </select>
-                    <input type="text" placeholder="검색어를 입력하세요.">
-                                
-                    <button>검색하기</button>
-                </div>
+
                 
                 <table align="center" class="table" style="width: 900px; height: 250px; text-align: center; margin-top: 20px; border-collapse: collapse; font-size: 13px;">
                     <thead style="background: rgb(214, 235, 241);">
