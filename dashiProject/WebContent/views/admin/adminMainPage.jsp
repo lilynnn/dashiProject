@@ -4,6 +4,7 @@
 	int adpCount = (int)request.getAttribute("adpCount");
 	int noCount = (int)request.getAttribute("noCount");
 	int entCount = (int)request.getAttribute("entCount");
+	 
 	
 	String noDate = (String)request.getAttribute("noDate");
 	String adtDate = (String)request.getAttribute("adtDate");
@@ -135,7 +136,7 @@
                 </div>
                 <div class="box" style="background: #91c5ab;">
                     <div class="countNum">
-                       	 숫자
+                       	 1
                     </div>
                     <div>1:1문의</div>
                 </div>

@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>Insert title here</title>
+<title>1:1문의목록</title>
 <style>
     .outer{
         width: 1100px;
@@ -165,7 +165,7 @@
                                    </p>
                                  <% if(loginUser!=null && loginUser.getMemNo()==(a.getMemNo()) ){ %>	
                                    <p align="right"; style="margin-right:10px;" > 
-                                   <a href="<%=contextPath%>/asdelete?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-danger">
+                                   <a href="<%=contextPath%>/asdelete2?asno=<%=a.getInquireNo()%>" class="btn btn-sm btn-danger">
                                       		 삭제
                   	                 </a></p>
                                    <% } %>

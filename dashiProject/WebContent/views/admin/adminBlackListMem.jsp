@@ -130,6 +130,8 @@
     })
     </script>
     <br><br><br><br>
+    
+    </div>
 	<%@ include file="../common/footerbar.jsp" %>
 </body>
 </html>
