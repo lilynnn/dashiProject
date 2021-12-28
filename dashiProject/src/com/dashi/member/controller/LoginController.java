@@ -43,11 +43,11 @@ public class LoginController extends HttpServlet {
 		if(loginUser != null) { //로그인성공
 			
 			session.setAttribute("loginUser", loginUser);
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/home");
 			
 		}else { //로그인실패
 			request.getSession().setAttribute("errorMsg", "로그인에 실패하였습니다.");
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect(request.getContextPath()+"/home");
 
 		}
 	

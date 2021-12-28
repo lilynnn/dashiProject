@@ -31,7 +31,7 @@ public class LogoutController extends HttpServlet {
 		request.getSession().invalidate();
 		
 		//url재요청
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+"/home");
 	}
 
 	/**
