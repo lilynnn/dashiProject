@@ -202,7 +202,7 @@
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="">1:1문의</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate">2021/12/28</td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/faqList.ad">FAQ</a></td>
