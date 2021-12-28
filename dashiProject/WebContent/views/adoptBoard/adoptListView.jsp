@@ -65,7 +65,7 @@
 
     /* 입양공고 리스트  */
     .content-area{
-        width: 1000px;
+        width: 1100px;
         height: auto;
         margin: auto;
         margin-top: 10px;
@@ -78,8 +78,9 @@
        height: 250px; 
        box-sizing: border-box;
        display: inline-block;
+       margin:8px;
     }
-    .adoptNotice img{width: 230px; height: 200px;}
+    .adoptNotice img{width: 230px; height: 220px;}
     .adoptNotice #category{
         margin-left: 5px; 
         width: 50px; 
