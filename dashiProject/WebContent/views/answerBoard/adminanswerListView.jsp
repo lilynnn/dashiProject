@@ -168,7 +168,7 @@
                            <tr class="faqAnswer" style="background: lightgray;">
                                <td></td>   
                                <td colspan="6" id="titleNcontent">
-                                     <%=n.getqCreat()%>
+                                     <%=n.getqContent()%>
                                    <hr>
                                       <%=n.getAnContent()%>
                                </td>

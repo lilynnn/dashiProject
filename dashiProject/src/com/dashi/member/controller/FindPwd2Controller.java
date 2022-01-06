@@ -60,7 +60,7 @@ public class FindPwd2Controller extends HttpServlet {
 	         else {//잘못된 정보인 경우
 	        	
 	        	 request.getSession().setAttribute("alertMsg", "일치하는 회원이 없습니다.");
-	        	 response.sendRedirect(request.getContextPath());
+	        	 response.sendRedirect(request.getContextPath()+"/home");
 	         } 
 	      }
 	      catch(Exception e) {

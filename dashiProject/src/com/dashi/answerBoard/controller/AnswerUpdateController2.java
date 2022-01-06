@@ -18,14 +18,14 @@ import com.dashi.notice.model.vo.Notice;
  */
 
 /*사용자 1:1 수정*/
-@WebServlet("/asupdate")
-public class AnswerUpdateController extends HttpServlet {
+@WebServlet("/asupdate2")
+public class AnswerUpdateController2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AnswerUpdateController() {
+    public AnswerUpdateController2() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -61,11 +61,11 @@ public class AnswerUpdateController extends HttpServlet {
 		System.out.println(result);
 		if(result > 0) { //성공 => /jsp/detail.no?num=현재글번호 =>상세페이지
 			
-			request.getSession().setAttribute("alertMsg", "답변등록에 성공했습니다!");
+			request.getSession().setAttribute("alertMsg", "수정 성공했습니다!");
 			 
 			
 		} else { // 실패=>에러페이지
-			request.getSession().setAttribute("alertMsg", "문의글 수정 실패");
+			request.getSession().setAttribute("alertMsg", "답변 등록 실패");
 		} response.sendRedirect(request.getContextPath()+"/adlist.as");
 	}
 		

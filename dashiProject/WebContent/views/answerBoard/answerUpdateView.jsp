@@ -126,7 +126,7 @@
             <!-- 1:1 목록-->        
        <table align="center" class="answer-table" width="900px">
            		<div id="title" style="width:800px; margin-left:100px;">
-                    	1:1 문의 수정
+                    	1:1 문의 
                 <hr style="width: 900px;">
                 </div>
        
@@ -170,7 +170,7 @@
     	 
                 	<div id="btn-answer" align="right"; style="float:right; margin-top:30px; margin-right:100px;" >
                    		 <button type="submit" class="btn btn-sm" style="background: rgb(102,184,94); margin-right:8px">
-                        	수정완료
+                        	완료
                     	</button>
 	                    <a href="<%=contextPath%>/asdelete?asno=<%=n.getInquireNo()%>" class="btn btn-sm btn-danger">
 	                        	삭제

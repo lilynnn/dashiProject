@@ -49,7 +49,7 @@ public class reset2PwdController extends HttpServlet {
 			session.setAttribute("loginUser", updateMem);
 		}
 
-		response.sendRedirect(request.getContextPath());
+		response.sendRedirect(request.getContextPath()+"/home");
 	}
 	
 	

@@ -78,6 +78,10 @@
         text-decoration: none; 
         color: black;
     }
+    .footer{
+    margin-top : 90px;
+    
+    }
 </style>
 </head>
 <body>
@@ -172,7 +176,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/adplist.ad?cpage=1">입양신청</a></td>
-                                <td class="categoryDate"><%=adpDate %></td>
+                                <td class="categoryDate">2021/12/20</td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/entListView.ad?cpage=1">입소신청</a></td>
@@ -190,7 +194,7 @@
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/adlist.ad?cpage=1">입양공고</a></td>
-                            <td class="categoryDate"><%=adtDate %></td>
+                            <td class="categoryDate">2021/12/20</td>
                         </tr>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/reviewlist.ad?cpage=1">입양후기</a></td>
@@ -219,7 +223,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="<%=contextPath%>/reportList.ad?cpage=1">전체신고내역</a></td>
-                            <td class="categoryDate"><%=reDate%></td>
+                            <td class="categoryDate">2021/12/20</td>
                         </tr>
                     </table>
                 </div>
@@ -229,7 +233,7 @@
                     <table>
                         <tr>
                             <td style="width: 150px;"><a href="">전체결제내역</a></td>
-                            <td class="categoryDate">날짜칸</td>
+                            <td class="categoryDate">2021/12/21</td>
                         </tr>
                     </table>
                 </div>
@@ -247,8 +251,12 @@
         </div>
     </div>
 
+
+	<div class="footer">
 	<!-- footerbar영역 -->
 	<%@ include file="../common/footerbar.jsp" %>
-
+	</div>
+	
+	
 </body>
 </html>
