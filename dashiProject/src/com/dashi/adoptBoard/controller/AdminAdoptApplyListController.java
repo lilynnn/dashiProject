@@ -42,12 +42,11 @@ public class AdminAdoptApplyListController extends HttpServlet {
 		int startPage;
 		int endPage;
 		
-		listCount = new AdoptBoardService().selectListCount();
+		listCount = new AdoptBoardService().selectApplyListCount();
 		
 		currentPage = Integer.parseInt(request.getParameter("cpage"));
 		
 		pageLimit = 5;
-		// 나중에 boardLimit 갯수 맞춰서 수정하기!!
 		boardLimit = 10;
 		maxPage = (int)Math.ceil((double)listCount / boardLimit);
 		startPage = (currentPage-1)/pageLimit * pageLimit + 1;

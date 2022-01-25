@@ -133,6 +133,33 @@ public ArrayList<AdoptNotice> selectAjaxMainAdoptNotice(Connection conn, int sta
 		return listCount;
 	}
 	
+	// 전체 입양공고글 수 알아오는 메소드
+		public int selectApplyListCount(Connection conn) {
+			
+			int listCount = 0;
+			
+			PreparedStatement pstmt = null; 
+			ResultSet rset = null;
+			
+			String sql = prop.getProperty("selectListCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					listCount = rset.getInt("count");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				close(rset);
+				close(pstmt);
+			}
+			return listCount;
+		}
+	
 	// 입양공고리스트 메소드
 	public ArrayList<AdoptNotice> selectList(Connection conn, PageInfo pi){
 		

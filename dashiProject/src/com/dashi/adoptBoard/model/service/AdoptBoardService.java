@@ -26,6 +26,13 @@ public class AdoptBoardService {
 		return listCount;
 	}
 	
+	public int selectApplyListCount() {
+		Connection conn = getConnection();
+		int listCount = new AdoptBoardDao().selectApplyListCount(conn);
+		close(conn);
+		return listCount;
+	}
+	
 	// 메인페이지에 입양공고리스트 불러올 메소드
 	public ArrayList<AdoptNotice> selectMainAdoptNotice(){
 		Connection conn = getConnection();

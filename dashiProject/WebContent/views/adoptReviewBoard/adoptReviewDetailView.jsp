@@ -168,10 +168,11 @@
 	        <div id="fix-image" align="center">
 	        <!-- 웃고있는 강쥐 사진 들어갈 영역!!! -->
 	            <div style="width:650px">        
-	                <h2 style="margin-top: 100px;">입양후기 <hr></h2>
+	                <h2 style="margin-top: 100px;">입양후기</h2>
+	                 <hr>
 	            </div>
 	        </div>
-            <br><br><br><br><br><br>
+
             <!-- 입양후기 상세내용 영역 -->
             <div class="content-area" align="center">
                 <!-- 입양후기 제목, 작성일 -->

@@ -191,7 +191,7 @@
 	            	<%} %>
 	         	<%} %>	
 		
-				<%if(currentPage != maxPage) {%>
+				<%if(currentPage < maxPage) {%>
 	         		<button class="btn btn-light" onclick="location.href='<%= contextPath %>/adplist.ad?cpage=<%= currentPage+1%>';">&gt;</button>
 	            <%} %>
 			</div>

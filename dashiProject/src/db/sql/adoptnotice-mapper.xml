@@ -10,6 +10,13 @@
          WHERE POST_STATUS = 'Y'
 	</entry>
 	
+	<entry key="selectApplyListCount">
+		SELECT
+		       COUNT(*) count
+		  FROM ADOPT_APPLY
+         WHERE POST_STATUS = 'Y'
+	</entry>
+	
 	<entry key="selectNoticeThumbnailList">
 		SELECT *
 		  FROM (
