@@ -21,6 +21,7 @@
 	/* 전체 감싸는 div */
     .outer{
         width: 1200px;
+        height: 1000px;
         margin: auto;
         margin-top: 30px;
     }
@@ -72,6 +73,12 @@
     #app-form{display: none;}
     /* 서약서 div */
     #con-form{display: none;}
+    #con-form table{
+    	width:800px;
+    }
+    #con-form table th{
+    	width:20%;
+    }
 	
 </style>
 </head>
@@ -416,22 +423,25 @@
 	                <table>
 	                    <tr>
 	                        <th>첨부파일</th>
-	                        <td>&nbsp;</td>
+
 	                        <!-- 첨부파일은 다운로드 가능하게 -->
 	                        <td>
-	                        <a download="<%=at.getOriginName() %>" href="<%=contextPath %>/<%=at.getPath() + at.getChangeName() %>"><%=at.getOriginName() %></a>
+	                        	<iframe style="width:700px; height:500px;" src="<%=contextPath %>/<%=at.getPath() + at.getChangeName() %>"></iframe>
 	                        </td>
+	                    </tr>
+	                    <tr>
+	                    	<td>다운로드</td>
+	                    	<td><a download="<%=at.getOriginName() %>" href="<%=contextPath %>/<%=at.getPath() + at.getChangeName() %>"><%=at.getOriginName() %></a></td>
 	                    </tr>
 	                </table>
 	            
 	            </div>
-	            <br><br><br>
 	        </div>   
         </form>
         
-    <%@ include file="../common/footerbar.jsp" %>
+    	
     </div>
-
+	<%@ include file="../common/footerbar.jsp" %>
     <script>
         $(function(){
 
