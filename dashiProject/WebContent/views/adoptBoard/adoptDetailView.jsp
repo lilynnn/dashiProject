@@ -45,6 +45,57 @@
     }
     .animal-info th{background: rgb(157, 219, 167); width: 180px;}
     .animal-info td{width: 220px;}
+    
+    /*댓글영역 스타일*/
+
+    #comm-outer{
+        margin-top: 50px;
+        width: 1000px;
+        margin: auto;
+    }
+
+    /*댓글쓰기 버튼 스타일*/
+    .write-btn{
+        border: none;
+        background: rgb(221, 221, 221);
+        color: rgb(80, 79, 79);
+        font-size: 14px;
+        font-weight: bold;
+        height: 33px;
+        width: 100px;
+        border-radius: 9px;
+    }
+
+    /*댓글입력란 스타일*/
+    .write-area{
+        background: rgb(240, 238, 238);
+        border: none;
+        resize: none;
+        border-radius: 7px;
+    }
+
+    /*폰트*/
+    .font{
+        color: rgb(94, 94, 92); 
+        font-size: 14px;
+    }
+    #comm-outer {
+    	border-bottom: solid 1px rgb(175, 173, 173);
+    }
+    #comm-outer td>button{
+        color: rgb(94, 94, 92); 
+        font-size: 14px;
+        background: none;
+        border: none;
+        width: 40px;
+    }
+    button:hover{
+        color: black;
+        cursor:pointer;    
+    }
+    #cmtReport input{
+    	border:none;
+    }
 </style>
 </head>
 <body>
@@ -129,24 +180,197 @@
                 <img src="<%= contextPath%>/resources/images/adopt/adoptProcedureGuide.png" style="width: 800px;">
                 <br>
                 <img src="<%=contextPath%>/resources/images/adopt/adoptnotice.png" width="600">
-                <br><br>
-                
-                <br><br>
+                <br><br><br><br><br>
+                <!--댓글 입력란-->
+                <% if(loginUser != null){  // 로그인인 되어있을 경우 %>
+	                <div align="center">
+	                   <textarea id="write-area" cols="130" rows="8" placeholder="댓글을 작성해주세요" style="resize: none;"></textarea>
+	               	</div>
+	              	<div align="right">
+	               		<br>
+	               		<!--클릭 시 댓글 작성 실패|성공 alert창-->
+	               		<button class="write-btn" onclick="insertReply();">댓글쓰기</button>
+	               </div>
+               <% }else { // 로그인 되어있지 않을 경우 %>
+	               <div align="center">
+	                   <textarea class="write-area" cols="130" rows="8" placeholder="로그인 후 이용가능한 서비스입니다." style="resize: none;" readonly></textarea>
+	               </div>
+	               <div align="right">
+		               <br>
+		               <!--클릭 시 댓글 작성 실패|성공 alert창-->
+		               <button class="write-btn" disabled>댓글쓰기</button>
+	               </div>
+              <% } %>
+              <br><br><br><br><br>
+      	</div> 
+		<div style="width: 100%;" align="center">
+			<!--클릭 시 입양후기 전체조회 페이지로 이동-->
+			<button onclick="location.href='<%= contextPath %>/list.ar?cpage=1'" class="btnn" style="background:rgb(102,184,94);">목록으로</button>
+		</div>
 
-                <br>
+	</div>
+	
+	<script>
+		$(function(){
+	   		selectReplyList();
+	   		setInterval(selectReplyList, 1000);
+	   	});
+		
+		// 댓글 작성
+      	function insertReply(){
+      		
+      		$.ajax({
+      			url:"rinsert.an",
+      			data:{
+      				content:$("#write-area").val(),
+      				arno:'<%=an.getAnlistNo()%>'
+      			},
+      			type:"post",
+      			success:function(result){
+      				if(result > 0){ // 댓글작성 성공 => 갱신된 댓글 리스트 조회
+      					selectReplyList();
+      					$("#write-area").val(""); // testarea 초기화
+      				}
+      			},error:function(){
+      				console.log("댓글작성용ajax 통신실패");
+      			}
+      			
+      		});
+      	}
+		
+     	// 댓글 목록 조회
+      	function selectReplyList(){
+      		
+      		$.ajax({
+      			url:"rlist.an",
+      			data:{arno:'<%=an.getAnlistNo()%>'},
+      			success:function(list){
+      				
+      				let result = "";
+      				for(let i=0; i<list.length; i++){
+      					result += "<tr>"
+	                            	+ "<td>&nbsp;</td>"
+	                        	+ "</tr>"
+	                        	+ "<tr>"
+		                           + "<td colspan=2><b>" + list[i].nickname + "</b></td>"
+		                           + "<td width=200px;>"+ list[i].writeDate + "</td>"
+		                           + "<td width=600px;></td>"
+	                        	+ "</tr>"
+		                        + "<tr>"
+		                           + "<td>&nbsp;</td>"
+		                        + "</tr>"
+		                        + "<tr id=\"repcontent-area" + list[i].replyNo +"\">"
+		                           + "<td colspan=5 id='repcontent'>"+ list[i].replyContent +"</td>"
+		                           + "<td><button onclick=\"updateReplyForm('" + list[i].replyNo + ","+list[i].memNo+"');\">수정</button></td>"
+		                           + "<td><button onclick=\"deleteReply('" + list[i].replyNo + ","+list[i].memNo+"');\">삭제</button></td>"
+		                           + "<td><button class=\"font comm-btn\" id=\"report-btn\" onclick=\"cmtReport('"+ list[i].replyNo +"','"
+		                        		   + list[i].replyContent +"','"+list[i].memNo+"','"+list[i].nickname+"');\" data-toggle=\"modal\" "
+		                        		   + "data-target=\"#cmtReport\">신고</button></td>"
+		                           + "<td><button onclick=\"plusReplyForm('"+ list[i].replyNo +"');\">답글</button></td>"
+		                        + "</tr>"
+			                    + "<tr id=\"update-input"+ list[i].replyNo +"\" style=\"display: none;\">"
+		                           + "<td colspan=5><textarea cols=100 rows=8 id='upReplycontent"+ list[i].replyNo +"'>" + list[i].replyContent + "</textarea></td>"
+		                           + "<td><button onclick=\"updateReply('" + list[i].replyNo + "');\">수정</button></td>"
+		                           + "<td><button onclick=\"upcancel('" + list[i].replyNo + "');\">취소</button></td>"
+		                        + "</tr>"
+		                        + "<tr style='border-bottom: solid 1px rgb(175, 173, 173);'>"
+		                           + "<td>&nbsp;</td>"
+		                        + "</tr>" ;
+      				}
+                    $("#comm-outer").html(result);
 
-                <%if(loginUser != null) {%>
-                <a href="<%= contextPath%>/adapply.adt?adtno=<%=an.getAnlistNo() %>" class="btn btn-success">입양신청하기</a>
-                <%} %>
-                <a href="<%= contextPath%>/adlist.adt?cpage=1" class="btn btn-secondary">목록보기</a>
-                <br><br><br><br>
+      			},error:function(){
+      				console.log("댓글목록 조회용 ajax 통신 실패")
+      			}
+      		});
+        }
+        
+     	// 댓글 삭제용
+      	function deleteReply(replyNo, memNo){
+     		if(<%=loginUser.getMemNo()%> == memNo){	 
+	      		var result = confirm('댓글을 삭제하시겠습니까?');
+	      		if(result){
+		       		$.ajax({
+		       			url:"rdelete.an",
+		       			type:"post",
+		       			data:{
+		       				replyNo: replyNo
+		       				},
+		       			success:function(result){
+		       				if(result > 0){ // 댓글삭제 성공 => 갱신된 댓글 리스트 조회
+		       					selectReplyList();
+		       				}
+		       			},error:function(){
+		       				console.log("댓글작성용ajax 통신실패");
+		       			}
+		       			
+		       		});
+	      		}else{
+	      			alert("삭제가 취소되었습니다.");
+	      		}
+     		}else{
+     			alert("삭제 권한이 없습니다.");
+     		}
+     	}
+     	
+     	// 댓글 수정 폼용
+     	function updateReplyForm(replyNo, memNo){
+     		if(loginUser.memNo == memNo){
+     			$.ajax({
+         			url:"rupform.an",
+         			type:"post",
+         			data:{
+         				replyNo: replyNo
+         			},
+         			success:function(arp){
+         				$('#repcontent-area'+replyNo).attr('style', "display:none;");
+         				$('#update-input'+replyNo).attr('style', "display:'';");
+         			}
+         		});	
+     		}else{
+     			alert("수정 권한이 없습니다.");
+     		}
+     	}
+     	
+     	// 댓글 신고하기
+     	function rpdata(){
+            	
+            var content = $("#input-area2").val();
+           	var rpCategory = $('input[name=rpcategory]:checked').val();
+            var rpValue;
 
-                
-            </div>
+            if(rpCategory == 'etc'){
+             	if(content.length > 5){
+                       rpValue = $("#input-area2").val();
+               	}else{
+               		alert("최소 5글자 이상 입력해주세요");
+               	}
+            }else{
+               	rpValue= $('input[name=rpcategory]:checked').val();
+           	}
+               
+           $.ajax({
+				url:"report.me",
+                data:{
+                    reportMemNo:$("#reportMemNo").val(),
+                    refCategory:$("#refCategory").val(),
+                    refBNo:$("#refBNo").val(),
+                    content:rpValue
+                },success:function(result){
+                    alert("해당 글의 신고가 완료되었습니다.");
+   					opener.parent.location.reload();
+                    window.close();
+               	},error:function(){
+               		alert("해당 글의 신고가 실패했습니다.");
+   					opener.parent.location.reload();
+                   	window.close();
+               	}
+           });
+		}
+	</script>
+   	
 
-    </div>
-
-    <%@ include file="/views/common/footerbar.jsp" %>
+	<%@ include file="/views/common/footerbar.jsp" %>
 
 </body>
 </html>
