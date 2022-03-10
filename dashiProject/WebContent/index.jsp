@@ -70,7 +70,7 @@
        margin-top: 50px;
        padding-left: 20px;
     }
-    .title>a{
+    .title>b{
         margin-left: 50px;
         text-decoration: none;
         color: black;
@@ -133,11 +133,12 @@
 
         <!-- 하단 타이틀 눌렀을 때 입양공고 메인페이지로 이동 -->
         <div class="title">
-   		<a href="<%=contextPath %>/adlist.adt?cpage=1"><b>입양 공고</b></a>
+   		<b>입양 공고</b>
+   		<a href="<%=contextPath %>/adlist.adt?cpage=1" style="font-size:13px; color:darkgray;"> 더보기+ </a>
    		</div>
         <hr style="width: 1100px; margin-top: 10px;">
-                <!-- 입양 공고 게시글 띄우는 영역 -->
-        <div class="adopt-area">
+        <!-- 입양 공고 게시글 띄우는 영역 -->
+        <div class="adoptNotice">
             <%if(anList.isEmpty()) {%>
             <div style="margin-top:150px; height:100px;" align="center">입양공고글이 존재하지 않습니다.</div>
             <%} else { %>
@@ -152,18 +153,62 @@
         </div>
         
         <script>
-        	$(function(){
+        
+        	window.onload = function(){
+
+        		// 입양공고, 입양후기 div
+        		var adoptNotice = document.getElementById("adoptNotice");
+        		var adoptRewiew = document.getElementById("adoptReview");
+
+        		$.ajax({
+        			url:"newadoptNotice.me",
+        			success:function(data){
+        				let value = "";
+        				for(let i in data){
+
+        					value += "<div class='notice-box' align='center'>"
+        					   + "<input type='hidden' value='" + data[i].getAnlistNo+"'>"
+							   + "<div class='photo-area'><img src='" + data[i].getTitleImg +"'></div>"
+							   + "<div id='noticeTitle'>" + data[i].getAnTitle +"</div>"
+    						   + "</div>";
+        				}
+        				adoptNotice.innerHTML = value;
+        			}, error:function(){
+        				console.log("메인페이지 new AdoptNotice ajax 통신 실패");
+        			}
+        		})
+        		
+				$.ajax({
+        			url:"newadoptReview.me",
+        			success:function(data){
+        				let value = "";
+        				for(let i in data){
+
+        					value += "<div class='notice-box' align='center'>"
+        					   + "<input type='hidden' value='" + data[i].getArlistNo+"'>"
+							   + "<div class='photo-area'><img src='" + data[i].getTitleImg +"'></div>"
+							   + "<div id='noticeTitle'>" + data[i].getArTitle +"</div>"
+    						   + "</div>";
+        				}
+        				adoptReview.innerHTML = value;      				
+        			}, error:function(){
+        				console.log("메인페이지 new AdoptReview ajax 통신 실패");
+        			}
+        		})
+        	
         		$(".notice-box").click(function(){
         			console.log($(this).children().eq(0).val());
         			location.href='<%=contextPath%>/addetail.adt?adtno=' + $(this).children().eq(0).val();
-        		})
-        	})
+       			})
+        	}
+
         </script>
        
         
         <!-- 하단 타이틀 눌렀을 때 입양후기 메인페이지로 이동 -->
         <div class="title">
-        <a href="<%=contextPath%>/list.ar?cpage=1"><b>입양 후기</b></a>
+        <b>입양 후기</b>
+        <a href="<%=contextPath%>/list.ar?cpage=1" style="font-size:13px; color:darkgray;"> 더보기+</a>
         </div>
         <hr style="width: 1100px; margin-top: 10px;">
         
@@ -192,7 +237,7 @@
         
         <br><br>
     </div>
-
+	
     <%@ include file="views/common/footerbar.jsp" %>
 </body>
 </html>
