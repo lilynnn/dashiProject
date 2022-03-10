@@ -155,10 +155,8 @@
                    	<%} %>
                 </tbody>  
             </table>
-
-                         
+            <a class="btn btn-warning" href="<%= contextPath %>/adoptNoticeForm.ad">공고등록하기</a>
             <br>
-
              <!--페이징바 영역-->
         <div align="center">
 			
