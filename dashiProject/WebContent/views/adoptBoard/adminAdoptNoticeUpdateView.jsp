@@ -103,7 +103,7 @@
 							<%} %>
 						</tr>
 						<tr>
-							<td colspan="3">등록할 사진 3개를 선택하세요.</td>
+							<td colspan="3" style="color:red;">등록할 사진 3개를 선택하세요.</td>
 						</tr>
 						<!-- 공백란 -->
 						<tr><td>&nbsp;</td></tr>
@@ -115,49 +115,49 @@
 						<!-- 동물 품종  -->
 						<tr>
 							<th>묘종 / 견종</th>
-							<td colspan="2"><%=notice.getAnimalVariety() %></td>
+							<td colspan="2"><input name=variety value="<%=notice.getAnimalVariety() %>"></td>
 						</tr>
 	
 						<!-- 동물 이름 -->
 	                    <tr>
 	                        <th>이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 름</th>
-	                        <td colspan="2"><%=notice.getAnimalName() %></td>
+	                        <td colspan="2"><input name=animalName value="<%=notice.getAnimalName() %>"></td>
 	                    </tr>
 	                    
 						<!-- 동물 나이 -->
 						<tr>
 							<th>나 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이</th>
-							<td colspan="2"><%=notice.getAnimalAge() %></td>
+							<td colspan="2"><input name=animalAge value="<%=notice.getAnimalAge() %>"></td>
 						</tr>
 	
 						<!-- 동물 성별 -->
 						<tr>
 							<th>성 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 별</th>
-							<td colspan="2"><%=notice.getAnimalGender() %></td>
+							<td colspan="2"><input name=animalGender value="<%=notice.getAnimalGender() %>"></td>
 						</tr>
 	
 						<!-- 접종 여부 -->
 						<tr>
 							<th>접종 &nbsp; 여부</th>
-							<td colspan="2"><%=notice.getAnimalVaccin() %></td>
+							<td colspan="2"><input name=animalVaccin value="<%=notice.getAnimalVaccin() %>"></td>
 						</tr>
 						
 						<!-- 중성화 여부 -->
 						<tr>
 							<th>중성화여부</th>
-							<td colspan="2"><%=notice.getAnimalNeutral() %></td>
+							<td colspan="2"><input name=animalNeutral value="<%=notice.getAnimalNeutral() %>"></td>
 						</tr>
 						
 						<!-- 질병여부 -->
 						<tr>
 							<th>질병 &nbsp; 여부</th>
-							<td colspan="2"><%=notice.getAnimalDisease() %></td>
+							<td colspan="2"><input name=animalDisease value="<%=notice.getAnimalDisease() %>"></td>
 						</tr>
 						
 						<!-- 특이사항 -->
 						<tr>
 							<th>특이 &nbsp; 사항</th>
-							<td colspan="2"><%=notice.getAnimalIssue() %></td>
+							<td colspan="2"><input name=animalIssue value="<%=notice.getAnimalIssue() %>"></td>
 						</tr>
 	
 						<!-- 내용 -->
