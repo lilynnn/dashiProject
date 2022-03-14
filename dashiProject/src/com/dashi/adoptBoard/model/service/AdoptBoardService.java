@@ -313,13 +313,13 @@ public class AdoptBoardService {
 		Connection conn = getConnection();
 		ArrayList<AdoptNotice> list = new ArrayList<AdoptNotice>();
 		if(searchCtg.equals("adtTitle")) {
+			//adopt notice title
 			list = new AdoptBoardDao().searchAdoptNoticeAdtTitle(conn, pi, searchKey);
-		
 		}else if(searchCtg.equals("adtNo")) {
+			//adopt notice No
 			list = new AdoptBoardDao().searchAdoptNoticeAdtNo(conn, pi, searchKey);
-		
 		}else if(searchCtg.equals("adtStatus")) {
-			
+			//adopt notice status
 			if(searchKey.equals("승인대기")) {
 				adtStatus = 1;
 			}else if(searchKey.equals("신청승인")) {
@@ -331,7 +331,6 @@ public class AdoptBoardService {
 			}else if(searchKey.equals("입양완료")) {
 				adtStatus = 4;
 			}
-			System.out.println(adtStatus);
 			list = new AdoptBoardDao().searchAdoptNoticeAdtStatus(conn, pi, adtStatus);
 		} 
 		close(conn);
@@ -414,6 +413,11 @@ public class AdoptBoardService {
 		}
 		close(conn);
 		return listCount;
+	}
+
+	public int updateAnimalInfo(Animal an) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }
