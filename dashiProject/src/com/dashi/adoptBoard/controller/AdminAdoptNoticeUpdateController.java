@@ -13,6 +13,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.dashi.adoptBoard.model.service.AdoptBoardService;
 import com.dashi.adoptBoard.model.vo.AdoptNotice;
+import com.dashi.animalListBoard.model.vo.Animal;
 import com.dashi.common.MyFileRenamePolicy;
 import com.dashi.common.model.vo.Attachment;
 import com.oreilly.servlet.MultipartRequest;
@@ -46,26 +47,37 @@ public class AdminAdoptNoticeUpdateController extends HttpServlet {
 			MultipartRequest multiRequest = new MultipartRequest(request, savePath, maxSize, "UTF-8", new MyFileRenamePolicy());
 			
 			String boardNo = multiRequest.getParameter("boardNo");
-
-			// notice 값 뽑아서 저장
+			
+			// animal info
+			Animal an = new Animal();
+			an.setAnimalType(multiRequest.getParameter("animalType"));
+			an.setAnimalName(multiRequest.getParameter("animalName"));
+			an.setAnimalAge(Integer.parseInt(multiRequest.getParameter("animalAge")));
+			an.setAnimalGender(multiRequest.getParameter("animalGender"));
+			an.setAnimalVaccin(multiRequest.getParameter("animalVaccin"));
+			an.setAnimalNeutral(multiRequest.getParameter("animalNeutral"));
+			an.setAnimalDisease(multiRequest.getParameter("animalDisease"));
+			an.setAnimalIssue(multiRequest.getParameter("animalIssue"));
+			an.setEntNo(multiRequest.getParameter("entNo"));
+			
+			// adopt notice
 			AdoptNotice notice = new AdoptNotice();
 			notice.setAnlistNo(multiRequest.getParameter("boardNo"));
 			notice.setAnTitle(multiRequest.getParameter("title"));
 			notice.setAnContent(multiRequest.getParameter("content"));
-			notice.setAnlistNo(multiRequest.getParameter("boardNo"));
 			notice.setEntNo(multiRequest.getParameter("entNo"));
 
-			// attach 뽑아서 저장
+			// attach 
 			ArrayList<Attachment> list = new ArrayList<Attachment>();
 			Attachment at = null;
 			for(int i=1; i<4; i++) {
 				String key = "file"+i;
 				
 				if(multiRequest.getOriginalFileName(key) != null) {
-					// 첨부파일이있다. => at생성
+					
 					at = new Attachment();
 					
-					// 기존에 존재하던 originFile값이 넘어올경우
+					// 기존에 존재하던 originFile값
 					if(multiRequest.getParameter("originFileNo"+i) != null) {
 						at.setAttachNo(multiRequest.getParameter("originFileNo"+i));
 					} 
@@ -77,15 +89,14 @@ public class AdminAdoptNoticeUpdateController extends HttpServlet {
 						at.setAttachLevel(1);
 					} else {
 						at.setAttachLevel(2);
-					}
-					
+					}					
 					list.add(at);
 				}
 			}
+			int result1 = new AdoptBoardService().updateAnimalInfo(an);
+			int result2 = new AdoptBoardService().updateAdoptNotice(notice, list);
 			
-			int result = new AdoptBoardService().updateAdoptNotice(notice, list);
-			
-			if(result>0) {
+			if(result1 * result2 >0) {
 				request.getSession().setAttribute("alertMsg", "입양공고 수정이 완료되었습니다.");
 				response.sendRedirect(request.getContextPath()+"/adlist.ad?cpage=1");
 			} else {
